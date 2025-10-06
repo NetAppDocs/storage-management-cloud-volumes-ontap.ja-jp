@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: concept-azure-mktplace-direct.html 
+keywords: azure marketplace direct, cvo in azure marketplace 
+summary:  
+---
+= Azure でのCloud Volumes ONTAP の展開オプションについて学習します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp は、Azure にCloud Volumes ONTAP を展開するための 2 つのオプションを提供しています。  Cloud Volumes ONTAP は従来、導入とオーケストレーションにNetAppコンソールに依存しています。  Cloud Volumes ONTAP 9.16.1 以降では、Azure マーケットプレイスの直接展開を利用できます。これは、制限はあるものの強力なCloud Volumes ONTAP の機能とオプションのセットへのアクセスを提供する合理化されたプロセスです。
+
+Azure マーケットプレイスからCloud Volumes ONTAP を直接デプロイする場合は、コンソール エージェントをセットアップしたり、コンソール経由でCloud Volumes ONTAP をデプロイするために必要なその他のセキュリティおよびオンボーディング基準を満たしたりする必要はありません。  Azure マーケットプレイスでは、数回クリックするだけでCloud Volumes ONTAPを迅速に導入し、そのコア機能と機能を自分の環境で試すことができます。
+
+Azure マーケットプレイスでのデプロイが完了すると、コンソールでこれらのシステムを検出できるようになります。検出後は、 Cloud Volumes ONTAPシステムとして管理し、コンソールのすべての機能を利用できます。。 link:task-deploy-cvo-azure-mktplc.html["コンソールで展開されたシステムを検出する"] 。
+
+以下は 2 つのオプションの機能比較です。  Azure マーケットプレイスを通じてデプロイされたスタンドアロン インスタンスの機能は、コンソールで検出された時点で変更されることに注意してください。
+
+[cols="3*"]
+|===
+|  | Azureマーケットプレイス | NetAppコンソール 
+
+
+| *オンボーディング* | より短く、より簡単で、直接導入に必要な準備は最小限 | コンソールエージェントのインストールを含む、オンボーディングプロセスが長くなります 
+
+
+| *サポートされている仮想マシン（VM）の種類*  a| 
+Eds_v5 および Ls_v3 インスタンスタイプ
+| あらゆる種類の VM タイプ。https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Azureでサポートされている構成"^] 
+
+
+| *ライセンス* | 無料ライセンス | 任意の容量ベースのライセンス。link:concept-licensing.html["Cloud Volumes ONTAPライセンス"] 
+
+
+| * NetAppサポート* | 含まれません | ライセンスの種類に応じて利用可能 
+
+
+| *容量* | 500 GiB以下 | 構成により拡張可能 
+
+
+| *展開モデル* | 単一のアベイラビリティゾーン (AZ) での高可用性 (HA) モードの展開 | 単一ノードおよび HA モード、単一および複数の AZ 展開を含む、サポートされているすべての構成 
+
+
+| *サポートされているディスクタイプ* | プレミアム SSD v2 マネージド ディスク | より幅広いサポート。link:concept-storage.html#azure-storage["Cloud Volumes ONTAPのデフォルト設定"] 
+
+
+| *書き込み速度（高速書き込みモード）* | サポート対象外 | 構成に基づいてサポートされます。link:concept-write-speed.html["Cloud Volumes ONTAPの書き込み速度について"] 。 
+
+
+| *オーケストレーション機能* | 使用不可 | ライセンスの種類に応じてNetAppコンソールから利用可能 
+
+
+| *サポートされるストレージVMの数* | 展開ごとに1つ | 構成に基づいた複数のストレージ VM。link:task-managing-svms-azure.html#supported-number-of-storage-vms["サポートされるストレージVMの数"] 
+
+
+| *インスタンスタイプの変更* | サポート対象外 | サポート 
+
+
+| * FabricPool の階層化* | サポート対象外 | サポート 
+|===
+.関連リンク
+* Azure マーケットプレイスの直接展開:link:task-deploy-cvo-azure-mktplc.html["AzureマーケットプレイスからCloud Volumes ONTAPをデプロイする"]
+* コンソール経由のデプロイメント:link:task-getting-started-azure.html["Azure でのCloud Volumes ONTAPのクイック スタート"]
+* https://docs.netapp.com/us-en/bluexp-family/index.html["NetAppコンソールのドキュメント"^]
+

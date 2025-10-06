@@ -1,0 +1,119 @@
+---
+sidebar: sidebar 
+permalink: concept-worm.html 
+keywords: worm, write once, read many, snaplock, retain, retention, period, cloud worm, worm storage, tiering 
+summary: Cloud Volumes ONTAPシステムでWrite Once Read Many（WORM）ストレージをアクティブ化すると、指定した保持期間中、変更されない状態でファイルを保管できます。Cloud WORMストレージはSnapLockテクノロジを使用しているため、WORMファイルはファイル レベルで保護されます。 
+---
+= Cloud Volumes ONTAPの WORM ストレージについて学ぶ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPシステムでWrite Once Read Many（WORM）ストレージをアクティブ化すると、指定した保持期間中、変更されない状態でファイルを保管できます。Cloud WORMストレージはSnapLockテクノロジを使用しているため、WORMファイルはファイル レベルで保護されます。
+
+WORM 機能は、BYOL (お客様独自のライセンスの持ち込み) およびライセンスのマーケットプレイス サブスクリプションで追加料金なしで使用できます。現在のライセンスに WORM を追加するには、 NetApp の営業担当者にお問い合わせください。
+
+
+
+== WORMストレージの仕組み
+
+ファイルが WORM ストレージに保存されると、保持期間が経過しても変更することはできません。WORMファイルの保持期間が経過したかどうかは、改ざん防止クロックによって判断されます。
+
+保存期間が経過した後は、不要になったファイルを削除する責任はお客様にあります。
+
+
+
+== WORMストレージの有効化
+
+WORM ストレージをアクティブ化する方法、それは使用しているCloud Volumes ONTAP のバージョンによって異なります。
+
+
+
+=== バージョン9.10.1以降
+
+Cloud Volumes ONTAP 9.10.1 以降では、ボリューム レベルで WORM を有効または無効にするオプションがあります。
+
+Cloud Volumes ONTAPシステムを追加すると、WORM ストレージを有効または無効にするように求められます。
+
+* システムを追加するときに WORM ストレージを有効にすると、 NetAppコンソールから作成するすべてのボリュームで WORM が有効になります。ただし、 ONTAP System Manager またはONTAP CLI を使用して、WORM が無効になっているボリュームを作成することはできます。
+* システムを追加するときに WORM ストレージを無効にすると、コンソール、 ONTAP System Manager、またはONTAP CLI から作成するすべてのボリュームで WORM が無効になります。
+
+
+
+
+=== バージョン 9.10.0 以前
+
+新しいシステムを追加するときに、Cloud Volumes ONTAPシステムで WORM ストレージをアクティブ化できます。コンソールから作成するすべてのボリュームでは WORM が有効になっています。個々のボリュームで WORM ストレージを無効にすることはできません。
+
+
+
+== ファイルのWORM状態へのコミット
+
+アプリケーションを使用して NFS または CIFS 経由でファイルを WORM にコミットすることも、 ONTAP CLI を使用してファイルを自動的に WORM にコミットすることもできます。また、ログ情報のように増分的に書き込まれるデータを保持するために、WORM 追加可能ファイルを使用することもできます。
+
+Cloud Volumes ONTAPシステムで WORM ストレージをアクティブ化した後は、WORM ストレージのすべての管理にONTAP CLI を使用する必要があります。手順については、 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-arch-con/home.html["SnapLockに関するONTAPドキュメント"^] 。
+
+
+
+== Cloud Volumes ONTAPシステムで WORM を有効にする
+
+コンソールでCloud Volumes ONTAPシステムを作成するときに、WORM ストレージを有効にできます。作成時にシステムで WORM が有効になっていない場合でも、システムで WORM を有効にできます。有効にした後は、WORM を無効にすることはできません。
+
+.タスク概要
+* WORM はONTAP 9.10.1 以降でサポートされています。
+* バックアップ付き WORM は、 ONTAP 9.11.1 以降でサポートされています。
+
+
+.手順
+. *システム* ページで、WORM を有効にするシステムの名前をダブルクリックします。
+. [概要] タブで [機能] パネルをクリックし、[WORM] の横にある鉛筆アイコンをクリックします。
++
+システムで WORM がすでに有効になっている場合、鉛筆アイコンは無効になります。
+
+. *WORM* ページで、クラスターのコンプライアンス クロックの保持期間を設定します。
++
+詳細については、 https://docs.netapp.com/us-en/ontap/snaplock/initialize-complianceclock-task.html["ONTAPドキュメント: コンプライアンスクロックの初期化"^] 。
+
+. *設定*をクリックします。
+
+
+.終了後の操作
+*WORM* のステータスは機能パネルで確認できます。  WORM を有効にすると、 SnapLockライセンスがクラスターに自動的にインストールされます。  SnapLockライセンスはONTAP System Manager で確認できます。
+
+
+
+== WORMファイルの削除
+
+特権削除機能を使用して、保持期間中に WORM ファイルを削除できます。
+
+手順については、 https://docs.netapp.com/us-en/ontap/snaplock/delete-worm-files-concept.html["ONTAPのドキュメント"^] 。
+
+
+
+== WORMとデータ階層化
+
+新しいCloud Volumes ONTAP 9.8 以降のシステムを作成するときに、データ階層化と WORM ストレージの両方を一緒に有効にすることができます。  WORM ストレージによるデータ階層化を有効にすると、クラウド内のオブジェクト ストアにデータを階層化できます。
+
+データ階層化と WORM ストレージの両方を有効にする場合、次の点を理解する必要があります。
+
+* オブジェクト ストレージに階層化されたデータには、 ONTAP WORM 機能は含まれません。エンドツーエンドの WORM 機能を確保するには、バケットの権限を正しく設定する必要があります。
+* オブジェクト ストレージに階層化されたデータには WORM 機能がないため、技術的にはバケットとコンテナへのフル アクセス権を持つユーザーであれば誰でも、 ONTAPによって階層化されたオブジェクトを削除できます。
+* WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
+
+
+
+
+== 制限事項
+
+* Cloud Volumes ONTAPの WORM ストレージは、「信頼できるストレージ管理者」モデルに基づいて動作します。  WORM ファイルは変更や修正から保護されていますが、ボリュームに有効期限内の WORM データが含まれている場合でも、クラスター管理者によってボリュームが削除される可能性があります。
+* 信頼できるストレージ管理者モデルに加えて、 Cloud Volumes ONTAPの WORM ストレージも暗黙的に「信頼できるクラウド管理者」モデルの下で動作します。クラウド管理者は、クラウド プロバイダーから直接クラウド ストレージを削除または編集することで、有効期限前に WORM データを削除できます。
+
+
+.関連リンク
+* link:reference-worm-snaplock.html["WORMストレージ用の改ざん防止スナップショットコピーを作成する"]
+

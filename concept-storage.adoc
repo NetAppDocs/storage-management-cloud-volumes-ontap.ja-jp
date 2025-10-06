@@ -1,0 +1,142 @@
+---
+sidebar: sidebar 
+permalink: concept-storage.html 
+keywords: storage, capacity, volumes, aggregates, raw capacity, usable capacity 
+summary: Cloud Volumes ONTAP がクラウド ストレージを使用する方法を理解すると、ストレージ コストを理解するのに役立ちます。 
+---
+= Cloud Volumes ONTAPクラスターに使用されるディスクとアグリゲート
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP がクラウド ストレージを使用する方法を理解すると、ストレージ コストを理解するのに役立ちます。
+
+
+CAUTION: すべてのディスクとアグリゲートはNetAppコンソールから作成および削除する必要があります。これらのアクションを別の管理ツールから実行しないでください。そうすると、システムの安定性に影響が及び、将来的にディスクを追加する能力が妨げられ、クラウド プロバイダーの料金が重複して発生する可能性があります。
+
+
+
+== 概要
+
+Cloud Volumes ONTAP は、クラウド プロバイダー ストレージをディスクとして使用し、それらを 1 つ以上のアグリゲートにグループ化します。アグリゲートは、1 つ以上のボリュームにストレージを提供します。
+
+image:diagram_storage.png["この図は、ディスクで構成されるアグリゲートと、 Cloud Volumes ONTAP がホストに提供するデータ ボリュームを示しています。"]
+
+いくつかの種類のクラウド ディスクがサポートされています。ボリュームを作成するときにディスク タイプを選択し、 Cloud Volumes ONTAPをデプロイするときにデフォルトのディスク サイズを選択します。
+
+
+TIP: クラウド プロバイダーから購入したストレージの合計量が _生の容量_ です。 _使用可能な容量_ が少なくなるのは、約 12 ～ 14 パーセントがCloud Volumes ONTAP の使用のために予約されているオーバーヘッドであるためです。たとえば、コンソールが 500 GiB のアグリゲートを作成した場合、使用可能な容量は 442.94 GiB になります。
+
+ifdef::aws[]
+
+
+
+== AWSストレージ
+
+AWS では、 Cloud Volumes ONTAP はユーザー データ用に EBS ストレージを使用し、一部の EC2 インスタンス タイプではフラッシュ キャッシュとしてローカル NVMe ストレージを使用します。
+
+EBSストレージ:: AWS では、アグリゲートには最大 6 個の同じサイズのディスクを含めることができます。ただし、Amazon EBS Elastic Volumes 機能をサポートする構成の場合、アグリゲートには最大 8 個のディスクを含めることができます。link:concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"] 。
++
+--
+最大ディスク サイズは 16 TiB です。
+
+基盤となる EBS ディスク タイプは、汎用 SSD (gp3 または gp2)、プロビジョニングされた IOPS SSD (io1)、またはスループット最適化 HDD (st1) のいずれかになります。  EBSディスクをAmazon S3とペアリングして、link:concept-data-tiering.html["低コストのオブジェクトストレージ"] 。
+
+
+NOTE: スループット最適化 HDD (st1) を使用する場合、オブジェクト ストレージへのデータの階層化は推奨されません。
+
+--
+ローカルNVMeストレージ:: 一部のEC2インスタンスタイプにはローカルNVMeストレージが含まれており、 Cloud Volumes ONTAPはこれをlink:concept-flash-cache.html["Flash Cache"]。
+
+
+*関連リンク*
+
+* http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html["AWS ドキュメント: EBS ボリュームタイプ"^]
+* link:task-planning-your-config.html["AWS のシステムに適したディスクタイプとディスクサイズの選択方法を学びます"]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.html["AWS のCloud Volumes ONTAPのストレージ制限を確認する"^]
+* http://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["AWS でCloud Volumes ONTAPがサポートする構成を確認する"^]
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+
+
+== Azureストレージ
+
+Azure では、アグリゲートには、すべて同じサイズのディスクを最大 12 個まで含めることができます。ディスク タイプと最大ディスク サイズは、単一ノード システムを使用するか、HA ペアを使用するかによって異なります。
+
+単一ノードシステム:: 単一ノード システムでは、次の種類の Azure マネージド ディスクを使用できます。
++
+--
+* _Premium SSD マネージド ディスク_ は、コストは高くなりますが、I/O 集中型のワークロードに高いパフォーマンスを提供します。
+* _Premium SSD v2 マネージド ディスク_ は、Premium SSD マネージド ディスクと比較して、単一ノードと HA ペアの両方で、より高いパフォーマンスとより低いレイテンシを低コストで提供します。
+* _Standard SSD Managed Disks_ は、低い IOPS を必要とするワークロードに対して一貫したパフォーマンスを提供します。
+* 高い IOPS を必要とせず、コストを削減したい場合は、_Standard HDD Managed Disks_ が適しています。
++
+各マネージド ディスク タイプの最大ディスク サイズは 32 TiB です。
+
++
+マネージドディスクをAzure Blobストレージとペアリングして、link:concept-data-tiering.html["低コストのオブジェクトストレージ"] 。
+
+
+
+--
+HAペア:: HA ペアは、コストは高くなりますが、I/O 集中型のワークロードに高いパフォーマンスを提供する 2 種類のディスクを使用します。
++
+--
+* 最大ディスクサイズが 8 TiB の _プレミアム ページ BLOB_
+* 最大ディスクサイズが 32 TiB の _マネージド ディスク_
+
+
+--
+
+
+*関連リンク*
+
+* link:task-planning-your-config-azure.html["Azure のシステムに適したディスクの種類とディスク サイズを選択する方法を学びます"]
+* link:task-deploying-otc-azure.html#launching-a-cloud-volumes-ontap-ha-pair-in-azure["AzureでCloud Volumes ONTAP HAペアを起動する"]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types["Microsoft Azure ドキュメント: Azure マネージド ディスクの種類"^]
+* https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-pageblob-overview["Microsoft Azure ドキュメント: Azure ページ BLOB の概要"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html["Azure のCloud Volumes ONTAPのストレージ制限を確認する"^]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+
+
+== Google Cloud ストレージ
+
+Google Cloud では、アグリゲートには最大 6 個の同じサイズのディスクを含めることができます。最大ディスク サイズは 64 TiB です。
+
+ディスク タイプは、_ゾーン SSD 永続ディスク_、_ゾーン バランス永続ディスク_、_ゾーン標準永続ディスク_ のいずれかになります。永続ディスクをGoogle Storageバケットとペアリングして、link:concept-data-tiering.html["低コストのオブジェクトストレージ"] 。
+
+*関連リンク*
+
+* https://cloud.google.com/compute/docs/disks/["Google Cloud ドキュメント: ストレージ オプション"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html["Google Cloud のCloud Volumes ONTAPのストレージ制限を確認する"^]
+
+
+endif::gcp[]
+
+
+
+== RAIDタイプ
+
+各Cloud Volumes ONTAPアグリゲートの RAID タイプは RAID0 (ストライピング) です。 Cloud Volumes ONTAP は、ディスクの可用性と耐久性をクラウド プロバイダーに依存します。他の RAID タイプはサポートされていません。
+
+
+
+=== ホット スペア
+
+RAID0 は冗長性のためのホットスペアの使用をサポートしていません。
+
+Cloud Volumes ONTAPインスタンスに接続された未使用のディスク (ホット スペア) を作成することは不必要な費用がかかり、必要に応じて追加のスペースをプロビジョニングできなくなる可能性があります。したがって、お勧めできません。

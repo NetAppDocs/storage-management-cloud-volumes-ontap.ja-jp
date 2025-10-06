@@ -1,0 +1,298 @@
+---
+sidebar: sidebar 
+permalink: task-set-up-azure-encryption.html 
+keywords: customer-managed key, customer key, azure storage service encryption, azure encryption, encryption key, azure encryption key 
+summary: データは、Microsoft が管理するキーを使用した Azure Storage Service Encryption を使用して、Azure のCloud Volumes ONTAP上で自動的に暗号化されます。ただし、このページの手順に従って、代わりに独自の暗号化キーを使用することもできます。 
+---
+= Azureで顧客管理キーを使用するようにCloud Volumes ONTAPを設定する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+データは、Microsoft が管理するキーを使用した Azure Storage Service Encryption を使用して、Azure のCloud Volumes ONTAP上で自動的に暗号化されます。ただし、このページの手順に従って、代わりに独自の暗号化キーを使用することもできます。
+
+
+
+== データ暗号化の概要
+
+Cloud Volumes ONTAPデータはAzureで自動的に暗号化されます。 https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-overview["Azure Storage Service Encryption"^] 。デフォルトの実装では、Microsoft が管理するキーが使用されます。セットアップは必要ありません。
+
+Cloud Volumes ONTAPでカスタマー管理キーを使用する場合は、次の手順を完了する必要があります。
+
+. Azure からキー コンテナーを作成し、そのコンテナー内にキーを生成します。
+. NetAppコンソールから、API を使用して、キーを使用するCloud Volumes ONTAPシステムを作成します。
+
+
+
+
+=== データの暗号化方法
+
+コンソールはディスク暗号化セットを使用します。これにより、ページ BLOB ではなく管理対象ディスクで暗号化キーを管理できるようになります。新しいデータ ディスクでも同じディスク暗号化セットが使用されます。下位バージョンでは、顧客管理キーではなく、Microsoft 管理キーが使用されます。
+
+カスタマー管理キーを使用するように設定されたCloud Volumes ONTAPシステムを作成すると、 Cloud Volumes ONTAPデータは次のように暗号化されます。
+
+[cols="2a,2a,2a"]
+|===
+| Cloud Volumes ONTAP構成 | キー暗号化に使用されるシステムディスク | キー暗号化に使用されるデータディスク 
+
+
+ a| 
+シングル ノード
+ a| 
+* ブート
+* コア
+* NVRAM
+
+ a| 
+* ルート
+* データ
+
+
+
+
+ a| 
+Azure HA 単一可用性ゾーンとページ BLOB
+ a| 
+* ブート
+* コア
+* NVRAM
+
+ a| 
+なし
+
+
+
+ a| 
+共有マネージド ディスクを備えた Azure HA 単一可用性ゾーン
+ a| 
+* ブート
+* コア
+* NVRAM
+
+ a| 
+* ルート
+* データ
+
+
+
+
+ a| 
+共有マネージド ディスクを使用した Azure HA 複数可用性ゾーン
+ a| 
+* ブート
+* コア
+* NVRAM
+
+ a| 
+* ルート
+* データ
+
+
+|===
+Cloud Volumes ONTAPのすべての Azure ストレージ アカウントは、顧客管理キーを使用して暗号化されます。ストレージ アカウントの作成中に暗号化する場合は、 Cloud Volumes ONTAP作成リクエストでリソースの ID を作成して提供する必要があります。これはすべてのタイプの展開に適用されます。指定しない場合でもストレージ アカウントは暗号化されますが、コンソールは最初に Microsoft 管理のキー暗号化を使用してストレージ アカウントを作成し、次にカスタマー マネージド キーを使用するようにストレージ アカウントを更新します。
+
+
+
+== Cloud Volumes ONTAPでのキーローテーション
+
+暗号化キーを構成するときは、Azure ポータルを使用して自動キー ローテーションを設定し、有効にする必要があります。新しいバージョンの暗号化キーを作成して有効にすると、 Cloud Volumes ONTAP は暗号化に最新のキー バージョンを自動的に検出して使用できるようになり、手動による介入を必要とせずにデータの安全性が確保されます。
+
+キーの構成とキーのローテーションの設定については、次の Microsoft Azure ドキュメントのトピックを参照してください。
+
+* https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation["Azure Key Vault で暗号化キーの自動ローテーションを構成する"^]
+* https://learn.microsoft.com/en-us/azure/virtual-machines/windows/disks-enable-customer-managed-keys-powershell#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview["Azure PowerShell - カスタマーマネージドキーを有効にする"^]
+
+
+
+NOTE: キーを設定したら、次の項目を選択したことを確認してください。 https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation#key-rotation-policy["_自動回転を有効にする_"^]これにより、 Cloud Volumes ONTAP は、以前のキーの有効期限が切れたときに新しいキーを使用できるようになります。  Azure ポータルでこのオプションを有効にしないと、 Cloud Volumes ONTAP は新しいキーを自動的に検出できず、ストレージのプロビジョニングで問題が発生する可能性があります。
+
+
+
+== ユーザー割り当てマネージド ID を作成する
+
+ユーザー割り当てマネージド ID と呼ばれるリソースを作成するオプションがあります。これにより、Cloud Volumes ONTAPシステムを作成するときにストレージ アカウントを暗号化できるようになります。キー コンテナーを作成してキーを生成する前に、このリソースを作成することをお勧めします。
+
+リソースの ID は次のとおりです: `userassignedidentity` 。
+
+.手順
+. Azure で、Azure サービスに移動し、*マネージド ID* を選択します。
+. *作成*をクリックします。
+. 以下の詳細を入力してください。
++
+** *サブスクリプション*: サブスクリプションを選択します。コンソール エージェントのサブスクリプションと同じサブスクリプションを選択することをお勧めします。
+** *リソース グループ*: 既存のリソース グループを使用するか、新しいリソース グループを作成します。
+** *リージョン*: オプションで、コンソール エージェントと同じリージョンを選択します。
+** *名前*: リソースの名前を入力します。
+
+
+. 必要に応じてタグを追加します。
+. *作成*をクリックします。
+
+
+
+
+== キーコンテナーを作成し、キーを生成する
+
+キー コンテナーは、Cloud Volumes ONTAPシステムを作成する予定の Azure サブスクリプションとリージョンに存在する必要があります。
+
+もしあなたが<<ユーザー割り当てマネージド ID を作成する,ユーザー割り当てマネージドIDを作成した>>キー コンテナーを作成するときに、キー コンテナーのアクセス ポリシーも作成する必要があります。
+
+.手順
+. https://docs.microsoft.com/en-us/azure/key-vault/general/quick-create-portal["Azureサブスクリプションにキーコンテナーを作成する"^] 。
++
+キー コンテナーの次の要件に注意してください。
+
++
+** キー ボールトは、Cloud Volumes ONTAPシステムと同じリージョンに存在する必要があります。
+** 次のオプションを有効にする必要があります。
++
+*** *ソフト削除* (このオプションはデフォルトで有効になっていますが、無効にしないでください)
+*** *パージ保護*
+*** *ボリューム暗号化のための Azure Disk Encryption* (単一ノード システム、複数ゾーンの HA ペア、および HA 単一 AZ 展開の場合)
++
+
+NOTE: Azure カスタマー管理暗号化キーを使用するには、キー コンテナーに対して Azure Disk Encryption が有効になっている必要があります。
+
+
+
+** ユーザー割り当てマネージド ID を作成した場合は、次のオプションを有効にする必要があります。
++
+*** *Vault アクセス ポリシー*
+
+
+
+
+. [コンテナー アクセス ポリシー] を選択した場合は、[作成] をクリックして、キー コンテナーのアクセス ポリシーを作成します。そうでない場合は、手順 3 に進みます。
++
+.. 次の権限を選択します。
++
+*** 得る
+*** リスト
+*** 解読する
+*** 暗号化する
+*** アンラップキー
+*** ラップキー
+*** 確認カクニン
+*** サイン
+
+
+.. ユーザーが割り当てたマネージド ID (リソース) をプリンシパルとして選択します。
+.. アクセス ポリシーを確認して作成します。
+
+
+. https://docs.microsoft.com/en-us/azure/key-vault/keys/quick-create-portal#add-a-key-to-key-vault["キーコンテナーにキーを生成する"^] 。
++
+キーについては次の要件に注意してください。
+
++
+** キータイプは *RSA* である必要があります。
+** 推奨される RSA キー サイズは *2048* ですが、他のサイズもサポートされています。
+
+
+
+
+
+
+== 暗号化キーを使用するシステムを作成する
+
+キー ボールトを作成し、暗号化キーを生成したら、そのキーを使用するように構成された新しいCloud Volumes ONTAPシステムを作成できます。これらの手順は、API を使用することでサポートされます。
+
+.必要な権限
+単一ノードのCloud Volumes ONTAPシステムでカスタマー管理キーを使用する場合は、コンソール エージェントに次の権限があることを確認してください。
+
+[source, json]
+----
+"Microsoft.Compute/diskEncryptionSets/read",
+"Microsoft.Compute/diskEncryptionSets/write",
+"Microsoft.Compute/diskEncryptionSets/delete"
+"Microsoft.KeyVault/vaults/deploy/action",
+"Microsoft.KeyVault/vaults/read",
+"Microsoft.KeyVault/vaults/accessPolicies/write",
+"Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"
+----
+https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["最新の権限リストを表示する"^]
+
+.手順
+. 次の API 呼び出しを使用して、Azure サブスクリプション内のキー コンテナーの一覧を取得します。
++
+HA ペアの場合: `GET /azure/ha/metadata/vaults`
+
++
+単一ノードの場合: `GET /azure/vsa/metadata/vaults`
+
++
+*name* と *resourceGroup* をメモします。次のステップでこれらの値を指定する必要があります。
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-hametadata["このAPI呼び出しの詳細"^] 。
+
+. 次の API 呼び出しを使用して、ボールト内のキーのリストを取得します。
++
+HA ペアの場合: `GET /azure/ha/metadata/keys-vault`
+
++
+単一ノードの場合: `GET /azure/vsa/metadata/keys-vault`
+
++
+*keyName* をメモします。次の手順で、その値 (および Vault 名) を指定する必要があります。
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-hametadata["このAPI呼び出しの詳細"^] 。
+
+. 次の API 呼び出しを使用して、 Cloud Volumes ONTAPシステムを作成します。
++
+.. HA ペアの場合:
++
+`POST /azure/ha/working-environments`
+
++
+リクエスト本体には次のフィールドを含める必要があります。
+
++
+[source, json]
+----
+"azureEncryptionParameters": {
+              "key": "keyName",
+              "vaultName": "vaultName"
+}
+----
++
+
+NOTE: 含める `"userAssignedIdentity": " userAssignedIdentityId"`このリソースをストレージ アカウントの暗号化に使用するために作成した場合は、このフィールドが必要です。
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-haworking-environments["このAPI呼び出しの詳細"^] 。
+
+.. 単一ノード システムの場合:
++
+`POST /azure/vsa/working-environments`
+
++
+リクエスト本体には次のフィールドを含める必要があります。
+
++
+[source, json]
+----
+"azureEncryptionParameters": {
+              "key": "keyName",
+              "vaultName": "vaultName"
+}
+----
++
+
+NOTE: 含める `"userAssignedIdentity": " userAssignedIdentityId"`このリソースをストレージ アカウントの暗号化に使用するために作成した場合は、このフィールドが必要です。
+
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-vsaworking-environments["このAPI呼び出しの詳細"^] 。
+
+
+
+
+
+.結果
+データ暗号化に顧客管理キーを使用するように設定された新しいCloud Volumes ONTAPシステムがあります。

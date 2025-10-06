@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: task-configure-placement-group-failure-aws.html 
+keywords: placement group, failure, HA single zone, app.conf, rollback, AWS 
+summary: Cloud Volumes ONTAP は、関連付けられたストレージ アカウントへの接続に Azure Private Link を使用します。必要に応じて、Azure Private Links を無効にして、代わりにサービス エンドポイントを使用できます。 
+---
+= AWS の単一 AZ でCloud Volumes ONTAP HA ペアの配置グループ作成を構成する
+:allow-uri-read: 
+
+
+[role="lead"]
+配置グループの作成に失敗すると、AWS 単一アベイラビリティゾーン (AZ) でのCloud Volumes ONTAP高可用性 (HA) デプロイメントが失敗し、ロールバックされる可能性があります。 Cloud Volumes ONTAPノードとメディエーターインスタンスが利用できない場合は、配置グループの作成も失敗し、デプロイメントはロールバックされます。これを回避するには、配置グループの作成が失敗した場合でもデプロイメントが完了するように構成を変更します。
+
+ロールバック プロセスをバイパスすると、 Cloud Volumes ONTAP のデプロイメント プロセスが正常に完了し、配置グループの作成が完了していないことが通知されます。
+
+.手順
+. SSH を使用してNetAppコンソール エージェント ホストに接続し、ログインします。
+. 移動先 `/opt/application/netapp/cloudmanager/docker_occm/data`。
+. 編集 `app.conf`の値を変更することで `rollback-on-placement-group-failure`パラメータに `false`。このパラメータのデフォルト値は `true`。
++
+[listing]
+----
+{
+    "occm" : {
+        "aws" : {
+            "rollback-on-placement-group-failure" : false
+        }
+    }
+}
+----
+. ファイルを保存し、コンソール エージェントからログオフします。コンソール エージェントを再起動する必要はありません。
+

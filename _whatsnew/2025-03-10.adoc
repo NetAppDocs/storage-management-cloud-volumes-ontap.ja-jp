@@ -1,0 +1,11 @@
+= Azure の API を通じてストレージ VM の作成を自動化
+:allow-uri-read: 
+
+
+
+
+=== Azure の API を通じてストレージ VM の作成を自動化
+
+BlueXP API を使用して、Azure のCloud Volumes ONTAP用の追加データ提供ストレージ VM を作成、名前変更、削除できるようになりました。  API を使用すると、管理目的でストレージ VM を使用する必要がある場合、必要なネットワーク インターフェイス、LIF、管理 LIF の構成を含む、ストレージ VM の作成プロセスが自動化されます。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-azure.html["Azure でCloud Volumes ONTAPのデータサービス ストレージ VM を管理する"^]

@@ -1,0 +1,11 @@
+= AWS のCloud Volumes ONTAP 9.13.1 の中国リージョンのサポート
+:allow-uri-read: 
+
+
+
+
+=== AWS のCloud Volumes ONTAP 9.13.1 の中国リージョンのサポート
+
+中国リージョンの AWS にCloud Volumes ONTAP 9.13.1 をデプロイできるようになりました。これには、単一ノードと高可用性 (HA) の両方の展開のサポートが含まれます。NetAppから直接購入したライセンスのみがサポートされます。
+
+地域ごとの提供状況については、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAPのグローバル リージョン マップ"^] 。

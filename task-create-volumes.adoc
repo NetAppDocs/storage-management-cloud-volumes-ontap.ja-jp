@@ -1,0 +1,254 @@
+---
+sidebar: sidebar 
+permalink: task-create-volumes.html 
+keywords: storage, provisioning, iscsi, nfs, cifs, volumes, create a volume, add a volume, create volumes, add volumes, creating a volume, adding a volume, provision volume, provision a volume, provisioning volumes, add volume to second node, add volume to node 2, cloud backup 
+summary: 最初のCloud Volumes ONTAPシステムを起動した後にさらにストレージが必要な場合は、 NetAppコンソールから NFS、CIFS、または iSCSI 用の新しいFlexVolボリュームを作成できます。 
+---
+= Cloud Volumes ONTAPシステムにFlexVol volumeを作成する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+最初のCloud Volumes ONTAPシステムを起動した後にさらにストレージが必要な場合は、 NetAppコンソールから NFS、CIFS、または iSCSI 用の新しいFlexVolボリュームを作成できます。
+
+新しいボリュームを作成するには、いくつかの方法があります。
+
+* 新しいボリュームの詳細を指定し、基礎となるデータ集計をコンソールで処理できるようにします。<<create-a-volume,詳細情報>>
+* 選択したデータ アグリゲート上にボリュームを作成します。<<create-a-volume,詳細情報>>
+* HA 構成の 2 番目のノードにボリュームを作成します。<<create-volume-second-node,詳細情報>>
+
+
+
+
+== 開始する前に
+
+ボリュームのプロビジョニングに関する注意事項:
+
+* iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-connect-lun.html["IQNを使用してホストからLUNに接続します"^] 。
+* ONTAP System Manager またはONTAP CLI から追加の LUN を作成できます。
+
+
+ifdef::aws[]
+
+* AWS で CIFS を使用する場合は、DNS と Active Directory を設定する必要があります。詳細については、link:reference-networking-aws.html["Cloud Volumes ONTAP for AWS のネットワーク要件"] 。
+* Cloud Volumes ONTAP構成がAmazon EBS Elastic Volumes機能をサポートしている場合は、link:concept-aws-elastic-volumes.html["ボリュームを作成すると何が起こるかについて詳しく知る"] 。
+
+
+endif::aws[]
+
+
+
+== ボリュームの作成
+
+ボリュームを作成する最も一般的な方法は、必要なボリュームの種類を指定し、コンソールにディスクの割り当てを処理させることです。ただし、ボリュームを作成する特定のアグリゲートを選択することもできます。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで、 FlexVol volumeをプロビジョニングするCloud Volumes ONTAPシステムの名前をダブルクリックします。
++
+コンソールでディスク割り当てを処理させてボリュームを作成することも、ボリュームの特定のアグリゲートを選択することもできます。  Cloud Volumes ONTAPシステム上のデータ アグリゲートについて十分に理解している場合にのみ、特定のアグリゲートを選択することをお勧めします。
+
++
+[role="tabbed-block"]
+====
+.あらゆる集合体
+--
+[ボリューム] タブを選択し、[ボリュームの追加] をクリックします。image:screenshot_add_volume_button.png["「概要」タブの「ボリュームの追加」ボタンのスクリーンショット。"]
+
+--
+.特定の骨材
+--
+.. *集計*タブで、必要な集計に移動し、image:icon-action.png[""]アイコン。
+.. *ボリュームの追加*を選択します。image:screenshot_add_volume_button_agg.png["「アグリゲート」タブの「ボリュームの追加」ボタンのスクリーンショット。"]
+
+
+--
+====
+. ウィザードの手順に従ってボリュームを作成します。
++
+.. *詳細、保護、タグ*: ボリュームに関する基本的な詳細を入力し、スナップショット ポリシーを選択します。
++
+このページの一部のフィールドは説明不要です。次のリストでは、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="2,6"]
+|===
+| フィールド | 説明 
+
+
+| ボリューム名 | 新しいボリュームに入力できる識別可能な名前。 
+
+
+| ボリューム サイズ | 入力できる最大サイズは、シン プロビジョニングを有効にするかどうかによって大きく異なります。シン プロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きなボリュームを作成できます。 
+
+
+| ストレージ VM（SVM） | ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。これは SVM または vserver として知られているかもしれません。 Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。新しいボリュームのストレージ VM を指定できます。 
+
+
+| スナップショットポリシー | スナップショット コピー ポリシーは、自動的に作成されるNetAppスナップショット コピーの頻度と数を指定します。NetAppスナップショット コピーは、パフォーマンスに影響を与えず、最小限のストレージしか必要としない、ポイントインタイム ファイル システム イメージです。デフォルトのポリシーを選択するか、ポリシーなしを選択できます。一時データの場合は none を選択できます (例: Microsoft SQL Server の場合は tempdb)。 
+|===
+.. *プロトコル*: ボリュームのプロトコル (NFS、CIFS、または iSCSI) を選択し、必要な情報を入力します。
++
+CIFS を選択し、サーバーが設定されていない場合は、*次へ* をクリックした後に、コンソールで CIFS 接続を設定するように求められます。
+
++
+link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"] 。
+
++
+次のセクションでは、ガイダンスが必要になる可能性のあるフィールドについて説明します。説明はプロトコル別にまとめられています。
+
++
+[role="tabbed-block"]
+====
+.NFS
+--
+アクセス制御:: ボリュームをクライアントが利用できるようにするには、カスタム エクスポート ポリシーを選択します。
+エクスポート ポリシー:: ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、コンソールはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。
+
+
+--
+.CIFS
+--
+権限とユーザー/グループ:: ユーザーおよびグループの SMB 共有へのアクセス レベル (アクセス制御リストまたは ACL とも呼ばれます) を制御できます。ローカルまたはドメインの Windows ユーザーまたはグループ、あるいは UNIX ユーザーまたはグループを指定できます。ドメイン Windows ユーザー名を指定する場合は、domain\username の形式を使用してユーザーのドメインを含める必要があります。
+DNSプライマリおよびセカンダリIPアドレス:: CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。
++
+--
+ifdef::gcp[]
+
+--
+
+
+Google Managed Active Directory を構成している場合、デフォルトでは 169.254.169.254 IP アドレスを使用して AD にアクセスできます。
+
+endif::gcp[]
+
+参加するActive Directoryドメイン:: CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。
+ドメインへの参加を許可された資格情報:: AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。
+CIFS server NetBIOS name:: AD ドメイン内で一意の CIFS サーバー名。
+組織単位:: CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。
+
+
+ifdef::aws[]
+
+*** AWS Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして設定するには、このフィールドに *OU=Computers,OU=corp* と入力します。
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+*** Azure AD Domain Services をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=AADDC Computers* または *OU=AADDC Users* と入力します。https://docs.microsoft.com/en-us/azure/active-directory-domain-services/create-ou["Azure ドキュメント: Azure AD Domain Services マネージド ドメインに組織単位 (OU) を作成する"^]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+*** Google Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=Computers,OU=Cloud* と入力します。https://cloud.google.com/managed-microsoft-ad/docs/manage-active-directory-objects#organizational_units["Google Cloud ドキュメント: Google Managed Microsoft AD の組織単位"^]
+
+
+endif::gcp[]
+
+DNSドメイン:: Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。
+NTPサーバ:: Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。詳細については、 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^] 。
++
+--
+NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。
+
+--
+
+
+--
+.iSCSI
+--
+LUN:: iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼ばれ、標準のブロック デバイスとしてホストに提供されます。 iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、link:task-connect-lun.html["IQNを使用してホストからLUNに接続します"] 。
+イニシエーターグループ:: イニシエータ グループ (igroup) は、ストレージ システム上の指定された LUN にアクセスできるホストを指定します。
+ホストイニシエーター（IQN）:: iSCSIターゲットは、標準のイーサネット ネットワーク アダプタ（NIC）、ソフトウェア イニシエータを搭載したTCPオフロード エンジン（TOE）カード、統合ネットワーク アダプタ（CNA）、または専用のホスト バス アダプタ（HBA）を介してネットワークに接続し、iSCSI修飾名（IQN）で識別されます。
+
+
+--
+====
+.. *ディスク タイプ*: パフォーマンスのニーズとコストの要件に基づいて、ボリュームの基盤となるディスク タイプを選択します。
++
+ifdef::aws[]
+
++
+*** link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#size-your-system-in-aws["AWS でのシステムのサイズ設定"^]
+
+
+
+
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-gcp.html#size-your-system-in-gcp["Google Cloud でのシステムのサイズ設定"^]
+
+
+endif::gcp[]
+
+. *使用プロファイルと階層化ポリシー*:ボリュームのストレージ効率機能を有効にするか無効にするかを選択し、link:concept-data-tiering.html["ボリューム階層化ポリシー"] 。
++
+ONTAPには、必要なストレージの総量を削減できるいくつかのストレージ効率機能が含まれています。  NetAppストレージ効率機能には、次のような利点があります。
+
++
+シンプロビジョニング:: 物理ストレージ プールに実際に存在するよりも多くの論理ストレージをホストまたはユーザーに提供します。ストレージ スペースを事前に割り当てるのではなく、データが書き込まれるときに各ボリュームにストレージ スペースが動的に割り当てられます。
+重複排除:: 同一のデータ ブロックを見つけて、単一の共有ブロックへの参照に置き換えることで効率を向上します。この手法は、同じボリューム内に存在する冗長なデータ ブロックを排除することで、ストレージ容量の要件を削減します。
+圧縮:: プライマリ、セカンダリ、アーカイブ ストレージのボリューム内のデータを圧縮することで、データの保存に必要な物理容量を削減します。
+
+
+. *確認*: ボリュームの詳細を確認し、[*追加*] をクリックします。
+
+
+.結果
+コンソールは、Cloud Volumes ONTAPシステムにボリュームを作成します。
+
+
+
+== HA構成の2番目のノードにボリュームを作成する
+
+デフォルトでは、コンソールは HA 構成の最初のノードにボリュームを作成します。両方のノードがクライアントにデータを提供するアクティブ/アクティブ構成が必要な場合は、2 番目のノードにアグリゲートとボリュームを作成する必要があります。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで、アグリゲートを管理するCloud Volumes ONTAPシステムの名前をダブルクリックします。
+. 「集計」タブで、「集計の追加」をクリックし、集計を作成します。
++
+image:screenshot_add_aggregate_cvo.png["集計の追加の進行状況を示すスクリーンショット。"]
+
+. ホーム ノードでは、HA ペアの 2 番目のノードを選択します。
+. コンソールがアグリゲートを作成したら、それを選択し、「ボリュームの作成」をクリックします。
+. 新しいボリュームの詳細を入力し、「作成」をクリックします。
+
+
+.結果
+コンソールは、HA ペアの 2 番目のノードにボリュームを作成します。
+
+ifdef::aws[]
+
+
+TIP: 複数の AWS アベイラビリティーゾーンにデプロイされた HA ペアの場合、ボリュームが存在するノードのフローティング IP アドレスを使用して、ボリュームをクライアントにマウントする必要があります。
+
+endif::aws[]
+
+
+
+== ボリュームを作成した後
+
+CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。
+
+ボリュームにクォータを適用する場合は、 ONTAP System Manager またはONTAP CLI を使用する必要があります。クォータを使用すると、ユーザー、グループ、または qtree が使用するディスク領域とファイル数を制限したり追跡したりできます。

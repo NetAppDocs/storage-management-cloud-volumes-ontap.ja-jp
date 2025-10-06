@@ -1,0 +1,268 @@
+---
+sidebar: sidebar 
+permalink: task-azure-image-export.html 
+keywords: Azure, image, VHD, image signature file, export, marketplace, 
+summary: Azure Marketplace からONTAPイメージをエクスポートして、VHD ファイルの署名を検証できます。 
+---
+= AzureマーケットプレイスからCloud Volumes ONTAPのVHDイメージをエクスポートする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+VHD イメージが Azure クラウドに公開されると、 NetAppによって管理されなくなります。代わりに、公開されたイメージは Azure マーケットプレイスに配置されます。イメージが Azure マーケットプレイスにステージングされ公開されると、Azure は VHD の先頭の 1 MB と末尾の 512 バイトを変更します。  VHD ファイルの署名を検証するには、Azure によって変更された VHD イメージを Azure マーケットプレイスからエクスポートする必要があります。
+
+.開始する前に
+Azure CLI がシステムにインストールされていること、または Azure ポータルから Azure Cloud Shell が利用できることを確認してください。  Azure CLIのインストール方法の詳細については、 https://learn.microsoft.com/en-us/cli/azure/install-azure-cli["Microsoft ドキュメント: Azure CLI のインストール方法"^] 。
+
+.手順
+. _version_readme_ ファイルの内容を使用して、システム上のCloud Volumes ONTAPバージョンを Azure マーケットプレイスのイメージ バージョンにマッピングします。  Cloud Volumes ONTAPのバージョンは次のように表されます。 `buildname` Azureマーケットプレイスイメージバージョンは次のように表されます。 `version`バージョン マッピングで。
++
+次の例では、 Cloud Volumes ONTAPバージョン `9.15.0P1`Azureマーケットプレイスのイメージバージョンにマッピングされます `9150.01000024.05090105`。この Azure マーケットプレイスのイメージ バージョンは、後でイメージ URN を設定するために使用されます。
+
++
+[source, cli]
+----
+[
+ "buildname": "9.15.0P1",
+    "publisher": "netapp",
+     "version": "9150.01000024.05090105"
+
+]
+----
+. VM を作成するリージョンを特定します。地域名は、 `locName`マーケットプレイスイメージの URN を設定するときに使用する変数。利用可能なリージョンを一覧表示するには、次のコマンドを実行します。
++
+[source, cli]
+----
+az account list-locations -o table
+----
++
+この表では、地域名は `Name`分野。
+
++
+[source, cli]
+----
+$ az account list-locations -o table
+DisplayName               Name                 RegionalDisplayName
+------------------------  -------------------  -------------------------------------
+East US                   eastus               (US) East US
+East US 2                 eastus2              (US) East US 2
+South Central US          southcentralus       (US) South Central US
+...
+----
+. 以下の表で、対応するCloud Volumes ONTAPバージョンと VM 展開タイプの SKU 名を確認します。  SKU名は、 `skuName`マーケットプレイスイメージの URN を設定するときに使用する変数。
++
+たとえば、 Cloud Volumes ONTAP 9.15.0を使用するすべてのシングルノード展開では、 `ontap_cloud_byol` SKU 名として。
+
++
+[cols="1,1,1"]
+|===
+
+
+| * Cloud Volumes ONTAPバージョン* | *VMの展開* | *SKU名* 
+
+
+| 9.17.1以降 | Azureマーケットプレイス | ontap_cloud_direct_gen2 
+
+
+| 9.17.1以降 | NetAppコンソール | ontap_cloud_gen2 
+
+
+| 9.16.1 | Azureマーケットプレイス | ontap_cloud_direct 
+
+
+| 9.16.1 | コンソール | オンタップクラウド 
+
+
+| 9.15.1 | コンソール | オンタップクラウド 
+
+
+| 9.15.0 | コンソール、単一ノードの展開 | ontap_cloud_byol 
+
+
+| 9.15.0 | コンソール、高可用性（HA）展開 | ontap_cloud_byol_ha 
+|===
+. ONTAPバージョンと Azure マーケットプレイス イメージをマッピングした後、Azure Cloud Shell または Azure CLI を使用して Azure マーケットプレイスから VHD ファイルをエクスポートします。
+
+
+
+
+== Linux 上の Azure Cloud Shell を使用して VHD ファイルをエクスポートする
+
+Azure Cloud Shell から、マーケットプレイス イメージを VHD ファイル (たとえば、_9150.01000024.05090105.vhd_) にエクスポートし、ローカル Linux システムにダウンロードします。  Azure マーケットプレイスから VHD イメージを取得するには、次の手順を実行します。
+
+.手順
+. マーケットプレイス イメージの URN とその他のパラメータを設定します。 URN形式は `<publisher>:<offer>:<sku>:<version>`。必要に応じて、 NetAppマーケットプレイスのイメージを一覧表示して、正しいイメージ バージョンを確認できます。
++
+[source, cli]
+----
+PS /home/user1> $urn="netapp:netapp-ontap-cloud:ontap_cloud_byol:9150.01000024.05090105"
+PS /home/user1> $locName="eastus2"
+PS /home/user1> $pubName="netapp"
+PS /home/user1> $offerName="netapp-ontap-cloud"
+PS /home/user1> $skuName="ontap_cloud_byol"
+PS /home/user1> Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName |select version
+...
+141.20231128
+9.141.20240131
+9.150.20240213
+9150.01000024.05090105
+...
+----
+. 一致するイメージ バージョンを持つマーケットプレイス イメージから新しいマネージド ディスクを作成します。
++
+[source, cli]
+----
+PS /home/user1> $diskName = “9150.01000024.05090105-managed-disk"
+PS /home/user1> $diskRG = “fnf1”
+PS /home/user1> az disk create -g $diskRG -n $diskName --image-reference $urn
+PS /home/user1> $sas = az disk grant-access --duration-in-seconds 3600 --access-level Read --name $diskName --resource-group $diskRG
+PS /home/user1> $diskAccessSAS = ($sas | ConvertFrom-Json)[0].accessSas
+----
+. マネージド ディスクから VHD ファイルを Azure Storage にエクスポートします。適切なアクセス レベルを持つコンテナーを作成します。この例では、 `vm-images`と `Container`アクセス レベル。  Azure ポータルからストレージ アカウントのアクセス キーを取得します: *ストレージ アカウント > _examplesaname_ > アクセス キー > _key1_ > _key_ > 表示 > _<copy>_*
++
+[source, cli]
+----
+PS /home/user1> $storageAccountName = “examplesaname”
+PS /home/user1> $containerName = “vm-images”
+PS /home/user1> $storageAccountKey = "<replace with the above access key>"
+PS /home/user1> $destBlobName = “9150.01000024.05090105.vhd”
+PS /home/user1> $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+PS /home/user1> Start-AzureStorageBlobCopy -AbsoluteUri $diskAccessSAS -DestContainer $containerName -DestContext $destContext -DestBlob $destBlobName
+PS /home/user1> Get-AzureStorageBlobCopyState –Container $containerName –Context $destContext -Blob $destBlobName
+----
+. 生成されたイメージを Linux システムにダウンロードします。使用 `wget`VHD ファイルをダウンロードするコマンド:
++
+[source, cli]
+----
+wget <URL of filename/Containers/vm-images/9150.01000024.05090105.vhd>
+----
++
+URL は標準形式に従います。自動化のために、以下のように URL 文字列を導出できます。あるいは、Azure CLIを使用することもできます。 `az` URL を取得するコマンド。  URLの例:https://examplesaname.bluexpinfraprod.eastus2.data.azurecr.io/vm-images/9150.01000024.05090105.vhd[]
+
+. 管理ディスクをクリーンアップする
++
+[source, cli]
+----
+PS /home/user1> Revoke-AzDiskAccess -ResourceGroupName $diskRG -DiskName $diskName
+PS /home/user1> Remove-AzDisk -ResourceGroupName $diskRG -DiskName $diskName
+----
+
+
+
+
+== Linux 上の Azure CLI を使用して VHD ファイルをエクスポートする
+
+ローカル Linux システムから Azure CLI を使用して、マーケットプレイス イメージを VHD ファイルにエクスポートします。
+
+.手順
+. Azure CLI にログインし、マーケットプレイスのイメージを一覧表示します。
++
+[source, cli]
+----
+% az login --use-device-code
+----
+. サインインするには、ウェブブラウザを使用してページを開きます https://microsoft.com/devicelogin[]認証コードを入力します。
++
+[source, cli]
+----
+% az vm image list --all --publisher netapp --offer netapp-ontap-cloud --sku ontap_cloud_byol
+...
+{
+"architecture": "x64",
+"offer": "netapp-ontap-cloud",
+"publisher": "netapp",
+"sku": "ontap_cloud_byol",
+"urn": "netapp:netapp-ontap-cloud:ontap_cloud_byol:9150.01000024.05090105",
+"version": "9150.01000024.05090105"
+},
+...
+----
+. 一致するイメージ バージョンを持つマーケットプレイス イメージから新しいマネージド ディスクを作成します。
++
+[source, cli]
+----
+% export urn="netapp:netapp-ontap-cloud:ontap_cloud_byol:9150.01000024.05090105"
+% export diskName="9150.01000024.05090105-managed-disk"
+% export diskRG="new_rg_your_rg"
+% az disk create -g $diskRG -n $diskName --image-reference $urn
+% az disk grant-access --duration-in-seconds 3600 --access-level Read --name $diskName --resource-group $diskRG
+{
+  "accessSas": "https://md-xxxxxx.bluexpinfraprod.eastus2.data.azurecr.io/xxxxxxx/abcd?sv=2018-03-28&sr=b&si=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx&sigxxxxxxxxxxxxxxxxxxxxxxxx"
+}
+% export diskAccessSAS="https://md-xxxxxx.bluexpinfraprod.eastus2.data.azurecr.io/xxxxxxx/abcd?sv=2018-03-28&sr=b&si=xxxxxxxx-xxxx-xx-xx-xx&sigxxxxxxxxxxxxxxxxxxxxxxxx"
+----
++
+プロセスを自動化するには、標準出力から SAS を抽出する必要があります。ガイダンスについては適切なドキュメントを参照してください。
+
+. 管理ディスクから VHD ファイルをエクスポートします。
++
+.. 適切なアクセス レベルを持つコンテナーを作成します。この例では、 `vm-images`と `Container`アクセス レベルが使用されます。
+.. Azure ポータルからストレージ アカウントのアクセス キーを取得します: *ストレージ アカウント > _examplesaname_ > アクセス キー > _key1_ > _key_ > 表示 > _<copy>_*
++
+また、 `az`このステップのコマンド。
+
++
+[source, cli]
+----
+% export storageAccountName="examplesaname"
+% export containerName="vm-images"
+% export storageAccountKey="xxxxxxxxxx"
+% export destBlobName="9150.01000024.05090105.vhd"
+
+% az storage blob copy start --source-uri $diskAccessSAS --destination-container $containerName --account-name $storageAccountName --account-key $storageAccountKey --destination-blob $destBlobName
+
+{
+  "client_request_id": "xxxx-xxxx-xxxx-xxxx-xxxx",
+  "copy_id": "xxxx-xxxx-xxxx-xxxx-xxxx",
+  "copy_status": "pending",
+  "date": "2022-11-02T22:02:38+00:00",
+  "etag": "\"0xXXXXXXXXXXXXXXXXX\"",
+  "last_modified": "2022-11-02T22:02:39+00:00",
+  "request_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+  "version": "2020-06-12",
+  "version_id": null
+}
+----
+
+
+. BLOB コピーのステータスを確認します。
++
+[source, cli]
+----
+% az storage blob show --name $destBlobName --container-name $containerName --account-name $storageAccountName
+
+....
+    "copy": {
+      "completionTime": null,
+      "destinationSnapshot": null,
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx",
+      "incrementalCopy": null,
+      "progress": "10737418752/10737418752",
+      "source": "https://md-xxxxxx.bluexpinfraprod.eastus2.data.azurecr.io/xxxxx/abcd?sv=2018-03-28&sr=b&si=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "status": "success",
+      "statusDescription": null
+    },
+....
+----
+. 生成されたイメージを Linux サーバーにダウンロードします。
++
+[source, cli]
+----
+wget <URL of file examplesaname/Containers/vm-images/9150.01000024.05090105.vhd>
+----
++
+URL は標準形式に従います。自動化のために、以下のように URL 文字列を導出できます。あるいは、Azure CLIを使用することもできます。 `az` URL を取得するコマンド。  URLの例:https://examplesaname.bluexpinfraprod.eastus2.data.azurecr.io/vm-images/9150.01000024.05090105.vhd[]
+
+. 管理ディスクをクリーンアップする
++
+[source, cli]
+----
+az disk revoke-access --name $diskName --resource-group $diskRG
+az disk delete --name $diskName --resource-group $diskRG --yes
+----
+

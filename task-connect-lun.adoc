@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: task-connect-lun.html 
+keywords: lun, connect lun, iscsi lun, target iqn, iqn 
+summary: iSCSI ボリュームを作成すると、 NetAppコンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、IQN を使用してホストから LUN に接続します。 
+---
+= ホストシステムからCloud Volumes ONTAP上のLUNに接続する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+iSCSI ボリュームを作成すると、 NetAppコンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、IQN を使用してホストから LUN に接続します。
+
+次の点に注意してください。
+
+* コンソールの自動容量管理は LUN には適用されません。  LUN を作成すると、自動拡張機能が無効になります。
+* ONTAP System Manager またはONTAP CLI から追加の LUN を作成できます。
+
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで、ボリュームを管理するCloud Volumes ONTAPシステムをダブルクリックします。
+. システムで、[ボリューム] タブを選択します。
+. 必要なボリューム タイルに移動し、*ボリュームの管理* を選択して、右側のボリュームの管理パネルにアクセスします。
+. *ターゲット iQN* をクリックします。
+. *コピー* をクリックして iQN 名をコピーします。
+. ホストから LUN への iSCSI 接続を設定します。
++
+** http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-iscsi-rhel-cg/GUID-15E8C226-BED5-46D0-BAED-379EA4311340.html["Red Hat Enterprise Linux 用ONTAP 9 iSCSI 高速構成: ターゲットとの iSCSI セッションの開始"^]
+** http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-iscsi-cpg/GUID-857453EC-90E9-4AB6-B543-83827CF374BF.html["Windows用ONTAP 9 iSCSIエクスプレス構成：ターゲットとのiSCSIセッションの開始"^]
+** https://docs.netapp.com/us-en/ontap-sanhost/["ONTAP SAN Host Configuration"^]
+
+
+

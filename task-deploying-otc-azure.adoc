@@ -1,0 +1,516 @@
+---
+sidebar: sidebar 
+permalink: task-deploying-otc-azure.html 
+keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, azure, license key, serial number, tags, azure tags, location, license, preconfigured packages, programmatic deployments, disk size, write speed, access control, volume protection, usage profile, register, CIFS share, quota, qtree, HA, HA pair, associate subscription, azure marketplace, marketplace subscription, cloud data sense, cloud backup 
+summary: NetAppコンソールで Cloud Cloud Volumes ONTAPシステムを作成することにより、Azure で単一の Cloud Cloud Volumes ONTAPシステムを起動できます。 
+---
+= AzureでCloud Volumes ONTAPを起動する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetAppコンソールでCloud Volumes ONTAPシステムを作成することにより、Azure で単一ノード システムまたは HA ペアを起動できます。
+
+.開始する前に
+始める前に以下のものが必要です。
+
+[[licensing]]
+* 稼働中のコンソール エージェント。
++
+** あなたは https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["システムに関連付けられたコンソールエージェント"^]。
+** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^] 。
+
+
+* 使用する構成を理解すること。
++
+構成を計画し、管理者から必要な Azure ネットワークの詳細を入手する必要があります。詳細については、 link:task-planning-your-config-azure.html["Cloud Volumes ONTAP構成の計画"^] 。
+
+* Cloud Volumes ONTAPのライセンスを設定するために必要なことを理解していること。
++
+link:task-set-up-licensing-azure.html["ライセンスの設定方法を学ぶ"^] 。
+
+
+
+.タスク概要
+コンソールが Azure にCloud Volumes ONTAPシステムを作成すると、リソース グループ、ネットワーク インターフェイス、ストレージ アカウントなどのいくつかの Azure オブジェクトが作成されます。ウィザードの最後にリソースの概要を確認できます。
+
+[WARNING]
+.データ損失の可能性
+====
+ベスト プラクティスは、各Cloud Volumes ONTAPシステムに新しい専用のリソース グループを使用することです。
+
+データ損失のリスクがあるため、既存の共有リソース グループにCloud Volumes ONTAPをデプロイすることはお勧めしません。コンソールは、デプロイメントの失敗または削除の際に共有リソース グループからCloud Volumes ONTAPリソースを削除できますが、Azure ユーザーが誤って共有リソース グループからCloud Volumes ONTAPリソースを削除してしまう可能性があります。
+
+====
+
+
+== Azure でシングルノードのCloud Volumes ONTAPシステムを起動する
+
+Azure で単一ノードのCloud Volumes ONTAPシステムを起動する場合は、コンソールで単一ノード システムを作成する必要があります。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
+. *場所の選択*: *Microsoft Azure* と * Cloud Volumes ONTAP Single Node* を選択します。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントを作成する"^] 。
+. *詳細と資格情報*: 必要に応じて Azure の資格情報とサブスクリプションを変更し、クラスター名を指定し、必要に応じてタグを追加して、資格情報を指定します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Azure 仮想マシンの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
+
+
+| リソース グループ タグ | タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://azure.microsoft.com/documentation/articles/resource-group-using-tags/["Microsoft Azure ドキュメント: タグを使用して Azure リソースを整理する"^] 。 
+
+
+| ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
+
+
+| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するために、異なる Azure 資格情報と異なる Azure サブスクリプションを選択できます。従量課金制のCloud Volumes ONTAPシステムを展開するには、Azure Marketplace サブスクリプションを選択した Azure サブスクリプションに関連付ける必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html["資格情報を追加する方法を学ぶ"^] 。 
+|===
+. *サービス*: Cloud Volumes ONTAPで使用する、または使用しないサービスを個別に有効または無効にします。
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetAppデータ分類の詳細"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリの詳細"^]
++
+
+TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+
+
+
+. *場所*: リージョン、可用性ゾーン、VNet、サブネットを選択し、チェックボックスをオンにして、コンソール エージェントとターゲットの場所間のネットワーク接続を確認します。
++
+
+NOTE: 中国地域では、単一ノードの展開はCloud Volumes ONTAP 9.12.1 GA および 9.13.0 GA でのみサポートされます。これらのバージョンを、 Cloud Volumes ONTAPの新しいパッチおよびリリースにアップグレードできます。中国地域で新しいバージョンのCloud Volumes ONTAPを展開する場合は、 NetAppサポートにお問い合わせください。中国地域ではNetAppから直接購入したライセンスのみがサポートされており、マーケットプレイスのサブスクリプションは利用できません。
+
+. *接続*: 新しいリソース グループまたは既存のリソース グループを選択し、定義済みのセキュリティ グループを使用するか、独自のセキュリティ グループを使用するかを選択します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| Resource Group  a| 
+Cloud Volumes ONTAPの新しいリソース グループを作成するか、既存のリソース グループを使用します。ベストプラクティスは、 Cloud Volumes ONTAP専用の新しいリソースグループを使用することです。 Cloud Volumes ONTAP を既存の共有リソース グループにデプロイすることは可能ですが、データ損失のリスクがあるためお勧めしません。詳細については上記の警告を参照してください。
+
+
+TIP: 使用しているAzureアカウントに https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["必要な権限"^]、コンソールは、デプロイメントの失敗または削除の場合に、リソース グループからCloud Volumes ONTAPリソースを削除します。
+
+
+
+| 生成されたセキュリティグループ  a| 
+コンソールでセキュリティ グループを生成させる場合は、トラフィックを許可する方法を選択する必要があります。
+
+** *選択した VNet のみ* を選択した場合、受信トラフィックのソースは、選択した VNet のサブネット範囲と、コンソール エージェントが存在する VNet のサブネット範囲になります。これは推奨されるオプションです。
+** *すべての VNet* を選択した場合、受信トラフィックのソースは 0.0.0.0/0 IP 範囲になります。
+
+
+
+
+| 既存のものを使用する | 既存のセキュリティ グループを選択する場合は、 Cloud Volumes ONTAP の要件を満たしている必要があります。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["デフォルトのセキュリティ グループを表示する"^] 。 
+|===
+. *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイト アカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"^] 。
+** link:task-set-up-licensing-azure.html["ライセンスの設定方法を学ぶ"^] 。
+
+
+. *事前構成済みパッケージ*: パッケージの 1 つを選択してCloud Volumes ONTAPシステムをすばやく展開するか、*独自の構成を作成*をクリックします。
++
+いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認し、承認するだけです。
+
+. *ライセンス*: 必要に応じてCloud Volumes ONTAP のバージョンを変更し、仮想マシンの種類を選択します。
++
+
+NOTE: 選択したバージョンに対して新しいリリース候補、一般提供、またはパッチ リリースが利用可能な場合、コンソールは作成時にシステムをそのバージョンに更新します。たとえば、 Cloud Volumes ONTAP 9.13.1 を選択し、9.13.1 P4 が利用可能な場合は更新が行われます。更新は、あるリリースから別のリリース (たとえば、9.13 から 9.14) には行われません。
+
+. *Azure Marketplace からサブスクライブ*: コンソールでCloud Volumes ONTAPのプログラムによるデプロイメントを有効にできなかった場合、このページが表示されます。画面に表示される手順に従ってください。 https://learn.microsoft.com/en-us/marketplace/programmatic-deploy-of-marketplace-products["マーケットプレイス製品のプログラムによる展開"^]詳細についてはこちらをご覧ください。
+. *基盤となるストレージ リソース*: 初期集約の設定 (ディスク タイプ、各ディスクのサイズ、BLOB ストレージへのデータ階層化を有効にするかどうか) を選択します。
++
+次の点に注意してください。
+
++
+** VNet 内でストレージ アカウントへのパブリック アクセスが無効になっている場合は、 Cloud Volumes ONTAPシステムでデータ階層化を有効にすることはできません。詳細については、link:reference-networking-azure.html#security-group-rules["セキュリティグループルール"] 。
+** ディスク タイプは初期ボリューム用です。後続のボリュームには異なるディスク タイプを選択できます。
+** ディスク サイズは、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのすべてのディスクに適用されます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
++
+ディスクの種類とサイズの選択については、以下を参照してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^] 。
+
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データ階層化を無効にした場合、後続の集約で有効にすることができます。
++
+link:concept-data-tiering.html["データ階層化の詳細"^] 。
+
+
+
+. *書き込み速度とWORM*:
++
+.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度について詳しくはこちら"^] 。
+
+.. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
++
+このオプションは特定の VM タイプでのみ使用できます。サポートされているVMタイプを確認するには、link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["HAペアのライセンスでサポートされる構成"^] 。
+
++
+Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
+.. WORM ストレージを有効にする場合は、保持期間を選択します。
+
+
+. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
++
+link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
+
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シン プロビジョニングを有効にするかどうかによって大きく異なります。シン プロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きなボリュームを作成できます。 
+
+
+| アクセス制御（NFSのみ） | エクスポート ポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、コンソールはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー/グループ（CIFSのみ） | これらのフィールドを使用すると、ユーザーとグループの共有へのアクセス レベル (アクセス制御リストまたは ACL とも呼ばれます) を制御できます。ローカルまたはドメインの Windows ユーザーまたはグループ、あるいは UNIX ユーザーまたはグループを指定できます。ドメイン Windows ユーザー名を指定する場合は、domain\username の形式を使用してユーザーのドメインを含める必要があります。 
+
+
+| スナップショットポリシー | スナップショット コピー ポリシーは、自動的に作成されるNetAppスナップショット コピーの頻度と数を指定します。NetAppスナップショット コピーは、パフォーマンスに影響を与えず、最小限のストレージしか必要としない、ポイントインタイム ファイル システム イメージです。デフォルトのポリシーを選択するか、ポリシーなしを選択できます。一時データの場合は none を選択できます (例: Microsoft SQL Server の場合は tempdb)。 
+
+
+| 詳細オプション（NFSのみ） | ボリュームの NFS バージョン (NFSv3 または NFSv4) を選択します。 
+
+
+| イニシエーター グループと IQN (iSCSI のみ) | iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼ばれ、標準のブロック デバイスとしてホストに提供されます。イニシエーター グループは、iSCSI ホスト ノード名のテーブルであり、どのイニシエーターがどの LUN にアクセスできるかを制御します。iSCSI ターゲットは、標準の Ethernet ネットワーク アダプター (NIC)、ソフトウェア イニシエーターを備えた TCP オフロード エンジン (TOE) カード、統合ネットワーク アダプター (CNA)、または専用ホスト バス アダプター (HBA) を介してネットワークに接続し、iSCSI 修飾名 (IQN) によって識別されます。 iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になるので、管理は不要です。ボリュームを作成したら、link:task-connect-lun.html["IQNを使用してホストからLUNに接続します"] 。 
+|===
++
+次の画像は、ボリューム作成ウィザードの最初のページを示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAPインスタンス用に入力されたボリューム ページを表示します。"]
+
+. *CIFS セットアップ*: CIFS プロトコルを選択した場合は、CIFS サーバーをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNSプライマリおよびセカンダリIPアドレス | CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。 
+
+
+| 参加するActive Directoryドメイン | CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。 
+
+
+| ドメインへの参加を許可された資格情報 | AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS server NetBIOS name | AD ドメイン内で一意の CIFS サーバー名。 
+
+
+| 組織単位 | CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。  Azure AD Domain Services をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=AADDC Computers* または *OU=AADDC Users* を入力する必要があります。https://docs.microsoft.com/en-us/azure/active-directory-domain-services/create-ou["Azure ドキュメント: Azure AD Domain Services マネージド ドメインに組織単位 (OU) を作成する"^] 
+
+
+| DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+|===
+. *使用プロファイル、ディスク タイプ、階層化ポリシー*: 必要に応じて、ストレージ効率機能を有効にするかどうか、およびボリューム階層化ポリシーを変更するかどうかを選択します。
++
+詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#choose-a-volume-usage-profile["ボリューム使用プロファイルの理解"^]そしてlink:concept-data-tiering.html["データ階層化の概要"^]。
+
+. *確認と承認*: 選択内容を確認して確定します。
++
+.. 構成の詳細を確認します。
+.. *詳細情報* をクリックすると、サポートとコンソールが購入する Azure リソースの詳細を確認できます。
+.. *理解しました...* チェックボックスを選択します。
+.. [Go] をクリックします。
+
+
+
+
+.結果
+コンソールはCloud Volumes ONTAPシステムを展開します。監査ページで進捗状況を追跡できます。
+
+Cloud Volumes ONTAPシステムのデプロイ中に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+
+さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
+
+.終了後の操作
+* CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。
+* ボリュームにクォータを適用する場合は、 ONTAP System Manager またはONTAP CLI を使用します。
++
+クォータを使用すると、ユーザー、グループ、または qtree が使用するディスク領域とファイル数を制限したり追跡したりできます。
+
+
+
+
+
+== AzureでCloud Volumes ONTAP HAペアを起動する
+
+Azure でCloud Volumes ONTAP HA ペアを起動する場合は、コンソールで HA システムを作成する必要があります。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントを作成する"^] 。
+. *詳細と資格情報*: 必要に応じて Azure の資格情報とサブスクリプションを変更し、クラスター名を指定し、必要に応じてタグを追加して、資格情報を指定します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Azure 仮想マシンの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
+
+
+| リソース グループ タグ | タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://azure.microsoft.com/documentation/articles/resource-group-using-tags/["Microsoft Azure ドキュメント: タグを使用して Azure リソースを整理する"^] 。 
+
+
+| ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
+
+
+| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するために、異なる Azure 資格情報と異なる Azure サブスクリプションを選択できます。従量課金制のCloud Volumes ONTAPシステムを展開するには、Azure Marketplace サブスクリプションを選択した Azure サブスクリプションに関連付ける必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html["資格情報を追加する方法を学ぶ"^] 。 
+|===
+. *サービス*: Cloud Volumes ONTAPで使用するかどうかに基づいて、個々のサービスを有効または無効にします。
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetAppデータ分類の詳細"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリの詳細"^]
++
+
+TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+
+
+
+. *HA 展開モデル*:
++
+.. *単一のアベイラビリティーゾーン*または*複数のアベイラビリティーゾーン*を選択します。
++
+*** 単一の可用性ゾーンの場合は、Azure リージョン、可用性ゾーン、VNet、サブネットを選択します。
++
+Cloud Volumes ONTAP 9.15.1 以降では、Azure の単一の可用性ゾーン (AZ) に HA モードで仮想マシン (VM) インスタンスをデプロイできます。このデプロイメントをサポートするゾーンとリージョンを選択する必要があります。ゾーンまたはリージョンがゾーン展開をサポートしていない場合は、LRS の以前の非ゾーン展開モードが適用されます。共有管理ディスクのサポートされている構成については、以下を参照してください。link:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["共有マネージドディスクを使用した HA 単一アベイラビリティゾーン構成"] 。
+
+*** 複数の可用性ゾーンの場合は、リージョン、VNet、サブネット、ノード 1 のゾーン、ノード 2 のゾーンを選択します。
+
+
+.. *ネットワーク接続を確認しました...* チェックボックスを選択します。
+
+
+. *接続*: 新しいリソース グループまたは既存のリソース グループを選択し、定義済みのセキュリティ グループを使用するか、独自のセキュリティ グループを使用するかを選択します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| Resource Group  a| 
+Cloud Volumes ONTAPの新しいリソース グループを作成するか、既存のリソース グループを使用します。ベストプラクティスは、 Cloud Volumes ONTAP専用の新しいリソースグループを使用することです。 Cloud Volumes ONTAP を既存の共有リソース グループにデプロイすることは可能ですが、データ損失のリスクがあるためお勧めしません。詳細については上記の警告を参照してください。
+
+Azure にデプロイするCloud Volumes ONTAP HA ペアごとに専用のリソース グループを使用する必要があります。リソース グループでは 1 つの HA ペアのみがサポートされます。  Azure リソース グループに 2 番目のCloud Volumes ONTAP HA ペアをデプロイしようとすると、コンソールで接続の問題が発生します。
+
+
+TIP: 使用しているAzureアカウントに https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["必要な権限"^]、コンソールは、デプロイメントの失敗または削除の場合に、リソース グループからCloud Volumes ONTAPリソースを削除します。
+
+
+
+| 生成されたセキュリティグループ  a| 
+コンソールでセキュリティ グループを生成させる場合は、トラフィックを許可する方法を選択する必要があります。
+
+** *選択した VNet のみ* を選択した場合、受信トラフィックのソースは、選択した VNet のサブネット範囲と、コンソール エージェントが存在する VNet のサブネット範囲になります。これは推奨されるオプションです。
+** *すべての VNet* を選択した場合、受信トラフィックのソースは 0.0.0.0/0 IP 範囲になります。
+
+
+
+
+| 既存のものを使用する | 既存のセキュリティ グループを選択する場合は、 Cloud Volumes ONTAP の要件を満たしている必要があります。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["デフォルトのセキュリティ グループを表示する"^] 。 
+|===
+. *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイト アカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"^] 。
+** link:task-set-up-licensing-azure.html["ライセンスの設定方法を学ぶ"^] 。
+
+
+. *事前構成済みパッケージ*: Cloud Volumes ONTAPシステムをすばやく展開するには、パッケージの 1 つを選択するか、[構成の変更] をクリックします。
++
+いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認し、承認するだけです。
+
+. *ライセンス*: 必要に応じてCloud Volumes ONTAP のバージョンを変更し、仮想マシンの種類を選択します。
++
+
+NOTE: 選択したバージョンに対して新しいリリース候補、一般提供、またはパッチ リリースが利用可能な場合、コンソールは作成時にシステムをそのバージョンに更新します。たとえば、 Cloud Volumes ONTAP 9.13.1 を選択し、9.13.1 P4 が利用可能な場合は更新が行われます。更新は、あるリリースから別のリリース (たとえば、9.13 から 9.14) には行われません。
+
+. *Azure Marketplace からサブスクライブ*: コンソールでCloud Volumes ONTAPのプログラムによるデプロイメントを有効にできなかった場合は、次の手順に従います。
+. *基盤となるストレージ リソース*: 初期集約の設定 (ディスク タイプ、各ディスクのサイズ、BLOB ストレージへのデータ階層化を有効にするかどうか) を選択します。
++
+次の点に注意してください。
+
++
+** ディスク サイズは、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのすべてのディスクに適用されます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
++
+ディスクサイズの選択については、以下を参照してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でシステムのサイズを決定する"^] 。
+
+** VNet 内でストレージ アカウントへのパブリック アクセスが無効になっている場合は、 Cloud Volumes ONTAPシステムでデータ階層化を有効にすることはできません。詳細については、link:reference-networking-azure.html#security-group-rules["セキュリティグループルール"] 。
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データ階層化を無効にした場合、後続の集約で有効にすることができます。
++
+link:concept-data-tiering.html["データ階層化の詳細"^] 。
+
+** Cloud Volumes ONTAP 9.15.0P1 以降、新しい高可用性ペアの展開では Azure ページ BLOB はサポートされなくなりました。現在、既存の高可用性ペアの展開で Azure ページ BLOB を使用している場合は、Edsv4 シリーズ VM および Edsv5 シリーズ VM の新しい VM インスタンス タイプに移行できます。
++
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"^] 。
+
+
+
+. *書き込み速度とWORM*:
++
+.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度について詳しくはこちら"^] 。
+
+.. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
++
+このオプションは特定の VM タイプでのみ使用できます。サポートされているVMタイプを確認するには、link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["HAペアのライセンスでサポートされる構成"^] 。
+
++
+Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
+.. WORM ストレージを有効にする場合は、保持期間を選択します。
+
+
+. *ストレージと WORM への安全な通信*: Azure ストレージ アカウントへの HTTPS 接続を有効にするかどうかを選択し、必要に応じて、一度書き込み、複数回読み取り (WORM) ストレージをアクティブ化します。
++
+HTTPS 接続は、Cloud Volumes ONTAP 9.7 HA ペアから Azure ページ BLOB ストレージ アカウントへ行われます。このオプションを有効にすると書き込みパフォーマンスに影響する可能性があることに注意してください。システムを作成した後は設定を変更できません。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
++
+データ階層化が有効になっている場合、WORM を有効にすることはできません。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
+. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
++
+link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
+
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シン プロビジョニングを有効にするかどうかによって大きく異なります。シン プロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きなボリュームを作成できます。 
+
+
+| アクセス制御（NFSのみ） | エクスポート ポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、コンソールはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー/グループ（CIFSのみ） | これらのフィールドを使用すると、ユーザーとグループの共有へのアクセス レベル (アクセス制御リストまたは ACL とも呼ばれます) を制御できます。ローカルまたはドメインの Windows ユーザーまたはグループ、あるいは UNIX ユーザーまたはグループを指定できます。ドメイン Windows ユーザー名を指定する場合は、domain\username の形式を使用してユーザーのドメインを含める必要があります。 
+
+
+| スナップショットポリシー | スナップショット コピー ポリシーは、自動的に作成されるNetAppスナップショット コピーの頻度と数を指定します。NetAppスナップショット コピーは、パフォーマンスに影響を与えず、最小限のストレージしか必要としない、ポイントインタイム ファイル システム イメージです。デフォルトのポリシーを選択するか、ポリシーなしを選択できます。一時データの場合は none を選択できます (例: Microsoft SQL Server の場合は tempdb)。 
+
+
+| 詳細オプション（NFSのみ） | ボリュームの NFS バージョン (NFSv3 または NFSv4) を選択します。 
+
+
+| イニシエーター グループと IQN (iSCSI のみ) | iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼ばれ、標準のブロック デバイスとしてホストに提供されます。イニシエーター グループは、iSCSI ホスト ノード名のテーブルであり、どのイニシエーターがどの LUN にアクセスできるかを制御します。iSCSI ターゲットは、標準の Ethernet ネットワーク アダプター (NIC)、ソフトウェア イニシエーターを備えた TCP オフロード エンジン (TOE) カード、統合ネットワーク アダプター (CNA)、または専用ホスト バス アダプター (HBA) を介してネットワークに接続し、iSCSI 修飾名 (IQN) によって識別されます。 iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になるので、管理は不要です。ボリュームを作成したら、link:task-connect-lun.html["IQNを使用してホストからLUNに接続します"] 。 
+|===
++
+次の画像は、ボリューム作成ウィザードの最初のページを示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAPインスタンス用に入力されたボリューム ページを表示します。"]
+
+. *CIFS セットアップ*: CIFS プロトコルを選択した場合は、CIFS サーバーをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNSプライマリおよびセカンダリIPアドレス | CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。 
+
+
+| 参加するActive Directoryドメイン | CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。 
+
+
+| ドメインへの参加を許可された資格情報 | AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS server NetBIOS name | AD ドメイン内で一意の CIFS サーバー名。 
+
+
+| 組織単位 | CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。  Azure AD Domain Services をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=AADDC Computers* または *OU=AADDC Users* を入力する必要があります。https://docs.microsoft.com/en-us/azure/active-directory-domain-services/create-ou["Azure ドキュメント: Azure AD Domain Services マネージド ドメインに組織単位 (OU) を作成する"^] 
+
+
+| DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+|===
+. *使用プロファイル、ディスク タイプ、階層化ポリシー*: 必要に応じて、ストレージ効率機能を有効にするかどうか、およびボリューム階層化ポリシーを変更するかどうかを選択します。
++
+詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^] 、link:concept-data-tiering.html["データ階層化の概要"^] 、 そして https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]
+
+. *確認と承認*: 選択内容を確認して確定します。
++
+.. 構成の詳細を確認します。
+.. *詳細情報* をクリックすると、サポートとコンソールが購入する Azure リソースの詳細を確認できます。
+.. *理解しました...* チェックボックスを選択します。
+.. [Go] をクリックします。
+
+
+
+
+.結果
+コンソールはCloud Volumes ONTAPシステムを展開します。監査ページで進捗状況を追跡できます。
+
+Cloud Volumes ONTAPシステムのデプロイ中に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+
+さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
+
+.終了後の操作
+* CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。
+* ボリュームにクォータを適用する場合は、 ONTAP System Manager またはONTAP CLI を使用します。
++
+クォータを使用すると、ユーザー、グループ、または qtree が使用するディスク領域とファイル数を制限したり追跡したりできます。
+
+

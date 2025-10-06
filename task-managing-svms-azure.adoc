@@ -1,0 +1,152 @@
+---
+sidebar: sidebar 
+permalink: task-managing-svms-azure.html 
+keywords: storage virtual machine, vserver, svm, storage vm, supported number, number supported 
+summary: ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。これは SVM または vserver として知られているかもしれません。  Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。 
+---
+= Azure でCloud Volumes ONTAPのデータサービス ストレージ VM を管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。以前は「_SVM_」または「_Vserver_」と呼んでいました。  Cloud Volumes ONTAP はデフォルトで 1 つのストレージ VM で構成されていますが、Azure でCloud Volumes ONTAP を実行するときに追加のストレージ VM を作成できます。
+
+Azure で追加のデータ サービス ストレージ VM を作成および管理するには、API を使用する必要があります。これは、API がストレージ VM を作成し、必要なネットワーク インターフェイスを構成するプロセスを自動化するためです。ストレージ VM を作成するときに、 NetAppコンソールは必要な LIF サービスと、ストレージ VM からの送信 SMB/CIFS 通信に必要な iSCSI LIF を構成します。
+
+Cloud Volumes ONTAP API呼び出しの実行については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^] 。
+
+
+
+== サポートされるストレージVMの数
+
+Cloud Volumes ONTAP 9.9.0 以降では、ライセンスに基づいて、特定の構成で複数のストレージ VM がサポートされるようになりました。参照 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html["Cloud Volumes ONTAPリリースノート"^]お使いのCloud Volumes ONTAPのバージョンでサポートされているストレージ VM の数を確認します。
+
+Cloud Volumes ONTAP 9.9.0 より前のすべてのバージョンでは、災害復旧に使用される 1 つのデータ提供ストレージ VM と 1 つの宛先ストレージ VM がサポートされます。ソース ストレージ VM に障害が発生した場合、データ アクセス用に宛先ストレージ VM をアクティブ化できます。
+
+
+
+== ストレージVMを作成する
+
+構成とライセンスの種類に基づいて、 NetAppコンソールの API を使用して、単一ノード システムまたは高可用性 (HA) 構成で複数のストレージ VM を作成できます。
+
+.タスク概要
+APIを使用してストレージVMを作成すると、必要なネットワークインターフェースの設定とともに、コンソールは `default-data-files`NAS データ LIF から次のサービスを削除し、アウトバウンド管理接続に使用される iSCSI データ LIF に追加することで、データ ストレージ VM のポリシーを変更します。
+
+* `data-fpolicy-client`
+* `management-ad-client`
+* `management-dns-client`
+* `management-ldap-client`
+* `management-nis-client`
+
+
+.開始する前に
+コンソール エージェントには、 Cloud Volumes ONTAPのストレージ VM を作成するための特定の権限が必要です。必要な権限は以下に記載されています https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["NetAppが提供するポリシー"^]。
+
+
+
+=== シングルノードシステム
+
+次の API 呼び出しを使用して、単一ノード システムにストレージ VM を作成します。
+
+`POST /azure/vsa/working-environments/{workingEnvironmentId}/svm`
+
+リクエスト本文に次のパラメータを含めます。
+
+[source, json]
+----
+{ "svmName": "myNewSvm1"
+   "svmPassword": "optional, the API takes the cluster password if not provided"
+   "mgmtLif": "optional, to create an additional management LIF, if you want to use the storage VM for management purposes"}
+----
+
+
+=== HAペア
+
+HA ペア上にストレージ VM を作成するには、次の API 呼び出しを使用します。
+
+`POST /azure/ha/working-environments/{workingEnvironmentId}/svm`
+
+リクエスト本文に次のパラメータを含めます。
+
+[source, json]
+----
+{ "svmName": "NewSvmName"
+   "svmPassword": "optional value, the API takes the cluster password if not provided"
+   "mgmtLif": "optional value, to create an additional management LIF, if you want to use the storage VM for management purposes"}
+----
+
+
+== 単一ノードシステムおよびHAペア上のストレージVMを管理する
+
+API を使用すると、単一ノード構成と HA 構成の両方でストレージ VM の名前を変更したり、削除したりできます。
+
+.開始する前に
+コンソール エージェントには、 Cloud Volumes ONTAPのストレージ VM を管理するために特定の権限が必要です。必要な権限は以下に記載されています https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["NetAppが提供するポリシー"^]。
+
+
+
+=== ストレージVMの名前を変更する
+
+ストレージ VM の名前を変更するには、既存のストレージ VM と新しいストレージ VM の名前をパラメーターとして指定する必要があります。
+
+.手順
+* 単一ノード システム上のストレージ VM の名前を変更するには、次の API 呼び出しを使用します。
++
+`PUT /azure/vsa/working-environments/{workingEnvironmentId}/svm`
+
++
+リクエスト本文に次のパラメータを含めます。
+
++
+[source, json]
+----
+{
+  "svmNewName": "NewSvmName",
+  "svmName": "OldSvmName"
+}
+----
+* HA ペア上のストレージ VM の名前を変更するには、次の API 呼び出しを使用します。
++
+`PUT /azure/ha/working-environments/{workingEnvironmentId}/svm`
+
++
+リクエスト本文に次のパラメータを含めます。
+
++
+[source, json]
+----
+{
+  "svmNewName": "NewSvmName",
+  "svmName": "OldSvmName"
+}
+----
+
+
+
+
+=== ストレージVMを削除する
+
+単一ノードまたは HA 構成では、アクティブなボリュームがない場合、ストレージ VM を削除できます。
+
+.手順
+* 単一ノード システム上のストレージ VM を削除するには、次の API 呼び出しを使用します。
++
+`DELETE /azure/vsa/working-environments/{workingEnvironmentId}/svm/{svmName}`
+
+* HA ペア上のストレージ VM を削除するには、次の API 呼び出しを使用します。
++
+`DELETE /azure/ha/working-environments/{workingEnvironmentId}/svm/{svmName}`
+
+
+
+.関連情報
+* https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["APIを使用する準備"^]
+* https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Cloud Volumes ONTAPワークフロー"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["必要な識別子を取得する"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["NetAppコンソールのREST APIを使用する"^]
+

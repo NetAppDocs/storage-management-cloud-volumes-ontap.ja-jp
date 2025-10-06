@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: task-configure-ems.html 
+keywords: ems, event management system, ems notifications, notifications 
+summary: イベント管理システムは、 ONTAPシステムで発生するイベントに関する情報を収集して表示します。イベント通知を受信するには、特定のイベント重大度に対してイベントの宛先とイベント ルートを設定できます。 
+---
+= Cloud Volumes ONTAPシステム用の EMS を構成する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+イベント管理システム (EMS) は、 ONTAPシステムで発生するイベントに関する情報を収集して表示します。イベント通知を受信するには、特定のイベント重大度に対してイベントの宛先 (電子メール アドレス、SNMP トラップ ホスト、または Syslog サーバー) とイベント ルートを設定できます。
+
+CLI を使用して EMS を設定できます。手順については、 https://docs.netapp.com/us-en/ontap/error-messages/index.html["ONTAPドキュメント: EMS構成の概要"^] 。

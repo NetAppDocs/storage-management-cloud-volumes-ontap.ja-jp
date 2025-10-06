@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: task-manage-svm-dr.html 
+keywords: storage virtual machine, vserver, svm, storage vm, svm dr, disaster recovery, svm disaster recovery, storage vm dr 
+summary: NetAppコンソールは、ストレージ VM の災害復旧のためのセットアップやオーケストレーションのサポートを提供しません。  System Manager または CLI を使用する必要があります。 
+---
+= Cloud Volumes ONTAPのストレージ VM 災害復旧を設定する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetAppコンソールは、ストレージ VM (SVM) 災害復旧のセットアップやオーケストレーションのサポートを提供しません。これらのタスクを実行するには、 ONTAP System Manager またはONTAP CLI を使用します。
+
+2 つのCloud Volumes ONTAPシステム間でSnapMirror SVM レプリケーションを設定する場合、レプリケーションは 2 つの HA ペア システム間または 2 つの単一ノード システム間で実行する必要があります。  HA ペアと単一ノード システム間でSnapMirror SVM レプリケーションを設定することはできません。
+
+ONTAP CLI の手順については、次のドキュメントを参照してください。
+
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["SVM Disaster Recovery Preparation Express Guide"^]
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["SVM Disaster Recovery Express Guide"^]
+

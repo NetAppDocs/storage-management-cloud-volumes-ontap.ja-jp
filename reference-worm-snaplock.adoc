@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: reference-worm-snaplock.html 
+keywords: WORM, SnapLock, Snapshot copies, 
+summary: 'Cloud Volumes ONTAPシステムで、一度だけ書き込み、何度も読み取る (WORM) ファイルの改ざん防止スナップショット コピーを作成し、特定の保持期間にわたってスナップショットを変更されていない形式で保持することができます。' 
+---
+= Cloud Volumes ONTAPで WORM ファイルの改ざん防止スナップショット コピーを作成します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPシステムで、一度だけ書き込み、何度も読み取る (WORM) ファイルの改ざん防止スナップショット コピーを作成し、特定の保持期間にわたってスナップショットを変更されていない形式で保持することができます。この機能はSnapLockテクノロジーを活用しており、データ保護とコンプライアンスをさらに強化します。
+
+.開始する前に
+スナップショット コピーの作成に使用するボリュームがSnapLockボリュームであることを確認します。ボリューム上でSnapLock保護を有効にする方法については、 https://docs.netapp.com/us-en/ontap/snaplock/snaplock-config-overview-concept.html["ONTAPドキュメント: SnapLockの設定"^] 。
+
+.手順
+. SnapLockボリュームからスナップショット コピーを作成します。  CLIまたはSystem Managerを使用してスナップショットコピーを作成する方法については、 https://docs.netapp.com/us-en/ontap/data-protection/manage-local-snapshot-copies-concept.html["ONTAPドキュメント: ローカルスナップショットコピーの管理の概要"^] 。
++
+スナップショット コピーはボリュームの WORM プロパティを継承し、改ざん防止になります。基盤となるSnapLockテクノロジにより、指定された保持期間が経過するまで、スナップショットは編集や削除から保護されます。
+
+. これらのスナップショットを編集する必要がある場合は、保持期間を変更できます。詳細については、 https://docs.netapp.com/us-en/ontap/snaplock/set-retention-period-task.html#set-the-default-retention-period["ONTAPドキュメント: 保持期間を設定する"^] 。
+
+
+
+NOTE: スナップショット コピーは特定の保持期間保護されていますが、 Cloud Volumes ONTAPの WORM ストレージは「信頼できるストレージ管理者」モデルで動作するため、クラスター管理者はソース ボリュームを削除できます。さらに、信頼できるクラウド管理者は、クラウド ストレージ リソースを操作して WORM データを削除できます。

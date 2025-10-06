@@ -1,0 +1,11 @@
+= BlueXPの Azure マーケットプレイスを通じて行われたデプロイメントの検出
+:allow-uri-read: 
+
+
+
+
+=== BlueXPの Azure マーケットプレイスを通じて行われたデプロイメントの検出
+
+BlueXPには、Azure マーケットプレイスを通じて直接導入されたCloud Volumes ONTAPシステムを検出できる機能が追加されました。つまり、他のCloud Volumes ONTAPシステムと同様に、これらのシステムをBlueXPの作業環境として追加および管理できるようになりました。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploy-cvo-azure-mktplc.html["AzureマーケットプレイスからCloud Volumes ONTAPをデプロイする"^]

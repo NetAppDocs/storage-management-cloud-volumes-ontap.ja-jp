@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: task-deploy-aws-shared-vpc.html 
+keywords: shared vpc, aws shared vpc, vpc sharing, shared subnet, deploy shared vpc, assume role 
+summary: 9.11.1 リリース以降、 Cloud Volumes ONTAP HA ペアは VPC 共有により AWS でサポートされるようになりました。 VPC 共有により、組織はサブネットを他の AWS アカウントと共有できるようになります。この構成を使用するには、AWS 環境をセットアップし、API を使用して HA ペアをデプロイする必要があります。 
+---
+= AWS共有サブネットにCloud Volumes ONTAP HAペアをデプロイする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+9.11.1 リリース以降、 Cloud Volumes ONTAP HA ペアは VPC 共有により AWS でサポートされるようになりました。 VPC 共有により、組織はサブネットを他の AWS アカウントと共有できるようになります。この構成を使用するには、AWS 環境をセットアップし、API を使用して HA ペアをデプロイする必要があります。
+
+と https://aws.amazon.com/blogs/networking-and-content-delivery/vpc-sharing-a-new-approach-to-multiple-accounts-and-vpc-management/["VPC共有"^]Cloud Volumes ONTAP HA 構成は 2 つのアカウントに分散されています。
+
+* ネットワーク（VPC、サブネット、ルートテーブル、 Cloud Volumes ONTAPセキュリティグループ）を所有する VPC 所有者アカウント
+* EC2 インスタンスが共有サブネットにデプロイされている参加者アカウント (2 つの HA ノードとメディエーターを含む)
+
+
+複数のアベイラビリティーゾーンにまたがってデプロイされたCloud Volumes ONTAP HA 構成の場合、HA メディエーターには、VPC 所有者アカウントのルート テーブルに書き込むための特定の権限が必要です。メディエーターが引き受けることができる IAM ロールを設定して、これらの権限を付与する必要があります。
+
+次の図は、この展開に関係するコンポーネントを示しています。
+
+image:diagram-aws-vpc-sharing.png["共有 VPC でのCloud Volumes ONTAP HA 展開の概念図。 VPC 所有者アカウントと参加者アカウントで利用可能な共有 VPC が表示されます。共有 VPC には、IAM ロール、ルートテーブル、セキュリティ グループ、および 3 つの共有サブネットが含まれます。参加者アカウントには、Cloud Volumes ONTAP HA 構成と、メディエーターにアタッチされた IAM ロールが含まれます。"]
+
+以下の手順で説明するように、参加者アカウントとサブネットを共有し、VPC 所有者アカウントに IAM ロールとセキュリティグループを作成する必要があります。
+
+Cloud Volumes ONTAPシステムを作成すると、 NetAppコンソールによって IAM ロールが自動的に作成され、メディエーターにアタッチされます。このロールは、HA ペアに関連付けられたルートテーブルに変更を加えるために、VPC 所有者アカウントで作成した IAM ロールを引き継ぎます。
+
+.手順
+. VPC 所有者アカウントのサブネットを参加者アカウントと共有します。
++
+この手順は、共有サブネットに HA ペアを展開するために必要です。
+
++
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html#vpc-sharing-share-subnet["AWS ドキュメント: サブネットの共有"^]
+
+. VPC 所有者アカウントで、 Cloud Volumes ONTAPのセキュリティ グループを作成します。
++
+link:reference-security-groups.html["Cloud Volumes ONTAPのセキュリティグループルールを参照してください"] 。HA メディエーター用のセキュリティ グループを作成する必要はありません。コンソールがそれを実行します。
+
+. VPC 所有者アカウントで、次の権限を含む IAM ロールを作成します。
++
+[source, json]
+----
+Action": [
+                "ec2:AssignPrivateIpAddresses",
+                "ec2:CreateRoute",
+                "ec2:DeleteRoute",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeVpcs",
+                "ec2:ReplaceRoute",
+                "ec2:UnassignPrivateIpAddresses"
+----
+. API を使用して新しいCloud Volumes ONTAPシステムを作成します。
++
+次のフィールドを指定する必要があることに注意してください。
+
++
+** 「セキュリティグループID」
++
+「securityGroupId」フィールドには、VPC 所有者アカウントで作成したセキュリティ グループを指定する必要があります (上記の手順 2 を参照)。
+
+** 「haParams」オブジェクトの「assumeRoleArn」
++
+「assumeRoleArn」フィールドには、VPC 所有者アカウントで作成した IAM ロールの ARN を含める必要があります (上記の手順 3 を参照)。
+
++
+例えば：
+
++
+[source, json]
+----
+"haParams": {
+     "assumeRoleArn": "arn:aws:iam::642991768967:role/mediator_role_assume_fromdev"
+}
+----
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/overview.html["Cloud Volumes ONTAP APIについて学ぶ"^]
+
+
+
+

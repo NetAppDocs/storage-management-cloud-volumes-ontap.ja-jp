@@ -1,0 +1,331 @@
+---
+sidebar: sidebar 
+permalink: reference-networking-aws.html 
+keywords: networking, network, requirements, connection, connections, vpc, security group, security groups, subnets, vpn, internet, nat, s3, dns, ad, active directory, az, availability zone, floating IP, floating, SVM, management LIF, route, route tables, proxy, HTTP, private, tier, s3 endpoint, proxy server, nat device, vpn, snapmanager, snapcenter, iscsi, nfs, cifs, nas, san, outbound, inbound, connections, autosupport, ha, ha pair, high availability 
+summary: NetAppコンソールは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。 
+---
+= Cloud Volumes ONTAP用の AWS ネットワークを設定する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetAppコンソールは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。
+
+
+
+== 一般要件
+
+AWS で次の要件を満たしていることを確認してください。
+
+
+
+=== Cloud Volumes ONTAPノードのアウトバウンド インターネット アクセス
+
+Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。セキュリティ要件が厳しい環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
+
+コンソール エージェントは、日常的な操作のために複数のエンドポイントに接続します。使用されるエンドポイントの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]そして https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]。
+
+
+
+==== Cloud Volumes ONTAPエンドポイント
+
+Cloud Volumes ONTAP はこれらのエンドポイントを使用してさまざまなサービスと通信します。
+
+[cols="5*"]
+|===
+| エンドポイント | 適用対象 | 目的 | 展開モード | エンドポイントが利用できない場合の影響 
+
+
+| \https://netapp-cloud-account.auth0.com | 認証  a| 
+コンソールでの認証に使用されます。
+| 標準モードと制限モード。  a| 
+ユーザー認証が失敗し、次のサービスは利用できなくなります。
+
+* Cloud Volumes ONTAPサービス
+* ONTAPサービス
+* プロトコルとプロキシサービス
+
+
+
+
+| \https://api.bluexp.netapp.com/tenancy | 賃貸借 | コンソールからCloud Volumes ONTAPリソースを取得して、リソースとユーザーを承認するために使用されます。 | 標準モードと制限モード。 | Cloud Volumes ONTAPリソースとユーザーは承認されていません。 
+
+
+| \https://mysupport.netapp.com/aods/asupmessage \https://mysupport.netapp.com/asupprod/post/1.0/postAsup | AutoSupport | AutoSupportテレメトリ データをNetAppサポートに送信するために使用されます。 | 標準モードと制限モード。 | AutoSupport情報は未配信のままです。 
+
+
+| AWSサービスの正確な商用エンドポイント（末尾に `amazonaws.com`) は、使用している AWS リージョンによって異なります。参照 https://docs.aws.amazon.com/general/latest/gr/rande.html["詳細についてはAWSドキュメントをご覧ください"^]。  a| 
+* クラウドフォーメーション
+* エラスティックコンピューティングクラウド (EC2)
+* アイデンティティとアクセス管理（IAM）
+* キー管理サービス (KMS)
+* セキュリティトークンサービス（STS）
+* シンプルストレージサービス（S3）
+
+| AWS サービスとの通信。 | 標準モードとプライベートモード。 | Cloud Volumes ONTAP はAWS サービスと通信して AWS で特定の操作を実行することができません。 
+
+
+| AWS サービスの正確な政府エンドポイントは、使用している AWS リージョンによって異なります。エンドポイントには、 `amazonaws.com`そして `c2s.ic.gov`。参照	https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/Region.html["AWS SDK"^]そして https://docs.aws.amazon.com/general/latest/gr/rande.html["AWS ドキュメント"^]詳細についてはこちらをご覧ください。  a| 
+* クラウドフォーメーション
+* エラスティックコンピューティングクラウド (EC2)
+* アイデンティティとアクセス管理（IAM）
+* キー管理サービス (KMS)
+* セキュリティトークンサービス（STS）
+* シンプルストレージサービス（S3）
+
+| AWS サービスとの通信。 | 制限モード。 | Cloud Volumes ONTAP はAWS サービスと通信して AWS で特定の操作を実行することができません。 
+|===
+
+
+=== HAメディエーターのアウトバウンドインターネットアクセス
+
+HA メディエーターインスタンスには、ストレージフェイルオーバーを支援できるように、AWS EC2 サービスへの送信接続が必要です。接続を提供するには、パブリック IP アドレスを追加したり、プロキシ サーバーを指定したり、手動オプションを使用したりできます。
+
+手動オプションとしては、ターゲットサブネットから AWS EC2 サービスへの NAT ゲートウェイまたはインターフェース VPC エンドポイントが考えられます。  VPCエンドポイントの詳細については、 http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html["AWS ドキュメント: インターフェイス VPC エンドポイント (AWS PrivateLink)"^] 。
+
+
+
+=== NetAppコンソールエージェントのネットワークプロキシ構成
+
+NetAppコンソール エージェントのプロキシ サーバー構成を使用して、 Cloud Volumes ONTAPからのアウトバウンド インターネット アクセスを有効にすることができます。コンソールは次の 2 種類のプロキシをサポートしています。
+
+* *明示的なプロキシ*: Cloud Volumes ONTAPからの送信トラフィックは、コンソール エージェントのプロキシ構成時に指定されたプロキシ サーバーの HTTP アドレスを使用します。管理者は、追加の認証のためにユーザー資格情報とルート CA 証明書を構成している場合もあります。明示的なプロキシにルートCA証明書が利用可能な場合は、必ず同じ証明書を取得して、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
+* *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェントのプロキシを介して自動的にルーティングするように構成されています。透過プロキシを設定する場合、管理者はプロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
+
+
+プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^] 。
+
+
+
+=== プライベートIPアドレス
+
+コンソールは、必要な数のプライベート IP アドレスをCloud Volumes ONTAPに自動的に割り当てます。ネットワークに十分なプライベート IP アドレスが利用可能であることを確認する必要があります。
+
+コンソールがCloud Volumes ONTAPに割り当てる LIF の数は、単一ノード システムを展開するか、HA ペアを展開するかによって異なります。  LIF は物理ポートに関連付けられた IP アドレスです。
+
+
+
+==== 単一ノードシステムのIPアドレス
+
+コンソールは、単一ノード システムに 6 つの IP アドレスを割り当てます。
+
+次の表は、各プライベート IP アドレスに関連付けられている LIF の詳細を示しています。
+
+[cols="20,40"]
+|===
+| LIF | 目的 
+
+
+| クラスタ管理 | クラスタ全体（HA ペア）の管理。 
+
+
+| ノード管理 | ノードの管理。 
+
+
+| インタークラスター | クラスター間の通信、バックアップ、およびレプリケーション。 
+
+
+| NASデータ | NAS プロトコル経由のクライアント アクセス。 
+
+
+| iSCSIデータ | iSCSI プロトコル経由のクライアント アクセス。他の重要なネットワーク ワークフローでもシステムによって使用されます。この LIF は必須であり、削除しないでください。 
+
+
+| ストレージVM管理 | ストレージ VM 管理 LIF は、 SnapCenterなどの管理ツールで使用されます。 
+|===
+
+
+==== HAペアのIPアドレス
+
+HA ペアでは、単一ノード システムよりも多くの IP アドレスが必要です。次の図に示すように、これらの IP アドレスは、異なるイーサネット インターフェイスに分散されています。
+
+image:diagram_cvo_aws_networking_ha.png["AWS のCloud Volumes ONTAP HA 構成における eth0、eth1、eth2 を示す図。"]
+
+HA ペアに必要なプライベート IP アドレスの数は、選択する展開モデルによって異なります。単一の AWS アベイラビリティゾーン (AZ) に展開された HA ペアには 15 個のプライベート IP アドレスが必要ですが、複数の AZ に展開された HA ペアには 13 個のプライベート IP アドレスが必要です。
+
+次の表は、各プライベート IP アドレスに関連付けられている LIF の詳細を示しています。
+
+[cols="20,20,20,40"]
+|===
+| LIF | インターフェイス | ノード | 目的 
+
+
+| クラスタ管理 | eth0 | ノード1 | クラスタ全体（HA ペア）の管理。 
+
+
+| ノード管理 | eth0 | ノード1とノード2 | ノードの管理。 
+
+
+| インタークラスター | eth0 | ノード1とノード2 | クラスター間の通信、バックアップ、およびレプリケーション。 
+
+
+| NASデータ | eth0 | ノード1 | NAS プロトコル経由のクライアント アクセス。 
+
+
+| iSCSIデータ | eth0 | ノード1とノード2 | iSCSI プロトコル経由のクライアント アクセス。他の重要なネットワーク ワークフローでもシステムによって使用されます。これらの LIF は必須であり、削除しないでください。 
+
+
+| クラスター接続 | eth1 | ノード1とノード2 | ノードが相互に通信し、クラスター内でデータを移動できるようにします。 
+
+
+| HA接続 | eth2 | ノード1とノード2 | フェイルオーバーの場合の 2 つのノード間の通信。 
+
+
+| RSM iSCSIトラフィック | eth3 | ノード1とノード2 | RAID SyncMirror iSCSI トラフィック、および 2 つのCloud Volumes ONTAPノードとメディエーター間の通信。 
+
+
+| メディエーター | eth0 | メディエーター | ストレージの引き継ぎとギブバックのプロセスを支援するための、ノードとメディエーター間の通信チャネル。 
+|===
+[cols="20,20,20,40"]
+|===
+| LIF | インターフェイス | ノード | 目的 
+
+
+| ノード管理 | eth0 | ノード1とノード2 | ノードの管理。 
+
+
+| インタークラスター | eth0 | ノード1とノード2 | クラスター間の通信、バックアップ、およびレプリケーション。 
+
+
+| iSCSIデータ | eth0 | ノード1とノード2 | iSCSI プロトコル経由のクライアント アクセス。これらの LIF は、ノード間のフローティング IP アドレスの移行も管理します。これらの LIF は必須であり、削除しないでください。 
+
+
+| クラスター接続 | eth1 | ノード1とノード2 | ノードが相互に通信し、クラスター内でデータを移動できるようにします。 
+
+
+| HA接続 | eth2 | ノード1とノード2 | フェイルオーバーの場合の 2 つのノード間の通信。 
+
+
+| RSM iSCSIトラフィック | eth3 | ノード1とノード2 | RAID SyncMirror iSCSI トラフィック、および 2 つのCloud Volumes ONTAPノードとメディエーター間の通信。 
+
+
+| メディエーター | eth0 | メディエーター | ストレージの引き継ぎとギブバックのプロセスを支援するための、ノードとメディエーター間の通信チャネル。 
+|===
+
+TIP: 複数のアベイラビリティゾーンに展開する場合、複数のLIFが関連付けられます。link:reference-networking-aws.html#floatingips["フローティングIPアドレス"]これらは AWS プライベート IP 制限にはカウントされません。
+
+
+
+=== セキュリティ グループ
+
+コンソールが自動的にセキュリティ グループを作成するので、セキュリティ グループを作成する必要はありません。独自のものを使用する必要がある場合は、link:reference-security-groups.html["セキュリティグループルール"] 。
+
+
+TIP: コンソール エージェントに関する情報をお探しですか? https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-aws.html["コンソールエージェントのセキュリティグループルールを表示する"^]
+
+
+
+=== データ階層化のための接続
+
+EBS をパフォーマンス層として使用し、AWS S3 を容量層として使用する場合は、 Cloud Volumes ONTAP がS3 に接続されていることを確認する必要があります。この接続を提供する最善の方法は、S3 サービスへの VPC エンドポイントを作成することです。手順については、 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS ドキュメント: ゲートウェイエンドポイントの作成"^] 。
+
+VPC エンドポイントを作成するときは、 Cloud Volumes ONTAPインスタンスに対応するリージョン、VPC、ルートテーブルを選択してください。また、セキュリティ グループを変更して、S3 エンドポイントへのトラフィックを有効にする送信 HTTPS ルールを追加する必要があります。そうしないと、 Cloud Volumes ONTAP はS3 サービスに接続できません。
+
+問題が発生した場合は、 https://aws.amazon.com/premiumsupport/knowledge-center/connect-s3-vpc-endpoint/["AWS サポート ナレッジセンター: ゲートウェイ VPC エンドポイントを使用して S3 バケットに接続できないのはなぜですか?"^]
+
+
+
+=== ONTAPシステムへの接続
+
+AWS のCloud Volumes ONTAPシステムと他のネットワークのONTAPシステム間でデータを複製するには、AWS VPC と他のネットワーク (企業ネットワークなど) の間に VPN 接続が必要です。手順については、 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/SetUpVPNConnections.html["AWS ドキュメント: AWS VPN 接続の設定"^] 。
+
+
+
+=== CIFS の DNS と Active Directory
+
+CIFS ストレージをプロビジョニングする場合は、AWS で DNS と Active Directory を設定するか、オンプレミスの設定を AWS に拡張する必要があります。
+
+DNS サーバーは、Active Directory 環境に対して名前解決サービスを提供する必要があります。デフォルトの EC2 DNS サーバーを使用するように DHCP オプション セットを設定できます。このサーバーは、Active Directory 環境で使用される DNS サーバーであってはなりません。
+
+手順については、 https://aws-quickstart.github.io/quickstart-microsoft-activedirectory/["AWS ドキュメント: AWS クラウド上の Active Directory ドメインサービス: クイックスタートリファレンスデプロイ"^] 。
+
+
+
+=== VPC共有
+
+9.11.1 リリース以降、 Cloud Volumes ONTAP HA ペアは VPC 共有により AWS でサポートされるようになりました。 VPC 共有により、組織はサブネットを他の AWS アカウントと共有できるようになります。この構成を使用するには、AWS 環境をセットアップし、API を使用して HA ペアをデプロイする必要があります。
+
+link:task-deploy-aws-shared-vpc.html["共有サブネットにHAペアを展開する方法を学ぶ"] 。
+
+
+
+== 複数のAZにおけるHAペアの要件
+
+複数のアベイラビリティーゾーン (AZ) を使用するCloud Volumes ONTAP HA 構成には、追加の AWS ネットワーク要件が適用されます。  Cloud Volumes ONTAPシステムを追加するときにコンソールにネットワークの詳細を入力する必要があるため、HA ペアを起動する前にこれらの要件を確認する必要があります。
+
+HAペアの仕組みを理解するには、以下を参照してください。link:concept-ha.html["ハイアベイラビリティ ペア"] 。
+
+アベイラビリティ ゾーン:: この HA 展開モデルでは、複数の AZ を使用してデータの高可用性を確保します。各Cloud Volumes ONTAPインスタンスとメディエーター インスタンスには専用の AZ を使用する必要があります。これにより、HA ペア間の通信チャネルが提供されます。
+
+
+各アベイラビリティーゾーンでサブネットが利用可能である必要があります。
+
+[[floatingips]]
+NASデータとクラスタ/SVM管理用のフローティングIPアドレス:: 複数の AZ の HA 構成では、障害が発生した場合にノード間で移行されるフローティング IP アドレスが使用されます。  VPCの外部からはネイティブにアクセスできません。link:task-setting-up-transit-gateway.html["AWSトランジットゲートウェイを設定する"] 。
++
+--
+1 つのフローティング IP アドレスはクラスター管理用、1 つはノード 1 の NFS/CIFS データ用、もう 1 つはノード 2 の NFS/CIFS データ用です。  SVM 管理用の 4 番目のフローティング IP アドレスはオプションです。
+
+
+NOTE: HA ペアでSnapDrive for Windows またはSnapCenterを使用する場合は、SVM 管理 LIF にフローティング IP アドレスが必要です。
+
+Cloud Volumes ONTAP HA システムを追加するときは、フローティング IP アドレスを入力する必要があります。コンソールは、システムを起動するときに、HA ペアに IP アドレスを割り当てます。
+
+フローティング IP アドレスは、HA 構成を展開する AWS リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。フローティング IP アドレスは、リージョン内の VPC の外部にある論理サブネットと考えてください。
+
+次の例は、AWS リージョン内のフローティング IP アドレスと VPC の関係を示しています。フローティング IP アドレスはすべての VPC の CIDR ブロックの外側にありますが、ルートテーブルを通じてサブネットにルーティングできます。
+
+image:diagram_ha_floating_ips.png["AWS リージョン内の 5 つの VPC の CIDR ブロックと、VPC の CIDR ブロック外にある 3 つのフローティング IP アドレスを示す概念図。"]
+
+
+NOTE: コンソールは、iSCSI アクセスおよび VPC 外部のクライアントからの NAS アクセス用に静的 IP アドレスを自動的に作成します。これらのタイプの IP アドレスについては、いかなる要件も満たす必要はありません。
+
+--
+VPC 外部からのフローティング IP アクセスを可能にするトランジット ゲートウェイ:: 必要であれば、link:task-setting-up-transit-gateway.html["AWSトランジットゲートウェイを設定する"] HA ペアが存在する VPC の外部から HA ペアのフローティング IP アドレスにアクセスできるようにします。
+ルートテーブル:: フローティング IP アドレスを指定すると、フローティング IP アドレスへのルートを含めるルート テーブルを選択するように求められます。これにより、クライアントは HA ペアにアクセスできるようになります。
++
+--
+VPC 内のサブネットにルート テーブルが 1 つだけある場合 (メイン ルート テーブル)、コンソールはフローティング IP アドレスをそのルート テーブルに自動的に追加します。ルート テーブルが複数ある場合は、HA ペアを起動するときに正しいルート テーブルを選択することが非常に重要です。そうしないと、一部のクライアントがCloud Volumes ONTAPにアクセスできなくなる可能性があります。
+
+たとえば、異なるルート テーブルに関連付けられた 2 つのサブネットがある場合があります。ルート テーブル A を選択し、ルート テーブル B を選択しない場合、ルート テーブル A に関連付けられたサブネット内のクライアントは HA ペアにアクセスできますが、ルート テーブル B に関連付けられたサブネット内のクライアントはアクセスできません。
+
+ルートテーブルの詳細については、 http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS ドキュメント: ルートテーブル"^] 。
+
+--
+NetApp管理ツールへの接続:: 複数の AZ にある HA 構成でNetApp管理ツールを使用するには、次の 2 つの接続オプションがあります。
++
+--
+. NetApp管理ツールを別のVPCに導入し、link:task-setting-up-transit-gateway.html["AWSトランジットゲートウェイを設定する"] 。ゲートウェイにより、VPC の外部からクラスター管理インターフェースのフローティング IP アドレスにアクセスできるようになります。
+. NAS クライアントと同様のルーティング構成を使用して、同じ VPC にNetApp管理ツールを展開します。
+
+
+--
+
+
+
+
+=== HA構成の例
+
+次の図は、複数の AZ 内の HA ペアに固有のネットワーク コンポーネント (3 つのアベイラビリティー ゾーン、3 つのサブネット、フローティング IP アドレス、およびルート テーブル) を示しています。
+
+image:diagram_ha_networking.png["Cloud Volumes ONTAP HA アーキテクチャのコンポーネントを示す概念図: それぞれ別のアベイラビリティーゾーンにある 2 つのCloud Volumes ONTAPノードと 1 つのメディエーター インスタンス。"]
+
+
+
+== コンソールエージェントの要件
+
+コンソール エージェントをまだ作成していない場合は、ネットワーク要件を確認する必要があります。
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-install-options-aws.html["コンソールエージェントのネットワーク要件を表示する"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-aws.html["AWSのセキュリティグループルール"^]
+
+
+.関連トピック
+* link:task-verify-autosupport.html["Cloud Volumes ONTAPのAutoSupport設定を確認する"]
+* https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["ONTAPの内部ポートについて学ぶ"^] 。
+

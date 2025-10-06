@@ -1,0 +1,158 @@
+---
+sidebar: sidebar 
+permalink: concept-security.html 
+keywords: security, encryption, antivirus, concepts, key managers, safenet, kms, keys, vscan, encrypt, key management service, cmk, customer master key, data at rest, data-at-rest, netapp storage encryption, certificate signing request, csr, certificate, ca certificate, virus, scan, virus scan, certificate authority, netapp volume encryption, nve, volume encryption, key management server, ransomware, fpolicy, snapshots 
+summary: Cloud Volumes ONTAP はデータ暗号化をサポートし、ウイルスやランサムウェアからの保護を提供します。 
+---
+= Cloud Volumes ONTAP のデータ暗号化とランサムウェア保護について学ぶ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP はデータ暗号化をサポートし、ウイルスやランサムウェアからの保護を提供します。
+
+
+
+== 保存中のデータを暗号化
+
+Cloud Volumes ONTAP は、次の暗号化テクノロジーをサポートしています。
+
+* NetApp暗号化ソリューション (NVE および NAE)
+
+
+ifdef::aws[]
+
+* AWS Key Management Service
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Azure Storage Service Encryption
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Google Cloud Platformのデフォルトの暗号化
+
+
+endif::gcp[]
+
+NetApp暗号化ソリューションは、ハイパーバイザー レベルでデータを暗号化するクラウド プロバイダーのネイティブ暗号化と組み合わせて使用​​できます。こうすることで二重暗号化が実現され、非常に機密性の高いデータには望ましいものとなる可能性があります。暗号化されたデータにアクセスすると、そのデータは 2 回暗号化解除されます。1 回目はハイパーバイザー レベルで (クラウド プロバイダーのキーを使用)、2 回目はNetApp暗号化ソリューションを使用して (外部キー マネージャーのキーを使用) です。
+
+
+
+=== NetApp暗号化ソリューション (NVE および NAE)
+
+Cloud Volumes ONTAPは以下をサポートします https://www.netapp.com/pdf.html?item=/media/17070-ds-3899.pdf["NetAppボリューム暗号化 (NVE) とNetAppアグリゲート暗号化 (NAE)"^]。  NVE と NAE は、ボリュームの (FIPS) 140-2 準拠の保存データ暗号化を可能にするソフトウェア ベースのソリューションです。  NVE と NAE はどちらも AES 256 ビット暗号化を使用します。
+
+* NVE は保存中のデータをボリュームごとに暗号化します。各データ ボリュームには独自の暗号化キーがあります。
+* NAE は NVE の拡張機能であり、各ボリュームのデータを暗号化し、ボリュームはアグリゲート全体でキーを共有します。  NAE では、アグリゲート内のすべてのボリュームにわたる共通ブロックの重複排除も可能になります。
+
+
+Cloud Volumes ONTAP は、Fortanix などのサードパーティ ソリューションを含む、AWS、Azure、Google Cloud が提供する外部キー管理サービス (EKM) を使用して、NVE と NAE の両方をサポートします。  ONTAPとは異なり、 Cloud Volumes ONTAPの場合、暗号化キーはONTAPではなくクラウド プロバイダー側​​で生成されます。
+
+Cloud Volumes ONTAP は、 ONTAPが使用する標準の Key Management Interoperability Protocol (KMIP) サービスを使用します。サポートされているサービスの詳細については、 https://imt.netapp.com/imt/#welcome["Interoperability Matrix Tool"^] 。
+
+NVE を使用する場合は、クラウド プロバイダーのキー ボールトを使用してONTAP暗号化キーを保護するオプションがあります。
+
+ifdef::aws[]
+
+* AWS キー管理サービス (KMS)
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Azure キー コンテナー (AKV)
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Google Cloud Key Management Service
+
+
+endif::gcp[]
+
+外部キー マネージャーを設定すると、新しいアグリゲートではNetApp Aggregate Encryption (NAE) がデフォルトで有効になります。  NAE アグリゲートの一部ではない新しいボリュームでは、NVE がデフォルトで有効になっています (たとえば、外部キー マネージャーを設定する前に作成された既存のアグリゲートがある場合)。
+
+サポートされているキー マネージャーを設定することだけが、必要な手順です。セットアップ手順については、link:task-encrypting-volumes.html["NetApp暗号化ソリューションでボリュームを暗号化"] 。
+
+ifdef::aws[]
+
+
+
+=== AWS Key Management Service
+
+AWSでCloud Volumes ONTAPシステムを起動すると、 http://docs.aws.amazon.com/kms/latest/developerguide/overview.html["AWS キー管理サービス (KMS)"^] 。  NetAppコンソールは、カスタマー マスター キー (CMK) を使用してデータ キーを要求します。
+
+
+TIP: Cloud Volumes ONTAPシステムを作成した後、AWS データ暗号化方法を変更することはできません。
+
+この暗号化オプションを使用する場合は、AWS KMS が適切に設定されていることを確認する必要があります。詳細については、link:task-setting-up-kms.html["AWS KMSの設定"] 。
+
+endif::aws[]
+
+ifdef::azure[]
+
+
+
+=== Azure Storage Service Encryption
+
+データはAzureのCloud Volumes ONTAPで自動的に暗号化されます。 https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-overview["Azure Storage Service Encryption"^] Microsoft が管理するキーを使用します。
+
+必要に応じて独自の暗号化キーを使用することもできます。link:task-set-up-azure-encryption.html["Azureで顧客管理キーを使用するためにCloud Volumes ONTAPを設定する方法を学びます"] 。
+
+endif::azure[]
+
+ifdef::gcp[]
+
+
+
+=== Google Cloud Platformのデフォルトの暗号化
+
+https://cloud.google.com/security/encryption-at-rest/["Google Cloud Platform の保存データ暗号化"^]Cloud Volumes ONTAPではデフォルトで有効になっています。セットアップは必要ありません。
+
+Google Cloud Storage では、データがディスクに書き込まれる前に常に暗号化されますが、コンソール API を使用して、_顧客管理の暗号化キー_ を使用するCloud Volumes ONTAPシステムを作成できます。これらは、Cloud Key Management Service を使用して GCP で生成および管理するキーです。link:task-setting-up-gcp-encryption.html["詳細情報"] 。
+
+endif::gcp[]
+
+
+
+== ONTAPウイルススキャン
+
+ONTAPシステムに統合されたウイルス対策機能を使用すると、ウイルスやその他の悪意のあるコードによるデータの侵害から保護できます。
+
+ONTAPウイルス スキャン (_Vscan_ と呼ばれる) は、クラス最高のサードパーティ製ウイルス対策ソフトウェアとONTAP の機能を組み合わせて、スキャンするファイルとそのタイミングを制御するために必要な柔軟性を実現します。
+
+Vscanでサポートされているベンダー、ソフトウェア、バージョンの詳細については、 http://mysupport.netapp.com/matrix["NetApp Interoperability Matrix"^] 。
+
+ONTAPシステムでウイルス対策機能を設定および管理する方法については、 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-acg/home.html["ONTAP 9 アンチウイルス設定ガイド"^] 。
+
+
+
+== ランサムウェア対策
+
+ランサムウェア攻撃は、企業の時間、リソース、評判に損害を与える可能性があります。コンソールを使用すると、可視性、検出、修復のための効果的なツールを提供する、ランサムウェアに対するNetAppソリューションを実装できます。
+
+* コンソールは、スナップショット ポリシーによって保護されていないボリュームを識別し、それらのボリュームでデフォルトのスナップショット ポリシーをアクティブ化できるようにします。
++
+スナップショット コピーは読み取り専用であるため、ランサムウェアによる破損を防ぎます。また、単一のファイルコピーまたは完全な災害復旧ソリューションのイメージを作成するための細分性も提供できます。
+
+* コンソールでは、ONTAP の FPolicy ソリューションを有効にすることで、一般的なランサムウェア ファイル拡張子をブロックすることもできます。
+
+
+image:screenshot_ransomware_protection.gif["システム内から利用できるランサムウェア保護ページを示すスクリーンショット。画面には、スナップショット ポリシーのないボリュームの数と、ランサムウェア ファイル拡張子をブロックする機能が表示されます。"]
+
+link:task-protecting-ransomware.html["ランサムウェア対策のためのNetAppソリューションの実装方法を学ぶ"] 。

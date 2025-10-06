@@ -1,0 +1,11 @@
+= Azure のニュージーランド北部リージョンのサポート
+:allow-uri-read: 
+
+
+
+
+=== Azure のニュージーランド北部リージョンのサポート
+
+Cloud Volumes ONTAP 9.12.1 GA 以降の単一ノードおよび高可用性 (HA) 構成では、Azure でニュージーランド北部リージョンがサポートされるようになりました。このリージョンでは Lsv3 インスタンス タイプはサポートされていないことに注意してください。
+
+サポートされているすべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。

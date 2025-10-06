@@ -1,0 +1,11 @@
+= Google Cloud の API を通じてストレージ VM の作成を自動化
+:allow-uri-read: 
+
+
+
+
+=== Google Cloud の API を通じてストレージ VM の作成を自動化
+
+BlueXP API を使用して、Google Cloud でのストレージ VM の作成を自動化できるようになりました。この機能は、Cloud Volumes ONTAP の高可用性 (HA) 構成で使用されていましたが、単一ノードの展開でも使用できるようになりました。 BlueXP API を使用すると、必要なネットワーク インターフェース、LIF、管理 LIF を手動で構成する必要なく、Google Cloud 環境で追加のデータ提供ストレージ VM を簡単に作成、名前変更、削除できます。この自動化により、ストレージ VM の管理プロセスが簡素化されます。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.html["Google Cloud でCloud Volumes ONTAPのデータ提供ストレージ VM を管理する"^]

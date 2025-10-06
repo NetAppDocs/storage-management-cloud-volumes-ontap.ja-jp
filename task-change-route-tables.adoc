@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: task-change-route-tables.html 
+keywords: route tables, update route tables, modify route tables, change route table 
+summary: 複数の AWS アベイラビリティーゾーンにデプロイされている HA ペアのフローティング IP アドレスへのルートを含む AWS ルートテーブルを変更できます。新しい NFS または CIFS クライアントが AWS 内の HA ペアにアクセスする必要がある場合は、これを実行できます。 
+---
+= 複数の AWS AZ にあるCloud Volumes ONTAP HA ペアのルートテーブルを変更する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+複数の AWS アベイラビリティゾーン (AZ) にデプロイされている HA ペアのフローティング IP アドレスへのルートを含む AWS ルートテーブルを変更できます。新しい NFS または CIFS クライアントが AWS 内の HA ペアにアクセスする必要がある場合は、これを実行できます。
+
+.手順
+. *システム*ページで、システムを選択します。
+. [概要] タブで [機能] パネルをクリックし、[ルート テーブル] の横にある鉛筆アイコンをクリックします。
+. 選択したルート テーブルのリストを変更し、[*保存*] をクリックします。
+
+
+.結果
+NetAppコンソールは、ルート テーブルを変更するための AWS リクエストを送信します。

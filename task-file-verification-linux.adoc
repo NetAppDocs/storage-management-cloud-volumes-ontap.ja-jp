@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: task-file-verification-linux.html 
+keywords: Azure, image, VHD, file signature verification, encryption, sha256, ONTAP, Cloud Volumes, CLI, Linux 
+summary: Linux 上のCloud Volumes ONTAPイメージ ダイジェスト ファイル ツールを使用して、エクスポートされた VHD ファイルの署名を検証します。 
+---
+= Linux 上のCloud Volumes ONTAPの Azure Marketplace イメージ署名を確認する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Linux 上でエクスポートされた VHD ファイル署名の検証には、信頼チェーンの検証、ファイルの編集、署名の検証が含まれます。
+
+.手順
+. Azureイメージファイルを以下からダウンロードします。 https://mysupport.netapp.com/site/["NetAppサポート サイト"^]ダイジェスト (.sig) ファイル、公開鍵証明書 (.pem) ファイル、チェーン証明書 (.pem) ファイルを抽出します。
++
+参照 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-azure-download-digest-file.html["Azure イメージ ダイジェスト ファイルをダウンロードする"^]詳細についてはこちらをご覧ください。
+
+. 信頼チェーンを検証します。
++
+[source, cli]
+----
+% openssl verify -CAfile Certificate-Chain-9.15.0P1_azure.pem Certificate-9.15.0P1_azure.pem
+Certificate-9.15.0P1_azure.pem: OK
+----
+. VHD ファイルの先頭の 1 MB (1,048,576 バイト) と末尾の 512 バイトを削除します。使用する場合 `tail`、 `-c +K`オプションは、ファイルの K 番目のバイトからバイトを生成します。したがって、1048577は `tail -c`。
++
+[source, cli]
+----
+% tail -c +1048577 ./9150.01000024.05090105.vhd > ./sign.tmp.tail
+% head -c -512 ./sign.tmp.tail > sign.tmp
+% rm ./sign.tmp.tail
+----
+. OpenSSL を使用して証明書から公開キーを抽出し、署名ファイルと公開キーを使用してストリップされたファイル (sign.tmp) を検証します。
++
+コマンド プロンプトには、検証に基づいて成功または失敗を示すメッセージが表示されます。
+
++
+[source, cli]
+----
+% openssl x509 -pubkey -noout -in ./Certificate-9.15.0P1_azure.pem > ./Code-Sign-Cert-Public-key.pub
+
+% openssl dgst -verify Code-Sign-Cert-Public-key.pub -keyform PEM -sha256 -signature digest.sig -binary ./sign.tmp
+Verification OK
+
+% openssl dgst -verify Code-Sign-Cert-Public-key.pub -keyform PEM -sha256 -signature digest.sig -binary ./another_file_from_nowhere.tmp
+Verification Failure
+----
+. ワークスペースをクリーンアップします。
++
+[source, cli]
+----
+% rm ./9150.01000024.05090105.vhd ./sign.tmp
+% rm *.sig *.pub *.pem
+----
+

@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: task-manage-capacity-settings.html 
+keywords: aggregates, delete aggregates, add disks, view aggregates 
+summary: ディスクを追加したり、アグリゲートの情報を表示したり、アグリゲートを削除したりして、アグリゲートを自分で管理します。 
+---
+= コンソールエージェントでCloud Volumes ONTAPアグリゲート容量を管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+各コンソール エージェントには、Cloud Volumes ONTAPの総容量を管理する方法を決定する設定があります。
+
+これらの設定は、コンソール エージェントによって管理されるすべてのCloud Volumes ONTAPシステムに影響します。別のコンソール エージェントがある場合は、別の方法で構成できます。
+
+.必要な権限
+Cloud Volumes ONTAP設定を変更するには、 NetAppコンソールの組織またはアカウントの管理者権限が必要です。
+
+.手順
+. 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。
+. クリックimage:icon-action.png[""]Cloud Volumes ONTAPシステムを管理するコンソール エージェントのアイコン。
+. * Cloud Volumes ONTAP設定*を選択します。
++
+image::screenshot-settings-cloud-volumes-ontap.png[[設定]アイコンの下のCloud Volumes ONTAP設定オプションのスクリーンショット。]
+
+. *容量*の下で、次のいずれかの設定を変更します。
++
+image:screenshot-cvo-settings-page.png["Cloud Volumes ONTAPの容量設定の概要。"]
+
++
+容量管理モード:: コンソールでストレージ容量の決定を通知するか、容量要件を自動的に管理するかを選択します。
++
+--
+link:concept-storage-management.html#capacity-management["容量管理モードの仕組みを学ぶ"] 。
+
+--
+総容量しきい値 - 空き容量比率:: この比率は容量管理の決定における重要なパラメータであり、容量管理の自動モードと手動モードのどちらであっても、その影響を理解することは不可欠です。リソース使用率とコストのバランスを維持するために、特定のストレージ ニーズと予想される増加を考慮してこのしきい値を設定することをお勧めします。
++
+--
+手動モードでは、アグリゲートの空き領域率が指定されたしきい値を下回ると、通知がトリガーされ、空き領域率の低下に対処するためのアクションを実行する必要があることが警告されます。サービスの中断を回避し、最適なパフォーマンスを確保するには、これらの通知を監視し、総容量を手動で管理することが重要です。
+
+空き容量比率は次のように計算されます: (総容量 - 総使用容量) / 総容量
+
+参照link:concept-storage-management.html#automatic-capacity-management["自動容量管理"]Cloud Volumes ONTAPで容量が自動的に管理されるようになりました。
+
+--
+総容量しきい値 - データ階層化の空き領域比率:: データを容量層 (オブジェクト ストレージ) に階層化するときに、パフォーマンス層 (ディスク) に必要な空き領域の量を定義します。
++
+--
+この比率は災害復旧シナリオにとって重要です。データが容量層から読み取られると、 Cloud Volumes ONTAP はデータをパフォーマンス層に移動して、パフォーマンスを向上させます。十分なスペースがない場合、 Cloud Volumes ONTAP はデータを移動できません。
+
+--
+
+
+. *保存*をクリックします。
+

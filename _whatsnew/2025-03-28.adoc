@@ -1,0 +1,11 @@
+= Cloud Volumes ONTAP 9.14.1 でプライベート モードのデプロイメントが有効になりました
+:allow-uri-read: 
+
+
+
+
+=== Cloud Volumes ONTAP 9.14.1 でプライベート モードのデプロイメントが有効になりました
+
+AWS、Azure、Google Cloud でCloud Volumes ONTAP 9.14.1 をプライベート モードでデプロイできるようになりました。プライベート モードは、Cloud Volumes ONTAP 9.14.1 のシングル ノードと高可用性 (HA) の両方の展開で有効になります。
+
+プライベートモードの展開の詳細については、以下を参照してください。https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html#restricted-mode["BlueXPの展開モードについて学ぶ"^] 。

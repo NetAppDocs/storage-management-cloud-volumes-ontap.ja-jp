@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: task-azure-high-availability-mode.html 
+keywords: high availability mode, EnableHighAvailabilityMode, action required, nfsv4 
+summary: 計画外のフェイルオーバー時間を短縮し、 Cloud Volumes ONTAPの NFSv4 サポートを有効にするには、Microsoft Azure の高可用性モードを有効にする必要があります。 
+---
+= AzureでCloud Volumes ONTAPの高可用性モードを有効にする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+計画外のフェイルオーバー時間を短縮し、 Cloud Volumes ONTAPの NFSv4 サポートを有効にするには、Microsoft Azure の高可用性 (HA) モードを有効にする必要があります。このモードでは、 Cloud Volumes ONTAP HA ノードは、CIFS および NFSv4 クライアントでの計画外のフェイルオーバー時に、低い (60 秒) 復旧時間目標 (RTO) を達成できます。
+
+Cloud Volumes ONTAP 9.10.1 以降では、Microsoft Azure で実行されているCloud Volumes ONTAP HA ペアの計画外のフェイルオーバー時間を短縮し、NFSv4 のサポートを追加しました。これらの拡張機能をCloud Volumes ONTAPで利用できるようにするには、Azure サブスクリプションで高可用性機能を有効にする必要があります。
+
+Azure サブスクリプションで機能を有効にする必要がある場合、 NetAppコンソールではこれらの詳細が求められます。
+
+次の点に注意してください。
+
+* Cloud Volumes ONTAP HA ペアの高可用性に問題はありません。この Azure 機能はONTAPと連携して動作し、計画外のフェイルオーバー イベントによって発生する NFS プロトコルのクライアントで観測されるアプリケーション停止時間を短縮します。
+* この機能を有効にしても、 Cloud Volumes ONTAP HA ペアは中断されません。
+* Azure サブスクリプションでこの機能を有効にしても、他の VM に問題は発生しません。
+* Cloud Volumes ONTAP は、 CIFS および NFS クライアント上のクラスターおよび SVM 管理 LIF のフェイルオーバー中に内部 Azure ロード バランサーを使用します。
+* HA モードが有効になっている場合、コンソールは 12 時間ごとにシステムをスキャンして、Azure Load Balancer の内部ルールを更新します。
+
+
+「所有者」権限を持つ Azure ユーザーは、Azure CLI からこの機能を有効にできます。
+
+.手順
+. https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart["Azure ポータルから Azure Cloud Shell にアクセスする"^]
+. 高可用性モード機能を登録します。
++
+[source, azurecli]
+----
+az account set -s AZURE_SUBSCRIPTION_NAME_OR_ID
+az feature register --name EnableHighAvailabilityMode --namespace Microsoft.Network
+az provider register -n Microsoft.Network
+----
+. 必要に応じて、機能が登録されたことを確認します。
++
+[source, azurecli]
+----
+az feature show --name EnableHighAvailabilityMode --namespace Microsoft.Network
+----
++
+Azure CLI は次のような結果を返すはずです。
+
++
+[listing]
+----
+{
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Features/providers/Microsoft.Network/features/EnableHighAvailabilityMode",
+  "name": "Microsoft.Network/EnableHighAvailabilityMode",
+  "properties": {
+    "state": "Registered"
+  },
+  "type": "Microsoft.Features/providers/features"
+}
+----
+

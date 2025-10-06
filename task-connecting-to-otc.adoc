@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: task-connecting-to-otc.html 
+keywords: connecting, cli, command, command line, connect, shell, interface 
+summary: Cloud Volumes ONTAP CLI を使用すると、すべての管理コマンドを実行できるため、高度なタスクや、CLI の使用に慣れている場合に適しています。  SSH を使用して CLI に接続できます。 
+---
+= CLIからCloud Volumes ONTAPを管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP CLI を使用すると、すべての管理コマンドを実行できるため、高度なタスクや、CLI の使用に慣れている場合に適しています。  Secure Shell (SSH) を使用して CLI に接続できます。
+
+.開始する前に
+SSH を使用してCloud Volumes ONTAPに接続するホストには、Cloud Volumes ONTAPへのネットワーク接続が必要です。たとえば、クラウド プロバイダー ネットワーク内にあるジャンプ ホストから SSH を実行する必要がある場合があります。
+
+ifdef::aws[]
+
+
+NOTE: 複数の AZ に展開されている場合、 Cloud Volumes ONTAP HA 構成では、クラスター管理インターフェースにフローティング IP アドレスが使用されるため、外部ルーティングは利用できません。同じルーティング ドメインに属するホストから接続する必要があります。
+
+endif::aws[]
+
+.手順
+. NetAppコンソールで、クラスタ管理インターフェイスの IP アドレスを特定します。
++
+.. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+.. *システム*ページで、 Cloud Volumes ONTAPシステムを選択します。
+.. 右側のペインに表示されるクラスター管理 IP アドレスをコピーします。
+
+
+. SSH を使用して、管理者アカウントでクラスター管理インターフェイスの IP アドレスに接続します。
++
+*例*
+
++
+次の画像は PuTTY を使用した例を示しています。
+
++
+image:screenshot_cli2.gif["スクリーンショット: ポート 22 の宛先 admin@192.168.11.5 を表示します。"]
+
+. ログインプロンプトで、管理者アカウントのパスワードを入力します。
++
+*例*
+
++
+....
+Password: ********
+COT2::>
+....
+

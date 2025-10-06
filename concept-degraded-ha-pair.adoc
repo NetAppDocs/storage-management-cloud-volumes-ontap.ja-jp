@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: concept-degraded-ha-pair.html 
+keywords: storage takeover, storage giveback, degraded, degraded status, degraded state, ha pair, ha takeover, takeover, giveback 
+summary: HA ペアの一方のノードが利用できない場合、もう一方のノードがパートナーにデータを提供して、継続的なデータ サービスを提供します。これをストレージ テイクオーバーと呼びます。ストレージ内のギブバックが完了するまで、いくつかのアクションは利用できません。 
+---
+= Cloud Volumes ONTAP HAペアのノードがオフラインの場合、操作は利用できません
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+HA ペアの一方のノードが利用できない場合、もう一方のノードがパートナーにデータを提供して、継続的なデータ サービスを提供します。これは、_ストレージ テイクオーバー_ と呼ばれます。ストレージ内のギブバックが完了するまで、いくつかのアクションは利用できません。
+
+
+TIP: HA ペアのノードが使用できない場合、 NetAppコンソールのシステムの状態は「_Degraded_」になります。
+
+ストレージのテイクオーバーでは、次のアクションは使用できません。
+
+* サポート登録
+* ライセンスの変更
+* インスタンスまたはVMタイプの変更
+* 書き込み速度の変化
+* CIFSのセットアップ
+* 構成バックアップの場所の変更
+* クラスターパスワードの設定
+* ディスクとアグリゲートの管理（高度な割り当て）
+
+
+ストレージのギブバックが完了し、システムの状態が正常に戻った後、これらのアクションは再び利用可能になります。

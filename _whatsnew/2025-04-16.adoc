@@ -1,0 +1,15 @@
+= Azure でサポートされる新しいリージョン
+:allow-uri-read: 
+
+
+
+
+=== Azure でサポートされる新しいリージョン
+
+次のリージョンの Azure の単一および複数のアベイラビリティーゾーンにCloud Volumes ONTAP 9.12.1 GA 以降をデプロイできるようになりました。これには、単一ノードと高可用性 (HA) の両方の展開のサポートが含まれます。
+
+* スペイン中部
+* メキシコ中央
+
+
+すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。

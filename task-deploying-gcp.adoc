@@ -1,0 +1,514 @@
+---
+sidebar: sidebar 
+permalink: task-deploying-gcp.html 
+keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create,  license key, serial number, location, license, preconfigured packages, programmatic deployments, disk size, write speed, access control, volume protection, usage profile, register, CIFS share, quota, qtree, HA, high-availability, google cloud ha, ha in google cloud, ha pair, cloud backup, cloud tiering 
+summary: Cloud Volumes ONTAPは、単一システム構成または Google Cloud Platform の HA ペアとして起動できます。 
+---
+= Google Cloud でCloud Volumes ONTAPを起動する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPは、単一ノード構成または Google Cloud の HA ペアとして起動できます。
+
+
+
+== 開始する前に
+
+始める前に以下のものが必要です。
+
+[[licensing]]
+* 稼働中のコンソール エージェント。
++
+** あなたは https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["システムに関連付けられたコンソールエージェント"^]。
+** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^] 。
+** コンソールエージェントに関連付けられたサービスアカウント https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["必要な権限を持っている必要があります"^]
+
+
+* 使用する構成を理解すること。
++
+構成を選択し、管理者から Google Cloud ネットワーク情報を取得して準備しておく必要があります。詳細については、link:task-planning-your-config-gcp.html["Cloud Volumes ONTAP構成の計画"] 。
+
+* Cloud Volumes ONTAPのライセンスを設定するために必要なことを理解していること。
++
+link:task-set-up-licensing-google.html["ライセンスの設定方法を学ぶ"] 。
+
+* Google Cloud APIは https://cloud.google.com/apis/docs/getting-started#enabling_apis["プロジェクトで有効化"^]:
++
+** クラウド デプロイメント マネージャー V2 API
+** クラウドロギングAPI
+** クラウド リソース マネージャー API
+** コンピューティングエンジン API
+** アイデンティティとアクセス管理 (IAM) API
+
+
+
+
+
+
+== Google Cloud でシングルノード システムを起動する
+
+NetAppコンソールでシステムを作成し、Google Cloud でCloud Volumes ONTAP を起動します。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
+. *場所を選択*: *Google Cloud* と * Cloud Volumes ONTAP* を選択します。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["コンソールエージェントを作成する"^] 。
+. *詳細と認証情報*: プロジェクトを選択し、クラスター名を指定し、オプションでサービス アカウントを選択し、オプションでラベルを追加して、認証情報を指定します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Google Cloud VM インスタンスの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
+
+
+| サービスアカウント名 | 使用予定の場合link:concept-data-tiering.html["データ階層化"]または https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリ"^]Cloud Volumes ONTAPを使用する場合は、*サービス アカウント* を有効にし、事前定義されたストレージ管理者ロールを持つサービス アカウントを選択する必要があります。link:task-creating-gcp-service-account.html["サービスアカウントの作成方法を学ぶ"^] 。 
+
+
+| ラベルを追加する | ラベルは、Google Cloud リソースのメタデータです。コンソールは、Cloud Volumes ONTAPシステムと、システムに関連付けられた Google Cloud リソースにラベルを追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのラベルを追加でき、作成後にさらにラベルを追加できます。システムを作成するときに、API ではラベルが 4 つに制限されないことに注意してください。ラベルの詳細については、 https://cloud.google.com/compute/docs/labeling-resources["Google Cloud ドキュメント: ラベル付けリソース"^] 。 
+
+
+| ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
+
+
+| プロジェクトを編集  a| 
+Cloud Volumes ONTAPを配置するプロジェクトを選択します。デフォルトのプロジェクトは、コンソールがあるプロジェクトです。
+
+ドロップダウン リストに追加のプロジェクトが表示されない場合は、サービス アカウントが他のプロジェクトにまだ関連付けられていません。Google Cloud コンソールに移動し、IAM サービスを開いて、プロジェクトを選択します。コンソールに使用するロールを持つサービス アカウントをそのプロジェクトに追加します。プロジェクトごとにこの手順を繰り返す必要があります。
+
+
+NOTE: これはコンソール用に設定したサービスアカウントです。link:https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["このページに記載されている通り"^] 。
+
+選択した資格情報をサブスクリプションに関連付けるには、「*サブスクリプションの追加*」をクリックします。
+
+従量課金制のCloud Volumes ONTAPシステムを作成するには、Google Cloud マーケットプレイスからCloud Volumes ONTAPのサブスクリプションに関連付けられている Google Cloud プロジェクトを選択する必要があります。参照 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-gcp-accounts.html["マーケットプレイスのサブスクリプションを Google Cloud 認証情報に関連付ける"^]。
+
+|===
+. *サービス*: このシステムで使用するサービスを選択します。バックアップとリカバリを選択するか、 NetApp Cloud Tiering を使用するには、手順 3 でサービス アカウントを指定する必要があります。
++
+
+TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+
+. *場所と接続*: 場所を選択し、ファイアウォール ポリシーを選択して、データ階層化のための Google Cloud ストレージへのネットワーク接続を確認します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| 接続検証 | コールド データを Google Cloud Storage バケットに階層化するには、 Cloud Volumes ONTAP が存在するサブネットをプライベート Google アクセス用に構成する必要があります。手順については、 https://cloud.google.com/vpc/docs/configure-private-google-access["Google Cloud ドキュメント: プライベート Google アクセスの設定"^] 。 
+
+
+| 生成されたファイアウォールポリシー  a| 
+コンソールでファイアウォール ポリシーを生成させる場合は、トラフィックを許可する方法を選択する必要があります。
+
+** *選択した VPC のみ* を選択した場合、受信トラフィックのソース フィルターは、選択した VPC のサブネット範囲と、コンソール エージェントが存在する VPC のサブネット範囲になります。これは推奨されるオプションです。
+** *すべての VPC* を選択した場合、受信トラフィックのソース フィルターは 0.0.0.0/0 IP 範囲になります。
+
+
+
+
+| 既存のファイアウォールポリシーを使用する | 既存のファイアウォール ポリシーを使用する場合は、必要なルールが含まれていることを確認してください。link:reference-networking-gcp.html#firewall-rules["Cloud Volumes ONTAPのファイアウォールルールについて学ぶ"] 
+|===
+. *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイトのアカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"^]
+** link:task-set-up-licensing-google.html["ライセンスの設定方法を学ぶ"^]
+
+
+. *事前構成済みパッケージ*: パッケージの 1 つを選択してCloud Volumes ONTAPシステムをすばやく展開するか、*独自の構成を作成*をクリックします。
++
+いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認し、承認するだけです。
+
+. *ライセンス*: 必要に応じてCloud Volumes ONTAP のバージョンを変更し、マシンタイプを選択します。
++
+
+NOTE: 選択したバージョンに対して新しいリリース候補、一般提供、またはパッチ リリースが利用可能な場合、コンソールは作成時にシステムをそのバージョンに更新します。たとえば、 Cloud Volumes ONTAP 9.13.1 を選択し、9.13.1 P4 が利用可能な場合は更新が行われます。更新は、あるリリースから別のリリース (たとえば、9.13 から 9.14) には行われません。
+
+. *基盤となるストレージ リソース*: 初期アグリゲートの設定 (ディスク タイプと各ディスクのサイズ) を選択します。
++
+ディスク タイプは初期ボリューム用です。後続のボリュームには異なるディスク タイプを選択できます。
+
++
+ディスク サイズは、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのすべてのディスクに適用されます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
+
++
+ディスクの種類とサイズの選択については、以下を参照してください。link:task-planning-your-config-gcp.html#size-your-system-in-gcp["Google Cloud でシステムのサイズを決定する"^] 。
+
+. *フラッシュキャッシュ、書き込み速度、WORM*:
++
+.. 必要に応じて、*フラッシュ キャッシュ* を有効にします。
++
+
+NOTE: Cloud Volumes ONTAP 9.13.1 以降、_Flash Cache_ は n2-standard-16、n2-standard-32、n2-standard-48、および n2-standard-64 インスタンス タイプでサポートされます。デプロイメント後に Flash Cache を無効にすることはできません。
+
+.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度について詳しくはこちら"] 。
+
++
+
+NOTE: 「高」書き込み速度オプションを選択すると、高速書き込み速度と、8,896 バイトの最大転送単位 (MTU) をさらに高めることができます。さらに、MTU が 8,896 と高いため、デプロイメントには VPC-1、VPC-2、VPC-3 を選択する必要があります。  VPC-1、VPC-2、VPC-3の詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-gcp.html#requirements-for-the-connector["VPC-1、VPC-2、VPC-3のルール"^] 。
+
+.. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
++
+Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
+.. WORM ストレージを有効にする場合は、保持期間を選択します。
+
+
+. *Google Cloud Platform でのデータ階層化*: 初期アグリゲートでデータ階層化を有効にするかどうかを選択し、階層化データのストレージ クラスを選択してから、定義済みのストレージ管理者ロールを持つサービス アカウントを選択するか ( Cloud Volumes ONTAP 9.7 以降に必要)、Google Cloud アカウントを選択します ( Cloud Volumes ONTAP 9.6 に必要)。
++
+次の点に注意してください。
+
++
+** コンソールは、Cloud Volumes ONTAPインスタンスにサービス アカウントを設定します。このサービス アカウントは、Google Cloud Storage バケットへのデータ階層化の権限を付与します。コンソール エージェント サービス アカウントを階層化サービス アカウントのユーザーとして必ず追加してください。そうしないと、コンソールから選択できません。
+** Google Cloud アカウントの追加に関するヘルプについては、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-gcp-accounts.html["9.6 でデータ階層化を行うための Google Cloud アカウントの設定と追加"^] 。
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データ階層化を無効にした場合、後続の集計で有効にすることはできますが、システムをオフにして、Google Cloud コンソールからサービス アカウントを追加する必要があります。
++
+link:concept-data-tiering.html["データ階層化の詳細"^] 。
+
+
+
+. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
++
+link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
+
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シン プロビジョニングを有効にするかどうかによって大きく異なります。シン プロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きなボリュームを作成できます。 
+
+
+| アクセス制御（NFSのみ） | エクスポート ポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、コンソールはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー/グループ（CIFSのみ） | これらのフィールドを使用すると、ユーザーとグループの共有へのアクセス レベル (アクセス制御リストまたは ACL とも呼ばれます) を制御できます。ローカルまたはドメインの Windows ユーザーまたはグループ、あるいは UNIX ユーザーまたはグループを指定できます。ドメイン Windows ユーザー名を指定する場合は、domain\username の形式を使用してユーザーのドメインを含める必要があります。 
+
+
+| スナップショットポリシー | スナップショット コピー ポリシーは、自動的に作成されるNetAppスナップショット コピーの頻度と数を指定します。NetAppスナップショット コピーは、パフォーマンスに影響を与えず、最小限のストレージしか必要としない、ポイントインタイム ファイル システム イメージです。デフォルトのポリシーを選択するか、ポリシーなしを選択できます。一時データの場合は none を選択できます (例: Microsoft SQL Server の場合は tempdb)。 
+
+
+| 詳細オプション（NFSのみ） | ボリュームの NFS バージョン (NFSv3 または NFSv4) を選択します。 
+
+
+| イニシエーター グループと IQN (iSCSI のみ) | iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼ばれ、標準のブロック デバイスとしてホストに提供されます。イニシエーター グループは、iSCSI ホスト ノード名のテーブルであり、どのイニシエーターがどの LUN にアクセスできるかを制御します。iSCSI ターゲットは、標準の Ethernet ネットワーク アダプター (NIC)、ソフトウェア イニシエーターを備えた TCP オフロード エンジン (TOE) カード、統合ネットワーク アダプター (CNA)、または専用ホスト バス アダプター (HBA) を介してネットワークに接続し、iSCSI 修飾名 (IQN) によって識別されます。 iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になるので、管理は不要です。ボリュームを作成したら、link:task-connect-lun.html["IQNを使用してホストからLUNに接続します"] 。 
+|===
++
+次の画像は、ボリューム作成ウィザードの最初のページを示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAPインスタンス用に入力されたボリューム ページを表示します。"]
+
+. *CIFS セットアップ*: CIFS プロトコルを選択した場合は、CIFS サーバーをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNSプライマリおよびセカンダリIPアドレス | CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。  Google マネージド Active Directory を構成している場合、デフォルトでは 169.254.169.254 IP アドレスを使用して AD にアクセスできます。 
+
+
+| 参加するActive Directoryドメイン | CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。 
+
+
+| ドメインへの参加を許可された資格情報 | AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS server NetBIOS name | AD ドメイン内で一意の CIFS サーバー名。 
+
+
+| 組織単位 | CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。  Google Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=Computers,OU=Cloud* と入力します。https://cloud.google.com/managed-microsoft-ad/docs/manage-active-directory-objects#organizational_units["Google Cloud ドキュメント: Google Managed Microsoft AD の組織単位"^] 
+
+
+| DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。詳細については、 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+|===
+. *使用プロファイル、ディスク タイプ、階層化ポリシー*: 必要に応じて、ストレージ効率機能を有効にするかどうか、およびボリューム階層化ポリシーを変更するかどうかを選択します。
++
+詳細については、link:task-planning-your-config-gcp.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^] 、link:concept-data-tiering.html["データ階層化の概要"^] 、 そして https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]
+
+. *確認と承認*: 選択内容を確認して確定します。
++
+.. 構成の詳細を確認します。
+.. *詳細情報* をクリックすると、サポートと、コンソールで購入する Google Cloud リソースの詳細を確認できます。
+.. *理解しました...* チェックボックスを選択します。
+.. [Go] をクリックします。
+
+
+
+
+.結果
+コンソールはCloud Volumes ONTAPシステムを展開します。  *監査*ページで進捗状況を追跡できます。
+
+Cloud Volumes ONTAPシステムのデプロイ中に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+
+さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
+
+.終了後の操作
+* CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。
+* ボリュームにクォータを適用する場合は、 ONTAP System Manager またはONTAP CLI を使用します。
++
+クォータを使用すると、ユーザー、グループ、または qtree が使用するディスク領域とファイル数を制限したり追跡したりできます。
+
+
+
+
+
+== Google Cloud で HA ペアを起動する
+
+コンソールでシステムを作成し、Google Cloud でCloud Volumes ONTAP を起動します。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム* ページで、*ストレージ > システム* をクリックし、指示に従います。
+. *場所を選択*: *Google Cloud* と * Cloud Volumes ONTAP HA* を選択します。
+. *詳細と認証情報*: プロジェクトを選択し、クラスター名を指定し、オプションでサービス アカウントを選択し、オプションでラベルを追加して、認証情報を指定します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Google Cloud VM インスタンスの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
+
+
+| サービスアカウント名 | ご利用予定の場合はlink:concept-data-tiering.html["NetAppクラウド階層化"]または https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["バックアップとリカバリ"^]サービスでは、*サービス アカウント* スイッチを有効にして、定義済みのストレージ管理者ロールを持つサービス アカウントを選択する必要があります。 
+
+
+| ラベルを追加する | ラベルは、Google Cloud リソースのメタデータです。コンソールは、Cloud Volumes ONTAPシステムと、システムに関連付けられた Google Cloud リソースにラベルを追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのラベルを追加でき、作成後にさらにラベルを追加できます。システムを作成するときに、API ではラベルが 4 つに制限されないことに注意してください。ラベルの詳細については、 https://cloud.google.com/compute/docs/labeling-resources["Google Cloud ドキュメント: ラベル付けリソース"^] 。 
+
+
+| ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
+
+
+| プロジェクトを編集  a| 
+Cloud Volumes ONTAPを配置するプロジェクトを選択します。デフォルトのプロジェクトは、コンソールのプロジェクトです。
+
+ドロップダウン リストに追加のプロジェクトが表示されない場合は、サービス アカウントが他のプロジェクトにまだ関連付けられていません。Google Cloud コンソールに移動し、IAM サービスを開いて、プロジェクトを選択します。コンソールに使用するロールを持つサービス アカウントをそのプロジェクトに追加します。プロジェクトごとにこの手順を繰り返す必要があります。
+
+
+NOTE: これはコンソール用に設定したサービスアカウントです。link:https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["このページに記載されている通り"^] 。
+
+選択した資格情報をサブスクリプションに関連付けるには、「*サブスクリプションの追加*」をクリックします。
+
+従量課金制の Cloud Volumes ONTAPシステムを作成するには、Google Cloud Marketplace からCloud Volumes ONTAPのサブスクリプションに関連付けられている Google Cloud プロジェクトを選択する必要があります。参照 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-gcp-accounts.html["マーケットプレイスのサブスクリプションを Google Cloud 認証情報に関連付ける"^]。
+
+|===
+. *サービス*: このシステムで使用するサービスを選択します。バックアップとリカバリを選択するか、 NetApp Cloud Tiering を使用するには、手順 3 でサービス アカウントを指定する必要があります。
++
+
+TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+
+. *HA 展開モデル*: HA 構成に複数のゾーン (推奨) または単一のゾーンを選択します。次に、リージョンとゾーンを選択します。
++
+link:concept-ha-google-cloud.html["HA展開モデルの詳細"^] 。
+
+. *接続*: HA 構成に 4 つの異なる VPC、各 VPC 内のサブネットを選択し、ファイアウォール ポリシーを選択します。
++
+link:reference-networking-gcp.html["ネットワーク要件の詳細"^] 。
+
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| 生成されたポリシー  a| 
+コンソールでファイアウォール ポリシーを生成させる場合は、トラフィックを許可する方法を選択する必要があります。
+
+** *選択した VPC のみ* を選択した場合、受信トラフィックのソース フィルターは、選択した VPC のサブネット範囲と、コンソール エージェントが存在する VPC のサブネット範囲になります。これは推奨されるオプションです。
+** *すべての VPC* を選択した場合、受信トラフィックのソース フィルターは 0.0.0.0/0 IP 範囲になります。
+
+
+
+
+| 既存のものを使用する | 既存のファイアウォール ポリシーを使用する場合は、必要なルールが含まれていることを確認してください。link:reference-networking-gcp.html#firewall-rules["Cloud Volumes ONTAPのファイアウォールルールについて学ぶ"^] 。 
+|===
+. *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイト アカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"^] 。
+** link:task-set-up-licensing-google.html["ライセンスの設定方法を学ぶ"^] 。
+
+
+. *事前構成済みパッケージ*: パッケージの 1 つを選択してCloud Volumes ONTAPシステムをすばやく展開するか、*独自の構成を作成*をクリックします。
++
+いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認し、承認するだけです。
+
+. *ライセンス*: 必要に応じてCloud Volumes ONTAP のバージョンを変更し、マシンタイプを選択します。
++
+
+NOTE: 選択したバージョンに対して新しいリリース候補、一般提供、またはパッチ リリースが利用可能な場合、コンソールは作成時にシステムをそのバージョンに更新します。たとえば、 Cloud Volumes ONTAP 9.13.1 を選択し、9.13.1 P4 が利用可能な場合は更新が行われます。更新は、あるリリースから別のリリース (たとえば、9.13 から 9.14) には行われません。
+
+. *基盤となるストレージ リソース*: 初期アグリゲートの設定 (ディスク タイプと各ディスクのサイズ) を選択します。
++
+ディスク タイプは初期ボリューム用です。後続のボリュームには異なるディスク タイプを選択できます。
+
++
+ディスク サイズは、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのすべてのディスクに適用されます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
+
++
+ディスクの種類とサイズの選択については、以下を参照してください。link:task-planning-your-config-gcp.html#size-your-system-in-gcp["Google Cloud でシステムのサイズを決定する"^] 。
+
+. *フラッシュキャッシュ、書き込み速度、WORM*:
++
+.. 必要に応じて、*フラッシュ キャッシュ* を有効にします。
++
+
+NOTE: Cloud Volumes ONTAP 9.13.1 以降、_Flash Cache_ は n2-standard-16、n2-standard-32、n2-standard-48、および n2-standard-64 インスタンス タイプでサポートされます。デプロイメント後に Flash Cache を無効にすることはできません。
+
+.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度について詳しくはこちら"^] 。
+
++
+
+NOTE: n2-standard-16、n2-standard-32、n2-standard-48、n2-standard-64 インスタンス タイプの *高* 書き込み速度オプションでは、高速書き込み速度と 8,896 バイトの最大転送単位 (MTU) のより高い速度を利用できます。さらに、MTU が 8,896 と高いため、デプロイメントには VPC-1、VPC-2、VPC-3 を選択する必要があります。高速書き込み速度と 8,896 の MTU は機能に依存しており、構成されたインスタンス内で個別に無効にすることはできません。  VPC-1、VPC-2、VPC-3の詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-gcp.html#requirements-for-the-connector["VPC-1、VPC-2、VPC-3のルール"^] 。
+
+.. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
++
+Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
+.. WORM ストレージを有効にする場合は、保持期間を選択します。
+
+
+. *Google Cloud でのデータ階層化*: 初期集約でデータ階層化を有効にするかどうかを選択し、階層化されたデータのストレージ クラスを選択してから、事前定義されたストレージ管理者のロールを持つサービス アカウントを選択します。
++
+次の点に注意してください。
+
++
+** コンソールは、Cloud Volumes ONTAPインスタンスにサービス アカウントを設定します。このサービス アカウントは、Google Cloud Storage バケットへのデータ階層化の権限を付与します。コンソール エージェント サービス アカウントを階層化サービス アカウントのユーザーとして必ず追加してください。そうしないと、コンソールから選択できません。
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データ階層化を無効にした場合、後続の集計で有効にすることはできますが、システムをオフにして、Google Cloud コンソールからサービス アカウントを追加する必要があります。
++
+link:concept-data-tiering.html["データ階層化の詳細"^] 。
+
+
+
+. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
++
+link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
+
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シン プロビジョニングを有効にするかどうかによって大きく異なります。シン プロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きなボリュームを作成できます。 
+
+
+| アクセス制御（NFSのみ） | エクスポート ポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、コンソールはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー/グループ（CIFSのみ） | これらのフィールドを使用すると、ユーザーとグループの共有へのアクセス レベル (アクセス制御リストまたは ACL とも呼ばれます) を制御できます。ローカルまたはドメインの Windows ユーザーまたはグループ、あるいは UNIX ユーザーまたはグループを指定できます。ドメイン Windows ユーザー名を指定する場合は、domain\username の形式を使用してユーザーのドメインを含める必要があります。 
+
+
+| スナップショットポリシー | スナップショット コピー ポリシーは、自動的に作成されるNetAppスナップショット コピーの頻度と数を指定します。NetAppスナップショット コピーは、パフォーマンスに影響を与えず、最小限のストレージしか必要としない、ポイントインタイム ファイル システム イメージです。デフォルトのポリシーを選択するか、ポリシーなしを選択できます。一時データの場合は none を選択できます (例: Microsoft SQL Server の場合は tempdb)。 
+
+
+| 詳細オプション（NFSのみ） | ボリュームの NFS バージョン (NFSv3 または NFSv4) を選択します。 
+
+
+| イニシエーター グループと IQN (iSCSI のみ) | iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼ばれ、標準のブロック デバイスとしてホストに提供されます。イニシエーター グループは、iSCSI ホスト ノード名のテーブルであり、どのイニシエーターがどの LUN にアクセスできるかを制御します。iSCSI ターゲットは、標準の Ethernet ネットワーク アダプター (NIC)、ソフトウェア イニシエーターを備えた TCP オフロード エンジン (TOE) カード、統合ネットワーク アダプター (CNA)、または専用ホスト バス アダプター (HBA) を介してネットワークに接続し、iSCSI 修飾名 (IQN) によって識別されます。 iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になるので、管理は不要です。ボリュームを作成したら、link:task-connect-lun.html["IQNを使用してホストからLUNに接続します"] 。 
+|===
++
+次の画像は、ボリューム作成ウィザードの最初のページを示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAPインスタンス用に入力されたボリューム ページを表示します。"]
+
+. *CIFS セットアップ*: CIFS プロトコルを選択した場合は、CIFS サーバーをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNSプライマリおよびセカンダリIPアドレス | CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。  Google マネージド Active Directory を構成している場合、デフォルトでは 169.254.169.254 IP アドレスを使用して AD にアクセスできます。 
+
+
+| 参加するActive Directoryドメイン | CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。 
+
+
+| ドメインへの参加を許可された資格情報 | AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS server NetBIOS name | AD ドメイン内で一意の CIFS サーバー名。 
+
+
+| 組織単位 | CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。  Google Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=Computers,OU=Cloud* と入力します。https://cloud.google.com/managed-microsoft-ad/docs/manage-active-directory-objects#organizational_units["Google Cloud ドキュメント: Google Managed Microsoft AD の組織単位"^] 
+
+
+| DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+|===
+. *使用プロファイル、ディスク タイプ、階層化ポリシー*: 必要に応じて、ストレージ効率機能を有効にするかどうか、およびボリューム階層化ポリシーを変更するかどうかを選択します。
++
+詳細については、link:task-planning-your-config-gcp.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^] 、link:concept-data-tiering.html["データ階層化の概要"^] 、 そして https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]
+
+. *確認と承認*: 選択内容を確認して確定します。
++
+.. 構成の詳細を確認します。
+.. *詳細情報* をクリックすると、サポートと、コンソールで購入する Google Cloud リソースの詳細を確認できます。
+.. *理解しました...* チェックボックスを選択します。
+.. [Go] をクリックします。
+
+
+
+
+.結果
+コンソールはCloud Volumes ONTAPシステムを展開します。  *監査*ページで進捗状況を追跡できます。
+
+Cloud Volumes ONTAPシステムのデプロイ中に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+
+さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
+
+.終了後の操作
+* CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。
+* ボリュームにクォータを適用する場合は、 ONTAP System Manager またはONTAP CLI を使用します。
++
+クォータを使用すると、ユーザー、グループ、または qtree が使用するディスク領域とファイル数を制限したり追跡したりできます。
+
+

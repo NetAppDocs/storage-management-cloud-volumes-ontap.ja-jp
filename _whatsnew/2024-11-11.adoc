@@ -1,0 +1,53 @@
+= ノードベースライセンスの提供終了
+:allow-uri-read: 
+
+
+
+
+=== ノードベースライセンスの提供終了
+
+NetApp は、Cloud Volumes ONTAPノードベース ライセンスの提供終了 (EOA) とサポート終了 (EOS) を計画しています。 2024 年 11 月 11 日をもって、ノードベースのライセンスの限定提供は終了しました。ノードベースのライセンスのサポートは、2024 年 12 月 31 日に終了します。ノードベースのライセンスの EOA 後は、 BlueXPライセンス変換ツールを使用して容量ベースのライセンスに移行する必要があります。
+
+年間契約または長期契約の場合、 NetApp、EOA 日付またはライセンス有効期限の前にNetApp の担当者に連絡して、移行の前提条件が満たされていることを確認することをお勧めします。 Cloud Volumes ONTAPノードの長期契約がなく、オンデマンドの従量課金制 (PAYGO) サブスクリプションに対してシステムを実行している場合は、EOS 日付の前に変換を計画することが重要です。長期契約と PAYGO サブスクリプションの両方において、 BlueXPライセンス変換ツールを使用してシームレスな変換を行うことができます。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^] https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-convert-node-capacity.html["Cloud Volumes ONTAPノードベースのライセンスを容量ベースのライセンスに変換する"^]
+
+
+
+=== BlueXPからのノードベースのデプロイメントの削除
+
+ノードベースのライセンスを使用してCloud Volumes ONTAPシステムを展開するオプションは、 BlueXPでは非推奨です。いくつかの特殊なケースを除き、どのクラウド プロバイダーでも、Cloud Volumes ONTAPデプロイメントにノードベースのライセンスを使用することはできません。
+
+NetApp は、契約上の義務と運用上のニーズに準拠する次の固有のライセンス要件を認識しており、これらの状況でノードベースのライセンスを引き続きサポートします。
+
+* 米国公共部門の顧客
+* プライベートモードでのデプロイメント
+* AWS におけるCloud Volumes ONTAPの中国リージョン展開
+* 有効で期限切れでないノードごとのライセンス（BYOLライセンス）をお持ちの場合
+
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
+
+
+
+=== Azure Blob ストレージ上のCloud Volumes ONTAPデータ用のコールド層の追加
+
+BlueXPでは、Azure Blob ストレージに非アクティブな容量層データを保存するためにコールド層を選択できるようになりました。既存のホット層とクール層にコールド層を追加すると、より手頃なストレージ オプションが提供され、コスト効率が向上します。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html#data-tiering-in-azure["Azure のデータ階層化"^]
+
+
+
+=== Azure のストレージ アカウントへのパブリック アクセスを制限するオプション
+
+Azure のCloud Volumes ONTAPシステムのストレージ アカウントへのパブリック アクセスを制限するオプションが追加されました。アクセスを無効にすると、組織のセキュリティ ポリシーに準拠する必要がある場合でも、同じ VNet 内であってもプライベート IP アドレスが公開されることを防ぐことができます。このオプションは、 Cloud Volumes ONTAPシステムのデータ階層化も無効にし、単一ノードと高可用性ペアの両方に適用できます。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["セキュリティグループルール"^] 。
+
+
+
+=== Cloud Volumes ONTAP導入後の WORM 有効化
+
+BlueXPを使用して、既存のCloud Volumes ONTAPシステムで、Write Once、Read Many (WORM) ストレージをアクティブ化できるようになりました。この機能により、作成時に WORM が有効になっていなかった場合でも、作業環境で WORM を有効にする柔軟性が得られます。一度有効にすると、WORM を無効にすることはできません。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-worm.html#enabling-worm-on-a-cloud-volumes-ontap-working-environment["Cloud Volumes ONTAP作業環境で WORM を有効にする"^]

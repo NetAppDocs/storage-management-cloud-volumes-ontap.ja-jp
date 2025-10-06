@@ -1,0 +1,45 @@
+---
+sidebar: sidebar 
+permalink: concept-active-iq.html 
+keywords: autosupport, digital advisor, active iq digital advisor, telemetry 
+summary: ONTAPのAutoSupportコンポーネントは、計測データを収集して分析用に送信します。Digital Advisorは、AutoSupportから送信されたデータを分析し、プロアクティブなサポートと最適化を提供します。Digital Advisorは人工知能を使用して潜在的な問題を特定し、業務に影響が及ぶ前に解決できるように支援します。 
+---
+= Cloud Volumes ONTAPでAutoSupportとDigital Advisor がどのように使用されるかを学びます
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ONTAPのAutoSupportコンポーネントは、計測データを収集して分析用に送信します。Active IQ Digital Advisor ( Digital Advisorとも呼ばれます) は、 AutoSupportからのデータを分析し、プロアクティブなケアと最適化を提供します。Digital Advisorは人工知能を使用して潜在的な問題を特定し、業務に影響が及ぶ前に解決できるように支援します。
+
+Digital Advisorはクラウドベースのポータルとモバイル アプリで構成されます。実用的な予測分析とプロアクティブなサポートを提供することで、グローバル ハイブリッド クラウド全体でのデータ インフラの最適化を実現します。NetAppと有効なSupportEdge契約を締結しているお客様であれば、Digital Advisorからデータ主体の分析情報と推奨事項を受け取ることができます（機能は製品およびサポート レベルによって異なります）。
+
+以下は、Digital Advisorで実行できる機能の一例です。
+
+* アップグレードを計画する。
++
+Digital Advisorは新しいバージョンのONTAPにアップグレードすることで解決できる環境内の問題を特定し、Upgrade Advisorがアップグレードの計画を支援します。
+
+* システムの健全性を表示する。
++
+Digital Advisorダッシュボードに健全性に関する問題が報告され、問題の解決方法が提示されます。ストレージ スペースが不足しないようにシステム容量を監視できます。システムのサポート ケースが表示されます。
+
+* パフォーマンスを管理する。
++
+Digital Advisor は、 ONTAP System Manager で確認できるよりも長い期間にわたるシステム パフォーマンスを表示します。パフォーマンスに影響を与えている構成やシステムの問題を特定できます。効率を最大化する。ストレージ効率の指標を確認し、より多くのデータをより少ないスペースに格納する方法を特定できます。
+
+* インベントリと構成を表示する。
++
+Digital Advisorでは、すべてのインベントリおよびソフトウェアとハードウェアの構成情報が表示されます。サービス契約の期限を確認し、サポートが中断されないようサービス契約を更新してください。
+
+
+
+.関連リンク
+* https://docs.netapp.com/us-en/active-iq/["NetAppドキュメント: Digital Advisor"^]
+* https://aiq.netapp.com/custom-dashboard/search["Digital Advisorのリリース"^]
+* https://www.netapp.com/us/services/support-edge.aspx["SupportEdgeサービス"^]
+

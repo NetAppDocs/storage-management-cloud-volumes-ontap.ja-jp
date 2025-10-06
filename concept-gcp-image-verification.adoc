@@ -1,0 +1,20 @@
+---
+sidebar: sidebar 
+permalink: concept-gcp-image-verification.html 
+keywords: Google Cloud, image, VHD, image signature file, 
+summary: Google Cloud イメージファイルの署名ファイルを検証します。 
+---
+= Cloud Volumes ONTAPで Google Cloud イメージを検証する方法を学びます
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Google Cloud イメージ検証は、強化されたNetAppセキュリティ要件に準拠しています。イメージを生成するスクリプトに変更が加えられ、このタスク専用に生成された秘密鍵を使用して、途中でイメージに署名するようになりました。  Google Cloud イメージの整合性は、Google Cloud の署名済みダイジェストと公開証明書を使用して検証できます。これらの証明書は、以下からダウンロードできます。 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab["NSS"^]特定のリリース用。
+
+
+NOTE: Google Cloud イメージ検証は、Cloud Volumes ONTAPソフトウェア バージョン 9.13.0 以降でサポートされています。

@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: task-getting-started-aws.html 
+keywords: amazon web services, aws, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, vpc, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, get started, network, vpn, multi-cloud, tier, storage tier, data tier, vpc endpoint, endpoint, S3, subscribe, subscribing, marketplace, granting, permissions, policy, iam policy, ec2 console, ami, mediator, connectivity, internet, outbound, endpoint, connection, networks, replicating, ec2 service, policies, attach, iam user, access key, secret key, keys, sign up, cloud manager, cloud volumes ontap, cloud ontap, create, console 
+summary: 数ステップでCloud Volumes ONTAP for AWS を使い始めましょう。 
+---
+= AWS でのCloud Volumes ONTAPのクイックスタート
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+数ステップで AWS のCloud Volumes ONTAPを使い始めましょう。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]コンソールエージェントを作成する
+[role="quick-margin-para"]
+もしあなたが https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェント"^]まだ作成する必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["AWS でコンソールエージェントを作成する方法を学ぶ"^] 。
+
+[role="quick-margin-para"]
+インターネット アクセスが利用できないサブネットにCloud Volumes ONTAPを展開する場合は、コンソール エージェントを手動でインストールし、そのコンソール エージェントで実行されているNetAppコンソール ユーザー インターフェイスにアクセスする必要があることに注意してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネットにアクセスできない場所にコンソールエージェントを手動でインストールする方法を学びます"^] 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]構成を計画する
+[role="quick-margin-para"]
+コンソールでは、ワークロード要件に一致する事前構成済みのパッケージが提供されており、独自の構成を作成することもできます。独自の構成を選択する場合は、利用可能なオプションを理解する必要があります。link:task-planning-your-config.html["詳細情報"] 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]ネットワークを設定する
+[role="quick-margin-list"]
+. VPC とサブネットがコンソール エージェントとCloud Volumes ONTAP間の接続をサポートしていることを確認します。
+. NetApp AutoSupportのターゲット VPC からのアウトバウンド インターネット アクセスを有効にします。
++
+インターネットにアクセスできない場所にCloud Volumes ONTAPを展開する場合、この手順は必要ありません。
+
+. S3 サービスへの VPC エンドポイントを設定します。
++
+Cloud Volumes ONTAPから低コストのオブジェクト ストレージにコールド データを階層化する場合は、VPC エンドポイントが必要です。
+
+
+
+[role="quick-margin-para"]
+link:reference-networking-aws.html["ネットワーク要件の詳細"] 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]AWS KMSを設定する
+[role="quick-margin-para"]
+Cloud Volumes ONTAPで Amazon 暗号化を使用する場合は、アクティブなカスタマーマスターキー (CMK) が存在することを確認する必要があります。また、コンソールエージェントに権限を提供する IAM ロールを _キーユーザー_ として追加して、各 CMK のキーポリシーを変更する必要があります。link:task-setting-up-kms.html["詳細情報"] 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]コンソールを使用してCloud Volumes ONTAPを起動する
+[role="quick-margin-para"]
+*システムの追加*をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を完了します。link:task-deploying-otc-aws.html["ステップバイステップの説明を読む"] 。
+
+.関連リンク
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html["AWS のコンソールエージェントを作成する"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-marketplace.html["AWS Marketplaceからコンソールエージェントを作成する"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["オンプレミスでコンソールエージェントをインストールしてセットアップする"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html["コンソールエージェントのAWS権限"^]
+

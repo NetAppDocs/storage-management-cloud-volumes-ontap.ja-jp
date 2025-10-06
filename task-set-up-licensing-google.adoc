@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: task-set-up-licensing-google.html 
+keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, digital wallet 
+summary: Cloud Volumes ONTAPに使用するライセンス オプションを決定したら、新しいシステムを展開するときにそのライセンス オプションを選択する前に、いくつかの手順を実行する必要があります。 
+---
+= Google Cloud でCloud Volumes ONTAPのライセンスを設定する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPで使用するライセンス オプションを決定したら、新しいシステムを作成するときにそのライセンス オプションを選択する前に、いくつかの手順を実行する必要があります。
+
+
+
+== フリーミアム
+
+最大 500 GiB のプロビジョニング容量でCloud Volumes ONTAP を無料で使用するには、Freemium オファリングを選択してください。link:concept-licensing.html#packages["フリーミアムプランの詳細"] 。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム* ページで、*システムの追加* をクリックし、 NetAppコンソールの手順に従います。
++
+.. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、指示に従ってGoogle Cloud Marketplaceの従量課金制オファーに登録します。
++
+プロビジョニングされた容量が500GiBを超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。その時点で、システムは自動的にlink:concept-licensing.html#packages["エッセンシャルパッケージ"]。
+
+.. コンソールに戻ったら、課金方法のページにアクセスして「*Freemium*」を選択します。
++
+image:screenshot-freemium.png["Cloud Volumes ONTAPシステムを作成する際の Freemium オプションのスクリーンショット。"]
+
+
+
+
+
+link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
+
+
+
+== 容量ベースのライセンス
+
+容量ベースのライセンスでは、容量 1 TiB ごとにCloud Volumes ONTAPの料金を支払うことができます。容量ベースのライセンスは、Essentials パッケージまたは Professional パッケージというパッケージ形式で提供されます。
+
+Essentials および Professional パッケージは、次の消費モデルで利用できます。
+
+* NetAppから購入したライセンス（BYOL）
+* Google Cloud Marketplace からの時間単位の従量課金制（PAYGO）サブスクリプション
+* 年間契約
+
+
+link:concept-licensing.html#capacity-based-licensing["容量ベースのライセンスについて詳しく見る"] 。
+
+次のセクションでは、それぞれの消費モデルを開始する方法について説明します。
+
+
+
+=== BYOL
+
+NetAppからライセンス (BYOL) を購入して前払いすることで、任意のクラウド プロバイダーにCloud Volumes ONTAPシステムを導入できます。
+
+
+NOTE: はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。
+
+.手順
+. https://bluexp.netapp.com/contact-cds["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
+. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをNetAppコンソールに追加します"^]
++
+コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがなければ、コンソールはライセンスを追加します。
+
++
+Cloud Volumes ONTAPでライセンスを使用するには、コンソールからライセンスを利用できる必要があります。必要であれば、link:task-manage-capacity-licenses.html#add-purchased-licenses-to-your-account["コンソールにライセンスを手動で追加する"] 。
+
+. *システム*ページで*システムの追加*をクリックし、手順に従います。
++
+.. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、指示に従ってGoogle Cloud Marketplaceの従量課金制オファーに登録します。
++
+NetAppから購入したライセンスに対しては常に最初に課金されますが、ライセンス容量を超えた場合、またはライセンスの有効期限が切れた場合は、マーケットプレイスの時間単位料金で課金されます。
+
+.. コンソールに戻ったら、課金方法ページにアクセスして容量ベースのパッケージを選択します。
++
+image:screenshot-professional.png["Cloud Volumes ONTAPシステムを作成する際の Professional オプションのスクリーンショット。"]
+
+
+
+
+
+link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
+
+
+
+=== PAYGOサブスクリプション
+
+クラウド プロバイダーのマーケットプレイスからのオファーをサブスクライブして、時間単位で支払います。
+
+Cloud Volumes ONTAPシステムを作成すると、コンソールに、Google Cloud Marketplace で利用可能な契約に加入するように求めるメッセージが表示されます。そのサブスクリプションは課金システムに関連付けられます。同じサブスクリプションを追加のシステムにも使用できます。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで*システムの追加*をクリックし、手順に従います。
++
+.. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、指示に従ってGoogle Cloud Marketplaceの従量課金制オファーに登録します。
+.. コンソールに戻ったら、課金方法ページにアクセスして容量ベースのパッケージを選択します。
++
+image:screenshot-professional.png["Cloud Volumes ONTAPシステムを作成する際の Professional オプションのスクリーンショット。"]
+
+
+
+
+
+link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
+
+
+TIP: アカウントに関連付けられている Google Cloud Marketplace サブスクリプションは、[設定] > [認証情報] ページから管理できます。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-gcp-accounts.html["Google Cloud の認証情報とサブスクリプションを管理する方法を学びます"^]
+
+
+
+=== 年間契約
+
+年間契約を購入して、 Cloud Volumes ONTAP の料金を毎年支払います。
+
+.手順
+. 年間契約を購入するには、 NetApp の営業担当者にお問い合わせください。
++
+この契約は、Google Cloud Marketplace でプライベート オファーとして入手できます。
+
++
+NetApp がプライベート オファーを共有した後、システム作成中に Google Cloud Marketplace からサブスクライブするときに年間プランを選択できます。
+
+. *システム*ページで*システムの追加*をクリックし、手順に従います。
++
+.. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、指示に従ってGoogle Cloud Marketplaceで年間プランを登録します。
+.. Google Cloud で、アカウントと共有された年間プランを選択し、[登録] をクリックします。
+.. コンソールに戻ったら、課金方法ページにアクセスして容量ベースのパッケージを選択します。
++
+image:screenshot-professional.png["Cloud Volumes ONTAPシステムを作成する際の Professional オプションのスクリーンショット。"]
+
+
+
+
+
+link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
+
+
+
+== Keystoneサブスクリプション
+
+Keystoneサブスクリプションは、成長に応じて支払うサブスクリプション ベースのサービスです。link:concept-licensing.html#keystone-subscription["NetApp Keystoneサブスクリプションの詳細"] 。
+
+.手順
+. まだ購読していない場合は、 https://www.netapp.com/forms/keystone-sales-contact/["ネットアップに連絡"^]
+. mailto:ng-keystone-success@netapp.com[ NetAppに問い合わせ] して、コンソール ユーザー アカウントに 1 つ以上のKeystoneサブスクリプションを承認します。
+. NetAppがアカウントを承認すると、link:task-manage-keystone.html#link-a-subscription["Cloud Volumes ONTAPで使用するためにサブスクリプションをリンクします"] 。
+. *システム*ページで*システムの追加*をクリックし、手順に従います。
++
+.. 課金方法を選択するように求められたら、 Keystoneサブスクリプションの課金方法を選択します。
++
+image:screenshot-keystone.png["Cloud Volumes ONTAPシステムを作成する際のKeystoneサブスクリプション オプションのスクリーンショット。"]
+
+
+
+
+
+link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。

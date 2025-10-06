@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: task-accelerate-data-access.html 
+keywords: flexcache, flexcache volumes, create a flexcache volume, provision flexcache, create flexcache volume 
+summary: FlexCacheボリュームは、元のボリュームまたはソース ボリュームからの NFS 読み取りデータをキャッシュするストレージ ボリュームです。キャッシュされたデータへの後続の読み取りにより、そのデータへのアクセスが高速化されます。 
+---
+= Cloud Volumes ONTAPシステム上のFlexCacheボリュームを使用してデータ アクセスを高速化します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+FlexCacheボリュームは、元のボリューム (またはソース ボリューム) からの SMB および NFS 読み取りデータをキャッシュするストレージ ボリュームです。キャッシュされたデータへの後続の読み取りにより、そのデータへのアクセスが高速化されます。
+
+FlexCacheボリュームを使用すると、データへのアクセスを高速化したり、頻繁にアクセスされるボリュームのトラフィックをオフロードしたりできます。FlexCacheボリュームを使用すると、元のボリュームにアクセスせずに直接データを使用できるため、特にクライアントが同じデータに繰り返しアクセスする場合に読み取りパフォーマンスが向上します。  FlexCacheボリュームは、読み取り集中型のシステム ワークロードに適しています。
+
+NetAppコンソールはFlexCacheボリュームの管理をlink:https://docs.netapp.com/us-en/bluexp-volume-caching/index.html["NetAppボリューム キャッシング"^]。
+
+ONTAP CLI またはONTAP System Manager を使用してFlexCacheボリュームを作成および管理することもできます。
+
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-fc-mgmt/home.html["FlexCacheボリュームによるデータアクセス高速化のパワーガイド"^]
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.onc-sm-help-960/GUID-07F4C213-076D-4FE8-A8E3-410F49498D49.html["System ManagerでFlexCacheボリュームを作成する"^]
+
+
+video::PBNPVRUeT1o[youtube,width=848,height=480]
+
+
+== オリジンが暗号化されている場合にFlexCacheを使用する
+
+元のボリュームが暗号化されているCloud Volumes ONTAPシステムでFlexCache を構成する場合は、 FlexCacheボリュームが暗号化されたデータに適切にアクセスしてキャッシュできるようにするために、追加の手順が必要です。
+
+.開始する前に
+. *暗号化の設定*: ソース ボリュームが完全に暗号化され、動作可能であることを確認します。  Cloud Volumes ONTAPシステムの場合、これにはクラウド固有のキー管理サービスとの統合が含まれます。
+
+
+ifdef::aws[]
+
+AWS の場合、これは通常、AWS Key Management Service (KMS) を使用することを意味します。詳細については、link:task-aws-key-management.html["AWS Key Management Service でキーを管理する"] 。
+
+endif::aws[]
+
+ifdef::azure[]
+
+Azure の場合、 NetApp Volume Encryption (NVE) 用に Azure Key Vault を設定する必要があります。詳細については、link:task-azure-key-vault.html["Azure Key Vault でキーを管理する"] 。
+
+endif::azure[]
+
+ifdef::gcp[]
+
+Google Cloud の場合は、Google Cloud Key Management Service です。詳細については、link:task-google-key-manager.html["Google の Cloud Key Management Service で鍵を管理する"] 。
+
+endif::gcp[]
+
+. *キー管理サービス*: FlexCacheボリュームを作成する前に、 Cloud Volumes ONTAPシステムでキー管理サービスが正しく設定されていることを確認します。この構成は、 FlexCacheボリュームが元のボリュームからのデータを復号化するために不可欠です。
+. *ライセンス*: 有効なFlexCacheライセンスがCloud Volumes ONTAPシステムで使用可能であり、アクティブ化されていることを確認します。
+. * ONTAPバージョン*: Cloud Volumes ONTAPシステムのONTAPバージョンが、暗号化されたボリュームを持つFlexCacheをサポートしていることを確認します。最新の https://docs.netapp.com/us-en/ontap/release-notes/index.html["ONTAPリリース ノート"^]詳細については、または互換性マトリックスを参照してください。
+. *ネットワーク構成*: ネットワーク構成によって、元のボリュームとFlexCacheボリューム間のシームレスな通信が可能であることを確認します。これには、クラウド環境での適切なルーティングと DNS 解決が含まれます。
+
+
+.手順
+暗号化されたソース ボリュームを使用して、 Cloud Volumes ONTAPシステムにFlexCacheボリュームを作成します。詳細な手順と追加の考慮事項については、次のセクションを参照してください。
+
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-fc-mgmt/home.html["FlexCacheボリュームによるデータアクセス高速化のパワーガイド"^]
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.onc-sm-help-960/GUID-07F4C213-076D-4FE8-A8E3-410F49498D49.html["System ManagerでFlexCacheボリュームを作成する"^]
+

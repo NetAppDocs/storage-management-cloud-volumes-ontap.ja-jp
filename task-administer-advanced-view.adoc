@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: task-administer-advanced-view.html 
+keywords: system manager, advanced view, access system manager, load system manager, use system manager, cloud tiering 
+summary: Cloud Volumes ONTAPの高度な管理を実行する必要がある場合は、 ONTAPシステムに付属の管理インターフェイスであるONTAP System Manager を使用して実行できます。高度な管理を行うためにコンソールを離れる必要がないように、システム マネージャ インターフェイスをコンソール内に直接組み込んでいます。 
+---
+= System Manager を使用してCloud Volumes ONTAPを管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPの高度なストレージ管理機能は、 ONTAPシステムに付属の管理インターフェースであるONTAP System Managerを通じて利用できます。SystemNetAppコンソールから直接 System Manager にアクセスできます。
+
+
+
+== 機能
+
+コンソールのONTAP System Manager を使用して、さまざまなストレージ管理機能を実行できます。以下に、それらの機能の一部を示しますが、網羅的なものではありません。
+
+* 高度なストレージ管理: 整合性グループ、共有、qtree、クォータ、およびストレージ VM を管理します。
+* ボリューム移動: link:task-manage-volumes.html#move-a-volume["ボリュームを別のアグリゲートに移動します。"]
+* ネットワーク管理: IPspace、ネットワーク インターフェイス、ポートセット、イーサネット ポートを管理します。
+* FlexGroupボリュームの管理： FlexGroupボリュームの作成と管理は、System Managerからのみ行えます。BlueXPコンソールはFlexGroupボリュームの作成をサポートしていません。
+* イベントとジョブ: イベント ログ、システム アラート、ジョブ、監査ログを表示します。
+* 高度なデータ保護: ストレージ VM、LUN、整合性グループを保護します。
+* ホスト管理: SAN イニシエーター グループと NFS クライアントを設定します。
+* S3 オブジェクト ストレージ管理: Cloud Volumes ONTAPの S3 ストレージ管理機能は、System Manager でのみ使用でき、コンソールでは使用できません。
+
+
+
+
+== サポートされている構成
+
+* ONTAP System Manager による高度なストレージ管理は、標準クラウド リージョンのCloud Volumes ONTAP 9.10.0 以降で利用できます。
+* System Manager の統合は、GovCloud リージョンまたはアウトバウンド インターネット アクセスがないリージョンではサポートされません。
+
+
+
+
+== 制限事項
+
+System Manager インターフェースに表示されるいくつかの機能は、Cloud Volumes ONTAPではサポートされていません。
+
+* NetAppクラウド ティアリング: Cloud Volumes ONTAP はクラウド ティアリングをサポートしていません。ボリュームを作成するときは、標準ビューから直接オブジェクト ストレージへのデータの階層化を設定する必要があります。
+* 階層：System Managerではアグリゲート管理（ローカル階層とクラウド階層を含む）はサポートされていません。集計は標準ビューから直接管理する必要があります。
+* ファームウェアのアップグレード: Cloud Volumes ONTAP は、システム マネージャの *クラスタ > 設定* ページからの自動ファームウェア更新をサポートしていません。
+* ロールベースのアクセス制御: System Manager からのロールベースのアクセス制御はサポートされていません。
+* SMB継続的可用性（CA）： Cloud Volumes ONTAPはサポートしていません https://kb.netapp.com/on-prem/ontap/da/NAS/NAS-KBs/What_are_SMB_Continuous_Availability_CA_Shares["継続的に利用可能なSMB共有"^]中断のない運用を実現します。
+
+
+
+
+== システムマネージャにアクセスするための認証を構成する
+
+管理者は、コンソールからONTAP System Manager にアクセスするユーザの認証をアクティブ化できます。 ONTAPユーザー ロールに基づいて適切なアクセス権限のレベルを決定し、必要に応じて認証を有効または無効にすることができます。認証を有効にすると、コンソールは認証情報を内部に保存しないため、ユーザーはコンソールから System Manager にアクセスするたび、またはページが再ロードされるたびにONTAPユーザー認証情報を入力する必要があります。認証を無効にすると、ユーザーは管理者の資格情報を使用して System Manager にアクセスできるようになります。
+
+
+NOTE: この設定は、 Cloud Volumes ONTAPシステムに関係なく、組織またはアカウント内のONTAPユーザーの各コンソール エージェントに適用されます。
+
+.必要な権限
+Cloud Volumes ONTAPユーザー認証のコンソールエージェント設定を変更するには、組織またはアカウントの管理者権限が割り当てられている必要があります。
+
+.手順
+. 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。
+. クリックimage:icon-action.png[""]必要なコンソール エージェントのアイコンをクリックし、*コンソール エージェントの編集*を選択します。
+. *ユーザー資格情報の強制*の下で、*有効化/無効化*チェックボックスを選択します。デフォルトでは、認証は無効になっています。
++
+
+NOTE: この値を *有効* に設定すると、認証がリセットされ、この変更に対応するために既存のワークフローを変更する必要があります。
+
+. *保存*をクリックします。
+
+
+
+
+== システムマネージャーを使い始める
+
+Cloud Volumes ONTAPシステムからONTAP System Manager にアクセスできます。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで、必要なCloud Volumes ONTAPシステムをダブルクリックします。
+. *システム マネージャー*をクリックします。
++
+image:screenshot_advanced_view.png["システム マネージャー ボタンが表示されたスクリーンショット。"]
+
+. プロンプトが表示されたら、 ONTAPユーザーの認証情報を入力し、[*ログイン*] をクリックします。
+. 確認メッセージが表示された場合は、内容を確認して「*閉じる*」をクリックします。
+
+
+System Manager を使用して、 Cloud Volumes ONTAPシステムを管理します。  *戻る*をクリックするとコンソールに戻ることができます。
+
+
+
+== システムマネージャの使用に関するヘルプ
+
+Cloud Volumes ONTAPでSystem Managerを使用する際にヘルプが必要な場合は、 https://docs.netapp.com/us-en/ontap/index.html["ONTAPのドキュメント"^]ステップバイステップの手順についてはこちらをご覧ください。役立つ可能性のあるONTAPドキュメントのリンクをいくつか示します。
+
+* https://docs.netapp.com/us-en/ontap/ontap-security-hardening/roles-applications-authentication.html["ONTAPのロール、アプリケーション、認証"^]
+* https://docs.netapp.com/us-en/ontap/system-admin/access-cluster-system-manager-browser-task.html["System Managerを使用したクラスタへのアクセス"^] 。
+* https://docs.netapp.com/us-en/ontap/volume-admin-overview-concept.html["ボリュームとLUNの管理"^]
+* https://docs.netapp.com/us-en/ontap/network-manage-overview-concept.html["ネットワーク管理"^]
+* https://docs.netapp.com/us-en/ontap/concept_dp_overview.html["データ保護"^]
+* https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/create-continuously-available-shares-task.html["継続的可用性を備えたSMB共有の作成"^]
+

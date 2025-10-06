@@ -1,0 +1,294 @@
+---
+sidebar: sidebar 
+permalink: reference-default-configs.html 
+keywords: svm, LIF, LIFs, configuration backups, attributes, autosize, security style, space guarantee, unix permissions, NTFS, UNIX, boot, root, disks, aggr0, aggr1, svm, svms, storage virtual machine, LIF failover, failover, attributes, volume attributes, boot disk, root disk, licenses, feature licenses, default licenses, ontap licenses, ontap features 
+summary: Cloud Volumes ONTAPがデフォルトでどのように構成されているかを理解しておくと、システムのセットアップと管理に役立ちます。特に、 Cloud Volumes ONTAPのデフォルトのセットアップはONTAPとは異なるため、 ONTAPに精通している場合は役立ちます。 
+---
+= Cloud Volumes ONTAPでサポートされているデフォルト構成
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPがデフォルトでどのように構成されているかを理解しておくと、システムのセットアップと管理に役立ちます。特に、 Cloud Volumes ONTAPのデフォルトのセットアップはONTAPとは異なるため、 ONTAPに精通している場合は役立ちます。
+
+
+
+== デフォルト設定
+
+* NetAppコンソールは、Cloud Volumes ONTAPを展開するときに、1 つのデータ提供ストレージ VM を作成します。一部の構成では追加のストレージ VM がサポートされます。link:task-managing-svms.html["ストレージVMの管理について詳しくはこちら"] 。
++
+3.9.5 リリース以降、初期ストレージ VM で論理スペース レポートが有効になります。スペースが論理的に報告される場合、 ONTAP は、ストレージ効率機能によって節約されたすべての物理スペースも使用済みとして報告されるようにボリューム スペースを報告します。インラインストレージ効率化機能の詳細については、ナレッジベースの記事を参照してください。 https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]
+
+* コンソールは、Cloud Volumes ONTAPに次のONTAP機能ライセンスを自動的にインストールします。
++
+** CIFS
+** FlexCache
+** FlexClone
+** iSCSI
+** Cloud Volumes ONTAP 9.12.1 GA から開始されるマルチテナント暗号化キー管理 (MTEKM)
+** NetAppボリューム暗号化 (BYOL (ライセンス持ち込み) または登録済みの従量課金制 (PAYGO) システムのみ)
+** NFS ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[]
+** SnapMirror
+** SnapRestore
+** SnapVault
+
+
+* デフォルトでは、いくつかのネットワーク インターフェイスが作成されます。
++
+** クラスタ管理LIF
+** クラスタ間LIF
+
+
+
+
+ifdef::azure[]
+
+* Azure の HA システム上の SVM 管理 LIF
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Google Cloud の HA システム上の SVM 管理 LIF
+
+
+endif::gcp[]
+
+ifdef::aws[]
+
+* AWS の単一ノードシステム上の SVM 管理 LIF
+
+
+endif::aws[]
+
+* ノード管理LIF
+
+
+ifdef::gcp[]
+
++ Google Cloud では、この LIF はクラスタ間 LIF と組み合わされます。
+
+endif::gcp[]
+
+* iSCSIデータLIF
+* CIFSおよびNFSデータLIF
++
+
+NOTE: クラウド プロバイダーの要件により、 Cloud Volumes ONTAPでは LIF フェイルオーバーはデフォルトで無効になっています。  LIF を別のポートに移行すると、インスタンス上の IP アドレスとネットワーク インターフェイス間の外部マッピングが壊れ、LIF にアクセスできなくなります。
+
++
+** Cloud Volumes ONTAP は、 HTTP を使用して構成バックアップをコンソール エージェントに送信します。
++
+バックアップは \http://ipaddress/occm/offboxconfig/ からアクセスできます。ここで、_ipaddress_ はコンソール エージェントのホストの IP アドレスです。
+
++
+バックアップを使用して、 Cloud Volumes ONTAPシステムを再構成できます。設定バックアップの詳細については、 https://docs.netapp.com/us-en/ontap/system-admin/config-backup-file-concept.html["ONTAPのドキュメント"^] 。
+
+** コンソールは、他の管理ツール (たとえば、 ONTAP System Manager やONTAP CLI) とは異なる方法でいくつかのボリューム属性を設定します。
++
+次の表は、デフォルトとは異なる設定のボリューム属性を示しています。
+
++
+[cols="15,85"]
+|===
+| 属性 | コンソールが設定する値 
+
+
+| オートサイズ モード | 育つ 
+
+
+| 最大オートサイズ  a| 
+1,000パーセント
+
+
+NOTE: 組織またはアカウント管理者は、[設定] ページからこの値を変更できます。
+
+
+
+| セキュリティ形式 | CIFSボリュームの場合はNTFS、NFSボリュームの場合はUNIX 
+
+
+| スペース ギャランティ形式 | なし 
+
+
+| UNIX 権限 (NFS のみ) | 777 
+|===
++
+これらの属性の詳細については、link:https://docs.netapp.com/us-en/ontap-cli-9121/volume-create.html["ONTAP _volume create_ マニュアルページ"] 。
+
+
+
+
+
+
+
+== システムデータ用の内部ディスク
+
+コンソールは、ユーザー データ用のストレージに加えて、システム データ用のクラウド ストレージも購入します。
+
+ifdef::aws[]
+
+
+
+=== AWS
+
+* ブート、ルート、コア データ用にノードごとに 3 つのディスク:
++
+** ブートデータ用の47 GiB io1ディスク
+** ルートデータ用の140 GiB gp3ディスク
+** コアデータ用の540 GiB gp2ディスク
+
+
+* HA ペアの場合:
++
+** メディエーターインスタンス用の st1 EBS ボリューム 2 つ (ルートディスクとして約 8 GiB のボリューム 1 つとデータディスクとして 4 GiB のボリューム 1 つ)
+** 各ノードに140 GiBのgp3ディスクを1つずつ用意し、他のノードのルートデータのコピーを保存します。
++
+
+NOTE: 一部のゾーンでは、使用可能な EBS ディスク タイプは gp2 のみです。
+
+
+
+* ブートディスクとルートディスクごとに 1 つの EBS スナップショット
++
+
+NOTE: スナップショットは再起動時に自動的に作成されます。
+
+* Key Management Service (KMS) を使用して AWS でデータ暗号化を有効にすると、 Cloud Volumes ONTAPのブートディスクとルートディスクも暗号化されます。これには、HA ペアのメディエーター インスタンスのブート ディスクが含まれます。ディスクは、Cloud Volumes ONTAPシステムを追加するときに選択した CMK を使用して暗号化されます。
+
+
+
+TIP: AWS では、 NVRAMはブートディスク上にあります。
+
+endif::aws[]
+
+ifdef::azure[]
+
+
+
+=== Azure (単一ノード)
+
+* 3 つのプレミアム SSD ディスク:
++
+** ブートデータ用の10 GiBディスク1台
+** ルートデータ用の140 GiBディスク1台
+** NVRAM用の512 GiBディスク1台
++
+Cloud Volumes ONTAP用に選択した仮想マシンが Ultra SSD をサポートしている場合、システムは Premium SSD ではなく、 NVRAMに 32 GiB Ultra SSD を使用します。
+
+
+
+* コアを節約するための 1024 GiB 標準 HDD ディスク 1 台
+* ブート ディスクとルート ディスクごとに 1 つの Azure スナップショット
+* Azure のすべてのディスクは、デフォルトで保存時に暗号化されます。
++
+Cloud Volumes ONTAP用に選択した仮想マシンがデータ ディスクとして Premium SSD v2 マネージド ディスクをサポートしている場合、システムはNVRAM用に 32 GiB の Premium SSD v2 マネージド ディスクを使用し、ルート ディスクとしてもう 1 つを使用します。
+
+
+
+
+
+=== Azure（HAペア）
+
+.ページブロブとHAペア
+* ブートボリューム用の 10 GiB プレミアム SSD ディスク 2 台 (ノードごとに 1 台)
+* ルート ボリューム用の 140 GiB の Premium Storage ページ BLOB が 2 つ (ノードごとに 1 つ)
+* コア保存用の 1024 GiB 標準 HDD ディスク 2 台 (ノードごとに 1 台)
+* NVRAM用の 512 GiB プレミアム SSD ディスク 2 台 (ノードごとに 1 台)
+* ブート ディスクとルート ディスクごとに 1 つの Azure スナップショット
++
+
+NOTE: スナップショットは再起動時に自動的に作成されます。
+
+* Azure のすべてのディスクは、デフォルトで保存時に暗号化されます。
+
+
+.複数のアベイラビリティゾーンにある共有マネージドディスクを備えた HA ペア
+* ブートボリューム用の 10 GiB プレミアム SSD ディスク 2 台 (ノードごとに 1 台)
+* ルートボリューム用の 512 GiB プレミアム SSD ディスク 2 台 (ノードごとに 1 台)
+* コア保存用の 1024 GiB 標準 HDD ディスク 2 台 (ノードごとに 1 台)
+* NVRAM用の 512 GiB プレミアム SSD ディスク 2 台 (ノードごとに 1 台)
+* ブート ディスクとルート ディスクごとに 1 つの Azure スナップショット
++
+
+NOTE: スナップショットは再起動時に自動的に作成されます。
+
+* Azure のすべてのディスクは、デフォルトで保存時に暗号化されます。
+
+
+.単一のアベイラビリティゾーン内の共有マネージドディスクを使用した HA ペア
+* ブートボリューム用の 10 GiB プレミアム SSD ディスク 2 台 (ノードごとに 1 台)
+* ルート ボリューム用の 512 GiB プレミアム SSD 共有マネージド ディスク 2 つ (ノードごとに 1 つ)
+* コア保存用の 1024 GiB 標準 HDD ディスク 2 台 (ノードごとに 1 台)
+* NVRAM用の 512 GiB プレミアム SSD マネージド ディスク 2 台 (ノードごとに 1 台)
+
+
+仮想マシンがデータ ディスクとして Premium SSD v2 マネージド ディスクをサポートしている場合、 NVRAMには 32 GiB の Premium SSD v2 マネージド ディスクが使用され、ルート ボリュームには 512 GiB の Premium SSD v2 共有マネージド ディスクが使用されます。
+
+次の条件が満たされている場合は、単一の可用性ゾーンに HA ペアをデプロイし、Premium SSD v2 マネージド ディスクを使用できます。
+
+* Cloud Volumes ONTAPのバージョンは 9.15.1 以降です。
+* 選択したリージョンとゾーンは、Premium SSD v2 マネージド ディスクをサポートしています。サポートされている地域については、以下を参照してください。 https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/["Microsoft Azure Web サイト: 地域別に利用可能な製品"^] 。
+* サブスクリプションはMicrosoftに登録されていますlink:task-saz-feature.html["Microsoft.Compute/VMOrchestratorZonalMultiFD 機能"]。
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+
+
+=== Google Cloud（単一ノード）
+
+* ブートデータ用の 10 GiB SSD 永続ディスク 1 台
+* ルートデータ用の 64 GiB SSD 永続ディスク 1 台
+* NVRAM用の 500 GiB SSD 永続ディスク 1 台
+* コア保存用の 315 GiB 標準永続ディスク 1 台
+* ブートおよびルートデータのスナップショット
++
+
+NOTE: スナップショットは再起動時に自動的に作成されます。
+
+* ブート ディスクとルート ディスクはデフォルトで暗号化されます。
+
+
+
+
+=== Google Cloud（HAペア）
+
+* ブートデータ用の 10 GiB SSD 永続ディスク 2 台
+* ルートデータ用の 64 GiB SSD 永続ディスク 4 台
+* NVRAM用の 500 GiB SSD 永続ディスク 2 台
+* コア保存用の 315 GiB 標準永続ディスク 2 台
+* メディエーターデータ用の 10 GiB 標準永続ディスク 1 台
+* メディエーターブートデータ用の 10 GiB 標準永続ディスク 1 台
+* ブートおよびルートデータのスナップショット
++
+
+NOTE: スナップショットは再起動時に自動的に作成されます。
+
+* ブート ディスクとルート ディスクはデフォルトで暗号化されます。
+
+
+endif::gcp[]
+
+
+
+=== ディスクが存在する場所
+
+ストレージレイアウト:
+
+* ブート データは、インスタンスまたは仮想マシンに接続されたディスク上に存在します。
++
+ブート イメージを含むこのディスクは、 Cloud Volumes ONTAPでは使用できません。
+
+* システム構成とログを含むルート データは aggr0 にあります。
+* ストレージ仮想マシン (SVM) のルート ボリュームは aggr1 にあります。
+* データ ボリュームも aggr1 に存在します。
+

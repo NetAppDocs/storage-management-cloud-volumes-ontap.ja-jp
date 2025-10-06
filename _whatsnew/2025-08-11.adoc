@@ -1,0 +1,15 @@
+= 最適化ライセンスの提供終了
+:allow-uri-read: 
+
+
+
+
+=== 最適化ライセンスの提供終了
+
+2025 年 8 月 11 日以降、 Cloud Volumes ONTAP Optimized ライセンスは廃止され、Azure および Google Cloud マーケットプレイスの従量課金制 (PAYGO) サブスクリプションで購入または更新できなくなります。Optimized ライセンスの年間契約を既に締結している場合は、契約終了までライセンスを引き続きご利用いただけます。Optimized ライセンスの有効期限が切れると、 BlueXPでCloud Volumes ONTAP Essentials または Professional ライセンスを選択できます。
+
+ただし、最適化されたライセンスを追加または更新する機能は、API を通じて利用できるようになります。
+
+ライセンスパッケージの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAPのライセンス"^] 。
+
+別の充電方法への切り替えについては、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html["容量ベースのライセンスを管理する"^] 。

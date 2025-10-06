@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: task-protecting-ransomware.html 
+keywords: snapshot policy, ransomware, protection, fpolicy, block, extension, attacks, arp, autonomous, monitor, alert, attacks, Cloud Volumes ONTAP 
+summary: ランサムウェア攻撃は、企業の時間、リソース、評判を犠牲にする可能性があります。コンソールを使用すると、可視性、検出、修復のための効果的なツールを提供する、ランサムウェアに対するNetAppソリューションを実装できます。 
+---
+= Cloud Volumes ONTAPでNetAppランサムウェア保護ソリューションを有効にする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ランサムウェア攻撃は、企業の時間、リソース、評判に損害を与える可能性があります。 NetAppコンソールを使用すると、一般的なランサムウェア ファイル拡張子からの保護と自律ランサムウェア保護 (ARP) という 2 つのランサムウェア対策NetAppソリューションを実装できます。これらのソリューションは、可視性、検出、修復のための効果的なツールを提供します。
+
+
+
+== 一般的なランサムウェアのファイル拡張子からの保護
+
+コンソールで利用可能なランサムウェア保護設定を使用すると、 ONTAP FPolicy 機能を利用して、一般的なランサムウェアのファイル拡張子タイプから保護することができます。
+
+.手順
+. *システム*ページで、ランサムウェア保護を使用するように構成したCloud Volumes ONTAPシステムの名前をダブルクリックします。
+. [概要] タブで [機能] パネルをクリックし、[ランサムウェア保護] の横にある鉛筆アイコンをクリックします。
++
+image::screenshot_features_support_registration_2.png[システムを表示するときに、概要ページの右上にある機能パネルの下にあるランサムウェア保護設定を示すスクリーンショット。]
+
+. ランサムウェアに対するNetAppソリューションを実装します。
++
+.. スナップショット ポリシーが有効になっていないボリュームがある場合は、[*スナップショット ポリシーのアクティブ化*] をクリックします。
++
+NetApp Snapshot テクノロジーは、ランサムウェア修復のための業界最高のソリューションを提供します。復旧を成功させる鍵は、感染していないバックアップから復元することです。スナップショット コピーは読み取り専用であるため、ランサムウェアによる破損を防ぎます。また、単一のファイルコピーまたは完全な災害復旧ソリューションのイメージを作成するための細分性も提供できます。
+
+.. *FPolicy のアクティブ化* をクリックして、ファイルの拡張子に基づいてファイル操作をブロックできる ONTAP の FPolicy ソリューションを有効にします。
++
+この予防ソリューションは、一般的なランサムウェア ファイルの種類をブロックすることで、ランサムウェア攻撃からの保護を強化します。
+
++
+デフォルトの FPolicy スコープは、次の拡張子を持つファイルをブロックします。
+
++
+micro、暗号化、ロック、暗号、crypt、crinf、r5a、XRNT、XTBL、R16M01D05、pzdc、良い、LOL!、OMG!、RDM、RRK、encryptedRS、crjoker、EnCiPhErEd、LeChiffre
+
++
+
+TIP: このスコープは、Cloud Volumes ONTAPで FPolicy をアクティブ化すると作成されます。リストは、一般的なランサムウェアのファイルタイプに基づいています。  Cloud Volumes ONTAP CLI の _vserver fpolicy policy scope_ コマンドを使用して、ブロックされるファイル拡張子をカスタマイズできます。
+
++
+image:screenshot_ransomware_protection.gif["システム内から利用できるランサムウェア保護ページを示すスクリーンショット。画面には、スナップショット ポリシーのないボリュームの数と、ランサムウェア ファイル拡張子をブロックする機能が表示されます。"]
+
+
+
+
+
+
+
+== 自律型ランサムウェア対策
+
+Cloud Volumes ONTAP は、ワークロードを分析して、ランサムウェア攻撃の兆候となる可能性のある異常なアクティビティをプロアクティブに検出し、警告する Autonomous Ransomware Protection (ARP) 機能をサポートしています。
+
+提供されるファイル拡張子保護とは別に、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-protecting-ransomware.html#protection-from-common-ransomware-file-extensions["ランサムウェア保護設定"] ARP 機能はワークロード分析を使用して、検出された「異常なアクティビティ」に基づいて潜在的な攻撃をユーザーに警告します。ランサムウェア保護設定と ARP 機能の両方を組み合わせて使用することで、包括的なランサムウェア保護を実現できます。
+
+ARP 機能は、BYOL (個人ライセンス使用) およびマーケットプレイス サブスクリプションで追加料金なしでご利用いただけます。
+
+ARP 対応ボリュームには、「学習モード」または「アクティブ」という指定状態があります。
+
+ボリュームの ARP の設定は、 ONTAP System Manager およびONTAP CLI を通じて実行されます。
+
+ONTAP System ManagerおよびONTAP CLIでARPを有効にする方法の詳細については、 https://docs.netapp.com/us-en/ontap/anti-ransomware/enable-task.html["ONTAPドキュメント: 自律型ランサムウェア保護の有効化"^] 。
+
+image::screenshot_arp.png[スクリーンショットは、Autonomous Ransomware Protection のアドオン ライセンスを示しています。]

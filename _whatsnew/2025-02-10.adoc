@@ -1,0 +1,32 @@
+= BlueXPからSystem Managerにアクセスするためのユーザー認証が有効になりました
+:allow-uri-read: 
+
+
+
+
+=== BlueXPからSystem Managerにアクセスするためのユーザー認証が有効になりました
+
+BlueXP管理者は、 BlueXPからONTAP System Manager にアクセスするONTAPユーザーの認証をアクティブ化できるようになりました。 BlueXP Connector 設定を編集することで、このオプションを有効にすることができます。このオプションは標準モードとプライベートモードで使用できます。
+
+link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-administer-advanced-view.html["System Manager を使用してCloud Volumes ONTAPを管理する"^] 。
+
+
+
+=== BlueXP Advanced View が System Manager に名称変更されました
+
+ONTAP System Manager を介してBlueXPからCloud Volumes ONTAP を詳細に管理するためのオプションの名前が、*Advanced View* から *System Manager* に変更されました。
+
+link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-administer-advanced-view.html["System Manager を使用してCloud Volumes ONTAPを管理する"^] 。
+
+
+
+=== BlueXP digital walletでライセンスをより簡単に管理する方法をご紹介します
+
+BlueXP digital wallet内の改善されたナビゲーション ポイントを使用することで、 Cloud Volumes ONTAPライセンスの管理が簡素化されました。
+
+* *管理 > ライセンスとサブスクリプション > 概要/直接ライセンス* タブから、 Cloud Volumes ONTAPライセンス情報に簡単にアクセスできます。
+* 容量ベースのライセンスを包括的に理解するには、[概要] タブの Cloud Volume ONTAPパネルで [表示] をクリックします。この詳細ビューでは、ライセンスとサブスクリプションに関する詳細な情報が表示されます。
+* 以前のインターフェースを希望する場合は、[*従来のビューに切り替える*] ボタンをクリックして、ライセンスの詳細をタイプ別に表示し、ライセンスの課金方法を変更できます。
+
+
+link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html["容量ベースのライセンスを管理する"^] 。

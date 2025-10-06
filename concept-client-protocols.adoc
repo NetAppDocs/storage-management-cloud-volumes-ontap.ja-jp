@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: concept-client-protocols.html 
+keywords: client protocols, client version, smb version, nfs version, protocol versions, s3, smb, nfs, iscsi, cifs 
+summary: Cloud Volumes ONTAP は、iSCSI、NFS、SMB、NVMe-TCP、および S3 クライアント プロトコルをサポートしています。 
+---
+= Cloud Volumes ONTAPでサポートされているクライアント プロトコル
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP は、iSCSI、NFS、SMB、NVMe-TCP、および S3 クライアント プロトコルをサポートしています。
+
+
+
+== iSCSI
+
+iSCSIは、標準のイーサネット ネットワークで実行できるブロック プロトコルです。ほとんどのクライアント オペレーティング システムでは、標準のイーサネット ポート経由で実行されるソフトウェア イニシエーターが提供されます。
+
+
+
+== NFS
+
+NFSは、UNIXおよびLinuxシステム向けの従来のファイル アクセス プロトコルです。クライアントは、NFSv3、NFSv4、および NFSv4.1 プロトコルを使用してONTAPボリューム内のファイルにアクセスできます。ファイル アクセスは、UNIX形式の権限、NTFS形式の権限、またはその両方の組み合わせを使用して制御できます。
+
+クライアントは、同じファイルにNFSプロトコルとSMBプロトコルの両方を使用してアクセスできます。
+
+
+
+== SMB
+
+SMBは、Windowsシステム向けの従来のファイル アクセス プロトコルです。クライアントは、SMB 2.0、SMB 2.1、SMB 3.0、およびSMB 3.1.1の各プロトコルを使用してONTAPボリューム内のファイルにアクセスできます。NFSと同様に、複数の形式の権限の組み合わせがサポートされています。
+
+
+
+== S3
+
+Cloud Volumes ONTAP は、スケールアウト ストレージのオプションとして S3 をサポートしています。  S3 プロトコル サポートにより、ストレージ VM (SVM) 内のバケットに含まれるオブジェクトへの S3 クライアント アクセスを構成できます。
+
+link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html#how-s3-multiprotocol-works["ONTAPドキュメント: S3マルチプロトコルの仕組みを学ぶ"^] 。link:https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["ONTAPドキュメント: ONTAPでS3オブジェクトストレージサービスを設定および管理する方法を学びます"^] 。
+
+
+
+== NVMe-TCP
+
+ONTAPバージョン 9.12.1 以降では、クラウド プロバイダーで NVMe-TCP がサポートされます。  NetAppコンソールは、NVMe-TCP の管理機能を提供しません。
+
+ONTAP経由での NVMe の設定の詳細については、 https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-nvme-task.html["ONTAPドキュメント: NVMe用のストレージVMを構成する"^] 。

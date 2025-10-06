@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: concept-gcp-verify-signed-image.html 
+keywords: Google Cloud, image, disk.raw, file signature verification, encryption,ONTAP, Cloud Volumes, OpenSSL, sha256, 
+summary: Cloud Volumes ONTAPイメージ ダイジェスト ファイル ツールを使用して、エクスポートされた Google Cloud イメージ ファイルの署名を検証します。 
+---
+= Cloud Volumes ONTAPの Google Cloud イメージ署名検証
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+エクスポートされた Google Cloud 署名付きイメージを検証するには、NSS からイメージ ダイジェスト ファイルをダウンロードして、disk.raw ファイルとダイジェスト ファイルの内容を検証する必要があります。
+
+
+
+== 署名画像検証ワークフローの概要
+
+以下は、Google Cloud 署名付きイメージ検証ワークフロー プロセスの概要です。
+
+* から https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab["NSS"^]次のファイルを含む Google Cloud アーカイブをダウンロードします。
++
+** 署名付きダイジェスト（.sig）
+** 公開鍵を含む証明書（.pem）
+** 証明書チェーン (.pem)
++
+image::screenshot_cloud_volumes_ontap_tar.gz.png[スクリーンショット クラウドボリューム OnTap tar.gz]
+
+
+
+* 変換されたdisk.rawファイルをダウンロードする
+* 証明書チェーンを使用して証明書を検証する
+* 公開鍵を含む証明書を使用して署名されたダイジェストを検証する
++
+** 公開鍵を使用して署名されたダイジェストを復号化し、画像ファイルのダイジェストを抽出します。
+** ダウンロードしたdisk.rawファイルのダイジェストを作成する
+** 検証のために2つのダイジェストファイルを比較する
++
+image::graphic_azure_check_signature.png[グラフィックアズールチェック署名]
+
+
+
+

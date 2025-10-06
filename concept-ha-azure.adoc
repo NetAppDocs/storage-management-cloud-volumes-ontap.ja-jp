@@ -1,0 +1,126 @@
+---
+sidebar: sidebar 
+permalink: concept-ha-azure.html 
+keywords: high-availability, HA, concepts, understanding, overview, takeover, giveback, rpo, rto, nondisruptive, ha pairs, node, nodes, recovery point objective, recovery time objective, nas, nfs, cifs, iscsi, mpio, alua, failover, failure, azure, shared storage, active, passive, load balancer, storage accounts, page blobs 
+summary: 'Cloud Volumes ONTAP の高可用性 (HA) ペアは、クラウド環境で障害が発生した場合でも、エンタープライズの信頼性と継続的な運用を実現します。Azure では、ストレージは 2 つのノード間で共有されます。' 
+---
+= Azure のCloud Volumes ONTAP HA ペアについて学ぶ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP の高可用性 (HA) ペアは、クラウド環境で障害が発生した場合でも、エンタープライズの信頼性と継続的な運用を実現します。Azure では、ストレージは 2 つのノード間で共有されます。
+
+
+
+== HA コンポーネント
+
+
+
+=== ページ BLOB を使用した HA 単一アベイラビリティゾーン構成
+
+Azure のCloud Volumes ONTAP HA ページ BLOB 構成には、次のコンポーネントが含まれます。
+
+image:diagram_ha_azure.png["NetAppコンソールとクライアントからの着信トラフィックを管理するロード バランサ、VMSS Flex 内の 2 つのCloud Volumes ONTAPノード、ブート データ用の SSD ディスク、および顧客データ用のページ BLOB を示す概念図。"]
+
+NetAppコンソールによって展開される Azure コンポーネントについては、次の点に注意してください。
+
+Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volumes ONTAP HA ペアへの着信トラフィックを管理します。
+単一のアベイラビリティゾーン内のVM:: Cloud Volumes ONTAP 9.15.1 以降では、単一のアベイラビリティーゾーン (AZ) で異機種仮想マシン (VM) を作成および管理できます。同じ AZ 内の別々の障害ドメインに高可用性 (HA) ノードを展開して、最適な可用性を保証できます。この機能を可能にする柔軟なオーケストレーションモードの詳細については、 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/["Microsoft Azure ドキュメント: 仮想マシン スケール セット"^] 。
+ディスク:: 顧客データは Premium Storage ページ BLOB に保存されます。各ノードは他のノードのストレージにアクセスできます。追加のストレージも必要ですlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["ブート、ルート、コアデータ"^]。
+ストレージアカウント::
++
+--
+* マネージド ディスクには 1 つのストレージ アカウントが必要です。
+* ストレージ アカウントあたりのディスク容量制限に達したため、Premium Storage ページ BLOB には 1 つ以上のストレージ アカウントが必要です。
++
+https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets["Microsoft Azure ドキュメント: Azure Storage のスケーラビリティとストレージ アカウントのパフォーマンス ターゲット"^] 。
+
+* Azure Blob ストレージへのデータ階層化には 1 つのストレージ アカウントが必要です。
+* Cloud Volumes ONTAP 9.7 以降、コンソールが HA ペア用に作成するストレージ アカウントは、汎用 v2 ストレージ アカウントです。
+* Cloud Volumes ONTAPシステムを追加するときに、 Cloud Volumes ONTAP 9.7 HA ペアから Azure ストレージ アカウントへの HTTPS 接続を有効にできます。このオプションを有効にすると書き込みパフォーマンスに影響する可能性があることに注意してください。システムを作成した後は設定を変更できません。
+
+
+--
+
+
+
+NOTE: Cloud Volumes ONTAP 9.15.0P1 以降、新しい高可用性ペアの展開では Azure ページ BLOB はサポートされなくなりました。現在、既存の高可用性ペアの展開で Azure ページ BLOB を使用している場合は、Edsv4 シリーズ VM および Edsv5 シリーズ VM の新しい VM インスタンス タイプに移行できます。link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"^] 。
+
+
+
+=== 共有マネージドディスクを使用した HA 単一アベイラビリティゾーン構成
+
+共有管理ディスク上で実行されるCloud Volumes ONTAP HA 単一アベイラビリティゾーン構成には、次のコンポーネントが含まれます。
+
+image:diagram_ha_azure_saz_lrs.png["コンソールとクライアントからの着信トラフィックを管理するロードバランサー、VMSS Flex の 2 つのCloud Volumes ONTAPノード、ブート データ用の SSD ディスク、および顧客データ用の LRS 管理ディスクを示す概念図。"]
+
+コンソールによってデプロイされる Azure コンポーネントについては、次の点に注意してください。
+
+Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volumes ONTAP HA ペアへの着信トラフィックを管理します。
+単一のアベイラビリティゾーン内のVM:: Cloud Volumes ONTAP 9.15.1 以降では、単一のアベイラビリティーゾーン (AZ) で異機種仮想マシン (VM) を作成および管理できます。同じ AZ 内の別々の障害ドメインに高可用性 (HA) ノードを展開して、最適な可用性を保証できます。この機能を可能にする柔軟なオーケストレーションモードの詳細については、 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/["Microsoft Azure ドキュメント: 仮想マシン スケール セット"^] 。
++
+--
+ゾーン展開では、次の条件が満たされている場合に Premium SSD v2 マネージド ディスクが使用されます。
+
+* Cloud Volumes ONTAPのバージョンは 9.15.1 以降です。
+* 選択したリージョンとゾーンは、Premium SSD v2 マネージド ディスクをサポートしています。サポートされている地域については、以下を参照してください。 https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/["Microsoft Azure Web サイト: 地域別に利用可能な製品"^] 。
+* サブスクリプションはMicrosoftに登録されていますlink:task-saz-feature.html["Microsoft.Compute/VMOrchestratorZonalMultiFD 機能"]。
+
+
+--
+ディスク:: 顧客データは、ローカル冗長ストレージ (LRS) 管理ディスクに保存されます。各ノードは他のノードのストレージにアクセスできます。追加のストレージも必要ですlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["ブート、ルート、パートナールート、コア、 NVRAMデータ"^]。
+ストレージアカウント:: ストレージ アカウントは、診断ログと BLOB ストレージへの階層化を処理するために、マネージド ディスク ベースの展開に使用されます。
+
+
+
+
+=== HA マルチアベイラビリティゾーン構成
+
+Azure のCloud Volumes ONTAP HA 複数可用性ゾーン構成には、次のコンポーネントが含まれます。
+
+image:diagram_ha_azure_maz.png["コンソールとクライアントからの着信トラフィックを管理するロードバランサー、2 つのアベイラビリティーゾーンにある 2 つのCloud Volumes ONTAPノード、ブート データ用の SSD ディスク、および顧客データ用のマネージド ディスクを示す概念図。"]
+
+コンソールによってデプロイされる Azure コンポーネントについては、次の点に注意してください。
+
+Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volumes ONTAP HA ペアへの着信トラフィックを管理します。
+アベイラビリティ ゾーン:: HA マルチアベイラビリティゾーン構成では、2 つのCloud Volumes ONTAPノードが異なるアベイラビリティゾーンにデプロイされるデプロイメント モデルが利用され、ノードが異なる障害ドメインに配置されることで冗長性と可用性が確保されます。フレキシブルオーケストレーションモードの仮想マシンスケールセットがAzureの可用性ゾーンをどのように使用できるかについては、 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones?tabs=cli-1%2Cportal-2["Microsoft Azure ドキュメント: 可用性ゾーンを使用する仮想マシン スケール セットを作成する"^] 。
+ディスク:: 顧客データは、ゾーン冗長ストレージ (ZRS) マネージド ディスクに保存されます。各ノードは他のノードのストレージにアクセスできます。追加のストレージも必要ですlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["ブート、ルート、パートナールート、コアデータ"^]。
+ストレージアカウント:: ストレージ アカウントは、診断ログと BLOB ストレージへの階層化を処理するために、マネージド ディスク ベースの展開に使用されます。
+
+
+
+
+== RPOおよびRTO
+
+HA 構成では、次のようにデータの高可用性が維持されます。
+
+* Recovery Point Objective（RPO;目標復旧時点）は0秒です。データはトランザクションの整合性が確保されており、データ損失はありません。
+* Recovery Time Objective（RTO;目標復旧時間）は120秒です。障害が発生した場合、データは120秒以内に使用可能になります。
+
+
+
+
+== ストレージの引き継ぎと返却
+
+物理的なONTAPクラスターと同様に、Azure HA ペアのストレージはノード間で共有されます。パートナーのストレージに接続すると、_テイクオーバー_の際に各ノードが他のノードのストレージにアクセスできるようになります。ネットワーク パスのフェイルオーバー メカニズムにより、クライアントとホストは稼働しているノードと引き続き通信することが可能です。ノードがオンラインに戻ると、パートナーはストレージを返却します。
+
+NAS 構成の場合、障害が発生すると、データ IP アドレスは HA ノード間で自動的に移行されます。
+
+iSCSI の場合、 Cloud Volumes ONTAP はマルチパス I/O (MPIO) と非対称論理ユニット アクセス (ALUA) を使用して、アクティブに最適化されたパスと最適化されていないパス間のパス フェイルオーバーを管理します。
+
+
+NOTE: ALUAをサポートする特定のホスト構成については、 http://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"^]そして https://docs.netapp.com/us-en/ontap-sanhost/["SANホストとクラウドクライアントガイド"]ホスト オペレーティング システム用。
+
+ストレージのテイクオーバー、再同期、ギブバックはすべてデフォルトで自動で行われます。ユーザーの操作は必要ありません。
+
+
+
+== ストレージ構成
+
+HA ペアは、両方のノードがクライアントにデータを提供するアクティブ/アクティブ構成として使用することも、アクティブ ノードのストレージを引き継いだ場合にのみパッシブ ノードがデータ要求に応答するアクティブ/パッシブ構成として使用することもできます。

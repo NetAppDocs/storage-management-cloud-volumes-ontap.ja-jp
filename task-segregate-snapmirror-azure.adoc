@@ -1,0 +1,282 @@
+---
+sidebar: sidebar 
+permalink: task-segregate-snapmirror-azure.html 
+keywords: segregate, SnapMirror, SnapMirror traffic, SnapMirror replication, add, additional NIC, new NIC, intercluster LIF, non-routable subnet, subnet 
+summary: Azure のCloud Volumes ONTAP を使用すると、別のネットワークを使用してSnapMirrorレプリケーション トラフィックを分離し、データのセキュリティとパフォーマンスを強化できます。 
+---
+= Azure でSnapMirrorトラフィックを分離する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure のCloud Volumes ONTAPを使用すると、 SnapMirrorレプリケーション トラフィックをデータおよび管理トラフィックから分離できます。  SnapMirrorレプリケーション トラフィックをデータ トラフィックから分離するには、新しいネットワーク インターフェイス カード (NIC)、関連付けられたクラスタ間 LIF、およびルーティング不可能なサブネットを追加します。
+
+
+
+== Azure におけるSnapMirrorトラフィック分離について
+
+デフォルトでは、 NetAppコンソールは、 Cloud Volumes ONTAPデプロイメント内のすべての NIC と LIF を同じサブネット上に構成します。このような構成では、 SnapMirrorレプリケーション トラフィックとデータおよび管理トラフィックは同じサブネットを使用します。  SnapMirrorトラフィックを分離すると、データおよび管理トラフィックに使用される既存のサブネットにルーティングできない追加のサブネットが活用されます。
+
+.図1
+次の図は、単一ノード展開における追加の NIC、関連付けられたクラスタ間 LIF、およびルーティング不可能なサブネットを使用したSnapMirrorレプリケーション トラフィックの分離を示しています。  HA ペアの展開は少し異なります。
+
+image:diagram-segregate-snapmirror-traffic.png["この図は、単一ノード構成におけるSnapMirrorレプリケーショントラフィックの分離を示しています。"]
+
+.開始する前に
+次の考慮事項を確認してください。
+
+* SnapMirrorトラフィック分離のために、 Cloud Volumes ONTAP の単一ノードまたは HA ペアのデプロイメント (VM インスタンス) に追加できるのは単一の NIC のみです。
+* 新しい NIC を追加するには、デプロイする VM インスタンス タイプに未使用の NIC が必要です。
+* ソース クラスターと宛先クラスターは同じ仮想ネットワーク (VNet) にアクセスできる必要があります。宛先クラスターは、Azure のCloud Volumes ONTAPシステムです。ソース クラスターは、Azure のCloud Volumes ONTAPシステムまたはONTAPシステムになります。
+
+
+
+
+== ステップ1: 追加のNICを作成し、宛先VMに接続する
+
+このセクションでは、追加の NIC を作成し、それを宛先 VM に接続する方法について説明します。宛先 VM は、追加の NIC を設定する Azure のCloud Volumes ONTAPの単一ノードまたは HA ペア システムです。
+
+.手順
+. ONTAP CLI でノードを停止します。
++
+[source, cli]
+----
+dest::> halt -node <dest_node-vm>
+----
+. Azure ポータルで、VM (ノード) の状態が停止していることを確認します。
++
+[source, cli]
+----
+az vm get-instance-view --resource-group <dest-rg> --name <dest-vm> --query instanceView.statuses[1].displayStatus
+----
+. Azure Cloud Shell の Bash 環境を使用してノードを停止します。
++
+.. ノードを停止します。
++
+[source, cli]
+----
+az vm stop --resource-group <dest_node-rg> --name <dest_node-vm>
+----
+.. ノードの割り当てを解除します。
++
+[source, cli]
+----
+az vm deallocate --resource-group <dest_node-rg> --name <dest_node-vm>
+----
+
+
+. 2 つのサブネット (ソース クラスター サブネットと宛先クラスター サブネット) が相互にルーティングできないように、ネットワーク セキュリティ グループ ルールを構成します。
++
+.. 宛先 VM に新しい NIC を作成します。
+.. ソース クラスター サブネットのサブネット ID を検索します。
++
+[source, cli]
+----
+az network vnet subnet show -g <src_vnet-rg> -n <src_subnet> --vnet-name <vnet> --query id
+----
+.. ソース クラスターのサブネットのサブネット ID を使用して、宛先 VM に新しい NIC を作成します。ここで新しい NIC の名前を入力します。
++
+[source, cli]
+----
+az network nic create -g <dest_node-rg> -n <dest_node-vm-nic-new> --subnet <id_from_prev_command> --accelerated-networking true
+----
+.. privateIPAddressを保存します。このIPアドレス<new_added_nic_primary_addr>は、クラスタ間LIFを作成するために使用されます。<<Step 2: Create a new IPspace,ブロードキャストドメイン、新しいNICのクラスタ間LIF>> 。
+
+
+. 新しい NIC を VM に接続します。
++
+[source, cli]
+----
+az vm nic add -g <dest_node-rg> --vm-name <dest_node-vm> --nics <dest_node-vm-nic-new>
+----
+. VM (ノード) を起動します。
++
+[source, cli]
+----
+az vm start --resource-group <dest_node-rg>  --name <dest_node-vm>
+----
+. Azure ポータルで、*ネットワーク* に移動し、新しい NIC (例: nic-new) が存在し、高速ネットワークが有効になっていることを確認します。
++
+[source, cli]
+----
+az network nic list --resource-group azure-59806175-60147103-azure-rg --query "[].{NIC: name, VM: virtualMachine.id}"
+----
+
+
+HA ペアの展開の場合は、パートナー ノードに対して手順を繰り返します。
+
+
+
+== ステップ2: 新しいNIC用の新しいIPspace、ブロードキャストドメイン、およびクラスタ間LIFを作成する
+
+クラスタ間 LIF 用の個別の IPspace により、クラスタ間のレプリケーションのネットワーク機能が論理的に分離されます。
+
+次の手順ではONTAP CLI を使用します。
+
+.手順
+. 新しい IPspace (new_ipspace) を作成します。
++
+[source, cli]
+----
+dest::> network ipspace create -ipspace <new_ipspace>
+----
+. 新しい IPspace (new_ipspace) にブロードキャスト ドメインを作成し、nic-new ポートを追加します。
++
+[source, cli]
+----
+dest::> network port show
+----
+. 単一ノード システムの場合、新しく追加されたポートは _e0b_ です。管理対象ディスクを使用した HA ペアの展開の場合、新しく追加されたポートは _e0d_ です。ページ BLOB を使用した HA ペアの展開の場合、新しく追加されたポートは _e0e_ です。 VM 名ではなくノード名を使用します。ノード名を見つけるには、以下を実行します。 `node show` 。
++
+[source, cli]
+----
+dest::> broadcast-domain create -broadcast-domain <new_bd> -mtu 1500 -ipspace <new_ipspace> -ports <dest_node-cot-vm:e0b>
+----
+. 新しいブロードキャスト ドメイン (new_bd) と新しい NIC (nic-new) にクラスタ間 LIF を作成します。
++
+[source, cli]
+----
+dest::> net int create -vserver <new_ipspace> -lif <new_dest_node-ic-lif> -service-policy default-intercluster -address <new_added_nic_primary_addr> -home-port <e0b> -home-node <node> -netmask <new_netmask_ip> -broadcast-domain <new_bd>
+----
+. 新しいクラスタ間 LIF の作成を確認します。
++
+[source, cli]
+----
+dest::> net int show
+----
+
+
+HA ペアの展開の場合は、パートナー ノードに対して手順を繰り返します。
+
+
+
+== ステップ3: ソースシステムとターゲットシステム間のクラスタピアリングを確認する
+
+このセクションでは、ソース システムと宛先システム間のピアリングを確認する方法について説明します。
+
+次の手順ではONTAP CLI を使用します。
+
+.手順
+. 宛先クラスタのクラスタ間 LIF がソース クラスタのクラスタ間 LIF に ping できることを確認します。このコマンドは宛先クラスタによって実行されるため、宛先 IP アドレスはソース上のクラスタ間 LIF IP アドレスになります。
++
+[source, cli]
+----
+dest::> ping -lif <new_dest_node-ic-lif> -vserver <new_ipspace> -destination <10.161.189.6>
+----
+. ソース クラスタのクラスタ間 LIF が宛先クラスタのクラスタ間 LIF に ping できることを確認します。宛先は、宛先に作成された新しい NIC の IP アドレスです。
++
+[source, cli]
+----
+src::> ping -lif <src_node-ic-lif> -vserver <src_svm> -destination <10.161.189.18>
+----
+
+
+HA ペアの展開の場合は、パートナー ノードに対して手順を繰り返します。
+
+
+
+== ステップ4: ソースシステムと宛先システム間のSVMピアリングを作成する
+
+このセクションでは、ソース システムと宛先システム間の SVM ピアリングを作成する方法について説明します。
+
+次の手順ではONTAP CLI を使用します。
+
+.手順
+. 送信元クラスタ間LIF IPアドレスを宛先にクラスタピアリングを作成します。 `-peer-addrs` 。  HAペアの場合は、両方のノードのソースクラスタ間LIF IPアドレスを次のようにリストします。 `-peer-addrs` 。
++
+[source, cli]
+----
+dest::> cluster peer create -peer-addrs <10.161.189.6> -ipspace <new_ipspace>
+----
+. パスフレーズを入力して確認します。
+. 宛先クラスタLIF IPアドレスを使用してソースにクラスタピアリングを作成します。 `peer-addrs` 。  HAペアの場合は、両方のノードの宛先クラスタ間LIF IPアドレスを次のようにリストします。 `-peer-addrs` 。
++
+[source, cli]
+----
+src::> cluster peer create -peer-addrs <10.161.189.18>
+----
+. パスフレーズを入力して確認します。
+. クラスターがピアリングされていることを確認します。
++
+[source, cli]
+----
+src::> cluster peer show
+----
++
+ピアリングが成功すると、可用性フィールドに「*使用可能*」と表示されます。
+
+. 宛先に SVM ピアリングを作成します。ソース SVM と宛先 SVM は両方ともデータ SVM である必要があります。
++
+[source, cli]
+----
+dest::> vserver peer create -vserver <dest_svm> -peer-vserver <src_svm> -peer-cluster <src_cluster> -applications snapmirror``
+----
+. SVM ピアリングを受け入れます。
++
+[source, cli]
+----
+src::> vserver peer accept -vserver <src_svm> -peer-vserver <dest_svm>
+----
+. SVM がピアリングされたことを確認します。
++
+[source, cli]
+----
+dest::> vserver peer show
+----
++
+ピアの状態は*`peered`* ピアリングアプリケーションは*`snapmirror`*。
+
+
+
+
+
+== ステップ5: ソースシステムとターゲットシステム間のSnapMirrorレプリケーション関係を作成する
+
+このセクションでは、ソース システムと宛先システム間のSnapMirrorレプリケーション関係を作成する方法について説明します。
+
+既存のSnapMirrorレプリケーション関係を移動するには、まず既存のSnapMirrorレプリケーション関係を解除してから、新しいSnapMirrorレプリケーション関係を作成する必要があります。
+
+次の手順ではONTAP CLI を使用します。
+
+.手順
+. 宛先 SVM にデータ保護ボリュームを作成します。
++
+[source, cli]
+----
+dest::> vol create -volume <new_dest_vol> -vserver <dest_svm> -type DP -size <10GB> -aggregate <aggr1>
+----
+. レプリケーションのSnapMirrorポリシーとスケジュールを含む、宛先にSnapMirrorレプリケーション関係を作成します。
++
+[source, cli]
+----
+dest::> snapmirror create -source-path src_svm:src_vol  -destination-path  dest_svm:new_dest_vol -vserver dest_svm -policy MirrorAllSnapshots -schedule 5min
+----
+. 宛先でSnapMirrorレプリケーション関係を初期化します。
++
+[source, cli]
+----
+dest::> snapmirror initialize -destination-path  <dest_svm:new_dest_vol>
+----
+. ONTAP CLI で、次のコマンドを実行してSnapMirror関係のステータスを検証します。
++
+[source, cli]
+----
+dest::> snapmirror show
+----
++
+関係のステータスは `Snapmirrored`そして関係の健全性は `true`。
+
+. オプション: ONTAP CLI で次のコマンドを実行して、 SnapMirror関係のアクション履歴を表示します。
++
+[source, cli]
+----
+dest::> snapmirror show-history
+----
+
+
+オプションで、ソース ボリュームと宛先ボリュームをマウントし、ソースにファイルを書き込み、ボリュームが宛先にレプリケートされていることを確認できます。

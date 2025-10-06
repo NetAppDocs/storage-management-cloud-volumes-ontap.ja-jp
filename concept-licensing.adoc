@@ -1,0 +1,286 @@
+---
+sidebar: sidebar 
+permalink: concept-licensing.html 
+keywords: 'freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, cloud backup, digital wallet, bluexp license conversion for node based, license end of support (EOS) node-based, end of availability (EOA) of node-based' 
+summary: Cloud Volumes ONTAPにはいくつかのライセンス オプションがあります。各オプションにより、ニーズに合った構成を選択できます。 
+---
+= Cloud Volumes ONTAPのライセンス
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPにはいくつかのライセンス オプションがあります。各オプションにより、ニーズに合った消費モデルを選択できます。
+
+
+
+== ライセンスの概要
+
+新規のお客様には、次のライセンス オプションをご利用いただけます。
+
+容量ベースのライセンス:: プロビジョニングされた容量に応じて、 NetAppアカウント内の複数のCloud Volumes ONTAPシステムの料金を支払います。アドオンのクラウド データ サービスを購入する機能が含まれます。容量ベースのライセンスの消費モデルの詳細については、以下を参照してください。link:concept-licensing-charging.html["容量ベースのライセンスについて詳しく見る"] 。
+Keystoneサブスクリプション:: 高可用性 (HA) ペアにシームレスなハイブリッド クラウド エクスペリエンスを提供する、成長に合わせて支払うサブスクリプション ベースのサービスです。
+
+
+次のセクションでは、これらの各オプションについて詳しく説明します。
+
+
+NOTE: ライセンスなしでライセンス機能を使用する場合、サポートは提供されません。
+
+
+
+== 容量ベースのライセンス
+
+容量ベースのライセンス パッケージでは、容量 1 TiB ごとにCloud Volumes ONTAP の料金を支払うことができます。ライセンスはNetAppアカウントに関連付けられており、ライセンスを通じて十分な容量が利用できる限り、複数のシステムにライセンスを課金することができます。
+
+たとえば、20 TiB のライセンスを 1 つ購入し、4 つのCloud Volumes ONTAPシステムを導入し、各システムに 5 TiB のボリュームを割り当てて、合計 20 TiB にすることができます。容量は、そのアカウントに導入された各Cloud Volumes ONTAPシステム上のボリュームで利用できます。
+
+容量ベースのライセンスは、_パッケージ_の形式で利用できます。Cloud Volumes ONTAPシステムを導入する場合、ビジネス ニーズに応じて複数のライセンス パッケージから選択できます。
+
+
+NOTE: NetAppコンソールで管理される製品とサービスの実際の使用量と計測値は常に GiB と TiB で計算されますが、GB/GiB と TB/TiB という用語は同じ意味で使用されます。これは、クラウド マーケットプレイスのリスト、価格見積、リストの説明、およびその他のサポート ドキュメントに反映されます。
+
+
+
+=== パッケージ
+
+Cloud Volumes ONTAPでは、次の容量ベースのパッケージが利用できます。容量ベースのライセンスパッケージの詳細については、以下を参照してください。link:concept-licensing-charging.html["容量ベースのライセンスについて詳しく見る"] 。
+
+次の容量ベースのパッケージでサポートされている VM タイプの一覧については、以下を参照してください。
+
+ifdef::azure[]
+
+* link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Azureでサポートされている構成"^]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google Cloud でサポートされている構成"^]
+
+
+endif::gcp[]
+
+
+
+==== フリーミアム
+
+NetAppからすべてのCloud Volumes ONTAP機能を無料で提供します (クラウド プロバイダーの料金は引き続き適用されます)。フリーミアム パッケージには次の特徴があります。
+
+* ライセンスや契約は必要ありません。
+* NetAppからのサポートは含まれていません。
+* Cloud Volumes ONTAPシステムごとにプロビジョニングできる容量は 500 GiB に制限されます。
+* どのクラウド プロバイダーでも、 NetAppアカウントごとに最大 10 個のCloud Volumes ONTAPシステムを Freemium で使用できます。
+* Cloud Volumes ONTAPシステムのプロビジョニングされた容量が 500 GiB を超える場合、コンソールはシステムを Essentials パッケージに変換します。
++
+システムがEssentialsパッケージに変換されるとすぐに、link:concept-licensing-charging.html#minimum-charge["最低充電"]それに適用されます。
+
++
+Essentials パッケージに変換されたCloud Volumes ONTAPシステムは、プロビジョニングされた容量が 500 GiB 未満に削減された場合でも、Freemium に戻すことはできません。プロビジョニングされた容量が 500 GiB 未満のその他のシステムは、フリーミアムのままとなります (フリーミアム オファリングを使用して展開されている限り)。
+
+
+
+
+
+==== 必需品
+
+さまざまな構成で容量に応じてお支払いいただけます。
+
+* Cloud Volumes ONTAP構成を選択します。
++
+** 単一ノードまたはHAシステム
+** 災害復旧（DR）用のファイルおよびブロック ストレージまたはセカンダリ データ
+
+
+* 追加料金でNetAppのクラウドデータサービスを追加できます
+
+
+
+
+==== プロ
+
+無制限のバックアップを備えたあらゆるタイプのCloud Volumes ONTAP構成に対して、容量に応じて料金を支払います。
+
+* あらゆるCloud Volumes ONTAP構成のライセンスを提供します
++
+プライマリボリュームとセカンダリボリュームの容量が同じ料金で課金される単一ノードまたはHA
+
+* NetApp Backup and Recovery を使用した無制限のボリューム バックアップが含まれますが、Professional パッケージを使用するCloud Volumes ONTAPシステムのみが対象です。
++
+
+NOTE: バックアップとリカバリには従量課金制 (PAYGO) サブスクリプションが必要ですが、このサービスの使用に対して料金は発生しません。バックアップとリカバリのライセンス設定の詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-backup-recovery/task-licensing-cloud-backup.html["バックアップとリカバリのライセンスを設定する"^] 。
+
+* 追加料金でNetAppのクラウドデータサービスを追加できます
+
+
+
+
+=== 容量ベースのライセンスの可用性
+
+Cloud Volumes ONTAPシステムで PAYGO ライセンスと BYOL ライセンスを使用するには、コンソール エージェントが稼働している必要があります。
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html#impact-on-cloud-volumes-ontap["コンソールエージェントについて学ぶ"^] 。
+
+
+NOTE: はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPPの BYOL ライセンスの利用制限"^] 。
+
+
+
+=== 始め方
+
+容量ベースのライセンスを開始する方法については、以下をご覧ください。
+
+ifdef::aws[]
+
+* link:task-set-up-licensing-aws.html["AWSでCloud Volumes ONTAPのライセンスを設定する"]
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* link:task-set-up-licensing-azure.html["AzureでCloud Volumes ONTAPのライセンスを設定する"]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* link:task-set-up-licensing-google.html["Google Cloud でCloud Volumes ONTAPのライセンスを設定する"]
+
+
+endif::gcp[]
+
+
+
+== Keystoneサブスクリプション
+
+成長に合わせて支払うサブスクリプションベースのサービスで、先行の CapEx やリースよりも OpEx 消費モデルを好むユーザーにシームレスなハイブリッド クラウド エクスペリエンスを提供します。
+
+料金は、 Keystoneサブスクリプション内の 1 つ以上のCloud Volumes ONTAP HA ペアのコミット容量のサイズに基づいて計算されます。
+
+各ボリュームのプロビジョニングされた容量は定期的に集計され、 Keystoneサブスクリプションのコミットされた容量と比較され、超過分はKeystoneサブスクリプションのバーストとして課金されます。
+
+link:https://docs.netapp.com/us-en/keystone-staas/index.html["NetApp Keystoneの詳細はこちら"^] 。
+
+
+
+=== サポートされている構成
+
+Keystoneサブスクリプションは HA ペアでサポートされます。現時点では、このライセンス オプションは単一ノード システムではサポートされていません。
+
+
+
+=== 容量制限
+
+容量ベースのライセンス モデルでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートし、階層化された合計容量はクラウド プロバイダーのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、 https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["『FabricPoolのベストプラクティス』"^]階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保します。
+
+各クラウド プロバイダーの容量制限については、各プロバイダーのドキュメントを参照してください。
+
+* https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html["AWSのドキュメント"^]
+* https://learn.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account["マネージド ディスクに関する Azure ドキュメント"^]そして https://learn.microsoft.com/en-us/azure/storage/blobs/scalability-targets["BLOB ストレージに関する Azure ドキュメント"^]
+* https://cloud.google.com/storage/docs/buckets["Google Cloud ドキュメント"^]
+
+
+
+
+=== 始め方
+
+Keystoneサブスクリプションの開始方法については、以下をご覧ください。
+
+ifdef::aws[]
+
+* link:task-set-up-licensing-aws.html["AWSでCloud Volumes ONTAPのライセンスを設定する"]
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* link:task-set-up-licensing-azure.html["AzureでCloud Volumes ONTAPのライセンスを設定する"]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* link:task-set-up-licensing-google.html["Google Cloud でCloud Volumes ONTAPのライセンスを設定する"]
+
+
+endif::gcp[]
+
+
+
+== ノードベースのライセンス
+
+ノードベースのライセンスは、ノードごとにCloud Volumes ONTAP のライセンスを取得できる前世代のライセンス モデルです。このライセンス モデルは新規顧客にはご利用いただけません。ノード単位の課金は、上記の容量単位の課金方法に置き換えられました。
+
+NetApp は、ノードベースのライセンスの提供終了 (EOA) とサポート終了 (EOS) を計画しています。  EOA および EOS の後は、ノードベースのライセンスを容量ベースのライセンスに変換する必要があります。
+
+詳細については、 https://mysupport.netapp.com/info/communications/CPC-00589.html["顧客通信: CPC-00589"^] 。
+
+
+
+=== ノードベースライセンスの提供終了
+
+2024 年 11 月 11 日以降、ノードベースのライセンスの限定的な提供は終了しました。ノードベースのライセンスのサポートは、2024 年 12 月 31 日に終了します。
+
+EOA 日付を超えて有効なノードベースの契約がある場合は、契約の有効期限が切れるまでライセンスを引き続き使用できます。契約期間が終了すると、容量ベースのライセンス モデルに移行する必要があります。  Cloud Volumes ONTAPノードの長期契約がない場合は、EOS 日付までに変換を計画することが重要です。
+
+各ライセンスの種類と EOA の影響について詳しくは、次の表をご覧ください。
+
+[cols="2*"]
+|===
+| ライセンス タイプ | EOA後の影響 
+
+
+ a| 
+BYOL（個人ライセンス持ち込み）を通じて購入した有効なノードベースのライセンス
+ a| 
+ライセンスは有効期限まで有効です。既存の未使用のノードベースのライセンスは、新しいCloud Volumes ONTAPシステムの展開に使用できます。
+
+
+
+ a| 
+BYOL を通じて購入したノードベースのライセンスの期限切れ
+ a| 
+このライセンスを使用して新しいCloud Volumes ONTAPシステムを展開する権利はありません。既存のシステムは引き続き動作する可能性がありますが、EOS 日以降はシステムに対するサポートや更新は受けられなくなります。
+
+
+
+ a| 
+PAYGOサブスクリプション付きの有効なノードベースのライセンス
+ a| 
+EOS 日以降は、容量ベースのライセンスに移行するまで、 NetApp のサポートを受けられなくなります。
+
+|===
+.除外事項
+NetApp は、特定の状況では特別な考慮が必要であることを認識しており、ノードベースのライセンスの EOA と EOS は次の場合には適用されません。
+
+* 米国公共部門の顧客
+* プライベートモードでのデプロイメント
+* AWS におけるCloud Volumes ONTAPの中国リージョン展開
+
+
+これらの特定のシナリオでは、 NetApp は契約上の義務と運用上のニーズに準拠した固有のライセンス要件に対処するためのサポートを提供します。
+
+
+NOTE: このようなシナリオの場合でも、新しいノードベースのライセンスとライセンスの更新は、承認日から最大 1 年間有効です。
+
+
+
+== ライセンス変換
+
+コンソールでは、ライセンス変換ツールを使用して、ノードベースのライセンスを容量ベースのライセンスにシームレスに変換できます。ノードベースライセンスのEOAについては、以下を参照してください。link:concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"] 。
+
+移行する前に、2 つのライセンス モデルの違いを理解しておくことをお勧めします。ノードベースのライセンスには、各ONTAPインスタンスの固定容量が含まれるため、柔軟性が制限される可能性があります。一方、容量ベースのライセンスでは、複数のインスタンス間でストレージの共有プールが可能になり、柔軟性が向上し、リソース使用率が最適化され、ワー​​クロードを再配分する際の金銭的なペナルティの可能性が軽減されます。容量ベースの課金により、変化するストレージ要件にシームレスに適応します。
+
+この変換を実行する方法については、link:task-convert-node-capacity.html["Cloud Volumes ONTAPノードベースのライセンスを容量ベースのライセンスに変換する"] 。
+
+
+NOTE: システムを容量ベースからノードベースのライセンスに変換することはサポートされていません。

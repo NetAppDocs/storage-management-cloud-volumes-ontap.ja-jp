@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: task-change-gcp-machine.html 
+keywords: change machine type, google cloud machine type, gcp machine type, modify machine type 
+summary: Google Cloud でCloud Volumes ONTAP を起動するときに、いくつかのマシンタイプから選択できます。インスタンスまたはマシンタイプがニーズに対して小さすぎる、または大きすぎると判断した場合は、いつでも変更できます。 
+---
+= Cloud Volumes ONTAPの Google Cloud マシンタイプを変更する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Google Cloud でCloud Volumes ONTAP を起動するときに、いくつかのマシンタイプから選択できます。インスタンスまたはマシンタイプがニーズに対して小さすぎる、または大きすぎると判断した場合は、いつでも変更できます。
+
+.タスク概要
+* Cloud Volumes ONTAP HA ペアでは自動ギブバックを有効にする必要があります (これがデフォルト設定です)。そうでない場合、操作は失敗します。
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/GUID-3F50DE15-0D01-49A5-BEFD-D529713EC1FA.html["ONTAP 9ドキュメント: 自動ギブバックを設定するためのコマンド"^]
+
+* マシンタイプを変更すると、Google Cloud サービスの料金に影響する可能性があります。
+* この操作により、 Cloud Volumes ONTAPが再起動します。
++
+単一ノード システムの場合、I/O が中断されます。
+
++
+HA ペアの場合、変更は中断なく行われます。  HA ペアは引き続きデータを提供します。
+
++
+
+TIP: NetAppコンソールは、テイクオーバーを開始し、ギブバックを待機することで、一度に 1 つのノードを変更します。 NetApp の品質保証チームは、このプロセス中にファイルの書き込みと読み取りの両方をテストしましたが、クライアント側に問題は見られませんでした。接続が変更されると、I/O レベルで再試行がいくつか発生しましたが、アプリケーション層は NFS/CIFS 接続の再配線を克服しました。
+
+
+
+.手順
+. *システム*ページで、システムを選択します。
+. [概要] タブで [機能] パネルをクリックし、[*マシン タイプ*] の横にある鉛筆アイコンをクリックします。
++
+image:screenshot_features_machine_type.png["システムを表示するときに、概要ページの右上にある機能パネルの下にあるマシン タイプ設定を示すスクリーンショット。"]
+
+
+
+ノードベースの従量課金制 (PAYGO) ライセンスを使用している場合は、*ライセンス タイプ* の横にある鉛筆アイコンをクリックして、オプションで別のライセンスとマシン タイプを選択できます。
+
+. マシンの種類を選択し、変更の影響を理解していることを確認するためにチェックボックスをオンにして、[変更] をクリックします。
+
+
+.結果
+Cloud Volumes ONTAP は新しい構成で再起動します。

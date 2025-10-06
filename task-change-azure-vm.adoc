@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: task-change-azure-vm.html 
+keywords: machine type, virtual machine type, vm instance, change vm type, azure vm type 
+summary: Microsoft Azure でCloud Volumes ONTAP を起動するときに、いくつかの VM タイプから選択できます。  VM のタイプがニーズに対して小さすぎるか大きすぎると判断した場合は、いつでも VM タイプを変更できます。 
+---
+= Cloud Volumes ONTAPの Azure VM タイプを変更する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Microsoft Azure でCloud Volumes ONTAP を起動するときに、いくつかの VM タイプから選択できます。  VM のタイプがニーズに対して小さすぎるか大きすぎると判断した場合は、いつでも VM タイプを変更できます。
+
+.タスク概要
+* Cloud Volumes ONTAP HA ペアでは自動ギブバックを有効にする必要があります (これがデフォルト設定です)。そうでない場合、操作は失敗します。
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/GUID-3F50DE15-0D01-49A5-BEFD-D529713EC1FA.html["ONTAP 9ドキュメント: 自動ギブバックを設定するためのコマンド"^]
+
+* VM タイプを変更すると、Microsoft Azure サービスの料金に影響する可能性があります。
+* この操作により、 Cloud Volumes ONTAPが再起動します。
++
+単一ノード システムの場合、I/O が中断されます。
+
++
+HA ペアの場合、変更は中断なく行われます。  HA ペアは引き続きデータを提供します。
+
++
+
+TIP: NetAppコンソールは、テイクオーバーを開始し、ギブバックを待機することで、一度に 1 つのノードを変更します。 NetApp の品質保証チームは、このプロセス中にファイルの書き込みと読み取りの両方をテストしましたが、クライアント側に問題は見られませんでした。接続が変更されると、I/O レベルで再試行がいくつか発生しましたが、アプリケーション層は NFS/CIFS 接続の再配線を克服しました。
+
+
+
+.手順
+. *システム*ページで、システムを選択します。
+. [概要] タブで [機能] パネルをクリックし、[VM タイプ] の横にある鉛筆アイコンをクリックします。
++
+ノードベースの従量課金制 (PAYGO) ライセンスを使用している場合は、*ライセンス タイプ* の横にある鉛筆アイコンをクリックして、オプションで別のライセンスと VM タイプを選択できます。
+
+. VM タイプを選択し、変更の影響を理解していることを確認するためのチェック ボックスをオンにして、[変更] をクリックします。
+
+
+.結果
+Cloud Volumes ONTAP は新しい構成で再起動します。

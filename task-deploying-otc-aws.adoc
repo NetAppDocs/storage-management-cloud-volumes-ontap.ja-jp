@@ -1,0 +1,537 @@
+---
+sidebar: sidebar 
+permalink: task-deploying-otc-aws.html 
+keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, aws, serial number, license key, byol, test instance, aws tags, tags, location, vpc, encryption, security group, aws-managed encryption, disk size, disk type, write speed, licensing, IAM role, preconfigured package, access control, volume protection, usage profile, register, CIFS share, quota, qtree, HA, high-availability, subscription, cloud data sense, cloud backup 
+summary: Cloud Volumes ONTAPインスタンスは、単一システム構成で起動することも、AWS の HA ペアとして起動することもできます。 
+---
+= AWS でCloud Volumes ONTAP を起動
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP は、単一システム構成で、または AWS の HA ペアとして起動できます。この方法では、クイック デプロイメント メソッドよりも多くの構成オプションと柔軟性を備えた高度なデプロイメント エクスペリエンスが提供されます。
+
+
+
+== 開始する前に
+
+始める前に以下のものが必要です。
+
+[[licensing]]
+* 稼働中のコンソール エージェント。
++
+** あなたは https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["システムに関連付けられたコンソールエージェント"^]。
+** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^] 。
+
+
+* 使用する構成を理解すること。
++
+構成を選択し、管理者から AWS ネットワーク情報を取得して準備しておく必要があります。詳細については、link:task-planning-your-config.html["Cloud Volumes ONTAP構成の計画"^] 。
+
+* Cloud Volumes ONTAPのライセンスを設定するために必要なことを理解していること。
++
+link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"^] 。
+
+* CIFS 構成用の DNS および Active Directory。
++
+詳細については、link:reference-networking-aws.html["AWS におけるCloud Volumes ONTAPのネットワーク要件"^] 。
+
+
+
+
+
+== AWS でシングルノードのCloud Volumes ONTAPシステムを起動する
+
+AWS でCloud Volumes ONTAPを起動する場合は、 NetAppコンソールで新しいシステムを作成する必要があります。
+
+.タスク概要
+システムを作成するとすぐに、コンソールは指定された VPC でテストインスタンスを起動して接続を確認します。成功した場合、コンソールはインスタンスを直ちに終了し、 Cloud Volumes ONTAPシステムのデプロイを開始します。接続を検証できない場合、システムの作成は失敗します。テストインスタンスは、 `t2.nano` （デフォルトのVPCテナンシーの場合）または `m3.medium`(専用 VPC テナンシーの場合)。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
+. *Amazon Web Services* と * Cloud Volumes ONTAP Single Node* を選択します。
+. *詳細作成*を選択します。デフォルトでは*クイック作成*モードが選択されているため、デフォルト値に関するメッセージが表示される場合があります。*続行*をクリックします。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["コンソールエージェントを作成する"^] 。
+. *詳細と認証情報*: オプションで AWS 認証情報とサブスクリプションを変更し、システム名を入力し、必要に応じてタグを追加して、パスワードを入力します。
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Amazon EC2 インスタンスの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
+
+
+| タグを追加する | AWS タグは、AWS リソースのメタデータです。コンソールは、Cloud Volumes ONTAPインスタンスと、インスタンスに関連付けられている各 AWS リソースにタグを追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["AWS ドキュメント: Amazon EC2 リソースのタグ付け"^] 。 
+
+
+| ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
+
+
+| 資格情報の編集 | このシステムをデプロイするアカウントに関連付けられている AWS 認証情報を選択します。このCloud Volumes ONTAPシステムで使用する AWS マーケットプレイス サブスクリプションを関連付けることもできます。「サブスクリプションを追加」をクリックすると、選択した認証情報が新しいAWSマーケットプレイスサブスクリプションに関連付けられます。サブスクリプションは年間契約または時間単位でCloud Volumes ONTAPをお支払いいただくことができます。NetApphttps://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["NetAppコンソールにAWS認証情報を追加する方法を学びます"^] 。 
+|===
++
+
+TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場合は、各ユーザーがサブスクライブする必要があります。最初のユーザーがサブスクライブすると、AWS マーケットプレイスは、以下の画像に示すように、後続のユーザーにすでにサブスクライブしていることを通知します。 AWS アカウントにサブスクリプションが設定されている場合は、各 IAM ユーザーが自分自身をそのサブスクリプションに関連付ける必要があります。以下のメッセージが表示された場合は、「*ここをクリック*」リンクをクリックしてコンソールの Web サイトに移動し、プロセスを完了してください。image:screenshot_aws_marketplace.gif["AWS アカウントにはすでにサブスクリプションがあるが、特定の IAM ユーザーにはない可能性がある場合の、Console for Cloud Volumes ONTAPのサブスクリプション ページを示すスクリーンショット。"]
+
+. *サービス*: サービスを有効のままにするか、 Cloud Volumes ONTAPで使用しない個々のサービスを無効にします。
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetAppデータ分類の詳細"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリの詳細"^]
++
+
+TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+
+
+
+. *場所と接続*: 記録したネットワーク情報を入力します。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#collect-networking-information["AWS ワークシート"^] 。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| VPC | AWS Outpost がある場合は、Outpost VPC を選択して、その Outpost に単一ノードのCloud Volumes ONTAPシステムをデプロイできます。エクスペリエンスは、AWS にある他の VPC と同じです。 
+
+
+| 生成されたセキュリティグループ  a| 
+コンソールでセキュリティ グループを生成させる場合は、トラフィックを許可する方法を選択する必要があります。
+
+** *選択した VPC のみ* を選択した場合、受信トラフィックのソースは、選択した VPC のサブネット範囲と、コンソール エージェントが存在する VPC のサブネット範囲になります。これは推奨されるオプションです。
+** *すべての VPC* を選択した場合、受信トラフィックのソースは 0.0.0.0/0 IP 範囲になります。
+
+
+
+
+| 既存のセキュリティグループを使用する | 既存のファイアウォール ポリシーを使用する場合は、必要なルールが含まれていることを確認してください。link:reference-security-groups.html["Cloud Volumes ONTAPのファイアウォールルールについて学ぶ"^] 。 
+|===
+. *データ暗号化*: データ暗号化なし、または AWS 管理の暗号化を選択します。
++
+AWS 管理の暗号化の場合、自分のアカウントまたは別の AWS アカウントから別のカスタマーマスターキー (CMK) を選択できます。
+
++
+
+TIP: Cloud Volumes ONTAPシステムを作成した後、AWS データ暗号化方法を変更することはできません。
+
++
+link:task-setting-up-kms.html["Cloud Volumes ONTAP用の AWS KMS を設定する方法を学びます"^] 。
+
++
+link:concept-security.html#encryption-of-data-at-rest["サポートされている暗号化技術の詳細"^] 。
+
+. *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイト アカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"^] 。
+** link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"^] 。
+
+
+. * Cloud Volumes ONTAP構成* (年間 AWS マーケットプレイス契約のみ): デフォルトの構成を確認して [続行] をクリックするか、[構成の変更] をクリックして独自の構成を選択します。
++
+デフォルト構成を維持する場合は、ボリュームを指定して、構成を確認して承認するだけです。
+
+. *事前構成済みパッケージ*：いずれかのパッケージを選択してCloud Volumes ONTAP をすばやく起動するか、*構成の変更*をクリックして独自の構成を選択します。
++
+いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認して承認するだけです。
+
+. *IAM ロール*: コンソールでロールを自動的に作成できるように、デフォルト オプションを維持するのが最適です。
++
+独自のポリシーを使用する場合は、次の条件を満たす必要があります。link:task-set-up-iam-roles.html["Cloud Volumes ONTAPノードのポリシー要件"^] 。
+
+. *ライセンス*: 必要に応じてCloud Volumes ONTAP のバージョンを変更し、インスタンス タイプとインスタンス テナンシーを選択します。
++
+
+NOTE: 選択したバージョンに対して新しいリリース候補、一般提供、またはパッチ リリースが利用可能な場合、コンソールはシステムの作成時にシステムをそのバージョンに更新します。たとえば、 Cloud Volumes ONTAP 9.13.1 を選択し、9.13.1 P4 が利用可能な場合は更新が行われます。更新は、あるリリースから別のリリース (たとえば、9.13 から 9.14) には行われません。
+
+. *基盤となるストレージ リソース*: ディスク タイプを選択し、基盤となるストレージを構成し、データ階層化を有効のままにするかどうかを選択します。
++
+次の点に注意してください。
+
++
+** ディスク タイプは初期ボリューム (およびアグリゲート) 用です。後続のボリューム (およびアグリゲート) には、異なるディスク タイプを選択できます。
+** gp3 または io1 ディスクを選択した場合、コンソールは AWS の Elastic Volumes 機能を使用して、必要に応じて基盤となるストレージ ディスク容量を自動的に増加します。ストレージのニーズに基づいて初期容量を選択し、 Cloud Volumes ONTAP の導入後に修正することができます。link:concept-aws-elastic-volumes.html["AWS の Elastic Volumes のサポートについて詳しく見る"^] 。
+** gp2 または st1 ディスクを選択した場合は、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのディスク サイズを選択できます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データ階層化を無効にした場合、後続の集約で有効にすることができます。
++
+link:concept-data-tiering.html["データ階層化の仕組みを学ぶ"^] 。
+
+
+
+. *書き込み速度とWORM*:
++
+.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度について詳しくはこちら"^] 。
+
+.. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
++
+Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
+.. WORM ストレージを有効にする場合は、保持期間を選択します。
+
+
+. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
++
+link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
+
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シン プロビジョニングを有効にするかどうかによって大きく異なります。シン プロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きなボリュームを作成できます。 
+
+
+| アクセス制御（NFSのみ） | エクスポート ポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、コンソールはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー/グループ（CIFSのみ） | これらのフィールドを使用すると、ユーザーとグループの共有へのアクセス レベル (アクセス制御リストまたは ACL とも呼ばれます) を制御できます。ローカルまたはドメインの Windows ユーザーまたはグループ、あるいは UNIX ユーザーまたはグループを指定できます。ドメイン Windows ユーザー名を指定する場合は、domain\username の形式を使用してユーザーのドメインを含める必要があります。 
+
+
+| スナップショットポリシー | スナップショット コピー ポリシーは、自動的に作成されるNetAppスナップショット コピーの頻度と数を指定します。NetAppスナップショット コピーは、パフォーマンスに影響を与えず、最小限のストレージしか必要としない、ポイントインタイム ファイル システム イメージです。デフォルトのポリシーを選択するか、ポリシーなしを選択できます。一時データの場合は none を選択できます (例: Microsoft SQL Server の場合は tempdb)。 
+
+
+| 詳細オプション（NFSのみ） | ボリュームの NFS バージョン (NFSv3 または NFSv4) を選択します。 
+
+
+| イニシエーター グループと IQN (iSCSI のみ) | iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼ばれ、標準のブロック デバイスとしてホストに提供されます。イニシエーター グループは、iSCSI ホスト ノード名のテーブルであり、どのイニシエーターがどの LUN にアクセスできるかを制御します。iSCSI ターゲットは、標準の Ethernet ネットワーク アダプター (NIC)、ソフトウェア イニシエーターを備えた TCP オフロード エンジン (TOE) カード、統合ネットワーク アダプター (CNA)、または専用ホスト バス アダプター (HBA) を介してネットワークに接続し、iSCSI 修飾名 (IQN) によって識別されます。 iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になるので、管理は不要です。ボリュームを作成したら、link:task-connect-lun.html["IQNを使用してホストからLUNに接続します"] 。 
+|===
++
+次の画像は、ボリューム作成ウィザードの最初のページを示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAPインスタンス用に入力されたボリューム ページを表示します。"]
+
+. *CIFS セットアップ*: CIFS プロトコルを選択した場合は、CIFS サーバーをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNSプライマリおよびセカンダリIPアドレス | CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。 
+
+
+| 参加するActive Directoryドメイン | CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。 
+
+
+| ドメインへの参加を許可された資格情報 | AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS server NetBIOS name | AD ドメイン内で一意の CIFS サーバー名。 
+
+
+| 組織単位 | CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。  AWS Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして設定する場合は、このフィールドに *OU=Computers,OU=corp* と入力する必要があります。 
+
+
+| DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+|===
+. *使用プロファイル、ディスク タイプ、階層化ポリシー*: ストレージ効率機能を有効にするかどうかを選択し、必要に応じてボリューム階層化ポリシーを編集します。
++
+詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリューム使用プロファイルの理解"^] 、link:concept-data-tiering.html["データ階層化の概要"^] 、 そして https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]
+
+. *確認と承認*: 選択内容を確認して確定します。
++
+.. 構成の詳細を確認します。
+.. *詳細情報* をクリックすると、サポートとコンソールが購入する AWS リソースの詳細を確認できます。
+.. *理解しました...* チェックボックスを選択します。
+.. [Go] をクリックします。
+
+
+
+
+.結果
+コンソールはCloud Volumes ONTAPインスタンスを起動します。  *監査*ページで進捗状況を追跡できます。
+
+Cloud Volumes ONTAPインスタンスの起動で問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+
+さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
+
+.終了後の操作
+* CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。
+* ボリュームにクォータを適用する場合は、 ONTAP System Manager またはONTAP CLI を使用します。
++
+クォータを使用すると、ユーザー、グループ、または qtree が使用するディスク領域とファイル数を制限したり追跡したりできます。
+
+
+
+
+
+== AWSでCloud Volumes ONTAP HAペアを起動する
+
+AWS でCloud Volumes ONTAP HA ペアを起動する場合は、コンソールで HA システムを作成する必要があります。
+
+.制限
+現時点では、HA ペアは AWS Outposts ではサポートされていません。
+
+.タスク概要
+Cloud Volumes ONTAPシステムを作成するとすぐに、コンソールは指定された VPC でテストインスタンスを起動して接続を確認します。成功した場合、コンソールはインスタンスを直ちに終了し、 Cloud Volumes ONTAPシステムのデプロイを開始します。接続を検証できない場合、システムの作成は失敗します。テストインスタンスは、 `t2.nano` （デフォルトのVPCテナンシーの場合）または `m3.medium`(専用 VPC テナンシーの場合)。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで*システムの追加*をクリックし、指示に従います。
+. *Amazon Web Services* と * Cloud Volumes ONTAP HA* を選択します。
++
+いくつかの AWS ローカルゾーンが利用可能です。
+
++
+AWS Local Zones を使用する前に、Local Zones を有効にし、AWS アカウントの Local Zone にサブネットを作成する必要があります。  AWSローカルゾーンにオプトインする*とAmazon VPCをローカルゾーンに拡張する*の手順に従ってください。link:https://aws.amazon.com/tutorials/deploying-low-latency-applications-with-aws-local-zones/["AWS チュートリアル「AWS ローカルゾーンを使用した低レイテンシーアプリケーションのデプロイ開始」"^] 。
+
++
+コンソールエージェント3.9.36以前を実行している場合は、 `DescribeAvailabilityZones` AWS EC2 コンソールの AWS ロールへの権限。
+
+. *詳細と認証情報*: オプションで AWS 認証情報とサブスクリプションを変更し、システム名を入力し、必要に応じてタグを追加して、パスワードを入力します。
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Amazon EC2 インスタンスの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
+
+
+| タグを追加する | AWS タグは、AWS リソースのメタデータです。コンソールは、Cloud Volumes ONTAPインスタンスと、インスタンスに関連付けられている各 AWS リソースにタグを追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["AWS ドキュメント: Amazon EC2 リソースのタグ付け"^] 。 
+
+
+| ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
+
+
+| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するAWS認証情報とマーケットプレイスサブスクリプションを選択してください。「サブスクリプションを追加」をクリックすると、選択した認証情報が新しいAWSマーケットプレイスサブスクリプションに関連付けられます。サブスクリプションは年間契約または時間単位でCloud Volumes ONTAPをお支払いいただくことができます。NetAppから直接ライセンスを購入された場合（ NetApp （Bring Your Own License））、AWSサブスクリプションは不要です。NetAppはBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["コンソールにAWS認証情報を追加する方法を学びます"^] 。 
+|===
++
+
+TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場合は、各ユーザーがサブスクライブする必要があります。最初のユーザーがサブスクライブすると、AWS マーケットプレイスは、以下の画像に示すように、後続のユーザーにすでにサブスクライブしていることを通知します。 AWS アカウントにサブスクリプションが設定されている場合は、各 IAM ユーザーが自分自身をそのサブスクリプションに関連付ける必要があります。以下のメッセージが表示された場合は、「*ここをクリック*」リンクをクリックしてコンソールの Web サイトに移動し、プロセスを完了してください。image:screenshot_aws_marketplace.gif["AWS アカウントにはすでにサブスクリプションがあるが、特定の IAM ユーザーにはない可能性がある場合の、Console for Cloud Volumes ONTAPのサブスクリプション ページを示すスクリーンショット。"]
+
+. *サービス*: サービスを有効のままにするか、このCloud Volumes ONTAPシステムで使用しない個々のサービスを無効にします。
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetAppデータ分類の詳細"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["バックアップとリカバリの詳細"^]
++
+
+TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+
+
+
+. *HA 展開モデル*: HA 構成を選択します。
++
+展開モデルの概要については、以下を参照してください。link:concept-ha.html["AWS 向けCloud Volumes ONTAP HA"^] 。
+
+. *場所と接続* (単一のアベイラビリティーゾーン (AZ)) または *リージョンと VPC* (複数の AZ): AWS ワークシートに記録したネットワーク情報を入力します。
++
+次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| 生成されたセキュリティグループ  a| 
+コンソールでセキュリティ グループを生成させる場合は、トラフィックを許可する方法を選択する必要があります。
+
+** *選択した VPC のみ* を選択した場合、受信トラフィックのソースは、選択した VPC のサブネット範囲と、コンソール エージェントが存在する VPC のサブネット範囲になります。これは推奨されるオプションです。
+** *すべての VPC* を選択した場合、受信トラフィックのソースは 0.0.0.0/0 IP 範囲になります。
+
+
+
+
+| 既存のセキュリティグループを使用する | 既存のファイアウォール ポリシーを使用する場合は、必要なルールが含まれていることを確認してください。link:reference-security-groups.html["Cloud Volumes ONTAPのファイアウォールルールについて学ぶ"^] 。 
+|===
+. *接続と SSH 認証*: HA ペアとメディエーターの接続方法を選択します。
+. *フローティング IP*: 複数の AZ を選択した場合は、フローティング IP アドレスを指定します。
++
+IP アドレスは、リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZ におけるCloud Volumes ONTAP HA の AWS ネットワーク要件"^] 。
+
+. *ルート テーブル*: 複数の AZ を選択した場合は、フローティング IP アドレスへのルートを含めるルート テーブルを選択します。
++
+ルート テーブルが複数ある場合は、正しいルート テーブルを選択することが非常に重要です。そうしないと、一部のクライアントがCloud Volumes ONTAP HA ペアにアクセスできなくなる可能性があります。ルートテーブルの詳細については、 http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS ドキュメント: ルートテーブル"^] 。
+
+. *データ暗号化*: データ暗号化なし、または AWS 管理の暗号化を選択します。
++
+AWS 管理の暗号化の場合、自分のアカウントまたは別の AWS アカウントから別のカスタマーマスターキー (CMK) を選択できます。
+
++
+
+TIP: Cloud Volumes ONTAPシステムを作成した後、AWS データ暗号化方法を変更することはできません。
+
++
+link:task-setting-up-kms.html["Cloud Volumes ONTAP用の AWS KMS を設定する方法を学びます"^] 。
+
++
+link:concept-security.html#encryption-of-data-at-rest["サポートされている暗号化技術の詳細"^] 。
+
+. *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイト アカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"^] 。
+** link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"^] 。
+
+
+. * Cloud Volumes ONTAP構成* (年間 AWS Marketplace 契約のみ): デフォルトの構成を確認して [*続行*] をクリックするか、[*構成の変更*] をクリックして独自の構成を選択します。
++
+デフォルト構成を維持する場合は、ボリュームを指定して、構成を確認して承認するだけです。
+
+. *事前構成済みパッケージ*（時間単位またはBYOLのみ）：いずれかのパッケージを選択してCloud Volumes ONTAPをすばやく起動するか、*構成の変更*をクリックして独自の構成を選択します。
++
+いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認して承認するだけです。
+
+. *IAM ロール*: コンソールでロールを自動的に作成できるように、デフォルト オプションを維持するのが最適です。
++
+独自のポリシーを使用する場合は、次の条件を満たす必要があります。link:task-set-up-iam-roles.html["Cloud Volumes ONTAPノードとHAメディエーターのポリシー要件"^] 。
+
+. *ライセンス*: 必要に応じてCloud Volumes ONTAP のバージョンを変更し、インスタンス タイプとインスタンス テナンシーを選択します。
++
+
+NOTE: 選択したバージョンに対して新しいリリース候補、一般提供、またはパッチ リリースが利用可能な場合、コンソールはシステムの作成時にシステムをそのバージョンに更新します。たとえば、 Cloud Volumes ONTAP 9.13.1 を選択し、9.13.1 P4 が利用可能な場合は更新が行われます。更新は、あるリリースから別のリリース (たとえば、9.13 から 9.14) には行われません。
+
+. *基盤となるストレージ リソース*: ディスク タイプを選択し、基盤となるストレージを構成し、データ階層化を有効のままにするかどうかを選択します。
++
+次の点に注意してください。
+
++
+** ディスク タイプは初期ボリューム (およびアグリゲート) 用です。後続のボリューム (およびアグリゲート) には、異なるディスク タイプを選択できます。
+** gp3 または io1 ディスクを選択した場合、コンソールは AWS の Elastic Volumes 機能を使用して、必要に応じて基盤となるストレージ ディスク容量を自動的に増加します。ストレージのニーズに基づいて初期容量を選択し、 Cloud Volumes ONTAP の導入後に修正することができます。link:concept-aws-elastic-volumes.html["AWS の Elastic Volumes のサポートについて詳しく見る"^] 。
+** gp2 または st1 ディスクを選択した場合は、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのディスク サイズを選択できます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データ階層化を無効にした場合、後続の集約で有効にすることができます。
++
+link:concept-data-tiering.html["データ階層化の仕組みを学ぶ"^] 。
+
+
+
+. *書き込み速度とWORM*:
++
+.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度について詳しくはこちら"^] 。
+
+.. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
++
+Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
+
++
+link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 。
+
+.. WORM ストレージを有効にする場合は、保持期間を選択します。
+
+
+. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
++
+link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
+
++
+このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シン プロビジョニングを有効にするかどうかによって大きく異なります。シン プロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きなボリュームを作成できます。 
+
+
+| アクセス制御（NFSのみ） | エクスポート ポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、コンソールはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー/グループ（CIFSのみ） | これらのフィールドを使用すると、ユーザーとグループの共有へのアクセス レベル (アクセス制御リストまたは ACL とも呼ばれます) を制御できます。ローカルまたはドメインの Windows ユーザーまたはグループ、あるいは UNIX ユーザーまたはグループを指定できます。ドメイン Windows ユーザー名を指定する場合は、domain\username の形式を使用してユーザーのドメインを含める必要があります。 
+
+
+| スナップショットポリシー | スナップショット コピー ポリシーは、自動的に作成されるNetAppスナップショット コピーの頻度と数を指定します。NetAppスナップショット コピーは、パフォーマンスに影響を与えず、最小限のストレージしか必要としない、ポイントインタイム ファイル システム イメージです。デフォルトのポリシーを選択するか、ポリシーなしを選択できます。一時データの場合は none を選択できます (例: Microsoft SQL Server の場合は tempdb)。 
+
+
+| 詳細オプション（NFSのみ） | ボリュームの NFS バージョン (NFSv3 または NFSv4) を選択します。 
+
+
+| イニシエーター グループと IQN (iSCSI のみ) | iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼ばれ、標準のブロック デバイスとしてホストに提供されます。イニシエーター グループは、iSCSI ホスト ノード名のテーブルであり、どのイニシエーターがどの LUN にアクセスできるかを制御します。iSCSI ターゲットは、標準の Ethernet ネットワーク アダプター (NIC)、ソフトウェア イニシエーターを備えた TCP オフロード エンジン (TOE) カード、統合ネットワーク アダプター (CNA)、または専用ホスト バス アダプター (HBA) を介してネットワークに接続し、iSCSI 修飾名 (IQN) によって識別されます。 iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になるので、管理は不要です。ボリュームを作成したら、link:task-connect-lun.html["IQNを使用してホストからLUNに接続します"] 。 
+|===
++
+次の画像は、ボリューム作成ウィザードの最初のページを示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAPインスタンス用に入力されたボリューム ページを表示します。"]
+
+. *CIFS セットアップ*: CIFS プロトコルを選択した場合は、CIFS サーバーをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNSプライマリおよびセカンダリIPアドレス | CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。 
+
+
+| 参加するActive Directoryドメイン | CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。 
+
+
+| ドメインへの参加を許可された資格情報 | AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS server NetBIOS name | AD ドメイン内で一意の CIFS サーバー名。 
+
+
+| 組織単位 | CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。  AWS Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして設定する場合は、このフィールドに *OU=Computers,OU=corp* と入力する必要があります。 
+
+
+| DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+|===
+. *使用プロファイル、ディスク タイプ、階層化ポリシー*: ストレージ効率機能を有効にするかどうかを選択し、必要に応じてボリューム階層化ポリシーを編集します。
++
+詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^]そしてlink:concept-data-tiering.html["データ階層化の概要"^]。
+
+. *確認と承認*: 選択内容を確認して確定します。
++
+.. 構成の詳細を確認します。
+.. *詳細情報* をクリックすると、サポートとコンソールが購入する AWS リソースの詳細を確認できます。
+.. *理解しました...* チェックボックスを選択します。
+.. [Go] をクリックします。
+
+
+
+
+.結果
+コンソールはCloud Volumes ONTAP HA ペアを起動します。  *監査*ページで進捗状況を追跡できます。
+
+HA ペアの起動時に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「環境の再作成」をクリックすることもできます。
+
+さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
+
+.終了後の操作
+* CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。
+* ボリュームにクォータを適用する場合は、 ONTAP System Manager またはONTAP CLI を使用します。
++
+クォータを使用すると、ユーザー、グループ、または qtree が使用するディスク領域とファイル数を制限したり追跡したりできます。
+
+
+
+.関連リンク
+* link:task-planning-your-config.html["Cloud Volumes ONTAP構成の計画"]
+* link:task-quick-deploy-aws.html["クイックデプロイメントを使用してAWSにCloud Volumes ONTAPをデプロイする"]
+

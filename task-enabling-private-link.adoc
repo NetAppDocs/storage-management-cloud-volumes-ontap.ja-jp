@@ -1,0 +1,147 @@
+---
+sidebar: sidebar 
+permalink: task-enabling-private-link.html 
+keywords: azure private link, private link connection, private link to storage, service endpoints, enable service endpoint, disable private link 
+summary: Cloud Volumes ONTAP は、関連付けられたストレージ アカウントへの接続に Azure Private Link を使用します。必要に応じて、Azure Private Links を無効にして、代わりにサービス エンドポイントを使用できます。 
+---
+= Cloud Volumes ONTAPシステムに Azure Private Link またはサービス エンドポイントを使用する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP は、関連付けられたストレージ アカウントへの接続に Azure Private Link を使用します。必要に応じて、Azure Private Links を無効にして、代わりにサービス エンドポイントを使用できます。
+
+
+
+== 概要
+
+デフォルトでは、 NetAppコンソールは、 Cloud Volumes ONTAPとそれに関連付けられたストレージ アカウント間の接続に Azure プライベート リンクを有効にします。  Azure Private Link は、Azure 内のエンドポイント間の接続を保護し、パフォーマンス上の利点をもたらします。
+
+必要に応じて、Azure Private Link の代わりにサービス エンドポイントを使用するようにCloud Volumes ONTAPを構成できます。
+
+どちらの構成でも、コンソールは常にCloud Volumes ONTAPとストレージ アカウント間の接続のネットワーク アクセスを制限します。ネットワーク アクセスは、Cloud Volumes ONTAPがデプロイされている VNet と、コンソール エージェントがデプロイされている VNet に制限されます。
+
+
+
+== Azure プライベート リンクを無効にして、代わりにサービス エンドポイントを使用する
+
+ビジネスで必要な場合は、コンソールの設定を変更して、 Cloud Volumes ONTAPが Azure Private Link ではなくサービス エンドポイントを使用するように構成できます。この設定の変更は、作成する新しいCloud Volumes ONTAPシステムに適用されます。サービスエンドポイントは、link:https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies["Azureリージョンペア"^]コンソール エージェントとCloud Volumes ONTAP VNet 間。
+
+コンソールエージェントは、管理するCloud Volumes ONTAPシステムと同じAzureリージョン、または https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies["Azure リージョン ペア"^]Cloud Volumes ONTAPシステム用。
+
+.手順
+. 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。
+. クリックimage:icon-action.png[""]Cloud Volumes ONTAPシステムを管理するコンソール エージェントのアイコン。
+. * Cloud Volumes ONTAP設定*を選択します。
++
+image::screenshot-settings-cloud-volumes-ontap.png[[設定]アイコンの下のCloud Volumes ONTAP設定オプションのスクリーンショット。]
+
+. *Azure* の下で、*Azure Private Link を使用する* をクリックします。
+. * Cloud Volumes ONTAPとストレージアカウント間のプライベートリンク接続*の選択を解除します。
+. *保存*をクリックします。
+
+
+.終了後の操作
+Azure プライベート リンクを無効にし、コンソール エージェントがプロキシ サーバーを使用する場合は、直接 API トラフィックを有効にする必要があります。
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html#enable-a-proxy-on-a-connector["コンソールエージェントで直接APIトラフィックを有効にする方法を学びます"^]
+
+
+
+== Azure プライベート リンクの操作
+
+ほとんどの場合、 Cloud Volumes ONTAPを使用して Azure プライベート リンクを設定するために必要な操作はありません。コンソールは Azure Private Links を管理します。ただし、既存の Azure プライベート DNS ゾーンを使用する場合は、構成ファイルを編集する必要があります。
+
+
+
+=== カスタムDNSの要件
+
+必要に応じて、カスタム DNS を使用する場合は、カスタム DNS サーバーから Azure プライベート DNS ゾーンへの条件付きフォワーダーを作成する必要があります。詳細については、link:https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder["DNSフォワーダーの使用に関するAzureのドキュメント"^] 。
+
+
+
+=== プライベートリンク接続の仕組み
+
+コンソールが Azure にCloud Volumes ONTAP をデプロイすると、リソース グループにプライベート エンドポイントが作成されます。プライベート エンドポイントは、 Cloud Volumes ONTAPのストレージ アカウントに関連付けられています。その結果、 Cloud Volumes ONTAPストレージへのアクセスは、Microsoft バックボーン ネットワークを経由することになります。
+
+クライアントがCloud Volumes ONTAPと同じ VNet 内、ピアリングされた VNet 内、またはオンプレミス ネットワーク内でプライベート VPN または ExpressRoute 接続を使用して VNet に接続している場合、クライアント アクセスはプライベート リンクを経由します。
+
+以下は、同じ VNet 内およびプライベート VPN または ExpressRoute 接続を持つオンプレミス ネットワークからのプライベート リンク経由のクライアント アクセスを示す例です。
+
+image:diagram_azure_private_link.png["Cloud Volumes ONTAPにアクセスし、プライベート エンドポイントとプライベート リンクを経由してストレージ アカウントにアクセスする様子を示す概念図。"]
+
+
+NOTE: コンソール エージェントとCloud Volumes ONTAPシステムが異なる VNet にデプロイされている場合は、コンソール エージェントがデプロイされている VNet とCloud Volumes ONTAPシステムがデプロイされている VNet の間に VNet ピアリングを設定する必要があります。
+
+
+
+=== Azure プライベート DNS の詳細を入力してください
+
+使用する場合 https://docs.microsoft.com/en-us/azure/dns/private-dns-overview["Azure プライベート DNS"^]、各コンソール エージェントの構成ファイルを変更する必要があります。そうしないと、コンソールはCloud Volumes ONTAPとそれに関連付けられたストレージ アカウント間の Azure Private Link 接続を設定できません。
+
+DNS名はAzure DNSの命名要件に一致する必要があることに注意してください。 https://docs.microsoft.com/en-us/azure/storage/common/storage-private-endpoints#dns-changes-for-private-endpoints["Azureドキュメントに記載されているとおり"^] 。
+
+.手順
+. コンソール エージェント ホストに SSH で接続してログインします。
+. に移動 `/opt/application/netapp/cloudmanager/docker_occm/data`ディレクトリ。
+. 編集 `app.conf`追加することで `user-private-dns-zone-settings`次のキーワードと値のペアを持つパラメータ:
++
+[source, cli]
+----
+ "user-private-dns-zone-settings" : {
+    "resource-group" : "<resource group name of the DNS zone>",
+    "subscription" : "<subscription ID>",
+    "use-existing" : true,
+    "create-private-dns-zone-link" : true
+ }
+----
++
+その `subscription`キーワードは、プライベート DNS ゾーンがコンソール エージェントのサブスクリプションとは異なるサブスクリプションにある場合にのみ必要です。
+
+. ファイルを保存し、コンソール エージェントからログオフします。
++
+再起動は必要ありません。
+
+
+
+
+
+=== 失敗時のロールバックを有効にする
+
+コンソールが特定のアクションの一部として Azure プライベート リンクの作成に失敗した場合、Azure プライベート リンク接続なしでアクションが完了します。これは、新しいシステム (単一ノードまたは HA ペア) を作成するとき、または HA ペアで次のアクション (新しいアグリゲートの作成、既存のアグリゲートへのディスクの追加、32 TiB を超えたときに新しいストレージ アカウントの作成) が発生したときに発生する可能性があります。
+
+コンソールが Azure プライベート リンクの作成に失敗した場合、ロールバックを有効にすることでこのデフォルトの動作を変更できます。これにより、会社のセキュリティ規制に完全に準拠していることを確認できます。
+
+ロールバックを有効にすると、コンソールはアクションを停止し、アクションの一部として作成されたすべてのリソースをロールバックします。
+
+ロールバックは、API 経由で、または app.conf ファイルを更新することで有効にできます。
+
+*API経由でロールバックを有効にする*
+
+.手順
+. 使用 `PUT /occm/config`次のリクエスト本文を含む API 呼び出し:
++
+[source, json]
+----
+{ "rollbackOnAzurePrivateLinkFailure": true }
+----
+
+
+*app.confを更新してロールバックを有効にする*
+
+.手順
+. コンソール エージェントのホストに SSH で接続してログインします。
+. 次のディレクトリに移動します: /opt/application/netapp/cloudmanager/docker_occm/data
+. 次のパラメータと値を追加して app.conf を編集します。
++
+ "rollback-on-private-link-failure": true
+. ファイルを保存し、コンソール エージェントからログオフします。
++
+再起動は必要ありません。
+
+

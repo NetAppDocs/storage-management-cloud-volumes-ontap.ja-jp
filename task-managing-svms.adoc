@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: task-managing-svms.html 
+keywords: storage virtual machine, vserver, svm, storage vm, supported number, number supported 
+summary: ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。これは SVM または vserver として知られているかもしれません。  Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。 
+---
+= Cloud Volumes ONTAPのストレージVMを管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。以前は「_SVM_」または「_Vserver_」と呼んでいました。  Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。
+
+
+
+== サポートされるストレージVMの数
+
+特定の構成では複数のストレージ VM がサポートされます。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Cloud Volumes ONTAPリリースノート"^]お使いのCloud Volumes ONTAPのバージョンでサポートされているストレージ VM の数を確認します。
+
+
+
+== 複数のストレージVMを操作する
+
+NetAppコンソールは、 ONTAP System Manager またはONTAP CLI から作成した追加のストレージ VM をサポートします。
+
+たとえば、次の図は、ボリュームを作成するときにストレージ VM を選択する方法を示しています。
+
+image:screenshot_create_volume_svm.gif["ボリュームを作成するストレージ VM を選択する機能を示したスクリーンショット。"]
+
+次の図は、ボリュームを別のシステムに複製するときにストレージ VM を選択する方法を示しています。
+
+image:screenshot_replicate_volume_svm.gif["ボリュームを複製するストレージ VM を選択する機能を示したスクリーンショット。"]
+
+
+
+== デフォルトのストレージVMの名前を変更する
+
+コンソールは、Cloud Volumes ONTAP用に作成する単一のストレージ VM に自動的に名前を付けます。厳密な命名規則がある場合は、 ONTAP System Manager、 ONTAP CLI、または API からストレージ VM の名前を変更できます。たとえば、名前をONTAPクラスターのストレージ VM の名前と一致させたい場合があります。

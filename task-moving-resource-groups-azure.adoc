@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: task-moving-resource-groups-azure.html 
+keywords: move resource groups, azure, remove system, resource groups, azure console, Azure subscriptions 
+summary: Cloud Volumes ONTAP はAzure リソース グループの移動をサポートしますが、ワークフローは Azure コンソールでのみ実行されます。 
+---
+= AzureコンソールでCloud Volumes ONTAPのAzureリソースグループを移動する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP はAzure リソース グループの移動をサポートしますが、ワークフローは Azure コンソールでのみ実行されます。
+
+Cloud Volumes ONTAPシステムを、同じ Azure サブスクリプション内の Azure 内の 1 つのリソース グループから別のリソース グループに移動できます。異なる Azure サブスクリプション間でのリソース グループの移動はサポートされていません。
+
+.手順
+. Cloud Volumes ONTAPシステムを削除します。。 link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-removing.html["Cloud Volumes ONTAPシステムの削除"] 。
+. Azure コンソールでリソース グループの移動を実行します。
++
+移動を完了するには、link:https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription["Microsoft Azure のドキュメントでリソースを新しいリソース グループまたはサブスクリプションに移動する"^] 。
+
+. *システム*ページでシステムを検出します。
+. システムの情報で新しいリソース グループを探します。
+
+
+.結果
+システムとそのリソース (VM、ディスク、ストレージ アカウント、ネットワーク インターフェイス、スナップショット) は、新しいリソース グループに含まれます。

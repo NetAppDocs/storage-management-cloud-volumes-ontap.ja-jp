@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: task-google-key-manager.html 
+keywords: google cloud, encryption, NVE, NetApp volume encryption, KMIP, GCP, GCP KMS, key manager service, encryption 
+summary: サードパーティのキー管理サービスには、Google のキー管理サービスをご利用ください。 
+---
+= Google Cloud KMS でCloud Volumes ONTAP の暗号化キーを管理する
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用できますlink:https://cloud.google.com/kms/docs["Google Cloud Platform の鍵管理サービス (Cloud KMS)"^]Google Cloud Platform にデプロイされたアプリケーションでCloud Volumes ONTAP暗号化キーを保護します。
+
+Cloud KMS によるキー管理は、 ONTAP CLI またはONTAP REST API を使用して有効にできます。
+
+Cloud KMS を使用する場合、デフォルトではデータ SVM の LIF を使用してクラウド キー管理エンドポイントと通信することに注意してください。ノード管理ネットワークは、クラウド プロバイダーの認証サービス (oauth2.googleapis.com) との通信に使用されます。クラスタ ネットワークが正しく設定されていないと、クラスタはキー管理サービスを適切に利用できません。
+
+.開始する前に
+* システムではCloud Volumes ONTAP 9.10.1以降が実行されている必要があります
+* データ SVM を使用する必要があります。  Cloud KMS はデータ SVM でのみ構成できます。
+* クラスタ管理者またはSVM管理者である必要があります。
+* ボリューム暗号化（VE）ライセンスをSVMにインストールする必要があります
+* Cloud Volumes ONTAP 9.12.1 GA以降では、マルチテナント暗号化キー管理（MTEKM）ライセンスもインストールする必要があります。
+* 有効な Google Cloud Platform サブスクリプションが必要です
+
+
+
+
+== 構成
+
+.Google Cloud
+. Google Cloud環境では、link:https://cloud.google.com/kms/docs/creating-keys["対称GCPキーリングとキーを作成する"^] 。
+. Cloud KMS キーとCloud Volumes ONTAPサービス アカウントにカスタム ロールを割り当てます。
++
+.. カスタム ロールを作成します。
++
+[listing]
+----
+gcloud iam roles create kmsCustomRole
+    --project=<project_id>
+    --title=<kms_custom_role_name>
+    --description=<custom_role_description>
+    --permissions=cloudkms.cryptoKeyVersions.get,cloudkms.cryptoKeyVersions.list,cloudkms.cryptoKeyVersions.useToDecrypt,cloudkms.cryptoKeyVersions.useToEncrypt,cloudkms.cryptoKeys.get,cloudkms.keyRings.get,cloudkms.locations.get,cloudkms.locations.list,resourcemanager.projects.get
+    --stage=GA
+----
+.. 作成したカスタム ロールを割り当てます。
+`gcloud kms keys add-iam-policy-binding _key_name_ --keyring _key_ring_name_ --location _key_location_ --member serviceAccount:_service_account_Name_ --role projects/_customer_project_id_/roles/kmsCustomRole`
++
+
+NOTE: Cloud Volumes ONTAP 9.13.0 以降を使用している場合は、カスタム ロールを作成する必要はありません。定義済みの[`cloudkms.cryptoKeyEncrypterDecrypter`^] の役割。
+
+
+
+. サービス アカウントの JSON キーをダウンロードします:
+`gcloud iam service-accounts keys create key-file --iam-account=_sa-name_@_project-id_.iam.gserviceaccount.com`
+
+
+.Cloud Volumes ONTAP
+. 好みの SSH クライアントを使用してクラスタ管理 LIF に接続します。
+. 高度な権限レベルに切り替えます:
+`set -privilege advanced`
+. データ SVM の DNS を作成します。
+`dns create -domains c._<project>_.internal -name-servers _server_address_ -vserver _SVM_name_`
+. CMEK エントリを作成します。
+`security key-manager external gcp enable -vserver _SVM_name_ -project-id _project_ -key-ring-name _key_ring_name_ -key-ring-location _key_ring_location_ -key-name _key_name_`
+. プロンプトが表示されたら、GCP アカウントのサービス アカウント JSON キーを入力します。
+. 有効化されたプロセスが成功したことを確認します。
+`security key-manager external gcp check -vserver _svm_name_`
+. オプション: 暗号化をテストするためのボリュームを作成する `vol create _volume_name_ -aggregate _aggregate_ -vserver _vserver_name_ -size 10G`
+
+
+
+
+== トラブルシューティング
+
+トラブルシューティングが必要な場合は、上記の最後の 2 つの手順で生の REST API ログを tail できます。
+
+. `set d`
+. `systemshell -node _node_ -command tail -f /mroot/etc/log/mlog/kmip2_client.log`
+

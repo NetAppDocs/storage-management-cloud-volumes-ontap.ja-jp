@@ -1,0 +1,15 @@
+= Azure の複数の可用性ゾーンの展開でサポートされる新しいリージョン
+:allow-uri-read: 
+
+
+
+
+=== Azure の複数の可用性ゾーンの展開でサポートされる新しいリージョン
+
+Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の HA 複数可用性ゾーンの展開がサポートされるようになりました。
+
+* 米国中部
+* US Gov Virginia (米国政府地域 - バージニア州)
+
+
+すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。

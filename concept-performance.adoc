@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: concept-performance.html 
+keywords: performance, technical report, TR, workload, cpu 
+summary: パフォーマンス結果を確認することで、どのワークロードがCloud Volumes ONTAPに適しているかを判断できます。 
+---
+= Cloud Volumes ONTAPワークロードのパフォーマンス監視について学ぶ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+パフォーマンス結果を確認することで、どのワークロードがCloud Volumes ONTAPに適しているかを判断できます。
+
+
+
+== パフォーマンス技術レポート
+
+ifdef::aws[]
+
+* Cloud Volumes ONTAP for AWS
++
+link:https://www.netapp.com/pdf.html?item=/media/9088-tr4383pdf.pdf["NetAppテクニカルレポート4383：Amazon Web Servicesにおけるアプリケーションワークロードを用いたCloud Volumes ONTAPのパフォーマンス特性"^]
+
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* Microsoft Azure 向けCloud Volumes ONTAP
++
+link:https://www.netapp.com/pdf.html?item=/media/9089-tr-4671pdf.pdf["NetAppテクニカル レポート 4671: Azure におけるCloud Volumes ONTAPのアプリケーション ワークロードのパフォーマンス特性"^]
+
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Cloud Volumes ONTAP for Google Cloud
++
+link:https://www.netapp.com/pdf.html?item=/media/9090-tr4816pdf.pdf["NetAppテクニカル レポート 4816: Google Cloud 向けCloud Volumes ONTAPのパフォーマンス特性"^]
+
+
+
+endif::gcp[]
+
+
+
+== CPUパフォーマンス
+
+Cloud Volumes ONTAPノードは、クラウド プロバイダーの監視ツールから、高い使用率 (90% 以上) として表示されます。これは、 ONTAP が仮想マシンに提供されるすべての vCPU を予約し、必要なときに使用できるようにするためです。
+
+詳細については、 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/Monitoring_CPU_utilization_before_an_ONTAP_upgrade["CLI を使用してONTAP CPU 使用率を監視する方法に関するNetAppナレッジベースの記事"^]

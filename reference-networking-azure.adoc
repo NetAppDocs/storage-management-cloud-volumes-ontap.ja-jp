@@ -1,0 +1,494 @@
+---
+sidebar: sidebar 
+permalink: reference-networking-azure.html 
+keywords: networking, network, requirements, connection, connections, vnet, security group, security groups, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, blob, service endpoint 
+summary: Cloud Volumes ONTAPシステムが適切に動作できるように、Azure ネットワークをセットアップします。 
+---
+= Cloud Volumes ONTAP用の Azure ネットワークを設定する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetAppコンソールは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。
+
+
+
+== Cloud Volumes ONTAPの要件
+
+Azure では次のネットワーク要件を満たす必要があります。
+
+
+
+=== アウトバウンドインターネットアクセス
+
+Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。セキュリティ要件が厳しい環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
+
+コンソール エージェントは、日常的な操作のために複数のエンドポイントにも接続します。エンドポイントの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]そして https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]。
+
+
+
+==== Cloud Volumes ONTAPエンドポイント
+
+Cloud Volumes ONTAP はこれらのエンドポイントを使用してさまざまなサービスと通信します。
+
+[cols="5*"]
+|===
+| エンドポイント | 適用対象 | 目的 | 展開モード | 利用できない場合の影響 
+
+
+| \https://netapp-cloud-account.auth0.com | 認証  a| 
+コンソールでの認証に使用されます。
+| 標準モードと制限モード。  a| 
+ユーザー認証が失敗し、次のサービスは利用できなくなります。
+
+* Cloud Volumes ONTAPサービス
+* ONTAPサービス
+* プロトコルとプロキシサービス
+
+
+
+
+| https://vault.azure.net[] | キーボールト | カスタマー マネージド キー (CMK) を使用するときに、Azure Key Vault からクライアント シークレット キーを取得するために使用されます。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAPサービスは利用できません。 
+
+
+| \https://api.bluexp.netapp.com/tenancy | 賃貸借 | コンソールからCloud Volumes ONTAPリソースを取得して、リソースとユーザーを承認するために使用されます。 | 標準モードと制限モード。 | Cloud Volumes ONTAPリソースとユーザーは承認されていません。 
+
+
+| \https://mysupport.netapp.com/aods/asupmessage \https://mysupport.netapp.com/asupprod/post/1.0/postAsup | AutoSupport | AutoSupportテレメトリ データをNetAppサポートに送信するために使用されます。 | 標準モードと制限モード。 | AutoSupport情報は未配信のままです。 
+
+
+| \https://management.azure.com \https://login.microsoftonline.com \https://bluexpinfraprod.eastus2.data.azurecr.io \https://core.windows.net | パブリックリージョン | Azure サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Azure サービスと通信して Azure のコンソールの特定の操作を実行できません。 
+
+
+| \https://management.chinacloudapi.cn \https://login.chinacloudapi.cn \https://blob.core.chinacloudapi.cn \https://core.chinacloudapi.cn | 中国地域 | Azure サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Azure サービスと通信して Azure のコンソールの特定の操作を実行できません。 
+
+
+| \https://management.microsoftazure.de \https://login.microsoftonline.de \https://blob.core.cloudapi.de \https://core.cloudapi.de | ドイツ地域 | Azure サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Azure サービスと通信して Azure のコンソールの特定の操作を実行できません。 
+
+
+| \https://management.usgovcloudapi.net \https://login.microsoftonline.us \https://blob.core.usgovcloudapi.net \https://core.usgovcloudapi.net | 政府地域 | Azure サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Azure サービスと通信して Azure のコンソールの特定の操作を実行できません。 
+
+
+| \https://management.azure.microsoft.scloud \https://login.microsoftonline.microsoft.scloud \https://blob.core.microsoft.scloud \https://core.microsoft.scloud | 政府国防総省地域 | Azure サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Azure サービスと通信して Azure のコンソールの特定の操作を実行できません。 
+|===
+
+
+=== NetAppコンソールエージェントのネットワークプロキシ構成
+
+NetAppコンソール エージェントのプロキシ サーバー構成を使用して、 Cloud Volumes ONTAPからのアウトバウンド インターネット アクセスを有効にすることができます。コンソールは次の 2 種類のプロキシをサポートしています。
+
+* *明示的なプロキシ*: Cloud Volumes ONTAPからの送信トラフィックは、コンソール エージェントのプロキシ構成時に指定されたプロキシ サーバーの HTTP アドレスを使用します。管理者は、追加の認証のためにユーザー資格情報とルート CA 証明書を構成している場合もあります。明示的なプロキシにルートCA証明書が利用可能な場合は、必ず同じ証明書を取得して、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
+* *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェントのプロキシを介して自動的にルーティングするように構成されています。透過プロキシを設定する場合、管理者はプロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
+
+
+プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^] 。
+
+
+
+=== IPアドレス
+
+コンソールは、Azure のCloud Volumes ONTAPに必要な数のプライベート IP アドレスを自動的に割り当てます。ネットワークに十分なプライベート IP アドレスが利用可能であることを確認する必要があります。
+
+Cloud Volumes ONTAPに割り当てられる LIF の数は、単一ノード システムを展開するか、HA ペアを展開するかによって異なります。  LIF は物理ポートに関連付けられた IP アドレスです。  SnapCenterなどの管理ツールには、SVM 管理 LIF が必要です。
+
+
+NOTE: iSCSI LIF は、iSCSI プロトコルを介したクライアント アクセスを提供し、システムによって他の重要なネットワーク ワークフローに使用されます。これらの LIF は必須であり、削除しないでください。
+
+
+
+==== 単一ノードシステムのIPアドレス
+
+コンソールは、単一ノード システムに 5 つまたは 6 つの IP アドレスを割り当てます。
+
+* クラスタ管理IP
+* ノード管理IP
+* SnapMirrorのクラスタ間 IP
+* NFS/CIFS IP
+* iSCSI IP
++
+
+NOTE: iSCSI IP は、iSCSI プロトコルを介したクライアント アクセスを提供します。これは、システムによって他の重要なネットワーク ワークフローにも使用されます。この LIF は必須であり、削除しないでください。
+
+* SVM 管理 (オプション - デフォルトでは構成されていません)
+
+
+
+
+==== HAペアのIPアドレス
+
+コンソールは、展開中に 4 つの NIC (ノードあたり) に IP アドレスを割り当てます。
+
+コンソールは HA ペア上に SVM 管理 LIF を作成しますが、Azure の単一ノード システム上には作成しないことに注意してください。
+
+*NIC0*
+
+* ノード管理IP
+* クラスタ間IP
+* iSCSI IP
++
+
+NOTE: iSCSI IP は、iSCSI プロトコルを介したクライアント アクセスを提供します。これは、システムによって他の重要なネットワーク ワークフローにも使用されます。この LIF は必須であり、削除しないでください。
+
+
+
+*NIC1*
+
+* クラスターネットワークIP
+
+
+*NIC2*
+
+* クラスタ相互接続 IP (HA IC)
+
+
+*NIC3*
+
+* Pageblob NIC IP (ディスクアクセス)
+
+
+
+NOTE: NIC3 は、ページ BLOB ストレージを使用する HA 展開にのみ適用されます。
+
+上記の IP アドレスは、フェールオーバー イベントでは移行されません。
+
+さらに、4 つのフロントエンド IP (FIP) がフェイルオーバー イベント時に移行するように構成されています。これらのフロントエンド IP はロードバランサー内に存在します。
+
+* クラスタ管理IP
+* NodeA データ IP (NFS/CIFS)
+* NodeB データ IP (NFS/CIFS)
+* SVM管理IP
+
+
+
+
+=== Azure サービスへの安全な接続
+
+デフォルトでは、コンソールは、 Cloud Volumes ONTAPと Azure ページ BLOB ストレージ アカウント間の接続に Azure プライベート リンクを有効にします。
+
+ほとんどの場合、何もする必要はありません。コンソールが Azure Private Link を管理します。ただし、Azure プライベート DNS を使用する場合は、構成ファイルを編集する必要があります。  Azure 内のコンソール エージェントの場所に関する要件にも注意する必要があります。
+
+ビジネスニーズに応じて、プライベートリンク接続を無効にすることもできます。リンクを無効にすると、コンソールは代わりにサービス エンドポイントを使用するようにCloud Volumes ONTAPを構成します。
+
+link:task-enabling-private-link.html["Cloud Volumes ONTAPで Azure Private Links またはサービス エンドポイントを使用する方法の詳細"] 。
+
+
+
+=== 他のONTAPシステムへの接続
+
+Azure のCloud Volumes ONTAPシステムと他のネットワークのONTAPシステム間でデータをレプリケートするには、Azure VNet と他のネットワーク (企業ネットワークなど) の間に VPN 接続が必要です。
+
+手順については、 https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal["Microsoft Azure ドキュメント: Azure ポータルでサイト間接続を作成する"^] 。
+
+
+
+=== HA相互接続用のポート
+
+Cloud Volumes ONTAP HA ペアには HA 相互接続が含まれており、これにより各ノードはパートナーが機能しているかどうかを継続的に確認し、もう一方の不揮発性メモリのログ データをミラーリングできます。  HA 相互接続は通信に TCP ポート 10006 を使用します。
+
+デフォルトでは、HA 相互接続 LIF 間の通信はオープンであり、このポートにはセキュリティ グループ ルールはありません。ただし、HA 相互接続 LIF 間にファイアウォールを作成する場合は、HA ペアが適切に動作できるように、TCP トラフィックがポート 10006 に対して開いていることを確認する必要があります。
+
+
+
+=== Azure リソース グループには HA ペアが 1 つだけあります
+
+Azure にデプロイするCloud Volumes ONTAP HA ペアごとに専用のリソース グループを使用する必要があります。リソース グループでは 1 つの HA ペアのみがサポートされます。
+
+Azure リソース グループに 2 番目のCloud Volumes ONTAP HA ペアをデプロイしようとすると、コンソールで接続の問題が発生します。
+
+
+
+=== セキュリティグループルール
+
+コンソールは、Cloud Volumes ONTAP が正常に動作するためのインバウンド ルールとアウトバウンド ルールを含む Azure セキュリティ グループを作成します。 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["コンソールエージェントのセキュリティグループルールを表示する"^] 。
+
+Cloud Volumes ONTAPの Azure セキュリティ グループでは、ノード間の内部通信用に適切なポートが開いている必要があります。 https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["ONTAPの内部ポートについて学ぶ"^] 。
+
+定義済みのセキュリティ グループを変更したり、カスタム セキュリティ グループを使用することはお勧めしません。ただし、必要な場合は、展開プロセスでCloud Volumes ONTAPシステムが独自のサブネット内でフルアクセス権を持つ必要があることに注意してください。デプロイが完了したら、ネットワーク セキュリティ グループを変更する場合は、クラスター ポートと HA ネットワーク ポートを開いたままにしておいてください。これにより、Cloud Volumes ONTAPクラスター内でのシームレスな通信 (ノード間の any-to-any 通信) が保証されます。
+
+
+
+==== 単一ノードシステムの受信ルール
+
+Cloud Volumes ONTAPシステムを追加し、定義済みのセキュリティ グループを選択すると、次のいずれかの範囲内でトラフィックを許可することを選択できます。
+
+* *選択した VNet のみ*: 受信トラフィックのソースは、Cloud Volumes ONTAPシステムの VNet のサブネット範囲と、コンソール エージェントが存在する VNet のサブネット範囲です。これは推奨されるオプションです。
+* *すべての VNet*: 受信トラフィックのソースは、0.0.0.0/0 IP 範囲です。
+* *無効*: このオプションは、ストレージ アカウントへのパブリック ネットワーク アクセスを制限し、 Cloud Volumes ONTAPシステムのデータ階層化を無効にします。セキュリティ規制やポリシーにより、同じ VNet 内であってもプライベート IP アドレスを公開しない場合は、このオプションが推奨されます。
+
+
+[cols="4*"]
+|===
+| 優先順位と名前 | ポートとプロトコル | 送信元と送信先 | 説明 
+
+
+| 1000 受信SSH | 22 TCP | 任意対任意 | クラスタ管理LIFまたはノード管理LIFのIPアドレスへのSSHアクセス 
+
+
+| 1001 インバウンド_http | 80 TCP | 任意対任意 | クラスタ管理LIFのIPアドレスを使用してONTAP System Manager WebコンソールにHTTPアクセスする 
+
+
+| 1002 inbound_111_tcp | 111 TCP | 任意対任意 | NFS のリモート プロシージャ コール 
+
+
+| 1003 inbound_111_udp | 111 UDP | 任意対任意 | NFS のリモート プロシージャ コール 
+
+
+| 1004 inbound_139 | 139 TCP | 任意対任意 | CIFSのNetBIOSサービスセッション 
+
+
+| 1005 受信_161-162 _tcp | 161-162 TCP | 任意対任意 | 簡易ネットワーク管理プロトコル 
+
+
+| 1006 受信_161-162 _udp | 161-162 UDP | 任意対任意 | 簡易ネットワーク管理プロトコル 
+
+
+| 1007 inbound_443 | 443 TCP | 任意対任意 | コンソールエージェントとの接続と、クラスタ管理LIFのIPアドレスを使用したONTAP System Manager WebコンソールへのHTTPSアクセス 
+
+
+| 1008 inbound_445 | 445 TCP | 任意対任意 | NetBIOS フレームを使用した TCP 経由の Microsoft SMB/CIFS 
+
+
+| 1009 inbound_635_tcp | 635 TCP | 任意対任意 | NFSマウント 
+
+
+| 1010 inbound_635_udp | 635 UDP | 任意対任意 | NFSマウント 
+
+
+| 1011 inbound_749 | 749 TCP | 任意対任意 | Kerberos 
+
+
+| 1012 inbound_2049_tcp | 2049 TCP | 任意対任意 | NFSサーバ デーモン 
+
+
+| 1013 inbound_2049_udp | 2049 UDP | 任意対任意 | NFSサーバ デーモン 
+
+
+| 1014 inbound_3260 | 3260 TCP | 任意対任意 | iSCSI データ LIF を介した iSCSI アクセス 
+
+
+| 1015 受信_4045-4046_tcp | 4045-4046 TCP | 任意対任意 | NFS ロックデーモンとネットワークステータスモニター 
+
+
+| 1016 受信_4045-4046_udp | 4045-4046 UDP | 任意対任意 | NFS ロックデーモンとネットワークステータスモニター 
+
+
+| 1017 inbound_10000 | 10000 TCP | 任意対任意 | NDMPを使用したバックアップ 
+
+
+| 1018 着信_11104-11105 | 11104-11105 TCP | 任意対任意 | SnapMirrorデータ転送 
+
+
+| 3000 受信拒否 _all_tcp | 任意のポート TCP | 任意対任意 | その他のTCP受信トラフィックをすべてブロックする 
+
+
+| 3001 受信拒否 _all_udp | 任意のポートUDP | 任意対任意 | その他のUDP受信トラフィックをすべてブロックする 
+
+
+| 65000 VnetInBound を許可する | 任意のポート 任意のプロトコル | 仮想ネットワークから仮想ネットワークへ | VNet 内からの受信トラフィック 
+
+
+| 65001 Azureロードバランサーの受信を許可する | 任意のポート 任意のプロトコル | AzureLoadBalancer から Any | Azure Standard Load Balancer からのデータ トラフィック 
+
+
+| 65500 全受信拒否 | 任意のポート 任意のプロトコル | 任意対任意 | その他のすべての受信トラフィックをブロックする 
+|===
+
+
+==== HAシステムの受信ルール
+
+Cloud Volumes ONTAPシステムを追加し、定義済みのセキュリティ グループを選択すると、次のいずれかの範囲内でトラフィックを許可することを選択できます。
+
+* *選択した VNet のみ*: 受信トラフィックのソースは、Cloud Volumes ONTAPシステムの VNet のサブネット範囲と、コンソール エージェントが存在する VNet のサブネット範囲です。これは推奨されるオプションです。
+* *すべての VNet*: 受信トラフィックのソースは、0.0.0.0/0 IP 範囲です。
+
+
+
+NOTE: HA システムでは、受信データ トラフィックが Azure Standard Load Balancer を経由するため、単一ノード システムよりも受信ルールが少なくなります。このため、「AllowAzureLoadBalancerInBound」ルールに示されているように、ロード バランサーからのトラフィックは開いている必要があります。
+
+* *無効*: このオプションは、ストレージ アカウントへのパブリック ネットワーク アクセスを制限し、 Cloud Volumes ONTAPシステムのデータ階層化を無効にします。セキュリティ規制やポリシーにより、同じ VNet 内であってもプライベート IP アドレスを公開しない場合は、このオプションが推奨されます。
+
+
+[cols="4*"]
+|===
+| 優先順位と名前 | ポートとプロトコル | 送信元と送信先 | 説明 
+
+
+| 100 inbound_443 | 443 任意のプロトコル | 任意対任意 | コンソールエージェントとの接続と、クラスタ管理LIFのIPアドレスを使用したONTAP System Manager WebコンソールへのHTTPSアクセス 
+
+
+| 101 inbound_111_tcp | 111 任意のプロトコル | 任意対任意 | NFS のリモート プロシージャ コール 
+
+
+| 102 inbound_2049_tcp | 2049 あらゆるプロトコル | 任意対任意 | NFSサーバ デーモン 
+
+
+| 111 受信SSH | 22 あらゆるプロトコル | 任意対任意 | クラスタ管理LIFまたはノード管理LIFのIPアドレスへのSSHアクセス 
+
+
+| 121 inbound_53 | 53 あらゆるプロトコル | 任意対任意 | DNSとCIFS 
+
+
+| 65000 VnetInBound を許可する | 任意のポート 任意のプロトコル | 仮想ネットワークから仮想ネットワークへ | VNet 内からの受信トラフィック 
+
+
+| 65001 Azureロードバランサーの受信を許可する | 任意のポート 任意のプロトコル | AzureLoadBalancer から Any | Azure Standard Load Balancer からのデータ トラフィック 
+
+
+| 65500 全受信拒否 | 任意のポート 任意のプロトコル | 任意対任意 | その他のすべての受信トラフィックをブロックする 
+|===
+
+
+==== アウトバウンドルール
+
+Cloud Volumes ONTAPの定義済みセキュリティ グループは、すべての送信トラフィックを開きます。それが許容できる場合は、基本的な送信ルールに従ってください。より厳格なルールが必要な場合は、高度な送信ルールを使用します。
+
+
+
+===== 基本的なアウトバウンドルール
+
+Cloud Volumes ONTAPの定義済みセキュリティ グループには、次の送信ルールが含まれています。
+
+[cols="3*"]
+|===
+| ポート | プロトコル | 目的 
+
+
+| 全て | すべてTCP | すべての送信トラフィック 
+
+
+| 全て | すべてUDP | すべての送信トラフィック 
+|===
+
+
+===== 高度なアウトバウンドルール
+
+送信トラフィックに厳格なルールが必要な場合は、次の情報を使用して、 Cloud Volumes ONTAPによる送信通信に必要なポートのみを開くことができます。
+
+
+NOTE: ソースは、Cloud Volumes ONTAPシステム上のインターフェース (IP アドレス) です。
+
+[cols="10,10,6,20,20,34"]
+|===
+| サービス | ポート | プロトコル | ソース | デスティネーション | 目的 
+
+
+.18+| Active Directory | 88 | TCP | ノード管理LIF | アクティブディレクトリフォレスト | Kerberos V認証 
+
+
+| 137 | UDP | ノード管理LIF | アクティブディレクトリフォレスト | NetBIOSネーム サービス 
+
+
+| 138 | UDP | ノード管理LIF | アクティブディレクトリフォレスト | NetBIOSデータグラムサービス 
+
+
+| 139 | TCP | ノード管理LIF | アクティブディレクトリフォレスト | NetBIOSサービス セッション 
+
+
+| 389 | TCPとUDP | ノード管理LIF | アクティブディレクトリフォレスト | LDAP 
+
+
+| 445 | TCP | ノード管理LIF | アクティブディレクトリフォレスト | NetBIOS フレームを使用した TCP 経由の Microsoft SMB/CIFS 
+
+
+| 464 | TCP | ノード管理LIF | アクティブディレクトリフォレスト | Kerberos V パスワードの変更と設定 (SET_CHANGE) 
+
+
+| 464 | UDP | ノード管理LIF | アクティブディレクトリフォレスト | Kerberos鍵管理 
+
+
+| 749 | TCP | ノード管理LIF | アクティブディレクトリフォレスト | Kerberos V パスワードの変更と設定 (RPCSEC_GSS) 
+
+
+| 88 | TCP | データ LIF (NFS、CIFS、iSCSI) | アクティブディレクトリフォレスト | Kerberos V認証 
+
+
+| 137 | UDP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | NetBIOSネーム サービス 
+
+
+| 138 | UDP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | NetBIOSデータグラムサービス 
+
+
+| 139 | TCP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | NetBIOSサービス セッション 
+
+
+| 389 | TCPとUDP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | LDAP 
+
+
+| 445 | TCP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | NetBIOS フレームを使用した TCP 経由の Microsoft SMB/CIFS 
+
+
+| 464 | TCP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | Kerberos V パスワードの変更と設定 (SET_CHANGE) 
+
+
+| 464 | UDP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | Kerberos鍵管理 
+
+
+| 749 | TCP | データ LIF (NFS、CIFS) | アクティブディレクトリフォレスト | Kerberos V パスワードの変更と設定 (RPCSEC_GSS) 
+
+
+.3+| AutoSupport | HTTPS | 443 | ノード管理LIF | mysupport.netapp.com | AutoSupport （HTTPSがデフォルト） 
+
+
+| HTTP | 80 | ノード管理LIF | mysupport.netapp.com | AutoSupport （トランスポート プロトコルが HTTPS から HTTP に変更された場合のみ） 
+
+
+| TCP | 3128 | ノード管理LIF | コンソールエージェント | アウトバウンドインターネット接続が利用できない場合、コンソールエージェント上のプロキシサーバーを介してAutoSupportメッセージを送信する 
+
+
+| 構成のバックアップ | HTTP | 80 | ノード管理LIF | \http://<コンソールエージェントのIPアドレス>/occm/offboxconfig | 構成のバックアップをコンソール エージェントに送信します。link:https://docs.netapp.com/us-en/ontap/system-admin/node-cluster-config-backed-up-automatically-concept.html["ONTAPのドキュメント"^] 。 
+
+
+| DHCP | 68 | UDP | ノード管理LIF | DHCP | 初回セットアップ用のDHCPクライアント 
+
+
+| DHCP | 67 | UDP | ノード管理LIF | DHCP | DHCP サーバ 
+
+
+| DNS | 53 | UDP | ノード管理LIFとデータLIF（NFS、CIFS） | DNS | DNS 
+
+
+| NDMP | 18600～18699 | TCP | ノード管理LIF | 宛先サーバー | NDMPコピー 
+
+
+| SMTP | 25 | TCP | ノード管理LIF | メール サーバ | SMTPアラートはAutoSupportに使用できます 
+
+
+.4+| SNMP | 161 | TCP | ノード管理LIF | 監視サーバー | SNMPトラップによる監視 
+
+
+| 161 | UDP | ノード管理LIF | 監視サーバー | SNMPトラップによる監視 
+
+
+| 162 | TCP | ノード管理LIF | 監視サーバー | SNMPトラップによる監視 
+
+
+| 162 | UDP | ノード管理LIF | 監視サーバー | SNMPトラップによる監視 
+
+
+.2+| SnapMirror | 11104 | TCP | クラスタ間LIF | ONTAPクラスタ間LIF | SnapMirrorのクラスタ間通信セッションの管理 
+
+
+| 11105 | TCP | クラスタ間LIF | ONTAPクラスタ間LIF | SnapMirrorデータ転送 
+
+
+| syslog | 514 | UDP | ノード管理LIF | syslogサーバ | Syslog転送メッセージ 
+|===
+
+
+== コンソールエージェントの要件
+
+コンソール エージェントをまだ作成していない場合は、コンソール エージェントのネットワーク要件も確認する必要があります。
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントのネットワーク要件を表示する"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["Azure のセキュリティ グループ ルール"^]
+
+
+.関連トピック
+* link:task-verify-autosupport.html["Cloud Volumes ONTAPのAutoSupport設定を確認する"]
+* https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["ONTAPの内部ポートについて学ぶ"^] 。
+

@@ -1,0 +1,124 @@
+---
+sidebar: sidebar 
+permalink: reference-vpc-service-controls-gcp.html 
+keywords: vpc, service controls, vpc-sc, google, psc, private service connect 
+summary: VPC Service Controls を使用して Google 環境をロックダウンすることを選択する場合は、 NetAppコンソールとCloud Volumes ONTAP がGoogle API とどのようにやり取りするか、またCloud Volumes ONTAP をデプロイするためにサービス パラメータをどのように設定するかを理解する必要があります。 
+---
+= VPC Service Controls を設定して、Google Cloud にCloud Volumes ONTAP をデプロイする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+VPC Service Controls を使用して Google Cloud 環境をロックダウンする場合は、 NetApp Console とCloud Volumes ONTAP がGoogle Cloud API とどのようにやり取りするか、また Console とCloud Volumes ONTAP をデプロイするためにサービス境界をどのように構成するかを理解する必要があります。
+
+VPC Service Controls を使用すると、信頼できる境界外にある Google マネージド サービスへのアクセスを制御し、信頼できない場所からのデータアクセスをブロックし、不正なデータ転送のリスクを軽減できます。 https://cloud.google.com/vpc-service-controls/docs["Google Cloud VPC Service Controls の詳細"^] 。
+
+
+
+== NetAppサービスが VPC Service Controls と通信する方法
+
+コンソールは Google Cloud API と直接通信します。これは、Google Cloud 外部の外部 IP アドレス（api.services.cloud.netapp.com など）からトリガーされるか、Google Cloud 内でコンソール エージェントに割り当てられた内部アドレスからトリガーされます。
+
+コンソール エージェントの展開スタイルによっては、サービス境界に特定の例外を設ける必要がある場合があります。
+
+
+
+== イメージ
+
+Cloud Volumes ONTAPとコンソールはどちらも、 NetAppによって管理されている GCP 内のプロジェクトのイメージを使用します。組織内でホストされていないイメージの使用をブロックするポリシーが組織にある場合、これはコンソールエージェントとCloud Volumes ONTAPの展開に影響する可能性があります。
+
+手動インストール方法を使用してコンソール エージェントを手動で展開できますが、 Cloud Volumes ONTAPNetAppプロジェクトからイメージをプルする必要もあります。コンソール エージェントとCloud Volumes ONTAPをデプロイするには、許可リストを提供する必要があります。
+
+
+
+=== コンソールエージェントの展開
+
+コンソール エージェントを展開するユーザーは、プロジェクト ID _netapp-cloudmanager_ およびプロジェクト番号 _14190056516_ でホストされているイメージを参照できる必要があります。
+
+
+
+=== Cloud Volumes ONTAPの導入
+
+* コンソール サービス アカウントは、サービス プロジェクトのプロジェクト ID _netapp-cloudmanager_ とプロジェクト番号 _14190056516_ でホストされているイメージを参照する必要があります。
+* デフォルトの Google API サービス エージェントのサービス アカウントは、サービス プロジェクトのプロジェクト ID _netapp-cloudmanager_ とプロジェクト番号 _14190056516_ でホストされているイメージを参照する必要があります。
+
+
+VPC Service Controls を使用してこれらのイメージをプルするために必要なルールの例を以下に定義します。
+
+
+
+== VPC Service Controls 境界ポリシー
+
+ポリシーにより、VPC Service Controls ルールセットの例外が許可されます。ポリシーの詳細については、 https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#policy-model["GCP VPC サービスコントロールポリシードキュメント"^] 。
+
+コンソールに必要なポリシーを設定するには、組織内の VPC Service Controls 境界に移動し、次のポリシーを追加します。フィールドは、VPC Service Controls ポリシー ページで指定されたオプションと一致する必要があります。また、*すべての*ルールが必須であり、ルール セットでは *OR* パラメータを使用する必要があることにも注意してください。
+
+
+
+=== イングレスルール
+
+....
+From:
+	Identities:
+		[User Email Address]
+	Source > All sources allowed
+To:
+	Projects =
+		[Service Project]
+	Services =
+		Service name: iam.googleapis.com
+		  Service methods: All actions
+		Service name: compute.googleapis.com
+		  Service methods:All actions
+....
+または
+
+....
+From:
+	Identities:
+		[User Email Address]
+	Source > All sources allowed
+To:
+	Projects =
+		[Host Project]
+	Services =
+		Service name: compute.googleapis.com
+		  Service methods: All actions
+....
+または
+
+....
+From:
+	Identities:
+		[Service Project Number]@cloudservices.gserviceaccount.com
+	Source > All sources allowed
+To:
+	Projects =
+		[Service Project]
+		[Host Project]
+	Services =
+		Service name: compute.googleapis.com
+		Service methods: All actions
+....
+
+
+=== 出口ルール
+
+....
+From:
+	Identities:
+		[Service Project Number]@cloudservices.gserviceaccount.com
+To:
+	Projects =
+		14190056516
+	Service =
+		Service name: compute.googleapis.com
+		Service methods: All actions
+....
+
+TIP: 上記のプロジェクト番号は、 NetAppがコンソール エージェントとCloud Volumes ONTAP のイメージを保存するために使用するプロジェクト _netapp-cloudmanager_ です。

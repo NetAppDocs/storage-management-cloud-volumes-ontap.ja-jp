@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: task-quick-deploy-aws.html 
+keywords: aws quick deploy, quick deploy, aws, single screen deployment AWS, SAZ, MAZ, single node, HA pair 
+summary: Cloud Volumes ONTAPインスタンスを単一システム構成で、または AWS の HA ペアとして迅速に導入できます。 
+---
+= クイックデプロイメントを使用してAWSにCloud Volumes ONTAPをデプロイする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+単一ノードと高可用性 (HA) 構成の両方に対して、クイック デプロイメント メソッドを使用して、AWS にCloud Volumes ONTAP をデプロイできます。この簡素化されたプロセスにより、高度な方法と比較して展開手順が削減されます。また、1 ページにデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、ワークフローがより明確になります。
+
+.開始する前に
+NetAppコンソールから AWS にCloud Volumes ONTAPシステムを追加するには、以下が必要です。
+
+[[licensing]]
+* 稼働中のコンソール エージェント。
++
+** あなたは https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["プロジェクトまたはワークスペースに関連付けられたコンソールエージェント"^]。
+** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^] 。
+
+
+* 使用する構成を理解すること。
++
+構成を選択し、管理者から AWS ネットワーク情報を取得して準備しておく必要があります。詳細については、link:task-planning-your-config.html["Cloud Volumes ONTAP構成の計画"^] 。
+
+* Cloud Volumes ONTAPのライセンスを設定するために必要なことを理解していること。
++
+link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"^] 。
+
+* CIFS 構成用の DNS および Active Directory。
++
+詳細については、link:reference-networking-aws.html["AWS におけるCloud Volumes ONTAPのネットワーク要件"^] 。
+
+
+
+.タスク概要
+Cloud Volumes ONTAPシステムを作成するとすぐに、 NetAppコンソールは指定された VPC でテストインスタンスを起動して接続を確認します。成功した場合、コンソールは直ちにインスタンスを終了し、システムの展開を開始します。コンソールが接続を確認できない場合、システムの作成は失敗します。テストインスタンスは、 `t2.nano` （デフォルトのVPCテナンシーの場合）または `m3.medium`(専用 VPC テナンシーの場合)。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. [[subscribe]]Canvas ページで、[*システムの追加*] をクリックし、指示に従います。
+. *Amazon Web Services* > * Cloud Volumes ONTAP* > *新規追加*を選択します。デフォルトでは*クイック作成*オプションが選択されています。
+
+
+image:screenshot-aws-quick-create.png["width=800,alt=\"AWS クイック作成\""]
+
+.システムの詳細
+. *クラウド プロバイダー アカウント*: アカウントの詳細は、選択したコンソール エージェントに基づいて自動的に入力されます。複数のアカウントをお持ちの場合は、使用するアカウントを選択してください。コンソールエージェントが利用できない場合は、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["コンソールエージェントを作成する"^] 。
+. *名前*: システム名。コンソールは、システム (クラスター) 名を使用して、 Cloud Volumes ONTAPシステムと Amazon EC2 インスタンスに名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。
+. * ONTAP認証情報* これらは、Cloud Volumes ONTAPクラスター管理者アカウントの認証情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用することも、カスタム ユーザー名に変更することもできます。
+. *タグ* AWS タグは、AWS リソースのメタデータです。コンソールは、Cloud Volumes ONTAPインスタンスと、インスタンスに関連付けられている各 AWS リソースにタグを追加します。 Cloud Volumes ONTAPシステムを作成するときに、ユーザー インターフェイスから最大 15 個のタグを追加でき、作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["AWS ドキュメント: Amazon EC2 リソースのタグ付け"^] 。
+
+
+.展開と構成
+. *デプロイメント タイプ*: 使用するデプロイメント タイプ (単一ノード、単一の可用性ゾーン (AZ) での高可用性 (HA)、または複数の AZ での HA) を選択します。
+. *ネットワーク設定*: 記録したネットワーク情報を入力します。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#collect-networking-information["AWS ワークシート"^] 。
++
+.. *AWS リージョン*: デフォルトでは、サブネット リソースを持つ VPC を持つ関連クラウド アカウントのリージョンが選択されます。
+.. *VPC*: サブネットを持つ AWS リージョンの VPC を入力します。サブネットがない場合、VPC のデフォルト値が選択されます。
+.. *サブネット*: 単一ノードのデプロイメントまたは単一 AZ 内の HA デプロイメントの場合にのみ、VPC のサブネットを選択できます。
+
+
+
+
+.高可用性
+HA 構成を選択した場合は、次の情報を入力します。
+
+[role="tabbed-block"]
+====
+.単一AZのHA
+--
+. *メディエーター アクセス*: メディエーター アクセス情報を指定します。メディエーターは、HA ペアの健全性を監視し、障害発生時にクォーラムを提供する別のインスタンスです。キーペア名を指定して、メディエーターインスタンスが AWS EC2 サービスに接続できるようにし、接続方法を選択します。
+
+
+--
+.複数のAZでのHA
+--
+. *アベイラビリティゾーンとメディエーター*: 各ノードとメディエーターのアベイラビリティゾーン (AZ) と、 Cloud Volumes ONTAP HA ペアを展開する対応するサブネットを選択します。
+. *フローティング IP*: 複数の AZ を選択した場合は、NFS および CIFS サービスとクラスターおよび SVM 管理のフローティング IP アドレスを指定します。 IP アドレスは、リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZ におけるCloud Volumes ONTAP HA の AWS ネットワーク要件"^] 。
+. *メディエーター アクセス*: メディエーター アクセス情報を指定します。メディエーターは、HA ペアの健全性を監視し、障害発生時にクォーラムを提供する別のインスタンスです。キーペア名を指定して、メディエーターインスタンスが AWS EC2 サービスに接続できるようにし、接続方法を選択します。
+. *ルート テーブル*: 複数の AZ を選択した場合は、フローティング IP アドレスへのルートを含むルート テーブルを選択します。ルート テーブルが複数ある場合は、正しいルート テーブルを選択することが重要です。そうしないと、一部のクライアントがCloud Volumes ONTAP HA ペアにアクセスできなくなる可能性があります。ルートテーブルの詳細については、 http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS ドキュメント: ルートテーブル"^] 。
+
+
+--
+====
+.充電とサービス
+. *マーケットプレイス サブスクリプション*: このCloud Volumes ONTAPシステムで使用する AWS マーケットプレイス サブスクリプションを選択します。
+. *ライセンス*: このCloud Volumes ONTAPシステムで使用するライセンスの種類を選択します。 Professional、Essential、Premium のライセンスから選択できます。さまざまなライセンスの詳細については、以下を参照してください。link:concept-licensing.html["Cloud Volumes ONTAPライセンスについて学ぶ"^] 。
+. *データ サービスと機能*: Cloud Volumes ONTAPで使用しないサービスを有効のままにするか、無効にします。
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetAppの分類について詳しくはこちら"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリの詳細"^]
+** link:concept-worm.html["Cloud Volumes ONTAPの WORM ストレージについて学ぶ"]
++
+
+TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+
+** * NetAppサポート サイト アカウント*: 複数のアカウントがある場合は、使用するアカウントを選択します。
+
+
+
+
+.まとめ
+入力した詳細を確認または編集し、「*作成*」をクリックします。
+
+.関連リンク
+* link:task-planning-your-config.html["Cloud Volumes ONTAP構成の計画"]
+* link:task-deploying-otc-aws.html["高度なデプロイメントを使用して AWS にCloud Volumes ONTAPをデプロイする"]
+

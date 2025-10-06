@@ -1,0 +1,11 @@
+= ベストプラクティスに合わせて Azure でサポートされる VM のリストが更新されました
+:allow-uri-read: 
+
+
+
+
+=== ベストプラクティスに合わせて Azure でサポートされる VM のリストが更新されました
+
+Azure にCloud Volumes ONTAPの新しいインスタンスを展開するときに、DS_v2 および Es_v3 マシン ファミリはBlueXPで選択できなくなりました。これらのファミリは、古い既存のシステムでのみ保持され、サポートされます。Cloud Volumes ONTAPの新しいデプロイメントは、9.12.1 リリース以降でのみ Azure でサポートされます。Es_v4 またはCloud Volumes ONTAP 9.12.1 以降と互換性のある他のシリーズに切り替えることをお勧めします。ただし、DS_v2 および Es_v3 シリーズのマシンは、API を通じて行われる新しいデプロイメントでは利用できるようになります。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Azureでサポートされている構成"^]

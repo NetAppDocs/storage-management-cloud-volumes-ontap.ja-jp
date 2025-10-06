@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: task-encrypting-volumes.html 
+keywords: encrypt, encryption, data, volumes, netapp volume encryption, volume encryption, nve, key managers, kmip, key management servers, license, ssl certificates, nae, netapp aggregate encryption 
+summary: 'Cloud Volumes ONTAP は、外部キー マネージャーを使用したNetApp Volume Encryption (NVE) とNetApp Aggregate Encryption (NAE) の両方をサポートします。外部キー マネージャーを設定すると、NVE と NAE はデフォルトで有効になります。' 
+---
+= NetApp暗号化ソリューションを使用してCloud Volumes ONTAP上のボリュームを暗号化する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP は、 NetApp Volume Encryption (NVE) とNetApp Aggregate Encryption (NAE) をサポートしています。 NVE と NAE は、ボリュームの FIPS 140-2 準拠の保存データ暗号化を可能にするソフトウェア ベースのソリューションです。link:concept-security.html["これらの暗号化ソリューションについて詳しく見る"] 。
+
+NVE と NAE はどちらも外部キー マネージャーでサポートされます。
+
+ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[] ifdef::gcp[] endif::gcp[] ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[] ifdef::gcp[] endif::gcp[]

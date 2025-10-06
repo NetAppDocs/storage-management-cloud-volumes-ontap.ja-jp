@@ -1,0 +1,244 @@
+---
+sidebar: sidebar 
+permalink: task-planning-your-config.html 
+keywords: license, disk, ebs, storage, size, write speed, volume usage, ec2, capacity, limit, configurations, virtual machine, vm, regions, supported disks, disk types, general purpose, gp2 provisioned IOPS, piops, throughput optimized, cold, SSD, HDD, st1, use profile, thin provisioning, deduplication, compression, shared instance, dedicated instance, write speed, high write speed, normal write speed, network information, worksheet, limit, limits, storage limits, volume limit, aggregate limit, maximum volume size, maximum aggregate size, supported instances, instances, instances supported, supported ec2 instances, supported instance, aws outpost, outpost, outposts, deploy in outpost, deploy in aws outpost 
+summary: AWS にCloud Volumes ONTAP を導入する場合、ワークロード要件に一致する事前構成済みのシステムを選択することも、独自の構成を作成することもできます。独自の構成を選択する場合は、利用可能なオプションを理解する必要があります。 
+---
+= AWS でCloud Volumes ONTAP構成を計画する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS にCloud Volumes ONTAP を導入する場合、ワークロード要件に一致する事前構成済みのシステムを選択することも、独自の構成を作成することもできます。独自の構成を選択する場合は、利用可能なオプションを理解する必要があります。
+
+
+
+== Cloud Volumes ONTAPライセンスを選択する
+
+Cloud Volumes ONTAPにはいくつかのライセンス オプションがあります。各オプションにより、ニーズに合った消費モデルを選択できます。
+
+* link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"]
+* link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"]
+
+
+
+
+== サポートされている地域を選択してください
+
+Cloud Volumes ONTAP は、ほとんどの AWS リージョンでサポートされています。 https://bluexp.netapp.com/cloud-volumes-global-regions["サポートされている地域の完全なリストを見る"^] 。
+
+新しい AWS リージョンでリソースを作成および管理するには、その前に新しい AWS リージョンを有効にする必要があります。 https://docs.aws.amazon.com/general/latest/gr/rande-manage.html["AWSドキュメント: リージョンを有効にする方法を学ぶ"^] 。
+
+
+
+=== サポートされているローカルゾーンを選択してください
+
+ローカルゾーンの選択はオプションです。  Cloud Volumes ONTAPは、シンガポールを含む一部の AWS ローカルゾーンでサポートされています。 AWS のCloud Volumes ONTAPは、単一のアベイラビリティーゾーンで高可用性 (HA) モードのみをサポートします。単一ノードの展開はサポートされていません。
+
+
+NOTE: Cloud Volumes ONTAP は、 AWS ローカルゾーンでのデータ階層化とクラウド階層化をサポートしていません。さらに、 Cloud Volumes ONTAPに適合していないインスタンスを含むローカルゾーンはサポートされません。一例としてマイアミが挙げられますが、これはサポートされておらず、資格のない Gen6 インスタンスしかないため、ローカル ゾーンとして使用できません。
+
+link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/locations/?nc=sn&loc=3["AWSドキュメント: ローカルゾーンの完全なリストを見る"^] 。ローカル ゾーンでリソースを作成および管理するには、ローカル ゾーンを有効にする必要があります。
+
+link:https://docs.aws.amazon.com/local-zones/latest/ug/getting-started.html["AWS ドキュメント: AWS Local Zones の使用開始"^] 。
+
+
+
+== サポートされているインスタンスを選択してください
+
+Cloud Volumes ONTAP は、選択したライセンス タイプに応じて、いくつかのインスタンス タイプをサポートします。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["AWS でサポートされているCloud Volumes ONTAPの構成"^]
+
+
+
+== ストレージ制限を理解する
+
+Cloud Volumes ONTAPシステムの生の容量制限はライセンスに関連付けられています。追加の制限は、アグリゲートとボリュームのサイズに影響します。構成を計画する際には、これらの制限に注意する必要があります。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.html["AWS のCloud Volumes ONTAPのストレージ制限"^]
+
+
+
+== AWS でシステムのサイズを決定する
+
+Cloud Volumes ONTAPシステムのサイズを設定すると、パフォーマンスと容量の要件を満たすことができます。インスタンスタイプ、ディスクタイプ、ディスクサイズを選択する際には、いくつかの重要なポイントに注意する必要があります。
+
+インスタンスタイプ::
++
+--
+* ワークロード要件を、各 EC2 インスタンスタイプの最大スループットと IOPS に合わせて調整します。
+* 複数のユーザーが同時にシステムに書き込む場合は、リクエストを管理するのに十分な CPU を備えたインスタンス タイプを選択します。
+* 主に読み取りを行うアプリケーションがある場合は、十分な RAM を搭載したシステムを選択してください。
++
+** https://aws.amazon.com/ec2/instance-types/["AWS ドキュメント: Amazon EC2 インスタンスタイプ"^]
+** https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html["AWS ドキュメント: Amazon EBS 最適化インスタンス"^]
+
+
+
+
+--
+EBSのディスク タイプ:: 大まかに言えば、EBS ディスク タイプ間の違いは次のとおりです。  EBSディスクのユースケースの詳細については、以下を参照してください。 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html["AWS ドキュメント: EBS ボリュームタイプ"^] 。
++
+--
+* _汎用 SSD (gp3)_ ディスクは、幅広いワークロードのコストとパフォーマンスのバランスが取れた最も低コストの SSD です。パフォーマンスは IOPS とスループットの観点から定義されます。gp3 ディスクは、Cloud Volumes ONTAP 9.7 以降でサポートされています。
++
+gp3 ディスクを選択すると、 NetAppコンソールは、選択したディスク サイズに基づいて、gp2 ディスクと同等のパフォーマンスを提供するデフォルトの IOPS とスループットの値を入力します。値を大きくするとコストは高くなりますが、パフォーマンスが向上する可能性があります。ただし、値を小さくするとパフォーマンスが低下する可能性があるため、値はサポートされていません。つまり、デフォルト値をそのまま使用するか、値を増やします。下げないでください。 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type["AWSドキュメント: gp3ディスクとそのパフォーマンスについて詳しく知る"^] 。
+
++
+Cloud Volumes ONTAP は、 gp3 ディスクを使用した Amazon EBS Elastic Volumes 機能をサポートしていることに注意してください。link:concept-aws-elastic-volumes.html["Elastic Volumesのサポートについて詳しくはこちら"] 。
+
+* _汎用 SSD (gp2)_ ディスクは、幅広いワークロードのコストとパフォーマンスのバランスを実現します。パフォーマンスは IOPS で定義されます。
+* _Provisioned IOPS SSD (io1)_ ディスクは、より高いコストで最高のパフォーマンスを必要とする重要なアプリケーション向けです。
++
+Cloud Volumes ONTAP は、 io1 ディスクを使用した Amazon EBS Elastic Volumes 機能をサポートしていることに注意してください。link:concept-aws-elastic-volumes.html["Elastic Volumesのサポートについて詳しくはこちら"] 。
+
+* _スループット最適化 HDD (st1)_ ディスクは、低価格で高速かつ一貫したスループットを必要とする、頻繁にアクセスされるワークロード向けです。
++
+
+NOTE: 接続性がないため、AWS ローカルゾーンでは AWS S3 へのデータ階層化は利用できません。
+
+
+
+--
+EBSディスクサイズ:: サポートされていない設定を選択した場合は、link:concept-aws-elastic-volumes.html["Amazon EBS エラスティックボリューム機能"] 、 Cloud Volumes ONTAPシステムを起動するときに初期ディスク サイズを選択する必要があります。その後はlink:concept-storage-management.html["コンソールでシステムの容量を管理します"]ですが、もしあなたがlink:task-create-aggregates.html["自分で集計を作成する"]以下の点に注意してください。
++
+--
+* アグリゲート内のすべてのディスクは同じサイズである必要があります。
+* EBS ディスクのパフォーマンスはディスク サイズに左右されます。サイズによって、SSD ディスクのベースライン IOPS と最大バースト期間、および HDD ディスクのベースラインとバースト スループットが決まります。
+* 最終的には、必要な持続的なパフォーマンスを実現するディスク サイズを選択する必要があります。
+* より大きなディスク (たとえば、4 TiB ディスク 6 台) を選択した場合でも、EC2 インスタンスが帯域幅制限に達する可能性があるため、すべての IOPS を取得できない可能性があります。
++
+EBSディスクパフォーマンスの詳細については、 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html["AWS ドキュメント: EBS ボリュームタイプ"^] 。
+
++
+前述のとおり、Amazon EBS Elastic Volumes 機能をサポートするCloud Volumes ONTAP構成では、ディスク サイズの選択はサポートされていません。link:concept-aws-elastic-volumes.html["Elastic Volumesのサポートについて詳しくはこちら"] 。
+
+
+
+--
+
+
+
+
+== デフォルトのシステムディスクを表示する
+
+コンソールは、ユーザー データ用のストレージに加えて、 Cloud Volumes ONTAPシステム データ (ブート データ、ルート データ、コア データ、 NVRAM) 用のクラウド ストレージも購入します。計画のために、 Cloud Volumes ONTAP を展開する前にこれらの詳細を確認すると役立つ場合があります。
+
+link:reference-default-configs.html#aws["AWS のCloud Volumes ONTAPシステムデータのデフォルトディスクを表示する"] 。
+
+
+TIP: コンソール エージェントにはシステム ディスクも必要です。 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-connector-default-config.html["コンソールエージェントのデフォルト構成の詳細を表示する"^] 。
+
+
+
+== AWS Outpost にCloud Volumes ONTAPを導入する準備
+
+AWS Outpost がある場合は、デプロイプロセス中に Outpost VPC を選択することで、その Outpost にCloud Volumes ONTAP をデプロイできます。エクスペリエンスは、AWS にある他の VPC と同じです。最初に AWS Outpost にコンソールエージェントをデプロイする必要があることに注意してください。
+
+指摘すべき制限がいくつかあります。
+
+* 現時点では、単一ノードのCloud Volumes ONTAPシステムのみがサポートされています。
+* Cloud Volumes ONTAPで使用できるEC2インスタンスは、Outpostで利用可能なものに限定されます。
+* 現時点では汎用SSD（gp2）のみがサポートされています
+
+
+
+
+== ネットワーク情報を収集する
+
+AWS でCloud Volumes ONTAP を起動するときは、VPC ネットワークの詳細を指定する必要があります。ワークシートを使用して管理者から情報を収集できます。
+
+
+
+=== 単一 AZ 内の単一ノードまたは HA ペア
+
+[cols="30,70"]
+|===
+| AWSの情報 | あなたの価値 
+
+
+| リージョン |  
+
+
+| VPC |  
+
+
+| サブネット |  
+
+
+| セキュリティ グループ (独自のものを使用する場合) |  
+|===
+
+
+=== 複数のAZにおけるHAペア
+
+[cols="30,70"]
+|===
+| AWSの情報 | あなたの価値 
+
+
+| リージョン |  
+
+
+| VPC |  
+
+
+| セキュリティ グループ (独自のものを使用する場合) |  
+
+
+| ノード1のアベイラビリティゾーン |  
+
+
+| ノード1サブネット |  
+
+
+| ノード2のアベイラビリティゾーン |  
+
+
+| ノード2サブネット |  
+
+
+| メディエーターの可用性ゾーン |  
+
+
+| メディエーターサブネット |  
+
+
+| 仲介者の鍵ペア |  
+
+
+| クラスタ管理ポートのフローティングIPアドレス |  
+
+
+| ノード1のデータ用のフローティングIPアドレス |  
+
+
+| ノード2のデータ用のフローティングIPアドレス |  
+
+
+| フローティングIPアドレスのルートテーブル |  
+|===
+
+
+== 書き込み速度を選択する
+
+コンソールでは、Cloud Volumes ONTAPの書き込み速度設定を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。link:concept-write-speed.html["書き込み速度について詳しくはこちら"] 。
+
+
+
+== ボリューム使用プロファイルを選択する
+
+ONTAPには、必要なストレージの総量を削減できるいくつかのストレージ効率機能が含まれています。コンソールでボリュームを作成するときに、これらの機能を有効にするプロファイルまたは無効にするプロファイルを選択できます。どのプロファイルを使用するかを決めるには、これらの機能について詳しく理解する必要があります。
+
+NetAppストレージ効率機能には、次のような利点があります。
+
+シンプロビジョニング:: 物理ストレージ プールに実際に存在するよりも多くの論理ストレージをホストまたはユーザーに提供します。ストレージ スペースを事前に割り当てるのではなく、データが書き込まれるときに各ボリュームにストレージ スペースが動的に割り当てられます。
+重複排除:: 同一のデータ ブロックを見つけて、単一の共有ブロックへの参照に置き換えることで効率を向上します。この手法は、同じボリューム内に存在する冗長なデータ ブロックを排除することで、ストレージ容量の要件を削減します。
+圧縮:: プライマリ、セカンダリ、アーカイブ ストレージのボリューム内のデータを圧縮することで、データの保存に必要な物理容量を削減します。
+

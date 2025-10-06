@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations.html 
+keywords: limitations, flexgroup, ontap s3, s3 configuration, svm dr, svm disaster recovery, disaster recovery, storage vm dr, BlueXP, Console, cloud manager 
+summary: 今回のリリースでサポートされていない、または今回のリリースでは正常に機能しないプラットフォーム、デバイス、機能が記載されています。これらの制限事項をよく確認してください。 
+---
+= 既知の制限事項
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+今回のリリースでサポートされていない、または今回のリリースでは正常に機能しないプラットフォーム、デバイス、機能が記載されています。これらの制限事項をよく確認してください。
+
+これらの制限は、 NetAppコンソールのCloud Volumes ONTAP管理に固有のものです。  Cloud Volumes ONTAPソフトウェア自体の制限事項を確認するには、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limitations.html["Cloud Volumes ONTAPリリースノートをご覧ください"^] 。
+
+
+
+== コンソールはFlexGroupボリュームの作成をサポートしていません
+
+Cloud Volumes ONTAP はFlexGroupボリュームをサポートしていますが、コンソールは現在FlexGroupボリュームの作成をサポートしていません。  ONTAP System ManagerまたはONTAP CLIからFlexGroupボリュームを作成する場合は、コンソールの容量管理モードを次のように設定する必要があります。 `Manual` 。 `Automatic`モードはFlexGroupボリュームでは正しく動作しない可能性があります。
+
+
+NOTE: コンソールでFlexGroupボリュームを作成する機能は、将来のリリースで計画されています。
+
+
+
+== コンソールはCloud Volumes ONTAPを使用したS3をサポートしていません
+
+Cloud Volumes ONTAP はスケールアウト ストレージのオプションとして S3 をサポートしていますが、コンソールではこの機能の管理機能は提供されていません。 Cloud Volumes ONTAPから S3 クライアント アクセスを構成するには、CLI を使用するのがベスト プラクティスです。詳細については、 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-s3-cg/home.html["S3構成パワー ガイド"^] 。
+
+link:concept-client-protocols.html["S3およびその他のクライアントプロトコルに対するCloud Volumes ONTAPのサポートの詳細"] 。
+
+
+
+== コンソールはストレージVMの災害復旧をサポートしていません
+
+コンソールは、ストレージ VM (SVM) の災害復旧のためのセットアップやオーケストレーションのサポートを提供しません。  ONTAP System Manager またはONTAP CLI を使用する必要があります。
+
+link:task-manage-svm-dr.html["SVM災害復旧の詳細"] 。

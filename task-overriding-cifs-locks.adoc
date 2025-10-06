@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: task-overriding-cifs-locks.html 
+keywords: CIFS locks, azure maintenance, maintenance events, cifs sessions, storage failover, storage giveback, giveback 
+summary: 組織またはアカウント管理者は、Azure メンテナンス イベント中にCloud Volumes ONTAPストレージ ギブバックに関する問題を防ぐ設定をNetAppコンソールで有効にすることができます。この設定を有効にすると、 Cloud Volumes ONTAP はCIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。 
+---
+= Azure のCloud Volumes ONTAP HA ペアの CIFS ロックをオーバーライドする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+組織またはアカウント管理者は、Azure メンテナンス イベント中にCloud Volumes ONTAPストレージ ギブバックに関する問題を防ぐ設定をNetAppコンソールで有効にすることができます。この設定を有効にすると、 Cloud Volumes ONTAP はCIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。
+
+.タスク概要
+Microsoft Azure は、仮想マシン上で定期的なメンテナンス イベントをスケジュールします。 Cloud Volumes ONTAP HA ペアでメンテナンス イベントが発生すると、HA ペアはストレージ テイクオーバーを開始します。このメンテナンス イベント中にアクティブな CIFS セッションがある場合、CIFS ファイルのロックによりストレージのギブバックが妨げられる可能性があります。
+
+この設定を有効にすると、 Cloud Volumes ONTAP はロックを拒否し、アクティブな CIFS セッションをリセットします。その結果、HA ペアはこれらのメンテナンス イベント中にストレージのギブバックを完了できます。
+
+
+CAUTION: このプロセスは CIFS クライアントに混乱をもたらす可能性があります。  CIFS クライアントからコミットされていないデータは失われる可能性があります。
+
+.開始する前に
+コンソール設定を変更する前に、コンソール エージェントを作成する必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html#how-to-create-a-connector["方法を学ぶ"^] 。
+
+.手順
+. 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。
+. クリックimage:icon-action.png[""]Cloud Volumes ONTAPシステムを管理するコンソール エージェントのアイコン。
+. * Cloud Volumes ONTAP設定*を選択します。
++
+image::screenshot-settings-cloud-volumes-ontap.png[[設定]アイコンの下のCloud Volumes ONTAP設定オプションのスクリーンショット。]
+
+. *Azure* の下で、*Azure HA システムの Azure CIFS ロック* をクリックします。
+. チェックボックスをクリックして機能を有効にし、[保存] をクリックします。
+

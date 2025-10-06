@@ -1,0 +1,329 @@
+---
+settings:
+  name: Cloud Volumes ONTAP
+  harmony_integration: maestro
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  rss_page: whats-new.html
+  filter:
+    label: クラウド プロバイダ
+    default: すべてのクラウドプロバイダー
+    options:
+    - name: Amazon Web Services
+      alias: AWS
+      id: aws
+    - name: Google Cloud
+      alias: Google Cloud
+      id: gcp
+    - name: Microsoft Azure
+      alias: Azure
+      id: azure
+  langs: ja-jp,us-en,de-de,es-es,fr-fr,it-it,pt-br,ko-kr,zh-cn,zh-tw
+sidebar:
+  entries:
+  - title: Cloud Volumes ONTAPドキュメント
+    url: "/index.html"
+  - title: リリース ノート
+    entries:
+    - title: 新機能
+      url: "/whats-new.html"
+    - title: 既知の制限事項
+      url: "/reference-limitations.html"
+    - title: Cloud Volumes ONTAPリリースノート
+      url: "/whats-new-ontap.html"
+  - title: 始めましょう
+    entries:
+    - title: Cloud Volumes ONTAPについて学ぶ
+      url: "/concept-overview-cvo.html"
+    - title: 新しい導入でサポートされるONTAPバージョン
+      url: "/reference-versions.html"
+    - title: Amazon Web Servicesを始める
+      flavor: aws
+      entries:
+      - title: クイック スタート
+        url: "/task-getting-started-aws.html"
+      - title: 構成を計画する
+        url: "/task-planning-your-config.html"
+      - title: ネットワークを設定する
+        entries:
+        - title: AWSネットワークを設定する
+          url: "/reference-networking-aws.html"
+        - title: AWSトランジットゲートウェイを設定する
+          url: "/task-setting-up-transit-gateway.html"
+        - title: 共有サブネットにHAペアを展開する
+          url: "/task-deploy-aws-shared-vpc.html"
+        - title: AWS 配置グループの作成用にCloud Volumes ONTAPを構成する
+          url: "/task-configure-placement-group-failure-aws.html"
+        - title: AWSのセキュリティグループルール
+          url: "/reference-security-groups.html"
+      - title: AWS KMSを設定する
+        url: "/task-setting-up-kms.html"
+      - title: IAMロールを設定する
+        url: "/task-set-up-iam-roles.html"
+      - title: ライセンスの設定
+        url: "/task-set-up-licensing-aws.html"
+      - title: AWS でCloud Volumes ONTAPのクイック デプロイメント メソッドを使用する
+        url: "/task-quick-deploy-aws.html"
+      - title: AWS でCloud Volumes ONTAPの高度な導入方法を使用する
+        url: "/task-deploying-otc-aws.html"
+      - title: AWS シークレットリージョンにCloud Volumes ONTAPをデプロイする
+        url: "/task-getting-started-aws-c2s.html"
+    - title: Microsoft Azureを使い始める
+      flavor: azure
+      entries:
+      - title: Azure でのCloud Volumes ONTAP の展開オプションについて学習します
+        url: "/concept-azure-mktplace-direct.html"
+      - title: NetAppコンソールで始める
+        entries:
+        - title: クイック スタート
+          url: "/task-getting-started-azure.html"
+        - title: 構成を計画する
+          url: "/task-planning-your-config-azure.html"
+        - title: ネットワークを設定する
+          url: "/reference-networking-azure.html"
+        - title: キーを使用して暗号化を設定する
+          url: "/task-set-up-azure-encryption.html"
+        - title: ライセンスの設定
+          url: "/task-set-up-licensing-azure.html"
+        - title: 高可用性モードを有効にする
+          url: "/task-azure-high-availability-mode.html"
+        - title: 単一のアベイラビリティゾーンに対して VMOrchestratorZonalMultiFD を有効にする
+          url: "/task-saz-feature.html"
+        - title: AzureでCloud Volumes ONTAPを起動する
+          url: "/task-deploying-otc-azure.html"
+        - title: Azure プラットフォーム イメージの検証
+          entries:
+          - title: 概要
+            url: "/concept-azure-image-verification.html"
+          - title: Azureイメージファイルをダウンロードする
+            url: "/task-azure-download-digest-file.html"
+          - title: Azureイメージファイルをエクスポートする
+            url: "/task-azure-image-export.html"
+          - title: ファイルの署名を検証する
+            entries:
+            - title: ファイル署名検証について学ぶ
+              url: "/concept-azure-file-sig-verify.html"
+            - title: Linuxでファイル署名を検証する
+              url: "/task-file-verification-linux.html"
+            - title: macOSでファイル署名を検証する
+              url: "/task-file-verification-mac.html"
+      - title: マーケットプレイスで始める
+        url: "/task-deploy-cvo-azure-mktplc.html"
+    - title: Google Cloud を使い始める
+      flavor: gcp
+      entries:
+      - title: クイック スタート
+        url: "/task-getting-started-gcp.html"
+      - title: 構成を計画する
+        url: "/task-planning-your-config-gcp.html"
+      - title: ネットワークを設定する
+        url: "/reference-networking-gcp.html"
+      - title: VPC サービス コントロールの計画
+        url: "/reference-vpc-service-controls-gcp.html"
+      - title: サービスアカウントを作成する
+        url: "/task-creating-gcp-service-account.html"
+      - title: 顧客管理の暗号化キーを使用する
+        url: "/task-setting-up-gcp-encryption.html"
+      - title: ライセンスの設定
+        url: "/task-set-up-licensing-google.html"
+      - title: Google Cloud でCloud Volumes ONTAPを起動する
+        url: "/task-deploying-gcp.html"
+      - title: Google Cloud Platform イメージ検証
+        entries:
+        - title: 概要
+          url: "/concept-gcp-image-verification.html"
+        - title: GCP で画像を RAW 形式に変換する
+          url: "/task-gcp-convert-image-raw.html"
+        - title: 画像署名検証
+          entries:
+          - title: GCP 署名済みイメージを検証する
+            url: "/concept-gcp-verify-signed-image.html"
+          - title: OpenSSLを使用してコンテンツを検証する
+            url: "/task-verify-openssl-gcp.html"
+  - title: Cloud Volumes ONTAPを使用する
+    entries:
+    - title: ライセンス管理
+      entries:
+      - title: 容量ベースのライセンスを管理する
+        url: "/task-manage-capacity-licenses.html"
+      - title: Keystoneサブスクリプションを管理する
+        url: "/task-manage-keystone.html"
+      - title: ノードベースのライセンスを管理する
+        url: "/task-manage-node-licenses.html"
+    - title: ボリュームとLUNの管理
+      entries:
+      - title: ボリュームの作成
+        url: "/task-create-volumes.html"
+      - title: 既存のボリュームを管理する
+        url: "/task-manage-volumes.html"
+      - title: 非アクティブなデータをオブジェクトストレージに階層化する
+        url: "/task-tiering.html"
+      - title: LUNをホストに接続する
+        url: "/task-connect-lun.html"
+      - title: FlexCacheでデータアクセスを高速化
+        url: "/task-accelerate-data-access.html"
+    - title: 集計管理
+      entries:
+      - title: 集計を作成する
+        url: "/task-create-aggregates.html"
+      - title: 既存の集計を管理する
+        url: "/task-manage-aggregates.html"
+      - title: 容量設定を管理する
+        url: "/task-manage-capacity-settings.html"
+    - title: ストレージVM管理
+      entries:
+      - title: ストレージVMの操作
+        url: "/task-managing-svms.html"
+      - title: AWS でストレージ VM を管理する
+        flavor: aws
+        url: "/task-managing-svms-aws.html"
+      - title: Azure でストレージ VM を管理する
+        flavor: azure
+        url: "/task-managing-svms-azure.html"
+      - title: Google Cloud でストレージ VM を管理する
+        flavor: gcp
+        url: "/task-managing-svms-gcp.html"
+      - title: SVM 災害復旧の設定
+        url: "/task-manage-svm-dr.html"
+    - title: セキュリティとデータ暗号化
+      entries:
+      - title: NetApp暗号化でボリュームを暗号化する
+        url: "/task-encrypting-volumes.html"
+      - title: AWS Key Management Service でキーを管理する
+        flavor: aws
+        url: "/task-aws-key-management.html"
+      - title: Azure Key Vault でキーを管理する
+        flavor: azure
+        url: "/task-azure-key-vault.html"
+      - title: Google Cloud KMS で鍵を管理する
+        flavor: gcp
+        url: "/task-google-key-manager.html"
+      - title: ランサムウェア対策の強化
+        url: "/task-protecting-ransomware.html"
+      - title: WORMストレージ用の改ざん防止スナップショットコピーを作成する
+        url: "/reference-worm-snaplock.html"
+    - title: システム管理
+      entries:
+      - title: Cloud Volumes ONTAP のアップグレード
+        url: "/task-updating-ontap-cloud.html"
+      - title: 従量課金制システムを登録する
+        url: "/task-registering.html"
+      - title: ノードベースのライセンスを変換する
+        url: "/task-convert-node-capacity.html"
+      - title: システムの停止と起動
+        url: "/task-managing-state.html"
+      - title: システム時刻を同期する
+        url: "/task-sync-time.html"
+      - title: システムの書き込み速度を変更する
+        url: "/task-modify-write-speed.html"
+      - title: システムパスワードを変更する
+        url: "/task-change-password.html"
+      - title: システムの追加、削除、または削除
+        entries:
+        - title: 既存のシステムを追加する
+          url: "/task-adding-systems.html"
+        - title: システムを削除する
+          url: "/task-removing.html"
+        - title: システムを削除する
+          url: "/task-deleting-system.html"
+      - title: AWS管理
+        flavor: aws
+        entries:
+        - title: AWS で EC2 インスタンスを操作する
+          url: "/task-change-ec2-instance.html"
+        - title: HAペアのルートテーブルを変更する
+          url: "/task-change-route-tables.html"
+        - title: 配置グループの作成を構成する
+          url: task-configure-placement-group-failure-aws.html
+      - title: Azure管理
+        flavor: azure
+        entries:
+        - title: Azure VMの種類を変更する
+          url: "/task-change-azure-vm.html"
+        - title: CIFSロックを上書きする
+          url: "/task-overriding-cifs-locks.html"
+        - title: Azure Private Link またはサービス エンドポイントを使用する
+          url: "/task-enabling-private-link.html"
+        - title: リソース グループを移動する
+          url: "/task-moving-resource-groups-azure.html"
+        - title: Azure でSnapMirrorトラフィックを分離する
+          url: "/task-segregate-snapmirror-azure.html"
+      - title: Google Cloud 管理
+        flavor: gcp
+        entries:
+        - title: マシンの種類を変更する
+          url: "/task-change-gcp-machine.html"
+      - title: システムマネージャからの管理
+        url: "/task-administer-advanced-view.html"
+      - title: CLIからの管理
+        url: "/task-connecting-to-otc.html"
+    - title: システムの健全性とイベント
+      entries:
+      - title: AutoSupport の設定を確認する
+        url: "/task-verify-autosupport.html"
+      - title: EMSの設定
+        url: "/task-configure-ems.html"
+  - title: 概念
+    entries:
+    - title: ライセンス
+      entries:
+      - title: Cloud Volumes ONTAPのライセンス
+        url: "/concept-licensing.html"
+      - title: 容量ベースのライセンスについて詳しく見る
+        url: "/concept-licensing-charging.html"
+    - title: ストレージ
+      entries:
+      - title: クライアント プロトコル
+        url: "/concept-client-protocols.html"
+      - title: ディスクとアグリゲート
+        url: "/concept-storage.html"
+      - title: AWS のエラスティックボリューム
+        flavor: aws
+        url: "/concept-aws-elastic-volumes.html"
+      - title: データ階層化
+        url: "/concept-data-tiering.html"
+      - title: ストレージ管理
+        url: "/concept-storage-management.html"
+      - title: 書き込み速度
+        url: "/concept-write-speed.html"
+      - title: Flash Cache
+        url: "/concept-flash-cache.html"
+      - title: WORMストレージ
+        url: "/concept-worm.html"
+    - title: ハイアベイラビリティ ペア
+      entries:
+      - title: AWSのHAペア
+        flavor: aws
+        url: "/concept-ha.html"
+      - title: AzureのHAペア
+        flavor: azure
+        url: "/concept-ha-azure.html"
+      - title: GCP の HA ペア
+        flavor: gcp
+        url: "/concept-ha-google-cloud.html"
+      - title: ストレージの乗っ取り中のアクション
+        url: "/concept-degraded-ha-pair.html"
+    - title: セキュリティ
+      url: "/concept-security.html"
+    - title: パフォーマンス
+      url: "/concept-performance.html"
+    - title: ノードベースのBYOLの管理
+      url: "/concept-license-management.html"
+    - title: AutoSupportとDigital Advisor
+      url: "/concept-active-iq.html"
+    - title: デフォルト設定
+      url: "/reference-default-configs.html"
+  - title: 知識とサポート
+    entries:
+    - title: サポートに登録する
+      url: "/task-support-registration.html"
+    - title: ヘルプを受ける
+      url: "/task-get-help.html"
+  - title: 法律上の表示
+    url: "/legal-notices.html"
+product-family:
+  name: Storage Management
+  repo: storage-management-family

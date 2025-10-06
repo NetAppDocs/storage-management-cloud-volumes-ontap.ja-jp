@@ -1,0 +1,150 @@
+---
+sidebar: sidebar 
+permalink: task-deploy-cvo-azure-mktplc.html 
+keywords: deploy cvo marketplace, marketplace direct cvo deployment, azure marketplace 
+summary:  
+---
+= AzureマーケットプレイスからCloud Volumes ONTAPをデプロイする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure マーケットプレイスの直接展開を使用すると、 Cloud Volumes ONTAP を迅速かつ簡単に展開できます。  Azure マーケットプレイスでは、数回クリックするだけでCloud Volumes ONTAPを迅速に導入し、そのコア機能と機能を自分の環境で試すことができます。
+
+このオファーの詳細については、以下を参照してください。link:concept-azure-mktplace-direct.html["NetAppコンソールとマーケットプレイスでCloud Volumes ONTAP のサービスについて学ぶ"] 。
+
+.タスク概要
+Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムには、次のプロパティがあります。  Azure マーケットプレイスを通じてデプロイされたスタンドアロン インスタンスの機能は、 NetAppコンソールで検出されたときに変更されることに注意してください。
+
+* 最新のCloud Volumes ONTAPバージョン (9.16.1 以降)。
+* プロビジョニングされた容量が 500 GiB に制限されたCloud Volumes ONTAPの無料ライセンス。このライセンスにはNetAppサポートは含まれず、有効期限もありません。
+* 単一の可用性ゾーン (AZ) に高可用性 (HA) モードで構成され、デフォルトのシリアル番号でプロビジョニングされた 2 つのノード。ストレージ仮想マシン（ストレージVM）は、link:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["柔軟なオーケストレーションモード"] 。
+* デフォルトで作成されるインスタンスの集約。
+* 500 GiB のプロビジョニング容量を持つ Premium SSD v2 マネージド ディスク、ルート ディスク、およびデータ ディスク。
+* NFS、CIFS、iSCSI、NVMe/TCP データ サービスが備わった 1 つのデータ ストレージ VM がデプロイされています。追加のデータ ストレージ VM を追加することはできません。
+* NFS、CIFS (SMB)、iSCSI、Autonomous Ransomware Protection (ARP)、 SnapLock、およびSnapMirrorのライセンスがインストールされています。
+* https://docs.netapp.com/us-en/ontap/volumes/enable-temperature-sensitive-efficiency-concept.html["ONTAP温度に敏感なストレージ効率 (TSSE)"^]、ボリューム暗号化、および外部キー管理がデフォルトで有効になっています。
+* 以下の機能はサポートされていません:
++
+** FabricPool の階層化
+** ストレージVMタイプの変更
+** 高速書き込みモード
+
+
+
+
+.開始する前に
+* 有効な Azure Marketplace サブスクリプションがあることを確認します。
+* ネットワーク要件を満たしていることを確認してくださいlink:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["単一 AZ での HA 展開"]Azure で。。 link:reference-networking-azure.html["Cloud Volumes ONTAP用の Azure ネットワークを設定する"] 。
+* Cloud Volumes ONTAPをデプロイするには、次のいずれかの Azure ロールが割り当てられている必要があります。
++
+** その `contributor`デフォルトの権限を持つロール。詳細については、 https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles["Microsoft Azure ドキュメント: Azure 組み込みロール"^] 。
+** 次の権限を持つカスタム RBAC ロール。詳細については、 https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles["Azure ドキュメント: Azure カスタム ロール"^] 。
++
+[]
+====
+"permissions": [ { "actions": [ "Microsoft.AAD/register/action", "Microsoft.Resources/subscriptions/resourceGroups/write", "Microsoft.Network/loadBalancers/write", "Microsoft.ClassicCompute/virtualMachines/write", "Microsoft.Compute/capacityReservationGroups/deploy/action", "Microsoft.ClassicCompute/virtualMachines/networkInterfaces/associatedNetworkSecurityGroups/write", "Microsoft.Network/networkInterfaces/write", "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/extensions/write", "Microsoft.Resources/deployments/validate/action", "Microsoft.Resources/subscriptions/resourceGroups/read", "Microsoft.Network/virtualNetworks/write", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/networkSecurityGroups/write", "Microsoft.Network/networkSecurityGroups/read", "Microsoft.Compute/disks/write", "Microsoft.Compute/virtualMachineScaleSets/write", "Microsoft.Resources/deployments/write", "Microsoft.Network/virtualNetworks/subnets/read", "Microsoft.Network/virtualNetworks/subnets/write" ], "notActions": [], "dataActions": [], "notDataActions": [] } ]
+
+====
++
+
+NOTE: リソースプロバイダー「Microsoft.storage」をサブスクリプションに登録している場合は、 `Microsoft.AAD/register/action`許可。詳細については、 https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/storage["Azure ドキュメント: ストレージの Azure アクセス許可"^] 。
+
+
+
+
+
+.手順
+. Azure Marketplace サイトから、 NetApp製品を検索します。
+. * NetApp Cloud Volumes ONTAP direct*を選択します。
+. *作成* をクリックして、デプロイメント ウィザードを起動します。
+. プランを選択してください。  *プラン* リストには通常、 Cloud Volumes ONTAPの最新リリースが表示されます。
+. *基本*タブで、次の詳細を入力します。
++
+** *サブスクリプション*: サブスクリプションを選択します。デプロイメントはサブスクリプション番号にリンクされます。
+** *リソース グループ*: 既存のリソース グループを使用するか、新しいリソース グループを作成します。リソース グループは、ディスクやストレージ VM などのすべてのリソースをCloud Volumes ONTAPシステムの単一のグループ内に割り当てるのに役立ちます。
+** *リージョン*: 単一の AZ での Azure HA デプロイメントをサポートするリージョンを選択します。リストには利用可能なリージョンのみが表示されます。
+** *サイズ*: サポートされている Premium SSD v2 マネージド ディスクのストレージ VM サイズを選択します。
+** *ゾーン*: 選択した地域のゾーンを選択します。
+** *管理者パスワード*: パスワードを設定します。デプロイメント後にシステムにログインするには、この管理者パスワードを使用します。
+** *パスワードの確認*: 確認のために同じパスワードをもう一度入力します。
++
+*** *ネットワーク* タブで、仮想ネットワークとサブネットを追加するか、リストから選択します。
++
+
+NOTE: Microsoft Azure の制限に準拠するには、新しい仮想ネットワークを設定するときに新しいサブネットを作成する必要があります。同様に、既存のネットワークを選択する場合は、既存のサブネットを選択する必要があります。
+
+*** 定義済みのネットワーク セキュリティ グループを選択するには、[*はい*] を選択します。必要なトラフィック ルールが定義された Azure ネットワーク セキュリティ グループを割り当てるには、[*いいえ*] を選択します。詳細については、 link:reference-networking-azure.html#security-group-rules["Azure のセキュリティ グループ ルール"] 。
+*** *詳細*タブで、このデプロイメントに必要な 2 つの Azure 機能が設定されているかどうかを確認します。参照link:task-saz-feature.html["Cloud Volumes ONTAP の単一 AZ デプロイメントで Azure 機能を有効にする"]そしてlink:task-azure-high-availability-mode.html["AzureでCloud Volumes ONTAPの高可用性モードを有効にする"]。
+*** *タグ* タブで、リソースまたはリソース グループの名前と値のペアを定義できます。
+*** *確認 + 作成* タブで詳細を確認し、デプロイを開始します。
+
+
+
+
+
+
+.終了後の操作
+通知アイコンを選択して、デプロイメントの進行状況を表示します。  Cloud Volumes ONTAPがデプロイされた後、操作用にリストされたストレージ VM を表示できます。
+
+アクセスできるようになったら、 ONTAP System Manager またはONTAP CLI を使用して、設定した管理者認証情報でストレージ VM にログインします。その後、ボリューム、LUN、または共有を作成し、 Cloud Volumes ONTAPのストレージ機能を使い始めることができます。
+
+
+
+== 展開の問題のトラブルシューティング
+
+Azure マーケットプレイスを通じて直接導入されたCloud Volumes ONTAPシステムには、 NetAppからのサポートは含まれません。展開中に問題が発生した場合、独自にトラブルシューティングして解決できます。
+
+.手順
+. Azure Marketplace サイトで、*ブート診断 > シリアル ログ* に移動します。
+. シリアルログをダウンロードして調査します。
+. トラブルシューティングについては、製品ドキュメントとナレッジベース (KB) の記事を参照してください。
++
+** https://learn.microsoft.com/en-us/partner-center/["Azure マーケットプレイスのドキュメント"]
+** https://www.netapp.com/support-and-training/documentation/["NetAppのドキュメント"]
+** https://kb.netapp.com/["NetApp KB記事"]
+
+
+
+
+
+
+== コンソールで展開されたシステムを検出する
+
+Azure マーケットプレイスの直接展開を使用して展開したCloud Volumes ONTAPシステムを検出し、コンソールの *システム* ページで管理できます。コンソール エージェントはシステムを検出し、追加して必要なライセンスを適用し、これらのシステムに対してコンソールの全機能のロックを解除します。  PSSD v2 マネージド ディスクを使用した単一の AZ 内の元の HA 構成は保持され、システムは元のデプロイメントと同じ Azure サブスクリプションとリソース グループに登録されます。
+
+.タスク概要
+Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムを検出すると、コンソール エージェントは次のタスクを実行します。
+
+* 検出されたシステムの無料ライセンスを通常の容量ベースのライセンスに置き換えますlink:concept-licensing.html#packages["フリーミアムライセンス"]。
+* 展開されたシステムの既存の機能を保持し、データ保護、データ管理、セキュリティ機能などのコンソールの追加機能を追加します。
+* ノードにインストールされているライセンスを、NFS、CIFS (SMB)、iSCSI、ARP、 SnapLock、およびSnapMirrorの新しいONTAPライセンスに置き換えます。
+* 汎用ノードのシリアル番号を一意のシリアル番号に変換します。
+* 必要に応じてリソースに新しいシステム タグを割り当てます。
+* インスタンスの動的 IP アドレスを静的 IP アドレスに変換します。
+* 以下の機能を有効にしますlink:task-tiering.html["FabricPool の階層化"]、link:task-verify-autosupport.html["AutoSupport"] 、 そしてlink:concept-worm.html["一度書き込み、何度も読み取り"]展開されたシステム上の (WORM) ストレージ。必要なときにコンソールからこれらの機能を有効にすることができます。
+* インスタンスを検出するために使用される NSS アカウントにインスタンスを登録します。
+* 容量管理機能を有効にするlink:concept-storage-management.html#capacity-management["自動モードと手動モード"]発見されたシステムについて。
+
+
+.開始する前に
+Azure マーケットプレイスでのデプロイが完了していることを確認します。コンソール エージェントは、展開が完了し、検出可能になった場合にのみシステムを検出できます。
+
+.手順
+コンソールでは、既存のシステムを検出するための標準の手順に従います。。 link:task-adding-systems.html["既存のCloud Volumes ONTAPシステムをコンソールに追加する"] 。
+
+.終了後の操作
+検出が完了すると、コンソールの *システム* ページにリストされているシステムを表示できます。次のようなさまざまな管理タスクを実行できます。link:task-manage-aggregates.html["総計を拡大する"] 、link:task-create-volumes.html["ボリュームの追加"] 、link:task-managing-svms-azure.html["追加のストレージVMのプロビジョニング"] 、 そしてlink:task-change-azure-vm.html["インスタンスタイプの変更"]。
+
+.関連リンク
+ストレージの作成の詳細については、 ONTAP のドキュメントを参照してください。
+
+* https://docs.netapp.com/us-en/ontap/volumes/create-volume-task.html["NFS用のボリュームを作成する"^]
+* https://docs.netapp.com/us-en/ontap-cli/lun-create.html["iSCSI用のLUNを作成する"^]
+* https://docs.netapp.com/us-en/ontap-cli/vserver-cifs-share-create.html["CIFSの共有を作成する"^]
+

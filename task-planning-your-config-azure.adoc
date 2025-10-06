@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: task-planning-your-config-azure.html 
+keywords: license, disk, storage, size, write speed, volume usage, capacity, limit, configurations, virtual machine, vm, regions, supported disks, disk types, premium storage, standard storage, use profile, thin provisioning, deduplication, compression, shared instance, dedicated instance, write speed, high write speed, normal write speed, network information, worksheet, limit, limits, storage limits, volume limit, aggregate limit, maximum volume size, maximum aggregate size, supported vm type, supported virtual machines, supported virtual machine types, supported instances, space, size, azure, disk size 
+summary: Azure にCloud Volumes ONTAP をデプロイする場合、ワークロード要件に一致する事前構成済みのシステムを選択することも、独自の構成を作成することもできます。独自の構成を選択する場合は、利用可能なオプションを理解する必要があります。 
+---
+= AzureでCloud Volumes ONTAPの構成を計画する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure にCloud Volumes ONTAP をデプロイする場合、ワークロード要件に一致する事前構成済みのシステムを選択することも、独自の構成を作成することもできます。独自の構成を選択する場合は、利用可能なオプションを理解する必要があります。
+
+
+
+== Cloud Volumes ONTAPライセンスを選択する
+
+Cloud Volumes ONTAPにはいくつかのライセンス オプションがあります。各オプションにより、ニーズに合った消費モデルを選択できます。
+
+* link:concept-licensing.html["Cloud Volumes ONTAPのライセンスオプションについて学ぶ"]
+* link:task-set-up-licensing-azure.html["ライセンスの設定方法を学ぶ"]
+
+
+
+
+== サポートされている地域を選択してください
+
+Cloud Volumes ONTAPは、ほとんどの Microsoft Azure リージョンでサポートされています。 https://bluexp.netapp.com/cloud-volumes-global-regions["サポートされている地域の完全なリストを見る"^] 。
+
+
+
+== サポートされているVMタイプを選択してください
+
+Cloud Volumes ONTAP は、選択したライセンス タイプに応じて、いくつかの VM タイプをサポートします。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Azure でサポートされるCloud Volumes ONTAPの構成"^]
+
+
+
+== ストレージ制限を理解する
+
+Cloud Volumes ONTAPシステムの生の容量制限はライセンスに関連付けられています。追加の制限は、アグリゲートとボリュームのサイズに影響します。構成を計画する際には、これらの制限に注意する必要があります。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html["Azure のCloud Volumes ONTAPのストレージ制限"^]
+
+
+
+== Azure でシステムのサイズを決定する
+
+Cloud Volumes ONTAPシステムのサイズを設定すると、パフォーマンスと容量の要件を満たすことができます。  VM タイプ、ディスク タイプ、ディスク サイズを選択する際には、いくつかの重要なポイントに注意する必要があります。
+
+仮想マシンの種類:: サポートされている仮想マシンの種類については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Cloud Volumes ONTAPリリースノート"^]次に、サポートされている各 VM タイプの詳細を確認します。各 VM タイプは特定の数のデータ ディスクをサポートすることに注意してください。
++
+--
+* https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general#dsv2-series["Azure ドキュメント: 汎用仮想マシンのサイズ"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory#dsv2-series-11-15["Azure ドキュメント: メモリ最適化された仮想マシンのサイズ"^]
+
+
+--
+単一ノード システムの Azure ディスク タイプ:: Cloud Volumes ONTAPのボリュームを作成するときは、 Cloud Volumes ONTAP がディスクとして使用する基盤となるクラウド ストレージを選択する必要があります。
++
+--
+単一ノード システムでは、次の種類の Azure マネージド ディスクを使用できます。
+
+* _Premium SSD マネージド ディスク_ は、コストは高くなりますが、I/O 集中型のワークロードに高いパフォーマンスを提供します。
+* _Premium SSD v2 マネージド ディスク_ は、Premium SSD マネージド ディスクと比較して、より低いレイテンシでより高いパフォーマンスを低コストで提供します。
+* _Standard SSD Managed Disks_ は、低い IOPS を必要とするワークロードに対して一貫したパフォーマンスを提供します。
+* 高い IOPS を必要とせず、コストを削減したい場合は、_Standard HDD Managed Disks_ が適しています。
+
+
+これらのディスクの使用例の詳細については、以下を参照してください。 https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types["Microsoft Azure ドキュメント: Azure ではどのようなディスク タイプが使用できますか?"^] 。
+
+--
+HA ペアを備えた Azure ディスク タイプ:: HA システムでは、プレミアム SSD 共有マネージド ディスクが使用されます。どちらも、コストは高くなりますが、I/O 集中型のワークロードに対して高いパフォーマンスを提供します。  9.12.1 リリースより前に作成された HA デプロイメントでは、Premium ページ BLOB が使用されます。
+Azure ディスクサイズ::
++
+--
+Cloud Volumes ONTAPインスタンスを起動するときは、アグリゲートのデフォルトのディスク サイズを選択する必要があります。 NetAppコンソールは、初期アグリゲートと、シンプル プロビジョニング オプションを使用するときに作成される追加のアグリゲートにこのディスク サイズを使用します。デフォルトとは異なるディスクサイズを使用するアグリゲートを作成するには、link:task-create-aggregates.html["高度な割り当てオプションを使用する"] 。
+
+
+TIP: アグリゲート内のすべてのディスクは同じサイズである必要があります。
+
+ディスク サイズを選択するときは、いくつかの要素を考慮する必要があります。ディスク サイズは、ストレージに支払う金額、アグリゲートで作成できるボリュームのサイズ、 Cloud Volumes ONTAPで使用できる合計容量、およびストレージ パフォーマンスに影響します。
+
+Azure Premium Storage のパフォーマンスはディスク サイズに左右されます。ディスクが大きいほど、IOPS とスループットが向上します。たとえば、1 TiB ディスクを選択すると、コストは高くなりますが、500 GiB ディスクよりも優れたパフォーマンスが得られます。
+
+標準ストレージでは、ディスク サイズ間でパフォーマンスの違いはありません。必要な容量に基づいてディスク サイズを選択する必要があります。
+
+ディスク サイズ別の IOPS とスループットについては、Azure を参照してください。
+
+* https://azure.microsoft.com/en-us/pricing/details/managed-disks/["Microsoft Azure: マネージド ディスクの価格"^]
+* https://azure.microsoft.com/en-us/pricing/details/storage/page-blobs/["Microsoft Azure: ページ BLOB の価格"^]
+
+
+--
+
+
+
+
+== デフォルトのシステムディスクを表示する
+
+コンソールは、ユーザー データ用のストレージに加えて、 Cloud Volumes ONTAPシステム データ (ブート データ、ルート データ、コア データ、 NVRAM) 用のクラウド ストレージも購入します。計画のために、 Cloud Volumes ONTAP を展開する前にこれらの詳細を確認すると役立つ場合があります。
+
+link:reference-default-configs.html#azure-single-node["Azure のCloud Volumes ONTAPシステム データのデフォルト ディスクを表示する"] 。
+
+
+TIP: コンソール エージェントにはシステム ディスクも必要です。 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-connector-default-config.html["コンソールエージェントのデフォルト構成の詳細を表示する"^] 。
+
+
+
+== ネットワーク情報を収集する
+
+Azure にCloud Volumes ONTAPをデプロイする場合は、仮想ネットワークの詳細を指定する必要があります。ワークシートを使用して管理者から情報を収集できます。
+
+[cols="30,70"]
+|===
+| Azure情報 | あなたの価値 
+
+
+| リージョン |  
+
+
+| 仮想ネットワーク (VNet) |  
+
+
+| サブネット |  
+
+
+| ネットワーク セキュリティ グループ (独自のものを使用している場合) |  
+|===
+
+
+== 書き込み速度を選択する
+
+コンソールでは、Cloud Volumes ONTAPの書き込み速度設定を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。link:concept-write-speed.html["書き込み速度について詳しくはこちら"] 。
+
+
+
+== ボリューム使用プロファイルを選択する
+
+ONTAPには、必要なストレージの総量を削減できるいくつかのストレージ効率機能が含まれています。コンソールでボリュームを作成するときに、これらの機能を有効にするプロファイルまたは無効にするプロファイルを選択できます。どのプロファイルを使用するかを決めるには、これらの機能について詳しく理解する必要があります。
+
+NetAppストレージ効率機能には、次のような利点があります。
+
+シンプロビジョニング:: 物理ストレージ プールに実際に存在するよりも多くの論理ストレージをホストまたはユーザーに提供します。ストレージ スペースを事前に割り当てるのではなく、データが書き込まれるときに各ボリュームにストレージ スペースが動的に割り当てられます。
+重複排除:: 同一のデータ ブロックを見つけて、単一の共有ブロックへの参照に置き換えることで効率を向上します。この手法は、同じボリューム内に存在する冗長なデータ ブロックを排除することで、ストレージ容量の要件を削減します。
+圧縮:: プライマリ、セカンダリ、アーカイブ ストレージのボリューム内のデータを圧縮することで、データの保存に必要な物理容量を削減します。
+

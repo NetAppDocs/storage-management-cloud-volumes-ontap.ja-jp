@@ -1,0 +1,22 @@
+= Google Cloud でサポートされる VM のリストがベスト プラクティスに合わせて更新されました
+:allow-uri-read: 
+
+
+
+
+=== Google Cloud でサポートされる VM のリストがベスト プラクティスに合わせて更新されました
+
+Google Cloud でCloud Volumes ONTAPの新しいインスタンスをデプロイするときに、n1 シリーズ マシンはBlueXPで選択できなくなりました。n1 シリーズのマシンは、古い既存のシステムでのみ保持され、サポートされます。Cloud Volumes ONTAPの新しいデプロイメントは、Google Cloud 9.8 リリース以降でのみサポートされます。 Cloud Volumes ONTAP 9.8 以降と互換性のある n2 シリーズのマシン タイプに切り替えることをお勧めします。ただし、n1 シリーズのマシンは、API を通じて実行される新しいデプロイメントに使用できます。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google Cloud でサポートされている構成"^] 。
+
+
+
+=== プライベートモードでの Amazon Web Services のローカルゾーンのサポート
+
+BlueXP は、プライベート モードでのCloud Volumes ONTAP高可用性 (HA) デプロイメント用の AWS ローカルゾーンをサポートするようになりました。以前は標準モードのみに限定されていたサポートが、プライベート モードまで拡張されました。
+
+
+NOTE: BlueXP を制限モードで使用する場合、AWS ローカルゾーンはサポートされません。
+
+HAデプロイメントを備えたAWSローカルゾーンの詳細については、以下を参照してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha.html#aws-local-zones["AWS ローカルゾーン"^] 。

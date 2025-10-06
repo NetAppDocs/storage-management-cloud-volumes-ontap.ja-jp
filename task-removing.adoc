@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: task-removing.html 
+keywords: systems, removing, remove, rediscover 
+summary: Cloud Volumes ONTAPシステムを削除して、別のシステムに移動したり、検出の問題をトラブルシューティングしたりすることができます。 
+---
+= NetAppコンソールからCloud Volumes ONTAPシステムを削除する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPシステムを削除して、別のシステムに移動したり、検出の問題をトラブルシューティングしたりすることができます。
+
+.タスク概要
+Cloud Volumes ONTAPシステムを削除すると、 NetAppコンソールからも削除されます。 Cloud Volumes ONTAPシステムは削除されません。必要に応じて、後でシステムを再検出できます。
+
+.手順
+. *システム* ページで、削除するシステムをダブルクリックします。
+. コンソールの右上にあるimage:icon-action.png[""]アイコンをクリックし、[ワークスペースから削除] を選択します。
+. *ワークスペースから削除* ウィンドウで、*削除* をクリックします。
+
+
+.結果
+コンソールはシステムを削除します。ユーザーは、*システム* ページから削除されたシステムをいつでも再発見できます。

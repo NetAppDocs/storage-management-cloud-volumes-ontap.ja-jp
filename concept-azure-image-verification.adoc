@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: concept-azure-image-verification.html 
+keywords: Azure, image, VHD, image signature file, 
+summary: Azure VHD イメージ ファイルの署名ファイルを検証します。 
+---
+= Cloud Volumes ONTAPの Azure Marketplace イメージ検証
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure イメージ検証は、強化されたNetAppセキュリティ要件に準拠しています。画像ファイルの検証は簡単なプロセスです。ただし、Azure イメージ署名の検証では、Azure マーケットプレイスで変更されるため、Azure VHD イメージ ファイルに対して特別な考慮が必要になります。
+
+
+NOTE: Azure イメージ検証は、Cloud Volumes ONTAP 9.15.0 以降でサポートされています。
+
+
+
+== Azure による公開 VHD ファイルの変更
+
+VHD ファイルの先頭の 1 MB (1048576 バイト) と末尾の 512 バイトは、Azure によって変更されます。  NetApp は残りの VHD ファイルに署名します。
+
+image:screenshot_azure_vhd_10gb.png["Azureの10GB VHDファイルの代替を示す画像"]
+
+この例では、VHD ファイルは 10 GB です。  NetAppが署名した部分は緑色でマークされています (10 GB - 1 MB - 512 バイト)。
+
+.関連リンク
+* https://pagefault.blog/2019/04/22/how-to-sign-and-verify-using-openssl/["ページフォールトブログ: OpenSSL を使った署名と検証の方法"^]
+* https://docs.microsoft.com/en-us/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-marketplace-image["Azure Marketplace イメージを使用して、Azure Stack Edge Pro GPU 用の VM イメージを作成する | Microsoft Learn"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/scripts/copy-managed-disks-vhd-to-storage-account["Azure CLI を使用してマネージド ディスクをストレージ アカウントにエクスポート/コピーする | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/azure/cloud-shell/quickstart["Azure Cloud Shell クイックスタート - Bash | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/cli/azure/install-azure-cli["Azure CLI のインストール方法 | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/cli/azure/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start["az storage blob コピー | Microsoft Learn"^]
+* https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli["Azure CLI でSign in- ログインと認証 | Microsoft Learn"^]
+

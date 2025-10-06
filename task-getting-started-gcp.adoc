@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: task-getting-started-gcp.html 
+keywords: google cloud platform, gcp, cloud manager, deploy the Console, launch the Console, create the Console, getting started, networking, gcp networking, service account, tiering, data tiering, bucket, fabricpool, cloud backup, storage access key, gcp role, role, iam role, permissions, gcp permissions, cloud backup, the Console 
+summary: 数ステップでCloud Volumes ONTAP for Google Cloud を使い始めましょう。 
+---
+= Google Cloud でのCloud Volumes ONTAPのクイック スタート
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+数ステップで Google Cloud のCloud Volumes ONTAPを使い始めましょう。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]コンソールエージェントを作成する
+[role="quick-margin-para"]
+もしあなたが https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェント"^]まだ作成する必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Google Cloud でコンソール エージェントを作成する方法を学びます"^]
+
+[role="quick-margin-para"]
+インターネット アクセスが利用できないサブネットにCloud Volumes ONTAPを展開する場合は、コンソール エージェントを手動でインストールし、そのコンソール エージェントで実行されているNetAppコンソールにアクセスする必要があることに注意してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネットにアクセスできない場所にコンソールエージェントを手動でインストールする方法を学びます"^]
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]構成を計画する
+[role="quick-margin-para"]
+コンソールでは、ワークロード要件に一致する事前構成済みのパッケージが提供されており、独自の構成を作成することもできます。独自の構成を選択する場合は、利用可能なオプションを理解する必要があります。
+
+[role="quick-margin-para"]
+link:task-planning-your-config-gcp.html["構成の計画について詳しくは"] 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]ネットワークを設定する
+[role="quick-margin-list"]
+. VPC とサブネットがコンソール エージェントとCloud Volumes ONTAP間の接続をサポートしていることを確認します。
+. データ階層化を有効にする場合は、 https://cloud.google.com/vpc/docs/configure-private-google-access["プライベート Google アクセス用にCloud Volumes ONTAPサブネットを構成する"^] 。
+. HA ペアをデプロイする場合は、それぞれ独自のサブネットを持つ 4 つの VPC があることを確認してください。
+. 共有 VPC を使用している場合は、コンソール エージェント サービス アカウントに _Compute Network User_ ロールを付与します。
+. NetApp AutoSupportのターゲット VPC からのアウトバウンド インターネット アクセスを有効にします。
++
+インターネットにアクセスできない場所にCloud Volumes ONTAPを展開する場合、この手順は必要ありません。
+
+
+
+[role="quick-margin-para"]
+link:reference-networking-gcp.html["ネットワーク要件の詳細"] 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]サービスアカウントを設定する
+[role="quick-margin-para"]
+Cloud Volumes ONTAP、 2 つの目的で Google Cloud サービス アカウントが必要です。  1つ目は、link:concept-data-tiering.html["データ階層化"]コールドデータを Google Cloud の低コストのオブジェクト ストレージに階層化します。  2つ目は、 https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリ"^]ボリュームを低コストのオブジェクト ストレージにバックアップします。
+
+[role="quick-margin-para"]
+1 つのサービス アカウントを設定して、両方の目的に使用できます。サービス アカウントには *Storage Admin* ロールが必要です。
+
+[role="quick-margin-para"]
+link:task-creating-gcp-service-account.html["ステップバイステップの説明を読む"] 。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]Google Cloud API を有効にする
+[role="quick-margin-para"]
+https://cloud.google.com/apis/docs/getting-started#enabling_apis["プロジェクトで次の Google Cloud API を有効にします"^] 。これらの API は、コンソール エージェントとCloud Volumes ONTAP をデプロイするために必要です。
+
+[role="quick-margin-list"]
+* クラウド デプロイメント マネージャー V2 API
+* クラウドロギングAPI
+* クラウド リソース マネージャー API
+* コンピューティングエンジン API
+* アイデンティティとアクセス管理 (IAM) API
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]コンソールを使用してCloud Volumes ONTAPを起動する
+[role="quick-margin-para"]
+*システムの追加*をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を完了します。link:task-deploying-gcp.html["ステップバイステップの説明を読む"] 。
+
+.関連リンク
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["コンソールエージェントの作成"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Linuxホストにコンソールエージェントソフトウェアをインストールする"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["コンソールが Google Cloud の権限で実行する処理"^]
+

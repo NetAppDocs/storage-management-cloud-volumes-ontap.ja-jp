@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: concept-write-speed.html 
+keywords: write speed, high write speed, normal write speed, nvfail, writing speed, ldm, low durability mode 
+summary: NetAppコンソールを使用すると、Cloud Volumes ONTAPの通常書き込み速度または高速書き込み速度を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。 
+---
+= 書き込み速度
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetAppコンソールを使用すると、ほとんどのCloud Volumes ONTAP構成で通常または高速の書き込み速度を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。
+
+
+
+== 通常の書き込み速度
+
+通常の書き込み速度を選択すると、データはディスクに直接書き込まれます。データがディスクに直接書き込まれると、予期しないシステム停止や、予期しないシステム停止を伴う連鎖障害が発生した場合にデータが失われる可能性が軽減されます (HA ペアのみ)。
+
+通常の書き込み速度がデフォルトのオプションです。
+
+
+
+== 高速書き込み
+
+高速書き込み速度を選択すると、データはディスクに書き込まれる前にメモリにバッファリングされるため、書き込みパフォーマンスが高速化されます。このキャッシュにより、予期しないシステム停止が発生した場合にデータが失われる可能性があります。
+
+予期しないシステム停止が発生した場合に失われる可能性があるデータの量は、最後の 2 つの整合性ポイントの範囲です。整合性ポイントとは、バッファリングされたデータをディスクに書き込む行為です。整合性ポイントは、書き込みログがいっぱいになったとき、または 10 秒経過したとき (いずれか早い方) に発生します。ただし、クラウド プロバイダーが提供するストレージのパフォーマンスは、整合性ポイントの処理時間に影響する可能性があります。
+
+
+
+=== 高速書き込み速度を使用する場合
+
+ワークロードに高速な書き込みパフォーマンスが必要であり、予期しないシステム停止や予期しないシステム停止を伴う連鎖障害が発生した場合にデータ損失のリスクに耐えられる場合は、高速書き込みが適切な選択肢となります (HA ペアのみ)。
+
+
+
+=== 高速書き込みを使用する場合の推奨事項
+
+高速書き込みを有効にする場合は、アプリケーション層での書き込み保護を確保するか、データ損失が発生した場合でもアプリケーションがデータ損失を許容できるようにする必要があります。
+
+ifdef::aws[]
+
+
+
+=== AWS の HA ペアによる高速書き込み
+
+AWS の HA ペアで高速書き込みを有効にする予定の場合は、複数のアベイラビリティーゾーン (AZ) 展開と単一の AZ 展開間の保護レベルの違いを理解する必要があります。複数の AZ にわたって HA ペアを展開すると、回復力が高まり、データ損失の可能性を軽減できます。
+
+link:concept-ha.html["AWSのHAペアについて詳しくはこちら"] 。
+
+endif::aws[]
+
+
+
+=== 高速書き込みをサポートする構成
+
+すべてのCloud Volumes ONTAP構成が高速書き込み速度をサポートしているわけではありません。これらの構成では、デフォルトで通常の書き込み速度が使用されます。
+
+ifdef::aws[]
+
+
+
+==== AWS
+
+単一ノード システムを使用する場合、 Cloud Volumes ONTAP はすべてのインスタンス タイプで高速書き込み速度をサポートします。
+
+9.8 リリース以降、 Cloud Volumes ONTAP は、 m5.xlarge と r5.xlarge を除く、サポートされているほぼすべての EC2 インスタンス タイプを使用する場合、HA ペアによる高速書き込みをサポートします。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["Cloud Volumes ONTAPがサポートする Amazon EC2 インスタンスの詳細"^] 。
+
+endif::aws[]
+
+ifdef::azure[]
+
+
+
+==== Azure
+
+単一ノード システムを使用する場合、 Cloud Volumes ONTAP はすべての VM タイプで高速書き込み速度をサポートします。
+
+HA ペアを使用する場合、 Cloud Volumes ONTAP は、 9.8 リリース以降、いくつかの VM タイプで高速書き込み速度をサポートします。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Cloud Volumes ONTAPリリースノート"^]高速書き込みをサポートする VM タイプを表示します。
+
+endif::azure[]
+
+ifdef::gcp[]
+
+
+
+==== Google Cloud
+
+単一ノード システムを使用する場合、 Cloud Volumes ONTAP はすべてのマシン タイプで高速書き込み速度をサポートします。
+
+HA ペアを使用する場合、 Cloud Volumes ONTAP は、 9.13.0 リリース以降、いくつかの VM タイプで高速書き込み速度をサポートします。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#supported-configurations-by-license["Cloud Volumes ONTAPリリースノート"^]高速書き込みをサポートする VM タイプを表示します。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Cloud Volumes ONTAPがサポートする Google Cloud マシンタイプの詳細"^] 。
+
+endif::gcp[]
+
+
+
+== 書き込み速度の選択方法
+
+新しいCloud Volumes ONTAPシステムを追加するときに書き込み速度を選択できます。link:task-modify-write-speed.html["既存システムの書き込み速度を変更する"] 。
+
+
+
+== データ損失が発生した場合に予想されること
+
+書き込み速度が速いためにデータ損失が発生した場合、イベント管理システム (EMS) は次の 2 つのイベントを報告します。
+
+* Cloud Volumes ONTAP 9.12.1以降
++
+ NOTICE nv.data.loss.possible: An unexpected shutdown occurred while in high write speed mode, which possibly caused a loss of data.
+* Cloud Volumes ONTAP 9.11.0 から 9.11.1
++
+ DEBUG nv.check.failed: NVRAM check failed with error "NVRAM disabled due to dirty shutdown with High Write Speed mode"
++
+ ERROR wafl.root.content.changed: Contents of the root volume '' might have changed. Verify that all recent configuration changes are still in effect..
+* Cloud Volumes ONTAP 9.8 から 9.10.1
++
+ DEBUG nv.check.failed: NVRAM check failed with error "NVRAM disabled due to dirty shutdown"
++
+ ERROR wafl.root.content.changed: Contents of the root volume '' might have changed. Verify that all recent configuration changes are still in effect.
+
+
+このような状況が発生すると、 Cloud Volumes ONTAP はユーザーの介入なしに起動し、データの提供を継続できるようになります。
+
+
+
+== データ損失が発生した場合にデータアクセスを停止する方法
+
+データ損失が懸念される場合、データ損失時にアプリケーションの実行を停止し、データ損失の問題が適切に解決された後にデータ アクセスを再開するには、CLI から NVFAIL オプションを使用してその目的を達成できます。
+
+NVFAILオプションを有効にするには:: `vol modify -volume <vol-name> -nvfail on`
+NVFAIL設定を確認するには:: `vol show -volume <vol-name> -fields nvfail`
+NVFAILオプションを無効にするには:: `vol modify -volume <vol-name> -nvfail off`
+
+
+データ損失が発生すると、NVFAIL が有効になっている NFS または iSCSI ボリュームはデータの提供を停止します (ステートレス プロトコルである CIFS には影響はありません)。詳細については、 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-mgmt-dr/GUID-40D04B8A-01F7-4E87-8161-E30BD80F5B7F.html["NFSボリュームまたはLUNへのアクセスに対するNVFAILの影響"^] 。
+
+NVFAIL状態を確認するには:: `vol show -fields in-nvfailed-state`
+
+
+データ損失の問題が適切に解決されたら、NVFAIL 状態をクリアしてボリュームにデータ アクセスできるようになります。
+
+NVFAIL状態をクリアするには:: `vol modify -volume <vol-name> -in-nvfailed-state false`
+

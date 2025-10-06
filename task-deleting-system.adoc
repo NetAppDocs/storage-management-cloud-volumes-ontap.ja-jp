@@ -1,0 +1,45 @@
+---
+sidebar: sidebar 
+permalink: task-deleting-system.html 
+keywords: terminate, delete, system, remove, terminate system, terminate instance, delete cloud volumes ontap, delete instance, delete system, delete backups, cloud backup, cloud data sense 
+summary: Cloud Volumes ONTAPシステムは、クラウド プロバイダーのコンソールからではなく、常に削除する必要があります。たとえば、クラウド プロバイダーからライセンスを取得したCloud Volumes ONTAPインスタンスを終了した場合、そのライセンス キーを別のインスタンスに使用することはできません。ライセンスを解放するにはシステムを削除する必要があります。 
+---
+= NetAppコンソールからCloud Volumes ONTAPシステムを削除する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPシステムは、クラウド プロバイダーのアプリケーションからではなく、常にNetAppコンソールから削除する必要があります。たとえば、クラウド プロバイダーからライセンスを取得したCloud Volumes ONTAPインスタンスを終了した場合、そのライセンス キーを別のインスタンスに使用することはできません。ライセンスを解放するには、コンソールからCloud Volumes ONTAPシステムを削除する必要があります。
+
+システムを削除すると、コンソールはCloud Volumes ONTAPインスタンスを終了し、ディスクとスナップショットを削除します。
+
+
+NOTE: システムを削除しても、 NetApp Backup and Recovery によって管理されるバックアップやNetApp Data Classification のインスタンスなどの他のリソースは削除されません。手動で削除する必要があります。そうしないと、これらのリソースに対して引き続き料金が発生します。
+
+コンソールがクラウド プロバイダーにCloud Volumes ONTAP をデプロイすると、インスタンスの終了保護が有効になります。このオプションは、誤って終了するのを防ぐのに役立ちます。
+
+.手順
+. システムでバックアップとリカバリを有効にした場合は、バックアップしたデータがまだ必要かどうかを確認し、 https://docs.netapp.com/us-en/bluexp-backup-recovery/task-manage-backups-ontap.html#deleting-backups["必要に応じてバックアップを削除する"^] 。
++
+バックアップとリカバリは、設計上、 Cloud Volumes ONTAPから独立しています。バックアップとリカバリでは、Cloud Volumes ONTAPシステムを削除してもバックアップは自動的に削除されません。また、システムの削除後にバックアップを削除するための UI は現在サポートされていません。
+
+. このシステムでデータ分類を有効にしていて、他のシステムでこのサービスが使用されていない場合は、サービスのインスタンスを削除する必要があります。
++
+https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html#the-cloud-data-sense-instance["データ分類インスタンスの詳細"^] 。
+
+. Cloud Volumes ONTAPシステムを削除します。
++
+.. *システム*ページで、削除するCloud Volumes ONTAPシステムの名前をダブルクリックします。
+.. コンソールの右上にあるimage:icon-action.png[""]アイコンをクリックし、[削除] を選択します。
+.. 削除するシステムの名前を入力し、「削除」をクリックします。システムの削除には最大 5 分かかる場合があります。
+
+
+
+
+
+NOTE: バックアップとリカバリは、Cloud Volumes ONTAP Professional ライセンスに対してのみ無料です。この無料特典は削除された環境には適用されません。  Cloud Volumes ONTAP環境のバックアップ コピーがバックアップおよびリカバリ インスタンスに保持されている場合、バックアップ コピーは削除されるまで課金されます。

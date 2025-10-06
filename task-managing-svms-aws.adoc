@@ -1,0 +1,305 @@
+---
+sidebar: sidebar 
+permalink: task-managing-svms-aws.html 
+keywords: storage virtual machine, vserver, svm, storage vm, supported number, number supported 
+summary: ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。これは SVM または vserver として知られているかもしれません。  Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。 
+---
+= AWS でCloud Volumes ONTAPのデータサービス ストレージ VM を管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。以前は「_SVM_」または「_Vserver_」と呼んでいました。  Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。
+
+追加のデータ提供ストレージ VM を作成するには、AWS で IP アドレスを割り当て、 Cloud Volumes ONTAP構成に基づいてONTAPコマンドを実行する必要があります。
+
+
+
+== サポートされるストレージVMの数
+
+9.7 リリース以降、特定のCloud Volumes ONTAP構成では複数のストレージ VM がサポートされます。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Cloud Volumes ONTAPリリースノート"^]お使いのCloud Volumes ONTAPのバージョンでサポートされているストレージ VM の数を確認します。
+
+その他のすべてのCloud Volumes ONTAP構成では、1 つのデータ提供ストレージ VM と、災害復旧に使用される 1 つの宛先ストレージ VM がサポートされます。ソース ストレージ VM に障害が発生した場合、データ アクセス用に宛先ストレージ VM をアクティブ化できます。
+
+
+
+== 構成の制限を確認する
+
+各 EC2 インスタンスは、ネットワーク インターフェイスごとに最大数のプライベート IPv4 アドレスをサポートします。新しいストレージ VM に AWS で IP アドレスを割り当てる前に、制限を確認する必要があります。
+
+.手順
+. 行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.html["Cloud Volumes ONTAPリリースノートのストレージ制限セクション"^]。
+. インスタンス タイプごとのインターフェースあたりの IP アドレスの最大数を特定します。
+. この番号は、次のセクションで AWS で IP アドレスを割り当てるときに必要になるので、メモしておいてください。
+
+
+
+
+== AWSでIPアドレスを割り当てる
+
+新しいストレージ VM の LIF を作成する前に、AWS のポート e0a にプライベート IPv4 アドレスを割り当てる必要があります。
+
+ストレージ VM のオプションの管理 LIF には、単一ノード システム上および単一 AZ 内の HA ペア上のプライベート IP アドレスが必要であることに注意してください。この管理 LIF は、 SnapCenterなどの管理ツールへの接続を提供します。
+
+.手順
+. AWS にログインし、EC2 サービスを開きます。
+. Cloud Volumes ONTAPインスタンスを選択し、[*Networking*] をクリックします。
++
+HA ペアでストレージ VM を作成する場合は、ノード 1 を選択します。
+
+. *ネットワーク インターフェース* まで下にスクロールし、ポート e0a の *インターフェース ID* をクリックします。
++
+image:screenshot_aws_e0a.gif["ネットワークインターフェイス上のポート e0a を表示する AWS コンソールのスクリーンショット。"]
+
+. ネットワーク インターフェイスを選択し、*[アクション] > [IP アドレスの管理]* をクリックします。
+. e0a の IP アドレスのリストを展開します。
+. IP アドレスを確認します。
++
+.. 割り当てられた IP アドレスの数を数えて、ポートに追加の IP を割り当てる余裕があることを確認します。
++
+このページの前のセクションで、インターフェースごとにサポートされる IP アドレスの最大数を特定しておく必要があります。
+
+.. オプション: Cloud Volumes ONTAPのONTAP CLI に移動し、*network interface show* を実行して、これらの各 IP アドレスが使用中であることを確認します。
++
+IP アドレスが使用されていない場合は、新しいストレージ VM で使用できます。
+
+
+
+. AWS コンソールに戻り、[*新しい IP アドレスの割り当て*] をクリックして、新しいストレージ VM に必要な量に基づいて追加の IP アドレスを割り当てます。
++
+** 単一ノード システム: 未使用のセカンダリ プライベート IP が 1 つ必要です。
++
+ストレージ VM 上に管理 LIF を作成する場合は、オプションのセカンダリ プライベート IP が必要です。
+
+** 単一 AZ 内の HA ペア: ノード 1 に未使用のセカンダリ プライベート IP が 1 つ必要です。
++
+ストレージ VM 上に管理 LIF を作成する場合は、オプションのセカンダリ プライベート IP が必要です。
+
+** 複数の AZ の HA ペア: 各ノードに未使用のセカンダリ プライベート IP が 1 つ必要です。
+
+
+. 単一の AZ 内の HA ペアで IP アドレスを割り当てる場合は、*セカンダリ プライベート IPv4 アドレスの再割り当てを許可する* を有効にします。
+. *保存*をクリックします。
+. 複数の AZ に HA ペアがある場合は、ノード 2 に対してこれらの手順を繰り返す必要があります。
+
+
+
+
+== 単一ノードシステム上にストレージVMを作成する
+
+これらの手順では、単一ノード システムに新しいストレージ VM を作成します。  NAS LIF を作成するには 1 つのプライベート IP アドレスが必要であり、管理 LIF を作成する場合は、オプションで別のプライベート IP アドレスが必要になります。
+
+.手順
+. ストレージ VM とストレージ VM へのルートを作成します。
++
+[source, cli]
+----
+vserver create -rootvolume-security-style unix -rootvolume root_svm_2 -snapshot-policy default -vserver svm_2 -aggregate aggr1
+----
++
+[source, cli]
+----
+network route create -destination 0.0.0.0/0 -vserver svm_2 -gateway subnet_gateway
+----
+. NAS LIF を作成します。
++
+[source, cli]
+----
+network interface create -auto-revert true -vserver svm_2 -service-policy default-data-files -home-port e0a -address private_ip_x -netmask node1Mask -lif ip_nas_2 -home-node cvo-node
+----
++
+ここで、_private_ip_x_ は e0a 上の未使用のセカンダリ プライベート IP です。
+
+. オプション: ストレージ VM 管理 LIF を作成します。
++
+[source, cli]
+----
+network interface create -auto-revert true -vserver svm_2 -service-policy default-management -home-port e0a -address private_ip_y -netmask node1Mask -lif ip_svm_mgmt_2 -home-node cvo-node
+----
++
+ここで、_private_ip_y_ は e0a 上の別の未使用のセカンダリ プライベート IP です。
+
+. 1 つ以上のアグリゲートをストレージ VM に割り当てます。
++
+[source, cli]
+----
+vserver add-aggregates -vserver svm_2 -aggregates aggr1,aggr2
+----
++
+ストレージ VM にボリュームを作成する前に、新しいストレージ VM が少なくとも 1 つのアグリゲートにアクセスする必要があるため、この手順は必須です。
+
+
+
+
+
+== 単一の AZ 内の HA ペアにストレージ VM を作成する
+
+これらの手順では、単一の AZ 内の HA ペアに新しいストレージ VM を作成します。  NAS LIF を作成するには 1 つのプライベート IP アドレスが必要であり、管理 LIF を作成する場合は、オプションで別のプライベート IP アドレスが必要になります。
+
+これらの LIF は両方ともノード 1 に割り当てられます。障害が発生した場合、プライベート IP アドレスはノード間で移動できます。
+
+.手順
+. ストレージ VM とストレージ VM へのルートを作成します。
++
+[source, cli]
+----
+vserver create -rootvolume-security-style unix -rootvolume root_svm_2 -snapshot-policy default -vserver svm_2 -aggregate aggr1
+----
++
+[source, cli]
+----
+network route create -destination 0.0.0.0/0 -vserver svm_2 -gateway subnet_gateway
+----
+. ノード 1 に NAS LIF を作成します。
++
+[source, cli]
+----
+network interface create -auto-revert true -vserver svm_2 -service-policy default-data-files -home-port e0a -address private_ip_x -netmask node1Mask -lif ip_nas_2 -home-node cvo-node1
+----
++
+ここで、_private_ip_x_ は cvo-node1 の e0a 上の未使用のセカンダリ プライベート IP です。サービス ポリシー default-data-files では IP がパートナー ノードに移行できることが示されているため、テイクオーバーの際にこの IP アドレスは cvo-node2 の e0a に再配置できます。
+
+. オプション: ノード 1 にストレージ VM 管理 LIF を作成します。
++
+[source, cli]
+----
+network interface create -auto-revert true -vserver svm_2 -service-policy default-management -home-port e0a -address private_ip_y -netmask node1Mask -lif ip_svm_mgmt_2 -home-node cvo-node1
+----
++
+ここで、_private_ip_y_ は e0a 上の別の未使用のセカンダリ プライベート IP です。
+
+. 1 つ以上のアグリゲートをストレージ VM に割り当てます。
++
+[source, cli]
+----
+vserver add-aggregates -vserver svm_2 -aggregates aggr1,aggr2
+----
++
+ストレージ VM にボリュームを作成する前に、新しいストレージ VM が少なくとも 1 つのアグリゲートにアクセスする必要があるため、この手順は必須です。
+
+. Cloud Volumes ONTAP 9.11.1 以降を実行している場合は、ストレージ VM のネットワーク サービス ポリシーを変更します。
++
+Cloud Volumes ONTAP がアウトバウンド管理接続に iSCSI LIF を使用できるようにするため、サービスを変更する必要があります。
+
++
+[source, cli]
+----
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service data-fpolicy-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-ad-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-dns-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-ldap-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-nis-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service data-fpolicy-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-ad-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-dns-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-ldap-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-nis-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service data-fpolicy-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-ad-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-dns-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-ldap-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-nis-client
+----
+
+
+
+
+== 複数の AZ の HA ペアにストレージ VM を作成する
+
+これらの手順では、複数の AZ の HA ペアに新しいストレージ VM を作成します。
+
+_フローティング_ IP アドレスは NAS LIF には必須ですが、管理 LIF にはオプションです。これらのフローティング IP アドレスでは、AWS でプライベート IP を割り当てる必要はありません。代わりに、フローティング IP は、同じ VPC 内の特定のノードの ENI を指すように AWS ルートテーブルで自動的に構成されます。
+
+フローティング IP をONTAPで動作させるには、各ノード上のすべてのストレージ VM にプライベート IP アドレスを設定する必要があります。これは、iSCSI LIF がノード 1 とノード 2 に作成される以下の手順に反映されています。
+
+.手順
+. ストレージ VM とストレージ VM へのルートを作成します。
++
+[source, cli]
+----
+vserver create -rootvolume-security-style unix -rootvolume root_svm_2 -snapshot-policy default -vserver svm_2 -aggregate aggr1
+----
++
+[source, cli]
+----
+network route create -destination 0.0.0.0/0 -vserver svm_2 -gateway subnet_gateway
+----
+. ノード 1 に NAS LIF を作成します。
++
+[source, cli]
+----
+network interface create -auto-revert true -vserver svm_2 -service-policy default-data-files -home-port e0a -address floating_ip -netmask node1Mask -lif ip_nas_floating_2 -home-node cvo-node1
+----
++
+** フローティング IP アドレスは、HA 構成を展開する AWS リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。 192.168.209.27 はフローティング IP アドレスの例です。link:reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["フローティングIPアドレスの選択について詳しくはこちら"] 。
+** `-service-policy default-data-files`IP がパートナー ノードに移行できることを示します。
+
+
+. オプション: ノード 1 にストレージ VM 管理 LIF を作成します。
++
+[source, cli]
+----
+network interface create -auto-revert true -vserver svm_2 -service-policy default-management -home-port e0a -address floating_ip -netmask node1Mask -lif ip_svm_mgmt_2 -home-node cvo-node1
+----
+. ノード 1 に iSCSI LIF を作成します。
++
+[source, cli]
+----
+network interface create -vserver svm_2 -service-policy default-data-blocks -home-port e0a -address private_ip -netmask nodei1Mask -lif ip_node1_iscsi_2 -home-node cvo-node1
+----
++
+** この iSCSI LIF は、ストレージ VM 内のフローティング IP の LIF 移行をサポートするために必要です。  iSCSI LIF である必要はありませんが、ノード間で移行するように構成することはできません。
+** `-service-policy default-data-block`IP アドレスがノード間で移行されないことを示します。
+** _private_ip_ は、cvo_node1 の eth0 (e0a) 上の未使用のセカンダリプライベート IP アドレスです。
+
+
+. ノード 2 に iSCSI LIF を作成します。
++
+[source, cli]
+----
+network interface create -vserver svm_2 -service-policy default-data-blocks -home-port e0a -address private_ip -netmaskNode2Mask -lif ip_node2_iscsi_2 -home-node cvo-node2
+----
++
+** この iSCSI LIF は、ストレージ VM 内のフローティング IP の LIF 移行をサポートするために必要です。  iSCSI LIF である必要はありませんが、ノード間で移行するように構成することはできません。
+** `-service-policy default-data-block`IP アドレスがノード間で移行されないことを示します。
+** _private_ip_ は、cvo_node2 の eth0 (e0a) 上の未使用のセカンダリプライベート IP アドレスです。
+
+
+. 1 つ以上のアグリゲートをストレージ VM に割り当てます。
++
+[source, cli]
+----
+vserver add-aggregates -vserver svm_2 -aggregates aggr1,aggr2
+----
++
+ストレージ VM にボリュームを作成する前に、新しいストレージ VM が少なくとも 1 つのアグリゲートにアクセスする必要があるため、この手順は必須です。
+
+. Cloud Volumes ONTAP 9.11.1 以降を実行している場合は、ストレージ VM のネットワーク サービス ポリシーを変更します。
++
+Cloud Volumes ONTAP がアウトバウンド管理接続に iSCSI LIF を使用できるようにするため、サービスを変更する必要があります。
+
++
+[source, cli]
+----
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service data-fpolicy-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-ad-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-dns-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-ldap-client
+network interface service-policy remove-service -vserver <svm-name> -policy default-data-files -service management-nis-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service data-fpolicy-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-ad-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-dns-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-ldap-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-blocks -service management-nis-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service data-fpolicy-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-ad-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-dns-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-ldap-client
+network interface service-policy add-service -vserver <svm-name> -policy default-data-iscsi -service management-nis-client
+----
+

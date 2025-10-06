@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: task-create-aggregates.html 
+keywords: storage, provisioning, aggregates, provision, create, advanced allocation, creating aggregates, adding an aggregate, add an aggregate, create an aggregate 
+summary: アグリゲートは自分で作成することも、ボリュームの作成時にNetAppコンソールに作成させることもできます。アグリゲートを自分で作成する利点は、基盤となるディスク サイズを選択できるため、必要な容量やパフォーマンスに合わせてアグリゲートのサイズを設定できることです。 
+---
+= Cloud Volumes ONTAPシステムのアグリゲートを作成する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+アグリゲートは自分で作成することも、ボリュームの作成時にNetAppコンソールに作成させることもできます。アグリゲートを自分で作成する利点は、基盤となるディスク サイズを選択できるため、必要な容量やパフォーマンスに合わせてアグリゲートのサイズを設定できることです。
+
+
+CAUTION: すべてのディスクとアグリゲートは、コンソールから直接作成および削除する必要があります。これらのアクションを別の管理ツールから実行しないでください。そうすると、システムの安定性に影響が及び、将来的にディスクを追加する能力が妨げられ、クラウド プロバイダーの料金が重複して発生する可能性があります。
+
+.手順
+. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで、アグリゲートを管理するCloud Volumes ONTAPシステムの名前をダブルクリックします。
+. 「集計」タブで、「*集計の追加*」をクリックし、集計の詳細を指定します。
++
+[role="tabbed-block"]
+====
+ifdef::aws[]
+
+.AWS
+--
+** ディスクの種類とサイズを選択するように求められた場合は、link:task-planning-your-config.html["AWS でCloud Volumes ONTAP構成を計画する"] 。
+** アグリゲートの容量サイズを入力するように求められた場合は、Amazon EBS Elastic Volumes 機能をサポートする構成でアグリゲートを作成していることになります。次のスクリーンショットは、gp3 ディスクで構成された新しいアグリゲートの例を示しています。
++
+image:screenshot-aggregate-size-ev.png["集約サイズを TiB 単位で入力する gp3 ディスクの集約ディスク画面のスクリーンショット。"]
+
++
+link:concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"] 。
+
+
+
+--
+endif::aws[]
+
+ifdef::azure[]
+
+.Azure
+--
+ディスクの種類とディスクサイズに関するヘルプについては、link:task-planning-your-config-azure.html["AzureでCloud Volumes ONTAPの構成を計画する"] 。
+
+--
+endif::azure[]
+
+ifdef::gcp[]
+
+.Google Cloud
+--
+ディスクの種類とディスクサイズに関するヘルプについては、link:task-planning-your-config-gcp.html["Google Cloud でCloud Volumes ONTAP構成を計画する"] 。
+
+--
+endif::gcp[]
+
+====
+. *追加*をクリックし、*承認して購入*をクリックします。
+

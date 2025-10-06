@@ -1,0 +1,11 @@
+= Cloud Volumes ONTAP 9.16.1 GA
+:allow-uri-read: 
+
+
+
+
+=== Cloud Volumes ONTAP 9.16.1 GA
+
+BlueXPを使用して、Azure および Google Cloud でCloud Volumes ONTAP 9.16.1 一般提供リリースを展開および管理できるようになりました。ただし、このバージョンは AWS でのデプロイおよびアップグレードには使用できません。
+
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-9161-relnotes/["Cloud Volumes ONTAPのこのリリースに含まれる新機能について学びましょう"^] 。
