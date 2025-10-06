@@ -4,7 +4,7 @@ permalink: task-deploying-otc-aws.html
 keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, aws, serial number, license key, byol, test instance, aws tags, tags, location, vpc, encryption, security group, aws-managed encryption, disk size, disk type, write speed, licensing, IAM role, preconfigured package, access control, volume protection, usage profile, register, CIFS share, quota, qtree, HA, high-availability, subscription, cloud data sense, cloud backup 
 summary: Cloud Volumes ONTAPインスタンスは、単一システム構成で起動することも、AWS の HA ペアとして起動することもできます。 
 ---
-= AWS でCloud Volumes ONTAP を起動
+= AWSでCloud Volumes ONTAPを起動
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -47,7 +47,7 @@ link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"^] 
 
 == AWS でシングルノードのCloud Volumes ONTAPシステムを起動する
 
-AWS でCloud Volumes ONTAPを起動する場合は、 NetAppコンソールで新しいシステムを作成する必要があります。
+AWS でCloud Volumes ONTAPを起動する場合は、 NetApp Consoleで新しいシステムを作成する必要があります。
 
 .タスク概要
 システムを作成するとすぐに、コンソールは指定された VPC でテストインスタンスを起動して接続を確認します。成功した場合、コンソールはインスタンスを直ちに終了し、 Cloud Volumes ONTAPシステムのデプロイを開始します。接続を検証できない場合、システムの作成は失敗します。テストインスタンスは、 `t2.nano` （デフォルトのVPCテナンシーの場合）または `m3.medium`(専用 VPC テナンシーの場合)。
@@ -77,7 +77,7 @@ AWS でCloud Volumes ONTAPを起動する場合は、 NetAppコンソールで�
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | このシステムをデプロイするアカウントに関連付けられている AWS 認証情報を選択します。このCloud Volumes ONTAPシステムで使用する AWS マーケットプレイス サブスクリプションを関連付けることもできます。「サブスクリプションを追加」をクリックすると、選択した認証情報が新しいAWSマーケットプレイスサブスクリプションに関連付けられます。サブスクリプションは年間契約または時間単位でCloud Volumes ONTAPをお支払いいただくことができます。NetApphttps://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["NetAppコンソールにAWS認証情報を追加する方法を学びます"^] 。 
+| 資格情報の編集 | このシステムをデプロイするアカウントに関連付けられている AWS 認証情報を選択します。このCloud Volumes ONTAPシステムで使用する AWS マーケットプレイス サブスクリプションを関連付けることもできます。「サブスクリプションを追加」をクリックすると、選択した認証情報が新しいAWSマーケットプレイスサブスクリプションに関連付けられます。サブスクリプションは年間契約または時間単位でCloud Volumes ONTAPをお支払いいただくことができます。NetApphttps://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["NetApp ConsoleにAWS認証情報を追加する方法を学びます"^] 。 
 |===
 +
 
@@ -85,8 +85,8 @@ TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場�
 
 . *サービス*: サービスを有効のままにするか、 Cloud Volumes ONTAPで使用しない個々のサービスを無効にします。
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetAppデータ分類の詳細"^]
-** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリの詳細"^]
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
 +
 
 TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
@@ -246,7 +246,7 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 | DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
 
 
-| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
 |===
 . *使用プロファイル、ディスク タイプ、階層化ポリシー*: ストレージ効率機能を有効にするかどうかを選択し、必要に応じてボリューム階層化ポリシーを編集します。
 +
@@ -329,7 +329,7 @@ TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場�
 
 . *サービス*: サービスを有効のままにするか、このCloud Volumes ONTAPシステムで使用しない個々のサービスを無効にします。
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetAppデータ分類の詳細"^]
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
 ** https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["バックアップとリカバリの詳細"^]
 +
 
@@ -500,7 +500,7 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 | DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
 
 
-| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
 |===
 . *使用プロファイル、ディスク タイプ、階層化ポリシー*: ストレージ効率機能を有効にするかどうかを選択し、必要に応じてボリューム階層化ポリシーを編集します。
 +

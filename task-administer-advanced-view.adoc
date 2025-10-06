@@ -14,7 +14,7 @@ summary: Cloud Volumes ONTAPの高度な管理を実行する必要がある場�
 
 
 [role="lead"]
-Cloud Volumes ONTAPの高度なストレージ管理機能は、 ONTAPシステムに付属の管理インターフェースであるONTAP System Managerを通じて利用できます。SystemNetAppコンソールから直接 System Manager にアクセスできます。
+Cloud Volumes ONTAPの高度なストレージ管理機能は、 ONTAPシステムに付属の管理インターフェースであるONTAP System Managerを通じて利用できます。SystemNetApp Consoleから直接 System Manager にアクセスできます。
 
 
 
@@ -46,7 +46,7 @@ Cloud Volumes ONTAPの高度なストレージ管理機能は、 ONTAPシステ�
 
 System Manager インターフェースに表示されるいくつかの機能は、Cloud Volumes ONTAPではサポートされていません。
 
-* NetAppクラウド ティアリング: Cloud Volumes ONTAP はクラウド ティアリングをサポートしていません。ボリュームを作成するときは、標準ビューから直接オブジェクト ストレージへのデータの階層化を設定する必要があります。
+* NetApp Cloud Tiering: Cloud Volumes ONTAP はクラウド階層化をサポートしていません。ボリュームを作成するときは、標準ビューから直接オブジェクト ストレージへのデータの階層化を設定する必要があります。
 * 階層：System Managerではアグリゲート管理（ローカル階層とクラウド階層を含む）はサポートされていません。集計は標準ビューから直接管理する必要があります。
 * ファームウェアのアップグレード: Cloud Volumes ONTAP は、システム マネージャの *クラスタ > 設定* ページからの自動ファームウェア更新をサポートしていません。
 * ロールベースのアクセス制御: System Manager からのロールベースのアクセス制御はサポートされていません。

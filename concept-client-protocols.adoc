@@ -48,6 +48,6 @@ link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html#how-s3-mult
 
 == NVMe-TCP
 
-ONTAPバージョン 9.12.1 以降では、クラウド プロバイダーで NVMe-TCP がサポートされます。  NetAppコンソールは、NVMe-TCP の管理機能を提供しません。
+ONTAPバージョン 9.12.1 以降では、クラウド プロバイダーで NVMe-TCP がサポートされます。  NetApp Consoleは、 NVMe-TCP の管理機能を提供しません。
 
 ONTAP経由での NVMe の設定の詳細については、 https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-nvme-task.html["ONTAPドキュメント: NVMe用のストレージVMを構成する"^] 。

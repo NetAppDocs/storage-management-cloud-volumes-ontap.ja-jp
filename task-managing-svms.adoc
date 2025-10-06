@@ -26,7 +26,7 @@ summary: ストレージ VM は、 ONTAP内で実行され、クライアント�
 
 == 複数のストレージVMを操作する
 
-NetAppコンソールは、 ONTAP System Manager またはONTAP CLI から作成した追加のストレージ VM をサポートします。
+NetApp Consoleは、 ONTAP System Manager またはONTAP CLI から作成した追加のストレージ VM をサポートします。
 
 たとえば、次の図は、ボリュームを作成するときにストレージ VM を選択する方法を示しています。
 

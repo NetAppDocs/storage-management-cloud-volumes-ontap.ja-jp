@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-networking-aws.html 
 keywords: networking, network, requirements, connection, connections, vpc, security group, security groups, subnets, vpn, internet, nat, s3, dns, ad, active directory, az, availability zone, floating IP, floating, SVM, management LIF, route, route tables, proxy, HTTP, private, tier, s3 endpoint, proxy server, nat device, vpn, snapmanager, snapcenter, iscsi, nfs, cifs, nas, san, outbound, inbound, connections, autosupport, ha, ha pair, high availability 
-summary: NetAppコンソールは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。 
+summary: NetApp Consoleは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。 
 ---
 = Cloud Volumes ONTAP用の AWS ネットワークを設定する
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: NetAppコンソールは、IP アドレス、ネットマスク、ル�
 
 
 [role="lead"]
-NetAppコンソールは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。
+NetApp Consoleは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。
 
 
 
@@ -26,7 +26,7 @@ AWS で次の要件を満たしていることを確認してください。
 
 === Cloud Volumes ONTAPノードのアウトバウンド インターネット アクセス
 
-Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。セキュリティ要件が厳しい環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
+Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。厳格なセキュリティ要件を持つ環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
 
 コンソール エージェントは、日常的な操作のために複数のエンドポイントに接続します。使用されるエンドポイントの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]そして https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]。
 
@@ -90,9 +90,9 @@ HA メディエーターインスタンスには、ストレージフェイル�
 
 
 
-=== NetAppコンソールエージェントのネットワークプロキシ構成
+=== NetApp Consoleエージェントのネットワークプロキシ構成
 
-NetAppコンソール エージェントのプロキシ サーバー構成を使用して、 Cloud Volumes ONTAPからのアウトバウンド インターネット アクセスを有効にすることができます。コンソールは次の 2 種類のプロキシをサポートしています。
+NetApp Consoleエージェントのプロキシ サーバー構成を使用して、 Cloud Volumes ONTAPからのアウトバウンド インターネット アクセスを有効にすることができます。コンソールは次の 2 種類のプロキシをサポートしています。
 
 * *明示的なプロキシ*: Cloud Volumes ONTAPからの送信トラフィックは、コンソール エージェントのプロキシ構成時に指定されたプロキシ サーバーの HTTP アドレスを使用します。管理者は、追加の認証のためにユーザー資格情報とルート CA 証明書を構成している場合もあります。明示的なプロキシにルートCA証明書が利用可能な場合は、必ず同じ証明書を取得して、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
 * *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェントのプロキシを介して自動的にルーティングするように構成されています。透過プロキシを設定する場合、管理者はプロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
@@ -133,7 +133,7 @@ NetAppコンソール エージェントのプロキシ サーバー構成を使
 | NASデータ | NAS プロトコル経由のクライアント アクセス。 
 
 
-| iSCSIデータ | iSCSI プロトコル経由のクライアント アクセス。他の重要なネットワーク ワークフローでもシステムによって使用されます。この LIF は必須であり、削除しないでください。 
+| iSCSIデータ | iSCSI プロトコル経由のクライアント アクセス。システムでは他の重要なネットワーク ワークフローにも使用されます。この LIF は必須であり、削除しないでください。 
 
 
 | ストレージVM管理 | ストレージ VM 管理 LIF は、 SnapCenterなどの管理ツールで使用されます。 
@@ -167,7 +167,7 @@ HA ペアに必要なプライベート IP アドレスの数は、選択する�
 | NASデータ | eth0 | ノード1 | NAS プロトコル経由のクライアント アクセス。 
 
 
-| iSCSIデータ | eth0 | ノード1とノード2 | iSCSI プロトコル経由のクライアント アクセス。他の重要なネットワーク ワークフローでもシステムによって使用されます。これらの LIF は必須であり、削除しないでください。 
+| iSCSIデータ | eth0 | ノード1とノード2 | iSCSI プロトコル経由のクライアント アクセス。システムでは他の重要なネットワーク ワークフローにも使用されます。これらの LIF は必須であり、削除しないでください。 
 
 
 | クラスター接続 | eth1 | ノード1とノード2 | ノードが相互に通信し、クラスター内でデータを移動できるようにします。 
@@ -274,7 +274,7 @@ NASデータとクラスタ/SVM管理用のフローティングIPアドレス::
 
 NOTE: HA ペアでSnapDrive for Windows またはSnapCenterを使用する場合は、SVM 管理 LIF にフローティング IP アドレスが必要です。
 
-Cloud Volumes ONTAP HA システムを追加するときは、フローティング IP アドレスを入力する必要があります。コンソールは、システムを起動するときに、HA ペアに IP アドレスを割り当てます。
+Cloud Volumes ONTAP HA システムを追加するときは、フローティング IP アドレスを入力する必要があります。コンソールは、システムを起動するときに、IP アドレスを HA ペアに割り当てます。
 
 フローティング IP アドレスは、HA 構成を展開する AWS リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。フローティング IP アドレスは、リージョン内の VPC の外部にある論理サブネットと考えてください。
 
@@ -287,7 +287,7 @@ NOTE: コンソールは、iSCSI アクセスおよび VPC 外部のクライア
 
 --
 VPC 外部からのフローティング IP アクセスを可能にするトランジット ゲートウェイ:: 必要であれば、link:task-setting-up-transit-gateway.html["AWSトランジットゲートウェイを設定する"] HA ペアが存在する VPC の外部から HA ペアのフローティング IP アドレスにアクセスできるようにします。
-ルートテーブル:: フローティング IP アドレスを指定すると、フローティング IP アドレスへのルートを含めるルート テーブルを選択するように求められます。これにより、クライアントは HA ペアにアクセスできるようになります。
+ルートテーブル:: フローティング IP アドレスを指定すると、フローティング IP アドレスへのルートを含めるルート テーブルを選択するように求められます。これにより、HA ペアへのクライアント アクセスが可能になります。
 +
 --
 VPC 内のサブネットにルート テーブルが 1 つだけある場合 (メイン ルート テーブル)、コンソールはフローティング IP アドレスをそのルート テーブルに自動的に追加します。ルート テーブルが複数ある場合は、HA ペアを起動するときに正しいルート テーブルを選択することが非常に重要です。そうしないと、一部のクライアントがCloud Volumes ONTAPにアクセスできなくなる可能性があります。

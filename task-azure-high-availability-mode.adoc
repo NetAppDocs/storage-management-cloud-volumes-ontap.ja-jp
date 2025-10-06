@@ -18,7 +18,7 @@ summary: 計画外のフェイルオーバー時間を短縮し、 Cloud Volumes
 
 Cloud Volumes ONTAP 9.10.1 以降では、Microsoft Azure で実行されているCloud Volumes ONTAP HA ペアの計画外のフェイルオーバー時間を短縮し、NFSv4 のサポートを追加しました。これらの拡張機能をCloud Volumes ONTAPで利用できるようにするには、Azure サブスクリプションで高可用性機能を有効にする必要があります。
 
-Azure サブスクリプションで機能を有効にする必要がある場合、 NetAppコンソールではこれらの詳細が求められます。
+Azure サブスクリプションで機能を有効にする必要がある場合、 NetApp Consoleではこれらの詳細が求められます。
 
 次の点に注意してください。
 

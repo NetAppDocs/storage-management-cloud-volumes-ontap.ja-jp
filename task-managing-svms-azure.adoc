@@ -16,7 +16,7 @@ summary: ストレージ VM は、 ONTAP内で実行され、クライアント�
 [role="lead"]
 ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。以前は「_SVM_」または「_Vserver_」と呼んでいました。  Cloud Volumes ONTAP はデフォルトで 1 つのストレージ VM で構成されていますが、Azure でCloud Volumes ONTAP を実行するときに追加のストレージ VM を作成できます。
 
-Azure で追加のデータ サービス ストレージ VM を作成および管理するには、API を使用する必要があります。これは、API がストレージ VM を作成し、必要なネットワーク インターフェイスを構成するプロセスを自動化するためです。ストレージ VM を作成するときに、 NetAppコンソールは必要な LIF サービスと、ストレージ VM からの送信 SMB/CIFS 通信に必要な iSCSI LIF を構成します。
+Azure で追加のデータ サービス ストレージ VM を作成および管理するには、API を使用する必要があります。これは、API がストレージ VM を作成し、必要なネットワーク インターフェイスを構成するプロセスを自動化するためです。ストレージ VM を作成するときに、 NetApp Consoleは必要な LIF サービスと、ストレージ VM からの送信 SMB/CIFS 通信に必要な iSCSI LIF を構成します。
 
 Cloud Volumes ONTAP API呼び出しの実行については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^] 。
 
@@ -32,7 +32,7 @@ Cloud Volumes ONTAP 9.9.0 より前のすべてのバージョンでは、災害
 
 == ストレージVMを作成する
 
-構成とライセンスの種類に基づいて、 NetAppコンソールの API を使用して、単一ノード システムまたは高可用性 (HA) 構成で複数のストレージ VM を作成できます。
+構成とライセンス タイプに基づいて、 NetApp Consoleの API を使用して、単一ノード システム上または高可用性 (HA) 構成内に複数のストレージ VM を作成できます。
 
 .タスク概要
 APIを使用してストレージVMを作成すると、必要なネットワークインターフェースの設定とともに、コンソールは `default-data-files`NAS データ LIF から次のサービスを削除し、アウトバウンド管理接続に使用される iSCSI データ LIF に追加することで、データ ストレージ VM のポリシーを変更します。
@@ -148,5 +148,5 @@ API を使用すると、単一ノード構成と HA 構成の両方でストレ
 * https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["APIを使用する準備"^]
 * https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Cloud Volumes ONTAPワークフロー"^]
 * https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["必要な識別子を取得する"^]
-* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["NetAppコンソールのREST APIを使用する"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["NetApp ConsoleのREST APIを使用する"^]
 

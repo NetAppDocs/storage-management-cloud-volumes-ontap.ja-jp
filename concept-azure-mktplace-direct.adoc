@@ -14,17 +14,17 @@ summary:
 
 
 [role="lead"]
-NetApp は、Azure にCloud Volumes ONTAP を展開するための 2 つのオプションを提供しています。  Cloud Volumes ONTAP は従来、導入とオーケストレーションにNetAppコンソールに依存しています。  Cloud Volumes ONTAP 9.16.1 以降では、Azure マーケットプレイスの直接展開を利用できます。これは、制限はあるものの強力なCloud Volumes ONTAP の機能とオプションのセットへのアクセスを提供する合理化されたプロセスです。
+NetApp は、Azure にCloud Volumes ONTAP を展開するための 2 つのオプションを提供しています。  Cloud Volumes ONTAP は従来、導入とオーケストレーションにNetApp Consoleに依存しています。  Cloud Volumes ONTAP 9.16.1 以降では、Azure マーケットプレイスの直接展開を利用できます。これは、制限はあるものの強力なCloud Volumes ONTAP の機能とオプションのセットへのアクセスを提供する合理化されたプロセスです。
 
 Azure マーケットプレイスからCloud Volumes ONTAP を直接デプロイする場合は、コンソール エージェントをセットアップしたり、コンソール経由でCloud Volumes ONTAP をデプロイするために必要なその他のセキュリティおよびオンボーディング基準を満たしたりする必要はありません。  Azure マーケットプレイスでは、数回クリックするだけでCloud Volumes ONTAPを迅速に導入し、そのコア機能と機能を自分の環境で試すことができます。
 
 Azure マーケットプレイスでのデプロイが完了すると、コンソールでこれらのシステムを検出できるようになります。検出後は、 Cloud Volumes ONTAPシステムとして管理し、コンソールのすべての機能を利用できます。。 link:task-deploy-cvo-azure-mktplc.html["コンソールで展開されたシステムを検出する"] 。
 
-以下は 2 つのオプションの機能比較です。  Azure マーケットプレイスを通じてデプロイされたスタンドアロン インスタンスの機能は、コンソールで検出された時点で変更されることに注意してください。
+以下は 2 つのオプションの機能比較です。  Azure マーケットプレースを通じてデプロイされたスタンドアロン インスタンスの機能は、コンソールで検出された時点で変更されることに注意してください。
 
 [cols="3*"]
 |===
-|  | Azureマーケットプレイス | NetAppコンソール 
+|  | Azureマーケットプレイス | NetApp Console 
 
 
 | *オンボーディング* | より短く、より簡単で、直接導入に必要な準備は最小限 | コンソールエージェントのインストールを含む、オンボーディングプロセスが長くなります 
@@ -53,7 +53,7 @@ Eds_v5 および Ls_v3 インスタンスタイプ
 | *書き込み速度（高速書き込みモード）* | サポート対象外 | 構成に基づいてサポートされます。link:concept-write-speed.html["Cloud Volumes ONTAPの書き込み速度について"] 。 
 
 
-| *オーケストレーション機能* | 使用不可 | ライセンスの種類に応じてNetAppコンソールから利用可能 
+| *オーケストレーション機能* | 使用不可 | ライセンスの種類に応じてNetApp Consoleから利用可能 
 
 
 | *サポートされるストレージVMの数* | 展開ごとに1つ | 構成に基づいた複数のストレージ VM。link:task-managing-svms-azure.html#supported-number-of-storage-vms["サポートされるストレージVMの数"] 
@@ -67,5 +67,5 @@ Eds_v5 および Ls_v3 インスタンスタイプ
 .関連リンク
 * Azure マーケットプレイスの直接展開:link:task-deploy-cvo-azure-mktplc.html["AzureマーケットプレイスからCloud Volumes ONTAPをデプロイする"]
 * コンソール経由のデプロイメント:link:task-getting-started-azure.html["Azure でのCloud Volumes ONTAPのクイック スタート"]
-* https://docs.netapp.com/us-en/bluexp-family/index.html["NetAppコンソールのドキュメント"^]
+* https://docs.netapp.com/us-en/bluexp-family/index.html["NetApp Consoleのドキュメント"^]
 

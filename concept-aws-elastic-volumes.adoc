@@ -14,7 +14,7 @@ summary: Cloud Volumes ONTAPアグリゲートによる Amazon EBS Elastic Volum
 
 
 [role="lead"]
-Cloud Volumes ONTAPアグリゲートによる Amazon EBS Elastic Volumes 機能のサポートにより、パフォーマンスが向上し、容量が追加されるとともに、 NetAppコンソールが必要に応じて基盤となるディスク容量を自動的に増やすことが可能になります。
+Cloud Volumes ONTAPアグリゲートによる Amazon EBS Elastic Volumes 機能のサポートにより、パフォーマンスが向上し、容量が追加されるとともに、 NetApp Consoleで必要に応じて基盤となるディスク容量を自動的に増やすことができます。
 
 
 

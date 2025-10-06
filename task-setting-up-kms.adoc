@@ -19,7 +19,7 @@ Cloud Volumes ONTAPで Amazon 暗号化を使用する場合は、AWS Key Manage
 .手順
 . アクティブなカスタマー マスター キー (CMK) が存在することを確認します。
 +
-CMK は、AWS 管理の CMK またはカスタマー管理の CMK にすることができます。これは、 NetAppコンソールおよびCloud Volumes ONTAPと同じ AWS アカウントにすることも、別の AWS アカウントにすることもできます。
+CMK は、AWS 管理の CMK またはカスタマー管理の CMK にすることができます。これは、 NetApp ConsoleおよびCloud Volumes ONTAPと同じ AWS アカウントにすることも、別の AWS アカウントにすることもできます。
 
 +
 https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys["AWS ドキュメント: カスタマーマスターキー (CMK)"^]

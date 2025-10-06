@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-versions.html 
 keywords: versions, supported versions, new versions, cloud volumes ontap version 
-summary: NetAppコンソールを使用すると、新しいCloud Volumes ONTAPシステムを作成するときに、複数の異なるONTAPバージョンから選択できます。 
+summary: NetApp Consoleを使用すると、新しいCloud Volumes ONTAPシステムを作成するときに、複数の異なるONTAPバージョンから選択できます。 
 ---
 = Cloud Volumes ONTAPデプロイメントでサポートされているONTAPバージョン
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: NetAppコンソールを使用すると、新しいCloud Volumes ONTAP�
 
 
 [role="lead"]
-NetAppコンソールを使用すると、Cloud Volumes ONTAPシステムを追加するときに、複数の異なるONTAPバージョンから選択できます。
+NetApp Consoleを使用すると、Cloud Volumes ONTAPシステムを追加するときに、複数の異なるONTAPバージョンから選択できます。
 
 ここに記載されている以外のCloud Volumes ONTAPバージョンは、新しいデプロイメントには使用できません。アップグレードの詳細については、link:task-updating-ontap-cloud.html#supported-upgrade-paths["サポートされているアップグレード パス"] 。
 

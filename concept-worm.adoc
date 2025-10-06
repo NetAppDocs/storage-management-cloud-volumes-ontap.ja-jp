@@ -40,7 +40,7 @@ Cloud Volumes ONTAP 9.10.1 以降では、ボリューム レベルで WORM を�
 
 Cloud Volumes ONTAPシステムを追加すると、WORM ストレージを有効または無効にするように求められます。
 
-* システムを追加するときに WORM ストレージを有効にすると、 NetAppコンソールから作成するすべてのボリュームで WORM が有効になります。ただし、 ONTAP System Manager またはONTAP CLI を使用して、WORM が無効になっているボリュームを作成することはできます。
+* システムを追加するときに WORM ストレージを有効にすると、 NetApp Consoleから作成するすべてのボリュームで WORM が有効になります。ただし、 ONTAP System Manager またはONTAP CLI を使用して、WORM が無効になっているボリュームを作成することはできます。
 * システムを追加するときに WORM ストレージを無効にすると、コンソール、 ONTAP System Manager、またはONTAP CLI から作成するすべてのボリュームで WORM が無効になります。
 
 
@@ -54,7 +54,7 @@ Cloud Volumes ONTAPシステムを追加すると、WORM ストレージを有�
 
 == ファイルのWORM状態へのコミット
 
-アプリケーションを使用して NFS または CIFS 経由でファイルを WORM にコミットすることも、 ONTAP CLI を使用してファイルを自動的に WORM にコミットすることもできます。また、ログ情報のように増分的に書き込まれるデータを保持するために、WORM 追加可能ファイルを使用することもできます。
+アプリケーションを使用して NFS または CIFS 経由でファイルを WORM にコミットしたり、 ONTAP CLI を使用してファイルを自動的に WORM にコミットしたりできます。また、ログ情報のように増分的に書き込まれるデータを保持するために、WORM 追加可能ファイルを使用することもできます。
 
 Cloud Volumes ONTAPシステムで WORM ストレージをアクティブ化した後は、WORM ストレージのすべての管理にONTAP CLI を使用する必要があります。手順については、 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-arch-con/home.html["SnapLockに関するONTAPドキュメント"^] 。
 

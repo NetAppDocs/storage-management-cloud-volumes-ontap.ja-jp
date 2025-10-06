@@ -18,7 +18,7 @@ FlexCacheボリュームは、元のボリューム (またはソース ボリ�
 
 FlexCacheボリュームを使用すると、データへのアクセスを高速化したり、頻繁にアクセスされるボリュームのトラフィックをオフロードしたりできます。FlexCacheボリュームを使用すると、元のボリュームにアクセスせずに直接データを使用できるため、特にクライアントが同じデータに繰り返しアクセスする場合に読み取りパフォーマンスが向上します。  FlexCacheボリュームは、読み取り集中型のシステム ワークロードに適しています。
 
-NetAppコンソールはFlexCacheボリュームの管理をlink:https://docs.netapp.com/us-en/bluexp-volume-caching/index.html["NetAppボリューム キャッシング"^]。
+NetApp ConsoleはFlexCacheボリュームの管理をlink:https://docs.netapp.com/us-en/bluexp-volume-caching/index.html["NetApp Volume Caching"^]。
 
 ONTAP CLI またはONTAP System Manager を使用してFlexCacheボリュームを作成および管理することもできます。
 

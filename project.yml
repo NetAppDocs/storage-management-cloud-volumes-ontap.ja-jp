@@ -76,7 +76,7 @@ sidebar:
       entries:
       - title: Azure でのCloud Volumes ONTAP の展開オプションについて学習します
         url: "/concept-azure-mktplace-direct.html"
-      - title: NetAppコンソールで始める
+      - title: NetApp Consoleで始める
         entries:
         - title: クイック スタート
           url: "/task-getting-started-azure.html"

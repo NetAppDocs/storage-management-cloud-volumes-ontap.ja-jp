@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-vpc-service-controls-gcp.html 
 keywords: vpc, service controls, vpc-sc, google, psc, private service connect 
-summary: VPC Service Controls を使用して Google 環境をロックダウンすることを選択する場合は、 NetAppコンソールとCloud Volumes ONTAP がGoogle API とどのようにやり取りするか、またCloud Volumes ONTAP をデプロイするためにサービス パラメータをどのように設定するかを理解する必要があります。 
+summary: VPC Service Controls を使用して Google 環境をロックダウンすることを選択する場合は、 NetApp ConsoleとCloud Volumes ONTAP がGoogle API とどのようにやり取りするか、またCloud Volumes ONTAP をデプロイするためにサービス パラメータをどのように設定するかを理解する必要があります。 
 ---
 = VPC Service Controls を設定して、Google Cloud にCloud Volumes ONTAP をデプロイする
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: VPC Service Controls を使用して Google 環境をロックダウン
 
 
 [role="lead"]
-VPC Service Controls を使用して Google Cloud 環境をロックダウンする場合は、 NetApp Console とCloud Volumes ONTAP がGoogle Cloud API とどのようにやり取りするか、また Console とCloud Volumes ONTAP をデプロイするためにサービス境界をどのように構成するかを理解する必要があります。
+VPC Service Controls を使用して Google Cloud 環境をロックダウンする場合は、 NetApp ConsoleとCloud Volumes ONTAP がGoogle Cloud API とどのようにやり取りするか、また Console とCloud Volumes ONTAP をデプロイするためにサービス境界をどのように構成するかを理解する必要があります。
 
 VPC Service Controls を使用すると、信頼できる境界外にある Google マネージド サービスへのアクセスを制御し、信頼できない場所からのデータアクセスをブロックし、不正なデータ転送のリスクを軽減できます。 https://cloud.google.com/vpc-service-controls/docs["Google Cloud VPC Service Controls の詳細"^] 。
 
@@ -121,4 +121,4 @@ To:
 		Service methods: All actions
 ....
 
-TIP: 上記のプロジェクト番号は、 NetAppがコンソール エージェントとCloud Volumes ONTAP のイメージを保存するために使用するプロジェクト _netapp-cloudmanager_ です。
+TIP: 上記のプロジェクト番号は、 NetAppがコンソール エージェントおよびCloud Volumes ONTAP のイメージを保存するために使用するプロジェクト _netapp-cloudmanager_ です。

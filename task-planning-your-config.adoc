@@ -88,7 +88,7 @@ EBSのディスク タイプ:: 大まかに言えば、EBS ディスク タイ�
 --
 * _汎用 SSD (gp3)_ ディスクは、幅広いワークロードのコストとパフォーマンスのバランスが取れた最も低コストの SSD です。パフォーマンスは IOPS とスループットの観点から定義されます。gp3 ディスクは、Cloud Volumes ONTAP 9.7 以降でサポートされています。
 +
-gp3 ディスクを選択すると、 NetAppコンソールは、選択したディスク サイズに基づいて、gp2 ディスクと同等のパフォーマンスを提供するデフォルトの IOPS とスループットの値を入力します。値を大きくするとコストは高くなりますが、パフォーマンスが向上する可能性があります。ただし、値を小さくするとパフォーマンスが低下する可能性があるため、値はサポートされていません。つまり、デフォルト値をそのまま使用するか、値を増やします。下げないでください。 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type["AWSドキュメント: gp3ディスクとそのパフォーマンスについて詳しく知る"^] 。
+gp3 ディスクを選択すると、 NetApp Consoleは、選択したディスク サイズに基づいて、gp2 ディスクと同等のパフォーマンスを提供するデフォルトの IOPS とスループットの値を入力します。値を大きくするとコストは高くなりますが、パフォーマンスが向上する可能性があります。ただし、値を小さくするとパフォーマンスが低下する可能性があるため、値はサポートされていません。つまり、デフォルト値をそのまま使用するか、値を増やします。下げないでください。 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type["AWSドキュメント: gp3ディスクとそのパフォーマンスについて詳しく知る"^] 。
 
 +
 Cloud Volumes ONTAP は、 gp3 ディスクを使用した Amazon EBS Elastic Volumes 機能をサポートしていることに注意してください。link:concept-aws-elastic-volumes.html["Elastic Volumesのサポートについて詳しくはこちら"] 。

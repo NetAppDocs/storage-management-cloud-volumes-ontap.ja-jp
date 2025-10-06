@@ -16,10 +16,10 @@ summary:
 [role="lead"]
 Azure マーケットプレイスの直接展開を使用すると、 Cloud Volumes ONTAP を迅速かつ簡単に展開できます。  Azure マーケットプレイスでは、数回クリックするだけでCloud Volumes ONTAPを迅速に導入し、そのコア機能と機能を自分の環境で試すことができます。
 
-このオファーの詳細については、以下を参照してください。link:concept-azure-mktplace-direct.html["NetAppコンソールとマーケットプレイスでCloud Volumes ONTAP のサービスについて学ぶ"] 。
+このオファーの詳細については、以下を参照してください。link:concept-azure-mktplace-direct.html["NetApp ConsoleとマーケットプレイスでCloud Volumes ONTAP のサービスについて学ぶ"] 。
 
 .タスク概要
-Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムには、次のプロパティがあります。  Azure マーケットプレイスを通じてデプロイされたスタンドアロン インスタンスの機能は、 NetAppコンソールで検出されたときに変更されることに注意してください。
+Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムには、次のプロパティがあります。  Azure マーケットプレイスを通じてデプロイされたスタンドアロン インスタンスの機能は、NetApp Consoleで検出された時点で変更されることに注意してください。
 
 * 最新のCloud Volumes ONTAPバージョン (9.16.1 以降)。
 * プロビジョニングされた容量が 500 GiB に制限されたCloud Volumes ONTAPの無料ライセンス。このライセンスにはNetAppサポートは含まれず、有効期限もありません。
@@ -96,7 +96,7 @@ NOTE: Microsoft Azure の制限に準拠するには、新しい仮想ネット�
 
 
 
-== 展開の問題のトラブルシューティング
+== デプロイメントの問題のトラブルシューティング
 
 Azure マーケットプレイスを通じて直接導入されたCloud Volumes ONTAPシステムには、 NetAppからのサポートは含まれません。展開中に問題が発生した場合、独自にトラブルシューティングして解決できます。
 

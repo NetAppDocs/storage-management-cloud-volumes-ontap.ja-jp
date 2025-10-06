@@ -33,7 +33,7 @@ endif::aws[]
 
 ifdef::azure[]
 
-* Azure の場合、 NetAppコンソールに必要な権限がある限り、何もする必要はありません。<<コールドデータをAzure Blobストレージに階層化するための要件,詳細情報>> 。
+* Azure の場合、 NetApp Consoleに必要な権限がある限り、何もする必要はありません。<<コールドデータをAzure Blobストレージに階層化するための要件,詳細情報>> 。
 
 
 endif::azure[]
@@ -51,7 +51,7 @@ endif::gcp[]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]ボリュームを作成、変更、または複製するときに階層化ポリシーを選択します
 [role="quick-margin-para"]
-NetAppコンソールでは、ボリュームを作成、変更、または複製するときに階層化ポリシーを選択するように求められます。
+NetApp Consoleでは、ボリュームを作成、変更、または複製するときに階層化ポリシーを選択するように求められます。
 
 [role="quick-margin-list"]
 * link:task-tiering.html#tier-data-from-read-write-volumes["読み書きボリュームからの階層データ"]

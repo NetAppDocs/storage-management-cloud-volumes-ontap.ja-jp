@@ -16,7 +16,7 @@ summary: ストレージ VM は、 ONTAP内で実行され、クライアント�
 [role="lead"]
 ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。以前は「_SVM_」または「_Vserver_」と呼んでいました。  Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。
 
-Google Cloud で追加のデータ提供ストレージ VM を作成して管理するには、API を使用する必要があります。これは、API がストレージ VM を作成し、必要なネットワーク インターフェイスを構成するプロセスを自動化するためです。ストレージ VM を作成するときに、 NetAppコンソールは必要な LIF サービスと、ストレージ VM からの送信 SMB/CIFS 通信に必要な iSCSI LIF を構成します。
+Google Cloud で追加のデータ提供ストレージ VM を作成して管理するには、API を使用する必要があります。これは、API がストレージ VM を作成し、必要なネットワーク インターフェイスを構成するプロセスを自動化するためです。ストレージ VM を作成するときに、 NetApp Consoleは必要な LIF サービスと、ストレージ VM からの送信 SMB/CIFS 通信に必要な iSCSI LIF を構成します。
 
 Cloud Volumes ONTAP API呼び出しの実行については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^] 。
 
@@ -148,5 +148,5 @@ API を使用すると、単一ノード構成と HA 構成の両方でストレ
 * https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["APIを使用する準備"^]
 * https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Cloud Volumes ONTAPワークフロー"^]
 * https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["必要な識別子を取得する"^]
-* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["NetAppコンソールのREST APIを使用する"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["NetApp ConsoleのREST APIを使用する"^]
 

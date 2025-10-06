@@ -24,7 +24,7 @@ Cloud Volumes ONTAPで使用するライセンス オプションを決定した
 
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
-. *システム* ページで、*システムの追加* をクリックし、 NetAppコンソールの手順に従います。
+. *システム* ページで、*システムの追加* をクリックし、 NetApp Consoleの手順に従います。
 +
 .. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、指示に従ってGoogle Cloud Marketplaceの従量課金制オファーに登録します。
 +
@@ -68,7 +68,7 @@ NOTE: はBYOLライセンスの購入、延長、および更新を制限して�
 
 .手順
 . https://bluexp.netapp.com/contact-cds["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをNetAppコンソールに追加します"^]
+. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをNetApp Consoleに追加します"^]
 +
 コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがなければ、コンソールはライセンスを追加します。
 

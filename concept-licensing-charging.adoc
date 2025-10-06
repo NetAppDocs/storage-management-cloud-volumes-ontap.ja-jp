@@ -66,7 +66,7 @@ link:task-manage-capacity-licenses.html["充電方法の変更方法を学ぶ"] 
 
 == 価格とサポートされる構成
 
-価格の詳細については、 https://bluexp.netapp.com/pricing/["NetAppコンソールのウェブサイト"^] 。
+価格の詳細については、 https://bluexp.netapp.com/pricing/["NetApp Consoleのウェブサイト"^] 。
 
 容量ベースのライセンス パッケージは、Cloud Volumes ONTAP 9.7 以降で利用できます。
 
@@ -109,7 +109,7 @@ HA ペアの場合、ノードにプロビジョニングされた容量に対�
 
 == システムの最大数
 
-容量ベースのライセンスでは、 Cloud Volumes ONTAPシステムの最大数は、 NetAppコンソール アカウントごとに 24 に制限されます。 _システム_ とは、 Cloud Volumes ONTAP HA ペア、 Cloud Volumes ONTAPシングルノード システム、または作成した追加のストレージ VM です。デフォルトのストレージ VM は制限にカウントされません。この制限はすべてのライセンス モデルに適用されます。
+容量ベースのライセンスでは、 Cloud Volumes ONTAPシステムの最大数は、NetApp Consoleアカウントごとに 24 に制限されます。 _システム_ とは、 Cloud Volumes ONTAP HA ペア、 Cloud Volumes ONTAPシングルノード システム、または作成した追加のストレージ VM です。デフォルトのストレージ VM は制限にカウントされません。この制限はすべてのライセンス モデルに適用されます。
 
 たとえば、次の 3 つのシステムがあるとします。
 
@@ -186,7 +186,7 @@ NetAppから Essentials ライセンスを購入し (BYOL)、そのデプロイ�
 
 セカンダリ ボリュームを持つ HA ペアにさらに 50 TiB がプロビジョニングされます。コンソールは、その 50 TiB を PAYGO に請求する代わりに、_Essentials Single Node_ ライセンスに対して 50 TiB の超過分を請求します。このライセンスの価格は _Essentials Secondary HA_ よりも高額ですが、すでに購入済みのライセンスを使用するため、毎月の請求額に追加費用はかかりません。
 
-*管理 > ライセンスとサブスクリプション* で、_Essentials Single Node_ ライセンスに対して 50 TiB が課金されていることを確認できます。
+*管理 >Licenses and subscriptions*で、_Essentials Single Node_ ライセンスに対して 50 TiB が課金されていることを確認できます。
 
 もう一つの例を挙げます。  Essentials パッケージの次のライセンスがあるとします。
 

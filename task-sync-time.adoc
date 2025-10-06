@@ -16,4 +16,4 @@ summary: NTP サーバーを指定すると、ネットワーク内のシステ�
 [role="lead"]
 NTP サーバーを指定すると、ネットワーク内のシステム間の時間が同期され、時間差による問題を防ぐことができます。
 
-NTPサーバーを指定するには、 https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html["NetAppコンソール API"^]またはユーザーインターフェースからlink:task-create-volumes.html#create-a-volume["CIFSサーバーを作成する"]。
+NTPサーバーを指定するには、 https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html["NetApp ConsoleAPI"^]またはユーザーインターフェースからlink:task-create-volumes.html#create-a-volume["CIFSサーバーを作成する"]。

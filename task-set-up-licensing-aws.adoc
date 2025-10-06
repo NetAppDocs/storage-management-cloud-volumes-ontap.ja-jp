@@ -23,7 +23,7 @@ Cloud Volumes ONTAPで使用するライセンス オプションを決定した
 最大 500 GiB のプロビジョニング容量でCloud Volumes ONTAP を無料で使用するには、Freemium オファリングを選択してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#free-trials["フリーミアムプランの詳細"^] 。
 
 .手順
-. NetAppコンソールの左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. NetApp Consoleの左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
 . *システム*ページで*システムの追加*をクリックし、手順に従います。
 +
 .. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、プロンプトに従ってAWS Marketplaceの従量課金制サービスにサブスクライブします。

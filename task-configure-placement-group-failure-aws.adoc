@@ -14,7 +14,7 @@ summary: Cloud Volumes ONTAP は、関連付けられたストレージ アカ�
 ロールバック プロセスをバイパスすると、 Cloud Volumes ONTAP のデプロイメント プロセスが正常に完了し、配置グループの作成が完了していないことが通知されます。
 
 .手順
-. SSH を使用してNetAppコンソール エージェント ホストに接続し、ログインします。
+. SSH を使用してNetApp Consoleエージェント ホストに接続し、ログインします。
 . 移動先 `/opt/application/netapp/cloudmanager/docker_occm/data`。
 . 編集 `app.conf`の値を変更することで `rollback-on-placement-group-failure`パラメータに `false`。このパラメータのデフォルト値は `true`。
 +

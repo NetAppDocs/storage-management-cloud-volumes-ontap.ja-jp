@@ -14,7 +14,7 @@ summary: 必要な権限を持つ IAM ロールを各Cloud Volumes ONTAPノー�
 
 
 [role="lead"]
-必要な権限を持つ AWS Identity and Access management (IAM) ロールを各Cloud Volumes ONTAPノードに添付する必要があります。HA メディエーターについても同様です。  NetAppコンソールで IAM ロールを作成するのが最も簡単ですが、独自のロールを使用することもできます。
+必要な権限を持つ AWS Identity and Access management (IAM) ロールを各Cloud Volumes ONTAPノードに添付する必要があります。HA メディエーターについても同様です。  NetApp Consoleで IAM ロールを作成するのが最も簡単ですが、独自のロールを使用することもできます。
 
 このタスクはオプションです。 Cloud Volumes ONTAPシステムを作成する場合、デフォルトのオプションでは、コンソールによって IAM ロールが自動的に作成されます。会社のセキュリティ ポリシーにより IAM ロールを自分で作成する必要がある場合は、以下の手順に従ってください。
 
@@ -149,7 +149,7 @@ NOTE: AWS Secret Cloud では独自の IAM ロールを提供する必要があ�
 ====
 ** Cloud Volumes ONTAPノードのバックアップポリシー
 +
-Cloud Volumes ONTAPシステムでNetApp Backup and Recovery を使用する予定の場合は、ノードの IAM ロールに以下に示す 2 番目のポリシーを含める必要があります。
+Cloud Volumes ONTAPシステムでNetApp Backup and Recoveryを使用する予定の場合は、ノードの IAM ロールに以下に示す 2 番目のポリシーを含める必要があります。
 
 +
 [role="tabbed-block"]

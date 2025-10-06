@@ -40,7 +40,7 @@ Google Cloud Storage では、データがディスクに書き込まれる前�
 https://cloud.google.com/kms/docs/iam#granting_roles_on_a_resource["Google Cloud ドキュメント: Cloud KMS での IAM の使用 - リソースに対するロールの付与"]
 
 . getコマンドを呼び出してキーの「ID」を取得します。 `/gcp/vsa/metadata/gcp-encryption-keys` API 呼び出し、または GCP コンソールのキーで「リソース名のコピー」を選択します。
-. 顧客管理の暗号化キーを使用し、データをオブジェクト ストレージに階層化する場合、 NetAppコンソールは永続ディスクの暗号化に使用されるのと同じキーを利用しようとします。ただし、まず Google Cloud Storage バケットがキーを使用できるようにする必要があります。
+. 顧客管理の暗号化キーを使用し、データをオブジェクト ストレージに階層化する場合、 NetApp Consoleは永続ディスクの暗号化に使用されるのと同じキーを利用しようとします。ただし、まず Google Cloud Storage バケットがキーを使用できるようにする必要があります。
 +
 .. Google Cloud Storageサービスエージェントを見つけるには、 https://cloud.google.com/storage/docs/getting-service-agent["Google Cloud ドキュメント: Cloud Storage サービス エージェントの取得"^] 。
 .. 暗号化キーに移動し、Google Cloud Storage サービス エージェントに Cloud KMS 暗号化/復号化権限を割り当てます。
@@ -62,4 +62,4 @@ https://cloud.google.com/kms/docs/iam#granting_roles_on_a_resource["Google Cloud
 ----
 
 
-参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^]「GcpEncryption」パラメータの使用に関する詳細については、こちらをご覧ください。
+参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^]「GcpEncryption」パラメータの使用に関する詳細については、こちらをご覧ください。

@@ -36,7 +36,7 @@ ifdef::aws[]
 
 * AWS でCloud Volumes ONTAP 9.12.0 以前の Flash Cache を構成する場合、Flash Cache のパフォーマンス向上を活用するには、すべてのボリュームで圧縮を無効にする必要があります。  Cloud Volumes ONTAP 9.12.1 以降をデプロイまたはアップグレードする場合は、圧縮を無効にする必要はありません。
 +
-NetAppコンソールからボリュームを作成するときにストレージ効率設定の選択をスキップするか、ボリュームを作成してから http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-8508A4CB-DB43-4D0D-97EB-859F58B29054.html["CLIを使用してデータ圧縮を無効にする"^]。
+NetApp Consoleからボリュームを作成するときにストレージ効率設定の選択をスキップするか、ボリュームを作成してから http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-8508A4CB-DB43-4D0D-97EB-859F58B29054.html["CLIを使用してデータ圧縮を無効にする"^]。
 
 
 

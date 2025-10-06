@@ -21,7 +21,7 @@ summary: 数ステップでCloud Volumes ONTAP for AWS を使い始めましょ�
 もしあなたが https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェント"^]まだ作成する必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["AWS でコンソールエージェントを作成する方法を学ぶ"^] 。
 
 [role="quick-margin-para"]
-インターネット アクセスが利用できないサブネットにCloud Volumes ONTAPを展開する場合は、コンソール エージェントを手動でインストールし、そのコンソール エージェントで実行されているNetAppコンソール ユーザー インターフェイスにアクセスする必要があることに注意してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネットにアクセスできない場所にコンソールエージェントを手動でインストールする方法を学びます"^] 。
+インターネット アクセスが利用できないサブネットにCloud Volumes ONTAPを展開する場合は、コンソール エージェントを手動でインストールし、そのコンソール エージェントで実行されているNetApp Consoleユーザー インターフェイスにアクセスする必要があることに注意してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネットにアクセスできない場所にコンソールエージェントを手動でインストールする方法を学びます"^] 。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]構成を計画する
 [role="quick-margin-para"]

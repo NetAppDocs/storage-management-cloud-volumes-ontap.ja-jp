@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-create-volumes.html 
 keywords: storage, provisioning, iscsi, nfs, cifs, volumes, create a volume, add a volume, create volumes, add volumes, creating a volume, adding a volume, provision volume, provision a volume, provisioning volumes, add volume to second node, add volume to node 2, cloud backup 
-summary: 最初のCloud Volumes ONTAPシステムを起動した後にさらにストレージが必要な場合は、 NetAppコンソールから NFS、CIFS、または iSCSI 用の新しいFlexVolボリュームを作成できます。 
+summary: 最初のCloud Volumes ONTAPシステムを起動した後にさらにストレージが必要な場合は、 NetApp Consoleから NFS、CIFS、または iSCSI 用の新しいFlexVolボリュームを作成できます。 
 ---
 = Cloud Volumes ONTAPシステムにFlexVol volumeを作成する
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 最初のCloud Volumes ONTAPシステムを起動した後にさらに�
 
 
 [role="lead"]
-最初のCloud Volumes ONTAPシステムを起動した後にさらにストレージが必要な場合は、 NetAppコンソールから NFS、CIFS、または iSCSI 用の新しいFlexVolボリュームを作成できます。
+最初のCloud Volumes ONTAPシステムを起動した後にさらにストレージが必要な場合は、 NetApp Consoleから NFS、CIFS、または iSCSI 用の新しいFlexVolボリュームを作成できます。
 
 新しいボリュームを作成するには、いくつかの方法があります。
 
@@ -123,7 +123,7 @@ ifdef::gcp[]
 --
 
 
-Google Managed Active Directory を構成している場合、デフォルトでは 169.254.169.254 IP アドレスを使用して AD にアクセスできます。
+Google マネージド Active Directory を構成している場合、デフォルトでは 169.254.169.254 IP アドレスを使用して AD にアクセスできます。
 
 endif::gcp[]
 
@@ -155,7 +155,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 DNSドメイン:: Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。
-NTPサーバ:: Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。詳細については、 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetAppコンソール自動化ドキュメント"^] 。
+NTPサーバ:: Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。詳細については、 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^] 。
 +
 --
 NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。

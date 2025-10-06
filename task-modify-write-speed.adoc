@@ -14,7 +14,7 @@ summary: ストレージのニーズが変化すると、 Cloud Volumes ONTAPシ
 
 
 [role="lead"]
-NetAppコンソールで、 Cloud Volumes ONTAPの通常または高速の書き込み速度を選択できます。デフォルトの書き込み速度は通常です。ワークロードに高速書き込みパフォーマンスが必要な場合は、高速書き込みに変更できます。
+NetApp Consoleで、 Cloud Volumes ONTAPの通常書き込み速度または高速書き込み速度を選択できます。デフォルトの書き込み速度は通常です。ワークロードに高速書き込みパフォーマンスが必要な場合は、高速書き込みに変更できます。
 
 すべてのタイプの単一ノード システムと一部の HA ペア構成で、高速書き込み速度がサポートされます。サポートされている構成については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPリリースノート"^]
 

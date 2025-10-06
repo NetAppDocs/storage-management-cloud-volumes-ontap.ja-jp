@@ -25,7 +25,7 @@ Cloud Volumes ONTAPデータはAzureで自動的に暗号化されます。 http
 Cloud Volumes ONTAPでカスタマー管理キーを使用する場合は、次の手順を完了する必要があります。
 
 . Azure からキー コンテナーを作成し、そのコンテナー内にキーを生成します。
-. NetAppコンソールから、API を使用して、キーを使用するCloud Volumes ONTAPシステムを作成します。
+. NetApp Consoleから、API を使用して、キーを使用するCloud Volumes ONTAPシステムを作成します。
 
 
 

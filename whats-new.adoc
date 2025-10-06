@@ -14,7 +14,7 @@ summary: BlueXPのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 [role="lead"]
-NetAppコンソールのCloud Volumes ONTAP管理の新機能について説明します。
+NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明します。
 
 このページで説明する機能強化は、コンソールを介したCloud Volumes ONTAP の管理に特有のものです。  Cloud Volumes ONTAPソフトウェア自体の新機能については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Cloud Volumes ONTAPリリースノートをご覧ください"^] 。
 
@@ -24,17 +24,17 @@ NetAppコンソールのCloud Volumes ONTAP管理の新機能について説明�
 
 
 
-=== BlueXPはNetAppコンソールになりました
+=== BlueXPはNetApp Consoleになりました
 
-NetAppコンソールは、強化され再構築されたBlueXP基盤上に構築され、オンプレミスとクラウド環境全体にわたるエンタープライズ グレードのNetAppストレージとNetAppデータ サービスの集中管理を提供し、リアルタイムの分析情報、ワークフローの高速化、および高度なセキュリティとコンプライアンスを備えた簡素化された管理を実現します。
+NetApp Consoleは、強化され再構築されたBlueXP基盤上に構築され、オンプレミスとクラウド環境全体にわたるエンタープライズ グレードのNetAppストレージとNetApp Data Servicesの集中管理を提供し、リアルタイムの分析情報、より高速なワークフロー、および高度なセキュリティとコンプライアンスを備えた簡素化された管理を実現します。
 
-変更内容の詳細については、 https://docs.netapp.com/us-en/bluexp-relnotes/index.html["NetAppコンソールのリリースノート"^] 。
+変更内容の詳細については、 https://docs.netapp.com/us-en/bluexp-relnotes/index.html["NetApp Consoleのリリースノート"^] 。
 
 
 
 === AWS でのCloud Volumes ONTAP の導入を簡素化
 
-シングルノード構成と高可用性 (HA) 構成の両方で、クイック デプロイメント メソッドを使用して、AWS にCloud Volumes ONTAP をデプロイメントできるようになりました。この合理化されたプロセスにより、高度な方法に比べて手順数が削減され、1 ページにデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられ、展開がより迅速かつ容易になります。
+シングルノード構成と高可用性 (HA) 構成の両方で、クイック デプロイメント メソッドを使用して、AWS にCloud Volumes ONTAP をデプロイメントできるようになりました。この合理化されたプロセスにより、高度な方法に比べて手順数が削減され、1 ページにデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられるため、展開がより迅速かつ容易になります。
 
  https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-quick-deploy-aws.html["クイックデプロイメントを使用してAWSにCloud Volumes ONTAPをデプロイする"^] 。
 
@@ -273,7 +273,7 @@ link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-administer-ad
 
 BlueXP digital wallet内の改善されたナビゲーション ポイントを使用することで、 Cloud Volumes ONTAPライセンスの管理が簡素化されました。
 
-* *管理 > ライセンスとサブスクリプション > 概要/直接ライセンス* タブから、 Cloud Volumes ONTAPライセンス情報に簡単にアクセスできます。
+* *管理 >Licenses and subscriptions> 概要/直接ライセンス* タブから、 Cloud Volumes ONTAPライセンス情報に簡単にアクセスできます。
 * 容量ベースのライセンスを包括的に理解するには、[概要] タブの Cloud Volume ONTAPパネルで [表示] をクリックします。この詳細ビューでは、ライセンスとサブスクリプションに関する詳細な情報が表示されます。
 * 以前のインターフェースを希望する場合は、[*従来のビューに切り替える*] ボタンをクリックして、ライセンスの詳細をタイプ別に表示し、ライセンスの課金方法を変更できます。
 
@@ -743,7 +743,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azu
 
 === Google Cloud のフラッシュ キャッシュと高速書き込みのサポート
 
-Google Cloud for Cloud Volumes ONTAP 9.13.1 以降では、Flash Cache と高速書き込み速度を個別に有効にできます。サポートされているすべてのインスタンス タイプで、高速書き込み速度を利用できます。Flash Cache は次のインスタンス タイプでサポートされています。
+Google Cloud for Cloud Volumes ONTAP 9.13.1 以降では、Flash Cache と高速書き込み速度を個別に有効にできます。サポートされているすべてのインスタンス タイプで、高速書き込み速度を利用できます。  Flash Cache は次のインスタンス タイプでサポートされています。
 
 * n2-標準-16
 * n2-標準-32
@@ -764,7 +764,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html
 * 列名に TiB 単位が含まれるようになりました。
 * シリアル番号用の新しい「ノード」フィールドが追加されました。
 * ストレージ VM 使用状況レポートに新しい「ワークロード タイプ」列が追加されました。
-* 作業環境名がストレージ VM およびボリューム使用状況レポートに含まれるようになりました。
+* ストレージ VM およびボリュームの使用状況レポートに作業環境名が含まれるようになりました。
 * ボリューム タイプ「ファイル」のラベルが「プライマリ (読み取り/書き込み)」になりました。
 * ボリューム タイプ「セカンダリ」のラベルが「セカンダリ (DP)」に変更されました。
 
@@ -863,7 +863,7 @@ Azure のオーストラリア東部リージョンでは、 Cloud Volumes ONTAP
 
 === 充電使用量の内訳
 
-容量ベースのライセンスをサブスクライブすると、何に対して課金されるのかがわかるようになりました。BlueXPのデジタル ウォレットからは、次の種類の使用状況レポートをダウンロードできます。使用状況レポートには、サブスクリプションの容量の詳細が提供され、 Cloud Volumes ONTAPサブスクリプション内のリソースに対してどのように課金されるかが示されます。ダウンロード可能なレポートは他のユーザーと簡単に共有できます。
+容量ベースのライセンスをサブスクライブすると、何に対して課金されるのかがわかるようになりました。 BlueXPのデジタル ウォレットからは、次の種類の使用状況レポートをダウンロードできます。使用状況レポートには、サブスクリプションの容量の詳細が提供され、 Cloud Volumes ONTAPサブスクリプション内のリソースに対してどのように課金されるかが示されます。ダウンロード可能なレポートは他のユーザーと簡単に共有できます。
 
 * Cloud Volumes ONTAPパッケージの使用
 * 高レベルの使用法
@@ -1450,7 +1450,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp
 
 
 
-=== Google Cloud ファイアウォール ポリシーの機能強化
+=== Google Cloud ファイアウォール ポリシーの強化
 
 * Google Cloud でCloud Volumes ONTAP HA ペアを作成すると、 BlueXP はVPC 内の既存のファイアウォール ポリシーをすべて表示するようになりました。
 +

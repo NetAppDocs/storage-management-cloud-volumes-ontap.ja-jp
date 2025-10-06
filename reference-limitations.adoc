@@ -16,7 +16,7 @@ summary: 今回のリリースでサポートされていない、または今�
 [role="lead"]
 今回のリリースでサポートされていない、または今回のリリースでは正常に機能しないプラットフォーム、デバイス、機能が記載されています。これらの制限事項をよく確認してください。
 
-これらの制限は、 NetAppコンソールのCloud Volumes ONTAP管理に固有のものです。  Cloud Volumes ONTAPソフトウェア自体の制限事項を確認するには、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limitations.html["Cloud Volumes ONTAPリリースノートをご覧ください"^] 。
+これらの制限は、 NetApp ConsoleでのCloud Volumes ONTAP管理に固有のものです。  Cloud Volumes ONTAPソフトウェア自体の制限事項を確認するには、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limitations.html["Cloud Volumes ONTAPリリースノートをご覧ください"^] 。
 
 
 
@@ -41,4 +41,4 @@ link:concept-client-protocols.html["S3およびその他のクライアントプ
 
 コンソールは、ストレージ VM (SVM) の災害復旧のためのセットアップやオーケストレーションのサポートを提供しません。  ONTAP System Manager またはONTAP CLI を使用する必要があります。
 
-link:task-manage-svm-dr.html["SVM災害復旧の詳細"] 。
+link:task-manage-svm-dr.html["SVM 災害復旧の詳細"] 。

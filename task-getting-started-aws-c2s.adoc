@@ -14,7 +14,7 @@ summary: 標準の AWS リージョンと同様に、クラウド ストレー�
 
 
 [role="lead"]
-標準のAWSリージョンと同様に、 NetAppコンソールはlink:https://aws.amazon.com/federal/secret-cloud/["AWS シークレットクラウド"^]そしてlink:https://aws.amazon.com/federal/top-secret-cloud/["AWSトップシークレットクラウド"^]クラウド ストレージにエンタープライズ クラスの機能を提供するCloud Volumes ONTAPを導入します。  AWS Secret Cloud と Top Secret Cloud は、米国インテリジェンスコミュニティに固有のクローズドリージョンです。このページの手順は、AWS Secret Cloud および Top Secret Cloud リージョンのユーザーにのみ適用されます。
+標準のAWSリージョンと同様に、 NetApp Consoleはlink:https://aws.amazon.com/federal/secret-cloud/["AWS シークレットクラウド"^]そしてlink:https://aws.amazon.com/federal/top-secret-cloud/["AWSトップシークレットクラウド"^]クラウド ストレージにエンタープライズ クラスの機能を提供するCloud Volumes ONTAPを導入します。  AWS Secret Cloud と Top Secret Cloud は、米国インテリジェンスコミュニティに固有のクローズドリージョンです。このページの手順は、AWS Secret Cloud および Top Secret Cloud リージョンのユーザーにのみ適用されます。
 
 .開始する前に
 始める前に、AWS Secret Cloud と Top Secret Cloud でサポートされているバージョンを確認し、コンソールのプライベートモードについて学んでください。
@@ -583,7 +583,7 @@ docker restart <docker-id>
 NetAppからライセンスを購入した場合は、新しいCloud Volumes ONTAPシステムを作成するときにライセンスを選択できるように、コンソールに追加する必要があります。これらのライセンスは、新しいCloud Volumes ONTAPシステムに関連付けるまで未割り当てのままになります。
 
 .手順
-. 左側のナビゲーション メニューから、[ライセンスとサブスクリプション] を選択します。
+. 左側のナビゲーション メニューから、[*Licenses and subscriptions*] を選択します。
 . * Cloud Volumes ONTAP*パネルで、*表示*を選択します。
 . * Cloud Volumes ONTAP*タブで、*ライセンス>ノードベースのライセンス*を選択します。
 . *未割り当て*をクリックします。
@@ -600,7 +600,7 @@ NetAppからライセンスを購入した場合は、新しいCloud Volumes ONT
 
 
 .結果
-コンソールは、新しいCloud Volumes ONTAPシステムに関連付けるまで、ライセンスを未割り当てとして追加します。ライセンスは、左側のナビゲーション メニューの *[ライセンスとサブスクリプション] > [Cloud Volumes ONTAP] > [表示] > [ライセンス]* で確認できます。
+コンソールは、新しいCloud Volumes ONTAPシステムに関連付けるまで、ライセンスを未割り当てとして追加します。ライセンスは、左側のナビゲーション メニューの *Licenses and subscriptions> Cloud Volumes ONTAP > 表示 > ライセンス * で確認できます。
 
 
 

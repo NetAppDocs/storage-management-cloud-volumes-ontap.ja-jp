@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-manage-capacity-licenses.html 
 keywords: license, licensing, capacity license, capacity based license, add license, install license, digital wallet 
-summary: NetAppコンソールから容量ベースのライセンスを管理して、 NetAppアカウントにCloud Volumes ONTAPシステムに十分な容量があることを確認します。 
+summary: NetApp Consoleから容量ベースのライセンスを管理して、 NetAppアカウントにCloud Volumes ONTAPシステムに十分な容量があることを確認します。 
 ---
 = Cloud Volumes ONTAPの容量ベースのライセンスを管理する
 :hardbreaks:
@@ -14,11 +14,11 @@ summary: NetAppコンソールから容量ベースのライセンスを管理�
 
 
 [role="lead"]
-NetAppコンソールから容量ベースのライセンスを管理して、 NetAppアカウントにCloud Volumes ONTAPシステムに十分な容量があることを確認します。
+NetApp Consoleから容量ベースのライセンスを管理して、 NetAppアカウントにCloud Volumes ONTAPシステムに十分な容量があることを確認します。
 
 _容量ベースのライセンス_ を使用すると、容量 1 TiB ごとにCloud Volumes ONTAPの料金を支払うことができます。
 
-NetAppコンソールから容量ベースのCloud Volumes ONTAPライセンスを管理できます。
+容量ベースのCloud Volumes ONTAPライセンスは、 NetApp Consoleから管理できます。
 
 
 NOTE: コンソールで管理される製品とサービスの実際の使用量と計測値は常に GiB と TiB で計算されますが、GB/GiB と TB/TiB という用語は同じ意味で使用されます。これは、クラウドマーケットプレイスのリスト、価格見積もり、リストの説明、およびその他のサポートドキュメントに反映されます。
@@ -27,7 +27,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[
 
 
 
-== NetAppコンソールにライセンスを追加する方法
+== NetApp Consoleにライセンスを追加する方法
 
 NetApp の営業担当者からライセンスを購入すると、 NetAppシリアル番号と追加のライセンス詳細が記載されたメールが送信されます。
 
@@ -42,7 +42,7 @@ NetApp の営業担当者からライセンスを購入すると、 NetAppシリ
 コンソールには、アカウント内の消費済み容量の合計と、ライセンス パッケージ別の消費済み容量が表示されます。これにより、料金がどのように請求されるか、追加の容量を購入する必要があるかどうかを把握できます。
 
 .手順
-. 左側のナビゲーション ペインから、*管理 > ライセンスとサブスクリプション* を選択します。
+. 左側のナビゲーション ペインから、*管理 >Licenses and subscriptions*を選択します。
 . *概要*タブのCloud Volumes ONTAPタイルには、アカウントにプロビジョニングされている現在の容量が表示されます。
 +
 image:screenshot_cvo_licensing_card.png["width=300 Cloud Volumes ONTAPライセンスとサブスクリプションの容量の概要を表示するスクリーンショット。"]
@@ -64,7 +64,7 @@ Essentials パッケージに表示される容量をよりよく理解するに
 
 . サブスクリプションに関する情報を表示しながら、テーブル内の詳細を操作できます。詳細を表示するには行を展開します。
 +
-** 選択image:icon-column-selector.png["表のヘッダーの末尾にあるプラスアイコン"]テーブルに表示する列を選択します。期間と自動更新の列はデフォルトでは表示されないことに注意してください。「自動更新」列には、Azure 契約の更新情報のみが表示されます。
+** 選択image:icon-column-selector.png["表のヘッダーの末尾にあるプラスアイコン"]テーブルに表示する列を選択します。期間と自動更新の列はデフォルトでは表示されないことに注意してください。  「自動更新」列には、Azure 契約の更新情報のみが表示されます。
 
 
 
@@ -75,7 +75,7 @@ Essentials パッケージに表示される容量をよりよく理解するに
 
 Cloud Volumes ONTAPページでレガシー モードに切り替えると、パッケージごとに使用されている容量の詳細を表示できます。
 
-. 左側のナビゲーション ペインから、*管理 > ライセンスとサブスクリプション* を選択します。
+. 左側のナビゲーション ペインから、*管理 >Licenses and subscriptions*を選択します。
 . *概要*タブのCloud Volumes ONTAPタイルには、アカウントにプロビジョニングされている現在の容量が表示されます。
 . 各ライセンス パッケージのプロビジョニングされた容量を確認するには、[表示] を選択します。
 . *詳細表示に切り替える*を選択します。
@@ -105,7 +105,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[
 
 
 .手順
-. 左側のナビゲーション ペインから、*管理 > ライセンスとサブスクリプション* を選択します。
+. 左側のナビゲーション ペインから、*管理 >Licenses and subscriptions*を選択します。
 . *概要*タブを選択します。
 . Cloud Volumes ONTAPタイルで、[*表示*] を選択します。
 . *詳細表示に切り替える*を選択します。
@@ -180,7 +180,7 @@ NOTE: FlexCloneボリュームは料金が発生しないため、このレポ�
 
 
 .手順
-. 左側のナビゲーション ペインから、*管理 > ライセンスとサブスクリプション* を選択します。
+. 左側のナビゲーション ペインから、*管理 >Licenses and subscriptions*を選択します。
 . *概要*タブで、 Cloud Volumes ONTAPタイルから*表示*を選択します。
 . *使用状況レポート*を選択します。
 +

@@ -95,7 +95,7 @@ ifdef::aws[]
 
 === AWS Key Management Service
 
-AWSでCloud Volumes ONTAPシステムを起動すると、 http://docs.aws.amazon.com/kms/latest/developerguide/overview.html["AWS キー管理サービス (KMS)"^] 。  NetAppコンソールは、カスタマー マスター キー (CMK) を使用してデータ キーを要求します。
+AWSでCloud Volumes ONTAPシステムを起動すると、 http://docs.aws.amazon.com/kms/latest/developerguide/overview.html["AWS キー管理サービス (KMS)"^] 。  NetApp Consoleは、カスタマー マスター キー (CMK) を使用してデータ キーを要求します。
 
 
 TIP: Cloud Volumes ONTAPシステムを作成した後、AWS データ暗号化方法を変更することはできません。

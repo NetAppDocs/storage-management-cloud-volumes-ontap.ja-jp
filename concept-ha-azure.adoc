@@ -26,9 +26,9 @@ Cloud Volumes ONTAP の高可用性 (HA) ペアは、クラウド環境で障害
 
 Azure のCloud Volumes ONTAP HA ページ BLOB 構成には、次のコンポーネントが含まれます。
 
-image:diagram_ha_azure.png["NetAppコンソールとクライアントからの着信トラフィックを管理するロード バランサ、VMSS Flex 内の 2 つのCloud Volumes ONTAPノード、ブート データ用の SSD ディスク、および顧客データ用のページ BLOB を示す概念図。"]
+image:diagram_ha_azure.png["NetApp Consoleとクライアントからの着信トラフィックを管理するロード バランサ、VMSS Flex 内の 2 つのCloud Volumes ONTAPノード、ブート データ用の SSD ディスク、および顧客データ用のページ BLOB を示す概念図。"]
 
-NetAppコンソールによって展開される Azure コンポーネントについては、次の点に注意してください。
+NetApp Consoleによって展開される Azure コンポーネントについては、次の点に注意してください。
 
 Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volumes ONTAP HA ペアへの着信トラフィックを管理します。
 単一のアベイラビリティゾーン内のVM:: Cloud Volumes ONTAP 9.15.1 以降では、単一のアベイラビリティーゾーン (AZ) で異機種仮想マシン (VM) を作成および管理できます。同じ AZ 内の別々の障害ドメインに高可用性 (HA) ノードを展開して、最適な可用性を保証できます。この機能を可能にする柔軟なオーケストレーションモードの詳細については、 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/["Microsoft Azure ドキュメント: 仮想マシン スケール セット"^] 。

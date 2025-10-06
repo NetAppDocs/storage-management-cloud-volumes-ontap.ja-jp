@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-connect-lun.html 
 keywords: lun, connect lun, iscsi lun, target iqn, iqn 
-summary: iSCSI ボリュームを作成すると、 NetAppコンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、IQN を使用してホストから LUN に接続します。 
+summary: iSCSI ボリュームを作成すると、 NetApp Consoleによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、IQN を使用してホストから LUN に接続します。 
 ---
 = ホストシステムからCloud Volumes ONTAP上のLUNに接続する
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: iSCSI ボリュームを作成すると、 NetAppコンソールによ�
 
 
 [role="lead"]
-iSCSI ボリュームを作成すると、 NetAppコンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、IQN を使用してホストから LUN に接続します。
+iSCSI ボリュームを作成すると、 NetApp Consoleによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、IQN を使用してホストから LUN に接続します。
 
 次の点に注意してください。
 

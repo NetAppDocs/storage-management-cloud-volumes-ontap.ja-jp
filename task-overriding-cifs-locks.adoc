@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-overriding-cifs-locks.html 
 keywords: CIFS locks, azure maintenance, maintenance events, cifs sessions, storage failover, storage giveback, giveback 
-summary: 組織またはアカウント管理者は、Azure メンテナンス イベント中にCloud Volumes ONTAPストレージ ギブバックに関する問題を防ぐ設定をNetAppコンソールで有効にすることができます。この設定を有効にすると、 Cloud Volumes ONTAP はCIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。 
+summary: 組織またはアカウント管理者は、Azure メンテナンス イベント中にCloud Volumes ONTAPストレージ ギブバックに関する問題を防ぐ設定をNetApp Consoleで有効にすることができます。この設定を有効にすると、 Cloud Volumes ONTAP はCIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。 
 ---
 = Azure のCloud Volumes ONTAP HA ペアの CIFS ロックをオーバーライドする
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 組織またはアカウント管理者は、Azure メンテナンス �
 
 
 [role="lead"]
-組織またはアカウント管理者は、Azure メンテナンス イベント中にCloud Volumes ONTAPストレージ ギブバックに関する問題を防ぐ設定をNetAppコンソールで有効にすることができます。この設定を有効にすると、 Cloud Volumes ONTAP はCIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。
+組織またはアカウント管理者は、Azure メンテナンス イベント中にCloud Volumes ONTAPストレージ ギブバックに関する問題を防ぐ設定をNetApp Consoleで有効にすることができます。この設定を有効にすると、 Cloud Volumes ONTAP はCIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。
 
 .タスク概要
 Microsoft Azure は、仮想マシン上で定期的なメンテナンス イベントをスケジュールします。 Cloud Volumes ONTAP HA ペアでメンテナンス イベントが発生すると、HA ペアはストレージ テイクオーバーを開始します。このメンテナンス イベント中にアクティブな CIFS セッションがある場合、CIFS ファイルのロックによりストレージのギブバックが妨げられる可能性があります。

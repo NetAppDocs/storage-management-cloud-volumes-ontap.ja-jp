@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: concept-write-speed.html 
 keywords: write speed, high write speed, normal write speed, nvfail, writing speed, ldm, low durability mode 
-summary: NetAppコンソールを使用すると、Cloud Volumes ONTAPの通常書き込み速度または高速書き込み速度を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。 
+summary: NetApp Consoleを使用すると、Cloud Volumes ONTAPの通常書き込み速度または高速書き込み速度を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。 
 ---
 = 書き込み速度
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: NetAppコンソールを使用すると、Cloud Volumes ONTAPの通常�
 
 
 [role="lead"]
-NetAppコンソールを使用すると、ほとんどのCloud Volumes ONTAP構成で通常または高速の書き込み速度を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。
+NetApp Consoleを使用すると、ほとんどのCloud Volumes ONTAP構成で通常または高速の書き込み速度を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。
 
 
 

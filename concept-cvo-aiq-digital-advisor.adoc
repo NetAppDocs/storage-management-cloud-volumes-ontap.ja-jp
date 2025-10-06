@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: concept-cvo-aiq-digital-advisor.html 
 keywords: concepts, digital advisor, cloud volumes ontap, cloud manager, BlueXP, NetApp Console 
-summary: Digital AdvisorはNetAppコンソールに統合されているため、 ONTAPクラスターの運用、セキュリティ、パフォーマンスを 1 つの画面で最適化できます。 
+summary: Digital AdvisorはNetApp Consoleに統合されているため、 ONTAPクラスターの運用、セキュリティ、パフォーマンスを 1 つの画面で最適化できます。 
 ---
 = Digital Advisorを使用してCloud Volumes ONTAPシステムを最適化します
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Digital AdvisorはNetAppコンソールに統合されているため�
 
 
 [role="lead"]
-https://www.netapp.com/services/support/active-iq/["Active IQ Digital Advisor"]( Digital Advisorとも呼ばれます) はNetAppコンソールに統合されており、 Cloud Volumes ONTAPシステムの操作、セキュリティ、パフォーマンスを 1 つの画面で最適化できます。
+https://www.netapp.com/services/support/active-iq/["Active IQ Digital Advisor"]( Digital Advisorとも呼ばれます) はNetApp Consoleに統合されており、 Cloud Volumes ONTAPシステムの操作、セキュリティ、パフォーマンスを 1 つの画面で最適化できます。
 
 
 
@@ -24,7 +24,7 @@ Digital Advisorを使用すると、ストレージ システムの全体的な�
 
 * ストレージシステムの健全性を分析して最適化します
 * ストレージシステムに対するあらゆるリスクと、リスクを軽減するための対策に関する洞察を得る
-* パフォーマンスデータをグラフ形式で表示して、ストレージデバイスのパフォーマンスを分析します
+* パフォーマンスデータをグラフ形式で表示して、ストレージデバイスのパフォーマンスを分析します。
 * 90% の容量を超えた、または 90% の容量に近づいているシステムの詳細を取得します。
 
 
@@ -42,7 +42,7 @@ Digital Advisor は、NSS アカウント内のすべてのオンプレミスONT
 
 
 
-== Digital AdvisorとNetAppコンソールの連携
+== Digital AdvisorとNetApp Consoleの連携
 
 Digital Advisorユーザー インターフェイスはコンソールに完全に統合されています。
 
@@ -50,7 +50,7 @@ Digital Advisorユーザー インターフェイスはコンソールに完全�
 
 * コンソールに既存のNSSアカウントを登録している場合は、 Digital Advisor UIはスタンドアロン実装の場合と同じように表示されます。 https://activeiq.netapp.com/[] 。
 +
-image:screenshot_aiq_digital_advisor.png["コンソールのDigital Advisorユーザー インターフェイスのスクリーンショット。"]
+image:screenshot_aiq_digital_advisor.png["コンソールのDigital Advisorユーザー インターフェースのスクリーンショット。"]
 
 * コンソールに NSS アカウントを登録していない場合は、今すぐ NSS アカウントを登録すると、 Digital Advisor UI が表示されます。参照 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["組織またはアカウントに関連付けられた NSS 認証情報を管理する"]手順についてはこちらをご覧ください。
 

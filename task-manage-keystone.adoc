@@ -4,7 +4,7 @@ permalink: task-manage-keystone.html
 keywords: license, licensing, install, keystone, request capacity, link subscription, add keystone subscription, keystone subscription, digital wallet, keystone flex 
 summary: Cloud Volumes ONTAPで使用するサブスクリプションを有効にし、サブスクリプションのサービス レベルのコミット済み容量の変更をリクエストすることで、 Keystoneサブスクリプションを管理します。サービス レベルの追加容量を要求すると、オンプレミスのONTAPクラスターまたはCloud Volumes ONTAPシステムにさらに多くのストレージが提供されます。 
 ---
-= NetAppコンソールからCloud Volumes ONTAPのKeystoneサブスクリプションを管理する
+= NetApp ConsoleからCloud Volumes ONTAPのKeystoneサブスクリプションを管理する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

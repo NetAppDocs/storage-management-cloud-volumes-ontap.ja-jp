@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-managing-state.html 
 keywords: schedule, schedules, scheduling, shutdowns, shut down, restart, stop, stopping, turn off, weekday, weekend 
-summary: NetAppコンソールからCloud Volumes ONTAP を停止および起動して、クラウド コンピューティング コストを管理できます。 
+summary: NetApp ConsoleからCloud Volumes ONTAP を停止および起動して、クラウド コンピューティング コストを管理できます。 
 ---
 = Cloud Volumes ONTAPシステムの起動と停止
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: NetAppコンソールからCloud Volumes ONTAP を停止および起動
 
 
 [role="lead"]
-NetAppコンソールからCloud Volumes ONTAP を停止および起動して、クラウド コンピューティング コストを管理できます。
+NetApp ConsoleからCloud Volumes ONTAP を停止および起動して、クラウド コンピューティング コストを管理できます。
 
 
 
@@ -78,7 +78,7 @@ HA ペアを停止すると、コンソールは両方のノードをシャッ�
 +
 image:screenshot_turn_off_redesign.png["スクリーンショット: Cloud Volumes ONTAPシステムをオフにするアイコンを表示します。"]
 
-. スナップショットによってシステムの回復が可能になるため、スナップショットを作成するオプションを有効にしておきます。
+. スナップショットによりシステムの回復が可能になるため、スナップショットを作成するオプションを有効にしておきます。
 . *[オフにする]*をクリックします。
 +
 システムを停止するには数分かかる場合があります。  *システム* ページから後でシステムを再起動できます。

@@ -27,7 +27,7 @@ NOTE: 複数の AZ に展開されている場合、 Cloud Volumes ONTAP HA 構�
 endif::aws[]
 
 .手順
-. NetAppコンソールで、クラスタ管理インターフェイスの IP アドレスを特定します。
+. NetApp Consoleで、クラスタ管理インターフェイスの IP アドレスを特定します。
 +
 .. 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
 .. *システム*ページで、 Cloud Volumes ONTAPシステムを選択します。

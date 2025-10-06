@@ -24,7 +24,7 @@ Azure イメージ検証プロセスでは、先頭の 1 MB と末尾の 512 バ
 
 image::graphic_azure_check_signature.png[グラフィックアズールチェック署名]
 
-* Azureイメージをダウンロードするには https://mysupport.netapp.com/site/["NetAppサポート サイト"^]ダイジェスト (.sig) ファイル、公開鍵証明書 (.pem) ファイル、チェーン証明書 (.pem) ファイルを抽出します。参照link:task-azure-download-digest-file.html["Azure イメージ ダイジェスト ファイルをダウンロードする"]詳細についてはこちらをご覧ください。
+* Azureイメージを https://mysupport.netapp.com/site/["NetAppサポート サイト"^]ダイジェスト (.sig) ファイル、公開鍵証明書 (.pem) ファイル、チェーン証明書 (.pem) ファイルを抽出します。参照link:task-azure-download-digest-file.html["Azure イメージ ダイジェスト ファイルをダウンロードする"]詳細についてはこちらをご覧ください。
 * 信頼チェーンの検証。
 * 公開鍵証明書 (.pem) から公開鍵 (.pub) を抽出します。
 * 抽出された公開鍵を使用してダイジェスト ファイルを復号化します。

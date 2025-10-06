@@ -21,7 +21,7 @@ summary: 数ステップでCloud Volumes ONTAP for Google Cloud を使い始め�
 もしあなたが https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェント"^]まだ作成する必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Google Cloud でコンソール エージェントを作成する方法を学びます"^]
 
 [role="quick-margin-para"]
-インターネット アクセスが利用できないサブネットにCloud Volumes ONTAPを展開する場合は、コンソール エージェントを手動でインストールし、そのコンソール エージェントで実行されているNetAppコンソールにアクセスする必要があることに注意してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネットにアクセスできない場所にコンソールエージェントを手動でインストールする方法を学びます"^]
+インターネット アクセスが利用できないサブネットにCloud Volumes ONTAPを展開する場合は、コンソール エージェントを手動でインストールし、そのコンソール エージェントで実行されているNetApp Consoleにアクセスする必要があることに注意してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネットにアクセスできない場所にコンソールエージェントを手動でインストールする方法を学びます"^]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]構成を計画する
 [role="quick-margin-para"]
@@ -47,7 +47,7 @@ link:reference-networking-gcp.html["ネットワーク要件の詳細"] 。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]サービスアカウントを設定する
 [role="quick-margin-para"]
-Cloud Volumes ONTAP、 2 つの目的で Google Cloud サービス アカウントが必要です。  1つ目は、link:concept-data-tiering.html["データ階層化"]コールドデータを Google Cloud の低コストのオブジェクト ストレージに階層化します。  2つ目は、 https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetAppバックアップとリカバリ"^]ボリュームを低コストのオブジェクト ストレージにバックアップします。
+Cloud Volumes ONTAP、 2 つの目的で Google Cloud サービス アカウントが必要です。  1つ目は、link:concept-data-tiering.html["データ階層化"]コールドデータを Google Cloud の低コストのオブジェクト ストレージに階層化します。  2つ目は、 https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recovery"^]ボリュームを低コストのオブジェクト ストレージにバックアップします。
 
 [role="quick-margin-para"]
 1 つのサービス アカウントを設定して、両方の目的に使用できます。サービス アカウントには *Storage Admin* ロールが必要です。

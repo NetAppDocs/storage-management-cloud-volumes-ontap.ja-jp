@@ -4,7 +4,7 @@ permalink: task-deleting-system.html
 keywords: terminate, delete, system, remove, terminate system, terminate instance, delete cloud volumes ontap, delete instance, delete system, delete backups, cloud backup, cloud data sense 
 summary: Cloud Volumes ONTAPシステムは、クラウド プロバイダーのコンソールからではなく、常に削除する必要があります。たとえば、クラウド プロバイダーからライセンスを取得したCloud Volumes ONTAPインスタンスを終了した場合、そのライセンス キーを別のインスタンスに使用することはできません。ライセンスを解放するにはシステムを削除する必要があります。 
 ---
-= NetAppコンソールからCloud Volumes ONTAPシステムを削除する
+= NetApp ConsoleからCloud Volumes ONTAPシステムを削除する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,12 +14,12 @@ summary: Cloud Volumes ONTAPシステムは、クラウド プロバイダーの
 
 
 [role="lead"]
-Cloud Volumes ONTAPシステムは、クラウド プロバイダーのアプリケーションからではなく、常にNetAppコンソールから削除する必要があります。たとえば、クラウド プロバイダーからライセンスを取得したCloud Volumes ONTAPインスタンスを終了した場合、そのライセンス キーを別のインスタンスに使用することはできません。ライセンスを解放するには、コンソールからCloud Volumes ONTAPシステムを削除する必要があります。
+Cloud Volumes ONTAPシステムは、クラウド プロバイダーのアプリケーションからではなく、常にNetApp Consoleから削除する必要があります。たとえば、クラウド プロバイダーからライセンスを取得したCloud Volumes ONTAPインスタンスを終了した場合、そのライセンス キーを別のインスタンスに使用することはできません。ライセンスを解放するには、コンソールからCloud Volumes ONTAPシステムを削除する必要があります。
 
 システムを削除すると、コンソールはCloud Volumes ONTAPインスタンスを終了し、ディスクとスナップショットを削除します。
 
 
-NOTE: システムを削除しても、 NetApp Backup and Recovery によって管理されるバックアップやNetApp Data Classification のインスタンスなどの他のリソースは削除されません。手動で削除する必要があります。そうしないと、これらのリソースに対して引き続き料金が発生します。
+NOTE: システムを削除しても、 NetApp Backup and Recoveryによって管理されるバックアップやNetApp Data Classificationのインスタンスなどの他のリソースは削除されません。手動で削除する必要があります。そうしないと、これらのリソースに対して引き続き料金が発生します。
 
 コンソールがクラウド プロバイダーにCloud Volumes ONTAP をデプロイすると、インスタンスの終了保護が有効になります。このオプションは、誤って終了するのを防ぐのに役立ちます。
 

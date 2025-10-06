@@ -56,7 +56,7 @@ South Central US          southcentralus       (US) South Central US
 ----
 . 以下の表で、対応するCloud Volumes ONTAPバージョンと VM 展開タイプの SKU 名を確認します。  SKU名は、 `skuName`マーケットプレイスイメージの URN を設定するときに使用する変数。
 +
-たとえば、 Cloud Volumes ONTAP 9.15.0を使用するすべてのシングルノード展開では、 `ontap_cloud_byol` SKU 名として。
+たとえば、 Cloud Volumes ONTAP 9.15.0を使用したすべてのシングルノード展開では、 `ontap_cloud_byol` SKU 名として。
 
 +
 [cols="1,1,1"]
@@ -69,7 +69,7 @@ South Central US          southcentralus       (US) South Central US
 | 9.17.1以降 | Azureマーケットプレイス | ontap_cloud_direct_gen2 
 
 
-| 9.17.1以降 | NetAppコンソール | ontap_cloud_gen2 
+| 9.17.1以降 | NetApp Console | ontap_cloud_gen2 
 
 
 | 9.16.1 | Azureマーケットプレイス | ontap_cloud_direct 

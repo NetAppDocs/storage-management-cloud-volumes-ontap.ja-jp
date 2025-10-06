@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-updating-ontap-cloud.html 
 keywords: update, updating, upgrading, upgrade, software, downgrade, downgrading, FTP, HTTP, mediator, local image, revert, reverting, downgrading, cloud backup 
-summary: NetAppコンソールからCloud Volumes ONTAP をアップグレードして、最新の新機能と拡張機能にアクセスします。ソフトウェアをアップグレードする前に、 Cloud Volumes ONTAPシステムを準備する必要があります。 
+summary: NetApp ConsoleからCloud Volumes ONTAP をアップグレードして、最新の新機能と拡張機能にアクセスします。ソフトウェアをアップグレードする前に、 Cloud Volumes ONTAPシステムを準備する必要があります。 
 ---
 = Cloud Volumes ONTAPソフトウェアのアップグレード
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: NetAppコンソールからCloud Volumes ONTAP をアップグレード
 
 
 [role="lead"]
-NetAppコンソールからCloud Volumes ONTAP をアップグレードして、最新の新機能と拡張機能にアクセスします。ソフトウェアをアップグレードする前に、 Cloud Volumes ONTAPシステムを準備する必要があります。
+NetApp ConsoleからCloud Volumes ONTAP をアップグレードして、最新の新機能と拡張機能にアクセスします。ソフトウェアをアップグレードする前に、 Cloud Volumes ONTAPシステムを準備する必要があります。
 
 
 

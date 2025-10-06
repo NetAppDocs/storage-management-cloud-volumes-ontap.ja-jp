@@ -14,7 +14,7 @@ summary: Cloud Volumes ONTAPシステムが適切に動作できるように、A
 
 
 [role="lead"]
-NetAppコンソールは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。
+NetApp Consoleは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。
 
 
 
@@ -26,7 +26,7 @@ Azure では次のネットワーク要件を満たす必要があります。
 
 === アウトバウンドインターネットアクセス
 
-Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。セキュリティ要件が厳しい環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
+Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。厳格なセキュリティ要件を持つ環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
 
 コンソール エージェントは、日常的な操作のために複数のエンドポイントにも接続します。エンドポイントの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]そして https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]。
 
@@ -78,9 +78,9 @@ Cloud Volumes ONTAP はこれらのエンドポイントを使用してさまざ
 |===
 
 
-=== NetAppコンソールエージェントのネットワークプロキシ構成
+=== NetApp Consoleエージェントのネットワークプロキシ構成
 
-NetAppコンソール エージェントのプロキシ サーバー構成を使用して、 Cloud Volumes ONTAPからのアウトバウンド インターネット アクセスを有効にすることができます。コンソールは次の 2 種類のプロキシをサポートしています。
+NetApp Consoleエージェントのプロキシ サーバー構成を使用して、 Cloud Volumes ONTAPからのアウトバウンド インターネット アクセスを有効にすることができます。コンソールは次の 2 種類のプロキシをサポートしています。
 
 * *明示的なプロキシ*: Cloud Volumes ONTAPからの送信トラフィックは、コンソール エージェントのプロキシ構成時に指定されたプロキシ サーバーの HTTP アドレスを使用します。管理者は、追加の認証のためにユーザー資格情報とルート CA 証明書を構成している場合もあります。明示的なプロキシにルートCA証明書が利用可能な場合は、必ず同じ証明書を取得して、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
 * *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェントのプロキシを介して自動的にルーティングするように構成されています。透過プロキシを設定する場合、管理者はプロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
@@ -180,7 +180,7 @@ link:task-enabling-private-link.html["Cloud Volumes ONTAPで Azure Private Links
 
 === 他のONTAPシステムへの接続
 
-Azure のCloud Volumes ONTAPシステムと他のネットワークのONTAPシステム間でデータをレプリケートするには、Azure VNet と他のネットワーク (企業ネットワークなど) の間に VPN 接続が必要です。
+Azure のCloud Volumes ONTAPシステムと他のネットワークのONTAPシステム間でデータを複製するには、Azure VNet と他のネットワーク (企業ネットワークなど) の間に VPN 接続が必要です。
 
 手順については、 https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal["Microsoft Azure ドキュメント: Azure ポータルでサイト間接続を作成する"^] 。
 

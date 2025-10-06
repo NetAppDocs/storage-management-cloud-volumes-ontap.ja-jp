@@ -44,7 +44,7 @@ ifdef::gcp[]
 
 * Cloud Volumes ONTAP for Google Cloud
 +
-link:https://www.netapp.com/pdf.html?item=/media/9090-tr4816pdf.pdf["NetAppテクニカル レポート 4816: Google Cloud 向けCloud Volumes ONTAPのパフォーマンス特性"^]
+link:https://www.netapp.com/pdf.html?item=/media/9090-tr4816pdf.pdf["NetAppテクニカルレポート 4816: Google Cloud 向けCloud Volumes ONTAPのパフォーマンス特性"^]
 
 
 
