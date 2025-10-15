@@ -11,13 +11,13 @@ summary: NetAppテクニカル サポートでサポート ケースを開く前
 
 
 [role="lead"]
-BlueXPおよびそのストレージ ソリューションとサービスに固有のテクニカル サポートを受けるには、サポート登録が必要です。Cloud Volumes ONTAPシステムの主要なワークフローを有効にするには、サポート登録も必要です。
+NetApp Consoleとそのストレージ ソリューションおよびデータ サービスに固有のテクニカル サポートを受けるには、サポート登録が必要です。Cloud Volumes ONTAPシステムの主要なワークフローを有効にするには、サポート登録も必要です。
 
-サポートに登録しても、クラウド プロバイダー ファイル サービスに対するNetAppサポートは有効になりません。クラウド プロバイダーのファイル サービス、そのインフラストラクチャ、またはサービスを使用するソリューションに関連するテクニカル サポートについては、その製品のBlueXPドキュメントの「ヘルプの取得」を参照してください。
+サポートに登録しても、クラウド プロバイダー ファイル サービスに対するNetAppサポートは有効になりません。クラウド プロバイダーのファイル サービス、そのインフラストラクチャ、またはサービスを使用するソリューションに関連するテクニカル サポートについては、その製品のドキュメントの「ヘルプの取得」を参照してください。
 
-* link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/start/concept-fsx-aws.html#getting-help["Amazon FSx for ONTAP"^]
-* link:https://docs.netapp.com/us-en/bluexp-azure-netapp-files/concept-azure-netapp-files.html#getting-help["Azure NetApp Files"^]
-* link:https://docs.netapp.com/us-en/bluexp-google-cloud-netapp-volumes/concept-gcnv.html#getting-help["Google Cloud NetApp Volumes"^]
+* link:https://docs.netapp.com/us-en/storage-management-fsx-ontap/start/concept-fsx-aws.html#getting-help["Amazon FSx for ONTAP"^]
+* link:https://docs.netapp.com/us-en/storage-management-azure-netapp-files/concept-azure-netapp-files.html#getting-help["Azure NetApp Files"^]
+* link:https://docs.netapp.com/us-en/storage-management-google-cloud-netapp-volumes/concept-gcnv.html#getting-help["Google Cloud NetApp Volumes"^]
 
 
 
@@ -26,43 +26,40 @@ BlueXPおよびそのストレージ ソリューションとサービスに固�
 
 サポート資格を有効にするには、次の 2 つの登録形式があります。
 
-* BlueXPアカウントのシリアル番号を登録します ( BlueXPのサポート リソース ページにある 20 桁の 960xxxxxxxxx シリアル番号)。
+* NetApp Consoleアカウントのシリアル番号 (コンソールの [サポート リソース] ページにある 20 桁の 960xxxxxxxxx シリアル番号) を登録します。
 +
-これは、BlueXP内のすべてのサービスに対する単一のサポート サブスクリプション ID として機能します。各BlueXPアカウント レベルのサポート サブスクリプションを登録する必要があります。
+これは、コンソール内のすべてのサービスに対する単一のサポート サブスクリプション ID として機能します。各コンソール アカウントを登録する必要があります。
 
 * クラウド プロバイダーのマーケットプレイスで、サブスクリプションに関連付けられたCloud Volumes ONTAPシリアル番号を登録します (これらは 20 桁の 909201xxxxxxxx シリアル番号です)。
 +
-これらのシリアル番号は一般に _PAYGO シリアル番号_ と呼ばれ、 Cloud Volumes ONTAP の展開時にBlueXPによって生成されます。
+これらのシリアル番号は一般に _PAYGO シリアル番号_ と呼ばれ、 Cloud Volumes ONTAP の導入時にNetApp Consoleによって生成されます。
 
 
 
-両方のタイプのシリアル番号を登録すると、サポート チケットの開設やケースの自動生成などの機能が有効になります。登録は、以下の説明に従ってNetAppサポート サイト (NSS) アカウントをBlueXPに追加することで完了します。
+両方のタイプのシリアル番号を登録すると、サポート チケットの開設やケースの自動生成などの機能が有効になります。登録は、以下の説明に従ってNetAppサポート サイト (NSS) アカウントをコンソールに追加することで完了します。
 
 
 
-== NetAppサポートのためにBlueXPを登録する
+== NetAppサポートのためにNetApp Consoleを登録する
 
-サポートに登録し、サポート資格を有効にするには、 BlueXP組織 (またはアカウント) 内の 1 人のユーザーがNetAppサポート サイト アカウントをBlueXPログインに関連付ける必要があります。NetAppサポートに登録する方法は、 NetAppサポート サイト (NSS) アカウントをすでにお持ちかどうかによって異なります。
+サポートに登録し、サポート資格を有効にするには、 NetApp Consoleアカウントの 1 人のユーザーがNetAppサポート サイト アカウントをコンソール ログインに関連付ける必要があります。NetAppサポートに登録する方法は、 NetAppサポート サイト (NSS) アカウントをすでにお持ちかどうかによって異なります。
 
 
 
 === NSSアカウントをお持ちの既存顧客
 
-NSS アカウントをお持ちのNetApp のお客様の場合は、 BlueXPを通じてサポートに登録するだけです。
+NSS アカウントをお持ちのNetApp のお客様の場合は、コンソールからサポートに登録するだけです。
 
 .手順
-. BlueXPコンソールの右上にある設定アイコンを選択し、*資格情報*を選択します。
+. *管理* > *資格情報*を選択します。
 . *ユーザー資格情報*を選択します。
 . *NSS 資格情報の追加* を選択し、 NetAppサポート サイト (NSS) の認証プロンプトに従います。
 . 登録プロセスが成功したことを確認するには、[ヘルプ] アイコンを選択し、[サポート] を選択します。
 +
-*リソース* ページには、 BlueXP組織がサポートに登録されていることが表示されます。
+*リソース* ページには、コンソール アカウントがサポートに登録されていることが表示されます。
 
 +
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-support-registration.png["アカウントのシリアル番号、緑色のチェックボックス、および「サポートに登録済み」というテキストが表示されているスクリーンショット。"]
-
-+
-他のBlueXPユーザーは、 NetAppサポート サイト アカウントをBlueXPログインに関連付けていない場合、同じサポート登録ステータスを表示しないことに注意してください。ただし、これはBlueXP組織がサポートに登録されていないことを意味するものではありません。組織内の 1 人のユーザーがこれらの手順を実行すれば、組織は登録されます。
+他のコンソール ユーザーは、ログインにNetAppサポート サイト アカウントを関連づけていない場合、同じサポート登録ステータスを表示しないことに注意してください。ただし、これはあなたのアカウントがサポートに登録されていないことを意味するものではありません。組織内の 1 人のユーザーがこれらの手順を実行していれば、アカウントは登録済みになります。
 
 
 
@@ -70,16 +67,16 @@ image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/scre
 
 === 既存の顧客だがNSSアカウントがない
 
-既存のNetApp顧客であり、既存のライセンスとシリアル番号を持っているものの、NSS アカウントを持っていない場合は、NSS アカウントを作成し、それをBlueXPログインに関連付ける必要があります。
+既存のNetApp顧客であり、既存のライセンスとシリアル番号を持っているものの、NSS アカウントを持っていない場合は、NSS アカウントを作成し、それをコンソール ログインに関連付ける必要があります。
 
 .手順
 . NetAppサポートサイトのアカウントを作成するには、 https://mysupport.netapp.com/site/user/registration["NetAppサポートサイト ユーザー登録フォーム"^]
 +
 .. 適切なユーザー レベル (通常は * NetApp顧客/エンド ユーザー*) を選択してください。
-.. 上記で使用したBlueXPアカウントのシリアル番号 (960xxxx) を必ずシリアル番号フィールドにコピーしてください。これにより、アカウント処理が高速化されます。
+.. 上記で使用したコンソール アカウントのシリアル番号 (960xxxx) を必ずシリアル番号フィールドにコピーしてください。これにより、アカウント処理が高速化されます。
 
 
-. 以下の手順を完了して、新しいNSSアカウントをBlueXPログインに関連付けます。<<NSSアカウントをお持ちの既存顧客>> 。
+. 以下の手順を実行して、新しいNSSアカウントをコンソールログインに関連付けます。<<NSSアカウントをお持ちの既存顧客>> 。
 
 
 
@@ -89,10 +86,7 @@ image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/scre
 NetAppを初めて使用し、NSS アカウントをお持ちでない場合は、以下の手順に従ってください。
 
 .手順
-. BlueXPコンソールの右上にあるヘルプ アイコンを選択し、*サポート* を選択します。
-+
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-help-support.png["「サポート」が最初のオプションとしてリストされている「ヘルプ」メニューのスクリーンショット"]
-
+. コンソールの右上にあるヘルプ アイコンを選択し、*サポート* を選択します。
 . サポート登録ページからアカウント ID シリアル番号を見つけます。
 +
 image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-serial-number.png["「サポート」が最初のオプションとしてリストされている「ヘルプ」メニューのスクリーンショット"]
@@ -119,13 +113,13 @@ image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/scre
 .終了後の操作
 このプロセス中に、 NetAppから連絡が来るはずです。これは、新規ユーザー向けの 1 回限りのオンボーディング演習です。
 
-NetAppサポートサイトのアカウントを取得したら、以下の手順を実行してアカウントをBlueXPログインに関連付けます。<<NSSアカウントをお持ちの既存顧客>> 。
+NetAppサポートサイトのアカウントを取得したら、以下の手順を実行して、アカウントをコンソールログインに関連付けます。<<NSSアカウントをお持ちの既存顧客>> 。
 
 
 
 == Cloud Volumes ONTAPサポートに NSS 認証情報を関連付ける
 
-Cloud Volumes ONTAPの次の主要なワークフローを有効にするには、 NetAppサポート サイトの認証情報をBlueXP組織に関連付ける必要があります。
+Cloud Volumes ONTAPの次の主要なワークフローを有効にするには、 NetAppサポート サイトの認証情報をコンソール アカウントに関連付ける必要があります。
 
 * 従量課金制のCloud Volumes ONTAPシステムをサポート対象として登録する
 +
@@ -133,21 +127,21 @@ Cloud Volumes ONTAPの次の主要なワークフローを有効にするには�
 
 * BYOL（個人ライセンス使用）時にCloud Volumes ONTAP を導入する
 +
-BlueXP がライセンス キーをアップロードし、購入した期間のサブスクリプションを有効にするには、NSS アカウントを提供する必要があります。これには、期間更新の自動更新が含まれます。
+コンソールがライセンス キーをアップロードし、購入した期間のサブスクリプションを有効にするには、NSS アカウントを提供する必要があります。これには、期間更新の自動更新が含まれます。
 
 * Cloud Volumes ONTAPソフトウェアを最新リリースにアップグレードする
 
 
-NSS 資格情報をBlueXP組織に関連付けることは、 BlueXPユーザー ログインに関連付けられている NSS アカウントとは異なります。
+NSS 資格情報をNetApp Consoleアカウントに関連付けることは、コンソール ユーザー ログインに関連付けられている NSS アカウントとは異なります。
 
-これらの NSS 資格情報は、特定のBlueXP組織 ID に関連付けられています。  BlueXP組織に属するユーザーは、*サポート > NSS 管理* からこれらの資格情報にアクセスできます。
+これらの NSS 資格情報は、特定のコンソール アカウント ID に関連付けられています。コンソール組織に属するユーザーは、*サポート > NSS 管理* からこれらの資格情報にアクセスできます。
 
 * 顧客レベルのアカウントをお持ちの場合は、1 つ以上の NSS アカウントを追加できます。
 * パートナー アカウントまたは再販業者アカウントをお持ちの場合は、1 つ以上の NSS アカウントを追加できますが、顧客レベルのアカウントと一緒に追加することはできません。
 
 
 .手順
-. BlueXPコンソールの右上にあるヘルプ アイコンを選択し、*サポート* を選択します。
+. コンソールの右上にあるヘルプ アイコンを選択し、*サポート* を選択します。
 +
 image:https://raw.githubusercontent.com/NetAppDocs/bluexp-family/main/media/screenshot-help-support.png["「サポート」が最初のオプションとしてリストされている「ヘルプ」メニューのスクリーンショット"]
 
@@ -158,7 +152,7 @@ NetApp は、サポートとライセンスに固有の認証サービスの ID 
 
 . ログイン ページで、 NetAppサポート サイトに登録した電子メール アドレスとパスワードを入力して、認証プロセスを実行します。
 +
-これらのアクションにより、 BlueXP はライセンスのダウンロード、ソフトウェア アップグレードの検証、将来のサポート登録などに NSS アカウントを使用できるようになります。
+これらのアクションにより、コンソールはライセンスのダウンロード、ソフトウェア アップグレードの検証、将来のサポート登録などに NSS アカウントを使用できるようになります。
 
 +
 次の点に注意してください。

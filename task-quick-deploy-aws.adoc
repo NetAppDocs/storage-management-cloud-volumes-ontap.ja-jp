@@ -110,6 +110,9 @@ TIP: WORM とデータ階層化を利用する場合は、バックアップと�
 .まとめ
 入力した詳細を確認または編集し、「*作成*」をクリックします。
 
+
+CAUTION: 導入プロセスが完了したら、AWS クラウドポータルでシステムによって生成されたCloud Volumes ONTAP構成、特にシステムタグを変更しないでください。これらの構成に変更を加えると、予期しない動作やデータ損失が発生する可能性があります。
+
 .関連リンク
 * link:task-planning-your-config.html["Cloud Volumes ONTAP構成の計画"]
 * link:task-deploying-otc-aws.html["高度なデプロイメントを使用して AWS にCloud Volumes ONTAPをデプロイする"]

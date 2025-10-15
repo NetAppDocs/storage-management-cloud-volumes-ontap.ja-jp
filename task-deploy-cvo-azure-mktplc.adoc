@@ -138,6 +138,9 @@ Azure マーケットプレイスでのデプロイが完了していること�
 .手順
 コンソールでは、既存のシステムを検出するための標準の手順に従います。。 link:task-adding-systems.html["既存のCloud Volumes ONTAPシステムをコンソールに追加する"] 。
 
+
+CAUTION: 検出中に失敗メッセージが表示される場合がありますが、検出プロセスが完了するまで無視できます。検出中に、Azure Marketplace ポータルでシステムによって生成されたCloud Volumes ONTAP構成、特にシステム タグを変更しないでください。これらの構成に変更を加えると、予期しないシステム動作が発生する可能性があります。
+
 .終了後の操作
 検出が完了すると、コンソールの *システム* ページにリストされているシステムを表示できます。次のようなさまざまな管理タスクを実行できます。link:task-manage-aggregates.html["総計を拡大する"] 、link:task-create-volumes.html["ボリュームの追加"] 、link:task-managing-svms-azure.html["追加のストレージVMのプロビジョニング"] 、 そしてlink:task-change-azure-vm.html["インスタンスタイプの変更"]。
 
