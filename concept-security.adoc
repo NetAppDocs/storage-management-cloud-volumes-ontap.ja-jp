@@ -58,7 +58,7 @@ Cloud Volumes ONTAPは以下をサポートします https://www.netapp.com/pdf.
 * NAE は NVE の拡張機能であり、各ボリュームのデータを暗号化し、ボリュームはアグリゲート全体でキーを共有します。  NAE では、アグリゲート内のすべてのボリュームにわたる共通ブロックの重複排除も可能になります。
 
 
-Cloud Volumes ONTAP は、Fortanix などのサードパーティ ソリューションを含む、AWS、Azure、Google Cloud が提供する外部キー管理サービス (EKM) を使用して、NVE と NAE の両方をサポートします。  ONTAPとは異なり、 Cloud Volumes ONTAPの場合、暗号化キーはONTAPではなくクラウド プロバイダー側​​で生成されます。
+Cloud Volumes ONTAP は、Fortanix などのサードパーティ ソリューションを含む、AWS、Azure、Google Cloud が提供する外部キー管理サービス (EKM) を使用して、NVE と NAE の両方をサポートします。ONTAPとは異なり、 Cloud Volumes ONTAPの場合、暗号化キーはONTAPではなくクラウド プロバイダー側​​で生成されます。Cloud Volumes ONTAPはサポートしていません https://docs.netapp.com/us-en/ontap/encryption-at-rest/enable-onboard-key-management-96-later-nve-task.html["オンボード キー マネージャ"^]。
 
 Cloud Volumes ONTAP は、 ONTAPが使用する標準の Key Management Interoperability Protocol (KMIP) サービスを使用します。サポートされているサービスの詳細については、 https://imt.netapp.com/imt/#welcome["Interoperability Matrix Tool"^] 。
 
