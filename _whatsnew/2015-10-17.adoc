@@ -1,0 +1,15 @@
+= Azure のCloud Volumes ONTAP は、サポートされている最新バージョンに限定されるようになりました
+:allow-uri-read: 
+
+
+
+
+=== Azure のCloud Volumes ONTAP は、サポートされている最新バージョンに限定されるようになりました
+
+NetApp Consoleを介した Azure でのCloud Volumes ONTAP の展開とアップグレードは、サポートされている最新バージョンに制限されるようになりました。これにより、Microsoft がサポートする最新世代のハードウェアとの互換性が確保され、最新の機能とセキュリティ強化が提供されます。コンソールは、サポートされているバージョンにアップグレードするように要求します。
+
+詳細については、以下を参照してください。
+
+* 展開: https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-versions.html#azure["Cloud Volumes ONTAPデプロイメントでサポートされているONTAPバージョン"^]
+* アップグレード: https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html#supported-upgrade-paths["Azure でサポートされているアップグレード パス"^]
+
