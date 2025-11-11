@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept-licensing-charging.html 
-keywords: capacity-based license charging, consumption for licenses, pricing for licenses, CVO licensing, CVO charging 
+keywords: capacity-based license charging, consumption for licenses, pricing for licenses, CVO licensing, CVO charging, SnapLock charging, CIFS charging, audit volumes, primary volumes, volume-based charging 
 summary: 容量ベースのライセンスの課金、消費モデル、価格設定、構成について理解しておきます。 
 ---
 = Cloud Volumes ONTAPの容量ベースのライセンスの詳細
@@ -64,11 +64,11 @@ link:task-manage-capacity-licenses.html["充電方法の変更方法を学ぶ"] 
 
 
 
-== 価格とサポートされる構成
+== 容量ベースのライセンスにおける課金とサポートされる構成
+
+Cloud Volumes ONTAPでの課金は、パッケージやボリューム タイプなど、さまざまな要素に基づいて行われます。容量ベースのライセンス パッケージは、Cloud Volumes ONTAP 9.7 以降で利用できます。
 
 価格の詳細については、 https://bluexp.netapp.com/pricing/["NetApp Consoleのウェブサイト"^] 。
-
-容量ベースのライセンス パッケージは、Cloud Volumes ONTAP 9.7 以降で利用できます。
 
 
 
@@ -109,7 +109,7 @@ HA ペアの場合、ノードにプロビジョニングされた容量に対�
 
 == システムの最大数
 
-容量ベースのライセンスでは、 Cloud Volumes ONTAPシステムの最大数は、NetApp Consoleアカウントごとに 24 に制限されます。 _システム_ とは、 Cloud Volumes ONTAP HA ペア、 Cloud Volumes ONTAPシングルノード システム、または作成した追加のストレージ VM です。デフォルトのストレージ VM は制限にカウントされません。この制限はすべてのライセンス モデルに適用されます。
+容量ベースのライセンスでは、 Cloud Volumes ONTAPシステムの最大数は、 NetApp Console組織ごとに 24 に制限されます。_システム_ とは、 Cloud Volumes ONTAP HA ペア、 Cloud Volumes ONTAPシングルノード システム、または作成した追加のストレージ VM です。デフォルトのストレージ VM は制限にカウントされません。この制限はすべてのライセンス モデルに適用されます。
 
 たとえば、次の 3 つのシステムがあるとします。
 
@@ -127,13 +127,17 @@ HA ペアの場合、ノードにプロビジョニングされた容量に対�
 
 
 
-合計で6つのシステムになります。すると、アカウントにさらに 14 個のシステムを追加できるスペースが確保されます。
+合計で6つのシステムになります。すると、組織内にさらに 14 個のシステムを追加できる余裕が生まれます。
 
 24 台を超えるシステムが必要な大規模な展開の場合は、アカウント担当者または営業チームにお問い合わせください。
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/concept-netapp-accounts.html["コンソールアカウントの詳細"^] 。
-
 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["AWS、Azure、Google Cloud のストレージ制限について学ぶ"^] 。
+
+
+
+== 読み取り/書き込みボリュームに対する課金
+
+書き込み可能 (読み取り/書き込み) ボリュームを作成または使用する場合、そのボリュームはプライマリ ボリュームとみなされ、ストレージ VM (SVM) あたりの最小料金に基づいてプロビジョニングされた容量に対して課金されます。例としては、 FlexVol読み取り/書き込みボリューム、 SnapLock監査ボリューム、CIFS/NFS 監査ボリュームなどがあります。ユーザーが作成したすべてのデータ ボリュームは、サブスクリプションとパッケージ タイプごとに課金されます。  SVM ルート ボリュームなど、自動的に作成され、データを保存できないONTAP内部ボリュームは課金されません。
 
 
 

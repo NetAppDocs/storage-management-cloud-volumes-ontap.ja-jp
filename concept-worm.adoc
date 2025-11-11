@@ -116,4 +116,5 @@ Cloud Volumes ONTAPシステムで WORM ストレージをアクティブ化し�
 
 .関連リンク
 * link:reference-worm-snaplock.html["WORMストレージ用の改ざん防止スナップショットコピーを作成する"]
+* link:concept-licensing-charging.html["Cloud Volumes ONTAPのライセンスと課金"]
 

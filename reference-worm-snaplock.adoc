@@ -29,3 +29,8 @@ Cloud Volumes ONTAPシステムで、一度だけ書き込み、何度も読み�
 
 
 NOTE: スナップショット コピーは特定の保持期間保護されていますが、 Cloud Volumes ONTAPの WORM ストレージは「信頼できるストレージ管理者」モデルで動作するため、クラスター管理者はソース ボリュームを削除できます。さらに、信頼できるクラウド管理者は、クラウド ストレージ リソースを操作して WORM データを削除できます。
+
+.関連リンク
+* WORMの詳細については、以下を参照してください。link:concept-worm.html["Cloud Volumes ONTAPの WORM ストレージについて学ぶ"] 。
+* SnapLockボリュームの充電については、以下を参照してください。link:concept-licensing-charging.html["Cloud Volumes ONTAPのライセンスと課金"] 。
+

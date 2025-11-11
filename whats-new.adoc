@@ -20,6 +20,20 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+== 2025年11月10日
+
+
+
+=== 強化されたNVMe-TCPサポート
+
+以前は、NVMe-TCP 経由でCloud Volumes ONTAPインスタンスをデプロイする場合、デプロイ前に NVMe ライセンスを手動で取得して適用する必要がありました。このアップデートにより、 Cloud Volumes ONTAP は導入時に必要な NVMe ライセンスを自動的にインストールするようになり、セットアップ プロセスが簡素化されます。
+
+ライセンスが不足している既存の NVMe-TCP デプロイメントの場合、 Cloud Volumes ONTAP はライセンスを自動的に適用します。ライセンスを有効にするには、システムを再起動する必要があります。
+
+詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-client-protocols.html#nvme-tcp["Cloud Volumes ONTAPでサポートされているクライアント プロトコル: NVMe-TCP"^] 。
+
+
+
 == 2025年10月17日
 
 
