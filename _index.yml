@@ -68,7 +68,7 @@ indexpage:
     - title: サポートされているクラウドリージョン
       url: https://bluexp.netapp.com/cloud-volumes-global-regions
     - title: 電卓
-      url: https://www.netapp.com/console/calculator-hub
+      url: https://www.netapp.com/ontap-cloud/pricing/
   - title: ブログとコミュニティ
     links:
     - title: NetApp Console

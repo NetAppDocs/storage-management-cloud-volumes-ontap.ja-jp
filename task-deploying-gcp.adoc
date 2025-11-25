@@ -27,7 +27,7 @@ Cloud Volumes ONTAPは、単一ノード構成または Google Cloud の HA ペ�
 +
 ** あなたは https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["システムに関連付けられたコンソールエージェント"^]。
 ** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^] 。
-** コンソールエージェントに関連付けられたサービスアカウント https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["必要な権限を持っている必要があります"^]
+** コンソールエージェントに関連付けられたサービスアカウント https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["必要な権限を持っている必要があります"^]
 
 
 * 使用する構成を理解すること。

@@ -45,7 +45,7 @@ APIを使用してストレージVMを作成すると、必要なネットワー
 
 
 .開始する前に
-コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を作成するための特定の権限が必要です。必要な権限は以下に記載されています https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["NetAppが提供するポリシー"^]。
+コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を作成するための特定の権限が必要です。必要な権限は以下に記載されています https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["NetAppが提供するポリシー"^]。
 
 
 
@@ -86,7 +86,7 @@ HA ペア上にストレージ VM を作成するには、次の API 呼び出�
 API を使用すると、単一ノード構成と HA 構成の両方でストレージ VM の名前を変更したり、削除したりできます。
 
 .開始する前に
-コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を管理するために特定の権限が必要です。必要な権限は以下に記載されています https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["NetAppが提供するポリシー"^]。
+コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を管理するために特定の権限が必要です。必要な権限は以下に記載されています https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["NetAppが提供するポリシー"^]。
 
 
 

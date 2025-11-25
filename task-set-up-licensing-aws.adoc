@@ -69,7 +69,7 @@ NetAppからライセンス (BYOL) を購入して前払いすることで、任
 はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。
 
 .手順
-. https://bluexp.netapp.com/contact-cds["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
+. https://www.netapp.com/forms/sales-contact["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
 . https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをコンソールに追加します"^]
 +
 コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがない場合、コンソールはライセンスを自動的にコンソールに追加します。

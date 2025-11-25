@@ -24,7 +24,7 @@ NOTE: システムを削除しても、 NetApp Backup and Recoveryによって�
 コンソールがクラウド プロバイダーにCloud Volumes ONTAP をデプロイすると、インスタンスの終了保護が有効になります。このオプションは、誤って終了するのを防ぐのに役立ちます。
 
 .手順
-. システムでバックアップとリカバリを有効にした場合は、バックアップしたデータがまだ必要かどうかを確認し、 https://docs.netapp.com/us-en/bluexp-backup-recovery/task-manage-backups-ontap.html#deleting-backups["必要に応じてバックアップを削除する"^] 。
+. システムでバックアップとリカバリを有効にした場合は、バックアップしたデータがまだ必要かどうかを確認し、 https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html#delete-backups["必要に応じてバックアップを削除する"^] 。
 +
 バックアップとリカバリは、設計上、 Cloud Volumes ONTAPから独立しています。バックアップとリカバリでは、Cloud Volumes ONTAPシステムを削除してもバックアップは自動的に削除されません。また、システムの削除後にバックアップを削除するための UI は現在サポートされていません。
 

@@ -54,7 +54,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.
 
 Cloud Volumes ONTAPシステムのサイズを設定すると、パフォーマンスと容量の要件を満たすことができます。マシン タイプ、ディスク タイプ、ディスク サイズを選択するときは、いくつかの重要なポイントに注意する必要があります。
 
-機械の種類:: サポートされているマシンタイプについては、 http://docs.netapp.com/cloud-volumes-ontap/us-en/index.html["Cloud Volumes ONTAPリリースノート"^]次に、サポートされている各マシンタイプに関する Google の詳細を確認します。ワークロード要件を、マシンタイプの vCPU とメモリの数に合わせてください。各 CPU コアによってネットワーク パフォーマンスが向上することに注意してください。
+機械の種類:: サポートされているマシンタイプについては、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Cloud Volumes ONTAPリリースノート"^]次に、サポートされている各マシンタイプに関する Google の詳細を確認します。ワークロード要件を、マシンタイプの vCPU とメモリの数に合わせてください。各 CPU コアによってネットワーク パフォーマンスが向上することに注意してください。
 +
 --
 詳細については、以下を参照してください。
@@ -102,7 +102,7 @@ GCP ディスクサイズ:: Cloud Volumes ONTAPシステムをデプロイする
 コンソールは、ユーザー データ用のストレージに加えて、 Cloud Volumes ONTAPシステム データ (ブート データ、ルート データ、コア データ、 NVRAM) 用のクラウド ストレージも購入します。計画のために、 Cloud Volumes ONTAP を展開する前にこれらの詳細を確認すると役立つ場合があります。
 
 * link:reference-default-configs.html#google-cloud-single-node["Google Cloud のCloud Volumes ONTAPシステムデータのデフォルト ディスクを表示する"] 。
-* https://cloud.google.com/compute/quotas["Google Cloud ドキュメント: リソース割り当て"^]
+* https://docs.cloud.google.com/docs/quotas/overview["Google Cloud ドキュメント: Cloud Quota の概要"^]
 +
 Google Cloud Compute Engine はリソース使用量に割り当て制限を適用するため、 Cloud Volumes ONTAP をデプロイする前に制限に達していないことを確認する必要があります。
 

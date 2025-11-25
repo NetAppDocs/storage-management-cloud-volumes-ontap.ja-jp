@@ -19,7 +19,7 @@ Google Cloud Storage では、データがディスクに書き込まれる前�
 .手順
 . キーが保存されているプロジェクトにおいて、コンソール エージェント サービス アカウントにプロジェクト レベルでの適切な権限があることを確認します。
 +
-権限は、 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-gcp.html["デフォルトのサービスアカウント権限"^]ただし、Cloud Key Management Service に代替プロジェクトを使用する場合は適用されない可能性があります。
+権限は、 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["デフォルトのサービスアカウント権限"^]ただし、Cloud Key Management Service に代替プロジェクトを使用する場合は適用されない可能性があります。
 
 +
 権限は次のとおりです。

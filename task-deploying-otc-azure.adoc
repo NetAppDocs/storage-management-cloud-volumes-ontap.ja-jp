@@ -71,7 +71,7 @@ Azure で単一ノードのCloud Volumes ONTAPシステムを起動する場合�
 | システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Azure 仮想マシンの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
 
 
-| リソースグループタグ | タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://azure.microsoft.com/documentation/articles/resource-group-using-tags/["Microsoft Azure ドキュメント: タグを使用して Azure リソースを整理する"^] 。 
+| リソースグループタグ | タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources["Microsoft Azure ドキュメント: タグを使用して Azure リソースを整理する"^] 。 
 
 
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
@@ -294,7 +294,7 @@ Azure でCloud Volumes ONTAP HA ペアを起動する場合は、コンソール
 | システム名 | コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Azure 仮想マシンの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。 
 
 
-| リソースグループタグ | タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://azure.microsoft.com/documentation/articles/resource-group-using-tags/["Microsoft Azure ドキュメント: タグを使用して Azure リソースを整理する"^] 。 
+| リソースグループタグ | タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、 https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources["Microsoft Azure ドキュメント: タグを使用して Azure リソースを整理する"^] 。 
 
 
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 

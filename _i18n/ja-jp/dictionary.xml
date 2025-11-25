@@ -1082,7 +1082,6 @@
   <block id="20610cb7f9c01ec73f383961d032fd84" category="section-title">自動容量管理によるLUNの管理</block>
   <block id="17b0cc3e5f14a91cfcc6496ce4a6d2bb" category="paragraph">コンソールの自動容量管理は LUN には適用されません。  LUN を作成すると、自動拡張機能が無効になります。</block>
   <block id="4a09d3372bdfe35169604b0ed1fbee82" category="section-title">手動容量管理</block>
-  <block id="e85198150465fb4cf07b21acf011383b" category="paragraph">組織またはアカウント管理者が容量管理モードを手動に設定した場合、コンソールは容量の決定に対して適切なアクションを実行するように通知します。自動モードで説明したのと同じ例が手動モードにも当てはまりますが、アクションを受け入れるかどうかはユーザー次第です。</block>
   <block id="825ccc8f97f155807b31877cfd383216" category="inline-link-macro">容量管理モードを変更する方法を学ぶ</block>
   <block id="bb4793d3293acae6810aa94d7a19444b" category="paragraph"><block ref="efe15a4f6f400360bbcb54034c690ce4" category="inline-link-macro-rx"></block> 。</block>
   <block id="96b6d7d9126b9ae9264c568037532584" category="summary">Cloud Volumes ONTAP がクラウド ストレージを使用する方法を理解すると、ストレージ コストを理解するのに役立ちます。</block>
@@ -2635,7 +2634,6 @@
   <block id="a2b1af79a0f94f695030edeea7a21702" category="admonition">システムを削除しても、 NetApp Backup and Recoveryによって管理されるバックアップやNetApp Data Classificationのインスタンスなどの他のリソースは削除されません。手動で削除する必要があります。そうしないと、これらのリソースに対して引き続き料金が発生します。</block>
   <block id="95577520cea6f8173e87fa791e2365b8" category="paragraph">コンソールがクラウド プロバイダーにCloud Volumes ONTAP をデプロイすると、インスタンスの終了保護が有効になります。このオプションは、誤って終了するのを防ぐのに役立ちます。</block>
   <block id="ab3fdba113c7d85bf4272c78761ef0b8" category="inline-link">必要に応じてバックアップを削除する</block>
-  <block id="0f0a4f0cccb90ea6bfef7bb0d1f9d2c9" category="list-text">システムでバックアップとリカバリを有効にした場合は、バックアップしたデータがまだ必要かどうかを確認し、<block ref="2a5c41aae5ca819c9524ed1201853c58" category="inline-link-rx"></block> 。</block>
   <block id="1b60b27456fbe084c8c788ebbad90eff" category="paragraph">バックアップとリカバリは、設計上、 Cloud Volumes ONTAPから独立しています。バックアップとリカバリでは、Cloud Volumes ONTAPシステムを削除してもバックアップは自動的に削除されません。また、システムの削除後にバックアップを削除するための UI は現在サポートされていません。</block>
   <block id="faef7db08045a1d71583348ff520160d" category="list-text">このシステムでデータ分類を有効にしていて、他のシステムでこのサービスが使用されていない場合は、サービスのインスタンスを削除する必要があります。</block>
   <block id="ccc89c2b79e2ed7fa75b3fa7d7a9f916" category="inline-link">データ分類インスタンスの詳細</block>
@@ -2774,7 +2772,6 @@
   <block id="b7f6f4ab7ce08c85d615be92cf33e6db" category="inline-link">コンソールエージェントを常に実行しておく必要があります</block>
   <block id="26e1bf530d3ece2cf7aab90bf74d9739" category="list-text"><block ref="a817e8410ae889ec41fd9709ecf1d2bc" category="inline-link-rx"></block> 。</block>
   <block id="9e1dbaa97d16ff9bc20f90cb1663f522" category="inline-link">必要な権限を持っている必要があります</block>
-  <block id="53c0bc0378050198ab17f7dddcfe518f" category="list-text">コンソールエージェントに関連付けられたサービスアカウント<block ref="5646254c2ac34b48f56ed296d6fb66e7" category="inline-link-rx"></block></block>
   <block id="72fa1e29e831adb71ca0ce01f7356dc9" category="list-text">使用する構成を理解すること。</block>
   <block id="754f5b76b77778c181ca6deb0a7427f4" category="inline-link-macro">Cloud Volumes ONTAP構成の計画</block>
   <block id="cc0c9a4f6d41d2ea7045898c413c3600" category="paragraph">構成を選択し、管理者から Google Cloud ネットワーク情報を取得して準備しておく必要があります。詳細については、<block ref="7c40283f4f533a5903d1033c57ef27f4" category="inline-link-macro-rx"></block> 。</block>
@@ -3041,7 +3038,6 @@
   <block id="c6189845a8e8cd3c6c3d3790264aa5be" category="cell">コンソールは、システム名を使用して、 Cloud Volumes ONTAPシステムと Azure 仮想マシンの両方に名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。</block>
   <block id="e6b23054bef4ec575744ddc3cfaabc73" category="cell">リソースグループタグ</block>
   <block id="94ab77fff502c8ffadf0c887c9a4a9c3" category="inline-link">Microsoft Azure ドキュメント: タグを使用して Azure リソースを整理する</block>
-  <block id="387a33bf2c5bf8ccf292dd04744efe80" category="cell">タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、<block ref="d48332411dd188e35b1ff8d0be4353c1" category="inline-link-rx"></block> 。</block>
   <block id="544654a10596f8a1a75cb081d4b60b46" category="inline-link">資格情報を追加する方法を学ぶ</block>
   <block id="7eb393339c85197e4c21e6d90a00ba99" category="cell">このCloud Volumes ONTAPシステムで使用するために、異なる Azure 資格情報と異なる Azure サブスクリプションを選択できます。従量課金制のCloud Volumes ONTAPシステムを展開するには、Azure Marketplace サブスクリプションを選択した Azure サブスクリプションに関連付ける必要があります。<block ref="98943363349c15c5ca45ca1071953478" category="inline-link-rx"></block> 。</block>
   <block id="6e978eee8b2ba1df5efd8ad23190d2b1" category="list-text">*サービス*: Cloud Volumes ONTAPで使用する、または使用しないサービスを個別に有効または無効にします。</block>
@@ -3429,7 +3425,6 @@
   <block id="c816d65f45a034b0842bc039567fcb6b" category="doc">Google Cloud でのCloud Volumes ONTAPのクイック スタート</block>
   <block id="7eabb2e6d7d4264da61ea84926d7fe73" category="paragraph">数ステップで Google Cloud のCloud Volumes ONTAPを使い始めましょう。</block>
   <block id="bc618e169a194e52cf3cda45248d2233" category="inline-link">Google Cloud でコンソール エージェントを作成する方法を学びます</block>
-  <block id="897df6d645b3314e697336433766c964" category="paragraph">もしあなたが<block ref="4904e0ade41e67aed0599ec8d3057702" category="inline-link-rx"></block>まだ作成する必要があります。<block ref="6fbe20fc98df7fdcdfda6aa4ca0d8457" category="inline-link-rx"></block></block>
   <block id="a33f1bc6dad6a67c55fc88bee144e89a" category="paragraph">コンソールでは、ワークロード要件に一致する事前構成済みのパッケージが提供されており、独自の構成を作成することもできます。独自の構成を選択する場合は、利用可能なオプションを理解する必要があります。</block>
   <block id="2529fbdc4c253bec28669839cfb92bd4" category="inline-link-macro">構成の計画について詳しくは</block>
   <block id="e0bce116621fe62848ab384f3d3a607f" category="paragraph"><block ref="efb0a51bcf2d14d25bf3c3e32647f9b6" category="inline-link-macro-rx"></block> 。</block>
@@ -3448,8 +3443,6 @@
   <block id="7da2790af32ce3a63a33070eb62bb34c" category="paragraph">*システムの追加*をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を完了します。<block ref="e7b659d6e9cf4401150cabbf78e23874" category="inline-link-macro-rx"></block> 。</block>
   <block id="197777354bca1ba571710196ebfa88ed" category="inline-link">コンソールエージェントの作成</block>
   <block id="ee909f7ffffad98d1888aab3e0e63db9" category="list-text"><block ref="ee909f7ffffad98d1888aab3e0e63db9" category="inline-link-rx"></block></block>
-  <block id="cc01937e80a0b2fa1bea286192bd76e7" category="inline-link">コンソールが Google Cloud の権限で実行する処理</block>
-  <block id="ece29c1b0997073e0c67c5e9e1c7f930" category="list-text"><block ref="ece29c1b0997073e0c67c5e9e1c7f930" category="inline-link-rx"></block></block>
   <block id="3522be3c31d2b76f91f779f655a0d48e" category="summary">サードパーティのキー管理サービスには、Google のキー管理サービスをご利用ください。</block>
   <block id="e35e4a3b0dde1d61e0fbd30f69e261c0" category="doc">Google Cloud KMS でCloud Volumes ONTAP の暗号化キーを管理する</block>
   <block id="0dbdff8ed1ef0e78c4dc84ace48205d6" category="inline-link-macro">Google Cloud Platform の鍵管理サービス (Cloud KMS)</block>
@@ -3993,11 +3986,9 @@
   <block id="a0d106b3df91a5c40e846d04e0e0b072" category="paragraph">Cloud Volumes ONTAP 9.11.1 以降では、ライセンスに基づいて、特定の構成で複数のストレージ VM がサポートされるようになりました。参照<block ref="7a96f232274f5a7cebcb1f6a52cc095f" category="inline-link-rx"></block>お使いのCloud Volumes ONTAPのバージョンでサポートされているストレージ VM の数を確認します。</block>
   <block id="ff1d242daadf495829811b6d2313264b" category="paragraph">Cloud Volumes ONTAP 9.11.1 より前のすべてのバージョンでは、災害復旧に使用される 1 つのデータ提供ストレージ VM と 1 つの宛先ストレージ VM がサポートされます。ソース ストレージ VM に障害が発生した場合、データ アクセス用に宛先ストレージ VM をアクティブ化できます。</block>
   <block id="9fb17f61d770951d327021f3fa633d3a" category="paragraph">構成とライセンスの種類に基づいて、API を使用して、単一ノード システムまたは高可用性 (HA) 構成で複数のストレージ VM を作成できます。</block>
-  <block id="348da0153d95a4ebac8d5064003d4c78" category="paragraph">コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を作成するための特定の権限が必要です。必要な権限は以下に記載されています<block ref="fef452a667b371049bf1cd426aa1994a" category="inline-link-rx"></block>。</block>
   <block id="e977b05b15a8ef8166d6f1b02e35c6b2" category="paragraph"><block ref="6e37cda7be8f481fee7b895bd6ef924b" prefix="" category="inline-code"></block></block>
   <block id="3fab6f26ccc1354a7fda62c947fe176d" category="paragraph"><block ref="4ae3965c67ec8b00b8c07c6aa50d0d55" prefix="" category="inline-code"></block></block>
   <block id="2ee20619a771993544eaaa7e388816d1" category="section-title">ストレージVMの管理</block>
-  <block id="caf223860199c4d0ca4f7a300227f107" category="paragraph">コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を管理するために特定の権限が必要です。必要な権限は以下に記載されています<block ref="fef452a667b371049bf1cd426aa1994a" category="inline-link-rx"></block>。</block>
   <block id="6e83351c7140a73a80f6aa71737f9b85" category="paragraph"><block ref="45b320aa1fbd1ba6a383c6d97e969596" prefix="" category="inline-code"></block></block>
   <block id="491f4afb4d76ae587fca5e7ac986bec8" category="paragraph"><block ref="6c678c0fbac1c8687769d59bba8c2b43" prefix="" category="inline-code"></block></block>
   <block id="a9af7c87eb41a9d84e4ba955ed5e362a" category="paragraph"><block ref="ebad9fc4a1b1055372f941aefa20d14b" prefix="" category="inline-code"></block></block>
@@ -4122,7 +4113,6 @@
   <block id="0d705fad98d8ea6c4ffe75e2508e2f92" category="section-title">GCP でシステムのサイズを決める</block>
   <block id="d1d964d1db8731b3b8174fa845b85de0" category="paragraph">Cloud Volumes ONTAPシステムのサイズを設定すると、パフォーマンスと容量の要件を満たすことができます。マシン タイプ、ディスク タイプ、ディスク サイズを選択するときは、いくつかの重要なポイントに注意する必要があります。</block>
   <block id="3ea4bf9da7622edeeae1bf80e9c5cded" category="list-text">機械の種類</block>
-  <block id="c216ce09fef0e1ef250512b3b43005f3" category="list-text">サポートされているマシンタイプについては、<block ref="f922a7787320953a33ee2591f979f78c" category="inline-link-rx"></block>次に、サポートされている各マシンタイプに関する Google の詳細を確認します。ワークロード要件を、マシンタイプの vCPU とメモリの数に合わせてください。各 CPU コアによってネットワーク パフォーマンスが向上することに注意してください。</block>
   <block id="33163c406a5fa4e618c360f9d6a2cf33" category="paragraph">詳細については、以下を参照してください。</block>
   <block id="0bf615a24a0089df1397d456b7c9a111" category="inline-link">Google Cloud ドキュメント: N1 標準マシンタイプ</block>
   <block id="4a8c0d1957b124297f183a32fe967b94" category="list-text"><block ref="4a8c0d1957b124297f183a32fe967b94" category="inline-link-rx"></block></block>
@@ -4144,8 +4134,6 @@
   <block id="d29db19a7031b577f72b1a54c1c332f9" category="list-text"><block ref="d29db19a7031b577f72b1a54c1c332f9" category="inline-link-rx"></block></block>
   <block id="355d42a7e00bcba864628f034b15cddb" category="inline-link-macro">Google Cloud のCloud Volumes ONTAPシステムデータのデフォルト ディスクを表示する</block>
   <block id="b40468f6a6f2e8fcdc8714311aa1ef49" category="list-text"><block ref="009f20ff08fc44a35d564f14d4f86898" category="inline-link-macro-rx"></block> 。</block>
-  <block id="c5a8d51eba7ea9cbd6a8802865ba4525" category="inline-link">Google Cloud ドキュメント: リソース割り当て</block>
-  <block id="145245423d8490935c244989b30c7cd8" category="list-text"><block ref="145245423d8490935c244989b30c7cd8" category="inline-link-rx"></block></block>
   <block id="a4f07a5384bf6c0ff50811b7cfdaf1a5" category="paragraph">Google Cloud Compute Engine はリソース使用量に割り当て制限を適用するため、 Cloud Volumes ONTAP をデプロイする前に制限に達していないことを確認する必要があります。</block>
   <block id="24cf7e4ba799cb013c8978351f09a675" category="paragraph">GCP にCloud Volumes ONTAPをデプロイする場合は、仮想ネットワークの詳細を指定する必要があります。ワークシートを使用して管理者から情報を収集できます。</block>
   <block id="0708e6ef30240c1f7018e5cefe7026d8" category="paragraph">*単一ノードシステムのネットワーク情報*</block>
@@ -4545,7 +4533,6 @@
   <block id="896eba38b8484b6d3105e61aa3b17005" category="paragraph">次のセクションでは、それぞれの消費モデルを開始する方法について説明します。</block>
   <block id="824003e884884d7a86760223b7f8e790" category="paragraph">NetAppからライセンス (BYOL) を購入して前払いすることで、任意のクラウド プロバイダーにCloud Volumes ONTAPシステムを導入できます。</block>
   <block id="e8e4b0657c553a7e676cdc5f933acb44" category="inline-link">ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。</block>
-  <block id="c444f079b1cbf4fc53cc057613986256" category="list-text"><block ref="c444f079b1cbf4fc53cc057613986256" category="inline-link-rx"></block></block>
   <block id="31cfe21e9465f2898f2b13f830136b3b" category="inline-link">NetAppサポートサイトのアカウントをコンソールに追加します</block>
   <block id="5ecf86303666823b0a4cd97ebaa3b7f1" category="list-text"><block ref="5ecf86303666823b0a4cd97ebaa3b7f1" category="inline-link-rx"></block></block>
   <block id="3207026ba19ccd796b2c4277be209fbb" category="paragraph">コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがない場合、コンソールはライセンスを自動的にコンソールに追加します。</block>
@@ -4622,7 +4609,6 @@
   <block id="c76b7315caaa70d158328adc6f2de71a" category="paragraph">Google Cloud Storage では、データがディスクに書き込まれる前に常に暗号化されますが、API を使用して、_顧客管理の暗号化キー_ を使用するCloud Volumes ONTAPシステムを作成できます。これらは、Cloud Key Management Service を使用して GCP で生成および管理するキーです。</block>
   <block id="a8f2d7f368adf46fb8b80685bfc25d43" category="list-text">キーが保存されているプロジェクトにおいて、コンソール エージェント サービス アカウントにプロジェクト レベルでの適切な権限があることを確認します。</block>
   <block id="d8691a039deef120e0fc9c805510b54a" category="inline-link">デフォルトのサービスアカウント権限</block>
-  <block id="c48f5fc93390384ed93fb9ae8e4e9ba1" category="paragraph">権限は、<block ref="614605843f942b2bd654aa991560ae3f" category="inline-link-rx"></block>ただし、Cloud Key Management Service に代替プロジェクトを使用する場合は適用されない可能性があります。</block>
   <block id="8d6f8ae15f085c0f77796ef25c3e542f" category="paragraph">権限は次のとおりです。</block>
   <block id="e58a4fe969b25e78703eca19dbe150f4" category="inline-link">Google Compute Engine サービス エージェント</block>
   <block id="f83957d35ae58c124cdefecdb0acb6d2" category="list-text">サービスアカウントが<block ref="20c753a1b4fa297bc9e2c3ab9d93174c" category="inline-link-rx"></block>キーに対する Cloud KMS 暗号化/復号化権限を持っています。</block>
@@ -6030,4 +6016,19 @@
   <block id="77750efa6f5ff153acdc42067058017f" category="section-title">2025年11月10日</block>
   <block id="02fd9216d7e373ffe2ab6061c04d9957" category="list-text">9.17.1 P1</block>
   <block id="9ef810f213faea9695f8494f68387049" category="list-text">NetApp Consoleメニューから、*管理 &gt;Licenses and subscriptions*を選択します。</block>
+  <block id="0dcf4bc566ef97d86ea5d4e8c9eeb47e" category="paragraph">組織またはアカウント管理者が *容量管理モード* を手動に設定した場合、コンソールは容量の決定に対して適切なアクションを実行するように通知します。自動モードで説明したのと同じ例が手動モードにも当てはまりますが、アクションを受け入れるかどうかはユーザー次第です。</block>
+  <block id="960e4aa9a89b27c853f0f0ec13923352" category="list-text">システムでバックアップとリカバリを有効にした場合は、バックアップしたデータがまだ必要かどうかを確認し、<block ref="bc8ff6550ddd07d56e1ed6fd01d313a7" category="inline-link-rx"></block> 。</block>
+  <block id="a58939c6666594ae00b1f74a1f9e7acf" category="list-text">コンソールエージェントに関連付けられたサービスアカウント<block ref="7bbaad5d325a365e141c19bc8c6c20e4" category="inline-link-rx"></block></block>
+  <block id="ab07277ba1726fb034dc1a5175c30991" category="cell">タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、<block ref="1abe0bcd3eb326e50bf146cbf3498676" category="inline-link-rx"></block> 。</block>
+  <block id="2c92ed1407e789cf148d4d3fef74fce2" category="paragraph">もしあなたが<block ref="4904e0ade41e67aed0599ec8d3057702" category="inline-link-rx"></block>まだ作成する必要があります。<block ref="542284e53a05e7716b016385b411b993" category="inline-link-rx"></block></block>
+  <block id="1a24ebef5708132569792a414e03e094" category="inline-link">コンソール エージェントの Google Cloud 権限</block>
+  <block id="5cd6234ed5876cfff4313c1059d5b2d4" category="list-text"><block ref="5cd6234ed5876cfff4313c1059d5b2d4" category="inline-link-rx"></block></block>
+  <block id="66c139f63f65d235c84902ac03c6222b" category="paragraph">コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を作成するための特定の権限が必要です。必要な権限は以下に記載されています<block ref="150cae8225659a5aa7675c881f9a5cc1" category="inline-link-rx"></block>。</block>
+  <block id="ce8827210c3695ea4f8a100643e30b69" category="paragraph">コンソール エージェントには、Cloud Volumes ONTAP HA ペアのストレージ VM を管理するために特定の権限が必要です。必要な権限は以下に記載されています<block ref="150cae8225659a5aa7675c881f9a5cc1" category="inline-link-rx"></block>。</block>
+  <block id="0149e90332ffede347c082297556533c" category="list-text">サポートされているマシンタイプについては、<block ref="1c9d0b8b3abbf8a3a9e9744cc2e07f2b" category="inline-link-rx"></block>次に、サポートされている各マシンタイプに関する Google の詳細を確認します。ワークロード要件を、マシンタイプの vCPU とメモリの数に合わせてください。各 CPU コアによってネットワーク パフォーマンスが向上することに注意してください。</block>
+  <block id="8d93fa64665aea42b7a074ee109fdf53" category="inline-link">Google Cloud ドキュメント: Cloud Quota の概要</block>
+  <block id="95e8ca8e33414869057ed1788b0a3337" category="list-text"><block ref="95e8ca8e33414869057ed1788b0a3337" category="inline-link-rx"></block></block>
+  <block id="6920fd41cd14b48105100b96e3d5d510" category="list-text"><block ref="6920fd41cd14b48105100b96e3d5d510" category="inline-link-rx"></block></block>
+  <block id="d2a3fb07a2adcb8cca2382c6d3d5d7a6" category="list-text"><block ref="d2a3fb07a2adcb8cca2382c6d3d5d7a6" category="inline-link-rx"></block></block>
+  <block id="5ef66ec02fde350f8efc4a0010bc6510" category="paragraph">権限は、<block ref="a04e88f94f3a5bdf7ad6d93ac83509bb" category="inline-link-rx"></block>ただし、Cloud Key Management Service に代替プロジェクトを使用する場合は適用されない可能性があります。</block>
 </blocks>
