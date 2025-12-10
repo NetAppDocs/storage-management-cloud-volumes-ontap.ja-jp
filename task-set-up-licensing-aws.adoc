@@ -49,7 +49,7 @@ link:task-deploying-otc-aws.html["AWS でCloud Volumes ONTAP を起動するた�
 
 容量ベースのライセンスでは、容量 1 TiB ごとにCloud Volumes ONTAPの料金を支払うことができます。容量ベースのライセンスは、Essentials パッケージまたは Professional パッケージというパッケージ形式で提供されます。
 
-Essentials および Professional パッケージは、次の消費モデルで利用できます。
+Essentials および Professional パッケージは、次の消費モデルまたは購入オプションで利用できます。
 
 * NetAppから購入したライセンス（BYOL）
 * AWS Marketplace からの時間単位従量課金制 (PAYGO) サブスクリプション
@@ -166,8 +166,20 @@ Keystoneサブスクリプションは、成長に応じて支払うサブスク
 +
 image:screenshot-keystone.png["Cloud Volumes ONTAPシステムを作成する際のKeystoneサブスクリプション オプションのスクリーンショット。"]
 
-
-
-
-
++
 link:task-deploying-otc-aws.html["AWS でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
+
+
+
+
+
+
+
+== ノードベースのライセンス
+
+ノードベースライセンスは、Cloud Volumes ONTAPの旧世代ライセンスです。ノードベースライセンスはNetApp （BYOL）から取得でき、特定のケースに限りライセンス更新に利用できます。詳細については、以下を参照してください。
+
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["ノードベースライセンスの提供終了"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"^]
+

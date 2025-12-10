@@ -74,6 +74,11 @@ Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volu
 
 
 --
+
+
+
+NOTE: 上記の条件を満たす環境で Premium SSD マネージド ディスクを選択した場合、コンソールは自動的に Premium SSD v2 マネージド ディスクを展開します。Premium SSD v1 マネージド ディスクに切り替えることはできません。
+
 ディスク:: 顧客データは、ローカル冗長ストレージ (LRS) 管理ディスクに保存されます。各ノードは他のノードのストレージにアクセスできます。追加のストレージも必要ですlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["ブート、ルート、パートナールート、コア、 NVRAMデータ"^]。
 ストレージアカウント:: ストレージ アカウントは、診断ログと BLOB ストレージへの階層化を処理するために、マネージド ディスク ベースの展開に使用されます。
 

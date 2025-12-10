@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: task-manage-perf-params-azure.html 
+keywords: azure, premium ssd v2, Premium SSDv2, performance parameters, cloud volumes ontap 
+summary: Azure の Premium SSD v2 ディスクのパフォーマンス パラメーターを構成します。 
+---
+= Azure のCloud Volumes ONTAPの Premium SSD v2 ディスク パフォーマンスを管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Premium SSD v2 ディスクの IOPS およびスループット パラメータを構成することで、Azure でのCloud Volumes ONTAP のパフォーマンスを最適化できます。この機能は、初期展開時ではなく、 Cloud Volumes ONTAP がAzure Premium SSD v2 ディスク タイプですでに展開されている場合にのみ使用できます。パフォーマンスを強化することで、Azure Premium SSD v2 ディスクの柔軟性と高パフォーマンス機能を最大限に活用できます。
+
+Premium SSD v2 ディスクは、低レイテンシ、高 IOPS、高スループットを備えた高速で信頼性の高いパフォーマンスを必要とするワークロードをサポートします。  IOPS とスループットの設定を調整することで、展開内のアグリゲートのパフォーマンスをカスタマイズできます。  Premium SSD v2ディスクの詳細については、以下を参照してください。 https://learn.microsoft.com/en-us/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli["Premium SSD v2ディスクを展開する"] 。
+
+API を使用して、Premium SSD v2 ディスク設定を変更するプロセスを自動化します。  Cloud Volumes ONTAP API呼び出しの実行については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^] 。
+
+.タスク概要
+* この機能は、Azure 単一可用性ゾーンでのCloud Volumes ONTAPデプロイメントに適用されます。
+* ディスク設定を変更すると、RAID グループまたはアグリゲートのパフォーマンスが均一に変更されます。アグリゲート内のすべてのディスクのパフォーマンスは同じレベルに調整され、アグリゲート全体で一貫したパフォーマンスが確保されます。
+* 変更は単一の集計に影響し、グループ内の他の集計には影響しません。
+* Cloud Volumes ONTAP の導入時またはNetApp Consoleでの容量最適化時に自動的にプロビジョニングされるか、API を通じて追加された Premium SSD v2 ディスクはすべて変更可能です。
+* ディスクのサイズ変更（ディスク容量の変更）はサポートされていません。
+
+
+.開始する前に
+Premium SSD v2 ディスクの IOPS およびスループット パラメータを構成する前に、次の点に注意してください。
+
+* Premium SSD v2 データ ディスクのみを選択していることを確認してください。  Premium SSD v1 ディスクまたはルート ディスクとブート ディスクは、この変更の対象外です。
+* 展開時にCloud Volumes ONTAPによって確立された事前構成済みのベースライン設定を、それぞれのディスク サイズの最小 IOPS およびスループット値として使用します。これらのベースライン設定は、Premium SSD v1 のパフォーマンス特性と一致しています。
+* IOPS とスループットの値を、ディスク サイズの最小ベースライン以上に設定します。たとえば、1 TB のディスク サイズの場合、最小 IOPS 値を 5,000 に設定し、最小スループット値を 200 MBps に設定します。これらの最小値より高い値を設定することはできますが、より低い値は設定できません。
+* サポートされている Premium SSD v2 の範囲内で値を構成します (IOPS は 3000 ～ 80000、スループットは 125 ～ 1200 MBps)。
+* Premium SSD v2 ディスク サイズが、Azure のCloud Volumes ONTAPでサポートされている 500 GB ～ 32 TB の範囲内であることを確認します。これらのサイズ制限は、Azure が Premium SSD v2 ディスクに対して提供する最小値と最大値とは異なることに注意してください。
+
+
+.手順
+* IOPS とスループットの属性値を変更するには、次の API 呼び出しを使用します。
++
+
+NOTE: この API は 24 時間以内に最大 4 回呼び出すことができます。
+
++
+`PUT /azure/vsa/aggregates/{workingEnvironmentId}/{aggregateName}`
+
++
+リクエスト本文に次のパラメータを含めます。
+
++
+[source, json]
+----
+{
+  "aggregateName": "aggr_name",
+  "iops": "modified_iops_value",
+  "throughput": "modified_throughput_value",
+  "workingEnvironmentId": "we_id"
+}
+----
+
+
+.終了後の操作
+API が操作が成功したことを示す応答を返した後、 Cloud Volumes ONTAPシステムの Azure ポータルでディスクの詳細を確認して、変更されたパラメーターを確認します。
+
+.関連情報
+* https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["APIを使用する準備"^]
+* https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Cloud Volumes ONTAPワークフロー"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["必要な識別子を取得する"^]
+* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["Cloud Volumes ONTAPの REST API を使用する"^]
+* https://learn.microsoft.com/en-us/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI["可用性セット内の VM で Premium SSD v2 を使用する"^]
+

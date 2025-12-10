@@ -20,6 +20,34 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+== 2025年12月10日
+
+
+
+=== Azure の Premium SSD v2 ディスクのパフォーマンスを向上させる機能
+
+IOPS およびスループット パラメーターを変更することで、Azure の Premium SSD v2 マネージド ディスクのパフォーマンスを向上できるようになりました。この機能を使用すると、ワークロード要件に基づいてシステムのストレージ パフォーマンスを最適化できます。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-perf-params-azure.html["Azure のCloud Volumes ONTAPの Premium SSD v2 ディスク パフォーマンスを管理する"^]。
+
+
+
+=== Essentialsライセンスの超過料金の簡素化
+
+Cloud Volumes ONTAPマーケットプレイスの年間契約/プライベート オファーの場合、Essentials ライセンスの超過計算が Bring Your Own License (BYOL) パッケージと一致するようになりました。以前は、超過分は、Essentials パッケージそのものに対して、時間単位のマーケットプレイス料金で請求されていました。現在、マーケットプレイスの年間契約に複数の Essentials パッケージが含まれている場合、 NetApp Consoleは、サブスクリプション内のより高額な Essentials パッケージの利用可能な容量に対して、Essentials パッケージの超過料金を請求します。これにより、Essentials パッケージの超過計算が簡素化され、BYOL ライセンスからサブスクリプション ベースのモデルへのスムーズな移行が保証されます。
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing-charging.html#how-overages-are-charged-for-essentials-licenses["Essentialsライセンスの超過料金の請求方法"^]
+
+
+
+=== Azure Edsv6 サイズ シリーズのサポート
+
+Cloud Volumes ONTAP 9.17.1 以降では、新しいCloud Volumes ONTAPインスタンス用に、 NetApp Consoleを通じて Azure Edsv6 シリーズ VM をデプロイできます。 Cloud Volumes ONTAP 9.17.1 以降では、新しいデプロイメントでは第 2 世代 VM のみがサポートされます。これらの第 2 世代マシンは、Unified Extensible Firmware Interface (UEFI)、Azure Boost システム、NVMe などの最新テクノロジと互換性があります。これらは、データベース サーバーや分析エンジンなど、高速なローカル ストレージを必要とするメモリを大量に消費するシステムやアプリケーションに最適です。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#supported-configurations-by-license["Azure でサポートされるCloud Volumes ONTAPの構成"^]
+
+
+
 == 2025年11月10日
 
 
@@ -47,6 +75,18 @@ NetApp Consoleを介した Azure でのCloud Volumes ONTAP の展開とアップ
 * 展開: https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-versions.html#azure["Cloud Volumes ONTAPデプロイメントでサポートされているONTAPバージョン"^]
 * アップグレード: https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html#supported-upgrade-paths["Azure でサポートされているアップグレード パス"^]
 
+
+
+
+== 2025年11月11日
+
+
+
+=== Cloud Volumes ONTAPの推奨課金オプション
+
+使用量と超過料金を計算するために、希望する課金オプションを選択できるようになりました。 2025 年 6 月 25 日から BYOL ライセンスが限定的に利用可能になったことを受けて、 NetApp はNetApp Consoleの *ライセンスとサブスクリプション* セクションで推奨される課金方法を提供しています。請求と超過料金については、年間マーケットプレイス サブスクリプションを使用するか、既存のライセンス (BYOL) モデルのいずれかを使用できます。これにより、組織の財務戦略と使用パターンに最適な課金方法を柔軟に選択できるようになります。
+
+詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing-charging.html#minimum-charge["請求と超過料金"^] 。
 
 
 
