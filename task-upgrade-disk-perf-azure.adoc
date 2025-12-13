@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: task-upgrade-disk-perf-azure.html 
+keywords: azure, premium ssd v2, Premium SSDv2, performance parameters, cloud volumes ontap 
+summary: Azure の Premium SSD v2 ディスクのパフォーマンス パラメーターを構成します。 
+---
+= Azure のCloud Volumes ONTAPで Premium SSD ディスクのパフォーマンス層を変更する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure ポータルを使用して、Azure のCloud Volumes ONTAPの Premium SSD マネージド ディスクのパフォーマンス層をアップグレードできます。これは、各 Premium SSD ディスクのディスク層をより高いパフォーマンス層に変更する手動プロセスです。NVRAMディスクのパフォーマンス層を変更すると、IOPS とスループット機能が向上し、パフォーマンスのボトルネックが軽減され、 Cloud Volumes ONTAPシステムの効率が向上します。
+
+.タスク概要
+* デフォルトでは、Azure のCloud Volumes ONTAP は、P20 層のNVRAM用に Premium SSD ディスクをデプロイします。P20 層は、ほとんどのワークロードに適したバランスの取れたパフォーマンスを提供します。ただし、ワークロードでより高いパフォーマンスが求められる場合は、 NVRAMディスクを P30 などの上位層にアップグレードできます。
++
+
+TIP: 現在、 NVRAMディスクを P20 層から P30 層にアップグレードできるのは、Azure ポータル経由のみです。
+
+* ディスクのサイズは変更しません。引き続き512GBのままです。この手順では、ディスクのパフォーマンス層のみが変更されます。
+
+
+.開始する前に
+* Cloud Volumes ONTAPバージョンは 9.11.1 以降である必要があります。それより低いバージョンの場合は、9.11.1 以降にアップグレードするか、 NetAppサポートに Feature Policy Variation Request (FPVR) を提出することができます。
+* NetAppサポートと連携して、ご使用の環境で発生しているボトルネックの原因がNVRAMディスクにあるかどうかを確認し、層のアップグレードによって問題が解決されるようにしてください。
++
+
+NOTE: NVRAMディスクをより高いパフォーマンス層にアップグレードすると追加のコストが発生するため、この変更の必要性を慎重に評価することが重要です。
+
+
+
+.手順
+このシナリオでは、2つのノードがあることを前提としています `node01` そして `node02` Cloud Volumes ONTAP高可用性 (HA) 展開において。Azure ポータルを使用して層をアップグレードします。
+
+. このコマンドを実行すると `node1` アクティブノード。手動でフェイルオーバーする `node02`。
++
+`storage failover takeover -ofnode <Node02>`
+
+. Azure ポータルにSign in。
+. テイクオーバーが完了したら、VMインスタンスに移動して `node02`をクリックし、[停止] ボタンをクリックして電源をオフにします。
+. リソースグループに移動します `node02` ディスクのリストから、階層を変更するNVRAMディスクを選択します。
+. *サイズ + パフォーマンス*を選択します。
+. *パフォーマンス層*ドロップダウンで、 `P30 - 5000 IOPS, 200MB/s`。
+. *サイズ変更*を選択します。
+. スイッチオン `node02` 実例。
+. 次のメッセージが表示されるまで、Azure シリアル コンソールを確認します。 `waiting for giveback`。
+. このコマンドを実行して返還してください `node02`:
++
+`storage failover giveback -ofnode <Node02>`
+
+. これらの手順を繰り返す `node01` 作る `node02` 引き継ぐ `node01`NVRAMディスク層をアップグレードできるように `node01`。
+
+
+.終了後の操作
+両方のノードをオンにしたら、 Cloud Volumes ONTAPシステムの Azure ポータルでディスクの詳細を確認して、変更されたパラメータを確認します。
+
+.関連情報
+* Azure ドキュメント: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-performance-tiers?tabs=portal["ダウンタイムなしでパフォーマンス層を変更する"^]
+* サポート チーム向けのナレッジ ベース: https://kb.netapp.com/Cloud/Azure_NetApp_Files/How_to_upgrade_performance_tier_of_NVRAM_disk_in_Azure_CVO["Azure CVO でNVRAMディスクのパフォーマンス レベルをアップグレードする方法"^]
+* link:task-updating-ontap-cloud.html["Cloud Volumes ONTAPソフトウェアのバージョンをアップグレードする"]
+

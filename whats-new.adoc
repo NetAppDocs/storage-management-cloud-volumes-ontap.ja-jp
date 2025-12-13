@@ -951,6 +951,16 @@ Azure のオーストラリア東部リージョンでは、 Cloud Volumes ONTAP
 
 
 
+=== HAメディエーターのAWS IAMポリシーに新しい権限が追加されました
+
+Cloud Volumes ONTAP高可用性 (HA) 環境の HA メディエーターの IAM ポリシーに、次の新しい AWS 権限が追加されました。
+
+* sts:役割を担う
+* ec2:サブネットの説明
+
+
+
+
 == 2023年4月4日
 
 

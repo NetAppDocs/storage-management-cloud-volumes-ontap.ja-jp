@@ -175,9 +175,13 @@ sidebar:
         url: "/task-manage-aggregates.html"
       - title: 容量設定を管理する
         url: "/task-manage-capacity-settings.html"
-      - title: Azure で Premium SSD v2 ディスクのパフォーマンスを管理する
+      - title: Azure でディスク パフォーマンスを管理する
         flavor: azure
-        url: "/task-manage-perf-params-azure.html"
+        entries:
+        - title: Azure で Premium SSD v2 ディスクのパフォーマンスを管理する
+          url: "/task-manage-perf-params-azure.html"
+        - title: Azure のディスク パフォーマンス層をアップグレードする
+          url: "/task-upgrade-disk-perf-azure.html"
     - title: ストレージVM管理
       entries:
       - title: ストレージVMの操作

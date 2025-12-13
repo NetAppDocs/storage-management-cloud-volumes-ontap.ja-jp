@@ -6083,4 +6083,38 @@
   <block id="174dd97dd1f160583ac76fa482fa6a5e" category="section-title">2025年12月10日</block>
   <block id="1760c97f466ea374318a8c0bedcb2aff" category="section-title">2025年11月11日</block>
   <block id="291909ca7f153a0249c5e8ab37e16843" category="sidebar">Azure で Premium SSD v2 ディスクのパフォーマンスを管理する</block>
+  <block id="0494190504419ddec15209e57cb422e1" category="doc">Azure のCloud Volumes ONTAPで Premium SSD ディスクのパフォーマンス層を変更する</block>
+  <block id="953d65863cd6da0e48671f2a30151ae4" category="paragraph">Azure ポータルを使用して、Azure のCloud Volumes ONTAPの Premium SSD マネージド ディスクのパフォーマンス層をアップグレードできます。これは、各 Premium SSD ディスクのディスク層をより高いパフォーマンス層に変更する手動プロセスです。NVRAMディスクのパフォーマンス層を変更すると、IOPS とスループット機能が向上し、パフォーマンスのボトルネックが軽減され、 Cloud Volumes ONTAPシステムの効率が向上します。</block>
+  <block id="39264f9aea8b7bf4280c732e8f7fcce0" category="list-text">デフォルトでは、Azure のCloud Volumes ONTAP は、P20 層のNVRAM用に Premium SSD ディスクをデプロイします。P20 層は、ほとんどのワークロードに適したバランスの取れたパフォーマンスを提供します。ただし、ワークロードでより高いパフォーマンスが求められる場合は、 NVRAMディスクを P30 などの上位層にアップグレードできます。</block>
+  <block id="5984acab069d2008cdff0ddd10ef35a8" category="admonition">現在、 NVRAMディスクを P20 層から P30 層にアップグレードできるのは、Azure ポータル経由のみです。</block>
+  <block id="686adea694e622fed8c665723cc0407f" category="list-text">ディスクのサイズは変更しません。引き続き512GBのままです。この手順では、ディスクのパフォーマンス層のみが変更されます。</block>
+  <block id="60148540e7bc47a2a5cb3aa5c6669625" category="list-text">Cloud Volumes ONTAPバージョンは 9.11.1 以降である必要があります。それより低いバージョンの場合は、9.11.1 以降にアップグレードするか、 NetAppサポートに Feature Policy Variation Request (FPVR) を提出することができます。</block>
+  <block id="a779e934fd58bae998629bc70c905a6e" category="list-text">NetAppサポートと連携して、ご使用の環境で発生しているボトルネックの原因がNVRAMディスクにあるかどうかを確認し、層のアップグレードによって問題が解決されるようにしてください。</block>
+  <block id="d7cdcc7698a8a9000d22166d03400c69" category="admonition">NVRAMディスクをより高いパフォーマンス層にアップグレードすると追加のコストが発生するため、この変更の必要性を慎重に評価することが重要です。</block>
+  <block id="9d0625da71c4c34eb7b785d5b10361f5" category="paragraph">このシナリオでは、2つのノードがあることを前提としています<block ref="705cc8c4aab2c0dfb3a3f280da16760d" prefix=" " category="inline-code"></block> そして<block ref="f43c51286fe1559c6253e0b37ec045c6" prefix=" " category="inline-code"></block> Cloud Volumes ONTAP高可用性 (HA) 展開において。Azure ポータルを使用して層をアップグレードします。</block>
+  <block id="1e723d832b26dbdada01d30484af1ea6" category="list-text">このコマンドを実行すると<block ref="164546f60261c7e4be0c5f5f9aaeec86" prefix=" " category="inline-code"></block> アクティブノード。手動でフェイルオーバーする<block ref="f43c51286fe1559c6253e0b37ec045c6" prefix=" " category="inline-code"></block>。</block>
+  <block id="e4a4efef44785c5db0774c22b88b3301" category="paragraph"><block ref="be0eb3f3fba241dc79337017002bd31a" prefix="" category="inline-code"></block></block>
+  <block id="58c59ab4d5d488609913efa7b1daaa31" category="list-text">Azure ポータルにSign in。</block>
+  <block id="5f941e16410c688a40f0976c92426378" category="list-text">テイクオーバーが完了したら、VMインスタンスに移動して<block ref="f43c51286fe1559c6253e0b37ec045c6" prefix=" " category="inline-code"></block>をクリックし、[停止] ボタンをクリックして電源をオフにします。</block>
+  <block id="08ef635e7ab7c2978a8da0246a2bef1e" category="list-text">リソースグループに移動します<block ref="f43c51286fe1559c6253e0b37ec045c6" prefix=" " category="inline-code"></block> ディスクのリストから、階層を変更するNVRAMディスクを選択します。</block>
+  <block id="19780f0029ed99e7c8b502886df9f61f" category="list-text">*サイズ + パフォーマンス*を選択します。</block>
+  <block id="114a05fccf6c6aacd4de79acbf15dce2" category="list-text">*パフォーマンス層*ドロップダウンで、<block ref="28c0b52834e0a18e7e32e03630f485b8" prefix=" " category="inline-code"></block>。</block>
+  <block id="90767910461b8d70bc912f880d198275" category="list-text">スイッチオン<block ref="f43c51286fe1559c6253e0b37ec045c6" prefix=" " category="inline-code"></block> 実例。</block>
+  <block id="cab445d1f093cc47b00fe708d24a08b6" category="list-text">次のメッセージが表示されるまで、Azure シリアル コンソールを確認します。<block ref="cbd30655d53ec6ae9cc96680b3199b33" prefix=" " category="inline-code"></block>。</block>
+  <block id="37080afbc9c16d84a8b0dcf8d15e364a" category="list-text">このコマンドを実行して返還してください<block ref="f43c51286fe1559c6253e0b37ec045c6" prefix=" " category="inline-code"></block>:</block>
+  <block id="d7291565eea042b359c1236f8e4b7fa0" category="paragraph"><block ref="bed89ee1fbafd66cbd4bcbc687800764" prefix="" category="inline-code"></block></block>
+  <block id="5a3ba098de21fbfe363af698dbd7dc32" category="list-text">これらの手順を繰り返す<block ref="705cc8c4aab2c0dfb3a3f280da16760d" prefix=" " category="inline-code"></block> 作る<block ref="f43c51286fe1559c6253e0b37ec045c6" prefix=" " category="inline-code"></block> 引き継ぐ<block ref="705cc8c4aab2c0dfb3a3f280da16760d" prefix=" " category="inline-code"></block>NVRAMディスク層をアップグレードできるように<block ref="705cc8c4aab2c0dfb3a3f280da16760d" prefix=" " category="inline-code"></block>。</block>
+  <block id="5e26e33ae428b86d29f0358799b6806e" category="paragraph">両方のノードをオンにしたら、 Cloud Volumes ONTAPシステムの Azure ポータルでディスクの詳細を確認して、変更されたパラメータを確認します。</block>
+  <block id="8861a5a41e4ab66de05c91c8f19bf580" category="inline-link">ダウンタイムなしでパフォーマンス層を変更する</block>
+  <block id="232bf8b7532401540b643eaaae491221" category="list-text">Azure ドキュメント:<block ref="4f2764b3c371428c87b46ab0450bdc24" category="inline-link-rx"></block></block>
+  <block id="8fa53b2742d3629d12d18aa0dbdee700" category="inline-link">Azure CVO でNVRAMディスクのパフォーマンス レベルをアップグレードする方法</block>
+  <block id="e82a97ebfb4ba5f5409423bac3464112" category="list-text">サポート チーム向けのナレッジ ベース:<block ref="aaedf48f4606cb96bd6bd11286951eb0" category="inline-link-rx"></block></block>
+  <block id="a34f75833ce4fc9abef409835960230b" category="inline-link-macro">Cloud Volumes ONTAPソフトウェアのバージョンをアップグレードする</block>
+  <block id="0a92e86070d4977bdb2b95640510156c" category="list-text"><block ref="0a92e86070d4977bdb2b95640510156c" category="inline-link-macro-rx"></block></block>
+  <block id="038989a859c1ace454721be15bd0d6dd" category="section-title">HAメディエーターのAWS IAMポリシーに新しい権限が追加されました</block>
+  <block id="d107a81761877e65b1d111ef64cd3c2a" category="paragraph">Cloud Volumes ONTAP高可用性 (HA) 環境の HA メディエーターの IAM ポリシーに、次の新しい AWS 権限が追加されました。</block>
+  <block id="60cfe31830d467874bb430da1683504e" category="list-text">sts:役割を担う</block>
+  <block id="fa70443be85a3feec8a5eb9d46413a96" category="list-text">ec2:サブネットの説明</block>
+  <block id="48f3ff89d323f3866cd390a624301cc2" category="sidebar">Azure でディスク パフォーマンスを管理する</block>
+  <block id="3cf9ca795dbee25a8b72a8475b07c0fc" category="sidebar">Azure のディスク パフォーマンス層をアップグレードする</block>
 </blocks>
