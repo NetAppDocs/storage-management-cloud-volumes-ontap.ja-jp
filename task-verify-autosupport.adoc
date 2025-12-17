@@ -43,18 +43,14 @@ TIP: HA ペアを使用している場合、HA メディエーターは発信イ
 
 == AutoSupport構成のトラブルシューティング
 
-アウトバウンド接続が利用できず、コンソールがCloud Volumes ONTAPシステムをコンソール エージェントをプロキシ サーバーとして使用するように構成できない場合は、コンソールから「<システム名> はAutoSupportメッセージを送信できません」というタイトルの通知が表示されます。
-
-おそらく、ネットワークの問題が原因でこのメッセージが表示されていると思われます。
-
-この問題に対処するには、次の手順に従ってください。
+アウトバウンド接続が利用できず、コンソールがCloud Volumes ONTAPシステムをコンソール エージェントをプロキシ サーバーとして使用するように構成できない場合は、システムがAutoSupportメッセージを送信できないという通知がコンソールから表示されます。この問題に対処するには、次の手順に従ってください。
 
 .手順
-. ONTAP CLI からシステムを管理できるように、 Cloud Volumes ONTAPシステムに SSH で接続します。
+. ONTAP CLI を使用するには、 Cloud Volumes ONTAPシステムに安全に接続します (SSH を使用)。
 +
 link:task-connecting-to-otc.html["Cloud Volumes ONTAPへのSSH接続方法を学ぶ"] 。
 
-. AutoSupportサブシステムの詳細なステータスを表示します。
+. AutoSupportサブシステムの詳細なステータスを確認します。
 +
 `autosupport check show-details`
 
@@ -95,9 +91,9 @@ link:task-connecting-to-otc.html["Cloud Volumes ONTAPへのSSH接続方法を学
     5 entries were displayed.
 ----
 +
-http-https カテゴリのステータスが「ok」の場合、 AutoSupportが適切に構成されており、メッセージを送信できることを意味します。
+http-httpsカテゴリのステータスが `OK` これは、 AutoSupportが適切に構成されており、メッセージを送信できることを意味します。
 
-. ステータスが正常でない場合は、各Cloud Volumes ONTAPノードのプロキシ URL を確認します。
+. そうでない場合は、各Cloud Volumes ONTAPノードのプロキシ URL を確認します。
 +
 `autosupport show -fields proxy-url`
 
@@ -109,37 +105,27 @@ http-https カテゴリのステータスが「ok」の場合、 AutoSupportが�
 +
 `autosupport check show-details`
 
-. ステータスがまだ失敗の場合、ポート 3128 経由でCloud Volumes ONTAPとコンソール エージェント間の接続があることを確認します。
-. 接続があることを確認した後もステータス ID が失敗する場合は、コンソール エージェントに SSH で接続します。
+. ステータスがまだ失敗の場合、ポート経由でCloud Volumes ONTAPとコンソールエージェント間の接続があることを確認してください。 `3128`。
+. 検証後もステータスが失敗の場合は、コンソール エージェントに SSH で接続します。
 +
 https://docs.netapp.com/us-en/bluexp-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm["コンソールエージェントの Linux VM への接続の詳細"^]
 
-. へ移動 `/opt/application/netapp/cloudmanager/docker_occm/data/`
-. プロキシ設定ファイルを開く `squid.conf`
-+
-ファイルの基本構造は次のとおりです。
-
+. へ移動 `/opt/application/netapp/cloudmanager/docker_occm/data/`。
+. プロキシ設定ファイルを開く `squid.conf`。ファイルの構造は次のとおりです。
 +
 [listing]
 ----
         http_port 3128
-        acl localnet src 172.31.0.0/16
-        acl azure_aws_metadata dst 169.254.169.254
-
-        http_access allow localnet
-        http_access deny azure_aws_metadata
-        http_access allow localhost
+        acl netapp_support dst support.netapp.com
+        http_access allow netapp_support
+        request_header_max_size 21 KB
+        reply_header_max_size 21 KB
         http_access deny all
+        httpd_suppress_version_string on
 ----
-+
-localnet src 値は、Cloud Volumes ONTAPシステムの CIDR です。
-
-. Cloud Volumes ONTAPシステムの CIDR ブロックがファイルに指定されている範囲内にない場合は、次のように値を更新するか、新しいエントリを追加します。
+. ファイルにCloud Volumes ONTAPシステムの CIDR ブロックのエントリがない場合は、新しいエントリを追加してアクセスを許可します。
 +
 `acl cvonet src <cidr>`
-
-+
-この新しいエントリを追加する場合は、許可エントリも追加することを忘れないでください。
 
 +
 `http_access allow cvonet`
@@ -151,21 +137,24 @@ localnet src 値は、Cloud Volumes ONTAPシステムの CIDR です。
 [listing]
 ----
         http_port 3128
-        acl localnet src 172.31.0.0/16
-        acl cvonet src 172.33.0.0/16
-        acl azure_aws_metadata dst 169.254.169.254
-
-        http_access allow localnet
+        acl netapp_support dst support.netapp.com
+        acl cvonet src <cidr>
+        http_access allow netapp_support
         http_access allow cvonet
-        http_access deny azure_aws_metadata
-        http_access allow localhost
+        request_header_max_size 21 KB
+        reply_header_max_size 21 KB
         http_access deny all
-----
-. 設定ファイルを編集した後、sudo としてプロキシ コンテナを再起動します。
-+
-`docker restart squid`
+        httpd_suppress_version_string on
 
-. Cloud Volumes ONTAP CLI に戻り、 Cloud Volumes ONTAP がAutoSupportメッセージを送信できることを確認します。
+----
+. 設定ファイルを編集した後、プロキシコンテナを再起動します。 `sudo`。次に、Docker または Podman のどちらを使用しているかに応じて、次のコマンドを実行します。
++
+Dockerの場合は、 `docker restart squid`。
+
++
+Podmanを使用している場合は、 `podman restart squid`。
+
+. ONTAP CLI に戻り、 Cloud Volumes ONTAP がAutoSupportメッセージを送信できることを確認します。
 +
 `autosupport check show-details`
 
