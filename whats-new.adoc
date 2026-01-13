@@ -20,6 +20,18 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+== 2026年1月12日
+
+
+
+=== Cloud Volumes ONTAPの推奨課金オプション
+
+Cloud Volumes ONTAPの使用量と超過分を計算するための優先課金オプションを選択できるようになりました。2025 年 6 月 25 日に Bring Your Own Licenses (BYOL)ライセンス モデルが限定的に利用可能になって以来、 NetApp はNetApp Consoleの *ライセンスとサブスクリプション* セクションに推奨される課金方法を追加しました。請求と超過料金については、年間マーケットプレイス サブスクリプションを使用するか、既存の BYOL モデルを優先オプションとして使用できます。これにより、組織の財務戦略と使用パターンに最適な課金方法を柔軟に選択できるようになります。
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing-charging.html#billing-preferences-and-overages["請求設定と超過料金"^]。
+
+
+
 == 2025年12月10日
 
 
@@ -75,18 +87,6 @@ NetApp Consoleを介した Azure でのCloud Volumes ONTAP の展開とアップ
 * 展開: https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-versions.html#azure["Cloud Volumes ONTAPデプロイメントでサポートされているONTAPバージョン"^]
 * アップグレード: https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html#supported-upgrade-paths["Azure でサポートされているアップグレード パス"^]
 
-
-
-
-== 2025年11月11日
-
-
-
-=== Cloud Volumes ONTAPの推奨課金オプション
-
-使用量と超過料金を計算するために、希望する課金オプションを選択できるようになりました。 2025 年 6 月 25 日から BYOL ライセンスが限定的に利用可能になったことを受けて、 NetApp はNetApp Consoleの *ライセンスとサブスクリプション* セクションで推奨される課金方法を提供しています。請求と超過料金については、年間マーケットプレイス サブスクリプションを使用するか、既存のライセンス (BYOL) モデルのいずれかを使用できます。これにより、組織の財務戦略と使用パターンに最適な課金方法を柔軟に選択できるようになります。
-
-詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing-charging.html#minimum-charge["請求と超過料金"^] 。
 
 
 
