@@ -46,6 +46,10 @@ Cloud Volumes ONTAP は、 ONTAP System Manager またはONTAP CLI ではなく�
 
 ifdef::aws[]
 
+
+
+==== AWS でサポートされているアップグレードパス
+
 [cols="2*"]
 |===
 | 現在のバージョン | 直接アップグレードできるバージョン 
@@ -147,6 +151,10 @@ endif::aws[]
 
 ifdef::azure[]
 
+
+
+==== Azure でサポートされているアップグレード パス
+
 [cols="2*"]
 |===
 | 現在のバージョン | 直接アップグレードできるバージョン 
@@ -180,6 +188,10 @@ Azure にCloud Volumes ONTAPの下位バージョンがある場合は、まず�
 endif::azure[]
 
 ifdef::gcp[]
+
+
+
+==== Google Cloud でサポートされているアップグレード パス
 
 [cols="2*"]
 |===
