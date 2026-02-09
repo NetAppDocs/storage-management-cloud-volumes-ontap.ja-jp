@@ -30,7 +30,7 @@ VPC Service Controls を使用すると、信頼できる境界外にある Goog
 
 == イメージ
 
-Cloud Volumes ONTAPとコンソールはどちらも、 NetAppによって管理されている GCP 内のプロジェクトのイメージを使用します。組織内でホストされていないイメージの使用をブロックするポリシーが組織にある場合、これはコンソールエージェントとCloud Volumes ONTAPの展開に影響する可能性があります。
+Cloud Volumes ONTAP と Console はどちらも、NetApp が管理する Google Cloud 内のプロジェクトのイメージを使用します。組織内でホストされていないイメージの使用をブロックするポリシーが組織にある場合、これは Console エージェントと Cloud Volumes ONTAP の導入に影響する可能性があります。
 
 手動インストール方法を使用してコンソール エージェントを手動で展開できますが、 Cloud Volumes ONTAPNetAppプロジェクトからイメージをプルする必要もあります。コンソール エージェントとCloud Volumes ONTAPをデプロイするには、許可リストを提供する必要があります。
 
@@ -54,7 +54,7 @@ VPC Service Controls を使用してこれらのイメージをプルするた�
 
 == VPC Service Controls 境界ポリシー
 
-ポリシーにより、VPC Service Controls ルールセットの例外が許可されます。ポリシーの詳細については、 https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#policy-model["GCP VPC サービスコントロールポリシードキュメント"^] 。
+ポリシーにより、VPC Service Controls ルールセットの例外が許可されます。ポリシーの詳細については、 https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#policy-model["Google Cloud VPC Service Controls Policy ドキュメント"^]を参照してください。
 
 コンソールに必要なポリシーを設定するには、組織内の VPC Service Controls 境界に移動し、次のポリシーを追加します。フィールドは、VPC Service Controls ポリシー ページで指定されたオプションと一致する必要があります。また、*すべての*ルールが必須であり、ルール セットでは *OR* パラメータを使用する必要があることにも注意してください。
 

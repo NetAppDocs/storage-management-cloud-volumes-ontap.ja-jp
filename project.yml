@@ -265,6 +265,8 @@ sidebar:
         entries:
         - title: マシンの種類を変更する
           url: "/task-change-gcp-machine.html"
+        - title: 既存のデプロイメントをInfrastructure Managerに変換する
+          url: "/task-gcp-dm-im-conv.html"
       - title: システムマネージャからの管理
         url: "/task-administer-advanced-view.html"
       - title: CLIからの管理

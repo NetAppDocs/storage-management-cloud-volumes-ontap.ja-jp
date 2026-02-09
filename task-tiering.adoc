@@ -26,7 +26,7 @@ summary: ホット データ用の SSD または HDD パフォーマンス層と
 [role="quick-margin-list"]
 ifdef::aws[]
 
-* AWS の場合、S3 への VPC エンドポイントが必要になります。<<コールドデータをAWS S3に階層化するための要件,詳細情報>> 。
+* AWSの場合、Amazon Simple Storage Service（Amazon S3）へのVPCエンドポイントが必要です。<<Requirements to tier cold data to AWS S3,詳細情報>>.
 
 
 endif::aws[]
@@ -142,9 +142,9 @@ ifdef::aws[]
 
 
 
-=== コールドデータをAWS S3に階層化するための要件
+=== コールドデータをAmazon S3に階層化するための要件
 
-Cloud Volumes ONTAP がS3 に接続されていることを確認します。この接続を提供する最善の方法は、S3 サービスへの VPC エンドポイントを作成することです。手順については、 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS ドキュメント: ゲートウェイエンドポイントの作成"^] 。
+Cloud Volumes ONTAPがAmazon S3に接続されていることを確認します。この接続を提供する最善の方法は、S3サービスへのVPCエンドポイントを作成することです。手順については、 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS ドキュメント: ゲートウェイエンドポイントの作成"^]を参照してください。
 
 VPC エンドポイントを作成するときは、 Cloud Volumes ONTAPインスタンスに対応するリージョン、VPC、ルートテーブルを選択してください。また、セキュリティ グループを変更して、S3 エンドポイントへのトラフィックを有効にする送信 HTTPS ルールを追加する必要があります。そうしないと、 Cloud Volumes ONTAP はS3 サービスに接続できません。
 
@@ -184,7 +184,7 @@ link:task-creating-gcp-service-account.html["このサービスアカウント�
 Cloud Volumes ONTAPシステムを作成するときに、このサービス アカウントを選択するように求められます。
 
 +
-デプロイ中にサービス アカウントを選択しない場合は、 Cloud Volumes ONTAPをシャットダウンし、Google Cloud コンソールに移動して、サービス アカウントをCloud Volumes ONTAPインスタンスに接続する必要があります。次のセクションで説明するように、データ階層化を有効にできます。
+展開時にサービスアカウントを選択しない場合は、Cloud Volumes ONTAPをシャットダウンし、Google Cloud Consoleにアクセスして、サービスアカウントをCloud Volumes ONTAPインスタンスに関連付ける必要があります。次のセクションで説明するように、データ階層化を有効にできます。
 
 * 顧客管理の暗号鍵を使用してバケットを暗号化するには、Google Cloud ストレージ バケットで鍵の使用を有効にします。
 +

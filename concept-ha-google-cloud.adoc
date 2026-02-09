@@ -57,7 +57,7 @@ NOTE: Cloud Volumes ONTAP 9.10.0 以前では、Debian 10 がメディエータ�
 
 --
 アップグレード:: Cloud Volumes ONTAPをアップグレードすると、 NetApp Consoleは必要に応じてメディエーター インスタンスも更新します。
-インスタンスへのアクセス:: Debianの場合、デフォルトのクラウドユーザーは `admin`。 Google Cloudは、 `admin` Google Cloud コンソールまたは gcloud コマンドラインから SSH アクセスが要求された場合のユーザー。指定できます `sudo`ルート権限を取得します。
+インスタンスへのアクセス:: Debianの場合、デフォルトのクラウドユーザーは `admin`です。Google Cloudは、Google Cloud Consoleまたはgcloudコマンドラインを通じてSSHアクセスがリクエストされると、 `admin`ユーザーの証明書を作成して追加します。 `sudo`を指定してルート権限を取得できます。
 サードパーティエージェント:: サードパーティ エージェントまたは VM 拡張機能は、メディエーター インスタンスではサポートされません。
 
 

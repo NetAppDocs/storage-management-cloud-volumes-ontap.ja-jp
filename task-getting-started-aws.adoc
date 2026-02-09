@@ -34,7 +34,7 @@ summary: 数ステップでCloud Volumes ONTAP for AWS を使い始めましょ�
 +
 インターネットにアクセスできない場所にCloud Volumes ONTAPを展開する場合、この手順は必要ありません。
 
-. S3 サービスへの VPC エンドポイントを設定します。
+. Amazon Simple Storage Service（Amazon S3）サービスへのVPCエンドポイントを設定します。
 +
 Cloud Volumes ONTAPから低コストのオブジェクト ストレージにコールド データを階層化する場合は、VPC エンドポイントが必要です。
 

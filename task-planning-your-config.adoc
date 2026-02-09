@@ -101,7 +101,7 @@ Cloud Volumes ONTAP は、 io1 ディスクを使用した Amazon EBS Elastic Vo
 * _スループット最適化 HDD (st1)_ ディスクは、低価格で高速かつ一貫したスループットを必要とする、頻繁にアクセスされるワークロード向けです。
 +
 
-NOTE: 接続性がないため、AWS ローカルゾーンでは AWS S3 へのデータ階層化は利用できません。
+NOTE: Cloud Volumes ONTAPシステムがAWS Local Zoneにある場合、Amazon Simple Storage Service（Amazon S3）へのデータ階層化はサポートされません。これは、Local Zone外のAmazon S3バケットへのアクセスにはレイテンシが高くなり、Cloud Volumes ONTAPのアクティビティに影響を与えるためです。
 
 
 

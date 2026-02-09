@@ -197,7 +197,7 @@ Cloud Volumes ONTAP は、 AWS ローカルゾーンのデータ階層化、ク�
 
 
 
-NOTE: Cloud Volumes ONTAP はこれらの構成のみをサポートします。 AWS ローカルゾーン構成でサポートされていないディスクタイプまたは不適格なインスタンスを選択すると、デプロイメントが失敗する可能性があります。接続性がないため、AWS ローカルゾーンでは AWS S3 へのデータ階層化は利用できません。
+NOTE: Cloud Volumes ONTAP はこれらの構成のみをサポートします。AWS Local Zone 構成でサポートされていないディスクタイプまたは不適格なインスタンスを選択すると、導入が失敗する可能性があります。Cloud Volumes ONTAP システムが AWS Local Zone にある場合、Amazon Simple Storage Service（Amazon S3）へのデータ階層化はサポートされません。Local Zone 外の Amazon S3 バケットへのアクセスはレイテンシが高くなり、Cloud Volumes ONTAP のアクティビティに影響を与えるためです。
 
 link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/features/?nc=sn&loc=2["AWS ドキュメント: ローカルゾーンの EC2 インスタンスタイプ"^] 。
 

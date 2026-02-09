@@ -1,0 +1,23 @@
+= Google Cloud Infrastructure Manager のサポート
+:allow-uri-read: 
+
+
+
+
+=== Google Cloud Infrastructure Manager のサポート
+
+Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しい導入において、 https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]（DM）の代わりに https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]（IM）をサポートするようになりました。Googleは、より高度なInfrastructure Managerのために、近い将来インフラストラクチャサービスとしてのDeployment Managerを廃止する予定です。
+
+Infrastructure Manager を使用して Cloud Volumes ONTAP を自動的に導入するか、変換ツールを実行して Deployment Manager の既存の導入を Infrastructure Manager に切り替えます。変換は 1 回限りのプロセスであり、その後、システムは自動的に Infrastructure Manager の使用を開始します。移行ツールの実行手順については https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-gcp-dm-im-conv.html["Google Cloud Infrastructure Manager 用に既存の Cloud Volumes ONTAP デプロイメントを設定"^]を参照してください。
+
+Infrastructure Manager を使用する Cloud Volumes ONTAP システムでは、Google Cloud Storage バケットを使用してデータとレコードを保存し、最初のデプロイメントのゾーンにデプロイメント レコードを保存します。これらのデプロイメント レコードは、後続のデプロイメントで再利用されます。これらのバケットには追加費用が発生する可能性がありますが、バケットやそのコンテンツを編集または削除しないでください：
+
+* `gs://netapp-cvo-infrastructure-manager-<project id>/dm-to-im-convert`：Cloud Volumes ONTAP Terraform ファイルを保管するため
+* `<gcp project number>-<region>-blueprint-config`：Google Cloud Terraform アーティファクトを保存するためのもの
+
+
+.関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-getting-started-gcp.html["Google CloudでCloud Volumes ONTAPを使い始める"^]
+* https://docs.netapp.com/us-en/console-setup-admin/whats-new.html#console-agent-4-2-0["NetApp Console Agent 4.2.0 リリースノート"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#gcp-permissions-change-log["Google Cloud Infrastructure Manager に必要な権限"^]
+

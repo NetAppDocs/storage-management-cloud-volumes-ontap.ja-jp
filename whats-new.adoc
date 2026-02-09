@@ -20,6 +20,30 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+== 2026年2月9日
+
+
+
+=== Google Cloud Infrastructure Manager のサポート
+
+Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しい導入において、 https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]（DM）の代わりに https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]（IM）をサポートするようになりました。Googleは、より高度なInfrastructure Managerのために、近い将来インフラストラクチャサービスとしてのDeployment Managerを廃止する予定です。
+
+Infrastructure Manager を使用して Cloud Volumes ONTAP を自動的に導入するか、変換ツールを実行して Deployment Manager の既存の導入を Infrastructure Manager に切り替えます。変換は 1 回限りのプロセスであり、その後、システムは自動的に Infrastructure Manager の使用を開始します。移行ツールの実行手順については https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-gcp-dm-im-conv.html["Google Cloud Infrastructure Manager 用に既存の Cloud Volumes ONTAP デプロイメントを設定"^]を参照してください。
+
+Infrastructure Manager を使用する Cloud Volumes ONTAP システムでは、Google Cloud Storage バケットを使用してデータとレコードを保存し、最初のデプロイメントのゾーンにデプロイメント レコードを保存します。これらのデプロイメント レコードは、後続のデプロイメントで再利用されます。これらのバケットには追加費用が発生する可能性がありますが、バケットやそのコンテンツを編集または削除しないでください：
+
+* `gs://netapp-cvo-infrastructure-manager-<project id>/dm-to-im-convert`：Cloud Volumes ONTAP Terraform ファイルを保管するため
+* `<gcp project number>-<region>-blueprint-config`：Google Cloud Terraform アーティファクトを保存するためのもの
+
+
+.関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-getting-started-gcp.html["Google CloudでCloud Volumes ONTAPを使い始める"^]
+* https://docs.netapp.com/us-en/console-setup-admin/whats-new.html#console-agent-4-2-0["NetApp Console Agent 4.2.0 リリースノート"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#gcp-permissions-change-log["Google Cloud Infrastructure Manager に必要な権限"^]
+
+
+
+
 == 2026年1月12日
 
 
@@ -1487,7 +1511,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[
 
 === S3 Glacier インスタント取得
 
-Amazon S3 Glacier Instant Retrieval ストレージクラスに階層化されたデータを保存できるようになりました。
+Amazon Simple Storage Service（Amazon S3）Glacier Instant Retrieval ストレージクラスに階層化されたデータを保存できるようになりました。
 
 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html#changing-the-storage-class-for-tiered-data["階層化データのストレージクラスを変更する方法を学ぶ"] 。
 
@@ -1861,7 +1885,7 @@ custom-4-16384 マシン タイプは、新しいCloud Volumes ONTAPシステム
 
 このマシン タイプで既存のシステムを実行している場合は、それを使い続けることもできますが、n2-standard-4 マシン タイプに切り替えることをお勧めします。
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["GCP でCloud Volumes ONTAPがサポートする構成を表示する"^] 。
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google Cloud でサポートされているCloud Volumes ONTAPの構成を表示します"^]。
 
 
 
@@ -2056,10 +2080,10 @@ image:screenshot_azure_az.gif["リージョンを選択した後に利用でき�
 
 === Google Cloud の大容量ディスク
 
-Cloud Volumes ONTAP は、GCP で 64 TB のディスクをサポートするようになりました。
+Cloud Volumes ONTAP が Google Cloud で 64 TB のディスクをサポートするようになりました。
 
 
-NOTE: GCP の制限により、ディスクのみの最大システム容量は 256 TB のままです。
+NOTE: Google Cloud の制限により、ディスクのみの最大システム容量は 256 TB のままとなります。
 
 
 

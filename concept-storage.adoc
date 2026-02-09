@@ -45,7 +45,7 @@ EBSストレージ:: AWS では、アグリゲートには最大 6 個の同じ�
 --
 最大ディスク サイズは 16 TiB です。
 
-基盤となる EBS ディスク タイプは、汎用 SSD (gp3 または gp2)、プロビジョニングされた IOPS SSD (io1)、またはスループット最適化 HDD (st1) のいずれかになります。  EBSディスクをAmazon S3とペアリングして、link:concept-data-tiering.html["低コストのオブジェクトストレージ"] 。
+基盤となる EBS ディスク タイプは、汎用 SSD （gp3 または gp2）、プロビジョニングされた IOPS SSD （io1）、またはスループット最適化 HDD （st1） のいずれかになります。EBS ディスクを Amazon Simple Storage Service （Amazon S3） とペアリングして link:concept-data-tiering.html["低コストのオブジェクトストレージ"] できます。
 
 
 NOTE: スループット最適化 HDD (st1) を使用する場合、オブジェクト ストレージへのデータの階層化は推奨されません。

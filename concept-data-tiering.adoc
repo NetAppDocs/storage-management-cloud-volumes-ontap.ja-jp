@@ -26,7 +26,7 @@ ifdef::aws[]
 
 == AWS におけるデータ階層化
 
-AWS でデータ階層化を有効にすると、 Cloud Volumes ONTAP はホットデータのパフォーマンス階層として EBS を使用し、非アクティブデータの容量階層として AWS S3 を使用します。
+AWSでデータ階層化を有効にすると、Cloud Volumes ONTAPはEBSをホットデータのパフォーマンス階層として使用し、Amazon Simple Storage Service（Amazon S3）を非アクティブなデータの容量階層として使用します。
 
 パフォーマンス層:: パフォーマンス層は、汎用 SSD (gp3 または gp2) またはプロビジョニングされた IOPS SSD (io1) にすることができます。
 +

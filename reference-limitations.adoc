@@ -31,9 +31,9 @@ NOTE: コンソールでFlexGroupボリュームを作成する機能は、将�
 
 == コンソールはCloud Volumes ONTAPを使用したS3をサポートしていません
 
-Cloud Volumes ONTAP はスケールアウト ストレージのオプションとして S3 をサポートしていますが、コンソールではこの機能の管理機能は提供されていません。 Cloud Volumes ONTAPから S3 クライアント アクセスを構成するには、CLI を使用するのがベスト プラクティスです。詳細については、 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-s3-cg/home.html["S3構成パワー ガイド"^] 。
+Cloud Volumes ONTAP は S3 をスケールアウト ストレージのオプションとしてサポートしていますが、 NetApp Console ではこの機能の管理機能は提供されません。Cloud Volumes ONTAP から S3 クライアントアクセスを設定するには、 CLI を使用するのがベストプラクティスです。詳細については、 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-s3-cg/home.html["ONTAP S3 構成パワーガイド"^]を参照してください。
 
-link:concept-client-protocols.html["S3およびその他のクライアントプロトコルに対するCloud Volumes ONTAPのサポートの詳細"] 。
+link:concept-client-protocols.html["Cloud Volumes ONTAP による ONTAP S3 およびその他のクライアントプロトコルのサポートの詳細"]。
 
 
 

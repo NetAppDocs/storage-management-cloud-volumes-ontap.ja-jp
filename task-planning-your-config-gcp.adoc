@@ -38,7 +38,7 @@ Cloud Volumes ONTAP は、ほとんどの Google Cloud リージョンでサポ�
 
 Cloud Volumes ONTAP は、選択したライセンス タイプに応じて、いくつかのマシン タイプをサポートします。
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["GCP でサポートされているCloud Volumes ONTAPの構成"^]
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google CloudでサポートされているCloud Volumes ONTAPの構成"^]
 
 
 
@@ -46,11 +46,11 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp
 
 Cloud Volumes ONTAPシステムの生の容量制限はライセンスに関連付けられています。追加の制限は、アグリゲートとボリュームのサイズに影響します。構成を計画する際には、これらの制限に注意する必要があります。
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html["GCP のCloud Volumes ONTAPのストレージ制限"^]
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html["Google CloudのCloud Volumes ONTAPのストレージ制限"^]
 
 
 
-== GCP でシステムのサイズを決める
+== Google Cloud でシステムのサイズを決定する
 
 Cloud Volumes ONTAPシステムのサイズを設定すると、パフォーマンスと容量の要件を満たすことができます。マシン タイプ、ディスク タイプ、ディスク サイズを選択するときは、いくつかの重要なポイントに注意する必要があります。
 
@@ -64,7 +64,7 @@ Cloud Volumes ONTAPシステムのサイズを設定すると、パフォーマ�
 
 
 --
-GCPのディスク タイプ:: Cloud Volumes ONTAPのボリュームを作成するときは、 Cloud Volumes ONTAP がディスクに使用する基盤となるクラウド ストレージを選択する必要があります。ディスク タイプは次のいずれかになります。
+ディスク タイプ:: Cloud Volumes ONTAPのボリュームを作成するときは、 Cloud Volumes ONTAP がディスクに使用する基盤となるクラウド ストレージを選択する必要があります。ディスク タイプは次のいずれかになります。
 +
 --
 * _ゾーン SSD 永続ディスク_: SSD 永続ディスクは、高レートのランダム IOPS を必要とするワークロードに最適です。
@@ -76,7 +76,7 @@ GCPのディスク タイプ:: Cloud Volumes ONTAPのボリュームを作成す
 
 
 --
-GCP ディスクサイズ:: Cloud Volumes ONTAPシステムをデプロイするときは、初期ディスク サイズを選択する必要があります。その後は、NetApp Consoleでシステムの容量を管理できるようになりますが、アグリゲートを自分で構築する場合は、次の点に注意してください。
+ディスク サイズ:: Cloud Volumes ONTAPシステムをデプロイするときは、初期ディスク サイズを選択する必要があります。その後は、NetApp Consoleでシステムの容量を管理できるようになりますが、アグリゲートを自分で構築する場合は、次の点に注意してください。
 +
 --
 * アグリゲート内のすべてのディスクは同じサイズである必要があります。
@@ -115,13 +115,13 @@ TIP: コンソール エージェントにはシステム ディスクも必要�
 
 == ネットワーク情報を収集する
 
-GCP にCloud Volumes ONTAPをデプロイする場合は、仮想ネットワークの詳細を指定する必要があります。ワークシートを使用して管理者から情報を収集できます。
+Google CloudにCloud Volumes ONTAPを導入する場合は、仮想ネットワークに関する詳細を指定する必要があります。ワークシートを使用して、管理者から情報を収集できます。
 
 *単一ノードシステムのネットワーク情報*
 
 [cols="30,70"]
 |===
-| GCPの情報 | あなたの価値 
+| Google Cloud 情報 | あなたの価値 
 
 
 | リージョン |  
@@ -142,7 +142,7 @@ GCP にCloud Volumes ONTAPをデプロイする場合は、仮想ネットワー
 
 [cols="30,70"]
 |===
-| GCPの情報 | あなたの価値 
+| Google Cloud 情報 | あなたの価値 
 
 
 | リージョン |  
@@ -175,7 +175,7 @@ GCP にCloud Volumes ONTAPをデプロイする場合は、仮想ネットワー
 
 [cols="30,70"]
 |===
-| GCPの情報 | あなたの価値 
+| Google Cloud 情報 | あなたの価値 
 
 
 | リージョン |  

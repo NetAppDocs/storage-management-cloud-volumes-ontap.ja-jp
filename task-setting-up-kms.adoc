@@ -102,7 +102,7 @@ image:screenshot_cmk_add_accounts_dialog.gif["このスクリーンショット�
 
 . カスタマー管理の CMK を使用している場合は、 Cloud Volumes ONTAP IAM ロールを _キー ユーザー_ として追加して、CMK のキー ポリシーを変更します。
 +
-Cloud Volumes ONTAPでデータ階層化を有効にし、S3 バケットに保存されているデータを暗号化する場合は、この手順が必要です。
+この手順は、Cloud Volumes ONTAP でデータ階層化を有効にし、Amazon Simple Storage Service（Amazon S3）バケットに保存されているデータを暗号化する場合に必要です。
 
 
 

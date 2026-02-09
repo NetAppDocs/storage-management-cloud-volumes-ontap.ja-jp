@@ -65,7 +65,7 @@ Cloud Volumes ONTAP はこれらのエンドポイントを使用してさまざ
 * アイデンティティとアクセス管理（IAM）
 * キー管理サービス (KMS)
 * セキュリティトークンサービス（STS）
-* シンプルストレージサービス（S3）
+* Amazon Simple Storage Service（S3）
 
 | AWS サービスとの通信。 | 標準モードとプライベートモード。 | Cloud Volumes ONTAP はAWS サービスと通信して AWS で特定の操作を実行することができません。 
 
@@ -222,7 +222,7 @@ TIP: コンソール エージェントに関する情報をお探しですか? 
 
 === データ階層化のための接続
 
-EBS をパフォーマンス層として使用し、AWS S3 を容量層として使用する場合は、 Cloud Volumes ONTAP がS3 に接続されていることを確認する必要があります。この接続を提供する最善の方法は、S3 サービスへの VPC エンドポイントを作成することです。手順については、 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS ドキュメント: ゲートウェイエンドポイントの作成"^] 。
+EBS をパフォーマンス層として、Amazon S3 を容量層として使用する場合は、Cloud Volumes ONTAP が S3 に接続していることを確認する必要があります。この接続を提供する最善の方法は、S3 サービスへの VPC エンドポイントを作成することです。手順については、 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS ドキュメント: ゲートウェイエンドポイントの作成"^]を参照してください。
 
 VPC エンドポイントを作成するときは、 Cloud Volumes ONTAPインスタンスに対応するリージョン、VPC、ルートテーブルを選択してください。また、セキュリティ グループを変更して、S3 エンドポイントへのトラフィックを有効にする送信 HTTPS ルールを追加する必要があります。そうしないと、 Cloud Volumes ONTAP はS3 サービスに接続できません。
 
