@@ -20,6 +20,18 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+== 2026年2月10日
+
+
+
+=== Cloud Volumes ONTAP 9.18.1 GA
+
+NetApp Console を使用して、AWS および Azure で Cloud Volumes ONTAP 9.18.1 の一般提供版を導入および管理できるようになりました。このバージョンは、Google Cloud でのデプロイおよびアップグレードには使用できません。
+
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^] 。
+
+
+
 == 2026年2月9日
 
 
@@ -142,7 +154,7 @@ NetApp Consoleは、強化され再構築されたBlueXP基盤上に構築され
 
 BlueXPを使用して、Azure および Google Cloud でCloud Volumes ONTAP 9.17.1 のリリース候補 1 をデプロイおよび管理できるようになりました。ただし、このバージョンは AWS でのデプロイおよびアップグレードには使用できません。
 
-link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^] 。
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-9171-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^]。
 
 
 
