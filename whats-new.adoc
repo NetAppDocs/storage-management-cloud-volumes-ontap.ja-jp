@@ -20,6 +20,24 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+== 2026年2月12日
+
+
+
+== Azure での Ebdsv5 および E104ids_v5 VM のサポート
+
+Cloud Volumes ONTAP 9.18.1以降では、シングルノードおよび高可用性（HA）環境の導入とアップグレードにEbdsv5およびE104ids_v5 VMを導入できます。
+
+Azure 仮想マシンの Eb ファミリ内の Ebdsv5 VM は、リモート ストレージのパフォーマンスを向上させるために最適化されています。これらの VM は、リレーショナル データベース、インメモリ分析、その他の要求の厳しいビジネス クリティカル アプリケーションなど、メモリを大量に消費し、I/O 負荷の高いエンタープライズ ワークロードに使用できます。
+
+E104ids_v5は、スケジュールされたメンテナンス期間をより適切に処理できる分離されたVMインスタンスです。E80ids_v4と比較すると、ディスク スループットとIOPSが大幅に向上し、全体的なネットワーク パフォーマンスも向上します。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Azure でサポートされるCloud Volumes ONTAPの構成"^]
+
+https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/edsv5-series?tabs=sizebasic["Azure ドキュメント：Edsv5 サイズ シリーズ"^]
+
+
+
 == 2026年2月10日
 
 
@@ -1477,7 +1495,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-enabling-private-l
 - compute.instanceGroups.get
 - compute.addresses.get
 ----
-単一ノード システムでストレージ VM を作成するには、 ONTAP CLI または System Manager を使用する必要があることに注意してください。
+単一ノード システムにストレージ VM を作成するには、ONTAP CLI または System Manager を使用する必要があることに注意してください。
 
 * https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html#storage-vm-limits["Google Cloud のストレージ VM 制限の詳細"^]
 * https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.html["Google Cloud でCloud Volumes ONTAP用のデータ提供ストレージ VM を作成する方法を学びます"]
@@ -1572,7 +1590,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp
 +
 以前は、 BlueXP はターゲット タグのない VPC-1、VPC-2、または VPC-3 のポリシーを表示しませんでした。
 
-* Google Cloud でCloud Volumes ONTAPシングルノード システムを作成するときに、事前定義されたファイアウォール ポリシーで、選択した VPC 内のトラフィックのみを許可するか（推奨）、すべての VPC 内のトラフィックを許可するかを選択できるようになりました。
+* Google Cloud で Cloud Volumes ONTAP シングルノード システムを作成する際に、事前定義されたファイアウォール ポリシーで、選択した VPC 内のトラフィックのみを許可するか（推奨）、すべての VPC 内のトラフィックを許可するかを選択できるようになりました。
 
 
 
@@ -1767,7 +1785,7 @@ Cloud Volumes ONTAP がAWS アジアパシフィック (大阪) リージョン 
 
 === ポート削減
 
-ポート 8023 と 49000 は、Azure のCloud Volumes ONTAPシステムでは、単一ノード システムと HA ペアの両方で開かなくなりました。
+ポート8023と49000は、単一ノード システムと HA ペアの両方について、Azure の Cloud Volumes ONTAP システムで開かなくなりました。
 
 この変更は、コネクタの 3.9.13 リリース以降の新しいCloud Volumes ONTAPシステムに適用されます。
 
@@ -2076,7 +2094,7 @@ AWS Outpost がある場合は、作業環境ウィザードで Outpost VPC を�
 
 === サポートされている Azure リージョンの Ultra SSD VNVRAM
 
-Cloud Volumes ONTAP、 E32s_v3 VM タイプを単一ノード システムで使用する場合、Ultra SSD を VNVRAM として使用できるようになりました。 https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd["サポートされているAzureリージョン"^] 。
+Cloud Volumes ONTAPは、シングルノードシステムでE32s_v3 VMタイプを使用する場合、Ultra SSDをVNVRAMとして使用できるようになりました https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd["サポートされているAzureリージョン"^]。
 
 VNVRAM は書き込みパフォーマンスが向上します。
 

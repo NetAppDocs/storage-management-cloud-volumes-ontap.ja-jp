@@ -153,7 +153,7 @@ NOTE: キーを設定したら、次の項目を選択したことを確認し�
 +
 *** *ソフト削除* (このオプションはデフォルトで有効になっていますが、無効にしないでください)
 *** *パージ保護*
-*** *ボリューム暗号化のための Azure Disk Encryption* (単一ノード システム、複数ゾーンの HA ペア、および HA 単一 AZ 展開の場合)
+*** *ボリューム暗号化のための Azure Disk Encryption*（単一ノード システム、複数ゾーンの HA ペア、および HA 単一 AZ 展開の場合）
 +
 
 NOTE: Azure カスタマー管理暗号化キーを使用するには、キー コンテナーに対して Azure Disk Encryption が有効になっている必要があります。
@@ -268,7 +268,7 @@ NOTE: 含める `"userAssignedIdentity": " userAssignedIdentityId"`このリソ�
 +
 https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-haworking-environments["このAPI呼び出しの詳細"^] 。
 
-.. 単一ノード システムの場合:
+.. 単一ノード システムの場合：
 +
 `POST /azure/vsa/working-environments`
 

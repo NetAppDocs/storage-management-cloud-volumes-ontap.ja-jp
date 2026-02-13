@@ -14,7 +14,7 @@ summary: NetApp Consoleで Cloud Cloud Volumes ONTAPシステムを作成する�
 
 
 [role="lead"]
-NetApp ConsoleでCloud Volumes ONTAPシステムを作成することにより、Azure で単一ノード システムまたは HA ペアを起動できます。
+Azureで単一ノードシステムまたはHAペアを起動するには、NetApp ConsoleでCloud Volumes ONTAPシステムを作成します。
 
 .開始する前に
 始める前に以下のものが必要です。
@@ -51,7 +51,7 @@ link:task-set-up-licensing-azure.html["ライセンスの設定方法を学ぶ"^
 
 == Azure でシングルノードのCloud Volumes ONTAPシステムを起動する
 
-Azure で単一ノードのCloud Volumes ONTAPシステムを起動する場合は、コンソールで単一ノード システムを作成する必要があります。
+Azure で単一ノードの Cloud Volumes ONTAP システムを起動する場合は、コンソールで単一ノード システムを作成する必要があります。
 
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。

@@ -68,7 +68,7 @@ ifdef::aws[]
 
 ==== AWS
 
-単一ノード システムを使用する場合、 Cloud Volumes ONTAP はすべてのインスタンス タイプで高速書き込み速度をサポートします。
+単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのインスタンス タイプで高速書き込み速度をサポートします。
 
 9.8 リリース以降、 Cloud Volumes ONTAP は、 m5.xlarge と r5.xlarge を除く、サポートされているほぼすべての EC2 インスタンス タイプを使用する場合、HA ペアによる高速書き込みをサポートします。
 
@@ -82,7 +82,7 @@ ifdef::azure[]
 
 ==== Azure
 
-単一ノード システムを使用する場合、 Cloud Volumes ONTAP はすべての VM タイプで高速書き込み速度をサポートします。
+単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのVMタイプで高速書き込み速度をサポートします。
 
 HA ペアを使用する場合、 Cloud Volumes ONTAP は、 9.8 リリース以降、いくつかの VM タイプで高速書き込み速度をサポートします。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Cloud Volumes ONTAPリリースノート"^]高速書き込みをサポートする VM タイプを表示します。
 
@@ -94,7 +94,7 @@ ifdef::gcp[]
 
 ==== Google Cloud
 
-単一ノード システムを使用する場合、 Cloud Volumes ONTAP はすべてのマシン タイプで高速書き込み速度をサポートします。
+単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのマシン タイプで高速書き込み速度をサポートします。
 
 HA ペアを使用する場合、 Cloud Volumes ONTAP は、 9.13.0 リリース以降、いくつかの VM タイプで高速書き込み速度をサポートします。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#supported-configurations-by-license["Cloud Volumes ONTAPリリースノート"^]高速書き込みをサポートする VM タイプを表示します。
 
