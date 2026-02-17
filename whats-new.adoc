@@ -20,6 +20,35 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+== 2026年2月17日
+
+
+
+=== 次世代の Google Cloud VM に対する Cloud Volumes ONTAP のサポート
+
+9.18.1では、NetAppは新しいCloud Volumes ONTAPデプロイメントをN2 VMから次世代のGoogle Cloud C3シリーズVMに移行し、より高速でスケーラブルなエクスペリエンスを実現します。Google CloudでCloud Volumes ONTAP 9.18.1以降をデプロイする際に、C3シリーズVMを活用できるようになりました。C3シリーズマシンは、Google Virtual NIC（gVNIC）とHyperdisk Balancedディスクを使用することで、パフォーマンスが向上し、容量制限が高まり、集中的なワークロードでも動的なパフォーマンスを確保します。
+
+
+NOTE: 今のところ、Cloud Volumes ONTAP は単一ノード展開でのみ C3 シリーズをサポートしています。
+
+Cloud Volumes ONTAPシステムが9.18.1以降を実行している場合、簡単なシングルノード展開に使用する事前設定済みパッケージは自動的にC3 VMを使用し、ワークロードのニーズに基づいてIOPSおよびスループットパラメータをカスタマイズできるようになります。同様に、アグリゲートを作成する際に、Hyperdisk Balancedディスクを追加して、Google Cloudでのパフォーマンスとスケーラビリティを向上させることができます。さらに、デフォルトのFlash Cacheサポート用にC3シリーズマシンのLSSDバリアントを選択することもできます。
+
+C3 は Hyperdisk Balanced ディスクのみをサポートしているため、アグリゲートにボリュームを追加するときに C3 VM のディスクタイプを変更することはできません。同様に、N2 VM タイプのシステムを C3 VM に複製する場合、ディスクタイプはデフォルトで Hyperdisk Balanced に設定されます。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google CloudでサポートされているCloud Volumes ONTAPの構成"^]
+
+https://docs.cloud.google.com/compute/docs/general-purpose-machines#c3_series["Google ドキュメント：C3 マシンシリーズ"^]
+
+
+
+=== AzureのCloud Volumes ONTAPのVNetセキュリティ
+
+Cloud Volumes ONTAP 9.18.1以降のAzure単一および複数の可用性ゾーンでの導入では、転送中のデータを保護するための多層セキュリティ戦略の一部として、Azure Virtual Network（VNet）暗号化をサポートしています。Cloud Volumes ONTAPは、AzureのネイティブなDatagram Transport Layer Security（DTLS）プロトコルを活用して、ONTAPノード、管理インターフェイス、およびその他のAzureサービス間の通信を保護し、傍受や不正アクセスを防止します。このネットワークレベルの暗号化は、ONTAPの組み込みストレージおよび保存データ保護機能を補完し、データのエンドツーエンドのセキュリティを提供します。
+
+https://review.docs.netapp.com/us-en/storage-management-cloud-volumes-ontap_gcp-sn-c3-support/reference-networking-azure.html#networking-for-azure-vnet-encryption["Azure VNet 暗号化のネットワーク"^]
+
+
+
 == 2026年2月12日
 
 
@@ -44,7 +73,7 @@ https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/
 
 === Cloud Volumes ONTAP 9.18.1 GA
 
-NetApp Console を使用して、AWS および Azure で Cloud Volumes ONTAP 9.18.1 の一般提供版を導入および管理できるようになりました。このバージョンは、Google Cloud でのデプロイおよびアップグレードには使用できません。
+NetApp Console を使用して、AWS、Azure、Google Cloud で Cloud Volumes ONTAP 9.18.1 の一般提供（GA）版を導入および管理できるようになりました。
 
 link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^] 。
 

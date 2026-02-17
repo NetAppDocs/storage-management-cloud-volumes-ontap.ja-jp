@@ -130,7 +130,7 @@ TIP: WORM とデータ階層化を利用する場合は、バックアップと�
 ** link:task-set-up-licensing-google.html["ライセンスの設定方法を学ぶ"^]
 
 
-. *事前構成済みパッケージ*: パッケージの 1 つを選択してCloud Volumes ONTAPシステムをすばやく展開するか、*独自の構成を作成*をクリックします。
+. *事前構成済みパッケージ*：パッケージの1つを選択してCloud Volumes ONTAPシステムを迅速に導入するか、*独自の構成を作成*をクリックします。事前構成済みパッケージは、選択したCloud Volumes ONTAPバージョンによって異なります。たとえば、Cloud Volumes ONTAP 9.18.1以降では、ConsoleにはHyperdisk Balancedディスクを含むC3 VMを含むパッケージが表示されます。ワークロードのニーズに応じて、IOPSやスループットパラメータなどの構成を変更できます。
 +
 いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認し、承認するだけです。
 
@@ -151,14 +151,9 @@ NOTE: 選択したバージョンに対して新しいリリース候補、一�
 
 . *フラッシュキャッシュ、書き込み速度、WORM*:
 +
-.. 必要に応じて、*フラッシュ キャッシュ* を有効にします。
+.. 必要に応じて、*Flash Cache* を有効にするか、*標準* または *高* の書き込み速度を選択します。
 +
-
-NOTE: Cloud Volumes ONTAP 9.13.1 以降、_Flash Cache_ は n2-standard-16、n2-standard-32、n2-standard-48、および n2-standard-64 インスタンス タイプでサポートされます。デプロイメント後に Flash Cache を無効にすることはできません。
-
-.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
-+
-link:concept-write-speed.html["書き込み速度について詳しくはこちら"] 。
+ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#flash-cache-support["Flash Cache"^]とlink:concept-write-speed.html["書き込み速度"]の詳細をご覧ください。
 
 +
 
@@ -388,14 +383,9 @@ NOTE: 選択したバージョンに対して新しいリリース候補、一�
 
 . *フラッシュキャッシュ、書き込み速度、WORM*:
 +
-.. 必要に応じて、*フラッシュ キャッシュ* を有効にします。
+.. 必要に応じて、*Flash Cache* を有効にするか、*標準* または *高* の書き込み速度を選択します。
 +
-
-NOTE: Cloud Volumes ONTAP 9.13.1 以降、_Flash Cache_ は n2-standard-16、n2-standard-32、n2-standard-48、および n2-standard-64 インスタンス タイプでサポートされます。デプロイメント後に Flash Cache を無効にすることはできません。
-
-.. 必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。
-+
-link:concept-write-speed.html["書き込み速度について詳しくはこちら"^] 。
+ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#flash-cache-support["Flash Cache"^]とlink:concept-write-speed.html["書き込み速度"]の詳細をご覧ください。
 
 +
 

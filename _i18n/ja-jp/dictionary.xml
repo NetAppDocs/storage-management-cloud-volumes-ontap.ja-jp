@@ -2116,15 +2116,12 @@
   <block id="7926415a130a1678f0dd302e6e12b7fc" category="paragraph">*tar.gz ファイルを抽出した後の出力例:*</block>
   <block id="d2a65c4b3d7d612fe9fcff1cd53a7468" category="summary">計画外のフェイルオーバー時間を短縮し、 Cloud Volumes ONTAPの NFSv4 サポートを有効にするには、Microsoft Azure の高可用性モードを有効にする必要があります。</block>
   <block id="2c01d75f7ab3854f30dad654b7836fd5" category="doc">AzureでCloud Volumes ONTAPの高可用性モードを有効にする</block>
-  <block id="b34a5fc19862373955bdfd46a3aadace" category="paragraph">計画外のフェイルオーバー時間を短縮し、 Cloud Volumes ONTAPの NFSv4 サポートを有効にするには、Microsoft Azure の高可用性 (HA) モードを有効にする必要があります。このモードでは、 Cloud Volumes ONTAP HA ノードは、CIFS および NFSv4 クライアントでの計画外のフェイルオーバー時に、低い (60 秒) 復旧時間目標 (RTO) を達成できます。</block>
   <block id="3cf5fe492293bbbf3d99776de821b378" category="paragraph">Cloud Volumes ONTAP 9.10.1 以降では、Microsoft Azure で実行されているCloud Volumes ONTAP HA ペアの計画外のフェイルオーバー時間を短縮し、NFSv4 のサポートを追加しました。これらの拡張機能をCloud Volumes ONTAPで利用できるようにするには、Azure サブスクリプションで高可用性機能を有効にする必要があります。</block>
-  <block id="9147c9811be891d51c8afc6c661283bd" category="paragraph">Azure サブスクリプションで機能を有効にする必要がある場合、 NetApp Consoleではこれらの詳細が求められます。</block>
   <block id="4b86a9bfe35da8d5b3e1175b8664656d" category="list-text">Cloud Volumes ONTAP HA ペアの高可用性に問題はありません。この Azure 機能はONTAPと連携して動作し、計画外のフェイルオーバー イベントによって発生する NFS プロトコルのクライアントで観測されるアプリケーション停止時間を短縮します。</block>
   <block id="74c86f2714a033254b4bc8058a066937" category="list-text">この機能を有効にしても、 Cloud Volumes ONTAP HA ペアは中断されません。</block>
   <block id="aede641e1d7acdfda83bae4962f9cad6" category="list-text">Azure サブスクリプションでこの機能を有効にしても、他の VM に問題は発生しません。</block>
   <block id="61d250b56c4dbcf65efb9a23e69575b2" category="list-text">Cloud Volumes ONTAP は、 CIFS および NFS クライアント上のクラスターおよび SVM 管理 LIF のフェイルオーバー中に内部 Azure ロード バランサーを使用します。</block>
   <block id="7d8b7e414092c32abfb47d483a738b9f" category="list-text">HA モードが有効になっている場合、コンソールは 12 時間ごとにシステムをスキャンして、Azure Load Balancer の内部ルールを更新します。</block>
-  <block id="3a3aee537f8eb946ce95b303a0b0cde6" category="paragraph">「所有者」権限を持つ Azure ユーザーは、Azure CLI からこの機能を有効にできます。</block>
   <block id="dede8f1d754e5872747fd6fdd219a9da" category="inline-link">Azure ポータルから Azure Cloud Shell にアクセスする</block>
   <block id="826fb3564b49a63adcbf5c36eec58144" category="list-text"><block ref="826fb3564b49a63adcbf5c36eec58144" category="inline-link-rx"></block></block>
   <block id="3cad9b9a9f4d8a66f7f9dabc18c3c350" category="list-text">高可用性モード機能を登録します。</block>
@@ -2768,11 +2765,8 @@
   <block id="29868f2b604fe0144f8b5619cde525cf" category="inline-link-macro">Google Cloud でシステムのサイズを決定する</block>
   <block id="c950e3b51bb08a611e2a2af4583fb4af" category="paragraph">ディスクの種類とサイズの選択については、以下を参照してください。<block ref="0698168794a3d08b82649f1da0ecee6b" category="inline-link-macro-rx"></block> 。</block>
   <block id="80f98bfa8cbe0d66021e6448047c1b5c" category="list-text">*フラッシュキャッシュ、書き込み速度、WORM*:</block>
-  <block id="b67eda3e3db596eb1c104f55326e3754" category="list-text">必要に応じて、*フラッシュ キャッシュ* を有効にします。</block>
-  <block id="5f33cf47c262adc4871d3556fcd8c00f" category="admonition">Cloud Volumes ONTAP 9.13.1 以降、_Flash Cache_ は n2-standard-16、n2-standard-32、n2-standard-48、および n2-standard-64 インスタンス タイプでサポートされます。デプロイメント後に Flash Cache を無効にすることはできません。</block>
   <block id="8423b054b8164151c3151be7c37415ed" category="list-text">必要に応じて、「*通常*」または「*高速*」の書き込み速度を選択します。</block>
   <block id="7e747f6f397a13c9ddfd3cf35ed0a063" category="inline-link-macro">書き込み速度について詳しくはこちら</block>
-  <block id="154182f595466ead49f0896392c37343" category="paragraph"><block ref="12222f10612c9f092ca31c9e99478649" category="inline-link-macro-rx"></block> 。</block>
   <block id="e149ca9f0289610cb8ad6fd5b12512d8" category="admonition">「高」書き込み速度オプションを選択すると、高速書き込み速度と、8,896 バイトの最大転送単位 (MTU) をさらに高めることができます。さらに、MTU が 8,896 と高いため、デプロイメントには VPC-1、VPC-2、VPC-3 を選択する必要があります。  VPC-1、VPC-2、VPC-3の詳細については、以下を参照してください。<block ref="e0d6e9ceb3d5d27a7e0dc7b744a8cf4a" category="inline-link-rx"></block> 。</block>
   <block id="0a44bfce0bc775d87f0ac6a57bdba584" category="list-text">必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。</block>
   <block id="6aeb3713e488b71d0dcbb96914a7951f" category="paragraph">Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。</block>
@@ -6161,7 +6155,6 @@
   <block id="76cbac4940f2698f4ebff7e15e3f58d3" category="sidebar">既存のデプロイメントをInfrastructure Managerに変換する</block>
   <block id="f2fb1415fe6f0897322288a65d13cbe6" category="paragraph"><block ref="898c710561b0ef0c4b53a21f017ccedb" category="inline-link-macro-rx"></block>。</block>
   <block id="58c2e5e5a047673f65b81d644b2c2212" category="doc">Cloud Volumes ONTAP 9.18.1 GA</block>
-  <block id="8e81597f054e81e7a100572a5b085cc4" category="paragraph">NetApp Console を使用して、AWS および Azure で Cloud Volumes ONTAP 9.18.1 の一般提供版を導入および管理できるようになりました。このバージョンは、Google Cloud でのデプロイおよびアップグレードには使用できません。</block>
   <block id="91ad01180cc40d6b3d3543999846bc67" category="inline-link">バージョン付きリリースノート</block>
   <block id="a5706ddb4dd0758395027c729169ae81" category="paragraph">ここに記載されている以外の Cloud Volumes ONTAP バージョンは、新規導入には使用できません。ここでのリリースのパッチまたは汎用（一般提供）バージョンは、導入に使用可能な基本バージョンを表します。利用可能なパッチの詳細については、各リリースの<block ref="673899d074c44dd34154296773a3ae8d" category="inline-link-rx"></block>を参照してください。</block>
   <block id="ffffe244c116c915298c78778fcab40f" category="paragraph">アップグレードの詳細については、<block ref="edc516954278e6b04bf6c1ef0d737956" category="inline-link-macro-rx"></block>を参照してください。</block>
@@ -6230,4 +6223,33 @@
   <block id="11fea9e356efb178182b5bba66bbe697" category="list-text">Google Cloud で Cloud Volumes ONTAP シングルノード システムを作成する際に、事前定義されたファイアウォール ポリシーで、選択した VPC 内のトラフィックのみを許可するか（推奨）、すべての VPC 内のトラフィックを許可するかを選択できるようになりました。</block>
   <block id="44b22df2c7850da4e8deb57e1d017983" category="paragraph">ポート8023と49000は、単一ノード システムと HA ペアの両方について、Azure の Cloud Volumes ONTAP システムで開かなくなりました。</block>
   <block id="d245f28751732b176b91cfbee0179905" category="paragraph">Cloud Volumes ONTAPは、シングルノードシステムでE32s_v3 VMタイプを使用する場合、Ultra SSDをVNVRAMとして使用できるようになりました<block ref="6f5d8baab146de724d052d505bbe4745" category="inline-link-rx"></block>。</block>
+  <block id="f6d799b704394020520cc669c2ed108e" category="paragraph">NetApp Console を使用して、AWS、Azure、Google Cloud で Cloud Volumes ONTAP 9.18.1 の一般提供（GA）版を導入および管理できるようになりました。</block>
+  <block id="bf89f4b1f72b6398bcca3a3ff4b6f7c1" category="doc">次世代の Google Cloud VM に対する Cloud Volumes ONTAP のサポート</block>
+  <block id="1a00162d4bdf4a56a4d4efde8a5c2f13" category="paragraph">9.18.1では、NetAppは新しいCloud Volumes ONTAPデプロイメントをN2 VMから次世代のGoogle Cloud C3シリーズVMに移行し、より高速でスケーラブルなエクスペリエンスを実現します。Google CloudでCloud Volumes ONTAP 9.18.1以降をデプロイする際に、C3シリーズVMを活用できるようになりました。C3シリーズマシンは、Google Virtual NIC（gVNIC）とHyperdisk Balancedディスクを使用することで、パフォーマンスが向上し、容量制限が高まり、集中的なワークロードでも動的なパフォーマンスを確保します。</block>
+  <block id="af3ff68729b6eef28a7439636a40000a" category="admonition">今のところ、Cloud Volumes ONTAP は単一ノード展開でのみ C3 シリーズをサポートしています。</block>
+  <block id="506a0b7b76d0386b3d56de15882686c0" category="paragraph">Cloud Volumes ONTAPシステムが9.18.1以降を実行している場合、簡単なシングルノード展開に使用する事前設定済みパッケージは自動的にC3 VMを使用し、ワークロードのニーズに基づいてIOPSおよびスループットパラメータをカスタマイズできるようになります。同様に、アグリゲートを作成する際に、Hyperdisk Balancedディスクを追加して、Google Cloudでのパフォーマンスとスケーラビリティを向上させることができます。さらに、デフォルトのFlash Cacheサポート用にC3シリーズマシンのLSSDバリアントを選択することもできます。</block>
+  <block id="4e97495efaaec030c995f03b84344009" category="paragraph">C3 は Hyperdisk Balanced ディスクのみをサポートしているため、アグリゲートにボリュームを追加するときに C3 VM のディスクタイプを変更することはできません。同様に、N2 VM タイプのシステムを C3 VM に複製する場合、ディスクタイプはデフォルトで Hyperdisk Balanced に設定されます。</block>
+  <block id="fe7bf6c599e29ac1b663b6261745a091" category="inline-link">Google ドキュメント：C3 マシンシリーズ</block>
+  <block id="51f6395b88f3891175360eb16ab814d6" category="paragraph"><block ref="51f6395b88f3891175360eb16ab814d6" category="inline-link-rx"></block></block>
+  <block id="1a7265e4a0716c5c59fbf92d4b2b8f8b" category="section-title">AzureのCloud Volumes ONTAPのVNetセキュリティ</block>
+  <block id="a128f7270c0bfb9c5f5d16ec39f0d354" category="paragraph">Cloud Volumes ONTAP 9.18.1以降のAzure単一および複数の可用性ゾーンでの導入では、転送中のデータを保護するための多層セキュリティ戦略の一部として、Azure Virtual Network（VNet）暗号化をサポートしています。Cloud Volumes ONTAPは、AzureのネイティブなDatagram Transport Layer Security（DTLS）プロトコルを活用して、ONTAPノード、管理インターフェイス、およびその他のAzureサービス間の通信を保護し、傍受や不正アクセスを防止します。このネットワークレベルの暗号化は、ONTAPの組み込みストレージおよび保存データ保護機能を補完し、データのエンドツーエンドのセキュリティを提供します。</block>
+  <block id="472b8c31c7082d1e8c4c46bb6921f950" category="inline-link">Azure VNet 暗号化のネットワーク</block>
+  <block id="2f932ac183ffb505894bacafe67a78d0" category="paragraph"><block ref="2f932ac183ffb505894bacafe67a78d0" category="inline-link-rx"></block></block>
+  <block id="9c297e88761d2ab159b96b1ba8f49580" category="inline-link">Azure Virtual Network（VNet）暗号化</block>
+  <block id="539afb5045a490ab5c07c8b2f81797d3" category="paragraph">Cloud Volumes ONTAPは<block ref="a484d984d3918d739142ebb03b7cf0fe" category="inline-link-rx"></block>VNet内またはピアリングされたVNet間のVM間トラフィックの暗号化をサポートしています。この機能はAzure VNetレイヤーで設定され、Cloud Volumes ONTAPトポロジ（単一ノードまたはHA）から独立しています。</block>
+  <block id="6da8d6e9b798741f378936006c625899" category="paragraph">機能を有効にする前に、VM の NIC で高速ネットワークが有効になっていることを確認し、Azure VNet 暗号化の要件と制限事項を確認するだけで済みます。NetApp 管理対象ロードバランサオブジェクトを変更しないでください。</block>
+  <block id="ce656a6c436f0486370929df8fb1dd1a" category="inline-link">Azure ドキュメント：VNet 暗号化と Accelerated Networking</block>
+  <block id="9bdbdeebdd8331589ab921db85db9669" category="paragraph"><block ref="d39bae656ec8bf75660159dea5c8b6ec" category="inline-link-rx"></block>。</block>
+  <block id="8408e1736cfbdeef8576825010d4866f" category="paragraph">予期しないフェイルオーバー時間を削減し、Cloud Volumes ONTAP の NFSv4 サポートを有効にするには、Microsoft Azure の高可用性（HA）モードを有効にする必要があります。このモードを有効にすると、Cloud Volumes ONTAP HA ノードは、CIFS および NFSv4 クライアントでの計画外のフェイルオーバー時に、低い（60 秒）復旧時間目標（RTO）を達成できます。</block>
+  <block id="c3d76ca45edb967ae8d1d50df0d945fb" category="paragraph">NetApp Console は、Azure サブスクリプションで機能を有効にする必要がある場合、これらの詳細を表示します。次の点に注意してください：</block>
+  <block id="81d14f46835576af9278d9a0c55be147" category="paragraph">_Owner_ 権限を持つ Azure ユーザーは、Azure CLI からこの機能を有効にできます。</block>
+  <block id="b191fed57e777b1ef44aa24007d4733f" category="inline-link">Microsoft Azure ドキュメント：高可用性ポートの概要</block>
+  <block id="1a6a578d19caca99a2abe3dad51430c7" category="list-text"><block ref="1a6a578d19caca99a2abe3dad51430c7" category="inline-link-rx"></block></block>
+  <block id="1dc3e27b9e18035ada1acc10400265ac" category="inline-link">Microsoft Azure ドキュメント：Azure CLI の使用を開始する</block>
+  <block id="f81d98bcf31e7ac1317c603d76f286b0" category="list-text"><block ref="f81d98bcf31e7ac1317c603d76f286b0" category="inline-link-rx"></block></block>
+  <block id="ac077a5c7cfc4a076e9f0b21a0e6642f" category="list-text">*事前構成済みパッケージ*：パッケージの1つを選択してCloud Volumes ONTAPシステムを迅速に導入するか、*独自の構成を作成*をクリックします。事前構成済みパッケージは、選択したCloud Volumes ONTAPバージョンによって異なります。たとえば、Cloud Volumes ONTAP 9.18.1以降では、ConsoleにはHyperdisk Balancedディスクを含むC3 VMを含むパッケージが表示されます。ワークロードのニーズに応じて、IOPSやスループットパラメータなどの構成を変更できます。</block>
+  <block id="f2bb7d1ab1c407492761d63a4496fd20" category="list-text">必要に応じて、*Flash Cache* を有効にするか、*標準* または *高* の書き込み速度を選択します。</block>
+  <block id="bb41ea5660ecddc241b709d8fb56bd32" category="inline-link-macro">書き込み速度</block>
+  <block id="4c7d5b651d61ce6cb278c3d6a67d053f" category="paragraph"><block ref="5fded6a6cbe6874c2576d554c91aa019" category="inline-link-rx"></block>と<block ref="534bf928908b00c855f51b75d262cee7" category="inline-link-macro-rx"></block>の詳細をご覧ください。</block>
+  <block id="d71e7e243c134c41083284d79bb58c37" category="section-title">2026年2月17日</block>
 </blocks>

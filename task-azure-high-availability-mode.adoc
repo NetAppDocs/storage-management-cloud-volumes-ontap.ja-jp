@@ -14,13 +14,12 @@ summary: 計画外のフェイルオーバー時間を短縮し、 Cloud Volumes
 
 
 [role="lead"]
-計画外のフェイルオーバー時間を短縮し、 Cloud Volumes ONTAPの NFSv4 サポートを有効にするには、Microsoft Azure の高可用性 (HA) モードを有効にする必要があります。このモードでは、 Cloud Volumes ONTAP HA ノードは、CIFS および NFSv4 クライアントでの計画外のフェイルオーバー時に、低い (60 秒) 復旧時間目標 (RTO) を達成できます。
+予期しないフェイルオーバー時間を削減し、Cloud Volumes ONTAP の NFSv4 サポートを有効にするには、Microsoft Azure の高可用性（HA）モードを有効にする必要があります。このモードを有効にすると、Cloud Volumes ONTAP HA ノードは、CIFS および NFSv4 クライアントでの計画外のフェイルオーバー時に、低い（60 秒）復旧時間目標（RTO）を達成できます。
 
 Cloud Volumes ONTAP 9.10.1 以降では、Microsoft Azure で実行されているCloud Volumes ONTAP HA ペアの計画外のフェイルオーバー時間を短縮し、NFSv4 のサポートを追加しました。これらの拡張機能をCloud Volumes ONTAPで利用できるようにするには、Azure サブスクリプションで高可用性機能を有効にする必要があります。
 
-Azure サブスクリプションで機能を有効にする必要がある場合、 NetApp Consoleではこれらの詳細が求められます。
-
-次の点に注意してください。
+.タスク概要
+NetApp Console は、Azure サブスクリプションで機能を有効にする必要がある場合、これらの詳細を表示します。次の点に注意してください：
 
 * Cloud Volumes ONTAP HA ペアの高可用性に問題はありません。この Azure 機能はONTAPと連携して動作し、計画外のフェイルオーバー イベントによって発生する NFS プロトコルのクライアントで観測されるアプリケーション停止時間を短縮します。
 * この機能を有効にしても、 Cloud Volumes ONTAP HA ペアは中断されません。
@@ -29,9 +28,9 @@ Azure サブスクリプションで機能を有効にする必要がある場�
 * HA モードが有効になっている場合、コンソールは 12 時間ごとにシステムをスキャンして、Azure Load Balancer の内部ルールを更新します。
 
 
-「所有者」権限を持つ Azure ユーザーは、Azure CLI からこの機能を有効にできます。
-
 .手順
+_Owner_ 権限を持つ Azure ユーザーは、Azure CLI からこの機能を有効にできます。
+
 . https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart["Azure ポータルから Azure Cloud Shell にアクセスする"^]
 . 高可用性モード機能を登録します。
 +
@@ -62,4 +61,9 @@ Azure CLI は次のような結果を返すはずです。
   "type": "Microsoft.Features/providers/features"
 }
 ----
+
+
+.関連リンク
+. https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-ha-ports-overview["Microsoft Azure ドキュメント：高可用性ポートの概要"^]
+. https://learn.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest["Microsoft Azure ドキュメント：Azure CLI の使用を開始する"^]
 

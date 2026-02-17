@@ -44,3 +44,9 @@ endif::aws[]
 
 * 再起動後のキャッシュの再ウォームアップは、 Cloud Volumes ONTAPではサポートされていません。
 
+
+.関連トピック
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["AWS でサポートされているCloud Volumes ONTAPの構成"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Azure でサポートされるCloud Volumes ONTAPの構成"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google CloudでサポートされているCloud Volumes ONTAPの構成"^]
+

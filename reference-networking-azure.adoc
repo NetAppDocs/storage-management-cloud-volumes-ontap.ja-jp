@@ -178,6 +178,16 @@ link:task-enabling-private-link.html["Cloud Volumes ONTAPで Azure Private Links
 
 
 
+=== Azure VNet 暗号化のネットワーク
+
+Cloud Volumes ONTAPは https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-encryption-overview["Azure Virtual Network（VNet）暗号化"^]VNet内またはピアリングされたVNet間のVM間トラフィックの暗号化をサポートしています。この機能はAzure VNetレイヤーで設定され、Cloud Volumes ONTAPトポロジ（単一ノードまたはHA）から独立しています。
+
+機能を有効にする前に、VM の NIC で高速ネットワークが有効になっていることを確認し、Azure VNet 暗号化の要件と制限事項を確認するだけで済みます。NetApp 管理対象ロードバランサオブジェクトを変更しないでください。
+
+https://learn.microsoft.com/en-us/azure/virtual-network/accelerated-networking-overview?tabs=NetworkManager["Azure ドキュメント：VNet 暗号化と Accelerated Networking"^]。
+
+
+
 === 他のONTAPシステムへの接続
 
 Azure のCloud Volumes ONTAPシステムと他のネットワークのONTAPシステム間でデータを複製するには、Azure VNet と他のネットワーク (企業ネットワークなど) の間に VPN 接続が必要です。
