@@ -4,7 +4,7 @@
 
 
 
-== Azure での Ebdsv5 および E104ids_v5 VM のサポート
+=== Azure での Ebdsv5 および E104ids_v5 VM のサポート
 
 Cloud Volumes ONTAP 9.18.1以降では、シングルノードおよび高可用性（HA）環境の導入とアップグレードにEbdsv5およびE104ids_v5 VMを導入できます。
 

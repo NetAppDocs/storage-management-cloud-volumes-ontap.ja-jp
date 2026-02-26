@@ -503,6 +503,45 @@ NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込
 
 
 
+=== プライベートモード展開のInfrastructure Manager構成
+
+プライベートモードでCloud Volumes ONTAP 9.16.1以降を導入する場合は、Googleが最終的に廃止する予定のDeployment Managerの代わりに、Cloud Volumes ONTAPがGoogle Cloud Infrastructure Managerを導入サービスとして使用できるように、いくつかの設定変更を行う必要があります。
+
+.開始する前に
+* Cloud Volumes ONTAPシステムが9.16.1以降であることを確認してください。そうでない場合は、システムをアップグレードしてください。手順については https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html["Cloud Volumes ONTAP のアップグレード"]を参照してください。
+* Google Cloud API が有効になっていることを確認します。 https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]を参照してください。
+* Cloud Build API が有効になっていることを確認します。参照 https://console.cloud.google.com/flows/enableapi?apiid=cloudbuild.googleapis.com&redirect=https://console.cloud.google.com/build/docs/private-pools/set-up-private-pool-environment["ここで Cloud Build API を有効にします"^]。
+* Console エージェントのサービスアカウントにすべての標準権限があることを確認します。さらに、サービスアカウントに `cloudbuild.workerpools.get`および `cloudbuild.workerpools.list`権限があることを確認します。 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#service-account-permissions["コンソール エージェントの Google Cloud 権限"^]を参照してください。
+
+
+.手順
+. Cloud Volumes ONTAPデプロイメントと同じリージョンにこの構成でプライベートワーカープールを作成します。プライベートワーカープールの作成については、 https://docs.cloud.google.com/build/docs/private-pools/create-manage-private-pools#creating_a_new_private_pool["Google Cloud ドキュメント：プライベート プールの作成と管理"^]および https://cloud.google.com/build/pricing["Google Cloud Build の料金"^]を参照してください。
++
+ワーカー プールには次の構成が必要です：
+
++
+** マシンタイプ：e2-medium
+** ディスクサイズ：100 GB
+** 外部IPの割り当て：False
+** ネットワーク：デフォルトまたはプライベート。
+**  http://googleapis.com/["Google API"]にアクセスするように設定されたサブネット。サブネットが Google API にアクセスできることを確認するには、次の手順を実行します：
++
+... サブネットに対して「プライベート Google アクセス」がオンになっていることを確認します。
+... *VPC ネットワークレベル > プライベートサービスアクセスタブ > サービスに割り当てられた IP 範囲*に移動します。
+... *IP 範囲の割り当て* を選択し、Google Compute Service へのプライベート接続用の内部 IP 範囲を割り当てます。
+... *サービスへのプライベート接続*で、*接続の作成*を選択します。
+... *Connected service producer = Google Cloud Platform* を選択します。
+... 前の手順で作成したプライベート接続 IP 範囲の割り当てを指定します。
+
+
+
+
+. このワーカープールを展開し、Cloud Volumes ONTAP管理のために実行し続けます。Google Cloudは、このワーカープールを使用して、すべてのTerraform操作を分離された環境で実行します。
+. Cloud Volumes ONTAPをプライベートモードで導入する場合は、*GCPワーカープール*フィールドでこのワーカープールの名前を選択します。手順については、link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAPを起動する"]を参照してください。
+
+
+
+
 == コンソールエージェントの要件
 
 コンソール エージェントをまだ作成していない場合は、ネットワーク要件を確認する必要があります。

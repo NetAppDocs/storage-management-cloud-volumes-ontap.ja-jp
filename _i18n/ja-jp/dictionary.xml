@@ -2814,7 +2814,6 @@
   <block id="f05ea9e0c9ccffc58a546b5b7a0d8608" category="inline-link">バックアップとリカバリ</block>
   <block id="35abd03d33619ce4669db81554e2c6f4" category="cell">ご利用予定の場合は<block ref="cb60f169b2f5c9214a2b89c79d285191" category="inline-link-macro-rx"></block>または<block ref="44267bb69e0507dfc0e4ac670835a65c" category="inline-link-rx"></block>サービスでは、*サービス アカウント* スイッチを有効にして、定義済みのストレージ管理者ロールを持つサービス アカウントを選択する必要があります。</block>
   <block id="50c8825a081a6324d106fb453c29e690" category="cell">ラベルは、Google Cloud リソースのメタデータです。コンソールは、Cloud Volumes ONTAPシステムと、システムに関連付けられた Google Cloud リソースにラベルを追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのラベルを追加でき、作成後にさらにラベルを追加できます。システムを作成するときに、API ではラベルが 4 つに制限されないことに注意してください。ラベルの詳細については、<block ref="fa397f5b6985fa16ac695ba7d4f7a5a5" category="inline-link-rx"></block> 。</block>
-  <block id="7abaa657d7581473fa6d07195eefca45" category="paragraph">Cloud Volumes ONTAPを配置するプロジェクトを選択します。デフォルトのプロジェクトは、コンソールのプロジェクトです。</block>
   <block id="0f1a2ace875803b14883046cfdd65e11" category="paragraph">従量課金制の Cloud Volumes ONTAPシステムを作成するには、Google Cloud Marketplace からCloud Volumes ONTAPのサブスクリプションに関連付けられている Google Cloud プロジェクトを選択する必要があります。参照<block ref="26858d2411615dac691c2981d5338917" category="inline-link-rx"></block>。</block>
   <block id="6d233fc45c5eb7c0016f5de64af78ac2" category="list-text">*サービス*: このシステムで使用するサービスを選択します。バックアップとリカバリを選択するか、 NetApp Cloud Tieringを使用するには、手順 3 でサービス アカウントを指定する必要があります。</block>
   <block id="96c883d1fa1e7ebdc724bb5cec521bbd" category="inline-link-macro">HA展開モデルの詳細</block>
@@ -3353,8 +3352,6 @@
   <block id="ce307cd0ec17360c89f4cee135813d3a" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block>サービスアカウントを設定する</block>
   <block id="5337ecb9fc5a808e9812ea4cd428ebfe" category="paragraph"><block ref="55d152079aa637ec597e09245025de50" category="inline-link-macro-rx"></block> 。</block>
   <block id="91f5721735e87c3888022376ff4ee935" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block>Google Cloud API を有効にする</block>
-  <block id="e478bf49f8034f2197e96520fa338da6" category="inline-link">プロジェクトで次の Google Cloud API を有効にします</block>
-  <block id="5236955cb529e7ce9ead7785420019e3" category="paragraph"><block ref="dc5737502524148f78bf03ba18318700" category="inline-link-rx"></block> 。これらの API は、コンソール エージェントとCloud Volumes ONTAP をデプロイするために必要です。</block>
   <block id="e6fbc0b9673f8c86726688d7607fc8f5" category="inline-image-macro">六</block>
   <block id="f8494ad8ab0b53f5b10e615479658440" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block>コンソールを使用してCloud Volumes ONTAPを起動する</block>
   <block id="7da2790af32ce3a63a33070eb62bb34c" category="paragraph">*システムの追加*をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を完了します。<block ref="e7b659d6e9cf4401150cabbf78e23874" category="inline-link-macro-rx"></block> 。</block>
@@ -6005,10 +6002,7 @@
   <block id="221dc7db98837c8091cba0d42f55b28d" category="inline-link">Cloud Deployment Manager</block>
   <block id="055d81bf5e86c650f524ba8578595b0e" category="paragraph">Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しい導入において、<block ref="15f2e159f639573aa2393f20aa6d5e11" category="inline-link-rx"></block>（DM）の代わりに<block ref="d6072c82cbcda01fbac85ce6d2b2ba66" category="inline-link-rx"></block>（IM）をサポートするようになりました。Googleは、より高度なInfrastructure Managerのために、近い将来インフラストラクチャサービスとしてのDeployment Managerを廃止する予定です。</block>
   <block id="66243a4b72870642e35fa6b52e50a63b" category="inline-link">Google Cloud Infrastructure Manager 用に既存の Cloud Volumes ONTAP デプロイメントを設定</block>
-  <block id="aa51ff66cac4f14d899d7f563f8f476a" category="paragraph">Infrastructure Manager を使用して Cloud Volumes ONTAP を自動的に導入するか、変換ツールを実行して Deployment Manager の既存の導入を Infrastructure Manager に切り替えます。変換は 1 回限りのプロセスであり、その後、システムは自動的に Infrastructure Manager の使用を開始します。移行ツールの実行手順については<block ref="5621b7ac255bff00b9e8610ec0606935" category="inline-link-rx"></block>を参照してください。</block>
   <block id="492eb9196f4c5211832a66df9ce6230b" category="paragraph">Infrastructure Manager を使用する Cloud Volumes ONTAP システムでは、Google Cloud Storage バケットを使用してデータとレコードを保存し、最初のデプロイメントのゾーンにデプロイメント レコードを保存します。これらのデプロイメント レコードは、後続のデプロイメントで再利用されます。これらのバケットには追加費用が発生する可能性がありますが、バケットやそのコンテンツを編集または削除しないでください：</block>
-  <block id="c63b3118890326f42e936277c83db3b6" category="list-text"><block ref="9d4c46381bcc7ebe4bf02a7fd0ac5b6f" prefix="" category="inline-code"></block>：Cloud Volumes ONTAP Terraform ファイルを保管するため</block>
-  <block id="aaa460fe2e0e39c5d509b26ad876baf8" category="list-text"><block ref="6ec9e5b046607d57923aee80f990225d" prefix="" category="inline-code"></block>：Google Cloud Terraform アーティファクトを保存するためのもの</block>
   <block id="73c696c58c9e62731e855a0bf47853e1" category="inline-link">Google CloudでCloud Volumes ONTAPを使い始める</block>
   <block id="f80ae1b8de03cd56e51dbe8e44bf284f" category="list-text"><block ref="f80ae1b8de03cd56e51dbe8e44bf284f" category="inline-link-rx"></block></block>
   <block id="ccc8cedaac96382fa4e8c01b8e53646d" category="inline-link">NetApp Console Agent 4.2.0 リリースノート</block>
@@ -6043,11 +6037,9 @@
   <block id="31bd3ca8f6cd8f37f69e226cb1afe75b" category="list-text"><block ref="31bd3ca8f6cd8f37f69e226cb1afe75b" category="inline-link-rx"></block></block>
   <block id="233af50e7ac5078d6cabb58ab95095b9" category="summary">Google Cloudの既存のデプロイメントでは、システムをCloud Volumes ONTAP 9.16.1以降にアップグレードしてから、Google Cloud Deployment ManagerからCloud Infrastructure Managerに変換するための移行ツールを手動で実行する必要があります。</block>
   <block id="b9e5aa43ec2007eccaf097117438e531" category="doc">既存の Cloud Volumes ONTAP デプロイメントを Infrastructure Manager に変換</block>
-  <block id="4f199c7ad20d0a908dda3d1603ff73d7" category="paragraph">2026年1月12日から、Google Cloud での新しい Cloud Volumes ONTAP デプロイメントでは、Google Cloud Infrastructure Manager を使用できます。Google は、Infrastructure Manager を優先して Google Cloud Deployment Manager を廃止する予定です。そのため、既存の Cloud Volumes ONTAP デプロイメントを Deployment Manager から Infrastructure Manager に変換するには、移行ツールを手動で実行する必要があります。これは 1 回限りのプロセスであり、その後、システムは自動的に Infrastructure Manager の使用を開始します。</block>
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link">NetApp サポート サイト</block>
   <block id="416146100ffb7fc54fb8a24ca7b63ae8" category="paragraph">移行ツールは<block ref="33e3c3ba324846178fad333329821dd2" category="inline-link-rx"></block>で利用でき、次の成果物を作成します：</block>
   <block id="fe91a45b95e89e219ea69631edff8521" category="list-text">Terraformアーティファクトは、<block ref="b1042b7d7203a022c297b13679f7d1f8" prefix=" " category="inline-code"></block>に保存されます。</block>
-  <block id="47a96ec9ac683fac8aa8ebbddbfb79ff" category="list-text">変換の概要は、<block ref="8f66602548a59e22c821de29517d7dff" prefix=" " category="inline-code"></block>に保存されます。</block>
   <block id="787ab3bb526ace3e3d9f5b857facafbf" category="list-text">デバッグログは、<block ref="abecaca0429ea0c44adcba537eb94f89" prefix=" " category="inline-code"></block>ディレクトリに保存されます。トラブルシューティングにはこれらのログが必要です。<block ref="6ec9e5b046607d57923aee80f990225d" prefix=" " category="inline-code"></block>バケットには Terraform ログが保存されます。</block>
   <block id="07f770dff2ab3ed070b0fafe70eae22a" category="paragraph">Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、データとレコードを Google Cloud Storage バケットに保存します。これらのバケットには追加費用が発生する可能性がありますが、バケットやそのコンテンツを編集または削除しないでください：</block>
   <block id="adf9ac4ef674ca575662deb880fc460c" category="list-text">Cloud Volumes ONTAP システムが 9.16.1 以降であることを確認してください。</block>
@@ -6085,7 +6077,6 @@
   <block id="fb4479839b891ed9122fdadf7bbfe16a" category="cell">metadata.google.internal</block>
   <block id="afbf0897a5a83fdd873dfb032ec695d3" category="cell">内部</block>
   <block id="964a9f95d3fda0f78f13dd7cd49fe137" category="cell">VM メタデータと認証トークン</block>
-  <block id="2ebcfc415db0f53ee976c65188ec85ef" category="paragraph">次の手順に従って、Deployment Manager から Infrastructure Manager に移行し、既存の Cloud Volumes ONTAP 環境に対してツールを実行します。</block>
   <block id="cc8a2ca4c8f7a6693635c0db1616e216" category="list-text">ロールを作成し、サービス アカウントに関連付けます：</block>
   <block id="960ea426544a50e48bbb44091a8b5e5a" category="list-text">次の権限を持つ YAML ファイルを作成します：</block>
   <block id="1d18879deca373fd3c960377615e653b" category="inline-link">カスタムロールの作成と管理</block>
@@ -6095,7 +6086,6 @@
   <block id="4249c331d2620d2cd9780ca6679f30af" category="list-text"><block ref="27a953ce0cbb51d4876b439aee2cbec1" prefix=" " category="inline-code"></block>ロールをこのサービス アカウントに追加します。<block ref="88a1fe1ad7367a70a7d6fa5c7d98a110" category="inline-link-rx"></block>を参照してください。</block>
   <block id="809402001bcefea16f2b81f207ddb62e" category="list-text">[[create-vm]]次の構成でVMを作成します。このVM上でツールを実行します。</block>
   <block id="bfe0b77c61bbcf5b827b09fb810318bd" category="list-text">マシンタイプ：Google Compute Engine マシンタイプ e2-medium</block>
-  <block id="80dc4d9bb42c64d10e1e74253c1379ed" category="list-text">OS：Ubuntu 25.10 AMD64 Minimal（イメージ：ubuntu-minimal-2510-amd64）</block>
   <block id="96a6ec9a15c7eb577293b9d570bbae05" category="list-text">ネットワーク：HTTP と HTTPS を許可するファイアウォール</block>
   <block id="7dbcc5c811addb725c58af9582fb0b39" category="list-text">ディスクサイズ：20GB</block>
   <block id="c9edc2d9baf5e2843ff19a9486021651" category="list-text">セキュリティ：サービス アカウント：作成したサービス アカウント</block>
@@ -6109,8 +6099,6 @@
   <block id="d0f860b4876ce7d6519dd4fd5cdc1aca" category="list-text">サービス制御：有効（デフォルト）</block>
   <block id="72371168b81dc49ed84ccc2826b33285" category="list-text">Google Cloud Trace（旧Stackdriver Trace）：書き込みのみ（デフォルト）</block>
   <block id="771d5634625da9bdf9383284e6876fe8" category="list-text">SSH を使用して新しく作成した VM に接続します：<block ref="d66edda9356fa84b13bc561b5cdc06d2" prefix=" " category="inline-code"></block></block>
-  <block id="ca3b8cdca327664a13e57f221634b9cd" category="list-text">NSS クレデンシャルを使用して<block ref="33e3c3ba324846178fad333329821dd2" category="inline-link-rx"></block>から変換ツールをダウンロードします：<block ref="351cb02cba717c786694e4b04b17a03c" prefix=" " category="inline-code"></block></block>
-  <block id="f3f4a9f0374e3aaf79b22eaa6f11e24b" category="list-text">ダウンロードした TAR ファイルを解凍します：<block ref="80c87050897af12083ff007ec59b29ae" prefix=" " category="inline-code"></block></block>
   <block id="893f19f5842942626647ba8f53e27731" category="list-text">次の前提条件パッケージをダウンロードしてインストールします：</block>
   <block id="3195b86062bb29c6228b3987373aba5c" category="list-text">Docker：28.2.2 build 28.2.2-0ubuntu1 以降</block>
   <block id="83bedc7f0caf9a0b296313249895e235" category="list-text">Terraform：1.14.1 以降</block>
@@ -6122,8 +6110,6 @@
   <block id="4253cd62d3506adae113f0c0ed35a026" category="list-text">ツールがインストールされている環境を入力します：<block ref="c7fe96d8e92d9922385f327806aa5ef6" prefix=" " category="inline-code"></block></block>
   <block id="b6645c19cd405763183f19c38c1f7cad" category="inline-link">Google Cloud Infrastructure Manager に必要な権限</block>
   <block id="82fc86d16c204fd1047896be7797f7b4" category="list-text"><block ref="3a2e7e59491b74e35b36d9d724fd0584" prefix=" " category="inline-code"></block>ユーザーとして変換ツールを実行します。Consoleエージェントのサービスアカウントと同じサービスアカウントを使用し、そのサービスアカウントにすべての<block ref="5d3ef0c339df1f2a110bf7d6a45b4e45" category="inline-link-rx"></block>があることを確認してください。</block>
-  <block id="cacad0cdf4b0fdce4156938c4ed3c9e5" category="paragraph">このツールは、すべての Cloud Volumes ONTAP システムと SVM の詳細のリストを表示します。実行が完了すると、変換されたすべてのシステムのステータスを確認できます。変換された各システムは、Google Console の Infrastructure Manager の下に _&lt;converted system name-imdeploy&gt;_ 形式で表示されます。これは、コンソールが Infrastructure Manager API を使用してその Cloud Volumes ONTAP システムを管理するようになったことを示しています。</block>
-  <block id="9da6711274c63c22ce751c1ffdb9517c" category="admonition">変換後、Google Cloud Console で Deployment Manager のデプロイメント オブジェクトを削除しないでください。このデプロイメント オブジェクトには、Infrastructure Manager が Cloud Volumes ONTAP システムの管理に使用するメタデータが含まれています。</block>
   <block id="d6c5cad15e9fe911e15bbd9f138172e5" category="paragraph">変換をロールバックする必要がある場合は、同じ VM を使用する必要があります。すべてのシステムを変換し、Deployment Manager にロールバックする必要がない場合は、VM を削除できます。</block>
   <block id="c77014ed2ed0c6a090666526f334c0b4" category="section-title">変換をロールバックする</block>
   <block id="9e24a1a0370c9ae26c8cda42c2031983" category="paragraph">変換を続行したくない場合は、次の手順に従って Deployment Manager にロールバックできます：</block>
@@ -6256,4 +6242,117 @@
   <block id="24b287efb87a1453e16ea920079d5795" category="paragraph">システム登録を操作するときは、すべてのアクションが、システムが最初にオンボードされたのと同じ組織およびアカウント内で実行されるようにしてください。例えば、移行が同じ組織内に留まる場合、Cloud Volumes ONTAPシステムを新しいConsoleエージェントに移行できます。</block>
   <block id="64d9da3b00c4fef3501584e739a33d23" category="admonition">別のアカウントまたは組織に登録されているシステムを検出、表示、または管理することはできません。</block>
   <block id="29759b568048f604f84457c1e384b4a3" category="section-title">2026年2月19日</block>
+  <block id="d370e8740a6b64fd386955e0e780b888" category="paragraph">2026年2月9日より、Cloud Volumes ONTAPは新規および既存のデプロイメントにInfrastructure Managerを使用します。次の表では、いくつかのワークフローについて説明します：</block>
+  <block id="54861efdd06fc309e1c9a420feff98eb" category="cell">シナリオ</block>
+  <block id="7227af91d597be9f306654b7f9570871" category="cell">エージェント用の新しいAPI</block>
+  <block id="060f2406e35d76018851fe48ca94d582" category="cell">エージェントの新しい権限</block>
+  <block id="7fcf37c89982b3db8f710c7c0a78df3f" category="cell">Cloud Volumes ONTAP向けの新しいGoogle Cloud API</block>
+  <block id="12f8aec1aacb26c22265d9eeef4f1a7a" category="cell">ドキュメントリソース</block>
+  <block id="ffcce4c7137f38bc7e8f7abd968a2416" category="cell">既存のエージェントと既存のCloud Volumes ONTAP導入環境</block>
+  <block id="8ca4609018726707802acec01ea088c8" category="cell">既存のエージェントに新しいAPIと権限を追加し、既存のCloud Volumes ONTAPシステムを変換します。</block>
+  <block id="15b890fd729e8bd42b01f29b115cdada" category="list-text">クラウドインフラストラクチャマネージャAPI</block>
+  <block id="a4c710688b0bce1852460a0da5685192" category="list-text">Cloud Quotas API</block>
+  <block id="6ecd6a8715f3b8584b0a166952141ee0" category="paragraph">Console リリースにリストされているすべての権限：</block>
+  <block id="a578c7a2817a7adad288f8984659cad5" category="inline-link">2025年12月8日</block>
+  <block id="d3fe1173fb4a2d7b6cb7fc5d5e93b435" category="list-text"><block ref="d3fe1173fb4a2d7b6cb7fc5d5e93b435" category="inline-link-rx"></block></block>
+  <block id="c9d872b23d54864ab58551a55106a3db" category="inline-link">2026年2月9日</block>
+  <block id="e9239b2f6f0e207f03cce4b6a5a9d9bf" category="list-text"><block ref="e9239b2f6f0e207f03cce4b6a5a9d9bf" category="inline-link-rx"></block></block>
+  <block id="d0afacc44f5837356184459eb1b8fb68" category="cell">\https://www.googleapis.com/upload/storage/v1 \https://config.googleapis.com/v1</block>
+  <block id="78b63d509629d2b46ecd06bdf9d90717" category="paragraph"><block ref="78b63d509629d2b46ecd06bdf9d90717" category="inline-link-rx"></block></block>
+  <block id="32524c76b6297a63bd4c44a66fb638cb" category="cell">既存のエージェントと新しいCloud Volumes ONTAP導入</block>
+  <block id="cd116d29376c1e626e005f853f310ae1" category="cell">既存のエージェントに新しいAPIと権限を追加し、新しいCloud Volumes ONTAPシステムを導入します。</block>
+  <block id="599a622e9d52b5b54a2b589d25b12d7f" category="cell">新規導入のすべての手順</block>
+  <block id="af766153ec7c24e4d448b02bfd0e1ec3" category="cell">新しいエージェントと新しい導入</block>
+  <block id="252390de9c128281e1354046c39015db" category="cell">新しいエージェントを作成し、新しいCloud Volumes ONTAPシステムを導入します。</block>
+  <block id="133f87cfee7691c59e4aceff51289761" category="inline-link">Google Cloud から Console エージェントを作成する</block>
+  <block id="cfdaf06139b734f8230b05e534421bc4" category="list-text"><block ref="cfdaf06139b734f8230b05e534421bc4" category="inline-link-rx"></block></block>
+  <block id="dfa41bd12b34b1bd351e47cb755d553f" category="paragraph">さあ、Cloud Volumes ONTAP を展開して Infrastructure Manager を自動的に使用するか、変換ツールを実行して Deployment Manager の既存のデプロイメントを Infrastructure Manager に切り替えます。変換は 1 回限りのプロセスであり、その後、システムは Infrastructure Manager の使用を開始します。<block ref="5621b7ac255bff00b9e8610ec0606935" category="inline-link-rx"></block>変換ツールの実行手順については、こちらを参照してください。</block>
+  <block id="0841cdab6957a4878161d52555ce3f69" category="list-text"><block ref="459888dc95116b3e1800e611d3502102" prefix="" category="inline-code"></block>：新しいCloud Volumes ONTAPデプロイメントに使用されるONTAPバージョンとSVM Terraformテンプレート用。この中の<block ref="141f3ccee25f2d3a39df4d9471e4bb21" prefix=" " category="inline-code"></block>バケットには、Cloud Volumes ONTAP Terraformファイルが含まれています。</block>
+  <block id="a11251d028e85bf55e217f7b75894bca" category="list-text"><block ref="6ec9e5b046607d57923aee80f990225d" prefix="" category="inline-code"></block>：Google Cloud Terraform アーティファクトを保存します。</block>
+  <block id="eefb06bb963974fa756fd69b5da77f3d" category="doc">プライベートモード導入における Google Infrastructure Manager のサポート</block>
+  <block id="8a1d72441a291104845776a8cb5ca0b8" category="paragraph">Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しいプライベートモードの導入時に<block ref="d6072c82cbcda01fbac85ce6d2b2ba66" category="inline-link-rx"></block>（IM）が<block ref="15f2e159f639573aa2393f20aa6d5e11" category="inline-link-rx"></block>（DM）の代わりにサポートされるようになりました。Googleは、より高度なInfrastructure Managerへの移行のため、近い将来インフラサービスとしてDeployment Managerを廃止します。</block>
+  <block id="ec39823b2cb6731c93e31551324e6ed7" category="paragraph">2026年2月25日より、Cloud Volumes ONTAPは新規および既存のプライベート モードの展開に Infrastructure Manager を使用します。次の表は、基本的なワークフローを説明しています：</block>
+  <block id="d8848c7dd607d8a63767f8dcc10bcfc7" category="cell">既存のエージェントとプライベートモードでの既存の導入</block>
+  <block id="be72cda1fd0978b223bf1c72cd3470fe" category="cell">NetApp Support Siteからインストーラをダウンロードし、ホストにエージェントを手動でインストールして、Infrastructure Manager APIを使用できるようにすることで、NetApp Consoleエージェントを最新バージョンにアップグレードします。その後、既存のCloud Volumes ONTAPシステムをInfrastructure Managerを使用するように変換します。</block>
+  <block id="1b4969e94a4b9494c07d1a3d15d990de" category="list-text">Cloud Build API</block>
+  <block id="b366c1901726ed94faabaca293b342ab" category="list-text">cloudbuild.workerpools.get</block>
+  <block id="a1594604ead4ac9e883fb7f2565b2dff" category="list-text">\https://cloudbuild.googleapis.com/v1</block>
+  <block id="255359407033996c52ff32fb9e9dedfd" category="list-text">\https://www.googleapis.com/upload/storage/v1</block>
+  <block id="f2be3a212e6f5bb332096881441fa881" category="list-text">\https://config.googleapis.com/v1</block>
+  <block id="887fafea4cfb163759637ed2efcec691" category="cell">新しいエージェントを作成し、新しいCloud Volumes ONTAPシステムをプライベートモードで導入します。</block>
+  <block id="2977507bb7188d1e96246a14057a3902" category="inline-link">プライベートモード導入のクイックスタート</block>
+  <block id="2d0e6ad25589f8f4affb38c55f4f325f" category="list-text"><block ref="2d0e6ad25589f8f4affb38c55f4f325f" category="inline-link-rx"></block></block>
+  <block id="4caab03d94f5f056dee76ac3abd4066d" category="inline-link">プライベートモード展開のInfrastructure Manager構成</block>
+  <block id="d79d7aeb01a8087d8ac3417a9437a457" category="paragraph">プライベートモードの展開では、Cloud Volumes ONTAP が Infrastructure Manager の使用を開始するために、いくつかの構成変更が必要です。参照<block ref="a3ca45cd087005e24df23da60619241b" category="inline-link-rx"></block>。</block>
+  <block id="72f140aadeef542ffaaccb8f92bb751b" category="paragraph">プライベートモードでCloud Volumes ONTAP 9.16.1以降を導入する場合は、Googleが最終的に廃止する予定のDeployment Managerの代わりに、Cloud Volumes ONTAPがGoogle Cloud Infrastructure Managerを導入サービスとして使用できるように、いくつかの設定変更を行う必要があります。</block>
+  <block id="d8ded2f209878a774abc9ec32f535df0" category="list-text">Cloud Volumes ONTAPシステムが9.16.1以降であることを確認してください。そうでない場合は、システムをアップグレードしてください。手順については<block ref="2bd5b2c5d36e72902dcf55c00d490964" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="d65cea469279b26fd96aefa9946737d3" category="list-text">Google Cloud API が有効になっていることを確認します。<block ref="284597b9b55c9d9b3851ec2830376fdc" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="c1a7d01779c80df928434b55a0985909" category="inline-link">ここで Cloud Build API を有効にします</block>
+  <block id="b1e7119f70e00ffd9c8e1fa9fda7970c" category="list-text">Cloud Build API が有効になっていることを確認します。参照<block ref="fa797d3d1c2c6a35d496e72e95485a1f" category="inline-link-rx"></block>。</block>
+  <block id="b62c03b308f3e880573f89ca750ec806" category="list-text">Console エージェントのサービスアカウントにすべての標準権限があることを確認します。さらに、サービスアカウントに<block ref="b366c1901726ed94faabaca293b342ab" prefix=" " category="inline-code"></block>および<block ref="a5bb5562c6a74b17ab2426705833048f" prefix=" " category="inline-code"></block>権限があることを確認します。<block ref="818358be64a80b49936bc9250a957044" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="fb5afcb60feed225e2eddbcec73f8baa" category="inline-link">Google Cloud ドキュメント：プライベート プールの作成と管理</block>
+  <block id="ca543bcb74bbda4033559b744191de30" category="inline-link">Google Cloud Build の料金</block>
+  <block id="9f3ba99a8a6610d877d41cfd0712da8e" category="list-text">Cloud Volumes ONTAPデプロイメントと同じリージョンにこの構成でプライベートワーカープールを作成します。プライベートワーカープールの作成については、<block ref="24f6f9425e53d4871201c692b03c2576" category="inline-link-rx"></block>および<block ref="0b65d90cf6452a6f3a215b5f548b34fc" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="f1a0dd5f9c1e3a35d2ceaa55d5ddc7a0" category="paragraph">ワーカー プールには次の構成が必要です：</block>
+  <block id="b5785ebe961e54037c8e88333d89cdfb" category="list-text">マシンタイプ：e2-medium</block>
+  <block id="81886430867de94e8c64a4d6ee03885f" category="list-text">ディスクサイズ：100 GB</block>
+  <block id="4f78751a4c59d02232a84cf0f75f106b" category="list-text">外部IPの割り当て：False</block>
+  <block id="1ce82e3f1abec4157983f159c2519b6e" category="list-text">ネットワーク：デフォルトまたはプライベート。</block>
+  <block id="f6ab2d5d47935ec62410c5a522057350" category="inline-link">Google API</block>
+  <block id="31ee5d7a195dd642f2dd5c5892f66a66" category="list-text"><block ref="3a79aa9a9ac20e9b7507d4a67f3c5626" category="inline-link-rx"></block>にアクセスするように設定されたサブネット。サブネットが Google API にアクセスできることを確認するには、次の手順を実行します：</block>
+  <block id="4e778f784bb81e3fa2540f16b2e516f1" category="list-text">サブネットに対して「プライベート Google アクセス」がオンになっていることを確認します。</block>
+  <block id="3ddc338aacbdc94d99095f1bc9dc5e9f" category="list-text">*VPC ネットワークレベル &gt; プライベートサービスアクセスタブ &gt; サービスに割り当てられた IP 範囲*に移動します。</block>
+  <block id="d67cbfbd26657ae0f146b4f91df6172e" category="list-text">*IP 範囲の割り当て* を選択し、Google Compute Service へのプライベート接続用の内部 IP 範囲を割り当てます。</block>
+  <block id="a886bf060d000589a384bbf702d2d46c" category="list-text">*サービスへのプライベート接続*で、*接続の作成*を選択します。</block>
+  <block id="bb03b10924dadb99652bb9ecfd1e8ce1" category="list-text">*Connected service producer = Google Cloud Platform* を選択します。</block>
+  <block id="a4f8cf180bd6d1216c603260377fab0b" category="list-text">前の手順で作成したプライベート接続 IP 範囲の割り当てを指定します。</block>
+  <block id="2fc774da70207cbd9c3f7f4cb2b882ce" category="list-text">このワーカープールを展開し、Cloud Volumes ONTAP管理のために実行し続けます。Google Cloudは、このワーカープールを使用して、すべてのTerraform操作を分離された環境で実行します。</block>
+  <block id="e76afdbea65b310b371ae0744e22156a" category="list-text">Cloud Volumes ONTAPをプライベートモードで導入する場合は、*GCPワーカープール*フィールドでこのワーカープールの名前を選択します。手順については、<block ref="06a62ff106957757a2928a7c710d7365" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="5aee1781451135693253ccb12d7c445b" category="paragraph">Cloud Volumes ONTAPを配置するプロジェクトを選択してください。</block>
+  <block id="29c10f28e9441020f79943c2c89621d8" category="paragraph">2026年2月09日から、Google Cloud での新しい Cloud Volumes ONTAP デプロイメントでは、Google Cloud Infrastructure Manager を使用できます。Google は、Infrastructure Manager を優先して Google Cloud Deployment Manager を廃止する予定です。そのため、既存の Cloud Volumes ONTAP デプロイメントを Deployment Manager から Infrastructure Manager に変換するには、移行ツールを手動で実行する必要があります。これは 1 回限りのプロセスであり、その後、システムは自動的に Infrastructure Manager の使用を開始します。</block>
+  <block id="5e2a323cd6d7faff6d94fff36d28f7aa" category="list-text">変換の概要。<block ref="f80ad7d1c557c653b7c3e1f9d76587b2" prefix=" " category="inline-code"></block>に保存されます</block>
+  <block id="a55abb3f1f891995d70f70a7d8476b90" category="example-title">プライベート モードの展開の場合は、次の追加の前提条件を確認してください：</block>
+  <block id="043abbc7d82ea8f85b4eb2cfc1ed8c1a" category="list-text">最新バージョンのConsoleエージェントがインストールされていることを確認してください。NetApp Support Siteから製品インストーラをダウンロードし、エージェントがInfrastructure Manager APIを使用できるように、ホストにエージェントを手動でインストールします。</block>
+  <block id="25dde09ff44d3749c7c30e9d6de5ea84" category="list-text">ツールをプライベート モードで実行している場合は、他の API とともに Cloud Build API が有効になっていることを確認してください<block ref="284597b9b55c9d9b3851ec2830376fdc" category="inline-link-rx"></block>。</block>
+  <block id="61396513f8cad4235cc6230c5b5bd890" category="list-text">ネットワーク構成が完了し、プライベート モードのデプロイメント用のワーカー プールが作成されたことを確認します。<block ref="394ae5ca2623ff2541a3ab80e68c7904" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="cee17a2118e2f87df1ef45ab60919d83" category="cell">cloudbuild.googleapis.com</block>
+  <block id="e61855b4554dd4f867078342b0fe3ed9" category="cell">ビルド操作はプライベートモードでのみ必要です</block>
+  <block id="77ef2eaf8c2a9596bf70daf2be42abe2" category="cell">pypi.org</block>
+  <block id="0a837cd57db3481995c1d0997aae27ae" category="cell">Python パッケージインデックス</block>
+  <block id="6594103004c2bc59c4fb5a91392b8465" category="cell">files.pythonhosted.org</block>
+  <block id="d1c13320cf2e8da01f31926ba2086b3f" category="cell">Python パッケージのダウンロード</block>
+  <block id="7815013af3602cfeabf604b40b0243ab" category="cell">checkpoint-api.hashicorp.com</block>
+  <block id="06aadd241c0be8803fdac80e00020154" category="cell">Terraformのバージョンチェック</block>
+  <block id="00977613eb3121985c5ef92a3b047a2f" category="cell">download.docker.com</block>
+  <block id="519d41a4bf864a38b5c2c30d0b7ee9e2" category="cell">Docker APTリポジトリ</block>
+  <block id="97561d366538d5b777d32fdea196c4f1" category="cell">security.ubuntu.com</block>
+  <block id="c59814c5745505a7a040fa82a314dad7" category="cell">80/443</block>
+  <block id="119c09112d85866a566eabcb7d844fb1" category="cell">Ubuntuのセキュリティアップデート</block>
+  <block id="6649579c086a0b87b5608e9e15a9eba0" category="cell">*.gce.archive.ubuntu.com</block>
+  <block id="8204b6d5cc30339f744f46d8037d7fdd" category="cell">Ubuntu パッケージミラー</block>
+  <block id="23475ffaa5c62a61c9fd9936da1b2d17" category="section-title">ツールを実行するための環境を準備する</block>
+  <block id="235ad64d4d44f422462a6f13a9ebdb24" category="paragraph">ツールを実行する前に、これらの手順を実行してください。</block>
+  <block id="4bee4ab4be906bd67870e2d76cbe2d72" category="example-title">プライベートモード導入に追加の権限を含める</block>
+  <block id="95b7e315a27c85fa86a577df97656d5b" category="paragraph">ツールをプライベートモードで実行している場合は、<block ref="b366c1901726ed94faabaca293b342ab" prefix=" " category="inline-code"></block>権限も YAML ファイルに追加します。</block>
+  <block id="25099748affaf06175b1716317124072" category="list-text">OS：要件に応じて、次のいずれかのイメージを選択します。</block>
+  <block id="c4815cf0c0f871d5ff5c1ad7c1270c4d" category="list-text">Ubuntu 25.10 AMD64 Minimal（イメージ：ubuntu-minimal-2510-amd64）</block>
+  <block id="53b4fb6fd5c954dbf179dba99b662501" category="list-text">SUSE Linux Enterprise Server 15 SP7 x86_64</block>
+  <block id="6b71f098730cc9eb4a17b15f0fde4f4f" category="list-text">NSS クレデンシャルを使用して<block ref="2b34f2fd14a473003c4bec1d639c99ed" category="inline-link-rx"></block>から変換ツールをダウンロードします：<block ref="351cb02cba717c786694e4b04b17a03c" prefix=" " category="inline-code"></block></block>
+  <block id="c4c52ae6b59db725eb370608587a87ac" category="list-text">ダウンロードした TAR ファイルを解凍します：<block ref="555b90a4c7bdb6bc696ca4ddf5851d9d" prefix=" " category="inline-code"></block></block>
+  <block id="3d945423f8e9496c429a5d8c65b4604f" category="list-title">Ubuntu</block>
+  <block id="4ae0b3e9c82d7212e106b8d937d888f9" category="list-title">SUSE Linux Enterprise Server</block>
+  <block id="60deaa50ef5cb5075b022cf8b7e2aa9b" category="list-text">Python をセットアップします：<block ref="cf4dfc540c38d1d6ba007027e57f8ad9" prefix=" " category="inline-code"></block></block>
+  <block id="65cd321eaaee0b3388777984c4c6eee5" category="list-text">パッケージをインストールするために pip3 をインストールします：<block ref="7e0697d280b7e6ee823c16cf6063e8a1" prefix=" " category="inline-code"></block></block>
+  <block id="322703fda01f6eb40f244f64f885a8e7" category="list-text">Terraform をインストールします：</block>
+  <block id="e1a2af96135fd402f4eeb590d1d083f4" category="list-text">Google Cloud SDK（gcloud）をインストールする</block>
+  <block id="56fe813ce089ce40cf0ddd7a34baa41d" category="section-title">変換ツールを実行する</block>
+  <block id="127f0169d9159483efb1bf11269a83d6" category="paragraph">これらの手順は、Ubuntu と SUSE Linux Enterprise Server の両方で変換ツールを実行するためのものです。</block>
+  <block id="582f01440b1fe8b3b54fbaaa3e0ae2a5" category="example-title">プライベートモードのデプロイメントでツールを実行する</block>
+  <block id="e3e9593585f6673afa2b7fc51d4207a1" category="paragraph"><block ref="8fc12ad6381abbb87712055c7f5e50f1" prefix=" " category="inline-code"></block>パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、<block ref="394ae5ca2623ff2541a3ab80e68c7904" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="c6e9d79a05da6fd3036f2ce45e30d798" category="paragraph">このツールは、すべてのCloud Volumes ONTAPシステムとSVMの詳細のリストを表示します。実行が完了すると、変換されたすべてのシステムのステータスを確認できます。変換された各システムは、Google ConsoleのInfrastructure Managerの下に_&lt;system-name-imdeploy&gt;_形式で表示されます。これは、ConsoleがInfrastructure Manager APIを使用してそのCloud Volumes ONTAPシステムを管理するようになったことを示しています。</block>
+  <block id="73f8b632600f6bf7d4edd2fb31ec35be" category="admonition">変換後、Google Cloud Console で Deployment Manager のデプロイメント オブジェクトを削除しないでください。このデプロイメント オブジェクトには、変換されたシステムをロールバックするために必要な情報が含まれています。</block>
+  <block id="7e5509f4bf6f560ecb7a52d0a6083b0c" category="inline-link">プロジェクトで Google Cloud API を有効にする</block>
+  <block id="fbf12f5b0c848baad453322be1474e53" category="inline-link">これらのAPI</block>
+  <block id="d6c639979f19e4b6ee894da109e92143" category="paragraph"><block ref="72d9b6cdd2035c34510a674b3e79e7cf" category="inline-link-rx"></block>。<block ref="274a8d4ce254fa7ad9c059c75fad96a6" category="inline-link-rx"></block>は、コンソールエージェントの作成時に既に有効になっている可能性がありますが、Google CloudにCloud Volumes ONTAPを導入するために必要です。</block>
+  <block id="56a5c925d77740ea69d50272863f3f75" category="section-title">2026年2月26日</block>
 </blocks>
