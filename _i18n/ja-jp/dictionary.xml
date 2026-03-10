@@ -4634,7 +4634,6 @@
   <block id="1dcb63fd55c4d22e87cb32275b8cc808" category="inline-image-macro">3つの水平の点のアイコン</block>
   <block id="b14d512a3c64fb5df16f6721b0603c63" category="paragraph">このオプションを使用すると、再度ログインするよう求められます。これらのアカウントのトークンは 90 日後に期限切れになることに注意してください。これを知らせる通知が投稿されます。</block>
   <block id="29e5950813e59366056c85a091ad2206" category="summary">NTP サーバーを指定すると、ネットワーク内のシステム間の時間が同期され、時間差による問題を防ぐことができます。</block>
-  <block id="b50f1f0d50a2ec5cb27990e7dcd7bc5a" category="doc">NTPサーバーを使用してCloud Volumes ONTAPのシステム時間を同期する</block>
   <block id="b6f2459d07813a329f10d1f5ef7babc2" category="summary">ホット データ用の SSD または HDD パフォーマンス層と非アクティブ データ用のオブジェクト ストレージ容量層を組み合わせることで、 Cloud Volumes ONTAPのストレージ コストを削減できます。データ階層化はFabricPoolテクノロジーによって実現されます。</block>
   <block id="dc856ecc0acf613e6f450c313f378cfd" category="doc">非アクティブなCloud Volumes ONTAPデータを低コストのオブジェクトストレージに階層化します</block>
   <block id="caf4154dd66e202bf9f092a3b5b9f070" category="paragraph">ホット データ用の SSD または HDD パフォーマンス層と非アクティブ データ用のオブジェクト ストレージ容量層を組み合わせることで、 Cloud Volumes ONTAPのストレージ コストを削減できます。データ階層化はFabricPoolテクノロジーによって実現されます。概要については、以下を参照してください。<block ref="69d3706831f999336fb27703356dae22" category="inline-link-macro-rx"></block> 。</block>
@@ -5973,7 +5972,6 @@
   <block id="980dfdd6fab780885793f0ec42399ae0" category="paragraph">Dockerの場合は、<block ref="b1831e4c01f17e88347609d404d308c0" prefix=" " category="inline-code"></block>。</block>
   <block id="007b7067c04893459ac324df1874eb1e" category="paragraph">Podmanを使用している場合は、<block ref="db80c2b4c5690b79ed051a59a7bb3556" prefix=" " category="inline-code"></block>。</block>
   <block id="1432f9e7501db8840fbc871624751a97" category="list-text">ONTAP CLI に戻り、 Cloud Volumes ONTAP がAutoSupportメッセージを送信できることを確認します。</block>
-  <block id="64a4db9697928f2dbd10d78715e195e9" category="paragraph">正確な時刻同期を確保するには、 Cloud Volumes ONTAPシステムに Network Time Protocol (NTP) サーバーを設定する必要があります。ネットワーク内で一貫した時間同期を維持するために、すべてのクラウド プロバイダー上のCloud Volumes ONTAPシステムに対して NTP サーバーを構成するようにしてください。</block>
   <block id="f1b0d7a969d501d016a0fd481082d0c1" category="admonition">NTP サーバーを構成しないと、サービスが中断され、時刻の同期が不正確になる可能性があります。</block>
   <block id="3d2f72d3a57dc2978e458a4280c76291" category="paragraph">NTP サーバーは次のように指定できます。</block>
   <block id="29cb192badbe18daa5e6987be7d6ee48" category="inline-link">NetApp ConsoleAPI</block>
@@ -6355,4 +6353,14 @@
   <block id="fbf12f5b0c848baad453322be1474e53" category="inline-link">これらのAPI</block>
   <block id="d6c639979f19e4b6ee894da109e92143" category="paragraph"><block ref="72d9b6cdd2035c34510a674b3e79e7cf" category="inline-link-rx"></block>。<block ref="274a8d4ce254fa7ad9c059c75fad96a6" category="inline-link-rx"></block>は、コンソールエージェントの作成時に既に有効になっている可能性がありますが、Google CloudにCloud Volumes ONTAPを導入するために必要です。</block>
   <block id="56a5c925d77740ea69d50272863f3f75" category="section-title">2026年2月26日</block>
+  <block id="3204a863a3a1a57abe7546af70eb77cf" category="doc">Cloud Volumes ONTAP のコンソールエージェントのプロキシ設定を管理する機能</block>
+  <block id="a51be83082fba5b4dcf135a536ea8b1d" category="paragraph">NetApp Console エージェントで Cloud Volumes ONTAP のプロキシ設定を管理できるようになりました。接続が失われた場合やプロキシが正しく設定されていない場合でも管理できます。以前は、Console エージェントが Cloud Volumes ONTAP に 20 分間接続できない場合、手動のプロキシ設定がデフォルト設定で上書きされていました。これにより、AutoSupport メッセージに関する問題を含む通信障害が発生していました。既存のシステムのプロキシ設定を保持するには、次の API 呼び出しを実行します：</block>
+  <block id="2ed7e2686c6c63422cc2a66168ff6a41" category="paragraph"><block ref="f4868aca388daf10284f58112e13f2bd" prefix="" category="inline-code"></block></block>
+  <block id="2bfe294417f6af6fb18d7ac186551586" category="paragraph">リクエスト本文に次のパラメータを含めます：</block>
+  <block id="7e6627b4e37aede8d2d720694c07915e" category="paragraph">デフォルトモードは標準です。つまり、Console エージェントは、Cloud Volumes ONTAP に 20 分間接続できない場合、プロキシ設定をデフォルトで上書きします。</block>
+  <block id="7bfa46b18158f588f3fb87cc98bc501b" category="inline-link">変更可能なNetApp Consoleパラメータを設定する</block>
+  <block id="0383a3079d971b2242c6d61352ea3ab4" category="paragraph"><block ref="0383a3079d971b2242c6d61352ea3ab4" category="inline-link-rx"></block></block>
+  <block id="ff18cbae63293952942e32e52d2873b4" category="doc">NTPサーバーを使用してCloud Volumes ONTAPシステム時間を同期する</block>
+  <block id="29b0f551bb46a64e0ba83250d3fa3e71" category="paragraph">Cloud Volumes ONTAPクラスタのネットワークタイムプロトコル（NTP）サーバーを設定すると、ネットワーク内の他のシステムや外部サーバーとクラスタ時間を正確に同期できます。クラスタ時間を外部NTPサーバーと同期することで、インフラストラクチャ全体の一貫性を維持できます。NetAppは、新しいCloud Volumes ONTAPデプロイメントに対してデフォルトでNTPサーバーを設定します。ただし、既存のCloud Volumes ONTAPクラスタに対して設定されていない場合は、ネットワーク内外で正確な時刻同期を実現するためにNTPサーバーを設定する必要があります。</block>
+  <block id="34df2c4da19b4e31f0349125e9cabfc7" category="section-title">2026年3月10日</block>
 </blocks>
