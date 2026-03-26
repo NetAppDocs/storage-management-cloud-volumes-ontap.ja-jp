@@ -1,5 +1,6 @@
 ---
 indexpage:
+  title: Cloud Volumes ONTAPドキュメント
   lead: Cloud Volumes ONTAP を使用すると、データ保護、セキュリティ、コンプライアンスを強化しながら、クラウド ストレージのコストとパフォーマンスを最適化できます。
   tiles:
   - title: 始めましょう
