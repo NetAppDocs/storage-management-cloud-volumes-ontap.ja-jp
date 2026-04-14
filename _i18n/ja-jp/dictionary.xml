@@ -777,7 +777,6 @@
   <block id="0956d25698d6ea6e452e1cd574ab1eea" category="paragraph">ライセンスは常に最初に課金されますが、以下の場合にはマーケットプレイスの時間単位料金で課金されます。</block>
   <block id="6246af80c9ea9c857c70d2c643fcb249" category="list-text">ライセンス容量を超えた場合</block>
   <block id="fdde7a7f3783aa0ce1e585f8be9c2def" category="list-text">ライセンスの有効期限が切れた場合</block>
-  <block id="36e4d5ff70cec517180ae18f1c34d2fd" category="list-text">マーケットプレイスから年間契約を結んでいる場合、導入するすべてのCloud Volumes ONTAPシステムに対してその契約料金が課金されます。年間マーケットプレイス契約と BYOL を組み合わせることはできません。</block>
   <block id="5bdd4028830bea76f4939d67baa460ff" category="paragraph">展開後に、容量ベースのライセンスを使用するCloud Volumes ONTAPシステムのパッケージを変更できます。たとえば、Essentials パッケージを使用してCloud Volumes ONTAPシステムを導入した場合、ビジネス ニーズの変化に応じて Professional パッケージに変更できます。</block>
   <block id="63b54c0d3b4fb8e35270bfdf7b2bdcbb" category="inline-link-macro">充電方法の変更方法を学ぶ</block>
   <block id="ec3e25d80cfc0e5561493729eadecef7" category="paragraph"><block ref="ea19fa0e06a6047bcaabb9af62b066c3" category="inline-link-macro-rx"></block> 。</block>
@@ -6426,4 +6425,17 @@
   <block id="aefa282f16e03c096e52d22b7d41c04b" category="list-text">Cloud Volumes ONTAP を見つける</block>
   <block id="53f76082b918614f3c41bfae0d7985c6" category="inline-link">ONTAP SnapLockを使用してファイルをWORMにコミット</block>
   <block id="90cbc44f5ba3581965b21132dff04d0e" category="paragraph">NFS または CIFS を介して WORM にファイルをコミットするにはアプリケーションを使用するか、 ONTAP CLI を使用してファイルを WORM に自動的にコミットします。WORM 追記可能ファイルを使用すると、ログ情報のように増分的に書き込まれるデータを保持することもできます。詳細については、<block ref="e55de3a3f9aa1cb3686a8e1324558ed7" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="d5affa88c9505737da2bd460b6fd43bb" category="doc">Google Cloud C3 VMによるCloud Volumes ONTAPサポートの改善</block>
+  <block id="0c095222c728afb1d3c25c10e5f27e3c" category="paragraph">Cloud Volumes ONTAP では、Google Cloud C3 シリーズ VM のサポートが強化され、次の追加機能が利用できるようになりました。</block>
+  <block id="f0de228b367386d27d7b8cbf65c47859" category="list-text">Cloud Volumes ONTAP 環境では、C3 ファミリー内の異なるバリアント間でインスタンスタイプを切り替えることができます。</block>
+  <block id="b6d05c51f23a9bec9f5098e25088be1b" category="list-text">インスタンスタイプを変更する際に、ターゲット VM として c3-standard-44 または c3-standard-88 およびそれらの LSSD バリアントを選択した場合、Google ネットワーク サービス出力ネットワーク層 Tier-1 が自動的に適用されます。他の C3 バリアントに切り替えると、出力ネットワーク層は Standard に設定されます。</block>
+  <block id="8c530a5dacbdac6ea799436763592a2b" category="admonition">出力ネットワークの階層をティア1に変更すると、追加費用が発生します。それに応じて導入とアップグレードを計画してください。</block>
+  <block id="592c8c8f58ba9f6037877ba4f12bbd27" category="list-text">C3のローカルSSD（LSSD）バリアントを選択した場合、Flash Cacheがデフォルトで有効になります。ターゲットバリアントがFlash Cacheをサポートしている場合でも、Cloud Volumes ONTAPデプロイメントでC3 LSSDバリアント間を切り替えることはできません。</block>
+  <block id="03fe422ae9ed1fe4cea49e5cfeeac9b8" category="list-text">C3 VMでは、新規および既存のアグリゲートの両方にボリュームを追加できるようになりました。</block>
+  <block id="5aaea3e4d288404c9e29a557265127f4" category="list-text">NetApp Console を使用してボリュームを追加する際、または<block ref="a27faf3e52367bc8d4429006be3dde82" prefix=" " category="inline-code"></block> API を使用して、IOPS とスループットの設定を変更できます。</block>
+  <block id="79755a85cb08431038b7bbe13d99c64f" category="list-text"><block ref="79755a85cb08431038b7bbe13d99c64f" category="inline-link-rx"></block></block>
+  <block id="5a1b1460ab07c6363c5bbb60593e8ced" category="admonition">Cloud Volumes ONTAP は、プローブ用にアクティブ / パッシブ モードでロード バランサーを使用します。Azure では、アクティブ ノードのみがプローブに応答します。パッシブ ノードは、X マークが表示されて非アクティブ状態として認識される場合があります。これは想定される動作であり、心配する必要はありません。</block>
+  <block id="fe4b627e339ef56fd051464a11d7b4aa" category="paragraph"><block ref="fe4b627e339ef56fd051464a11d7b4aa" category="inline-link-macro-rx"></block></block>
+  <block id="9472db468c3c681023f3ca03b59df38b" category="list-text">BYOLライセンスをお持ちで、マーケットプレイスとの年間契約を結んでいる場合、使用量と超過料金は、お客様が設定した請求設定に従って課金されます。料金の請求方法については、<block ref="0b707007d6575618559747cfb2737b16" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="403f4a170e2d1c03d329e0f0dd8d1b84" category="section-title">2026年4月13日</block>
 </blocks>

@@ -1,0 +1,25 @@
+= Google Cloud C3 VMによるCloud Volumes ONTAPサポートの改善
+:allow-uri-read: 
+
+
+
+
+=== Google Cloud C3 VMによるCloud Volumes ONTAPサポートの改善
+
+Cloud Volumes ONTAP では、Google Cloud C3 シリーズ VM のサポートが強化され、次の追加機能が利用できるようになりました。
+
+* Cloud Volumes ONTAP 環境では、C3 ファミリー内の異なるバリアント間でインスタンスタイプを切り替えることができます。
+* インスタンスタイプを変更する際に、ターゲット VM として c3-standard-44 または c3-standard-88 およびそれらの LSSD バリアントを選択した場合、Google ネットワーク サービス出力ネットワーク層 Tier-1 が自動的に適用されます。他の C3 バリアントに切り替えると、出力ネットワーク層は Standard に設定されます。
++
+
+NOTE: 出力ネットワークの階層をティア1に変更すると、追加費用が発生します。それに応じて導入とアップグレードを計画してください。
+
+* C3のローカルSSD（LSSD）バリアントを選択した場合、Flash Cacheがデフォルトで有効になります。ターゲットバリアントがFlash Cacheをサポートしている場合でも、Cloud Volumes ONTAPデプロイメントでC3 LSSDバリアント間を切り替えることはできません。
+* C3 VMでは、新規および既存のアグリゲートの両方にボリュームを追加できるようになりました。
+* NetApp Console を使用してボリュームを追加する際、または `PUT /gcp/vsa/aggregates/{workingEnvironmentId}/{aggregateName}` API を使用して、IOPS とスループットの設定を変更できます。
+
+
+.関連リンク
+* https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google CloudでサポートされているCloud Volumes ONTAPの構成"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#cloud-volumes-ontap-support-for-next-generation-google-cloud-vms["次世代の Google Cloud VM に対する Cloud Volumes ONTAP のサポート"^]
+

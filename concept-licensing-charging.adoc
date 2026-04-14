@@ -48,7 +48,7 @@ endif::azure[]
 ** ライセンスの有効期限が切れた場合
 
 
-* マーケットプレイスから年間契約を結んでいる場合、導入するすべてのCloud Volumes ONTAPシステムに対してその契約料金が課金されます。年間マーケットプレイス契約と BYOL を組み合わせることはできません。
+* BYOLライセンスをお持ちで、マーケットプレイスとの年間契約を結んでいる場合、使用量と超過料金は、お客様が設定した請求設定に従って課金されます。料金の請求方法については、link:concept-licensing-charging.html#concept-licensing-charging.html#billing-preferences-and-overages["請求設定と超過料金"]を参照してください。
 * 中国リージョンでは、BYOLを使用した単一ノードシステムのみがサポートされます。中国リージョンの導入はBYOLライセンスの制限の対象外です。
 
 
