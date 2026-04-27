@@ -227,4 +227,6 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deleting-system.ht
 
 
 .関連リンク
-リンク：link:concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"] link:task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"^]
+
