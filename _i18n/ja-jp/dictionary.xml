@@ -4348,24 +4348,14 @@
   <block id="ced56e040f2bc500101207628f04b8bb" category="paragraph">単一ノードのCloud Volumes ONTAPシステムでカスタマー管理キーを使用する場合は、コンソール エージェントに次の権限があることを確認してください。</block>
   <block id="791fab48bebea2a79a35d70b5cc07227" category="inline-link">最新の権限リストを表示する</block>
   <block id="78b9037265070d084c1d8bcd663811e7" category="paragraph"><block ref="78b9037265070d084c1d8bcd663811e7" category="inline-link-rx"></block></block>
-  <block id="6c4f57df7db9a2fd3182761ed256a263" category="list-text">次の API 呼び出しを使用して、Azure サブスクリプション内のキー コンテナーの一覧を取得します。</block>
-  <block id="b5bc96f48f2241c984568df161fa1a37" category="paragraph">HA ペアの場合:<block ref="77c22cb91fef3c1e85c041013cec246d" prefix=" " category="inline-code"></block></block>
-  <block id="ac20be2c156e351d08e2cd3c7c63b584" category="paragraph">単一ノードの場合:<block ref="842256d0af833acbb8f3ef6a213881aa" prefix=" " category="inline-code"></block></block>
   <block id="b6f3298f001780c2e92cb754103fc2fa" category="paragraph">*name* と *resourceGroup* をメモします。次のステップでこれらの値を指定する必要があります。</block>
-  <block id="212141c3add693db818cb1f0846d9175" category="inline-link">このAPI呼び出しの詳細</block>
-  <block id="a83ee83b3849362150d7c85a1be1dc34" category="paragraph"><block ref="4cff09ac69609cc9da2148aed42c5230" category="inline-link-rx"></block> 。</block>
   <block id="2b5fd7dc9f96f2389712995daa429eff" category="list-text">次の API 呼び出しを使用して、ボールト内のキーのリストを取得します。</block>
-  <block id="36f6292958809659e87a23e35367128f" category="paragraph">HA ペアの場合:<block ref="f8a0d0d5fcdc5c84dd440a7298a8034e" prefix=" " category="inline-code"></block></block>
-  <block id="c68587c00641c7e16e2241848fb1cbae" category="paragraph">単一ノードの場合:<block ref="920cfb8c95c81320bbcb032fcf04cd84" prefix=" " category="inline-code"></block></block>
   <block id="6e4db7c4c3e0f9865e99813a78473894" category="paragraph">*keyName* をメモします。次の手順で、その値 (および Vault 名) を指定する必要があります。</block>
   <block id="bc44d65a22e6f0480445dda8a4a6d4a5" category="list-text">次の API 呼び出しを使用して、 Cloud Volumes ONTAPシステムを作成します。</block>
-  <block id="29a9f6ccdce3262a08caf70f33efc623" category="list-text">HA ペアの場合:</block>
   <block id="d2327a7fa1604c97fc1263d7cfae3fa7" category="paragraph"><block ref="d0063cc3da358487623c7a9f922d502c" prefix="" category="inline-code"></block></block>
   <block id="0b026614551113ad09fa76895c5dd5ce" category="paragraph">リクエスト本体には次のフィールドを含める必要があります。</block>
   <block id="1f8370f663ec71e8fac7dc386794543c" category="admonition">含める<block ref="d740baa07e4af19d0de1f45650cf4bc0" prefix=" " category="inline-code"></block>このリソースをストレージ アカウントの暗号化に使用するために作成した場合は、このフィールドが必要です。</block>
-  <block id="2ffa17dd74caa90edaf33636b3e374b1" category="paragraph"><block ref="792ba555e1629fb9b0b5e00711256a74" category="inline-link-rx"></block> 。</block>
   <block id="6507ffa8d8b9388092f62e253e32e85d" category="paragraph"><block ref="d1a53319a230158b10e72e4bd96c5bbc" prefix="" category="inline-code"></block></block>
-  <block id="7881621c3d4c91216ebe58ee1cdc87e0" category="paragraph"><block ref="52c47b6a301b0fb242044f1b14c5f663" category="inline-link-rx"></block> 。</block>
   <block id="c9a9b22c97e2474e63fdb09a6f5f4a75" category="paragraph">データ暗号化に顧客管理キーを使用するように設定された新しいCloud Volumes ONTAPシステムがあります。</block>
   <block id="cbb7648d740bfbc79c9b844ff98a7694" category="summary">必要な権限を持つ IAM ロールを各Cloud Volumes ONTAPノードに添付する必要があります。HA メディエーターについても同様です。コンソールで IAM ロールを作成するのが最も簡単ですが、独自のロールを使用することもできます。</block>
   <block id="84a333a53e4f22cbaaa6d41a10b81021" category="doc">Cloud Volumes ONTAPノードのAWS IAMロールを設定する</block>
@@ -6190,7 +6180,6 @@
   <block id="f3d300c94dc8da268fd71f595a4b1c36" category="list-text">単一ノード システムの Azure ディスク タイプ</block>
   <block id="3c283478e1082153da1a28f6cae2070a" category="list-text">単一ノード システムの場合、新しく追加されたポートは _e0b_ です。管理対象ディスクを使用した HA ペアの展開の場合、新しく追加されたポートは _e0d_ です。ページ BLOB を使用した HA ペアの展開の場合、新しく追加されたポートは _e0e_ です。VM 名ではなくノード名を使用します。ノード名を見つけるには、<block ref="9cd5e832790132a87592f2958fc2b1a6" prefix=" " category="inline-code"></block>を実行します。</block>
   <block id="e22a8b8a02dd778a344b734bd97fdc83" category="list-text">*ボリューム暗号化のための Azure Disk Encryption*（単一ノード システム、複数ゾーンの HA ペア、および HA 単一 AZ 展開の場合）</block>
-  <block id="41fc554ff7fbcb7b9ef31dbfe008e047" category="list-text">単一ノード システムの場合：</block>
   <block id="929a94de085a28985069e5a8fe181ffa" category="list-text">シングルノードシステムのバージョン9.4</block>
   <block id="70d92c1e2419b7500249e84f56bfda5d" category="section-title">2026年2月12日</block>
   <block id="4da572800ccc44d02dab68a24d7ba671" category="list-text">単一ノード システムがサポートされています。</block>
@@ -6438,4 +6427,57 @@
   <block id="f638b98047aa1e2c9642d2de1bcdd0d0" category="list-text">下にスクロールし、リクエストに関する追加情報を入力してから、*Submit*を選択してください。</block>
   <block id="dc96e19fba7ac18b79e69398a4792825" category="list-text">リンクを解除するサブスクリプションで、<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> を選択し、*リンク解除*を選択します。</block>
   <block id="5e5b6fbbd6a3b4edf3913541e4fecf17" category="list-text"><block ref="5e5b6fbbd6a3b4edf3913541e4fecf17" category="inline-link-rx"></block></block>
+  <block id="66f0f207e553b92ff141bcd4fe27ad0f" category="doc">AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求</block>
+  <block id="55abafc1dd088c3ce83eae8e4a747314" category="paragraph">NetAppは、AWSでのCloud Volumes ONTAPサブスクリプションに対して強化された請求オプションを提供し、Cloud Volumes ONTAP容量とBlueXPバックアップおよびリカバリなどのNetAppデータサービスの支払い方法をより細かく制御できるようにします。以前は、すべてのCloud Volumes ONTAPおよびデータサービスの使用料は、AWSマーケットプレイスのNetApp Intelligent Services（NIS）リストを通じて一括請求されていました。</block>
+  <block id="c6527bb2f1b87269be16603057b53a2c" category="paragraph">AWS エンタープライズ割引プログラム（EDP）の変更により、NetApp は AWS マーケットプレイスにスタンドアロンの Cloud Volumes ONTAP サブスクリプションを導入しました。これにより、Cloud Volumes ONTAP 容量の請求をデータサービスから分離できます。この分離により、EDP クレジットとコストの管理において、より柔軟性が高まります。NetApp は、Cloud Volumes ONTAP の使用に関するコスト管理を改善するために、スタンドアロンのサブスクリプションの使用をお勧めします。また、EDP 要件が発効する 2026 年 7 月 31 日以降も、請求データサービスには NIS サブスクリプションを引き続き使用してください。</block>
+  <block id="bc5abfb3f56ed8d61846aead3435d204" category="paragraph">AWSのスタンドアロンCloud Volumes ONTAPサブスクリプションは、有効な容量ベースのEssentialsまたはFreemiumライセンスパッケージのみをサポートしています。Professionalパッケージはサポートされていません。ニーズに最適な課金方法を選択できます：</block>
+  <block id="620ae1035cf673b2bf4915b820a55641" category="list-text">*スタンドアロン Cloud Volumes ONTAP サブスクリプション（推奨）*：AWS Marketplace のスタンドアロンサブスクリプションを通じて Cloud Volumes ONTAP の使用料金を支払い、NIS サブスクリプションを通じてデータサービスの請求を継続します。これは、NetApp Console で AWS アカウントにスタンドアロンサブスクリプションと NIS サブスクリプションの両方が関連付けられているほとんどのお客様に推奨されるオプションです。</block>
+  <block id="89df3be47eb3a96e140986018ec88f25" category="list-text">*NIS共通購読*：既存のNISリストを通じて、Cloud Volumes ONTAPとデータサービスの両方の料金をまとめてお支払いください。この組み合わせたアプローチは、NetApp ConsoleでAWSアカウントにNISサブスクリプションのみが関連付けられている既存のお客様に対して有効です。ただし、NetAppでは、コスト管理を改善するために、Cloud Volumes ONTAP使用量の請求設定を行い、スタンドアロンのサブスクリプションに切り替えることをお勧めします。</block>
+  <block id="f0bbf3eb80d447bdeec06a404e0deecc" category="paragraph">ご契約のプランに応じて、以下のシナリオが発生します：</block>
+  <block id="136ebd87e9330d7c5a86db1bea619a09" category="paragraph-title">単体購読のみ（新規顧客向け）</block>
+  <block id="4878475e6c6d651007ba24b57dd8f52c" category="paragraph">AWS アカウントに関連付けられているスタンドアロン AWS サブスクリプションのみが NetApp Console にあり、NIS サブスクリプションがない場合、デプロイ時に選択できるライセンスパッケージは Essentials のみです。データサービスの *Backup and Recovery* オプションはご利用いただけません。</block>
+  <block id="b841a0c2e7683cb86c696f570ce9b7c5" category="paragraph-title">スタンドアロン契約と NIS 契約の両方（既存のお客様）</block>
+  <block id="e5f964639d2d368944a708c9d9159fb8" category="paragraph">AWS アカウントに NIS とスタンドアロンサブスクリプションの両方が関連付けられていて、NetApp Console の *請求設定* タブで請求設定を行っていない場合、Cloud Volumes ONTAP の使用料金は、デフォルトでは引き続き NIS を通じて請求されます。これは、スタンドアロンリストでは Professional パッケージがサポートされていないため、Professional パッケージを実行している Cloud Volumes ONTAP インスタンスのデフォルトでもあります。請求設定を行い、各サービスの請求方法を選択できます：</block>
+  <block id="6dd79ef85372ac622a4d4c5dc46a3c46" category="list-text">スタンドアロンのサブスクリプションを Cloud Volumes ONTAP （Essentials パッケージ付き）の優先請求アカウントとして設定します。Professional パッケージのみをお持ちの場合は、請求設定を行うことで Essentials パッケージに変換し、 Cloud Volumes ONTAP の使用量に対して課金できます。このアプローチは、 Cloud Volumes ONTAP EDP クレジットをより効果的に管理するのに役立つため、推奨されます。</block>
+  <block id="a77b7d4efa6f963267f588c46c34df1b" category="list-text">請求データサービスには NIS サブスクリプションを使用するか、Professional パッケージを通じて Cloud Volumes ONTAP の使用量を請求します。導入時に、*Backup and Recovery* データサービスを有効にし、NIS サブスクリプションを通じてデータサービスの料金を請求する Professional ライセンスパッケージを選択します。</block>
+  <block id="8c746863961baaa82aba27b4fd37e769" category="paragraph-title">NISサブスクリプションのみ（既存のお客様）</block>
+  <block id="f838fe2f68473e970c4c89e5cbfc3369" category="paragraph">これは、AWSアカウントに関連付けられたNISサブスクリプションをお持ちの既存のお客様に適用されます。現在と同様に、Cloud Volumes ONTAPとデータサービスの両方を一緒に請求し続けることができます。ただし、NetAppでは、Cloud Volumes ONTAP使用量のコスト管理を向上させるために、スタンドアロンサブスクリプション方式への切り替えを推奨しています：</block>
+  <block id="2a4095338c2cb1e2257dd4e02f2451ce" category="list-text">AWSポータルで新しいスタンドアロンリスティングを購読してください。</block>
+  <block id="ee8232a8731e2273fe25bf49ea87389a" category="list-text">スタンドアロンのサブスクリプションをAWSアカウントにリンクします。</block>
+  <block id="46568565f79aa968105d34a67e84131a" category="list-text">請求設定を、Essentials パッケージでの Cloud Volumes ONTAP 使用のスタンドアロンサブスクリプションに設定してください。</block>
+  <block id="ef9583ff5df47277e937b49f54639572" category="list-text">（該当する場合） Professional パッケージを Essentials パッケージに変更し、請求設定を行ってください。</block>
+  <block id="8460f8e45452fdd819096e78fca80090" category="list-text">NIS サブスクリプションを通じてデータサービスの課金を継続します。</block>
+  <block id="2aef8c7aa3736a735e2c270ba5fba388" category="admonition">複数のサブスクリプションタイプを使用したり、リスティング間を移行したりしても、重複した計測は発生しません。</block>
+  <block id="d813fcacf432155f3260728eb45bbdba" category="list-text"><block ref="d813fcacf432155f3260728eb45bbdba" category="inline-link-rx"></block></block>
+  <block id="4271feea4f5dd0d69f423f75fc48dbde" category="inline-link">容量ライセンスの課金方法を変更する</block>
+  <block id="9e2298e44558506acec619a75ec64821" category="list-text"><block ref="9e2298e44558506acec619a75ec64821" category="inline-link-rx"></block></block>
+  <block id="49edf2231803c3970b4111ca04fcaa6c" category="paragraph">Cloud Volumes ONTAP の導入時に、AWS メディエータープロキシのフィールドにはサーバーアドレスを指定できます。IP アドレスの代わりに完全修飾ドメイン名（FQDN）を入力した場合、AWS VPC にカスタム DNS サーバーが設定されていない限り、FQDN は解決されません。これは、AWS が提供するデフォルトの DNS はパブリック DNS レコードと AWS 内部ホストのみを解決し、顧客のプロキシ サーバなどの外部 FQDN を解決できないためです。この状況が該当する場合、選択肢は 2 つあります（</block>
+  <block id="7a6c754b06c29e6aace6db3f477f89ef" category="list-text">FQDN の代わりに、メディエータープロキシフィールドにプロキシ サーバの IP アドレスを直接追加します。</block>
+  <block id="6b1fcef9c5f9f96f0e1006fa2c790eaf" category="list-text">カスタムDNSサーバアドレスを含むDHCPオプションセットをVPCで設定します。これにより、AWSは、導入時にプロキシ サーバフィールドに入力したFQDNを解決できます。詳細については、<block ref="969ddf18b8d2c2a0ea7f2f758bfa092b" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="f1786d348e00a4d81c8256bfab2317bf" category="list-text">以下の API 呼び出しを使用して、Azure サブスクリプション内のキーコンテナーのリストを取得します。</block>
+  <block id="271091fec63fe3a7ae5ab9329c07fa38" category="inline-link">HAペアの場合</block>
+  <block id="642952a918ce09b4f08372d3c04cf646" category="paragraph"><block ref="6128714d4f22124bb54e7e5f6deb8b10" category="inline-link-rx"></block>:<block ref="77c22cb91fef3c1e85c041013cec246d" prefix=" " category="inline-code"></block></block>
+  <block id="849916757860d46d7e8a7cb162993e59" category="inline-link">単一ノードの場合</block>
+  <block id="5431d1164495e657ec4e4557ecdfc072" category="paragraph"><block ref="0b2344536f5c6ce02c9c82e07e278eec" category="inline-link-rx"></block>:<block ref="842256d0af833acbb8f3ef6a213881aa" prefix=" " category="inline-code"></block></block>
+  <block id="37cd30060e66dbd940c6e8bde54f715b" category="paragraph">HAペアの場合：<block ref="16653123b6ee27115a225558fd9da1c0" prefix=" " category="inline-code"></block></block>
+  <block id="89f7751e2475c204f6d76abe7aaee02b" category="paragraph">単一ノードの場合：<block ref="8092e0725ee020a83a92ad74dc7efae2" prefix=" " category="inline-code"></block></block>
+  <block id="3fe773fa56c2b46ff7ef74a505be49ae" category="inline-link">このAPI呼び出し</block>
+  <block id="f14649643d91bddc807cd1ecaec59c6b" category="list-text">HAペアの場合は<block ref="6802f329e6a1f640b155b8257c09eb6a" category="inline-link-rx"></block>：</block>
+  <block id="14a0873ed547bbfb56894fcdf062b28d" category="list-text">シングルノードシステムの場合は、<block ref="0065b883a121c3c77a0cfc4bb1492b9b" category="inline-link-rx"></block>：</block>
+  <block id="6d8ebc410ea7b66d3c2aaf33b8e39094" category="inline-link">Cloud Volumes ONTAP APIワークフローを使用する準備をしてください</block>
+  <block id="6ca12661dc1853ba82377290ca0b3bc2" category="list-text"><block ref="d16c17f65bc41006807ee1e260dfb738" category="inline-link-rx"></block>。</block>
+  <block id="08764d6f7da0033c29de0076a443fe0c" category="inline-link">ONTAP管理REST APIについて学ぶ</block>
+  <block id="5baeba7934fe8a34975ccc38f19366dd" category="list-text"><block ref="d1a64a155005c90f3066c3fa3b060d30" category="inline-link-rx"></block>。</block>
+  <block id="37ddcf030b7d3101678de58c0621fc89" category="section-title">スタンドアロン AWS リストの優先請求の設定</block>
+  <block id="ec2384719451e3975840b6469dfcfbf4" category="paragraph">AWS アカウントにリンクされたスタンドアロンの AWS サブスクリプションをお持ちの場合は、そのサブスクリプションを通じて Cloud Volumes ONTAP の料金を支払うことができます。NetApp Intelligent Services（NIS）サブスクリプションもお持ちの場合は、NIS サブスクリプションに関連付けられたパッケージを通じてデータサービスの料金を支払うことができます。既存のサブスクリプションについては、Cloud Volumes ONTAP の使用状況のコスト管理を向上させるために、NetApp ではスタンドアロンサブスクリプション方式への切り替えを推奨しています。</block>
+  <block id="b41b9dda9f87c33a6102264990ae2f8a" category="paragraph">AWS アカウントに関連付けられた NIS サブスクリプションをお持ちの既存のお客様の場合、NetApp では、Cloud Volumes ONTAP の使用状況のコスト管理を改善するために、スタンドアロンのサブスクリプション方式に切り替えることをお勧めします。完全なプロセスは次のとおりです：</block>
+  <block id="01368c26a9edc2b99ad0caa355acb956" category="list-text">（該当する場合）Professional パッケージを Essentials パッケージに変換し、請求設定を行います。Professional パッケージを Essentials パッケージに変換する方法については、<block ref="3a4158127b53937d0c91a79e9c5866e1" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="9eab041ce6a01ba028dd95a8c5f1992c" category="list-text">NetApp Console の左側のパネルで、*Administration &gt; Licenses and subscriptions &gt; Billing preferences &gt; Cloud Volumes ONTAP* を選択します。</block>
+  <block id="055fe1da24359dd71a9c8b67896496aa" category="list-text">AWSタブで、スタンドアロンサブスクリプションを選択し、オプションアイコン<block ref="ac91b27a7720c4844510cacb9be7afe5" category="inline-image-macro-rx" type="image"></block>をクリックします。</block>
+  <block id="ca114d54630fd2217b0a7f7b707b2524" category="list-text">設定の編集ウィンドウで、*AWSアカウント認証情報*フィールドにスタンドアロンリストのサブスクリプション番号を選択します。</block>
+  <block id="1a8a4084eaf9e7b7e14963049e616310" category="list-text">* Configure * をクリックします。AWS での Cloud Volumes ONTAP の課金について、サブスクリプションが優先オプションとして表示されます。</block>
+  <block id="5308f0957f4f665b7b8a7a70e7f26dbb" category="inline-link">クイック作成でCloud Volumes ONTAPを導入する</block>
+  <block id="69bad18c1431b72e27676656dcb02294" category="list-text">新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、<block ref="3bd26a21bb4b5b57e3e4e28150d4f309" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="a731966b7a272e5b052ef9a7b9ea958e" category="paragraph">データサービスにNISサブスクリプションを使用するには、*Data services*タブでNISサブスクリプションに対して同じ手順を繰り返してください。新しいCloud Volumes ONTAPシステムをデプロイする際は、NISサブスクリプションを通じて請求されるProfessionalパッケージを選択してください。</block>
+  <block id="55a36fface9a3342eae20532f4dd2f82" category="section-title">2026年5月12日</block>
 </blocks>

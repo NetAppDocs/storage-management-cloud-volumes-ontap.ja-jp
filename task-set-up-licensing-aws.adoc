@@ -18,30 +18,29 @@ Cloud Volumes ONTAPで使用するライセンス オプションを決定した
 
 
 
-== フリーミアム
+== スタンドアロン AWS リストの優先請求の設定
 
-最大 500 GiB のプロビジョニング容量でCloud Volumes ONTAP を無料で使用するには、Freemium オファリングを選択してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#free-trials["フリーミアムプランの詳細"^] 。
+AWS アカウントにリンクされたスタンドアロンの AWS サブスクリプションをお持ちの場合は、そのサブスクリプションを通じて Cloud Volumes ONTAP の料金を支払うことができます。NetApp Intelligent Services（NIS）サブスクリプションもお持ちの場合は、NIS サブスクリプションに関連付けられたパッケージを通じてデータサービスの料金を支払うことができます。既存のサブスクリプションについては、Cloud Volumes ONTAP の使用状況のコスト管理を向上させるために、NetApp ではスタンドアロンサブスクリプション方式への切り替えを推奨しています。
+
+.タスク概要
+AWS アカウントに関連付けられた NIS サブスクリプションをお持ちの既存のお客様の場合、NetApp では、Cloud Volumes ONTAP の使用状況のコスト管理を改善するために、スタンドアロンのサブスクリプション方式に切り替えることをお勧めします。完全なプロセスは次のとおりです：
+
+. AWSポータルで新しいスタンドアロンリスティングを購読してください。
+. スタンドアロンのサブスクリプションをAWSアカウントにリンクします。
+. 請求設定を、Essentials パッケージでの Cloud Volumes ONTAP 使用のスタンドアロンサブスクリプションに設定してください。
+. （該当する場合）Professional パッケージを Essentials パッケージに変換し、請求設定を行います。Professional パッケージを Essentials パッケージに変換する方法については、 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-capacity-licenses.html#change-charging-methods["容量ライセンスの課金方法を変更する"^]を参照してください。
+. NIS サブスクリプションを通じてデータサービスの課金を継続します。
+
 
 .手順
-. NetApp Consoleの左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
-. *システム*ページで*システムの追加*をクリックし、手順に従います。
-+
-.. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、プロンプトに従ってAWS Marketplaceの従量課金制サービスにサブスクライブします。
-+
-プロビジョニングされた容量が500GiBを超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。その時点で、システムは自動的にlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages["エッセンシャルパッケージ"^]。
-
-+
-image:screenshot-aws-paygo-subscription.png["Cloud Volumes ONTAPシステムを作成する際の PAYGO サブスクリプション オプションのスクリーンショット。"]
-
-.. コンソールに戻ったら、課金方法のページにアクセスして「*Freemium*」を選択します。
-+
-image:screenshot-freemium.png["Cloud Volumes ONTAPシステムを作成する際の Freemium オプションのスクリーンショット。"]
+. NetApp Console の左側のパネルで、*Administration > Licenses and subscriptions > Billing preferences > Cloud Volumes ONTAP* を選択します。
+. AWSタブで、スタンドアロンサブスクリプションを選択し、オプションアイコンimage:screenshot_gallery_options.gif["ケバブのアイコン"]をクリックします。
+. 設定の編集ウィンドウで、*AWSアカウント認証情報*フィールドにスタンドアロンリストのサブスクリプション番号を選択します。
+. * Configure * をクリックします。AWS での Cloud Volumes ONTAP の課金について、サブスクリプションが優先オプションとして表示されます。
+. 新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]を参照してください。
 
 
-
-
-
-link:task-deploying-otc-aws.html["AWS でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
+データサービスにNISサブスクリプションを使用するには、*Data services*タブでNISサブスクリプションに対して同じ手順を繰り返してください。新しいCloud Volumes ONTAPシステムをデプロイする際は、NISサブスクリプションを通じて請求されるProfessionalパッケージを選択してください。
 
 
 
@@ -143,6 +142,33 @@ image:screenshot-aws-annual-subscription.png["Cloud Volumes ONTAPシステムを
 .. コンソールに戻ったら、課金方法ページにアクセスして容量ベースのパッケージを選択します。
 +
 image:screenshot-professional.png["Cloud Volumes ONTAPシステムを作成する際の Professional オプションのスクリーンショット。"]
+
+
+
+
+
+link:task-deploying-otc-aws.html["AWS でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
+
+
+
+== フリーミアム
+
+最大 500 GiB のプロビジョニング容量でCloud Volumes ONTAP を無料で使用するには、Freemium オファリングを選択してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#free-trials["フリーミアムプランの詳細"^] 。
+
+.手順
+. NetApp Consoleの左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
+. *システム*ページで*システムの追加*をクリックし、手順に従います。
++
+.. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、プロンプトに従ってAWS Marketplaceの従量課金制サービスにサブスクライブします。
++
+プロビジョニングされた容量が500GiBを超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。その時点で、システムは自動的にlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages["エッセンシャルパッケージ"^]。
+
++
+image:screenshot-aws-paygo-subscription.png["Cloud Volumes ONTAPシステムを作成する際の PAYGO サブスクリプション オプションのスクリーンショット。"]
+
+.. コンソールに戻ったら、課金方法のページにアクセスして「*Freemium*」を選択します。
++
+image:screenshot-freemium.png["Cloud Volumes ONTAPシステムを作成する際の Freemium オプションのスクリーンショット。"]
 
 
 
