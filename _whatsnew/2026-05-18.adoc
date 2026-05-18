@@ -1,0 +1,17 @@
+= Azure での Cloud Volumes ONTAP の簡易導入
+:allow-uri-read: 
+
+
+
+
+=== Azure での Cloud Volumes ONTAP の簡易導入
+
+Quick createを使用して、シングルノード構成と高可用性（HA）構成の両方でAzureにCloud Volumes ONTAPを導入できるようになりました。この合理化されたプロセスにより、拡張方式と比較して手順数が削減され、単一ページでデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられるため、導入がより迅速かつ容易になります。
+
+
+NOTE: Quick createを使用してAzureに新しいCloud Volumes ONTAPシステムを導入する場合、NetApp ConsoleはデフォルトでAzure認証情報を選択します。初期Azure認証情報を使用して、すべてのCloud Volumes ONTAPシステムを導入できます。別のサブスクリプションや認証情報を使用する場合は、拡張方式の導入に切り替える必要があります。この制限は今後のリリースで解消される予定です。
+
+.関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-azure.html["クイック作成を使用してAzureにCloud Volumes ONTAPを導入"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-azure.html["Azure の拡張方式を使用した Cloud Volumes ONTAP の導入"^]
+

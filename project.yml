@@ -5,7 +5,7 @@ settings:
     release_notes_repo: console-relnotes
   harmony_integration: maestro
   internal:
-    pdf_enabled: true
+    pdf_enabled: false
   prod:
     pdf_enabled: true
     harmony_enabled: false
@@ -67,9 +67,9 @@ sidebar:
         url: "/task-set-up-iam-roles.html"
       - title: ライセンスの設定
         url: "/task-set-up-licensing-aws.html"
-      - title: AWS でCloud Volumes ONTAPのクイック デプロイメント メソッドを使用する
+      - title: AWSでデフォルト値を使用してCloud Volumes ONTAPを導入
         url: "/task-quick-deploy-aws.html"
-      - title: AWS でCloud Volumes ONTAPの高度な導入方法を使用する
+      - title: AWSの拡張方式を使用したCloud Volumes ONTAPの導入
         url: "/task-deploying-otc-aws.html"
       - title: AWS シークレットリージョンにCloud Volumes ONTAPをデプロイする
         url: "/task-getting-started-aws-c2s.html"
@@ -94,7 +94,9 @@ sidebar:
           url: "/task-azure-high-availability-mode.html"
         - title: 単一のアベイラビリティゾーンに対して VMOrchestratorZonalMultiFD を有効にする
           url: "/task-saz-feature.html"
-        - title: AzureでCloud Volumes ONTAPを起動する
+        - title: Azure のデフォルト値を使用して Cloud Volumes ONTAP を導入
+          url: "/task-quick-deploy-azure.html"
+        - title: Azureの拡張方式を使用したCloud Volumes ONTAPの導入
           url: "/task-deploying-otc-azure.html"
         - title: Azure プラットフォーム イメージの検証
           entries:

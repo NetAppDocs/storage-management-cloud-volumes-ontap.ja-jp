@@ -2832,7 +2832,6 @@
   <block id="92ac6875448afadccc706b220d2412c3" category="cell">Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照<block ref="ad561d482c49648a0d36f6a86e379ff3" category="inline-link-rx"></block>詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。</block>
   <block id="a9a68a4c2a3e1d9ea3aa0198251e51b3" category="paragraph">詳細については、<block ref="449d1f3dba62fd34c10497ac720687ce" category="inline-link-macro-rx"></block> 、<block ref="1e62300500e1ad0802bb2b24113c7036" category="inline-link-macro-rx"></block> 、 そして<block ref="9af56c326a803ff09c4af3da1cdbc4e2" category="inline-link-rx"></block></block>
   <block id="b5fc4208e494804d1484996e111220af" category="summary">Cloud Volumes ONTAPインスタンスは、単一システム構成で起動することも、AWS の HA ペアとして起動することもできます。</block>
-  <block id="a3272fd5c4bd1903de9b1b2f5e1665a8" category="doc">AWSでCloud Volumes ONTAPを起動</block>
   <block id="9390f8a96c7c5355d756fc44464e1732" category="paragraph">Cloud Volumes ONTAP は、単一システム構成で、または AWS の HA ペアとして起動できます。この方法では、クイック デプロイメント メソッドよりも多くの構成オプションと柔軟性を備えた高度なデプロイメント エクスペリエンスが提供されます。</block>
   <block id="e59e28c3414f799d5603536ada649276" category="list-text">あなたは<block ref="3b4cd71362cf3504bd6ec81f00bd2e64" category="inline-link-rx"></block>。</block>
   <block id="a868fdec3895d3124b3057eb37731062" category="paragraph">構成を選択し、管理者から AWS ネットワーク情報を取得して準備しておく必要があります。詳細については、<block ref="b2852d75c9a2b653b1ca3941854c33b3" category="inline-link-macro-rx"></block> 。</block>
@@ -2938,7 +2937,6 @@
   <block id="221e8f6e98d75a4db804bf88879345c0" category="list-text"><block ref="221e8f6e98d75a4db804bf88879345c0" category="inline-link-macro-rx"></block></block>
   <block id="6390591b27e881b05ba32426d12f2b17" category="list-text"><block ref="6390591b27e881b05ba32426d12f2b17" category="inline-link-macro-rx"></block></block>
   <block id="0f703b696e22955e2930127e854c1e29" category="summary">NetApp Consoleで Cloud Cloud Volumes ONTAPシステムを作成することにより、Azure で単一の Cloud Cloud Volumes ONTAPシステムを起動できます。</block>
-  <block id="70c84621a7336f391b4b7df86b5f1396" category="doc">AzureでCloud Volumes ONTAPを起動する</block>
   <block id="0473d750e2a3daca568511b768f19dad" category="list-text">あなたは<block ref="21b9e54d07d93b52dd801e203dadcd2a" category="inline-link-rx"></block>。</block>
   <block id="1942ca6a74b110784dab141845e32ec9" category="paragraph">構成を計画し、管理者から必要な Azure ネットワークの詳細を入手する必要があります。詳細については、 <block ref="342e106d00de7bc2efc5fca274754fe1" category="inline-link-macro-rx"></block> 。</block>
   <block id="4a990655560c303b19831e9bf63722cf" category="paragraph"><block ref="a19594f8ac35f50a09725bf53aa8cda6" category="inline-link-macro-rx"></block> 。</block>
@@ -4135,28 +4133,8 @@
   <block id="f508651fe98cc3415eb1f58ed2bed8a0" category="paragraph">ONTAP System ManagerおよびONTAP CLIでARPを有効にする方法の詳細については、<block ref="b15a4c9c991d002f8e900421f382aab3" category="inline-link-rx"></block> 。</block>
   <block id="a35eb7b32c61adf984cdcc0cc1594b1c" category="image-alt">スクリーンショットは、Autonomous Ransomware Protection のアドオン ライセンスを示しています。</block>
   <block id="2fde968374b314fab80910a4b4b46fd5" category="summary">Cloud Volumes ONTAPインスタンスを単一システム構成で、または AWS の HA ペアとして迅速に導入できます。</block>
-  <block id="df21da50f7b519faae186f1e43c17239" category="paragraph">単一ノードと高可用性 (HA) 構成の両方に対して、クイック デプロイメント メソッドを使用して、AWS にCloud Volumes ONTAP をデプロイできます。この簡素化されたプロセスにより、高度な方法と比較して展開手順が削減されます。また、1 ページにデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、ワークフローがより明確になります。</block>
-  <block id="f4d9251cb6baf7aaf8aacb13b64583f3" category="paragraph">NetApp Consoleから AWS にCloud Volumes ONTAPシステムを追加するには、以下が必要です。</block>
-  <block id="23308548687959b344a096c6b0bae802" category="inline-link">プロジェクトまたはワークスペースに関連付けられたコンソールエージェント</block>
-  <block id="53bb40073556c6e0c2d5a2300b5cdf2f" category="list-text">あなたは<block ref="204252e86f6f1e5199f82785452591cf" category="inline-link-rx"></block>。</block>
-  <block id="31fd3917028d3e963193a4c795d8230a" category="paragraph">Cloud Volumes ONTAPシステムを作成するとすぐに、 NetApp Consoleは指定された VPC でテストインスタンスを起動して接続を確認します。成功した場合、コンソールは直ちにインスタンスを終了し、システムの展開を開始します。コンソールが接続を確認できない場合、システムの作成は失敗します。テストインスタンスは、<block ref="5ef1a68e904a3597d2b907cd2782dc2a" prefix=" " category="inline-code"></block> （デフォルトのVPCテナンシーの場合）または<block ref="80d12d97ae3fdbfc793b03ba2263193e" prefix=" " category="inline-code"></block>(専用 VPC テナンシーの場合)。</block>
   <block id="7610912a02afeabe582d133e3aacaeb1" category="list-text">[[subscribe]]Canvas ページで、[*システムの追加*] をクリックし、指示に従います。</block>
-  <block id="0213ba83da4728f61c50e9f003561727" category="list-text">*Amazon Web Services* &gt; * Cloud Volumes ONTAP* &gt; *新規追加*を選択します。デフォルトでは*クイック作成*オプションが選択されています。</block>
-  <block id="7678631716f127507640973c04d4d7f2" category="inline-image-macro">width=800,alt="AWS クイック作成"</block>
-  <block id="e027f4c7cbd5869ce59e9268db3155b7" category="paragraph"><block ref="e027f4c7cbd5869ce59e9268db3155b7" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="9aea8161bcc752fa6d3dda6fa4f6ef80" category="list-title">システムの詳細</block>
-  <block id="711c73ff7306ce769fe8d1365ad843b6" category="list-text">*クラウド プロバイダー アカウント*: アカウントの詳細は、選択したコンソール エージェントに基づいて自動的に入力されます。複数のアカウントをお持ちの場合は、使用するアカウントを選択してください。コンソールエージェントが利用できない場合は、<block ref="1594e6ec88af22ac86c24dc97d8aa3e8" category="inline-link-rx"></block> 。</block>
-  <block id="6215b333e4bac48e04b82d9b5c656d16" category="list-text">*名前*: システム名。コンソールは、システム (クラスター) 名を使用して、 Cloud Volumes ONTAPシステムと Amazon EC2 インスタンスに名前を付けます。このオプションを選択した場合、定義済みのセキュリティ グループのプレフィックスとしても名前が使用されます。</block>
-  <block id="be488f7879d6d4643df8df156e845288" category="list-text">* ONTAP認証情報* これらは、Cloud Volumes ONTAPクラスター管理者アカウントの認証情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用することも、カスタム ユーザー名に変更することもできます。</block>
-  <block id="174bb344f9ccc0d461077d3a3fab95e6" category="list-text">*タグ* AWS タグは、AWS リソースのメタデータです。コンソールは、Cloud Volumes ONTAPインスタンスと、インスタンスに関連付けられている各 AWS リソースにタグを追加します。 Cloud Volumes ONTAPシステムを作成するときに、ユーザー インターフェイスから最大 15 個のタグを追加でき、作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、<block ref="9bd250e03cdf80384a24635f16673602" category="inline-link-rx"></block> 。</block>
   <block id="ed38874183f73e374cbbb3c0f4153523" category="list-title">展開と構成</block>
-  <block id="84c26349068a8d379294086769b1dbf4" category="list-text">*デプロイメント タイプ*: 使用するデプロイメント タイプ (単一ノード、単一の可用性ゾーン (AZ) での高可用性 (HA)、または複数の AZ での HA) を選択します。</block>
-  <block id="10998bd4fd45e438e0a5d473fa026ec2" category="list-text">*ネットワーク設定*: 記録したネットワーク情報を入力します。<block ref="fd0086af96971a0360fa581d84484686" category="inline-link-rx"></block> 。</block>
-  <block id="a691a19e1be7950cdfda17bc54add849" category="list-text">*AWS リージョン*: デフォルトでは、サブネット リソースを持つ VPC を持つ関連クラウド アカウントのリージョンが選択されます。</block>
-  <block id="5870f7a0eec344fcf6fbcf6886836fae" category="list-text">*VPC*: サブネットを持つ AWS リージョンの VPC を入力します。サブネットがない場合、VPC のデフォルト値が選択されます。</block>
-  <block id="3850f164243211371486f6a7386e3702" category="list-text">*サブネット*: 単一ノードのデプロイメントまたは単一 AZ 内の HA デプロイメントの場合にのみ、VPC のサブネットを選択できます。</block>
-  <block id="520b661a272c9e6f55f469cc9c24193d" category="paragraph-title">高可用性</block>
-  <block id="94ca6ef273c7d6d636dc97bac5bd754d" category="paragraph">HA 構成を選択した場合は、次の情報を入力します。</block>
   <block id="72cff6c2263a7acacd2038a8bbecd8b9" category="open-title">単一AZのHA</block>
   <block id="effa98e6d1daf04a4234aa9381503058" category="list-text">*メディエーター アクセス*: メディエーター アクセス情報を指定します。メディエーターは、HA ペアの健全性を監視し、障害発生時にクォーラムを提供する別のインスタンスです。キーペア名を指定して、メディエーターインスタンスが AWS EC2 サービスに接続できるようにし、接続方法を選択します。</block>
   <block id="5675099bca3e8dda76b7414befffa02a" category="open-title">複数のAZでのHA</block>
@@ -4164,16 +4142,12 @@
   <block id="7a52df4a87715b07e27b6566530f7aae" category="list-text">*フローティング IP*: 複数の AZ を選択した場合は、NFS および CIFS サービスとクラスターおよび SVM 管理のフローティング IP アドレスを指定します。 IP アドレスは、リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。詳細については、<block ref="e677af9e7ca6c446fefd39f21658da89" category="inline-link-macro-rx"></block> 。</block>
   <block id="8dce48b3257ef975d0a5d55cefad5b71" category="list-text">*ルート テーブル*: 複数の AZ を選択した場合は、フローティング IP アドレスへのルートを含むルート テーブルを選択します。ルート テーブルが複数ある場合は、正しいルート テーブルを選択することが重要です。そうしないと、一部のクライアントがCloud Volumes ONTAP HA ペアにアクセスできなくなる可能性があります。ルートテーブルの詳細については、<block ref="8ed06851f50fcdbded65cb78f986bfa5" category="inline-link-rx"></block> 。</block>
   <block id="e8b12e750d764758dbe212c4aa89ee5b" category="list-title">充電とサービス</block>
-  <block id="9e394512026e5b57a6bccc1315b99546" category="list-text">*マーケットプレイス サブスクリプション*: このCloud Volumes ONTAPシステムで使用する AWS マーケットプレイス サブスクリプションを選択します。</block>
   <block id="a15c8cbe9fed78c41f8d32443cf6e36b" category="inline-link-macro">Cloud Volumes ONTAPライセンスについて学ぶ</block>
-  <block id="9f57f81f79c5b841235e1a2dc081a0cb" category="list-text">*ライセンス*: このCloud Volumes ONTAPシステムで使用するライセンスの種類を選択します。 Professional、Essential、Premium のライセンスから選択できます。さまざまなライセンスの詳細については、以下を参照してください。<block ref="827c6d1762aff7ea0827cad65bbc8690" category="inline-link-macro-rx"></block> 。</block>
   <block id="e06fe5b3c12a682f694b5afcf91d7c10" category="list-text">*データ サービスと機能*: Cloud Volumes ONTAPで使用しないサービスを有効のままにするか、無効にします。</block>
   <block id="e2962533860a405596c6c379003ecdfa" category="inline-link">NetAppの分類について詳しくはこちら</block>
-  <block id="5673dbdc94710739494b2b4fcd07c07f" category="list-text"><block ref="5673dbdc94710739494b2b4fcd07c07f" category="inline-link-rx"></block></block>
   <block id="ff3d1f58a19f3b8e0bab491b41acecc3" category="list-text"><block ref="ff3d1f58a19f3b8e0bab491b41acecc3" category="inline-link-macro-rx"></block></block>
   <block id="b9c874d376943147dbadbc9046fb82f0" category="admonition">WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。</block>
   <block id="30e7f6b5f6dce304885b4864823eb15f" category="list-text">* NetAppサポート サイト アカウント*: 複数のアカウントがある場合は、使用するアカウントを選択します。</block>
-  <block id="290612199861c31d1036b185b4e69b75" category="paragraph-title">まとめ</block>
   <block id="7fc9f222a523c4e64609fc3932b07a00" category="paragraph">入力した詳細を確認または編集し、「*作成*」をクリックします。</block>
   <block id="9ced3f212444ec92ce068e43e3a313c4" category="inline-link-macro">高度なデプロイメントを使用して AWS にCloud Volumes ONTAPをデプロイする</block>
   <block id="4870541f85a6bd6c624b90dbfb2301d9" category="list-text"><block ref="4870541f85a6bd6c624b90dbfb2301d9" category="inline-link-macro-rx"></block></block>
@@ -5536,7 +5510,6 @@
   <block id="57831ce128ea817f6507e4e9d32b2371" category="paragraph"><block ref="57831ce128ea817f6507e4e9d32b2371" category="inline-image-macro-rx" type="image"></block></block>
   <block id="089dd3c79ae56f1da7a6b2c50edab075" category="section-title">Google Cloud の大容量ディスク</block>
   <block id="cbddd29e855faaf713258fb82116edf0" category="section-title">Google Cloud の新しいマシンタイプ</block>
-  <block id="cc43ac2c3e66d6d0b58d982ca8a50a38" category="paragraph">Cloud Volumes ONTAP は、次のマシン タイプをサポートするようになりました。</block>
   <block id="1ac4c5bf1cc05cf3d4aa859843ec87b4" category="list-text">ExploreライセンスとBYOLを備えたn2-standard-4</block>
   <block id="e73d4d7c476b6b18ed15adb41d3ea1b2" category="list-text">標準ライセンスとBYOLを備えたn2-standard-8</block>
   <block id="08ce51aefda2c98505d3ef29ab430caf" category="list-text">プレミアムライセンスとBYOLを備えたn2-standard-32</block>
@@ -5587,8 +5560,6 @@
   <block id="0178b985155f8038a3bb894fe24ece79" category="sidebar">AWS KMSを設定する</block>
   <block id="e26c5d07fc30848902a99c95897441b4" category="sidebar">IAMロールを設定する</block>
   <block id="e907b41f5f3d7332bee5a43fbbf78a08" category="sidebar">ライセンスの設定</block>
-  <block id="79a0f341badc43467674384b63131dab" category="sidebar">AWS でCloud Volumes ONTAPのクイック デプロイメント メソッドを使用する</block>
-  <block id="b8228ea9776a5a74592df84aacf3832f" category="sidebar">AWS でCloud Volumes ONTAPの高度な導入方法を使用する</block>
   <block id="275e611a605380e34988066f6fa53eae" category="sidebar">AWS シークレットリージョンにCloud Volumes ONTAPをデプロイする</block>
   <block id="1649f10406b5e0e0054f2cb76197f63a" category="sidebar">Microsoft Azureを使い始める</block>
   <block id="6cd0e178ea21e9518654ab6a94374db4" category="sidebar">NetApp Consoleで始める</block>
@@ -6373,7 +6344,6 @@
   <block id="b6806817250ca74e0d889e8170e85823" category="list-text">全機能メニューの鉛筆アイコンから *CIFS setup* を編集します。</block>
   <block id="c534251be3cf8755eaf972b5450db181" category="list-text">全機能ペンシルメニューから*ルートテーブル*を編集します</block>
   <block id="c6f01c78bfe0a0a495cb5d3ed77824a9" category="cell">ボリューム</block>
-  <block id="add65f7075db5dde27f485e9f855601b" category="paragraph">このタブではボリュームの更新は許可されておらず、ボリュームを追加することもできません。</block>
   <block id="9e32a435d22aa5cbc195e861b5fe629f" category="list-text">ボリューム設定を編集</block>
   <block id="5b5eeee4d1e6b7007829d66c8b144064" category="list-text">Snapshot コピーを作成する</block>
   <block id="ff1652826450f50c76cdfdda64d94e2f" category="list-text">Snapshot コピーからリストアする</block>
@@ -6401,7 +6371,6 @@
   <block id="68508a9dfe7d188ddfacdf20bf897e7f" category="list-text">システムを入力します</block>
   <block id="f58a02a69585ec6ceb21ad1ac5eda505" category="list-text">AVS 管理ボタンを使用する</block>
   <block id="1f4c7e61bb42651b1fed2a31454fa7b2" category="cell">ロールなし</block>
-  <block id="cbc38e338398c30ad05441fc2f224550" category="paragraph">ロールが割り当てられていない場合、すべての操作は無効になります。</block>
   <block id="ba289c943721589929b1aa882cf8868b" category="list-text">作業環境にアクセスする</block>
   <block id="c81a3e43374dd535dae333a1add5d041" category="list-text">レプリケーションへのアクセス</block>
   <block id="bb499c548cf9f80e030b1ead19cf6245" category="list-text">Cloud Volumes ONTAP作成ウィザードを使用する</block>
@@ -6480,4 +6449,79 @@
   <block id="69bad18c1431b72e27676656dcb02294" category="list-text">新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、<block ref="3bd26a21bb4b5b57e3e4e28150d4f309" category="inline-link-rx"></block>を参照してください。</block>
   <block id="a731966b7a272e5b052ef9a7b9ea958e" category="paragraph">データサービスにNISサブスクリプションを使用するには、*Data services*タブでNISサブスクリプションに対して同じ手順を繰り返してください。新しいCloud Volumes ONTAPシステムをデプロイする際は、NISサブスクリプションを通じて請求されるProfessionalパッケージを選択してください。</block>
   <block id="55a36fface9a3342eae20532f4dd2f82" category="section-title">2026年5月12日</block>
+  <block id="a0183314c2ab3e36d7dc149d1630d662" category="paragraph">Amazon Web Services（AWS）および Microsoft Azure で<block ref="956eaa6186169471a13345860cad0757" prefix=" " category="inline-code"></block>を使用して Cloud Volumes ONTAP を導入できます。これにより、シングルノード構成と高可用性（HA）構成の両方で迅速な導入が可能になります。この簡素化されたプロセスでは、単一ページでデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、拡張方式と比較して導入手順が削減されます。</block>
+  <block id="fe315d7471968d18b362c1b1144a20b0" category="paragraph">始める前に、以下のものを用意してください：</block>
+  <block id="e1698d0f79b1f839d16516155d0a01c6" category="list-text">コンソールエージェントが起動して実行されており、プロジェクトまたはワークスペースに関連付けられていること。コンソールエージェントは常に実行されている必要があることに注意してください。詳細については、以下を参照してください：</block>
+  <block id="53101ed6c57b4f1b9f3eb58eb938c2b1" category="inline-link">NetApp Console エージェントについて学ぶ</block>
+  <block id="79b9be0ac010d5490772bdb3188d576d" category="list-text"><block ref="79b9be0ac010d5490772bdb3188d576d" category="inline-link-rx"></block></block>
+  <block id="9db458bccb025b8de9d4cfd46a4d1578" category="inline-link">Console エージェントの導入方法を選択</block>
+  <block id="21b44c8a4c386ac4ac342bec49229b4b" category="list-text"><block ref="21b44c8a4c386ac4ac342bec49229b4b" category="inline-link-rx"></block></block>
+  <block id="6bad41fe3567c2d39d19367d752e1c5e" category="list-text">使用する構成について理解していること。開始する前に、構成を選択し、管理者からネットワーク情報を入手してください。詳細については、以下を参照してください：</block>
+  <block id="099d77fc11d7ea7fec2d2c87952f8b4a" category="inline-link-macro">AWSでの構成計画</block>
+  <block id="94531787ea8a868597a2894b983d3997" category="paragraph"><block ref="94531787ea8a868597a2894b983d3997" category="inline-link-macro-rx"></block></block>
+  <block id="4e296cbc4b3d694916a73a8bccc2618a" category="inline-link-macro">Azureでの構成の計画</block>
+  <block id="50919a3648d500b5cae93df54bad1660" category="paragraph"><block ref="50919a3648d500b5cae93df54bad1660" category="inline-link-macro-rx"></block></block>
+  <block id="a376066b1c9ac3588b98de51d7bbc4bf" category="list-text">Cloud Volumes ONTAP のライセンス要件に関する知識。詳細については、以下を参照してください：</block>
+  <block id="9aa23690f6c27d4c58c0535af311d9fb" category="inline-link-macro">AWSでライセンスを設定する</block>
+  <block id="7735a57d0da8542c857a04e291065b2b" category="paragraph"><block ref="7735a57d0da8542c857a04e291065b2b" category="inline-link-macro-rx"></block></block>
+  <block id="6c4c5ba58ef9ea44b4eb3ab36a6bd2a1" category="inline-link-macro">Azureでライセンスを設定する</block>
+  <block id="0288547ecbb8c53c47e0944833e74a36" category="paragraph"><block ref="0288547ecbb8c53c47e0944833e74a36" category="inline-link-macro-rx"></block></block>
+  <block id="de0793340005b3646591da3edbd5904e" category="list-text">CIFS構成のDNSとActive Directory。詳細については、次を参照してください：</block>
+  <block id="1c3a425a6ee31be89702420f83144b0c" category="inline-link-macro">AWSのネットワーク要件</block>
+  <block id="698986dc4292e89123e221e515a0d74b" category="paragraph"><block ref="698986dc4292e89123e221e515a0d74b" category="inline-link-macro-rx"></block></block>
+  <block id="c0cf3ac9b58bf7128b0edea2d7f775eb" category="inline-link-macro">Azureにおけるネットワーク要件</block>
+  <block id="67b834b1ef658ae3f312e7de4ba6af6c" category="paragraph"><block ref="67b834b1ef658ae3f312e7de4ba6af6c" category="inline-link-macro-rx"></block></block>
+  <block id="ec7684f8f216cf1ecdb9a9b62758a4a6" category="list-text">クラウド プロバイダ（*Amazon Web Services* または *Microsoft Azure*）&gt; *Cloud Volumes ONTAP/Cloud Volumes ONTAP HA* &gt; *Add new* を選択します。*Quick create* オプションがデフォルトで選択されています。</block>
+  <block id="ce69e2301391e8a099e5f4ffad83e207" category="example-title">Quick createオプションのサンプルスクリーンショット</block>
+  <block id="886e58b8c16a5f0b3dea467125601a3f" category="inline-image-macro">width=500,alt="AWS Quick Create"</block>
+  <block id="05fbaa940416f58a5e46a739d2f4c7fc" category="paragraph"><block ref="05fbaa940416f58a5e46a739d2f4c7fc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ca20e4c4a1178db5332b6e4d1fec5e3f" category="inline-image-macro">width=500,alt="Azureクイック作成"</block>
+  <block id="1e8cbffa0dad5ef3f32fd257d35128c8" category="paragraph"><block ref="1e8cbffa0dad5ef3f32fd257d35128c8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5b98d59e0e7d352cc2eba9b98c195920" category="list-title">システムの詳細</block>
+  <block id="0703e60c8ce9c50b32557a493769fc66" category="list-text">*クラウド プロバイダアカウント/クレデンシャル*：アカウントとサブスクリプションの詳細は、NetApp Consoleエージェントに基づいて自動的に入力されます。複数のアカウントまたはサブスクリプションがある場合は、使用するアカウントまたはサブスクリプションを選択します。NetApp Consoleエージェントが使用できない場合は、<block ref="689b13c9a5c20aa1149b467cd9e2d99d" category="inline-link-rx"></block>するように求められます。</block>
+  <block id="df29b7782e1e52af5c3787266b32e641" category="list-text">*名前*：Cloud Volumes ONTAP システム（クラスタ名とも呼ばれる）の名前を入力します。NetApp Console は、システム（クラスタ）名を使用して Cloud Volumes ONTAP システムと VM インスタンスに名前を付けます。また、そのオプションを選択した場合、事前定義されたセキュリティグループのプレフィックスとしてその名前が使用されます。</block>
+  <block id="493afb06da102ef4f588b9ee9f70eccc" category="list-text">*ONTAP認証情報*：これらは、Cloud Volumes ONTAPクラスタ管理者アカウントの認証情報です。これらの認証情報を使用して、ONTAP System ManagerまたはONTAP CLIを通じてCloud Volumes ONTAPに接続できます。デフォルトの_admin_ユーザー名をそのまま使用することも、カスタムユーザー名に変更することもできます。</block>
+  <block id="ed359bcb0198329923d6f27a3212b199" category="list-text">*タグ*：タグは、AWSまたはAzureリソースのメタデータです。NetApp Consoleは、Cloud Volumes ONTAPインスタンスおよびそのインスタンスに関連付けられている各リソースにタグを追加します。Cloud Volumes ONTAPシステムの作成時に、ユーザーインターフェイスから最大15個のタグを追加でき、作成後にさらに追加することもできます。詳細については、以下を参照してください：</block>
+  <block id="a16435cab7ba0f508c1af2b05a09518f" category="paragraph"><block ref="9b64f9d4e4f17e41dd8f7e0bd2ac90d8" category="inline-link-rx"></block>。</block>
+  <block id="194c4ba8c0f429994571ad7132771038" category="inline-link">Azure ドキュメント：リソースにタグを付ける</block>
+  <block id="293180eda7fdbd2f72c67b87bef17b82" category="paragraph"><block ref="7958b061e6b74f8d105bdf1dc2f21002" category="inline-link-rx"></block>。</block>
+  <block id="6a83697d05182d9c2179c652101b9141" category="list-text">*デプロイメントタイプ/トポロジ*：使用するデプロイメントタイプ（シングルノード、単一のアベイラビリティゾーン（AZ）での高可用性（HA）、または複数のAZでのHA）を選択します。</block>
+  <block id="93b02b826b8b0ee6968fee7191f8ba74" category="list-text">*ネットワーク構成*：計画ワークシートに記録したリージョン、VNet、サブネットのネットワーク情報を入力してください。</block>
+  <block id="4b0247d45dc33f090b8c6022fd0ec5b3" category="list-text">*リージョン*：デフォルトでは、リソースに関連付けられているクラウド アカウントのリージョンが選択されます。</block>
+  <block id="ff833a169e227e2cc350fcca7164aee7" category="list-text">*可用性ゾーン*：選択したデプロイメントタイプに基づいて可用性ゾーンを選択でき、選択したリージョンが可用性ゾーンをサポートしている場合に選択できます。</block>
+  <block id="fb39fa266aef6376da5693e7f07daf4f" category="list-text">*サブネット*：リージョンのサブネットを選択してください。</block>
+  <block id="801f4bb28be5a6f5408b765580d77054" category="open-title">AWS向け</block>
+  <block id="7134d99cb386a398472ce390ec6cde1e" category="paragraph">*VPC*：AWSの場合、計画どおりにサブネットを持つリージョンのVPCを入力してください。</block>
+  <block id="9a648a165c10a9b39e904785f2c76d90" category="paragraph-title">AWSの高可用性機能</block>
+  <block id="3d6749f5155069d11e17402eb45411c4" category="paragraph">HA構成を選択した場合は、以下の情報を入力してください：</block>
+  <block id="c90b3762df86fca042965f850d0dd3a9" category="paragraph">*マーケットプレイスサブスクリプション*：AWSで、このCloud Volumes ONTAPシステムで使用するAWSマーケットプレイスサブスクリプションを選択します。</block>
+  <block id="5e69c1ba6e88231ba98e5b867048d898" category="open-title">Azure の場合</block>
+  <block id="e1d2077933857aa679ffd3a25a805a92" category="paragraph">*VNET*：Azure の場合は、必要な VNET を選択してください。</block>
+  <block id="5c1db3b64150a669729713d1441519fb" category="list-text">*ライセンス*：このCloud Volumes ONTAPシステムで使用するライセンスタイプを選択します。Professional、Essentials、Freemiumライセンスから選択できます。各種ライセンスの詳細については、<block ref="827c6d1762aff7ea0827cad65bbc8690" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="180f6ba8b7bb3ff016c53f089f146fab" category="list-text"><block ref="180f6ba8b7bb3ff016c53f089f146fab" category="inline-link-rx"></block></block>
+  <block id="77bb73ceddf23085496529ef175197ec" category="list-text"><block ref="77bb73ceddf23085496529ef175197ec" category="inline-link-rx"></block></block>
+  <block id="2b859e73b5f5458c61f5f161cbe275c4" category="paragraph">_Azure_ では、*概要*セクションに、デプロイプロセスが完了したときに割り当てられるリソースが表示されます。</block>
+  <block id="63d192276eafa7b25df1a392b878676d" category="paragraph">_AWS_では、Cloud Volumes ONTAPシステムの作成後すぐに、NetApp Consoleは、指定されたVPC内にテストインスタンスを起動し、接続性を検証します。処理が成功すると、Consoleは直ちにインスタンスを終了し、システムのデプロイを開始します。Consoleが接続を確認できない場合、システムの作成は失敗します。テストインスタンスは、<block ref="5ef1a68e904a3597d2b907cd2782dc2a" prefix=" " category="inline-code"></block>（デフォルトのVPCテナントの場合）または<block ref="80d12d97ae3fdbfc793b03ba2263193e" prefix=" " category="inline-code"></block>（専用VPCテナント向け）のいずれかです。</block>
+  <block id="3efb304bc88bbdc4d58653e95875c0e1" category="paragraph">Cloud Volumes ONTAPシステムの導入時に問題が発生した場合は、障害メッセージを確認してください。また、システムで*環境の再作成*を選択して、<block ref="9b6545e4cea9b4ad4979d41bb9170e2b" prefix=" " category="inline-code"></block>モードウィザードを使用して導入を続行することもできます。</block>
+  <block id="edbf603043ea71af5a3f46821ad9d4a3" category="admonition">導入プロセスが完了したら、AWSまたはAzureクラウドポータルでシステムが生成したCloud Volumes ONTAP設定（特にシステムタグ）を変更しないでください。これらの設定を変更すると、予期しない動作やデータ損失が発生する可能性があります。</block>
+  <block id="a4ad56ab8baa8582d6dba6091a9bd877" category="doc">Azure での Cloud Volumes ONTAP の簡易導入</block>
+  <block id="8bfd035a33aa401829a9de89b5e0c246" category="paragraph">Quick createを使用して、シングルノード構成と高可用性（HA）構成の両方でAzureにCloud Volumes ONTAPを導入できるようになりました。この合理化されたプロセスにより、拡張方式と比較して手順数が削減され、単一ページでデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられるため、導入がより迅速かつ容易になります。</block>
+  <block id="22f179b38b6aab375d21adc5216a57da" category="admonition">Quick createを使用してAzureに新しいCloud Volumes ONTAPシステムを導入する場合、NetApp ConsoleはデフォルトでAzure認証情報を選択します。初期Azure認証情報を使用して、すべてのCloud Volumes ONTAPシステムを導入できます。別のサブスクリプションや認証情報を使用する場合は、拡張方式の導入に切り替える必要があります。この制限は今後のリリースで解消される予定です。</block>
+  <block id="da7aee176a6e0989fc4edf2b02e0af34" category="inline-link">クイック作成を使用してAzureにCloud Volumes ONTAPを導入</block>
+  <block id="8928e512cc17b6dd2c97fcb7dff5a06a" category="list-text"><block ref="8928e512cc17b6dd2c97fcb7dff5a06a" category="inline-link-rx"></block></block>
+  <block id="6d1c2cdb212ea73452146a3edb82fe12" category="inline-link">Azure の拡張方式を使用した Cloud Volumes ONTAP の導入</block>
+  <block id="3cf666a1e5ff2ecf85c4a0bcf868d65f" category="list-text"><block ref="3cf666a1e5ff2ecf85c4a0bcf868d65f" category="inline-link-rx"></block></block>
+  <block id="36988e8f47cb48af40dd817b7f6b4d72" category="paragraph">以下のボリューム操作は実行できません：</block>
+  <block id="bf0e55251fc2d98ac6842f182450e467" category="paragraph">役割が割り当てられていない場合、以下の操作は一切実行できません：</block>
+  <block id="94b7b54556632ab5a087eae13f0e0af9" category="doc">AWSの拡張方式を使用したCloud Volumes ONTAPの導入</block>
+  <block id="1b26e39c9aec7d9422f257c07a5dbb5d" category="list-text"><block ref="221e8f6e98d75a4db804bf88879345c0" category="inline-link-macro-rx"></block> *</block>
+  <block id="fab04a1941385806648057c8597be7c4" category="list-text"><block ref="fab04a1941385806648057c8597be7c4" category="inline-link-macro-rx"></block></block>
+  <block id="c92ac4b81ff77c3da7bc410dc79cb66b" category="inline-link-macro">拡張方式を使用してAzureにCloud Volumes ONTAPを導入する</block>
+  <block id="cc5e18929848d96ede4034c97f00652a" category="list-text"><block ref="cc5e18929848d96ede4034c97f00652a" category="inline-link-macro-rx"></block></block>
+  <block id="3bfca6a430fa87d8630a8459fe8a4aa1" category="section-title">2026年5月18日</block>
+  <block id="e6720d527b65636c528e1236740bb883" category="paragraph">Cloud Volumes ONTAP では、Google Cloud でこれらの PAYGO ライセンスを使用した以下のマシンタイプがサポートされるようになりました：</block>
+  <block id="4efc5a6487a0b2b074b6549924edcf20" category="sidebar">AWSでデフォルト値を使用してCloud Volumes ONTAPを導入</block>
+  <block id="690f86e0be68ddfe1eb22f837c53e53c" category="sidebar">AWSの拡張方式を使用したCloud Volumes ONTAPの導入</block>
+  <block id="7fa0d9a7585aaeb29c655dac03f5e3d6" category="sidebar">Azure のデフォルト値を使用して Cloud Volumes ONTAP を導入</block>
+  <block id="75903a04d1a65d3e18c839c67b54316d" category="sidebar">Azureの拡張方式を使用したCloud Volumes ONTAPの導入</block>
 </blocks>
