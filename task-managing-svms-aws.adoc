@@ -254,7 +254,7 @@ network interface create -vserver svm_2 -service-policy default-data-iscsi -home
 ----
 +
 ** この iSCSI LIF は、ストレージ VM 内のフローティング IP の LIF 移行をサポートするために必要です。  iSCSI LIF である必要はありませんが、ノード間で移行するように構成することはできません。
-** `-service-policy default-data-block`IP アドレスがノード間で移行されないことを示します。
+** `-service-policy default-data-iscsi`IPアドレスがノード間で移行しないことを示します。
 ** _private_ip_ は、cvo_node1 の eth0 (e0a) 上の未使用のセカンダリプライベート IP アドレスです。
 
 
@@ -266,7 +266,7 @@ network interface create -vserver svm_2 -service-policy default-data-iscsi -home
 ----
 +
 ** この iSCSI LIF は、ストレージ VM 内のフローティング IP の LIF 移行をサポートするために必要です。  iSCSI LIF である必要はありませんが、ノード間で移行するように構成することはできません。
-** `-service-policy default-data-block`IP アドレスがノード間で移行されないことを示します。
+** `-service-policy default-data-iscsi`IPアドレスがノード間で移行しないことを示します。
 ** _private_ip_ は、cvo_node2 の eth0 (e0a) 上の未使用のセカンダリプライベート IP アドレスです。
 
 
