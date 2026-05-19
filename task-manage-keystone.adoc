@@ -20,6 +20,8 @@ NetApp Keystone は、 CapEx やリースよりも OpEx を好む顧客にハイ
 
 https://www.netapp.com/services/keystone/["Keystoneについて詳しくはこちら"^]
 
+*必要なコンソールロール* このタスクを実行するには、Licenses and subscriptions管理者ロールが必要ですlink:https://docs.netapp.com/us-en/console-setup-admin/reference-iam-licenses-subscriptions.html["NetApp Console の Licenses and subscriptions ロールについて学ぶ"^]。
+
 
 
 == アカウントを承認する
