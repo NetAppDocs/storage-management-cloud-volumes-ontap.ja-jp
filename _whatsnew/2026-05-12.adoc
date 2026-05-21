@@ -6,7 +6,7 @@
 
 === AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求
 
-NetAppは、AWSでのCloud Volumes ONTAPサブスクリプションに対して強化された請求オプションを提供し、Cloud Volumes ONTAP容量とBlueXPバックアップおよびリカバリなどのNetAppデータサービスの支払い方法をより細かく制御できるようにします。以前は、すべてのCloud Volumes ONTAPおよびデータサービスの使用料は、AWSマーケットプレイスのNetApp Intelligent Services（NIS）リストを通じて一括請求されていました。
+NetAppは、AWSでのCloud Volumes ONTAPサブスクリプション向けに強化された課金オプションを提供し、Cloud Volumes ONTAPの容量やNetApp Backup and RecoveryなどのNetAppデータサービスの支払い方法をより詳細に制御できるようにします。以前は、すべてのCloud Volumes ONTAPおよびデータサービスの使用量は、AWS MarketplaceのNetApp Intelligent Services（NIS）リストを通じて一括で請求されていました。
 
 AWS エンタープライズ割引プログラム（EDP）の変更により、NetApp は AWS マーケットプレイスにスタンドアロンの Cloud Volumes ONTAP サブスクリプションを導入しました。これにより、Cloud Volumes ONTAP 容量の請求をデータサービスから分離できます。この分離により、EDP クレジットとコストの管理において、より柔軟性が高まります。NetApp は、Cloud Volumes ONTAP の使用に関するコスト管理を改善するために、スタンドアロンのサブスクリプションの使用をお勧めします。また、EDP 要件が発効する 2026 年 7 月 31 日以降も、請求データサービスには NIS サブスクリプションを引き続き使用してください。
 

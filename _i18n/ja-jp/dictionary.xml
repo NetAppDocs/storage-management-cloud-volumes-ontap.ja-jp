@@ -5759,7 +5759,6 @@
   <block id="1fe428516837eeacfb2efcf589684031" category="list-text">9.12.1 P18</block>
   <block id="60712fb4ddcab7f940097cec71789c95" category="inline-link-macro">Azureでサポートされています</block>
   <block id="5b4234e88e699bcad5cf3cb47499cc7a" category="admonition">中国地域では、単一ノードの展開はCloud Volumes ONTAP 9.12.1 GA および 9.13.0 GA でのみサポートされます。これらのバージョンは、 Cloud Volumes ONTAPの以降のパッチとリリースにアップグレードできます。<block ref="49fae7188ea01a36257ae97784b414e8" category="inline-link-macro-rx"></block> 。中国地域で新しいバージョンのCloud Volumes ONTAPを展開する場合は、 NetAppサポートにお問い合わせください。中国地域ではNetAppから直接購入したライセンスのみがサポートされており、マーケットプレイスのサブスクリプションは利用できません。</block>
-  <block id="cde8893afeb44f6e80f8c28b3d91be6f" category="admonition">選択したバージョンに対して新しいリリース候補、一般提供、またはパッチ リリースが利用可能な場合、 BlueXP は作業環境を作成するときにシステムをそのバージョンに更新します。たとえば、 Cloud Volumes ONTAP 9.16.1 P3 を選択し、9.16.1 P4 が利用可能な場合は更新が行われます。更新は、あるリリースから別のリリース (たとえば、9.15 から 9.16) には行われません。</block>
   <block id="bfac3fe9125d6e450e2abe9717a99a20" category="cell">9.11.1 P20</block>
   <block id="14875de99eeeb97599f38dd52d96437b" category="paragraph">Azure にCloud Volumes ONTAPの下位バージョンがある場合は、まず次のバージョンにアップグレードし、サポートされているアップグレード パスに従ってターゲット バージョンに到達する必要があります。たとえば、 Cloud Volumes ONTAP 9.7 P7 をお持ちの場合は、次のアップグレード パスに従います。</block>
   <block id="765914ebc72765a6e31ff30ff9088e9c" category="list-text">9.7 P7 -&gt; 9.8 P18</block>
@@ -6396,7 +6395,6 @@
   <block id="dc96e19fba7ac18b79e69398a4792825" category="list-text">リンクを解除するサブスクリプションで、<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> を選択し、*リンク解除*を選択します。</block>
   <block id="5e5b6fbbd6a3b4edf3913541e4fecf17" category="list-text"><block ref="5e5b6fbbd6a3b4edf3913541e4fecf17" category="inline-link-rx"></block></block>
   <block id="66f0f207e553b92ff141bcd4fe27ad0f" category="doc">AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求</block>
-  <block id="55abafc1dd088c3ce83eae8e4a747314" category="paragraph">NetAppは、AWSでのCloud Volumes ONTAPサブスクリプションに対して強化された請求オプションを提供し、Cloud Volumes ONTAP容量とBlueXPバックアップおよびリカバリなどのNetAppデータサービスの支払い方法をより細かく制御できるようにします。以前は、すべてのCloud Volumes ONTAPおよびデータサービスの使用料は、AWSマーケットプレイスのNetApp Intelligent Services（NIS）リストを通じて一括請求されていました。</block>
   <block id="c6527bb2f1b87269be16603057b53a2c" category="paragraph">AWS エンタープライズ割引プログラム（EDP）の変更により、NetApp は AWS マーケットプレイスにスタンドアロンの Cloud Volumes ONTAP サブスクリプションを導入しました。これにより、Cloud Volumes ONTAP 容量の請求をデータサービスから分離できます。この分離により、EDP クレジットとコストの管理において、より柔軟性が高まります。NetApp は、Cloud Volumes ONTAP の使用に関するコスト管理を改善するために、スタンドアロンのサブスクリプションの使用をお勧めします。また、EDP 要件が発効する 2026 年 7 月 31 日以降も、請求データサービスには NIS サブスクリプションを引き続き使用してください。</block>
   <block id="bc5abfb3f56ed8d61846aead3435d204" category="paragraph">AWSのスタンドアロンCloud Volumes ONTAPサブスクリプションは、有効な容量ベースのEssentialsまたはFreemiumライセンスパッケージのみをサポートしています。Professionalパッケージはサポートされていません。ニーズに最適な課金方法を選択できます：</block>
   <block id="620ae1035cf673b2bf4915b820a55641" category="list-text">*スタンドアロン Cloud Volumes ONTAP サブスクリプション（推奨）*：AWS Marketplace のスタンドアロンサブスクリプションを通じて Cloud Volumes ONTAP の使用料金を支払い、NIS サブスクリプションを通じてデータサービスの請求を継続します。これは、NetApp Console で AWS アカウントにスタンドアロンサブスクリプションと NIS サブスクリプションの両方が関連付けられているほとんどのお客様に推奨されるオプションです。</block>
@@ -6526,4 +6524,6 @@
   <block id="8af1ad3469dad38ef46da37595e3b758" category="inline-link-macro">NetApp Console の Licenses and subscriptions ロールについて学ぶ</block>
   <block id="1ccb85040042290f711464fbb5e06609" category="paragraph">*必要なコンソールロール* このタスクを実行するには、Licenses and subscriptions管理者ロールが必要です<block ref="f7bfd1d1e66654a9d76ee2fffeede42a" category="inline-link-macro-rx"></block>。</block>
   <block id="1c568211164221a5a183fa65ce0d8ad7" category="list-text"><block ref="f5fb311c04d189ade108ad02dc187c52" prefix="" category="inline-code"></block>IPアドレスがノード間で移行しないことを示します。</block>
+  <block id="090499247beb18776ed4674afbd7c45d" category="paragraph">NetAppは、AWSでのCloud Volumes ONTAPサブスクリプション向けに強化された課金オプションを提供し、Cloud Volumes ONTAPの容量やNetApp Backup and RecoveryなどのNetAppデータサービスの支払い方法をより詳細に制御できるようにします。以前は、すべてのCloud Volumes ONTAPおよびデータサービスの使用量は、AWS MarketplaceのNetApp Intelligent Services（NIS）リストを通じて一括で請求されていました。</block>
+  <block id="3ac842cf432c6d2ce6346cfe9dea6126" category="admonition">選択したバージョンに対して、より新しいリリース候補版、一般提供版、またはパッチリリースが利用可能な場合、コンソールは作業環境を作成する際にシステムをそのバージョンに更新します。たとえば、Cloud Volumes ONTAP 9.16.1 P3を選択し、9.16.1 P4が利用可能な場合に更新が行われます。更新は、たとえば9.15から9.16のように、あるリリースから別のリリースへは行われません。</block>
 </blocks>
