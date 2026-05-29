@@ -5988,7 +5988,6 @@
   <block id="233af50e7ac5078d6cabb58ab95095b9" category="summary">Google Cloudの既存のデプロイメントでは、システムをCloud Volumes ONTAP 9.16.1以降にアップグレードしてから、Google Cloud Deployment ManagerからCloud Infrastructure Managerに変換するための移行ツールを手動で実行する必要があります。</block>
   <block id="b9e5aa43ec2007eccaf097117438e531" category="doc">既存の Cloud Volumes ONTAP デプロイメントを Infrastructure Manager に変換</block>
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link">NetApp サポート サイト</block>
-  <block id="416146100ffb7fc54fb8a24ca7b63ae8" category="paragraph">移行ツールは<block ref="33e3c3ba324846178fad333329821dd2" category="inline-link-rx"></block>で利用でき、次の成果物を作成します：</block>
   <block id="fe91a45b95e89e219ea69631edff8521" category="list-text">Terraformアーティファクトは、<block ref="b1042b7d7203a022c297b13679f7d1f8" prefix=" " category="inline-code"></block>に保存されます。</block>
   <block id="787ab3bb526ace3e3d9f5b857facafbf" category="list-text">デバッグログは、<block ref="abecaca0429ea0c44adcba537eb94f89" prefix=" " category="inline-code"></block>ディレクトリに保存されます。トラブルシューティングにはこれらのログが必要です。<block ref="6ec9e5b046607d57923aee80f990225d" prefix=" " category="inline-code"></block>バケットには Terraform ログが保存されます。</block>
   <block id="07f770dff2ab3ed070b0fafe70eae22a" category="paragraph">Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、データとレコードを Google Cloud Storage バケットに保存します。これらのバケットには追加費用が発生する可能性がありますが、バケットやそのコンテンツを編集または削除しないでください：</block>
@@ -6139,7 +6138,6 @@
   <block id="1eee4678eb4e1cadd4e212ce0bba084d" category="section-title">単一ノードシステム上にストレージVMを作成する</block>
   <block id="a547059e96288e55a3cd3b932e2c4157" category="paragraph">次の手順では、単一ノード システムに新しいストレージVMを作成します。NAS LIFを作成するには1つのプライベートIPアドレスが必要であり、管理LIFを作成する場合は、オプションで別のプライベートIPアドレスが必要になります。</block>
   <block id="cc7c35c7684e4d7f8bffed328fc1b629" category="paragraph">構成とライセンスの種類に応じて、NetApp ConsoleのAPIを使用して、単一ノードシステムまたは高可用性（HA）構成で複数のストレージVMを作成できます。</block>
-  <block id="9f0e6a06ff24050ef4f1a71b2eb1d838" category="section-title">単一ノードシステム</block>
   <block id="070c7339120bbab9748136420da7e629" category="paragraph">次の API 呼び出しを使用して、単一ノード システムにストレージ VM を作成します。</block>
   <block id="dda2b753a17e4e4abcca100288667de4" category="section-title">シングルノードシステムとHAペア上のストレージVMを管理する</block>
   <block id="d05761c1dc243186f9c42f463199d5a9" category="list-text">単一ノード システム上のストレージ VM の名前を変更するには、次の API 呼び出しを使用します：</block>
@@ -6526,4 +6524,6 @@
   <block id="1c568211164221a5a183fa65ce0d8ad7" category="list-text"><block ref="f5fb311c04d189ade108ad02dc187c52" prefix="" category="inline-code"></block>IPアドレスがノード間で移行しないことを示します。</block>
   <block id="090499247beb18776ed4674afbd7c45d" category="paragraph">NetAppは、AWSでのCloud Volumes ONTAPサブスクリプション向けに強化された課金オプションを提供し、Cloud Volumes ONTAPの容量やNetApp Backup and RecoveryなどのNetAppデータサービスの支払い方法をより詳細に制御できるようにします。以前は、すべてのCloud Volumes ONTAPおよびデータサービスの使用量は、AWS MarketplaceのNetApp Intelligent Services（NIS）リストを通じて一括で請求されていました。</block>
   <block id="3ac842cf432c6d2ce6346cfe9dea6126" category="admonition">選択したバージョンに対して、より新しいリリース候補版、一般提供版、またはパッチリリースが利用可能な場合、コンソールは作業環境を作成する際にシステムをそのバージョンに更新します。たとえば、Cloud Volumes ONTAP 9.16.1 P3を選択し、9.16.1 P4が利用可能な場合に更新が行われます。更新は、たとえば9.15から9.16のように、あるリリースから別のリリースへは行われません。</block>
+  <block id="120dc003edb30e1d44fc4426ef7b9e3d" category="paragraph">移行ツールはNetAppサポートサイトで利用可能で、以下の成果物を作成します：</block>
+  <block id="f669698de3cebd29244fce6e24b7e95d" category="section-title">シングルノードシステム</block>
 </blocks>

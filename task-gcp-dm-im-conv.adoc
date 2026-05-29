@@ -17,7 +17,7 @@ summary: Google Cloudの既存のデプロイメントでは、システムをCl
 2026年2月09日から、Google Cloud での新しい Cloud Volumes ONTAP デプロイメントでは、Google Cloud Infrastructure Manager を使用できます。Google は、Infrastructure Manager を優先して Google Cloud Deployment Manager を廃止する予定です。そのため、既存の Cloud Volumes ONTAP デプロイメントを Deployment Manager から Infrastructure Manager に変換するには、移行ツールを手動で実行する必要があります。これは 1 回限りのプロセスであり、その後、システムは自動的に Infrastructure Manager の使用を開始します。
 
 .タスク概要
-移行ツールは https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/downloads-tab["NetApp サポート サイト"^]で利用でき、次の成果物を作成します：
+移行ツールはNetAppサポートサイトで利用可能で、以下の成果物を作成します：
 
 * Terraformアーティファクトは、 `conversion_output/deployment_name`に保存されます。
 * 変換の概要。 `conversion_output/batch_summary_<deployment_name>_<timestamp>.json.`に保存されます
