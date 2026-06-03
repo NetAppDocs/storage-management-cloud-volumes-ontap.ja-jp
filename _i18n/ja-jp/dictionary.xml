@@ -1526,7 +1526,6 @@
   <block id="c8f224037ea295aeec347c94779d9932" category="section-title">アウトバウンドインターネットアクセス</block>
   <block id="a4b96c4e196d51924875a82348b64eb4" category="paragraph">コンソール エージェントは、日常的な操作のために複数のエンドポイントにも接続します。エンドポイントの詳細については、以下を参照してください。<block ref="e553aa98dbd6de43170bbf57fd2de45c" category="inline-link-rx"></block>そして<block ref="3b443e9dd660f6a0a57c859f2ddcc1c3" category="inline-link-rx"></block>。</block>
   <block id="6486582264c3651aad9b7bb2237218eb" category="cell">利用できない場合の影響</block>
-  <block id="d5788def9bc230ba887427df9594dd27" category="cell"><block ref="d5788def9bc230ba887427df9594dd27" category="inline-link-rx"></block></block>
   <block id="cce8a0225002a3fa8095ed8782f394a3" category="cell">キーボールト</block>
   <block id="b1905fad16d0cb92c82e293f1516f810" category="cell">カスタマー マネージド キー (CMK) を使用するときに、Azure Key Vault からクライアント シークレット キーを取得するために使用されます。</block>
   <block id="bcf88b7ababd6bfaff375da727117c30" category="cell">標準、制限、プライベートのモード。</block>
@@ -2161,7 +2160,6 @@
   <block id="d65e638e11d00fc79443255884da16db" category="list-text">一致するイメージ バージョンを持つマーケットプレイス イメージから新しいマネージド ディスクを作成します。</block>
   <block id="0088c78e043b70edf9579595a2ee25d7" category="list-text">マネージド ディスクから VHD ファイルを Azure Storage にエクスポートします。適切なアクセス レベルを持つコンテナーを作成します。この例では、<block ref="58aaa54fc7b24aa9f47628c9303e6032" prefix=" " category="inline-code"></block>と<block ref="0e7278cda02a9c0446dcc75a4df34eb2" prefix=" " category="inline-code"></block>アクセス レベル。  Azure ポータルからストレージ アカウントのアクセス キーを取得します: *ストレージ アカウント &gt; _examplesaname_ &gt; アクセス キー &gt; _key1_ &gt; _key_ &gt; 表示 &gt; _&lt;copy&gt;_*</block>
   <block id="d58ff5368da0a9e07116d0914b0e100f" category="list-text">生成されたイメージを Linux システムにダウンロードします。使用<block ref="af9d83836ecf1f49c598bcb1995b3c98" prefix=" " category="inline-code"></block>VHD ファイルをダウンロードするコマンド:</block>
-  <block id="6338049c264f4d8252a094ef7cc5b989" category="paragraph">URL は標準形式に従います。自動化のために、以下のように URL 文字列を導出できます。あるいは、Azure CLIを使用することもできます。<block ref="cc8c0a97c2dfcd73caff160b65aa39e2" prefix=" " category="inline-code"></block> URL を取得するコマンド。  URLの例:<block ref="2e490f42fcbf7cc055c7df53c297fc39" category="inline-link-rx"></block></block>
   <block id="e29c7c72ff42387a45d366d92342fa54" category="list-text">管理ディスクをクリーンアップする</block>
   <block id="7f38ba9b55c53cbc26b23634ed761a33" category="section-title">Linux 上の Azure CLI を使用して VHD ファイルをエクスポートする</block>
   <block id="de4a72dd00c713fbc81776255cd85070" category="paragraph">ローカル Linux システムから Azure CLI を使用して、マーケットプレイス イメージを VHD ファイルにエクスポートします。</block>
@@ -4207,13 +4205,10 @@
   <block id="bd7492db1a0b8c1b34be6a58c6374a50" category="list-text">宛先 VM に新しい NIC を作成します。</block>
   <block id="a6b97c800c08f0f47cf048c9cd043899" category="list-text">ソース クラスター サブネットのサブネット ID を検索します。</block>
   <block id="5a90251e4d045fbd97e56cd055766b1e" category="list-text">ソース クラスターのサブネットのサブネット ID を使用して、宛先 VM に新しい NIC を作成します。ここで新しい NIC の名前を入力します。</block>
-  <block id="5fd584f186e30730537d22a78bb11616" category="inline-xref">ブロードキャストドメイン、新しいNICのクラスタ間LIF</block>
-  <block id="d863813a11392f8ccc266be047976b56" category="list-text">privateIPAddressを保存します。このIPアドレス&lt;new_added_nic_primary_addr&gt;は、クラスタ間LIFを作成するために使用されます。<block ref="13642ed959fde49bda6806fad0d107cf" category="inline-xref-macro-rx"></block> 。</block>
   <block id="c720b471b5c9a398d1674113fb61ccb3" category="list-text">新しい NIC を VM に接続します。</block>
   <block id="04144942b75846f169eab289baa03332" category="list-text">VM (ノード) を起動します。</block>
   <block id="891b715fb21f166e1ddefb85f1ada848" category="list-text">Azure ポータルで、*ネットワーク* に移動し、新しい NIC (例: nic-new) が存在し、高速ネットワークが有効になっていることを確認します。</block>
   <block id="0b2645871b4d5e300b856a5676815053" category="paragraph">HA ペアの展開の場合は、パートナー ノードに対して手順を繰り返します。</block>
-  <block id="75ca82ebaa2ab2a348dab6de8af96db1" category="section-title">ステップ2: 新しいNIC用の新しいIPspace、ブロードキャストドメイン、およびクラスタ間LIFを作成する</block>
   <block id="f81ad401f01ac6ccee4552cee262ea96" category="paragraph">クラスタ間 LIF 用の個別の IPspace により、クラスタ間のレプリケーションのネットワーク機能が論理的に分離されます。</block>
   <block id="bf5db4b0d890ae0f47f0666b4786c11e" category="paragraph">次の手順ではONTAP CLI を使用します。</block>
   <block id="5caa556e7511fbc031e556f35273b4b5" category="list-text">新しい IPspace (new_ipspace) を作成します。</block>
@@ -6165,7 +6160,6 @@
   <block id="1a7265e4a0716c5c59fbf92d4b2b8f8b" category="section-title">AzureのCloud Volumes ONTAPのVNetセキュリティ</block>
   <block id="a128f7270c0bfb9c5f5d16ec39f0d354" category="paragraph">Cloud Volumes ONTAP 9.18.1以降のAzure単一および複数の可用性ゾーンでの導入では、転送中のデータを保護するための多層セキュリティ戦略の一部として、Azure Virtual Network（VNet）暗号化をサポートしています。Cloud Volumes ONTAPは、AzureのネイティブなDatagram Transport Layer Security（DTLS）プロトコルを活用して、ONTAPノード、管理インターフェイス、およびその他のAzureサービス間の通信を保護し、傍受や不正アクセスを防止します。このネットワークレベルの暗号化は、ONTAPの組み込みストレージおよび保存データ保護機能を補完し、データのエンドツーエンドのセキュリティを提供します。</block>
   <block id="472b8c31c7082d1e8c4c46bb6921f950" category="inline-link">Azure VNet 暗号化のネットワーク</block>
-  <block id="2f932ac183ffb505894bacafe67a78d0" category="paragraph"><block ref="2f932ac183ffb505894bacafe67a78d0" category="inline-link-rx"></block></block>
   <block id="9c297e88761d2ab159b96b1ba8f49580" category="inline-link">Azure Virtual Network（VNet）暗号化</block>
   <block id="539afb5045a490ab5c07c8b2f81797d3" category="paragraph">Cloud Volumes ONTAPは<block ref="a484d984d3918d739142ebb03b7cf0fe" category="inline-link-rx"></block>VNet内またはピアリングされたVNet間のVM間トラフィックの暗号化をサポートしています。この機能はAzure VNetレイヤーで設定され、Cloud Volumes ONTAPトポロジ（単一ノードまたはHA）から独立しています。</block>
   <block id="6da8d6e9b798741f378936006c625899" category="paragraph">機能を有効にする前に、VM の NIC で高速ネットワークが有効になっていることを確認し、Azure VNet 暗号化の要件と制限事項を確認するだけで済みます。NetApp 管理対象ロードバランサオブジェクトを変更しないでください。</block>
@@ -6245,8 +6239,6 @@
   <block id="81886430867de94e8c64a4d6ee03885f" category="list-text">ディスクサイズ：100 GB</block>
   <block id="4f78751a4c59d02232a84cf0f75f106b" category="list-text">外部IPの割り当て：False</block>
   <block id="1ce82e3f1abec4157983f159c2519b6e" category="list-text">ネットワーク：デフォルトまたはプライベート。</block>
-  <block id="f6ab2d5d47935ec62410c5a522057350" category="inline-link">Google API</block>
-  <block id="31ee5d7a195dd642f2dd5c5892f66a66" category="list-text"><block ref="3a79aa9a9ac20e9b7507d4a67f3c5626" category="inline-link-rx"></block>にアクセスするように設定されたサブネット。サブネットが Google API にアクセスできることを確認するには、次の手順を実行します：</block>
   <block id="4e778f784bb81e3fa2540f16b2e516f1" category="list-text">サブネットに対して「プライベート Google アクセス」がオンになっていることを確認します。</block>
   <block id="3ddc338aacbdc94d99095f1bc9dc5e9f" category="list-text">*VPC ネットワークレベル &gt; プライベートサービスアクセスタブ &gt; サービスに割り当てられた IP 範囲*に移動します。</block>
   <block id="d67cbfbd26657ae0f146b4f91df6172e" category="list-text">*IP 範囲の割り当て* を選択し、Google Compute Service へのプライベート接続用の内部 IP 範囲を割り当てます。</block>
@@ -6526,4 +6518,12 @@
   <block id="3ac842cf432c6d2ce6346cfe9dea6126" category="admonition">選択したバージョンに対して、より新しいリリース候補版、一般提供版、またはパッチリリースが利用可能な場合、コンソールは作業環境を作成する際にシステムをそのバージョンに更新します。たとえば、Cloud Volumes ONTAP 9.16.1 P3を選択し、9.16.1 P4が利用可能な場合に更新が行われます。更新は、たとえば9.15から9.16のように、あるリリースから別のリリースへは行われません。</block>
   <block id="120dc003edb30e1d44fc4426ef7b9e3d" category="paragraph">移行ツールはNetAppサポートサイトで利用可能で、以下の成果物を作成します：</block>
   <block id="f669698de3cebd29244fce6e24b7e95d" category="section-title">シングルノードシステム</block>
+  <block id="fbc3e3c2759ebe3efb09314a1953aa89" category="paragraph"><block ref="fbc3e3c2759ebe3efb09314a1953aa89" category="inline-link-rx"></block></block>
+  <block id="b39f7544362881f0aafb15d7d3e6bc25" category="cell">\https://vault.azure.net</block>
+  <block id="9662693f3c1663d2242d4d8d1147a767" category="inline-link">Google Cloud API</block>
+  <block id="2080a2c0b869df45aca08894b2c01246" category="list-text"><block ref="51f295940ba1bc73660c1286161697d0" category="inline-link-rx"></block>にアクセスするように設定されたサブネット。サブネットが Google API にアクセスできることを確認するには、次の手順を実行します：</block>
+  <block id="07217be0b3d28cf0ad81e35564e43c03" category="paragraph">URLは標準的な形式に従います。自動化のために、以下のようにURL文字列を導出できます。または、Azure CLI<block ref="cc8c0a97c2dfcd73caff160b65aa39e2" prefix=" " category="inline-code"></block>コマンドを使用してURLを取得することもできます。URLの例：+https://examplesaname.bluexpinfraprod.eastus2.data.azurecr.io/vm-images/9150.01000024.05090105.vhd+</block>
+  <block id="bc076a99113847f4719da894c77ecddb" category="inline-xref">新しいNICのブロードキャストドメインとクラスタ間LIF</block>
+  <block id="f1d926658b88d28bd7f5b0cf55a6dd7a" category="list-text">privateIPAddressを保存します。このIPアドレス&lt;new_added_nic_primary_addr&gt;は、<block ref="dad33d52d8c169ff9af931bc22cbdf4c" category="inline-xref-macro-rx"></block>でクラスタ間LIFを作成するために使用されます。</block>
+  <block id="e8ffd3ffeea761edd5ebf0cfb97c0bb0" category="section-title">[[step-second]]ステップ2：新しいNIC用に新しいIPspace、ブロードキャストドメイン、およびクラスタ間LIFを作成します</block>
 </blocks>

@@ -142,7 +142,7 @@ PS /home/user1> Get-AzureStorageBlobCopyState –Container $containerName –Con
 wget <URL of filename/Containers/vm-images/9150.01000024.05090105.vhd>
 ----
 +
-URL は標準形式に従います。自動化のために、以下のように URL 文字列を導出できます。あるいは、Azure CLIを使用することもできます。 `az` URL を取得するコマンド。  URLの例:https://examplesaname.bluexpinfraprod.eastus2.data.azurecr.io/vm-images/9150.01000024.05090105.vhd[]
+URLは標準的な形式に従います。自動化のために、以下のようにURL文字列を導出できます。または、Azure CLI `az`コマンドを使用してURLを取得することもできます。URLの例：+https://examplesaname.bluexpinfraprod.eastus2.data.azurecr.io/vm-images/9150.01000024.05090105.vhd+
 
 . 管理ディスクをクリーンアップする
 +
@@ -256,7 +256,7 @@ PS /home/user1> Remove-AzDisk -ResourceGroupName $diskRG -DiskName $diskName
 wget <URL of file examplesaname/Containers/vm-images/9150.01000024.05090105.vhd>
 ----
 +
-URL は標準形式に従います。自動化のために、以下のように URL 文字列を導出できます。あるいは、Azure CLIを使用することもできます。 `az` URL を取得するコマンド。  URLの例:https://examplesaname.bluexpinfraprod.eastus2.data.azurecr.io/vm-images/9150.01000024.05090105.vhd[]
+URLは標準的な形式に従います。自動化のために、以下のようにURL文字列を導出できます。または、Azure CLI `az`コマンドを使用してURLを取得することもできます。URLの例：+https://examplesaname.bluexpinfraprod.eastus2.data.azurecr.io/vm-images/9150.01000024.05090105.vhd+
 
 . 管理ディスクをクリーンアップする
 +

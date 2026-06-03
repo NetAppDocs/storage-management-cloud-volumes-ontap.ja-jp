@@ -53,7 +53,7 @@ Cloud Volumes ONTAP はこれらのエンドポイントを使用してさまざ
 
 
 
-| https://vault.azure.net[] | キーボールト | カスタマー マネージド キー (CMK) を使用するときに、Azure Key Vault からクライアント シークレット キーを取得するために使用されます。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAPサービスは利用できません。 
+| \https://vault.azure.net | キーボールト | カスタマー マネージド キー (CMK) を使用するときに、Azure Key Vault からクライアント シークレット キーを取得するために使用されます。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAPサービスは利用できません。 
 
 
 | \https://api.bluexp.netapp.com/tenancy | 賃貸借 | コンソールからCloud Volumes ONTAPリソースを取得して、リソースとユーザーを承認するために使用されます。 | 標準モードと制限モード。 | Cloud Volumes ONTAPリソースとユーザーは承認されていません。 
