@@ -6525,11 +6525,11 @@
   <block id="bc076a99113847f4719da894c77ecddb" category="inline-xref">新しいNICのブロードキャストドメインとクラスタ間LIF</block>
   <block id="f1d926658b88d28bd7f5b0cf55a6dd7a" category="list-text">privateIPAddressを保存します。このIPアドレス&lt;new_added_nic_primary_addr&gt;は、<block ref="dad33d52d8c169ff9af931bc22cbdf4c" category="inline-xref-macro-rx"></block>でクラスタ間LIFを作成するために使用されます。</block>
   <block id="e8ffd3ffeea761edd5ebf0cfb97c0bb0" category="section-title">[[step-second]]ステップ2：新しいNIC用に新しいIPspace、ブロードキャストドメイン、およびクラスタ間LIFを作成します</block>
-  <block id="f73d059120d4b302e53d6f7bec91ff6d" category="doc">AWSのCloud Volumes ONTAPで新しいEC2インスタンスがサポートされます</block>
   <block id="957b7705b307b4f695a7cdb201c42bcb" category="paragraph">Cloud Volumes ONTAP 9.16.1以降では、AWSにおける新規および既存のシングルノードおよび高可用性（HA）ペアデプロイメントの両方で、M6idおよびM6idn EC2インスタンスファミリーがサポートされます。これらの第6世代インスタンスは、第5世代の汎用システムと比較して、より高速な処理能力、より強力なネットワーク機能、そしてよりハイパフォーマンスを提供します。</block>
   <block id="fa4aff7e4e5120dec944acc145df3c1a" category="list-text">*M6idインスタンス*：高速、低レイテンシのローカルNVMeストレージを備えた、コンピューティングとメモリのバランスを提供します。すべてのM6idインスタンスサイズがFlash Cacheをサポートします。これらのインスタンスは、データロギングやメディア処理などのワークロードに最適です。</block>
   <block id="bfe5730fc311788c5b5e63755351140c" category="list-text">*M6idnインスタンス*：M6idインスタンスと同じローカルNVMeストレージ機能を提供します。すべてのM6idnインスタンスサイズがFlash Cacheをサポートします。</block>
   <block id="15172b1a76b99972ddc77977722e7eda" category="paragraph">より小さいサイズの m6id.xlarge、m6id.2xlarge、m6idn.xlarge、および m6idn.2xlarge インスタンスタイプは、ハイパフォーマンスまたはメモリを大量に消費するワークロードには推奨されません。これらのワークロードには、コア数が多くメモリ容量の大きいインスタンスタイプを使用してください。</block>
   <block id="2723587cecc87d757adc3d7f42677613" category="paragraph">詳細については、<block ref="5facb34de99943f35a6951018b8a6bef" category="inline-link-rx"></block>を参照してください。</block>
   <block id="3e323562bd488e4cbd90a025b9424181" category="section-title">2026年6月8日</block>
+  <block id="ee679c5a83450dd8f0c139cea8a1cc40" category="doc">AWS の Cloud Volumes ONTAP 向け新しい EC2 インスタンスのサポート</block>
 </blocks>

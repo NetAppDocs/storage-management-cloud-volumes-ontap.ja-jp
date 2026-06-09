@@ -1,10 +1,10 @@
-= AWSのCloud Volumes ONTAPで新しいEC2インスタンスがサポートされます
+= AWS の Cloud Volumes ONTAP 向け新しい EC2 インスタンスのサポート
 :allow-uri-read: 
 
 
 
 
-=== AWSのCloud Volumes ONTAPで新しいEC2インスタンスがサポートされます
+=== AWS の Cloud Volumes ONTAP 向け新しい EC2 インスタンスのサポート
 
 Cloud Volumes ONTAP 9.16.1以降では、AWSにおける新規および既存のシングルノードおよび高可用性（HA）ペアデプロイメントの両方で、M6idおよびM6idn EC2インスタンスファミリーがサポートされます。これらの第6世代インスタンスは、第5世代の汎用システムと比較して、より高速な処理能力、より強力なネットワーク機能、そしてよりハイパフォーマンスを提供します。
 
