@@ -6532,4 +6532,7 @@
   <block id="2723587cecc87d757adc3d7f42677613" category="paragraph">詳細については、<block ref="5facb34de99943f35a6951018b8a6bef" category="inline-link-rx"></block>を参照してください。</block>
   <block id="3e323562bd488e4cbd90a025b9424181" category="section-title">2026年6月8日</block>
   <block id="ee679c5a83450dd8f0c139cea8a1cc40" category="doc">AWS の Cloud Volumes ONTAP 向け新しい EC2 インスタンスのサポート</block>
+  <block id="f1e8426ee8789bca46b26081b788d901" category="doc">Cloud Volumes ONTAP での新しい Azure リージョンのサポート</block>
+  <block id="58c64fbe360d29edfbfa0f1e30f23980" category="paragraph">これで、マレーシア西部（malaysiawest）リージョンの Azure の単一および複数の可用性ゾーンに Cloud Volumes ONTAP 9.12.1 GA 以降をデプロイできます。これには、シングルノード構成と高可用性（HA）構成の両方のサポートが含まれます。</block>
+  <block id="13a1b8a317b4b6dbe05a3757a911ea12" category="section-title">2026年6月11日</block>
 </blocks>

@@ -1,0 +1,11 @@
+= Cloud Volumes ONTAP での新しい Azure リージョンのサポート
+:allow-uri-read: 
+
+
+
+
+=== Cloud Volumes ONTAP での新しい Azure リージョンのサポート
+
+これで、マレーシア西部（malaysiawest）リージョンの Azure の単一および複数の可用性ゾーンに Cloud Volumes ONTAP 9.12.1 GA 以降をデプロイできます。これには、シングルノード構成と高可用性（HA）構成の両方のサポートが含まれます。
+
+すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
