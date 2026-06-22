@@ -452,7 +452,6 @@
   <block id="8b35709cd044db5067d3521df2dcaf1e" category="paragraph">Cloud Volumes ONTAPシステムを追加するときにストレージ層を選択でき、その後いつでも変更できます。ストレージ階層の変更の詳細については、<block ref="689d305972679ec3d62f87ce158f78a1" category="inline-link-macro-rx"></block> 。</block>
   <block id="a38b9b490932e9d5b5db3e24784ec656" category="paragraph">データ階層化のストレージ アクセス層はシステム全体にわたっており、ボリュームごとではありません。</block>
   <block id="3844834e9306a66948e49d6149c5a299" category="section-title">Google Cloud におけるデータ階層化</block>
-  <block id="f6535844f45781691afa19e3fe67a627" category="paragraph">Google Cloud でデータ階層化を有効にすると、 Cloud Volumes ONTAP は、ホット データのパフォーマンス階層として永続ディスクを使用し、非アクティブなデータの容量階層として Google Cloud Storage バケットを使用します。</block>
   <block id="3b8940895816a07ee6f7b4cd2d7353e3" category="list-text">パフォーマンス レベルは、SSD 永続ディスク、バランス永続ディスク、標準永続ディスクのいずれかになります。</block>
   <block id="f2bc66356d174d95b97b4e9b8b873540" category="list-text">Cloud Volumes ONTAPシステムは、非アクティブなデータを単一の Google Cloud Storage バケットに階層化します。</block>
   <block id="c70455c0571fb32b900ce3ff0f662cbf" category="paragraph">コンソールは各システムのバケットを作成し、fabric-pool-_cluster unique identifier_ という名前を付けます。ボリュームごとに異なるバケットは作成されません。</block>
@@ -462,11 +461,6 @@
   <block id="ed2bfa2a7df130888132e9df08fe91a7" category="list-text">アクセス制御: きめ細かな</block>
   <block id="59ec9a96a05b9ff668ebee36565638b7" category="list-text">保護: なし</block>
   <block id="77d680745644d1c19a022cc0a306f88b" category="list-text">データ暗号化: Google 管理の鍵</block>
-  <block id="1a09137ca087e36b72504f4276c7cd08" category="list-text">階層化データのデフォルトのストレージ クラスは、_Standard Storage_ クラスです。データへのアクセス頻度が低い場合は、_Nearline Storage_ または _Coldline Storage_ に変更することでストレージ コストを削減できます。ストレージ クラスを変更すると、それ以降の非アクティブなデータは選択したクラスに直接移動されます。</block>
-  <block id="0d79695d01dd236a00fcb17dec14227f" category="admonition">ストレージ クラスを変更しても、既存の非アクティブなデータはデフォルトのストレージ クラスを維持します。既存の非アクティブ データのストレージ クラスを変更するには、指定を手動で実行する必要があります。</block>
-  <block id="2071f090de049a0bafd6e8e9ebc886a4" category="inline-link">Google Cloud ドキュメント: ストレージ クラス</block>
-  <block id="5cb074dc9cd7d3ff4cc8d81685f4cf8b" category="paragraph">データにアクセスする場合はアクセス コストが高くなるため、ストレージ クラスを変更する前にその点を考慮してください。詳細については、<block ref="3f6491f63b376fc9e505b3fd50e825aa" category="inline-link-rx"></block> 。</block>
-  <block id="f24b126c7812ed3265acaed1b04b6cd4" category="paragraph">システムを作成するときにストレージ層を選択でき、その後いつでも変更できます。ストレージクラスの変更の詳細については、<block ref="689d305972679ec3d62f87ce158f78a1" category="inline-link-macro-rx"></block> 。</block>
   <block id="238d935e644053bb35c58e2b34583131" category="section-title">データの階層化と容量制限</block>
   <block id="2646e089c806882f23bac38369cf85f4" category="paragraph">データ階層化を有効にすると、システムの容量制限は変わりません。制限はパフォーマンス層と容量層にまたがって適用されます。</block>
   <block id="837170b3ba6314929f53008e61dfc57b" category="section-title">ボリューム階層化ポリシー</block>
@@ -6535,4 +6529,8 @@
   <block id="f1e8426ee8789bca46b26081b788d901" category="doc">Cloud Volumes ONTAP での新しい Azure リージョンのサポート</block>
   <block id="58c64fbe360d29edfbfa0f1e30f23980" category="paragraph">これで、マレーシア西部（malaysiawest）リージョンの Azure の単一および複数の可用性ゾーンに Cloud Volumes ONTAP 9.12.1 GA 以降をデプロイできます。これには、シングルノード構成と高可用性（HA）構成の両方のサポートが含まれます。</block>
   <block id="13a1b8a317b4b6dbe05a3757a911ea12" category="section-title">2026年6月11日</block>
+  <block id="7cf6c49769b974e82419eeccae1b1712" category="paragraph">Google Cloud でデータ階層化を有効にすると、Cloud Volumes ONTAP はホットデータ用のパフォーマンス層として永続ディスクを使用し、非アクティブデータ用の容量層として Google Cloud Storage バケットを使用します。システム作成時にストレージ階層を選択でき、その後いつでも変更できます。ストレージクラスの変更については、<block ref="689d305972679ec3d62f87ce158f78a1" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="c3d731221ec9d09a910395abd309640a" category="inline-link">ストレージ クラス</block>
+  <block id="40377bff33838260be995513a1e2c8e6" category="inline-link">Google Cloud ドキュメント：オブジェクトライフサイクルの管理</block>
+  <block id="0a69db980802dac8e0b54038dc2364d0" category="list-text">Google Cloud は<block ref="ec8949881e2dffa4d0e8750c51cd0497" category="inline-link-rx"></block>を使用して、コストとデータ可用性を管理します。データへのアクセスにはより高いコストが発生するため、想定されるデータアクセス頻度に基づいてストレージクラスを選択することをお勧めします。階層型データのデフォルトのストレージクラスは「Standard Storage」です。手動で変更しない限り、すべての非アクティブなデータはデフォルトのストレージクラスを維持します。非アクティブなデータのストレージクラスを変更するには、<block ref="9f653ab672497f99d3217a50d3927264" category="inline-link-rx"></block>を参照してください。</block>
 </blocks>
