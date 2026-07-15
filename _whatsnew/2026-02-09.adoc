@@ -4,6 +4,7 @@
 
 
 
+[[support-for-google-cloud-infrastructure-manager]]
 === Google Cloud Infrastructure Manager のサポート
 
 Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しい導入において、 https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]（DM）の代わりに https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]（IM）をサポートするようになりました。Googleは、より高度なInfrastructure Managerのために、近い将来インフラストラクチャサービスとしてのDeployment Managerを廃止する予定です。

@@ -187,8 +187,6 @@
   <block id="4ac58369201dcb717d1d1d37ee990c1c" category="list-text"><block ref="4ac58369201dcb717d1d1d37ee990c1c" category="inline-link-rx"></block></block>
   <block id="dc538d1e88cb00b045ab5c768441ff92" category="inline-link">Digital Advisorのリリース</block>
   <block id="c0b168a4d72d74292c8b4f5299b9541e" category="list-text"><block ref="c0b168a4d72d74292c8b4f5299b9541e" category="inline-link-rx"></block></block>
-  <block id="c5511c7773a6c5295d79f6a8496c4458" category="inline-link">SupportEdgeサービス</block>
-  <block id="ea0b284b83d41ae97d5b96dc6fc68e39" category="list-text"><block ref="ea0b284b83d41ae97d5b96dc6fc68e39" category="inline-link-rx"></block></block>
   <block id="67ebfe5bb75a0887ad0b21b931e6c2b1" category="summary">Cloud Volumes ONTAPアグリゲートによる Amazon EBS Elastic Volumes 機能のサポートにより、パフォーマンスが向上し、容量が追加されるとともに、必要に応じて基盤となるディスク容量を自動的に増やすことができます。</block>
   <block id="a813237b7fa0fd426e65b5e81ab565df" category="doc">Cloud Volumes ONTAPによる AWS Elastic Volumes のサポートについて学ぶ</block>
   <block id="365bb69098cb9d87be79002abc4e0ee1" category="paragraph">Cloud Volumes ONTAPアグリゲートによる Amazon EBS Elastic Volumes 機能のサポートにより、パフォーマンスが向上し、容量が追加されるとともに、 NetApp Consoleで必要に応じて基盤となるディスク容量を自動的に増やすことができます。</block>
@@ -377,8 +375,6 @@
   <block id="86658a348e09419591c8b4b3fa13e84e" category="paragraph">ONTAP経由での NVMe の設定の詳細については、<block ref="0585d9dca18b467d388c2056c53b835d" category="inline-link-rx"></block> 。</block>
   <block id="d5a5fd8fd787bf62e6dfdbce64a40648" category="summary">Digital AdvisorはNetApp Consoleに統合されているため、 ONTAPクラスターの運用、セキュリティ、パフォーマンスを 1 つの画面で最適化できます。</block>
   <block id="285f8a8636eadf330259391137203f48" category="doc">Digital Advisorを使用してCloud Volumes ONTAPシステムを最適化します</block>
-  <block id="dab2edf9eaac3950e92c281ce358af01" category="inline-link">Active IQ Digital Advisor</block>
-  <block id="d76f070c869165605b7a2ed75408847d" category="paragraph"><block ref="3abd3a0b5353b2721a22292e3b71aa39" category="inline-link-rx"></block>( Digital Advisorとも呼ばれます) はNetApp Consoleに統合されており、 Cloud Volumes ONTAPシステムの操作、セキュリティ、パフォーマンスを 1 つの画面で最適化できます。</block>
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">機能</block>
   <block id="a832e927c8b42d501555813b999b7221" category="paragraph">Digital Advisorを使用すると、ストレージ システムの全体的なステータス、システムの健全性に関する概要情報、インベントリ、計画、貴重な洞察をウォッチリスト レベルで表示できます。</block>
   <block id="cd5d4df84a7902a777304de9ff13e8a8" category="list-text">ストレージシステムの健全性を分析して最適化します</block>
@@ -605,7 +601,6 @@
   <block id="f406c9d6eeead7db4c0d7c4436e4365f" category="paragraph">Google Cloud のCloud Volumes ONTAP HA 構成には、次のコンポーネントが含まれます。</block>
   <block id="481cd89d21864bf4d528a439dfb59421" category="list-text">データが相互に同期してミラーリングされる 2 つのCloud Volumes ONTAPノード。</block>
   <block id="698f8a0a0a3a85268f0cd5c4cea8ba28" category="list-text">ストレージの引き継ぎとギブバックのプロセスを支援するためにノード間の通信チャネルを提供するメディエーター インスタンス。</block>
-  <block id="fb60cc8b1c07b3747a72dcf7ce2f2f58" category="list-text">1 つのゾーンまたは 3 つのゾーン (推奨)。</block>
   <block id="0f3118cdf0606432dbda8dd0e39d7d10" category="paragraph">3 つのゾーンを選択した場合、2 つのノードとメディエーターは別々の Google Cloud ゾーンに配置されます。</block>
   <block id="57634383537fa922f1a5f4ab683aa664" category="list-text">4 つの仮想プライベート クラウド (VPC)。</block>
   <block id="54d55f3223578c00cd0878c0fb13e05e" category="paragraph">GCP では各ネットワーク インターフェースが個別の VPC ネットワークに存在する必要があるため、この構成では 4 つの VPC が使用されます。</block>
@@ -2799,16 +2794,13 @@
   <block id="3a9080f8a489496ccc0b92fb84ee0670" category="paragraph">コンソールでシステムを作成し、Google Cloud でCloud Volumes ONTAP を起動します。</block>
   <block id="922d1e88db5ec93f3d3a041bd7e90594" category="list-text">*システム* ページで、*ストレージ &gt; システム* をクリックし、指示に従います。</block>
   <block id="b5a7d19f6788ad4a9fa68128eabe2be1" category="list-text">*場所を選択*: *Google Cloud* と * Cloud Volumes ONTAP HA* を選択します。</block>
-  <block id="47e8755e148fbe2f9d687cce086d2e82" category="list-text">*詳細と認証情報*: プロジェクトを選択し、クラスター名を指定し、オプションでサービス アカウントを選択し、オプションでラベルを追加して、認証情報を指定します。</block>
   <block id="a94a2dfcff08cd86c973716edaf32722" category="inline-link-macro">NetApp Cloud Tiering</block>
   <block id="f05ea9e0c9ccffc58a546b5b7a0d8608" category="inline-link">バックアップとリカバリ</block>
   <block id="35abd03d33619ce4669db81554e2c6f4" category="cell">ご利用予定の場合は<block ref="cb60f169b2f5c9214a2b89c79d285191" category="inline-link-macro-rx"></block>または<block ref="44267bb69e0507dfc0e4ac670835a65c" category="inline-link-rx"></block>サービスでは、*サービス アカウント* スイッチを有効にして、定義済みのストレージ管理者ロールを持つサービス アカウントを選択する必要があります。</block>
   <block id="50c8825a081a6324d106fb453c29e690" category="cell">ラベルは、Google Cloud リソースのメタデータです。コンソールは、Cloud Volumes ONTAPシステムと、システムに関連付けられた Google Cloud リソースにラベルを追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのラベルを追加でき、作成後にさらにラベルを追加できます。システムを作成するときに、API ではラベルが 4 つに制限されないことに注意してください。ラベルの詳細については、<block ref="fa397f5b6985fa16ac695ba7d4f7a5a5" category="inline-link-rx"></block> 。</block>
-  <block id="0f1a2ace875803b14883046cfdd65e11" category="paragraph">従量課金制の Cloud Volumes ONTAPシステムを作成するには、Google Cloud Marketplace からCloud Volumes ONTAPのサブスクリプションに関連付けられている Google Cloud プロジェクトを選択する必要があります。参照<block ref="26858d2411615dac691c2981d5338917" category="inline-link-rx"></block>。</block>
   <block id="6d233fc45c5eb7c0016f5de64af78ac2" category="list-text">*サービス*: このシステムで使用するサービスを選択します。バックアップとリカバリを選択するか、 NetApp Cloud Tieringを使用するには、手順 3 でサービス アカウントを指定する必要があります。</block>
   <block id="96c883d1fa1e7ebdc724bb5cec521bbd" category="inline-link-macro">HA展開モデルの詳細</block>
   <block id="65a1b420f9d8cf92d6a805f641764e75" category="paragraph"><block ref="810b7c24efd4e50a858cf2ac93f8cde8" category="inline-link-macro-rx"></block> 。</block>
-  <block id="74c223c0ac10d19fc933bf44bdfae707" category="list-text">*接続*: HA 構成に 4 つの異なる VPC、各 VPC 内のサブネットを選択し、ファイアウォール ポリシーを選択します。</block>
   <block id="a5ee79c4e6a740f92d76e4ae26f7efd9" category="inline-link-macro">ネットワーク要件の詳細</block>
   <block id="157452a4d26511160047acedc5ae5b81" category="paragraph"><block ref="2824c251ff24540ca0c877b5ced755b8" category="inline-link-macro-rx"></block> 。</block>
   <block id="6ebde9b80ea03f71d125a635cb158add" category="cell">生成されたポリシー</block>
@@ -3448,15 +3440,12 @@
   <block id="fe1db4ddb29c070770259869ba7aa5bb" category="inline-image-macro">スクリーンショットは、Cloud Volumes ONTAP の容量ベースのライセンス ページを示し、使用状況レポート ボタンが強調表示されています。</block>
   <block id="61b0c512c4663de969f8c21e23e50f0e" category="paragraph"><block ref="61b0c512c4663de969f8c21e23e50f0e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="d11dcbec58d47bd13de1dcccfbd640ff" category="paragraph">以下のレポートをダウンロードできます。表示される容量値は TiB 単位です。</block>
-  <block id="a9bcc09a5114887c29b3f365ee72e9e5" category="list-text">*高レベルの使用状況*: このレポートには次の情報が含まれます。</block>
   <block id="c596c9291f76a11af1aefc235c262de6" category="list-text">総消費容量</block>
   <block id="8dd7541d6c4e83402d88448119068a02" category="list-text">事前コミット済み容量合計</block>
   <block id="b01a146aed01aa8af61e034befc116ce" category="list-text">合計BYOL容量</block>
   <block id="109323142d354af9ccc7eb636b1dcbce" category="list-text">マーケットプレイス契約総容量</block>
   <block id="baf09c6c43fd26effd8f15e252649384" category="list-text">総PAYGO容量</block>
-  <block id="219fa750a13ad456df1d25524d9f6ad9" category="list-text">* Cloud Volumes ONTAPパッケージの使用状況*: このレポートには、各パッケージに関する次の情報が含まれます。</block>
   <block id="a65d4ec7ff2941ad2ea2bc688a6dbbb3" category="list-text">*ストレージ VM の使用状況*: このレポートには、課金された容量がCloud Volumes ONTAPシステムとストレージ仮想マシン (SVM) 全体でどのように内訳されているかが表示されます。この情報はレポートでのみ利用可能です。次の情報が含まれています。</block>
-  <block id="16f96639acdb5e88fcbe97e6d8720ba6" category="list-text">システムIDと名前（UUIDとして表示されます）</block>
   <block id="c8e2277ecfb1427838c488c217f99466" category="list-text">クラウド</block>
   <block id="4736cd35bf5b3fe63e1b1785fb2aa664" category="list-text">NetAppアカウントID</block>
   <block id="3c4e32d95f12c00d16a76057a7af18f6" category="list-text">システム設定</block>
@@ -3469,7 +3458,6 @@
   <block id="fe6ac599d13d94a0ee0800482bec7e41" category="list-text">課金SaaSマーケットプレイスサブスクリプションID</block>
   <block id="427af860f9733f0c5427a1408195bb2b" category="list-text">ワークロードの種類</block>
   <block id="2d0394437aca88cac134fb1bce72e08f" category="list-text">*ボリュームの使用状況*: このレポートには、Cloud Volumes ONTAPシステム内のボリュームごとに課金容量がどのように内訳されているかが表示されます。この情報はコンソールのどの画面でも表示されません。以下の情報が含まれます。</block>
-  <block id="3edb9123c69629ec86469d96d3feb0aa" category="list-text">SVN name</block>
   <block id="cccc95b62282240886ee975a3f122adb" category="list-text">ボリューム ID</block>
   <block id="fc18634852d4299cd5f8c7ad55ddefbe" category="list-text">ボリューム タイプ</block>
   <block id="3756f66a273f440893f16ee968ce3450" category="list-text">ボリュームプロビジョニング容量</block>
@@ -5788,7 +5776,6 @@
   <block id="9ef810f213faea9695f8494f68387049" category="list-text">NetApp Consoleメニューから、*管理 &gt;Licenses and subscriptions*を選択します。</block>
   <block id="0dcf4bc566ef97d86ea5d4e8c9eeb47e" category="paragraph">組織またはアカウント管理者が *容量管理モード* を手動に設定した場合、コンソールは容量の決定に対して適切なアクションを実行するように通知します。自動モードで説明したのと同じ例が手動モードにも当てはまりますが、アクションを受け入れるかどうかはユーザー次第です。</block>
   <block id="960e4aa9a89b27c853f0f0ec13923352" category="list-text">システムでバックアップとリカバリを有効にした場合は、バックアップしたデータがまだ必要かどうかを確認し、<block ref="bc8ff6550ddd07d56e1ed6fd01d313a7" category="inline-link-rx"></block> 。</block>
-  <block id="a58939c6666594ae00b1f74a1f9e7acf" category="list-text">コンソールエージェントに関連付けられたサービスアカウント<block ref="7bbaad5d325a365e141c19bc8c6c20e4" category="inline-link-rx"></block></block>
   <block id="ab07277ba1726fb034dc1a5175c30991" category="cell">タグは、Azure リソースのメタデータです。このフィールドにタグを入力すると、コンソールはそれらをCloud Volumes ONTAPシステムに関連付けられたリソース グループに追加します。システムを作成するときに、ユーザー インターフェイスから最大 4 つのタグを追加でき、システムの作成後にさらにタグを追加できます。システムを作成するときに、API ではタグが 4 つに制限されないことに注意してください。タグの詳細については、<block ref="1abe0bcd3eb326e50bf146cbf3498676" category="inline-link-rx"></block> 。</block>
   <block id="2c92ed1407e789cf148d4d3fef74fce2" category="paragraph">もしあなたが<block ref="4904e0ade41e67aed0599ec8d3057702" category="inline-link-rx"></block>まだ作成する必要があります。<block ref="542284e53a05e7716b016385b411b993" category="inline-link-rx"></block></block>
   <block id="1a24ebef5708132569792a414e03e094" category="inline-link">コンソール エージェントの Google Cloud 権限</block>
@@ -5972,7 +5959,6 @@
   <block id="ee315b90b56cac454504030332e26f7d" category="list-text">*場所と接続*：システムの Google Cloud リージョンとゾーンを選択し、ファイアウォール ポリシーを選択して、データ階層化のための Google Cloud ストレージへのネットワーク接続を確認します。</block>
   <block id="432f238e2167c79f023d25fc94cf7068" category="list-text">データ階層化を無効にした場合、後続のアグリゲートで有効にすることはできますが、システムをオフにして、Google Cloud Console からサービス アカウントを追加する必要があります。</block>
   <block id="ae02630a597278f3ffd84e28ca4d3fbd" category="admonition">展開プロセスが完了したら、Google Cloud ポータル内のシステム生成のCloud Volumes ONTAP構成（システムタグやGoogle Cloud リソースに設定されたラベルなど）を変更しないでください。これらの構成に変更を加えると、予期しない動作やデータ損失が発生する可能性があります。</block>
-  <block id="39d5d0f207458db1d58a115ab0447cc8" category="list-text">*HA 展開モデル*：HA 構成に複数のゾーン（推奨）または単一のゾーンを選択します。次に、地域とゾーンを選択します。</block>
   <block id="31bd3ca8f6cd8f37f69e226cb1afe75b" category="list-text"><block ref="31bd3ca8f6cd8f37f69e226cb1afe75b" category="inline-link-rx"></block></block>
   <block id="233af50e7ac5078d6cabb58ab95095b9" category="summary">Google Cloudの既存のデプロイメントでは、システムをCloud Volumes ONTAP 9.16.1以降にアップグレードしてから、Google Cloud Deployment ManagerからCloud Infrastructure Managerに変換するための移行ツールを手動で実行する必要があります。</block>
   <block id="b9e5aa43ec2007eccaf097117438e531" category="doc">既存の Cloud Volumes ONTAP デプロイメントを Infrastructure Manager に変換</block>
@@ -6145,7 +6131,6 @@
   <block id="d245f28751732b176b91cfbee0179905" category="paragraph">Cloud Volumes ONTAPは、シングルノードシステムでE32s_v3 VMタイプを使用する場合、Ultra SSDをVNVRAMとして使用できるようになりました<block ref="6f5d8baab146de724d052d505bbe4745" category="inline-link-rx"></block>。</block>
   <block id="f6d799b704394020520cc669c2ed108e" category="paragraph">NetApp Console を使用して、AWS、Azure、Google Cloud で Cloud Volumes ONTAP 9.18.1 の一般提供（GA）版を導入および管理できるようになりました。</block>
   <block id="bf89f4b1f72b6398bcca3a3ff4b6f7c1" category="doc">次世代の Google Cloud VM に対する Cloud Volumes ONTAP のサポート</block>
-  <block id="1a00162d4bdf4a56a4d4efde8a5c2f13" category="paragraph">9.18.1では、NetAppは新しいCloud Volumes ONTAPデプロイメントをN2 VMから次世代のGoogle Cloud C3シリーズVMに移行し、より高速でスケーラブルなエクスペリエンスを実現します。Google CloudでCloud Volumes ONTAP 9.18.1以降をデプロイする際に、C3シリーズVMを活用できるようになりました。C3シリーズマシンは、Google Virtual NIC（gVNIC）とHyperdisk Balancedディスクを使用することで、パフォーマンスが向上し、容量制限が高まり、集中的なワークロードでも動的なパフォーマンスを確保します。</block>
   <block id="af3ff68729b6eef28a7439636a40000a" category="admonition">今のところ、Cloud Volumes ONTAP は単一ノード展開でのみ C3 シリーズをサポートしています。</block>
   <block id="506a0b7b76d0386b3d56de15882686c0" category="paragraph">Cloud Volumes ONTAPシステムが9.18.1以降を実行している場合、簡単なシングルノード展開に使用する事前設定済みパッケージは自動的にC3 VMを使用し、ワークロードのニーズに基づいてIOPSおよびスループットパラメータをカスタマイズできるようになります。同様に、アグリゲートを作成する際に、Hyperdisk Balancedディスクを追加して、Google Cloudでのパフォーマンスとスケーラビリティを向上させることができます。さらに、デフォルトのFlash Cacheサポート用にC3シリーズマシンのLSSDバリアントを選択することもできます。</block>
   <block id="4e97495efaaec030c995f03b84344009" category="paragraph">C3 は Hyperdisk Balanced ディスクのみをサポートしているため、アグリゲートにボリュームを追加するときに C3 VM のディスクタイプを変更することはできません。同様に、N2 VM タイプのシステムを C3 VM に複製する場合、ディスクタイプはデフォルトで Hyperdisk Balanced に設定されます。</block>
@@ -6241,7 +6226,6 @@
   <block id="a4f8cf180bd6d1216c603260377fab0b" category="list-text">前の手順で作成したプライベート接続 IP 範囲の割り当てを指定します。</block>
   <block id="2fc774da70207cbd9c3f7f4cb2b882ce" category="list-text">このワーカープールを展開し、Cloud Volumes ONTAP管理のために実行し続けます。Google Cloudは、このワーカープールを使用して、すべてのTerraform操作を分離された環境で実行します。</block>
   <block id="e76afdbea65b310b371ae0744e22156a" category="list-text">Cloud Volumes ONTAPをプライベートモードで導入する場合は、*GCPワーカープール*フィールドでこのワーカープールの名前を選択します。手順については、<block ref="06a62ff106957757a2928a7c710d7365" category="inline-link-macro-rx"></block>を参照してください。</block>
-  <block id="5aee1781451135693253ccb12d7c445b" category="paragraph">Cloud Volumes ONTAPを配置するプロジェクトを選択してください。</block>
   <block id="29c10f28e9441020f79943c2c89621d8" category="paragraph">2026年2月09日から、Google Cloud での新しい Cloud Volumes ONTAP デプロイメントでは、Google Cloud Infrastructure Manager を使用できます。Google は、Infrastructure Manager を優先して Google Cloud Deployment Manager を廃止する予定です。そのため、既存の Cloud Volumes ONTAP デプロイメントを Deployment Manager から Infrastructure Manager に変換するには、移行ツールを手動で実行する必要があります。これは 1 回限りのプロセスであり、その後、システムは自動的に Infrastructure Manager の使用を開始します。</block>
   <block id="5e2a323cd6d7faff6d94fff36d28f7aa" category="list-text">変換の概要。<block ref="f80ad7d1c557c653b7c3e1f9d76587b2" prefix=" " category="inline-code"></block>に保存されます</block>
   <block id="a55abb3f1f891995d70f70a7d8476b90" category="example-title">プライベート モードの展開の場合は、次の追加の前提条件を確認してください：</block>
@@ -6298,66 +6282,6 @@
   <block id="ff18cbae63293952942e32e52d2873b4" category="doc">NTPサーバーを使用してCloud Volumes ONTAPシステム時間を同期する</block>
   <block id="29b0f551bb46a64e0ba83250d3fa3e71" category="paragraph">Cloud Volumes ONTAPクラスタのネットワークタイムプロトコル（NTP）サーバーを設定すると、ネットワーク内の他のシステムや外部サーバーとクラスタ時間を正確に同期できます。クラスタ時間を外部NTPサーバーと同期することで、インフラストラクチャ全体の一貫性を維持できます。NetAppは、新しいCloud Volumes ONTAPデプロイメントに対してデフォルトでNTPサーバーを設定します。ただし、既存のCloud Volumes ONTAPクラスタに対して設定されていない場合は、ネットワーク内外で正確な時刻同期を実現するためにNTPサーバーを設定する必要があります。</block>
   <block id="34df2c4da19b4e31f0349125e9cabfc7" category="section-title">2026年3月10日</block>
-  <block id="19fd9c11abb625f1aabd43382d3c4ecc" category="doc">実行できないアクティビティ（タブ別）</block>
-  <block id="d09c3afe3c25138ceca8e5d353ce66ad" category="section-title">実行できないアクティビティ（タブ別）</block>
-  <block id="59fb49c7093907fa9e7f335ab190da2f" category="paragraph">次の表は、タブごとに制限されているアクティビティをまとめたものです。</block>
-  <block id="5c6ba25104401c9ee0650230fc6ba413" category="cell">タブ</block>
-  <block id="d33bd391ad5ed956588c0cd4c08279ea" category="cell">実行できないアクティビティ</block>
-  <block id="3cbb7699679cf8ac6bb42f2d93fd4d72" category="list-text">ボリュームの追加</block>
-  <block id="5288a56300efd1e1c3e2751aa731a390" category="list-text">アグリゲートを追加</block>
-  <block id="a319340d2793ad3feb216caae04b1972" category="list-text">System Manager を開きます</block>
-  <block id="50384ef287bf4f3284ec6c4fdcbb197d" category="list-text">オン / オフボタンを使用する</block>
-  <block id="cc940bf2667209e4d71ddc12d8f2e5ed" category="list-text">パスワードを設定</block>
-  <block id="905cb7c01c2c938fc7dfb74be192c7fe" category="list-text">ONTAPバージョンを更新する</block>
-  <block id="89d30dd0d2abc48eac8a8820c224f0cb" category="list-text">ワークスペースからシステムを削除します</block>
-  <block id="611740b36c016d17e48d1933b790fbcd" category="list-text">システムを削除する</block>
-  <block id="39ca4d74366a4f92b22ffc56ae7560da" category="list-text">* 今すぐアップグレード * を使用します</block>
-  <block id="ec4d6779edb1b535eaa6bb011e1d3e8a" category="list-text">すべての機能の鉛筆メニューから *System tags* を編集します。</block>
-  <block id="dfac2097a6da49d3b50831a5175ce966" category="list-text">全機能ペンシルメニューから *Scheduled downtime* を編集します</block>
-  <block id="75592ee45c7658257f6bd79f9b3116ad" category="list-text">全機能ペンシルメニューから *Storage classes* を編集します</block>
-  <block id="ed9f8745eec3bd91b3ac7dd70de9e63d" category="list-text">全機能の鉛筆メニューから*Instance type*を編集します。</block>
-  <block id="290f18ca088f3b33f8cc9a7f895991e5" category="list-text">すべての機能のペンシルメニューから*充電方法*を編集します</block>
-  <block id="3f504ad8c9ab961bdefa05eee81a2824" category="list-text">全機能ペンシルメニューから *License type* を編集します</block>
-  <block id="e04768e231f98d617747c4dc0bfde356" category="list-text">すべての機能の鉛筆メニューから*書き込み速度*を編集します</block>
-  <block id="fc793964b815197fe89abeec3562ae3e" category="list-text">全機能メニューの鉛筆アイコンから *Ransomware protection* を編集します。</block>
-  <block id="6bc1e721b9d4e4a6413cedb0bb58befb" category="list-text">全機能ペンシルメニューから *Support registration* を編集する</block>
-  <block id="39c3909abd0b8b16a08b5a37e17de261" category="list-text">全機能ペンシルメニューから *WORM* を編集します</block>
-  <block id="6773349ec708bf74e9c3a96be6606ff5" category="list-text">全機能ペンシルメニューから * Data tiering * を編集します</block>
-  <block id="b6806817250ca74e0d889e8170e85823" category="list-text">全機能メニューの鉛筆アイコンから *CIFS setup* を編集します。</block>
-  <block id="c534251be3cf8755eaf972b5450db181" category="list-text">全機能ペンシルメニューから*ルートテーブル*を編集します</block>
-  <block id="c6f01c78bfe0a0a495cb5d3ed77824a9" category="cell">ボリューム</block>
-  <block id="9e32a435d22aa5cbc195e861b5fe629f" category="list-text">ボリューム設定を編集</block>
-  <block id="5b5eeee4d1e6b7007829d66c8b144064" category="list-text">Snapshot コピーを作成する</block>
-  <block id="ff1652826450f50c76cdfdda64d94e2f" category="list-text">Snapshot コピーからリストアする</block>
-  <block id="7d89266e3a96ee597d44e7233b79f335" category="list-text">ディスクタイプを変更する（詳細オプション）</block>
-  <block id="dc8dba8c12d7372e239d38b7304752d6" category="list-text">階層化ポリシーを変更する（詳細オプション）</block>
-  <block id="d5350d8759b1ec84607e47908809058e" category="cell">アグリゲート</block>
-  <block id="261c95ed5d454ef55df25657c605d472" category="list-text">容量の追加</block>
-  <block id="8ce62ed0fdfe7abb736c3597956922c2" category="list-text">アグリゲートを削除する</block>
-  <block id="444c64ac4c351f349e58d8d514287ab4" category="list-text">レプリケーションを解除</block>
-  <block id="892027dedcdbb237fc210b3a00cf2ae5" category="list-text">レプリケーションの再同期</block>
-  <block id="78c8c117652a47404403fff983b2f82f" category="list-text">逆方向の再同期レプリケーション</block>
-  <block id="51f4afdf17b1f2127b36e48896363c41" category="list-text">スケジュールを編集する</block>
-  <block id="487bfcf1a1cc5511a69fc77de0b7b697" category="list-text">最大転送速度を編集します</block>
-  <block id="d93259d25822e675cbf5c2324eca93de" category="list-text">レプリケーションを更新</block>
-  <block id="62ef027c0c691039af4f8f02b7fbb023" category="list-text">レプリケーションを削除</block>
-  <block id="94c95941a7abd9bad751b430ab14297c" category="cell">メインキャンバス</block>
-  <block id="770e6e1d37ec8e564116ac215a622e66" category="list-text">システムを追加する</block>
-  <block id="6a782ce4c3ebd625267758265f6b6404" category="list-text">システムを検出する（すべてのオペレーター向け）</block>
-  <block id="6aa8394552f000f4d3f4523193dd41c2" category="list-text">*コピーと同期*にドラッグ アンド ドロップを使用</block>
-  <block id="52180a001f05eb6c348aa060d6cd0961" category="list-text">*ボリュームキャッシュ*にドラッグ アンド ドロップを使用</block>
-  <block id="65c27faee6abce8e6bac90d9ca9cc69a" category="list-text">*レプリケーション*にドラッグ アンド ドロップを使用</block>
-  <block id="34d606f181de5f7ebc55948eff861656" category="list-text">*コストとパフォーマンスの最適化* にアクセスします</block>
-  <block id="e2ea3cc0d6339d3d8dd793bdc96b91fb" category="list-text">必要な CVO 権限が利用可能な場合にのみ Cloud Volumes ONTAP に *レプリケーション* を使用します（FSx for ONTAP またはオンプレミスシステムには適用されません）</block>
-  <block id="7e7cd88c62428b7db1b6d1da71873171" category="list-text">Cloud Volumes ONTAP に*ボリュームキャッシュ*を使用するのは、必要な CVO 権限が利用可能な場合のみです（FSx for ONTAP またはオンプレミスシステムには適用されません）</block>
-  <block id="68508a9dfe7d188ddfacdf20bf897e7f" category="list-text">システムを入力します</block>
-  <block id="f58a02a69585ec6ceb21ad1ac5eda505" category="list-text">AVS 管理ボタンを使用する</block>
-  <block id="1f4c7e61bb42651b1fed2a31454fa7b2" category="cell">ロールなし</block>
-  <block id="ba289c943721589929b1aa882cf8868b" category="list-text">作業環境にアクセスする</block>
-  <block id="c81a3e43374dd535dae333a1add5d041" category="list-text">レプリケーションへのアクセス</block>
-  <block id="bb499c548cf9f80e030b1ead19cf6245" category="list-text">Cloud Volumes ONTAP作成ウィザードを使用する</block>
-  <block id="3e83fca6406aceb42fb8b32def1004f5" category="list-text">レプリケーション作成ウィザードを使用する</block>
-  <block id="aefa282f16e03c096e52d22b7d41c04b" category="list-text">Cloud Volumes ONTAP を見つける</block>
   <block id="53f76082b918614f3c41bfae0d7985c6" category="inline-link">ONTAP SnapLockを使用してファイルをWORMにコミット</block>
   <block id="90cbc44f5ba3581965b21132dff04d0e" category="paragraph">NFS または CIFS を介して WORM にファイルをコミットするにはアプリケーションを使用するか、 ONTAP CLI を使用してファイルを WORM に自動的にコミットします。WORM 追記可能ファイルを使用すると、ログ情報のように増分的に書き込まれるデータを保持することもできます。詳細については、<block ref="e55de3a3f9aa1cb3686a8e1324558ed7" category="inline-link-rx"></block>を参照してください。</block>
   <block id="d5affa88c9505737da2bd460b6fd43bb" category="doc">Google Cloud C3 VMによるCloud Volumes ONTAPサポートの改善</block>
@@ -6371,7 +6295,6 @@
   <block id="79755a85cb08431038b7bbe13d99c64f" category="list-text"><block ref="79755a85cb08431038b7bbe13d99c64f" category="inline-link-rx"></block></block>
   <block id="5a1b1460ab07c6363c5bbb60593e8ced" category="admonition">Cloud Volumes ONTAP は、プローブ用にアクティブ / パッシブ モードでロード バランサーを使用します。Azure では、アクティブ ノードのみがプローブに応答します。パッシブ ノードは、X マークが表示されて非アクティブ状態として認識される場合があります。これは想定される動作であり、心配する必要はありません。</block>
   <block id="fe4b627e339ef56fd051464a11d7b4aa" category="paragraph"><block ref="fe4b627e339ef56fd051464a11d7b4aa" category="inline-link-macro-rx"></block></block>
-  <block id="9472db468c3c681023f3ca03b59df38b" category="list-text">BYOLライセンスをお持ちで、マーケットプレイスとの年間契約を結んでいる場合、使用量と超過料金は、お客様が設定した請求設定に従って課金されます。料金の請求方法については、<block ref="0b707007d6575618559747cfb2737b16" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="403f4a170e2d1c03d329e0f0dd8d1b84" category="section-title">2026年4月13日</block>
   <block id="b3590df4b69c4ddf7017e6977baebe49" category="list-text">リンクするサブスクリプションで、<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> を選択し、*Link*を選択します。</block>
   <block id="665103db45058514d7e3b032c990783d" category="list-text">容量を調整するサブスクリプションについて、<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> を選択し、*詳細を表示して編集*を選択します。</block>
@@ -6430,7 +6353,6 @@
   <block id="69bad18c1431b72e27676656dcb02294" category="list-text">新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、<block ref="3bd26a21bb4b5b57e3e4e28150d4f309" category="inline-link-rx"></block>を参照してください。</block>
   <block id="a731966b7a272e5b052ef9a7b9ea958e" category="paragraph">データサービスにNISサブスクリプションを使用するには、*Data services*タブでNISサブスクリプションに対して同じ手順を繰り返してください。新しいCloud Volumes ONTAPシステムをデプロイする際は、NISサブスクリプションを通じて請求されるProfessionalパッケージを選択してください。</block>
   <block id="55a36fface9a3342eae20532f4dd2f82" category="section-title">2026年5月12日</block>
-  <block id="a0183314c2ab3e36d7dc149d1630d662" category="paragraph">Amazon Web Services（AWS）および Microsoft Azure で<block ref="956eaa6186169471a13345860cad0757" prefix=" " category="inline-code"></block>を使用して Cloud Volumes ONTAP を導入できます。これにより、シングルノード構成と高可用性（HA）構成の両方で迅速な導入が可能になります。この簡素化されたプロセスでは、単一ページでデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、拡張方式と比較して導入手順が削減されます。</block>
   <block id="fe315d7471968d18b362c1b1144a20b0" category="paragraph">始める前に、以下のものを用意してください：</block>
   <block id="e1698d0f79b1f839d16516155d0a01c6" category="list-text">コンソールエージェントが起動して実行されており、プロジェクトまたはワークスペースに関連付けられていること。コンソールエージェントは常に実行されている必要があることに注意してください。詳細については、以下を参照してください：</block>
   <block id="53101ed6c57b4f1b9f3eb58eb938c2b1" category="inline-link">NetApp Console エージェントについて学ぶ</block>
@@ -6452,17 +6374,14 @@
   <block id="698986dc4292e89123e221e515a0d74b" category="paragraph"><block ref="698986dc4292e89123e221e515a0d74b" category="inline-link-macro-rx"></block></block>
   <block id="c0cf3ac9b58bf7128b0edea2d7f775eb" category="inline-link-macro">Azureにおけるネットワーク要件</block>
   <block id="67b834b1ef658ae3f312e7de4ba6af6c" category="paragraph"><block ref="67b834b1ef658ae3f312e7de4ba6af6c" category="inline-link-macro-rx"></block></block>
-  <block id="ec7684f8f216cf1ecdb9a9b62758a4a6" category="list-text">クラウド プロバイダ（*Amazon Web Services* または *Microsoft Azure*）&gt; *Cloud Volumes ONTAP/Cloud Volumes ONTAP HA* &gt; *Add new* を選択します。*Quick create* オプションがデフォルトで選択されています。</block>
   <block id="ce69e2301391e8a099e5f4ffad83e207" category="example-title">Quick createオプションのサンプルスクリーンショット</block>
   <block id="886e58b8c16a5f0b3dea467125601a3f" category="inline-image-macro">width=500,alt="AWS Quick Create"</block>
   <block id="05fbaa940416f58a5e46a739d2f4c7fc" category="paragraph"><block ref="05fbaa940416f58a5e46a739d2f4c7fc" category="inline-image-macro-rx" type="image"></block></block>
   <block id="ca20e4c4a1178db5332b6e4d1fec5e3f" category="inline-image-macro">width=500,alt="Azureクイック作成"</block>
   <block id="1e8cbffa0dad5ef3f32fd257d35128c8" category="paragraph"><block ref="1e8cbffa0dad5ef3f32fd257d35128c8" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5b98d59e0e7d352cc2eba9b98c195920" category="list-title">システムの詳細</block>
-  <block id="0703e60c8ce9c50b32557a493769fc66" category="list-text">*クラウド プロバイダアカウント/クレデンシャル*：アカウントとサブスクリプションの詳細は、NetApp Consoleエージェントに基づいて自動的に入力されます。複数のアカウントまたはサブスクリプションがある場合は、使用するアカウントまたはサブスクリプションを選択します。NetApp Consoleエージェントが使用できない場合は、<block ref="689b13c9a5c20aa1149b467cd9e2d99d" category="inline-link-rx"></block>するように求められます。</block>
   <block id="df29b7782e1e52af5c3787266b32e641" category="list-text">*名前*：Cloud Volumes ONTAP システム（クラスタ名とも呼ばれる）の名前を入力します。NetApp Console は、システム（クラスタ）名を使用して Cloud Volumes ONTAP システムと VM インスタンスに名前を付けます。また、そのオプションを選択した場合、事前定義されたセキュリティグループのプレフィックスとしてその名前が使用されます。</block>
   <block id="493afb06da102ef4f588b9ee9f70eccc" category="list-text">*ONTAP認証情報*：これらは、Cloud Volumes ONTAPクラスタ管理者アカウントの認証情報です。これらの認証情報を使用して、ONTAP System ManagerまたはONTAP CLIを通じてCloud Volumes ONTAPに接続できます。デフォルトの_admin_ユーザー名をそのまま使用することも、カスタムユーザー名に変更することもできます。</block>
-  <block id="ed359bcb0198329923d6f27a3212b199" category="list-text">*タグ*：タグは、AWSまたはAzureリソースのメタデータです。NetApp Consoleは、Cloud Volumes ONTAPインスタンスおよびそのインスタンスに関連付けられている各リソースにタグを追加します。Cloud Volumes ONTAPシステムの作成時に、ユーザーインターフェイスから最大15個のタグを追加でき、作成後にさらに追加することもできます。詳細については、以下を参照してください：</block>
   <block id="a16435cab7ba0f508c1af2b05a09518f" category="paragraph"><block ref="9b64f9d4e4f17e41dd8f7e0bd2ac90d8" category="inline-link-rx"></block>。</block>
   <block id="194c4ba8c0f429994571ad7132771038" category="inline-link">Azure ドキュメント：リソースにタグを付ける</block>
   <block id="293180eda7fdbd2f72c67b87bef17b82" category="paragraph"><block ref="7958b061e6b74f8d105bdf1dc2f21002" category="inline-link-rx"></block>。</block>
@@ -6472,12 +6391,10 @@
   <block id="ff833a169e227e2cc350fcca7164aee7" category="list-text">*可用性ゾーン*：選択したデプロイメントタイプに基づいて可用性ゾーンを選択でき、選択したリージョンが可用性ゾーンをサポートしている場合に選択できます。</block>
   <block id="fb39fa266aef6376da5693e7f07daf4f" category="list-text">*サブネット*：リージョンのサブネットを選択してください。</block>
   <block id="801f4bb28be5a6f5408b765580d77054" category="open-title">AWS向け</block>
-  <block id="7134d99cb386a398472ce390ec6cde1e" category="paragraph">*VPC*：AWSの場合、計画どおりにサブネットを持つリージョンのVPCを入力してください。</block>
   <block id="9a648a165c10a9b39e904785f2c76d90" category="paragraph-title">AWSの高可用性機能</block>
   <block id="3d6749f5155069d11e17402eb45411c4" category="paragraph">HA構成を選択した場合は、以下の情報を入力してください：</block>
   <block id="c90b3762df86fca042965f850d0dd3a9" category="paragraph">*マーケットプレイスサブスクリプション*：AWSで、このCloud Volumes ONTAPシステムで使用するAWSマーケットプレイスサブスクリプションを選択します。</block>
   <block id="5e69c1ba6e88231ba98e5b867048d898" category="open-title">Azure の場合</block>
-  <block id="e1d2077933857aa679ffd3a25a805a92" category="paragraph">*VNET*：Azure の場合は、必要な VNET を選択してください。</block>
   <block id="5c1db3b64150a669729713d1441519fb" category="list-text">*ライセンス*：このCloud Volumes ONTAPシステムで使用するライセンスタイプを選択します。Professional、Essentials、Freemiumライセンスから選択できます。各種ライセンスの詳細については、<block ref="827c6d1762aff7ea0827cad65bbc8690" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="180f6ba8b7bb3ff016c53f089f146fab" category="list-text"><block ref="180f6ba8b7bb3ff016c53f089f146fab" category="inline-link-rx"></block></block>
   <block id="77bb73ceddf23085496529ef175197ec" category="list-text"><block ref="77bb73ceddf23085496529ef175197ec" category="inline-link-rx"></block></block>
@@ -6491,10 +6408,7 @@
   <block id="8928e512cc17b6dd2c97fcb7dff5a06a" category="list-text"><block ref="8928e512cc17b6dd2c97fcb7dff5a06a" category="inline-link-rx"></block></block>
   <block id="6d1c2cdb212ea73452146a3edb82fe12" category="inline-link">Azure の拡張方式を使用した Cloud Volumes ONTAP の導入</block>
   <block id="3cf666a1e5ff2ecf85c4a0bcf868d65f" category="list-text"><block ref="3cf666a1e5ff2ecf85c4a0bcf868d65f" category="inline-link-rx"></block></block>
-  <block id="36988e8f47cb48af40dd817b7f6b4d72" category="paragraph">以下のボリューム操作は実行できません：</block>
-  <block id="bf0e55251fc2d98ac6842f182450e467" category="paragraph">役割が割り当てられていない場合、以下の操作は一切実行できません：</block>
   <block id="94b7b54556632ab5a087eae13f0e0af9" category="doc">AWSの拡張方式を使用したCloud Volumes ONTAPの導入</block>
-  <block id="1b26e39c9aec7d9422f257c07a5dbb5d" category="list-text"><block ref="221e8f6e98d75a4db804bf88879345c0" category="inline-link-macro-rx"></block> *</block>
   <block id="fab04a1941385806648057c8597be7c4" category="list-text"><block ref="fab04a1941385806648057c8597be7c4" category="inline-link-macro-rx"></block></block>
   <block id="c92ac4b81ff77c3da7bc410dc79cb66b" category="inline-link-macro">拡張方式を使用してAzureにCloud Volumes ONTAPを導入する</block>
   <block id="cc5e18929848d96ede4034c97f00652a" category="list-text"><block ref="cc5e18929848d96ede4034c97f00652a" category="inline-link-macro-rx"></block></block>
@@ -6533,4 +6447,129 @@
   <block id="c3d731221ec9d09a910395abd309640a" category="inline-link">ストレージ クラス</block>
   <block id="40377bff33838260be995513a1e2c8e6" category="inline-link">Google Cloud ドキュメント：オブジェクトライフサイクルの管理</block>
   <block id="0a69db980802dac8e0b54038dc2364d0" category="list-text">Google Cloud は<block ref="ec8949881e2dffa4d0e8750c51cd0497" category="inline-link-rx"></block>を使用して、コストとデータ可用性を管理します。データへのアクセスにはより高いコストが発生するため、想定されるデータアクセス頻度に基づいてストレージクラスを選択することをお勧めします。階層型データのデフォルトのストレージクラスは「Standard Storage」です。手動で変更しない限り、すべての非アクティブなデータはデフォルトのストレージクラスを維持します。非アクティブなデータのストレージクラスを変更するには、<block ref="9f653ab672497f99d3217a50d3927264" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="e5baff5685689e0ee8aa53cc00b4c89d" category="paragraph">Cloud Volumes ONTAP を Amazon Web Services (AWS)、Microsoft Azure、および Google Cloud に<block ref="956eaa6186169471a13345860cad0757" prefix=" " category="inline-code"></block>を使用してデプロイすることで、シングルノード構成と高可用性（HA）構成の両方においてより迅速な導入が可能です。この簡素化されたプロセスは、単一ページにデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、拡張方式と比較してデプロイ手順を削減します。</block>
+  <block id="383fc98dda100b2afb6af4ca66490837" category="inline-link-macro">Google Cloud での構成を計画する</block>
+  <block id="170588f91eb7e5f0af08bca794fcde2c" category="paragraph"><block ref="170588f91eb7e5f0af08bca794fcde2c" category="inline-link-macro-rx"></block></block>
+  <block id="b8e9545e1995b0c7769bcd444030cc1b" category="inline-link-macro">Google Cloudにおけるネットワーク要件</block>
+  <block id="c9a19ef199ad9f12519c15169e81ad42" category="paragraph"><block ref="c9a19ef199ad9f12519c15169e81ad42" category="inline-link-macro-rx"></block></block>
+  <block id="37be5b4a1fecf4f6ad84568cca34731f" category="list-text">クラウド プロバイダ（*Amazon Web Services*、*Microsoft Azure*、または *Google Cloud*）&gt; *Cloud Volumes ONTAP/Cloud Volumes ONTAP HA* &gt; *新規追加* を選択します。*クイック作成* オプションがデフォルトで選択されています。</block>
+  <block id="74c3e54bfb18672ed479cdacb6abaa87" category="inline-image-macro">width=500,alt="Google Cloud Quick Create"</block>
+  <block id="e4a62feb01f28564dabb40ab47c0605b" category="paragraph"><block ref="e4a62feb01f28564dabb40ab47c0605b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ba56240a171da3401547d47564931655" category="list-text">*クラウド プロバイダのアカウント/認証情報/Google Cloud プロジェクト*：アカウントとサブスクリプションの詳細は、コンソール エージェントに基づいて自動的に入力されます。複数のアカウントまたはサブスクリプションをお持ちの場合は、使用するものを選択してください。コンソール エージェントが利用できない場合は、<block ref="689b13c9a5c20aa1149b467cd9e2d99d" category="inline-link-rx"></block>するよう求められます。</block>
+  <block id="4e309f220800c07e125979e34d1b5bce" category="paragraph">Google Cloud の場合は、プロジェクト名を含むマーケットプレイスのサブスクリプションを選択する必要があります。</block>
+  <block id="7e9cd3c5720744a360b12c2d31bc167c" category="paragraph">_Google Cloud_ の場合、Cloud Volumes ONTAP で <block ref="0afefdfec765b284960d752caf97004c" category="inline-link-macro-rx"></block> または <block ref="59ed2e68e4ed7634717b7660430f93ea" category="inline-link-rx"></block> を使用する予定がある場合は、*Service Account* を有効にして、事前定義された Storage Admin ロールを持つサービスアカウントを選択する必要があります。<block ref="2f1d7559264d14baafd4be6d853a5896" category="inline-link-macro-rx"></block>。Console エージェントに関連付けられたサービスアカウント<block ref="7bbaad5d325a365e141c19bc8c6c20e4" category="inline-link-rx"></block>。</block>
+  <block id="5faa3967fc06871bba18488a7ef4901c" category="list-text">*タグ/ラベル*：タグは、AWS または Azure リソースのメタデータです。コンソールは、Cloud Volumes ONTAP インスタンスおよびそのインスタンスに関連付けられている各リソースにタグを追加します。Cloud Volumes ONTAP システムの作成時にユーザーインターフェースから最大 15 個のタグを追加でき、作成後にさらに追加することもできます。詳細については、以下を参照してください。</block>
+  <block id="c60ddfbb0cdf7df0a040d90592067cec" category="inline-link">Google Cloud ドキュメント：タグとラベル</block>
+  <block id="5a3b556bb6094e7b47a1547c33bdc2f1" category="paragraph"><block ref="f9c823c098cad3b5066a754776ee8ba6" category="inline-link-rx"></block>。</block>
+  <block id="8b6d58c5658484aad1730b10f24146c7" category="paragraph">*VPC*: AWS の場合、計画したデプロイメントに従って、リージョンの Amazon Virtual Private Cloud (VPC) ネットワークとサブネットを入力してください。</block>
+  <block id="f29fc5b40e4ceb18c2d6964c7eaf1570" category="paragraph">*VNET*: 必要なAzure仮想ネットワーク（VNet）を選択します。VNetの要件については、<block ref="3a31e03c90d6c064ad075dd0dc74498f" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="d9acbb00af44ab32e1229c3099381b73" category="open-title">Google Cloud 用</block>
+  <block id="5841b76d1086fb7f96279115844dc0a8" category="paragraph">*VPCとサブネット*：Google Cloudの場合、計画しているデプロイメントに応じて、リージョンのGoogle Virtual Private Cloud（VPC）ネットワークとサブネットを入力してください。</block>
+  <block id="0271af1446d2c07141ecae3e7f60f953" category="paragraph-title">単一AZまたは複数AZにおけるHA</block>
+  <block id="f389a6e3ae89f82d6445713b2817aefc" category="paragraph">HA構成を選択した場合は、次の情報を入力してください。*ノード1と2、およびメディエーターのゾーン*：2つのノードとメディエーターのゾーンを追加します。*接続性* HA構成用に4つの異なるVPCを選択し、各VPCにサブネットを1つずつ選択します。VPC-1、VPC-2、およびVPC-3の詳細については、<block ref="bb9143e1266aefd4a12ac5b16364dcf0" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="f33e074a06b21bd27e6ad030d8944dbc" category="inline-link-macro">単一AZ HA構成用の共有ディスク</block>
+  <block id="45de0fcf44f5f3c153a557fe77b4c903" category="admonition">Cloud Volumes ONTAP 9.19.1以降は<block ref="bf5f8235b3ee6f722f42e2d7828e4aab" category="inline-link-macro-rx"></block>をサポートしており、メディエーターインスタンスはオプションまたは冗長となります。この構成では、データレプリケーションのためにメディエーターゾーン、VPC、およびサブネットは必要ありません。</block>
+  <block id="e2fff096892011798cfbb0cc5892fc79" category="paragraph">_Google Cloud_ では、バックアップと復元を選択するか、NetApp Cloud Tiering を使用する場合は、サービスアカウントを指定する必要があります。</block>
+  <block id="fbe952375aa3beae684faea7d44f613e" category="paragraph"><block ref="aaeef2d217066cd2eca41aa9288574cd" category="inline-link-macro-rx"></block>。</block>
+  <block id="368df362649fb4d4bcc4049fba338707" category="doc">Cloud Volumes ONTAPの次世代Google Cloud VMのサポート</block>
+  <block id="f6e70cdd9ff9d05c5228d01c9dd78150" category="paragraph">9.18.1では、NetAppが新しいCloud Volumes ONTAPのデプロイメントをN2 VMから次世代Google Cloud C3シリーズVMへ移行し、より高速でスケーラブルなエクスペリエンスを提供します。Google CloudでCloud Volumes ONTAP 9.18.1以降をデプロイする際に、C3シリーズVMを活用できるようになりました。C3シリーズのマシンは、Google Virtual NIC（gVNIC）とHyperdisk Balancedディスクを使用することで、パフォーマンスの向上と容量制限の拡大を実現し、負荷の高いワークロードに対してダイナミックなパフォーマンスを確保します。</block>
+  <block id="b6e501a3f9a9964fecae7c393bb7cf74" category="doc">Cloud Volumes ONTAP 9.19.1 RC</block>
+  <block id="f11434f81dce28dd60c981c553fa8539" category="paragraph">NetApp Console を使用して、Google Cloud に Cloud Volumes ONTAP 9.19.1 のリリース候補版 （RC） をデプロイおよび管理できるようになりました。このバージョンは、Amazon Web Service (AWS) および Microsoft Azure (Azure) へのデプロイおよびアップグレードには対応していません。</block>
+  <block id="25e0da852d260d2649ca08106da6e096" category="section-title">Cloud Volumes ONTAP HAにおける次世代Google Cloud VMのサポート</block>
+  <block id="8eb29cd4df495e469d2747ba84799174" category="paragraph">9.19.1では、NetAppはCloud Volumes ONTAPの高可用性（HA）デプロイメントをN2 VMから次世代Google Cloud C3シリーズVMに移行し、より高速でスケーラブルなエクスペリエンスを提供します。</block>
+  <block id="6cc056a948dd84f835846a2201f9b4b5" category="admonition">このサポートは、単一のアベイラビリティゾーン（AZ）HA構成にのみ適用されます。</block>
+  <block id="daeb9d2c445d835a4dfabab85d7f7ac8" category="paragraph">Google Cloud で Cloud Volumes ONTAP 9.19.1 以降をデプロイする際に、C3 シリーズ VM を活用できるようになりました。これらのマシンは、パフォーマンスが向上し、容量の上限も高くなっています。集中的なワークロードにおける動的なパフォーマンスを実現するために、Google Virtual NIC（gVNIC）と Hyperdisk Balanced ディスクを使用しています。</block>
+  <block id="039aeba61a2d04ffa12dc9230a552474" category="paragraph">Cloud Volumes ONTAP システムが 9.19.1 以降で動作している場合、単一の AZ への簡単なデプロイに使用する事前構成済みパッケージは自動的に C3 VM を使用し、ワークロードのニーズに基づいて IOPS とスループットのパラメータをカスタマイズできます。同様に、アグリゲートを作成する際に Zonal Hyperdisk Balanced ディスクを追加することで、Google Cloud でのパフォーマンスとスケーラビリティを向上させることができます。また、デフォルトの Flash Cache サポートを利用するために、C3 シリーズマシンの LSSD バリアントを選択することもできます。</block>
+  <block id="8bf4a89637b88a17fe1be4dad5d23488" category="paragraph">以下の点に注意してください：</block>
+  <block id="a8b9ee4ec08e660e7c78a765fe6e8e76" category="list-text">Cloud Volumes ONTAP のデプロイメントでは、C3 VM を N2 シリーズの VM に変更したり、その逆の変更を行ったりすることはできません。ただし、C3 ファミリー内の異なるバリアント間でインスタンスタイプを切り替えることは可能です。</block>
+  <block id="4508abef5bde6dc4e321f4c629f6b5df" category="admonition">C3ファミリー内でインスタンスタイプを変更するには、接続されているデータディスクの数によっては時間がかかる場合があります。パフォーマンスへの影響を避けるため、事前に設定を計画してください。</block>
+  <block id="5d6ac50e964794f1d9f58de17f041571" category="list-text">インスタンスタイプを変更する際に、ターゲット VM として c3-standard-44 または c3-standard-88 およびそれらのローカル SSD （LSSD）バリアントを選択した場合、Google ネットワーク サービスの出力ネットワーク層 _Tier-1_ が自動的に適用されます。他の C3 バリアントに戻すと、出力ネットワーク層は _Standard_ に設定されます。</block>
+  <block id="cc900a1bed6dc9c21fe26836d5594034" category="admonition">送信ネットワークの階層を_Tier-1_に変更すると、追加費用が発生します。導入計画を立て、それに応じてアップグレードを行ってください。</block>
+  <block id="745f1e222c1a230bd097ce9d3bc14619" category="list-text">C3のLSSDバリアントを選択した場合、Flash Cacheがデフォルトで有効になります。ターゲットバリアントがFlash Cacheをサポートしている場合でも、Cloud Volumes ONTAPデプロイメントでC3 LSSBバリアント間を切り替えることはできません。</block>
+  <block id="562863c77a375e6f0ad98475be21d62d" category="list-text">C3 VMでは、新規および既存のアグリゲートの両方にボリュームを追加できます。</block>
+  <block id="0934d6e64727e82c89dcc51725cc8a7d" category="list-text">Cloud Volumes ONTAP システムを N2 VM タイプから C3 VM タイプにレプリケートする場合、ディスクタイプはデフォルトで Hyperdisk Balanced に設定されます。</block>
+  <block id="7f779554154f7bbce7ebe34e61b8a90f" category="list-text">NetApp Console またはAPI<block ref="566e7ce0d4fe7a4872db87a6368a9417" prefix=" " category="inline-code"></block>を使用してアグリゲートを追加する際に、IOPS とスループットの設定を変更できます。</block>
+  <block id="2d6c818daeac263c2afd4036d7f74e1e" category="section-title">Google Cloud への Cloud Volumes ONTAP のデプロイの簡略化</block>
+  <block id="cb811eee80c50a73b0cadcc740ccb6e0" category="paragraph">*クイック作成*ウィザードを使用して、シングルノード構成と高可用性（HA）構成の両方で Google Cloud に Cloud Volumes ONTAP をデプロイできるようになりました。この合理化されたプロセスにより、手順が削減され、デフォルト値が単一ページで自動的に設定され、ナビゲーションが最小限に抑えられるため、より迅速かつ容易なデプロイが可能になります。</block>
+  <block id="66ac7407a9c84ca6778fae23ed993062" category="inline-link">Quick create を使用して Google Cloud に Cloud Volumes ONTAP を導入する</block>
+  <block id="0dfb1e2c47e659e01c54c2e333c51aab" category="list-text"><block ref="0dfb1e2c47e659e01c54c2e333c51aab" category="inline-link-rx"></block></block>
+  <block id="2ac8bb0efb00600c2a41354a94948174" category="inline-link">Google Cloud の拡張オプションを使用して Cloud Volumes ONTAP を導入する</block>
+  <block id="6c9068df44f8a14533034d80a58ea324" category="list-text"><block ref="6c9068df44f8a14533034d80a58ea324" category="inline-link-rx"></block></block>
+  <block id="12d92330947695a8724da477e7db5baa" category="section-title">Cloud Volumes ONTAP のアクセスロールの概要</block>
+  <block id="ae05e9d1fb64b3f3eb3c2b718a64b7c2" category="paragraph">NetAppは、Cloud Volumes ONTAPにアイデンティティおよびアクセス管理（IAM）ロールを導入し、セキュリティの向上とコンプライアンス遵守の容易化のためのロールベースアクセス制御（RBAC）を実現します。ユーザーは、Cloud Volumes ONTAPの操作に既存の認証情報を使用して、引き続きNetApp Consoleにログインできます。ただし、認証はIDフェデレーションを介して行われるようになり、Console管理者がこれらの機能をより細かく制御できるようになりました。すべてのユーザーは、Cloud Volumes ONTAPで操作を実行するために、以下のいずれかのロールを持っている必要があります。ロールがない場合、ユーザーはCloud Volumes ONTAPインスタンスを表示またはアクセスすることができません。</block>
+  <block id="ac12122f7d4bba19a9bdf9634b8cc548" category="list-text">*Cloud Volumes ONTAP ビューアー*：Cloud Volumes ONTAP の画面とタブへの読み取り専用アクセスを許可します。このロールでは、一部の画面と操作ボタンが無効になっています。</block>
+  <block id="147d529d31a33dd1ffe2aed02030d216" category="list-text">*Cloud Volumes ONTAP operator*：ボリュームの追加、ストレージの管理、レプリケーションの設定など、日常的な管理タスクを可能にします。</block>
+  <block id="ccb8cf6de876397f5af5fd2969199a4c" category="list-text">*Cloud Volumes ONTAP admin*：すべての Cloud Volumes ONTAP 操作へのフルアクセスを提供します。</block>
+  <block id="9118c1f5d2016b980f9d65d7ab66a79b" category="paragraph">Console管理者は、*管理 &gt; ID* からCloud Volumes ONTAPユーザーにロールを割り当てます。ロールの権限はユーザーの組織に基づいており、その組織内のすべてのCloud Volumes ONTAPシステムに適用されます。</block>
+  <block id="7e04f92c9f24c942f442e9d0b64d902d" category="paragraph">Cloud Volumes ONTAPは、各ユーザーの権限のローカルキャッシュを使用してRBACを適用します。このキャッシュは1時間ごとに自動的に更新されます。ユーザーに新しいロールが割り当てられた場合、または既存のロールが変更された場合、その変更が有効になるまでに最大1時間かかることがあります。その後、そのロールによって許可されているすべてのワークフローが有効になります。</block>
+  <block id="cacd0669e0e9c09f881a4cca5340e098" category="admonition">Console エージェントが初めてデプロイされるとき、または既存の Console エージェントが Console 4.9.0 以降にアップグレードされると、1 回限りのシード処理によって、組織内の既存ユーザー全員に Cloud Volumes ONTAP のロールが自動的に割り当てられます。この処理には最大 30 分かかる場合があります。処理が完了すると、Console は既存のユーザーに適切なロールを割り当てます。</block>
+  <block id="2c3736b0de2c7956e8b876c728c32036" category="paragraph">Cloud Volumes ONTAPのロールは、Amazon Web Service (AWS)、Microsoft Azure (Azure)、およびGoogle Cloud環境に適用されます。</block>
+  <block id="f50849d7a51a2af22661c16f98df65ff" category="inline-link">NetApp Console アクセスロール</block>
+  <block id="ccca36d58a98cb8fda0efa22f507ff91" category="list-text"><block ref="ccca36d58a98cb8fda0efa22f507ff91" category="inline-link-rx"></block></block>
+  <block id="38231d7ab948e14954505c434dbc3406" category="inline-link">Cloud Volumes ONTAP の NetApp Console におけるアクセスロール</block>
+  <block id="ad25b993a54c0c353ed1957e95a74d22" category="list-text"><block ref="ad25b993a54c0c353ed1957e95a74d22" category="inline-link-rx"></block></block>
+  <block id="09ea0908fbfc4cde85bf416e35dc55c8" category="inline-link">NetAppサポート</block>
+  <block id="f225b9d369fd0dea1b9aeccf46f225dd" category="list-text"><block ref="f225b9d369fd0dea1b9aeccf46f225dd" category="inline-link-rx"></block></block>
+  <block id="4ec6a95192d18718a540794417c8fa63" category="inline-link">NetApp Active IQ Digital Advisor</block>
+  <block id="4a93db79624592d4628b2164989acecb" category="paragraph"><block ref="ca7cb69198f37ea3b418ef6230e671af" category="inline-link-rx"></block>（Digital Advisor とも呼ばれます）は、NetApp Console に統合されており、Cloud Volumes ONTAP システムの運用、セキュリティ、およびパフォーマンスを単一の画面で最適化できます。</block>
+  <block id="f2b4e3664d576bc8da366178922fa008" category="list-text">単一の可用性ゾーン（AZ）または複数の可用性ゾーン/3つのゾーン（推奨）。</block>
+  <block id="ccadc02bf1a811c925792cc2af69bc66" category="paragraph">従来、Google Cloud の Cloud Volumes ONTAP HA 構成では非共有モデルが採用されており、メディエーター インスタンスを使用してフェイルオーバー操作を管理したり、ノードの状態を監視したりします。これには、Google Cloud に追加の VM を作成し、各ノードに 2 組のディスクを用意する必要があります。</block>
+  <block id="674ba37fcc0a79048e38d935b7936394" category="section-title">単一AZ HA構成用の共有ディスク</block>
+  <block id="8ba7e13ab6102343c47d453c8fe4bb91" category="paragraph">Cloud Volumes ONTAP 9.19.1以降では、単一のAZにおける共有HA構成がサポートされています。共有HAアーキテクチャでは、両方のノードがディスクを共有できるため、アグリゲートの作成方法が変わります。2つの仮想マシン用に2つのディスクを作成する代わりに、1つのディスクを作成して仮想マシンに接続します。共有HAではディスクミラーは不要です。</block>
+  <block id="31a6ec3f248599c2b8f69b33089a6d0a" category="list-text">複数のアベイラビリティゾーン（推奨）</block>
+  <block id="16958d6ec42be33b59b0955794b48478" category="list-text">単一の可用性ゾーン（AZ）に展開すると、Cloud Volumes ONTAP HA構成では、分散配置ポリシーが使用されます。このポリシーにより、障害の切り分けを実現するために個別のゾーンを使用することなく、ゾーン内の単一障害点からHA構成が保護されます。</block>
+  <block id="47da39c54c9f65768d8dc5f7d5110b69" category="paragraph">== HAペアにおけるストレージの仕組み</block>
+  <block id="0ebfd0efa7f8474608b3e2e3ab2122eb" category="list-text">BYOLライセンスをお持ちで、マーケットプレイスとの年間契約を結んでいる場合、使用量と超過料金は、お客様が設定した請求設定に従って課金されます。料金の請求方法については、<block ref="895ee561f86a5b0bd9078aa957f421ed" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="124b9ac800df05ee7610d4fbd30cc172" category="paragraph">Cloud Volumes ONTAP は、9.18.1以降のシングルノード展開、および9.19.1以降のリリースにおける単一の可用性ゾーン（AZ）での高可用性（HA）構成に対して、Hyperdisk Balanced ディスクをサポートします。</block>
+  <block id="ed9eeab5c5b2e9634ca18379fe44e9a2" category="list-text">9.19.1 RC</block>
+  <block id="de9583e6fce7a27a387782e9dccc41f2" category="list-text">コンソールエージェントに関連付けられたサービスアカウント<block ref="7bbaad5d325a365e141c19bc8c6c20e4" category="inline-link-rx"></block>。</block>
+  <block id="4a4c37c91ec5c91b65063b5007c5b11d" category="list-text">*システムの詳細*：プロジェクトを選択し、クラスター名を指定し、必要に応じてサービスアカウントを選択し、必要に応じてラベルを追加し、最後に認証情報を指定します。</block>
+  <block id="80866d7aec976fab87796b6194e9c082" category="cell">Google Cloudプロジェクトとマーケットプレイスのサブスクリプション</block>
+  <block id="ecd43cd3b7a098519d0741195c993e10" category="inline-link-macro">コンソール設定ドキュメント</block>
+  <block id="0bda7afac7a11ee26b09819ebcd6e020" category="paragraph">このシステムで使用する Google プロジェクトとサブスクリプションを選択してください。これは、コンソール用に設定したサービスアカウントです。詳細については、<block ref="d4dbff8ee23e7cb88fde230e73345639" category="inline-link-macro-rx"></block>を参照してください。コンソールはプロジェクトを使用して Cloud Volumes ONTAP システムを作成し、サブスクリプションを使用して請求と使用状況を決定します。ドロップダウンリストに他のプロジェクトが表示されない場合は、サービスアカウントがまだ他のプロジェクトに関連付けられていないことを意味します。Google Cloud Console にアクセスし、IAM サービスを開いて、プロジェクトを選択します。コンソールで使用するロールを持つサービスアカウントを、そのプロジェクトに追加してください。この手順は各プロジェクトで繰り返す必要があります。</block>
+  <block id="77dbf676c67cf81e231c163768ce33b1" category="paragraph">従量課金制の Cloud Volumes ONTAP システムを作成するには、Google Cloud Marketplace の Cloud Volumes ONTAP へのサブスクリプションに関連付けられた Google Cloud プロジェクトを選択する必要があります。コンソール設定ドキュメントを参照してください：<block ref="26858d2411615dac691c2981d5338917" category="inline-link-rx"></block>。</block>
+  <block id="3ad6cb6100190c8f81e99fd52debf7ef" category="cell">ラベル</block>
+  <block id="1d8d7d133d7772ac975066d0def5e995" category="cell">ONTAPユーザー名とパスワード</block>
+  <block id="e54ba741cdfea4b1602958f75b29a5b1" category="list-text">*展開トポロジ*：HA構成には、複数の可用性ゾーン（AZ）（推奨）または単一のAZを選択します。</block>
+  <block id="a39062ee3ffebf8265972bbfd12218d1" category="list-text">*ネットワーク構成と接続性*：該当するリージョンとゾーンを選択してください。HA構成用に4つの異なるVPCを選択し、各VPCにサブネットを1つずつ選択してから、ファイアウォールポリシーを選択します。</block>
+  <block id="308f6c85e4f05242ebe84d06edc1939e" category="admonition">Cloud Volumes ONTAP 9.19.1以降は<block ref="bf5f8235b3ee6f722f42e2d7828e4aab" category="inline-link-macro-rx"></block>をサポートしており、メディエーターインスタンスはオプションとなります。この構成では、データレプリケーションのために、メディエーターゾーン、対応するVPC、およびサブネットを入力する必要はありません。</block>
+  <block id="d0106c4491f5099769d6febfecd4ee36" category="paragraph">いずれかのパッケージを選択した場合、必要なのはボリュームを指定し、構成を確認して承認するだけです。事前設定済みのパッケージは、選択した Cloud Volumes ONTAP のバージョンと構成タイプによって異なります。例えば、Cloud Volumes ONTAP 9.19.1 以降で単一の AZ デプロイメントを選択した場合、C3 シリーズのマシンと Hyperdisk Balanced ディスクを搭載した事前構成済みパッケージが表示されます。以前のバージョンや複数の AZ の場合でも、n2-standard マシンと Persistent Disks を選択できます。ワークロードのニーズに応じて、IOPS やスループットなどのパラメータを変更できます。</block>
+  <block id="821a4394ac44729da9f70ce04118fc86" category="list-text">*高レベルの使用状況*：このレポートは、アカウント全体で消費された総容量を要約し、請求方法（事前コミットされたライセンスと従量課金制）ごとに分類します。これには以下の情報が含まれます：</block>
+  <block id="1976d7f704de389d9fe064e08ea35b2d" category="cell">列</block>
+  <block id="51163c1c09d1460ef27f5dd97ed9ea7f" category="cell">アカウント内のすべての Cloud Volumes ONTAP システムにわたる合計プロビジョニング済み容量。</block>
+  <block id="f70b0a4d5f326e83950dad59aec6fa68" category="cell">NetApp から購入したライセンス済み容量の合計（BYOL ライセンスとマーケットプレイス契約の両方を含む）。この値は、BYOL の総容量とマーケットプレイス契約の総容量の合計です。</block>
+  <block id="461f8f7091d5494362a76c93edc9a423" category="cell">事前にコミットされた容量のうち、NetApp から直接購入したBYOL（Bring Your Own License）ライセンスでカバーされている部分。</block>
+  <block id="78848eca2f87ad4a3c7b9b07889aae3a" category="cell">クラウド プロバイダのマーケットプレイスを通じて購入された年間マーケットプレイス契約またはプライベートオファーによってカバーされる事前契約済み容量の割合。</block>
+  <block id="f343ac0562a9bcbf4a1f16afb4d9c944" category="cell">事前契約済みのライセンスでカバーされていない消費容量の部分で、従量課金制（PAYGO）の時間単位マーケットプレイス料金で請求されます。</block>
+  <block id="de061f005aa315f137edfbea4185d9cf" category="list-text">*Cloud Volumes ONTAP パッケージ使用状況*：このレポートは、高レベル使用状況レポートと同じ容量の内訳を提供しますが、ライセンスパッケージごとに整理されています。これには以下の情報が含まれます。</block>
+  <block id="0f8a95f201dfe022d77e0b59d46d4c77" category="cell">アカウント内のすべての Cloud Volumes ONTAP システムにわたる、このパッケージの合計プロビジョニング容量。</block>
+  <block id="ba7a4b5109f3d946e68653e9dca24924" category="cell">NetApp から購入したこのパッケージの総ライセンス容量（BYOL ライセンスとマーケットプレイス契約の両方を含む）。この値は、BYOL の総容量とマーケットプレイス契約の総容量の合計です。</block>
+  <block id="da684f1b634af2847a1baa8db1db2ac7" category="cell">このパッケージの事前契約済み容量のうち、お客様が NetApp から直接購入した BYOL（Bring Your Own License）ライセンスでカバーされている部分。</block>
+  <block id="fa6bbae52be77ec691f2ed981782a8c3" category="cell">このパッケージの事前契約済み容量のうち、クラウド プロバイダのマーケットプレイスを通じて購入された年間マーケットプレイス契約またはプライベートオファーによってカバーされる部分。</block>
+  <block id="7978965a49086eecb3f75ef44abb3cbe" category="cell">このパッケージの消費容量のうち、事前契約済みのライセンスでカバーされていない部分で、従量課金制（PAYGO）の時間単位マーケットプレイス料金で請求される容量。</block>
+  <block id="40052c32370d83faceb0cb6dc62c2d53" category="cell">システムIDと名前</block>
+  <block id="d618d6f2db44ccd4eb860a4f494fc02b" category="cell">Cloud Volumes ONTAP システムの一意の識別子 （UUID） と表示名。</block>
+  <block id="f36be790a1c0b2db000cad5e1f143392" category="cell">システムがデプロイされているクラウド プロバイダ（例：AWS、Azure、または Google Cloud）。</block>
+  <block id="63af7f48ddc938f8833d32b0716868d6" category="cell">システムに関連付けられた NetApp アカウントの識別子。</block>
+  <block id="ad5c67cce7e6fab8ce505f2ae3c2df11" category="cell">システムの展開構成（例：シングルノードまたは HA ペア）。</block>
+  <block id="3355bd383b4614928e6109a99305d004" category="cell">Cloud Volumes ONTAP システム内のストレージ仮想マシン （SVM） の名前。</block>
+  <block id="c5f488f842043ae15f7cfa0e8b69385b" category="cell">SVMにプロビジョニングされた総容量。</block>
+  <block id="f8ae5e430a4359a104373b4d18d6f868" category="cell">SVMに対して実際に請求された容量。各SVMには、課金対象となる最小容量が設定されています（デフォルトでは4 TiBですが、アカウントによって異なる場合があります）。SVMのプロビジョニング済み容量がその最小値以下である場合、この値は最小値に切り上げられます。そうでない場合は、プロビジョニング済み容量と同じ値になります。</block>
+  <block id="4226ed0668452ac09bb7af302a7c9242" category="cell">関連するマーケットプレイスサブスクリプションの請求期間（例：時間単位または年単位）。</block>
+  <block id="ab31194e65fa04061f03e7c38298214e" category="cell">SVMに関連付けられたライセンスパッケージまたは機能（例：Essentials または Professional）。</block>
+  <block id="aab205b2459de7a7ecd46aff12fc336e" category="cell">請求に使用されるマーケットプレイスのサブスクリプション名。</block>
+  <block id="2c13015a3d1386955dffbbcbd1c49ce2" category="cell">課金に使用されるマーケットプレイスサブスクリプションの一意の識別子。</block>
+  <block id="e16dc33bf75ec44279b2f544d4b7a250" category="cell">SVM のボリュームが *プライマリ* （読み取り / 書き込み）で本番データに積極的に使用されているか、または *セカンダリ* （DP）でバックアップおよびレプリケーションに使用される SnapMirror レプリカなどのデータ保護宛先ボリュームであるかどうかを示します。</block>
+  <block id="de39b41004ed04a88578e2985a04fc6c" category="cell">ボリュームを格納する Cloud Volumes ONTAP システムの一意の識別子（UUID）と表示名。</block>
+  <block id="0d8e21203d5a81d1fa5620283cbeb8d9" category="cell">ボリュームを格納するストレージ仮想マシン（SVM）の名前。</block>
+  <block id="e7a38d895cb4f8d8f3a338217e14a339" category="cell">ボリュームの固有識別子。</block>
+  <block id="7860112ba253041aab5726c5a5f6777c" category="cell">ボリュームの種類（例：読み取り / 書き込みまたはデータ保護）。</block>
+  <block id="b41f9ba0b51c7f3d54a31c655a83017f" category="cell">ボリュームに対してプロビジョニングされた総容量。</block>
+  <block id="b22fac92397ccbd6b8eaeaf6f44f36fe" category="summary">Cloud Volumes ONTAP のインスタンスを、単一システム構成または HA ペアとして Azure に迅速にデプロイできます。</block>
+  <block id="f733cea5538d157d9ae59fb10ffe2360" category="summary">Cloud Volumes ONTAP インスタンスを、単一システム構成または HA ペアとして Google Cloud に迅速にデプロイできます。</block>
+  <block id="7c40283f4f533a5903d1033c57ef27f4" category="list-text"><block ref="7c40283f4f533a5903d1033c57ef27f4" category="inline-link-macro-rx"></block></block>
+  <block id="78be9fa0dc98e8bb6727f650e04f4cf5" category="inline-link-macro">高度なデプロイメントを使用して Google Cloud に Cloud Volumes ONTAP を導入する</block>
+  <block id="d61e9edc9775b872ce6780755f978cb5" category="list-text"><block ref="d61e9edc9775b872ce6780755f978cb5" category="inline-link-macro-rx"></block></block>
+  <block id="658eb72da44348bf013db3a71420c2be" category="section-title">2026年7月14日</block>
+  <block id="e5ca7e45a0041c75558cb2e9b26352b5" category="sidebar">Google Cloud でデフォルト値を使用して Cloud Volumes ONTAP を導入する</block>
 </blocks>

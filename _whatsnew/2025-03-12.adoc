@@ -4,6 +4,7 @@
 
 
 
+[[new-regions-supported-for-multiple-availability-zone-deployments-in-azure]]
 === Azure の複数の可用性ゾーンの展開でサポートされる新しいリージョン
 
 Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の HA 複数可用性ゾーンの展開がサポートされるようになりました。

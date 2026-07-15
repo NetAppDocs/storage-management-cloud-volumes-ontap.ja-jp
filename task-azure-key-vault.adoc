@@ -36,6 +36,7 @@ AKV を使用する場合、クラウド キー管理エンドポイントとの
 
 
 
+[[configuration-process]]
 == 構成プロセス
 
 概要を説明する手順では、 Cloud Volumes ONTAP構成を Azure に登録する方法と、Azure Key Vault とキーを作成する方法について説明します。これらの手順をすでに完了している場合は、特に以下の設定が正しいことを確認してください。<<create-akv>> 、次に進みましょう<<ontap>>。

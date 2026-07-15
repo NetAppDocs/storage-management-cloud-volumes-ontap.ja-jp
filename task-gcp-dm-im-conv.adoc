@@ -118,6 +118,7 @@ Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、デ
 
 
 
+[[prepare-the-environment-for-running-the-tool]]
 == ツールを実行するための環境を準備する
 
 ツールを実行する前に、これらの手順を実行してください。
@@ -154,6 +155,7 @@ includedPermissions:
 - deploymentmanager.manifests.get
 - iam.serviceAccounts.get
 - storage.buckets.create
+- storage.buckets.get
 - storage.objects.create
 - storage.objects.delete
 - storage.objects.get
@@ -254,6 +256,7 @@ exec -l $SHELL
 ====
 
 
+[[run-the-conversion-tool]]
 == 変換ツールを実行する
 
 これらの手順は、Ubuntu と SUSE Linux Enterprise Server の両方で変換ツールを実行するためのものです。
@@ -313,6 +316,7 @@ CAUTION: 変換後、Google Cloud Console で Deployment Manager のデプロイ
 
 
 
+[[roll-back-the-conversion]]
 == 変換をロールバックする
 
 変換を続行したくない場合は、次の手順に従って Deployment Manager にロールバックできます：

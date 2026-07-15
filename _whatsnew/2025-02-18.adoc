@@ -4,6 +4,7 @@
 
 
 
+[[introducing-azure-marketplace-direct-deployment]]
 === Azure マーケットプレイス直接展開のご紹介
 
 Azure マーケットプレイスの直接展開を利用して、Azure マーケットプレイスからCloud Volumes ONTAP を簡単かつ迅速に直接展開できるようになりました。この合理化された方法を使用すると、 BlueXPコネクタをセットアップしたり、 BlueXPを介してCloud Volumes ONTAP を展開するために必要なその他のオンボーディング基準を満たしたりすることなく、環境内でCloud Volumes ONTAPのコア機能や機能を探索できます。

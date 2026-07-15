@@ -4,6 +4,7 @@
 
 
 
+[[cloud-volumes-ontap-9-17-1-rc]]
 === Cloud Volumes ONTAP 9.17.1RC
 
 BlueXPを使用して、Azure および Google Cloud でCloud Volumes ONTAP 9.17.1 のリリース候補 1 をデプロイおよび管理できるようになりました。ただし、このバージョンは AWS でのデプロイおよびアップグレードには使用できません。

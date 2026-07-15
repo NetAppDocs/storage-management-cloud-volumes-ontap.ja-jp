@@ -4,6 +4,7 @@
 
 
 
+[[end-of-availability-for-node-based-licenses]]
 === ノードベースライセンスの提供終了
 
 NetApp は、Cloud Volumes ONTAPノードベース ライセンスの提供終了 (EOA) とサポート終了 (EOS) を計画しています。 2024 年 11 月 11 日をもって、ノードベースのライセンスの限定提供は終了しました。ノードベースのライセンスのサポートは、2024 年 12 月 31 日に終了します。ノードベースのライセンスの EOA 後は、 BlueXPライセンス変換ツールを使用して容量ベースのライセンスに移行する必要があります。
@@ -14,6 +15,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#
 
 
 
+[[removal-of-node-based-deployments-from-bluexp]]
 === BlueXPからのノードベースのデプロイメントの削除
 
 ノードベースのライセンスを使用してCloud Volumes ONTAPシステムを展開するオプションは、 BlueXPでは非推奨です。いくつかの特殊なケースを除き、どのクラウド プロバイダーでも、Cloud Volumes ONTAPデプロイメントにノードベースのライセンスを使用することはできません。
@@ -30,6 +32,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#
 
 
 
+[[addition-of-a-cold-tier-for-cloud-volumes-ontap-data-on-azure-blob-storage]]
 === Azure Blob ストレージ上のCloud Volumes ONTAPデータ用のコールド層の追加
 
 BlueXPでは、Azure Blob ストレージに非アクティブな容量層データを保存するためにコールド層を選択できるようになりました。既存のホット層とクール層にコールド層を追加すると、より手頃なストレージ オプションが提供され、コスト効率が向上します。
@@ -38,6 +41,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.ht
 
 
 
+[[option-to-restrict-public-access-to-storage-account-for-azure]]
 === Azure のストレージ アカウントへのパブリック アクセスを制限するオプション
 
 Azure のCloud Volumes ONTAPシステムのストレージ アカウントへのパブリック アクセスを制限するオプションが追加されました。アクセスを無効にすると、組織のセキュリティ ポリシーに準拠する必要がある場合でも、同じ VNet 内であってもプライベート IP アドレスが公開されることを防ぐことができます。このオプションは、 Cloud Volumes ONTAPシステムのデータ階層化も無効にし、単一ノードと高可用性ペアの両方に適用できます。
@@ -46,6 +50,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-az
 
 
 
+[[worm-enablement-after-deploying-cloud-volumes-ontap]]
 === Cloud Volumes ONTAP導入後の WORM 有効化
 
 BlueXPを使用して、既存のCloud Volumes ONTAPシステムで、Write Once、Read Many (WORM) ストレージをアクティブ化できるようになりました。この機能により、作成時に WORM が有効になっていなかった場合でも、作業環境で WORM を有効にする柔軟性が得られます。一度有効にすると、WORM を無効にすることはできません。

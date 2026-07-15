@@ -1,12 +1,13 @@
-= 次世代の Google Cloud VM に対する Cloud Volumes ONTAP のサポート
+= Cloud Volumes ONTAPの次世代Google Cloud VMのサポート
 :allow-uri-read: 
 
 
 
 
-=== 次世代の Google Cloud VM に対する Cloud Volumes ONTAP のサポート
+[[cloud-volumes-ontap-support-for-next-generation-google-cloud-vms]]
+=== Cloud Volumes ONTAPの次世代Google Cloud VMのサポート
 
-9.18.1では、NetAppは新しいCloud Volumes ONTAPデプロイメントをN2 VMから次世代のGoogle Cloud C3シリーズVMに移行し、より高速でスケーラブルなエクスペリエンスを実現します。Google CloudでCloud Volumes ONTAP 9.18.1以降をデプロイする際に、C3シリーズVMを活用できるようになりました。C3シリーズマシンは、Google Virtual NIC（gVNIC）とHyperdisk Balancedディスクを使用することで、パフォーマンスが向上し、容量制限が高まり、集中的なワークロードでも動的なパフォーマンスを確保します。
+9.18.1では、NetAppが新しいCloud Volumes ONTAPのデプロイメントをN2 VMから次世代Google Cloud C3シリーズVMへ移行し、より高速でスケーラブルなエクスペリエンスを提供します。Google CloudでCloud Volumes ONTAP 9.18.1以降をデプロイする際に、C3シリーズVMを活用できるようになりました。C3シリーズのマシンは、Google Virtual NIC（gVNIC）とHyperdisk Balancedディスクを使用することで、パフォーマンスの向上と容量制限の拡大を実現し、負荷の高いワークロードに対してダイナミックなパフォーマンスを確保します。
 
 
 NOTE: 今のところ、Cloud Volumes ONTAP は単一ノード展開でのみ C3 シリーズをサポートしています。
@@ -21,6 +22,7 @@ https://docs.cloud.google.com/compute/docs/general-purpose-machines#c3_series["G
 
 
 
+[[vnet-security-for-cloud-volumes-ontap-in-azure]]
 === AzureのCloud Volumes ONTAPのVNetセキュリティ
 
 Cloud Volumes ONTAP 9.18.1以降のAzure単一および複数の可用性ゾーンでの導入では、転送中のデータを保護するための多層セキュリティ戦略の一部として、Azure Virtual Network（VNet）暗号化をサポートしています。Cloud Volumes ONTAPは、AzureのネイティブなDatagram Transport Layer Security（DTLS）プロトコルを活用して、ONTAPノード、管理インターフェイス、およびその他のAzureサービス間の通信を保護し、傍受や不正アクセスを防止します。このネットワークレベルの暗号化は、ONTAPの組み込みストレージおよび保存データ保護機能を補完し、データのエンドツーエンドのセキュリティを提供します。

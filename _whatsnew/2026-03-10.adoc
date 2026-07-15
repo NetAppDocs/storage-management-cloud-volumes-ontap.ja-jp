@@ -4,6 +4,7 @@
 
 
 
+[[ability-to-manage-console-agent-proxy-settings-for-cloud-volumes-ontap]]
 === Cloud Volumes ONTAP のコンソールエージェントのプロキシ設定を管理する機能
 
 NetApp Console エージェントで Cloud Volumes ONTAP のプロキシ設定を管理できるようになりました。接続が失われた場合やプロキシが正しく設定されていない場合でも管理できます。以前は、Console エージェントが Cloud Volumes ONTAP に 20 分間接続できない場合、手動のプロキシ設定がデフォルト設定で上書きされていました。これにより、AutoSupport メッセージに関する問題を含む通信障害が発生していました。既存のシステムのプロキシ設定を保持するには、次の API 呼び出しを実行します：

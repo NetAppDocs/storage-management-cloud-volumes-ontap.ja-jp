@@ -4,6 +4,7 @@
 
 
 
+[[new-regions-supported-in-azure]]
 === Azure でサポートされる新しいリージョン
 
 次のリージョンの Azure の単一および複数のアベイラビリティーゾーンにCloud Volumes ONTAP 9.12.1 GA 以降をデプロイできるようになりました。これには、単一ノードと高可用性 (HA) の両方の展開のサポートが含まれます。

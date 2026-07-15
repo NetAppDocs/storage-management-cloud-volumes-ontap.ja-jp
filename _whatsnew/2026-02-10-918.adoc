@@ -4,8 +4,9 @@
 
 
 
+[[cloud-volumes-ontap-9-18-1-ga]]
 === Cloud Volumes ONTAP 9.18.1 GA
 
 NetApp Console を使用して、AWS、Azure、Google Cloud で Cloud Volumes ONTAP 9.18.1 の一般提供（GA）版を導入および管理できるようになりました。
 
-link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^] 。
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-9181-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^]。

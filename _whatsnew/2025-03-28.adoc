@@ -4,6 +4,7 @@
 
 
 
+[[private-mode-deployments-enabled-for-cloud-volumes-ontap-9-14-1]]
 === Cloud Volumes ONTAP 9.14.1 でプライベート モードのデプロイメントが有効になりました
 
 AWS、Azure、Google Cloud でCloud Volumes ONTAP 9.14.1 をプライベート モードでデプロイできるようになりました。プライベート モードは、Cloud Volumes ONTAP 9.14.1 のシングル ノードと高可用性 (HA) の両方の展開で有効になります。

@@ -4,6 +4,7 @@
 
 
 
+[[simplified-cloud-volumes-ontap-deployment-in-azure]]
 === Azure での Cloud Volumes ONTAP の簡易導入
 
 Quick createを使用して、シングルノード構成と高可用性（HA）構成の両方でAzureにCloud Volumes ONTAPを導入できるようになりました。この合理化されたプロセスにより、拡張方式と比較して手順数が削減され、単一ページでデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられるため、導入がより迅速かつ容易になります。

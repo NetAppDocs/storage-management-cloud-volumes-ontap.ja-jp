@@ -1,0 +1,86 @@
+= Cloud Volumes ONTAP 9.19.1 RC
+:allow-uri-read: 
+
+
+
+
+[[cloud-volumes-ontap-9-19-1-rc]]
+=== Cloud Volumes ONTAP 9.19.1 RC
+
+NetApp Console を使用して、Google Cloud に Cloud Volumes ONTAP 9.19.1 のリリース候補版 （RC） をデプロイおよび管理できるようになりました。このバージョンは、Amazon Web Service (AWS) および Microsoft Azure (Azure) へのデプロイおよびアップグレードには対応していません。
+
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^] 。
+
+
+
+[[support-for-next-generation-google-cloud-vms-in-cloud-volumes-ontap-ha]]
+=== Cloud Volumes ONTAP HAにおける次世代Google Cloud VMのサポート
+
+9.19.1では、NetAppはCloud Volumes ONTAPの高可用性（HA）デプロイメントをN2 VMから次世代Google Cloud C3シリーズVMに移行し、より高速でスケーラブルなエクスペリエンスを提供します。
+
+
+NOTE: このサポートは、単一のアベイラビリティゾーン（AZ）HA構成にのみ適用されます。
+
+Google Cloud で Cloud Volumes ONTAP 9.19.1 以降をデプロイする際に、C3 シリーズ VM を活用できるようになりました。これらのマシンは、パフォーマンスが向上し、容量の上限も高くなっています。集中的なワークロードにおける動的なパフォーマンスを実現するために、Google Virtual NIC（gVNIC）と Hyperdisk Balanced ディスクを使用しています。
+
+Cloud Volumes ONTAP システムが 9.19.1 以降で動作している場合、単一の AZ への簡単なデプロイに使用する事前構成済みパッケージは自動的に C3 VM を使用し、ワークロードのニーズに基づいて IOPS とスループットのパラメータをカスタマイズできます。同様に、アグリゲートを作成する際に Zonal Hyperdisk Balanced ディスクを追加することで、Google Cloud でのパフォーマンスとスケーラビリティを向上させることができます。また、デフォルトの Flash Cache サポートを利用するために、C3 シリーズマシンの LSSD バリアントを選択することもできます。
+
+以下の点に注意してください：
+
+* Cloud Volumes ONTAP のデプロイメントでは、C3 VM を N2 シリーズの VM に変更したり、その逆の変更を行ったりすることはできません。ただし、C3 ファミリー内の異なるバリアント間でインスタンスタイプを切り替えることは可能です。
++
+
+NOTE: C3ファミリー内でインスタンスタイプを変更するには、接続されているデータディスクの数によっては時間がかかる場合があります。パフォーマンスへの影響を避けるため、事前に設定を計画してください。
+
+* インスタンスタイプを変更する際に、ターゲット VM として c3-standard-44 または c3-standard-88 およびそれらのローカル SSD （LSSD）バリアントを選択した場合、Google ネットワーク サービスの出力ネットワーク層 _Tier-1_ が自動的に適用されます。他の C3 バリアントに戻すと、出力ネットワーク層は _Standard_ に設定されます。
++
+
+NOTE: 送信ネットワークの階層を_Tier-1_に変更すると、追加費用が発生します。導入計画を立て、それに応じてアップグレードを行ってください。
+
+* C3のLSSDバリアントを選択した場合、Flash Cacheがデフォルトで有効になります。ターゲットバリアントがFlash Cacheをサポートしている場合でも、Cloud Volumes ONTAPデプロイメントでC3 LSSBバリアント間を切り替えることはできません。
+* C3 VMでは、新規および既存のアグリゲートの両方にボリュームを追加できます。
+* Cloud Volumes ONTAP システムを N2 VM タイプから C3 VM タイプにレプリケートする場合、ディスクタイプはデフォルトで Hyperdisk Balanced に設定されます。
+* NetApp Console またはAPI `PUT /gcp/ha/aggregates/{workingEnvironmentId}/{aggregateName}`を使用してアグリゲートを追加する際に、IOPS とスループットの設定を変更できます。
+
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Google CloudでサポートされているCloud Volumes ONTAPの構成"^]
+
+https://docs.cloud.google.com/compute/docs/general-purpose-machines#c3_series["Google ドキュメント：C3 マシンシリーズ"^]
+
+
+
+[[simplified-cloud-volumes-ontap-deployment-in-google-cloud]]
+=== Google Cloud への Cloud Volumes ONTAP のデプロイの簡略化
+
+*クイック作成*ウィザードを使用して、シングルノード構成と高可用性（HA）構成の両方で Google Cloud に Cloud Volumes ONTAP をデプロイできるようになりました。この合理化されたプロセスにより、手順が削減され、デフォルト値が単一ページで自動的に設定され、ナビゲーションが最小限に抑えられるため、より迅速かつ容易なデプロイが可能になります。
+
+.関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-gcp.html["Quick create を使用して Google Cloud に Cloud Volumes ONTAP を導入する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html["Google Cloud の拡張オプションを使用して Cloud Volumes ONTAP を導入する"^]
+
+
+
+
+[[introducing-access-roles-for-cloud-volumes-ontap]]
+=== Cloud Volumes ONTAP のアクセスロールの概要
+
+NetAppは、Cloud Volumes ONTAPにアイデンティティおよびアクセス管理（IAM）ロールを導入し、セキュリティの向上とコンプライアンス遵守の容易化のためのロールベースアクセス制御（RBAC）を実現します。ユーザーは、Cloud Volumes ONTAPの操作に既存の認証情報を使用して、引き続きNetApp Consoleにログインできます。ただし、認証はIDフェデレーションを介して行われるようになり、Console管理者がこれらの機能をより細かく制御できるようになりました。すべてのユーザーは、Cloud Volumes ONTAPで操作を実行するために、以下のいずれかのロールを持っている必要があります。ロールがない場合、ユーザーはCloud Volumes ONTAPインスタンスを表示またはアクセスすることができません。
+
+* *Cloud Volumes ONTAP ビューアー*：Cloud Volumes ONTAP の画面とタブへの読み取り専用アクセスを許可します。このロールでは、一部の画面と操作ボタンが無効になっています。
+* *Cloud Volumes ONTAP operator*：ボリュームの追加、ストレージの管理、レプリケーションの設定など、日常的な管理タスクを可能にします。
+* *Cloud Volumes ONTAP admin*：すべての Cloud Volumes ONTAP 操作へのフルアクセスを提供します。
+
+
+Console管理者は、*管理 > ID* からCloud Volumes ONTAPユーザーにロールを割り当てます。ロールの権限はユーザーの組織に基づいており、その組織内のすべてのCloud Volumes ONTAPシステムに適用されます。
+
+Cloud Volumes ONTAPは、各ユーザーの権限のローカルキャッシュを使用してRBACを適用します。このキャッシュは1時間ごとに自動的に更新されます。ユーザーに新しいロールが割り当てられた場合、または既存のロールが変更された場合、その変更が有効になるまでに最大1時間かかることがあります。その後、そのロールによって許可されているすべてのワークフローが有効になります。
+
+
+NOTE: Console エージェントが初めてデプロイされるとき、または既存の Console エージェントが Console 4.9.0 以降にアップグレードされると、1 回限りのシード処理によって、組織内の既存ユーザー全員に Cloud Volumes ONTAP のロールが自動的に割り当てられます。この処理には最大 30 分かかる場合があります。処理が完了すると、Console は既存のユーザーに適切なロールを割り当てます。
+
+Cloud Volumes ONTAPのロールは、Amazon Web Service (AWS)、Microsoft Azure (Azure)、およびGoogle Cloud環境に適用されます。
+
+.関連リンク
+* https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html["NetApp Console アクセスロール"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Cloud Volumes ONTAP の NetApp Console におけるアクセスロール"^]
+

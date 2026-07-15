@@ -4,6 +4,7 @@
 
 
 
+[[worm-and-arp-functionalities-are-no-longer-chargeable]]
 === WORMとARP機能は課金対象外となりました
 
 WORM (Write Once Read Many) と ARP (Autonomous Ransomware Protection) の組み込みデータ保護およびセキュリティ機能は、Cloud Volumes ONTAPライセンスで追加料金なしで提供されます。新しい価格モデルは、AWS、Azure、Google Cloud の新規および既存の BYOL と PAYGO/マーケットプレイスのサブスクリプションの両方に適用されます。容量ベースとノードベースの両方のライセンスには、単一ノードと高可用性 (HA) ペアを含むすべての構成の ARP と WORM が追加費用なしで含まれます。

@@ -4,6 +4,7 @@
 
 
 
+[[support-for-transparent-proxy]]
 === 透過プロキシのサポート
 
 BlueXP は、既存の明示的なプロキシ接続に加えて、透過プロキシ サーバーをサポートするようになりました。  BlueXPコネクタを作成または変更するときに、透過プロキシ サーバーを構成して、 Cloud Volumes ONTAPとの間のネットワーク トラフィックを安全に管理できます。
@@ -17,6 +18,7 @@ Cloud Volumes ONTAPでのプロキシ サーバーの使用の詳細について
 
 
 
+[[new-vm-type-supported-for-cloud-volumes-ontap-in-azure]]
 === Azure のCloud Volumes ONTAPでサポートされる新しい VM タイプ
 
 Cloud Volumes ONTAP 9.13.1 以降、L8s_v3 は、新規および既存の高可用性 (HA) ペアの展開の両方で、Azure の単一および複数の可用性ゾーンの VM タイプとしてサポートされます。

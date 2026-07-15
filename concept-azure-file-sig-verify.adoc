@@ -18,6 +18,7 @@ Azure イメージ検証プロセスでは、先頭の 1 MB と末尾の 512 バ
 
 
 
+[[file-signature-verification-workflow-summary]]
 == ファイル署名検証ワークフローの概要
 
 以下は、ファイル署名検証ワークフロー プロセスの概要です。

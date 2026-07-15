@@ -133,7 +133,9 @@ sidebar:
         url: "/task-setting-up-gcp-encryption.html"
       - title: ライセンスの設定
         url: "/task-set-up-licensing-google.html"
-      - title: Google Cloud でCloud Volumes ONTAPを起動する
+      - title: Google Cloud でデフォルト値を使用して Cloud Volumes ONTAP を導入する
+        url: "/task-quick-deploy-gcp.html"
+      - title: Google Cloud の拡張オプションを使用して Cloud Volumes ONTAP を導入する
         url: "/task-deploying-gcp.html"
       - title: Google Cloud Platform イメージ検証
         entries:
