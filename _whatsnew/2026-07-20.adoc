@@ -1,0 +1,46 @@
+= AWS MarketplaceからのCloud Volumes ONTAPの簡素化されたオンボーディングの導入
+:allow-uri-read: 
+
+
+
+
+[[introducing-simplified-onboarding-of-cloud-volumes-ontap-from-aws-marketplace]]
+=== AWS MarketplaceからのCloud Volumes ONTAPの簡素化されたオンボーディングの導入
+
+NetAppは、AWS MarketplaceからのCloud Volumes ONTAPに対して簡素化されたオンボーディングフローを導入し、手動の手順とオンボーディング時の摩擦を軽減します。
+
+以前は、AWS Marketplace から Cloud Volumes ONTAP をデプロイするには、複数の画面を操作し、ロール、ポリシー、認証情報を手動で設定する必要がありました。これにより、オンボーディングが遅くなり、エラーが発生しやすくなっていました。
+
+新しいオンボーディングフローにより、マーケットプレイスのサブスクリプションから完全に運用可能な Cloud Volumes ONTAP 環境への移行が、以下の機能によって簡素化されます：
+
+. AWS Marketplace の専用 Cloud Volumes ONTAP リストへのサブスクリプション：AWS Marketplace で Cloud Volumes ONTAP のスタンドアロンリストにサブスクライブし、サブスクリプションを購入して、AWS アカウントを設定します（まだお持ちでない場合）。
+. ガイド付きパス（NetApp コンソール）：NetApp コンソールでアカウントをセットアップすると、コンソールが自動的にデプロイメントの手順を開始し、右側にガイド付きパスを表示します。コンソールから離れる必要がある場合は、後でガイド付きの手順を再開できます。
+. サブスクリプションの関連付け：サブスクリプションをコンソールに自動的に関連付けることができるため、手動でリンクする手順を省略できます。
+. AWS認証情報構成を使用したコンソールエージェントのデプロイ：必要なAWSロールを自動的に作成できます。このプロセスでは、必要なロールとポリシーを含むAWS CloudFormationスタックをAWSアカウントにデプロイして確認し、それらをNetApp Consoleに関連付けることで、手動でのIAM設定が不要になります。その後、エージェントの設定、ネットワーク設定、セキュリティグループ設定を進めて、エージェントのデプロイを開始します。
+. AWS に新しい Cloud Volumes ONTAP システムをデプロイする： `Quick create`ウィザードに直接移動して、より迅速かつシンプルに Cloud Volumes ONTAP をデプロイできます。
+
+
+.関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求"^]
+
+
+
+
+[[well-architected-configuration-analysis-for-cloud-volumes-ontap-in-azure]]
+=== Azure における Cloud Volumes ONTAP の適切に設計された構成分析
+
+NetApp Console は、Microsoft Azure で稼働する Cloud Volumes ONTAP システムのウェルアーキテクテッド構成分析をサポートするようになりました。Console はデプロイメントを毎日分析し、ウェルアーキテクテッドのステータス、インサイト、および推奨事項を提供することで、NetApp のベストプラクティスとウェルアーキテクテッドフレームワークに沿ったシステムの維持をサポートします。
+
+適切に設計されたダッシュボードには、分析対象システムの総数が表示され、構成と深刻度レベル別にリソースが分類されます。システム管理者であれば、Console ダッシュボードから組織内のあらゆる構成上の問題に対する推奨事項を直接確認し、すべての推奨事項を CSV レポートとしてダウンロードできます。構成は以下のように分類されます：
+
+* *信頼性*：障害が発生した場合でも、ワークロードが正しく一貫して動作することを保証します。
+* *セキュリティ*：リスク評価とリスク軽減を通じて、データ、システム、資産を保護します。
+* *運用上の卓越性*：ビジネス価値を最大化するためにアーキテクチャを最適化します。
+* *コスト最適化*：コストを削減・最適化することで、ビジネス価値を高めます。
+
+
+.関連リンク
+* https://docs.netapp.com/us-en/console-well-architected/cvo/configuration-analysis-cvo.html["Cloud Volumes ONTAP の構成分析"^]
+* https://docs.netapp.com/us-en/console-well-architected/improve-configurations-cvo.html["適切に設計されたシステム構成を実装する"^]
+

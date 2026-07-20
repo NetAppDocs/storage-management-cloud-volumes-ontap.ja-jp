@@ -14,98 +14,203 @@ summary: Cloud Volumes ONTAPで Amazon 暗号化を使用する場合は、AWS K
 
 
 [role="lead"]
-Cloud Volumes ONTAPで Amazon 暗号化を使用する場合は、AWS Key Management Service (KMS) を設定する必要があります。
+Amazon Web Services (AWS) の暗号化を Cloud Volumes ONTAP で使用する場合は、AWS Key Management Service (KMS) を設定する必要があります。
+
+カスタマーマスターキー（CMK）は、AWSまたは顧客自身が管理できます。NetApp Console および Cloud Volumes ONTAP と同じ AWS アカウント、または別の AWS アカウント（共有アカウント）に配置できます。AWS では、キー管理は AWS Console を通じてのみ可能です。詳細については、 https://docs.aws.amazon.com/kms/latest/developerguide/overview.html["AWS Key Management Service"^]を参照してください。
+
+.開始する前に
+* NetApp Console エージェントの AWS の ID およびアクセス管理（IAM）ロールに関する情報を確認してください。
+* アクティブなCMKが存在することを確認してください。
+
+
+
+
+[[set-up-customer-managed-kms-keys-for-a-single-account]]
+== 単一アカウント用に顧客管理KMSキーを設定する
+
+コンソールエージェントと Cloud Volumes ONTAP が同じ AWS アカウントにある場合は、以下の手順を実行してください。
 
 .手順
-. アクティブなカスタマー マスター キー (CMK) が存在することを確認します。
+. コンソールエージェントの IAM ロールに S3 暗号化のアクセス許可を付与します。IAM ロールポリシーに `s3:PutEncryptionConfiguration`アクションを追加します：
 +
-CMK は、AWS 管理の CMK またはカスタマー管理の CMK にすることができます。これは、 NetApp ConsoleおよびCloud Volumes ONTAPと同じ AWS アカウントにすることも、別の AWS アカウントにすることもできます。
+[source, json]
+----
+{
+  "Sid": "cvoServicePolicy",
+  "Effect": "Allow",
+  "Action": [
+    "s3:PutEncryptionConfiguration"
+  ],
+  "Resource": "*"
+}
+----
+. コンソールエージェントが顧客管理の暗号化キー（CMEK）にアクセスできるようにします。AWS Console で以下のいずれかの方法を使用してください：
 
-+
-https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys["AWS ドキュメント: カスタマーマスターキー (CMK)"^]
 
-. コンソールへの権限を提供する IAM ロールを _キー ユーザー_ として追加して、各 CMK のキー ポリシーを変更します。
-+
-Identity and Access Management (IAM) ロールをキーユーザーとして追加すると、コンソールにCloud Volumes ONTAPで CMK を使用する権限が付与されます。
+[role="tabbed-block"]
+====
+.役割をキーユーザーとして追加する（推奨）
+--
+. AWS Console で、*KMS > Customer managed keys* に移動し、CMEK キーを選択します。
+. *キーユーザー*セクションで、*追加*を選択します。
+. コンソールエージェントインスタンスのロールを選択します（例： `occm-role`）。*追加*をクリックします。
+. 変更を保存します。
 
-+
-https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html["AWS ドキュメント: キーの編集"^]
 
-. CMK が別の AWS アカウントにある場合は、次の手順を実行します。
+--
+.KMSキーポリシーを更新する
+--
+. AWS Console で、*KMS* に移動して、キーを検索してください。
+. 「キーポリシー」タブを選択し、「編集」を選択します。
+. キーへのアクセスを可能にするステートメントを検索し `AllowUseOfTheKey`、Console エージェントロールの Amazon Resource Name（ARN）を `Principal`配列に追加します。以下の例のプレースホルダーを、ご自身の値に置き換えてください。
 +
-.. CMK が存在するアカウントから KMS コンソールに移動します。
-.. キーを選択します。
-.. *一般設定* ペインで、キーの ARN をコピーします。
+** `YOUR-ACCOUNT-ID`：12桁のAWSアカウントID
+** `YOUR-AGENT-ROLE-NAME`：コンソールエージェントのIAMロールの名前
 +
-Cloud Volumes ONTAPシステムを作成するときに、コンソールに ARN を提供する必要があります。
+[source, json]
+----
+{
+  "Sid": "AllowUseOfTheKey",
+  "Effect": "Allow",
+  "Principal": {
+    "AWS": [
+      "arn:aws:iam::`YOUR-ACCOUNT-ID`:role/`YOUR-AGENT-ROLE-NAME`"
+    ]
+  },
+  "Action": [
+    "kms:Encrypt",
+    "kms:Decrypt",
+    "kms:ReEncrypt*",
+    "kms:GenerateDataKey*",
+    "kms:CreateGrant",
+    "kms:DescribeKey",
+    "kms:ListKeys"
+  ],
+  "Resource": "*"
+}
+----
 
-.. *その他の AWS アカウント* ペインで、コンソールに権限を付与する AWS アカウントを追加します。
-+
-通常、これはコンソールが展開されるアカウントです。コンソールが AWS にインストールされていない場合は、コンソールに AWS アクセスキーを提供したアカウントを使用します。
 
+. 変更を保存します。
+
+
+--
+====
+
+
+[[set-up-customer-managed-kms-keys-for-shared-accounts]]
+== 共有アカウント用に顧客管理KMSキーを設定する
+
+コンソールエージェントが 1 つの AWS アカウント （アカウント A） で実行され、Cloud Volumes ONTAP が別の AWS アカウント （アカウント B） にデプロイされている場合は、まずアカウント A のすべての単一アカウントの手順を完了してから、これらの手順を完了してください。
+
+.手順
+. アカウント B の引き受けたロールに `s3:PutEncryptionConfiguration`アクションを追加します。これは、FabricPoolバケット暗号化呼び出しがアカウント B の想定ロールで実行されるために必要です。この権限は、階層化に使用される S3 バケットのデフォルト暗号化を有効にするためのものです。
++
+[source, json]
+----
+{
+  "Sid": "cvoServicePolicy",
+  "Effect": "Allow",
+  "Action": [
+    "s3:PutEncryptionConfiguration"
+  ],
+  "Resource": "*"
+}
+----
+. CMEK キーがアカウント B に保存されている場合、アカウント A のエージェントロールは、そのキーを使用するために直接アクセス権が必要です。アカウント B の KMS キーポリシーは、クロスアカウントアクセスを許可します。
++
+.. アカウント B の AWS コンソールで、*KMS > 顧客管理キー* に移動し、Cloud Volumes ONTAP の導入に使用する CMEK キーを選択します。
+.. 「キーポリシー」タブを開き、「編集」を選択します。
+.. アカウント A の IAM ロールにキーへのアクセス権を付与するステートメントを追加します。
++
+[source, json]
+----
+{
+  "Sid": "Allow use of the key from the agent account",
+  "Effect": "Allow",
+  "Principal": {
+    "AWS": "arn:aws:iam::ACCOUNT-A-ID:role/`YOUR-AGENT-ROLE-NAME`"
+  },
+  "Action": [
+    "kms:Encrypt",
+    "kms:Decrypt",
+    "kms:ReEncrypt*",
+    "kms:GenerateDataKey*",
+    "kms:CreateGrant",
+    "kms:DescribeKey",
+    "kms:ListKeys",
+    "kms:ListAliases"
+  ],
+  "Resource": "*"
+}
+----
++
+
+NOTE: アカウント B のキーポリシーは、アカウント A の Console エージェントロールがそのキーを使用することを信頼できるかどうかを制御します。このポリシーステートメントは、アカウント A の IAM ポリシーに加えて必要です。
+
+
+
+. アカウント A のコンソールエージェントの IAM ポリシーを更新し、アカウント B のキーに対する KMS API 呼び出しを許可します。
++
+.. アカウント A の AWS コンソールで、*IAM > ロール* に移動し、コンソール エージェント ロールを選択します（例： `occm-role` または  `NetAppCloudManagerRole`）。
+.. アカウントBのキーに対するKMS権限を追加または更新します。
++
+[source, json]
+----
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "kms:List*",
+        "kms:Describe*",
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:CreateGrant"
+      ],
+      "Resource": [
+        "arn:aws:kms:*:ACCOUNT-B-ID:key/*",
+        "arn:aws:kms:*:ACCOUNT-B-ID:alias/*"
+      ]
+    }
+  ]
+}
+----
++
+
+NOTE: アカウント B のキーポリシーは、キーへのアクセスを制御します。アカウント A の IAM ポリシーでは、Console エージェントロールが KMS API 呼び出しを行うことが許可されています。いずれかのアカウントに設定が欠けている場合、AWS はアクセスを制限します。
+
+
+
+. アカウントBのCMEKに、アカウントAを許可された外部AWSアカウントとして追加します。
++
+.. アカウント B の AWS KMS コンソールで、対象の KMS キーを開き、*その他の AWS アカウント*セクションを探します。
+.. *その他のAWSアカウントを追加*を選択し、アカウントAのAWSアカウントIDを入力します。
 +
 image:screenshot_cmk_add_accounts.gif["このスクリーンショットは、AWS KMS コンソールの「他の AWS アカウントを追加」ボタンを示しています。"]
 
 +
 image:screenshot_cmk_add_accounts_dialog.gif["このスクリーンショットは、AWS KMS コンソールの「その他の AWS アカウント」ダイアログボックスを示しています。"]
 
-.. 次に、コンソールに権限を付与する AWS アカウントに切り替えて、IAM コンソールを開きます。
-.. 以下にリストされている権限を含む IAM ポリシーを作成します。
-.. コンソールに権限を提供する IAM ロールまたは IAM ユーザーにポリシーをアタッチします。
+
+
+
+
+.関連トピック
+* Amazonのドキュメント：
 +
-次のポリシーは、コンソールが外部 AWS アカウントの CMK を使用するために必要な権限を提供します。  「リソース」セクションのリージョンとアカウント ID を必ず変更してください。
+** https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html["AWS KMSキー"^]
+** https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html["AWSドキュメント: 他のアカウントのユーザーがKMSキーを使用できるようにする"^]
+** https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html["AWS ドキュメント: キーの編集"^]
 
+
+* NetApp Consoleドキュメント：
 +
-[source, json]
-----
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllowUseOfTheKey",
-            "Effect": "Allow",
-            "Action": [
-                "kms:Encrypt",
-                "kms:Decrypt",
-                "kms:ReEncrypt*",
-                "kms:GenerateDataKey*",
-                "kms:DescribeKey"
-            ],
-            "Resource": [
-                "arn:aws:kms:us-east-1:externalaccountid:key/externalkeyid"
-            ]
-        },
-        {
-            "Sid": "AllowAttachmentOfPersistentResources",
-            "Effect": "Allow",
-            "Action": [
-                "kms:CreateGrant",
-                "kms:ListGrants",
-                "kms:RevokeGrant"
-            ],
-            "Resource": [
-                "arn:aws:kms:us-east-1:externalaccountid:key/externalaccountid"
-            ],
-            "Condition": {
-                "Bool": {
-                    "kms:GrantIsForAWSResource": true
-                }
-            }
-        }
-    ]
-}
-----
-+
-このプロセスの詳細については、 https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html["AWSドキュメント: 他のアカウントのユーザーがKMSキーを使用できるようにする"^] 。
+** https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["AWS 認証情報と権限について（NetApp Console）"^]
+** https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["NetApp ConsoleのAWS認証情報とマーケットプレイスサブスクリプションを管理する"^]
 
 
 
-. カスタマー管理の CMK を使用している場合は、 Cloud Volumes ONTAP IAM ロールを _キー ユーザー_ として追加して、CMK のキー ポリシーを変更します。
-+
-この手順は、Cloud Volumes ONTAP でデータ階層化を有効にし、Amazon Simple Storage Service（Amazon S3）バケットに保存されているデータを暗号化する場合に必要です。
-
-
-
-Cloud Volumes ONTAPシステムを作成すると IAM ロールが作成されるため、 Cloud Volumes ONTAP をデプロイした後でこの手順を実行する必要があります。  (もちろん、既存のCloud Volumes ONTAP IAM ロールを使用するオプションもあるため、この手順を事前に実行することも可能です。)
-
-https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html["AWS ドキュメント: キーの編集"^]
