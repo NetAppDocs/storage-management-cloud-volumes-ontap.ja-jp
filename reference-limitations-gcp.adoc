@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations-gcp.html 
+keywords: limitations, google cloud platform, gcp, psc, private service connect 
+summary: 今回のリリースでサポートされていない、または今回のリリースでは正常に機能しないプラットフォーム、デバイス、機能が記載されています。これらの制限事項をよく確認してください。 
+---
+= Google CloudのCloud Volumes ONTAPに関する既知の制限事項
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+以下の既知の制限事項は、Google Cloud PlatformのCloud Volumes ONTAPに固有のものです。link:reference-limitations.html["すべてのクラウド プロバイダにおけるCloud Volumes ONTAPの制限事項"]も必ず確認してください。
+
+
+
+[[limitation-with-packet-mirroring]]
+== パケットミラーリングの制限
+
+https://cloud.google.com/vpc/docs/packet-mirroring["パケットミラーリング"^]は、Cloud Volumes ONTAPを導入するGoogle Cloud VPCで無効にする必要があります。
+
+Cloud Volumes ONTAPは、パケットミラーリングが有効になっていると正常に動作しません。
+
+
+
+[[google-private-service-connect-limitations]]
+== Google Private Service Connectの制限事項
+
+Cloud Volumes ONTAPをデプロイするVPC内で https://cloud.google.com/vpc/docs/private-service-connect["Google Private Service Connect"^]を利用する場合は、必要な https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["APIエンドポイント"^]にトラフィックを転送するDNSレコードを実装する必要があります。
+
+Cloud Volumes ONTAP から Google Cloud Storage バケットへのデータの階層化は、現在 Private Service Connect ではサポートされていません。

@@ -108,7 +108,8 @@ System Manager を使用して、 Cloud Volumes ONTAPシステムを管理しま
 Cloud Volumes ONTAPでSystem Managerを使用する際にヘルプが必要な場合は、 https://docs.netapp.com/us-en/ontap/index.html["ONTAPのドキュメント"^]ステップバイステップの手順についてはこちらをご覧ください。役立つ可能性のあるONTAPドキュメントのリンクをいくつか示します。
 
 * https://docs.netapp.com/us-en/ontap/ontap-security-hardening/roles-applications-authentication.html["ONTAPのロール、アプリケーション、認証"^]
-* https://docs.netapp.com/us-en/ontap/system-admin/access-cluster-system-manager-browser-task.html["System Managerを使用したクラスタへのアクセス"^] 。
+* https://docs.netapp.com/us-en/ontap/concepts/introducing-ontap-interfaces-concept.html["ONTAPのユーザ インターフェイス"^]
+* https://docs.netapp.com/us-en/ontap/concept_administration_overview.html["ONTAP System Managerを使用したクラスタ管理について学習します"^]
 * https://docs.netapp.com/us-en/ontap/volume-admin-overview-concept.html["ボリュームとLUNの管理"^]
 * https://docs.netapp.com/us-en/ontap/network-manage-overview-concept.html["ネットワーク管理"^]
 * https://docs.netapp.com/us-en/ontap/concept_dp_overview.html["データ保護"^]

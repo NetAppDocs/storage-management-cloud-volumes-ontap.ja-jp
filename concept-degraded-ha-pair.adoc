@@ -1,19 +1,52 @@
 ---
 sidebar: sidebar 
 permalink: concept-degraded-ha-pair.html 
-keywords: storage takeover, storage giveback, degraded, degraded status, degraded state, ha pair, ha takeover, takeover, giveback 
-summary: HA ペアの一方のノードが利用できない場合、もう一方のノードがパートナーにデータを提供して、継続的なデータ サービスを提供します。これをストレージ テイクオーバーと呼びます。ストレージ内のギブバックが完了するまで、いくつかのアクションは利用できません。 
+keywords: 'high-availability (HA) configuration in Cloud Volumes ONTAP, CVO HA, storage takeover, storage giveback, degraded, degraded status, ha takeover, takeover, giveback, disaster recovery, svm disaster recovery, storage vm dr' 
+summary: Cloud Volumes ONTAP の高可用性（HA）構成は、エンタープライズストレージの事業継続性と耐障害性を確保します。 
 ---
-= Cloud Volumes ONTAP HAペアのノードがオフラインの場合、操作は利用できません
-:hardbreaks:
+= Cloud Volumes ONTAP HA構成
 :allow-uri-read: 
-:nofooter: 
-:icons: font
-:linkattrs: 
-:imagesdir: ./media/
 
 
 [role="lead"]
+高可用性（HA）構成により、Cloud Volumes ONTAPは企業ストレージの事業継続性と耐障害性を確保します。独立した障害ドメインに2つのONTAPノードを展開することで、システムはハードウェア障害、ネットワーク障害、または定期メンテナンスが発生した場合でも、無停止運用（NDO）とシームレスなフェイルオーバーを実現します。
+
+アーキテクチャに次の要件がある場合は、HAペアをデプロイしてください：
+
+* *ミッションクリティカルなワークロード*：ダウンタイムが許されないデータベースおよびエンタープライズアプリケーション。
+* *中断のないアップグレード*：ストレージをオフラインにすることなく、ONTAPバージョンへのアップグレードや基盤となるクラウドコンピューティングインスタンスの変更を行う。
+* *マルチゾーン耐障害性*：クラウドリージョン内のアベイラビリティゾーンの障害に対する保護。
+
+
+
+
+[[how-ha-pairs-work]]
+== HAペアの仕組み
+
+HA構成は管理上の観点からはアクティブ / アクティブクラスタとして動作しますが、個々のデータアグリゲートは特定のノードによって所有されます。
+
+* *同期レプリケーション*：プライマリノードの NVRAM に書き込まれたデータは、クライアントへの書き込みを確認する前に、パートナーノードの NVRAM に同期的にミラーリングされます。
+* *メディエーターインスタンスのサポート*：サードパーティのメディエーターインスタンスが両方のノードの状態を監視します。プライマリノードが応答しなくなった場合、メディエーターがストレージのテイクオーバーをオーケストレーションします。
+* *ストレージのテイクオーバー*：生き残ったノードがパートナーのストレージアグリゲートとネットワークインターフェイスの所有権を引き継ぎ、数秒以内にデータ提供を再開します。
+
+
+
+
+[[ha-configuration-requirements-and-limitations]]
+== HA構成の要件と制限
+
+Cloud Volumes ONTAP に HA ペアをデプロイする場合は、以下の要件と制限事項を考慮してください。
+
+* *コンピューティングのサイジング*：HA ペアの 2 つのノードは、まったく同じクラウド コンピューティング インスタンス タイプまたはマシン シェイプを使用する必要があります。
+* *プロトコルサポート*：SMB/CIFS 継続可用性（CA）は Hyper-V および SQL Server ワークロードでサポートされていますが、特定の ONTAP 設定フラグが必要です。
+* *フェイルオーバー時間*：ストレージのテイクオーバーは通常秒単位で測定されますが、アプリケーションの中断を防ぐために、クライアント側のタイムアウト設定（iSCSIイニシエータのタイムアウトなど）を正しく構成する必要があります。
+
+
+
+
+[[operations-unavailable-when-a-node-in-an-ha-pair-is-offline]]
+== HAペアのノードがオフラインの場合に利用できない操作
+
 HA ペアの一方のノードが利用できない場合、もう一方のノードがパートナーにデータを提供して、継続的なデータ サービスを提供します。これは、_ストレージ テイクオーバー_ と呼ばれます。ストレージ内のギブバックが完了するまで、いくつかのアクションは利用できません。
 
 
@@ -32,3 +65,24 @@ TIP: HA ペアのノードが使用できない場合、 NetApp Consoleのシス
 
 
 ストレージのギブバックが完了し、システムの状態が正常に戻った後、これらのアクションは再び利用可能になります。
+
+
+
+[[storage-vm-disaster-recovery-for-cloud-volumes-ontap]]
+== Cloud Volumes ONTAP のストレージVM ディザスタリカバリ
+
+NetApp Console では、ストレージ VM （SVM） のディザスタリカバリ （DR） のセットアップやオーケストレーションのサポートは提供されていません。Cloud Volumes ONTAP の DR を設定するには、ONTAP System Manager または ONTAP CLI を使用して SnapMirror SVM レプリケーションを設定する必要があります。
+
+2つのCloud Volumes ONTAPシステム間でSnapMirror SVMレプリケーションを設定する場合、レプリケーションは2つのHAペアシステム間または2つのシングルノードシステム間で実行する必要があります。HAペアとシングルノードシステム間でSnapMirror SVMレプリケーションを設定することはできません。
+
+ONTAP CLI の手順については、次のドキュメントを参照してください。
+
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["SVM Disaster Recovery Preparation Express Guide"^]
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["SVM Disaster Recovery Express Guide"^]
+
+
+.関連リンク
+* link:concept-ha.html["AWS のCloud Volumes ONTAP HA ペアについて学ぶ"]
+* link:concept-ha-azure.html["Azure のCloud Volumes ONTAP HA ペアについて学ぶ"]
+* link:concept-ha-google-cloud.html["GCP における Cloud Volumes ONTAP HA ペアについて"]
+

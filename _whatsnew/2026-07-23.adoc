@@ -1,0 +1,17 @@
+= Azure におけるチリ中央地域のサポート
+:allow-uri-read: 
+
+
+
+
+[[support-for-chile-central-region-in-azure]]
+=== Azure におけるチリ中央地域のサポート
+
+Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのChile Central（chilecentral）リージョンにデプロイできるようになりました。以下のデプロイメントタイプがサポートされています。
+
+* シングルノード
+* ローカル冗長ストレージ（LRS）を使用した単一可用性ゾーンにおける高可用性（HA）
+* ゾーン冗長ストレージ（ZRS）を使用した複数可用性ゾーンにおける高可用性（HA）
+
+
+サポートされているすべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。

@@ -52,7 +52,7 @@ https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-target
 
 
 
-NOTE: Cloud Volumes ONTAP 9.15.0P1 以降、新しい高可用性ペアの展開では Azure ページ BLOB はサポートされなくなりました。現在、既存の高可用性ペアの展開で Azure ページ BLOB を使用している場合は、Edsv4 シリーズ VM および Edsv5 シリーズ VM の新しい VM インスタンス タイプに移行できます。link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"^] 。
+NOTE: Cloud Volumes ONTAP 9.15.0P1以降、Azureページblobは新しい高可用性ペアデプロイメントではサポートされなくなりました。現在、既存の高可用性ペアデプロイメントでAzureページblobを使用している場合は、Edsv4シリーズVMおよびEdsv5シリーズVMの新しいVMインスタンスタイプに移行できます。link:link:reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"]。
 
 
 

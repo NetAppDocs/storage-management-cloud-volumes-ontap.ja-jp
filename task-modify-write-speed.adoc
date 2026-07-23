@@ -4,7 +4,7 @@ permalink: task-modify-write-speed.html
 keywords: write speed, high write speed, normal write speed, change write speed 
 summary: ストレージのニーズが変化すると、 Cloud Volumes ONTAPシステムの設定を変更する必要がある場合があります。たとえば、従量課金制の構成を変更したり、インスタンスや VM の種類を変更したりできます。 
 ---
-= システムの書き込み速度を変更する
+= Cloud Volumes ONTAP のシステム書き込み速度を変更する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

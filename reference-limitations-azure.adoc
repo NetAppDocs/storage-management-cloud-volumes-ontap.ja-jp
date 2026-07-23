@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations-azure.html 
+keywords: limitations, ha, azure, pay-as-you-go, paygo, cloud solution provider, vm, flash cache; limitations in HA deployment in MAZ, SAZ, multiple availability xone, single availability zone Azure CVO, PSSDv2, premium SSD v2 limitation in CVO, flash cache limitation in CVO 
+summary: これらの既知の制限は、Microsoft AzureのCloud Volumes ONTAPに固有のものです。 
+---
+= AzureのCloud Volumes ONTAPに関する既知の制限事項
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+以下の既知の制限事項は、Microsoft AzureのCloud Volumes ONTAPに固有のものです。link:reference-limitations.html["すべてのクラウド プロバイダにおけるCloud Volumes ONTAPの制限事項"]も必ず確認してください。
+
+
+
+[[limitations-with-using-azure-vm-extensions]]
+== Azure VM拡張機能の使用に関する制限
+
+Cloud Volumes ONTAPは、NetApp Consoleでの管理操作に影響するため、Azure仮想マシン（VM）拡張機能をサポートしていません。デプロイ中、Consoleは VM への拡張機能のインストールを防止します。既存のCloud Volumes ONTAP VMに拡張機能が既にインストールされている場合は、Microsoft Azure サポートに連絡して削除してください。ガイダンスについては、ナレッジベース（KB）の記事を参照してください https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Can_Azure_VM_Management_Extensions_be_installed_into_Cloud_Volume_ONTAP["Azure VM管理拡張機能をCloud Volumes ONTAPにインストールできますか？"^]
+
+2025年7月14日から、Cloud Volumes ONTAP VMでVM拡張機能が検出された場合、NetAppから電子メールが送信され、コンソールで通知されます。
+
+
+
+[[premium-ssd-v2-disks-limitations-for-ha-configurations]]
+== HA構成におけるPremium SSD v2ディスクの制限
+
+Premium SSD v2 マネージド ディスクには、Azure での高可用性（HA）展開に関して次の制限があります：
+
+* 非ゾーン リージョンでの HA 展開ではサポートされません。
+* 複数の可用性ゾーンにわたるHA展開ではサポートされません。
+* 単一の可用性ゾーン内にデプロイされた HA 構成でのみサポートされます。
+
+
+Premium SSD v2 マネージドディスクを Cloud Volumes ONTAP HA 構成で使用するには、次の要件が満たされていることを確認してください：
+
+* Cloud Volumes ONTAPバージョンは9.15.1以降です。
+* HA 導入環境は、Azure の単一のアベイラビリティゾーンにあります。
+* 選択したリージョンとゾーンでは、Premium SSD v2 マネージド ディスクがサポートされています。サポートされているリージョンについては、 https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/["Microsoft Azure Web サイト: 地域別に利用可能な製品"^]を参照してください。
+
+
+詳細については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-9151-relnotes/reference-new.html#support-for-premium-ssd-v2-managed-disks-in-azure["Azure での Premium SSD v2 Managed Disks のサポート"^]を参照してください。
+
+
+
+[[limitations-with-ha-deployments-in-single-availability-zones]]
+== 単一のアベイラビリティゾーンにおけるHA導入の制限事項
+
+Cloud Volumes ONTAP 9.15.1以降では、Azureの単一のアベイラビリティゾーン（AZ）でHAモードの仮想マシン（VM）インスタンスをデプロイできます。この機能をサポートする基準については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-9151-relnotes/reference-new.html#deploy-ha-pairs-in-single-availability-zones-in-azure["Azureの単一の可用性ゾーンにHAペアを導入する"^]を参照してください。
+
+Cloud Volumes ONTAPのバージョンが9.15.1より前の場合、またはこれらの条件のいずれかが満たされていない場合は、可用性セットを利用する以前の導入モデルが有効になります。これはHA構成にのみ適用されます。
+
+
+
+[[flash-cache-limitations]]
+== Flash Cacheの制限事項
+
+Cloud Volumes ONTAPは、一部のVMタイプでローカルNVMeストレージを_Flash Cache_として使用します。次の制限事項に注意してください：
+
+* 再起動後のキャッシュの再ウォームアップはサポートされていません。
+
+
+
+
+[[limitations-with-ha-deployments]]
+== HA導入の制限事項
+
+一部のリージョンでは HA ペアはサポートされていません。
+
+https://bluexp.netapp.com/cloud-volumes-global-regions["サポートされているAzureリージョンのリストを表示します"^]。

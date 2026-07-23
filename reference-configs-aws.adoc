@@ -1,0 +1,837 @@
+---
+sidebar: sidebar 
+permalink: reference-configs-aws.html 
+keywords: ec2, instance, type, explore, standard, premium, byol, capacity, maximum, virtual machine, Cloud Volumes ONTAP, supported, configurations, sizes, disks, networking, bandwidth, professional package 
+summary: AWS では、複数の Cloud Volumes ONTAP 構成がサポートされています。 
+---
+= AWS でサポートされているCloud Volumes ONTAPの構成
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS では、複数の Cloud Volumes ONTAP 構成がサポートされています。
+
+
+
+[[supported-disks-in-aws]]
+== AWSでサポートされているディスク
+
+ユーザーデータのストレージに加えて、NetAppはAWSでシステムデータ用のクラウドストレージも購入します。
+
+
+
+[[internal-disks-for-system-data]]
+=== システムデータ用の内部ディスク
+
+AWSでは、システムデータ用に以下の内部ディスクが使用されます。
+
+* ブート、ルート、コア データ用にノードごとに 3 つのディスク:
++
+** ブートデータ用の47 GiB io1ディスク
+** ルートデータ用の140 GiB gp3ディスク
+** コアデータ用の540 GiB gp2ディスク
+
+
+* HA ペアの場合:
++
+** メディエーターインスタンス用の st1 EBS ボリューム 2 つ (ルートディスクとして約 8 GiB のボリューム 1 つとデータディスクとして 4 GiB のボリューム 1 つ)
+** 各ノードに140 GiBのgp3ディスクを1つずつ用意し、他のノードのルートデータのコピーを保存します。
++
+
+NOTE: 一部のゾーンでは、使用可能な EBS ディスク タイプは gp2 のみです。
+
+
+
+* ブートディスクとルートディスクごとに 1 つの EBS スナップショット
++
+
+NOTE: スナップショットは再起動時に自動的に作成されます。
+
+* Key Management Service (KMS) を使用して AWS でデータ暗号化を有効にすると、 Cloud Volumes ONTAPのブートディスクとルートディスクも暗号化されます。これには、HA ペアのメディエーター インスタンスのブート ディスクが含まれます。ディスクは、Cloud Volumes ONTAPシステムを追加するときに選択した CMK を使用して暗号化されます。
+
+
+
+TIP: AWS では、 NVRAMはブートディスク上にあります。
+
+
+
+[[aws-storage-for-user-data]]
+=== ユーザーデータ用のAWSストレージ
+
+AWS では、 Cloud Volumes ONTAP はユーザー データ用に EBS ストレージを使用し、一部の EC2 インスタンス タイプではフラッシュ キャッシュとしてローカル NVMe ストレージを使用します。
+
+EBSストレージ:: AWS では、アグリゲートには最大 6 個の同じサイズのディスクを含めることができます。ただし、Amazon EBS Elastic Volumes 機能をサポートする構成の場合、アグリゲートには最大 8 個のディスクを含めることができます。link:concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"] 。
++
+--
+最大ディスク サイズは 16 TiB です。
+
+基盤となる EBS ディスク タイプは、汎用 SSD （gp3 または gp2）、プロビジョニングされた IOPS SSD （io1）、またはスループット最適化 HDD （st1） のいずれかになります。EBS ディスクを Amazon Simple Storage Service （Amazon S3） とペアリングして link:concept-data-tiering.html["低コストのオブジェクトストレージ"] できます。
+
+
+NOTE: スループット最適化 HDD (st1) を使用する場合、オブジェクト ストレージへのデータの階層化は推奨されません。
+
+--
+ローカルNVMeストレージ:: 一部のEC2インスタンスタイプにはローカルNVMeストレージが含まれており、 Cloud Volumes ONTAPはこれをlink:concept-flash-cache.html["Flash Cache"]。
+
+
+
+
+[[supported-disk-sizes]]
+=== サポートされているディスクサイズ
+
+AWS では、アグリゲートには最大 6 個の同じサイズのディスクを含めることができます。ただし、Amazon EBS Elastic Volumes 機能をサポートする構成がある場合、アグリゲートには最大 8 個のディスクを含めることができます。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"^]
+
+[cols="3*"]
+|===
+| 汎用 SSD （gp3 および gp2） | プロビジョニングされた IOPS SSD（io1） | スループット最適化 HDD（st1） 
+
+
+ a| 
+* 100 GiB
+* 500ギガバイト
+* 1 TiB
+* 2 TiB
+* 4 TiB
+* 6 TiB
+* 8 TiB
+* 16 TiB
+
+ a| 
+* 100 GiB
+* 500ギガバイト
+* 1 TiB
+* 2 TiB
+* 4 TiB
+* 6 TiB
+* 8 TiB
+* 16 TiB
+
+ a| 
+* 500ギガバイト
+* 1 TiB
+* 2 TiB
+* 4 TiB
+* 6 TiB
+* 8 TiB
+* 16 TiB
+
+
+|===
+
+
+[[disk-provisioning-for-aggregates-in-aws]]
+=== AWSにおけるアグリゲートのディスクプロビジョニング
+
+Elastic Volumes をサポートする AWS のアグリゲートの場合、RAID グループ内のディスクのサイズも増加します。link:concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"] 。
+
+
+
+==== AWS のアグリゲートのディスクサイズの選択
+
+コンソールは、AWS でCloud Volumes ONTAPの新しいアグリゲートを作成すると、アグリゲート数が増加するにつれてディスク サイズを徐々に増やし、AWS データのディスク制限に達する前にシステム容量を最大化します。
+
+たとえば、コンソールは次のディスク サイズを選択する場合があります。
+
+[cols="3*"]
+|===
+| 合計数 | ディスク サイズ | 最大総容量 
+
+
+| 1 | 500ギガバイト | 3 TiB 
+
+
+| 4 | 1 TiB | 6 TiB 
+
+
+| 6 | 2 TiB | 12 TiB 
+|===
+
+NOTE: この動作は、Amazon EBS Elastic Volumes 機能をサポートするアグリゲートには適用されません。エラスティック ボリュームが有効になっているアグリゲートは、1 つまたは 2 つの RAID グループで構成されます。各 RAID グループには、同じ容量を持つ 4 つの同一ディスクがあります。link:concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"] 。
+
+高度な割り当てオプションを使用して、ディスク サイズを自分で選択できます。
+
+
+
+[[supported-number-of-nodes]]
+== サポートされるノード数
+
+Cloud Volumes ONTAP は、AWS では単一ノード システムとして、また、フォールト トレランスと中断のない運用を実現する高可用性（HA）ノード ペアとして利用できます。
+
+単一ノード システムを HA ペアにアップグレードすることはサポートされていません。単一ノード システムと HA ペアを切り替える場合は、新しいシステムを展開し、既存のシステムから新しいシステムにデータを複製する必要があります。
+
+
+
+[[supported-storage]]
+== サポートされているストレージ
+
+Cloud Volumes ONTAP は、いくつかの種類の EBS ディスク、およびデータ階層化用の S3 オブジェクト ストレージをサポートします。最大ストレージ容量は、選択したライセンスによって決まります。
+
+
+
+[[storage-support-by-license]]
+=== ライセンス別のストレージサポート
+
+各ライセンスは異なる最大システム容量をサポートします。最大システム容量には、ディスクベースのストレージと、データ階層化に使用されるオブジェクト ストレージが含まれます。NetApp この制限を超えることはサポートされていません。
+
+以下の表は、各ライセンスでサポートされているストレージとEC2マシンタイプの組み合わせを示しています。最新の EC2 インスタンス仕様（vCPU、メモリ、ネットワーク帯域幅、Amazon EBS 帯域幅など）については、 https://aws.amazon.com/ec2/instance-types/["Amazon EC2 インスタンスタイプ"^]を参照してください。
+
+Cloud Volumes ONTAP は、リザーブド EC2 インスタンスまたはオンデマンド EC2 インスタンスのいずれかで実行できます。他のインスタンスタイプを使用するソリューションはサポートされていません。
+
+[role="tabbed-block"]
+====
+.容量ベースのライセンス
+--
+[cols="h,d,d"]
+|===
+|  | フリーミアム | 容量ベースのライセンス（Essentials および Professional） 
+
+
+ a| 
+*最大システム容量* ^1^ （ディスク + オブジェクトストレージ）
+| 500ギガバイト  a| 
+柔軟 ^2^
+
+
+
+ a| 
+*サポートされているマシンタイプ*
+ a| 
+.C5シリーズ
+[%collapsible]
+=====
+* c5.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5.18xlarge ^7^
+
+
+=====
+.C5aシリーズ
+[%collapsible]
+=====
+* c5a.12xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.C5dシリーズ
+[%collapsible]
+=====
+* c5d.4xlarge ^8^
+* c5d.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5d.18xlarge ^7^
+
+
+=====
+.C5nシリーズ
+[%collapsible]
+=====
+* c5n.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5n.18xlarge ^7^
+
+
+=====
+.M5シリーズ
+[%collapsible]
+=====
+* m5.xlarge ^8^
+* m5.2xlarge ^8^
+* m5.4xlarge ^8^
+* m5.16xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.M5aシリーズ
+[%collapsible]
+=====
+* m5a.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5a.16xlarge
+
+
+=====
+.M5dシリーズ
+[%collapsible]
+=====
+* m5d.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5d.12xlarge
+
+
+=====
+.M5dnシリーズ
+[%collapsible]
+=====
+* m5dn.4xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5dn.12xlarge
+* m5dn.24xlarge ^7^
+
+
+=====
+.M5nシリーズ
+[%collapsible]
+=====
+* m5n.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.M6idシリーズ
+[%collapsible]
+=====
+* m6id.xlarge ^9^
+* m6id.2xlarge ^9^
+* m6id.4xlarge ^9^
+* m6id.8xlarge ^9^
+* m6id.16xlarge ^7,9^
+* m6id.32xlarge ^7,9^
+
+
+=====
+.M6idnシリーズ
+[%collapsible]
+=====
+* m6idn.xlarge ^9^
+* m6idn.2xlarge ^9^
+* m6idn.4xlarge ^9^
+* m6idn.8xlarge ^9^
+* m6idn.16xlarge ^7,9^
+* m6idn.32xlarge ^9^
+
+
+=====
+.R5シリーズ
+[%collapsible]
+=====
+* r5.xlarge ^8^
+* r5.2xlarge ^8^
+* r5.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* r5.12xlarge ^6^
+
+
+=====
+.R5dシリーズ
+[%collapsible]
+=====
+* r5d.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+
+
+ a| 
+*サポートされているディスクタイプ*
+ a| 
+* 汎用 SSD （ gp3 および gp2 ） ^3^,^5^
+* プロビジョニングされた IOPS SSD（io1）^3^
+* スループット最適化 HDD（st1）^4^
+
+
+
+
+ a| 
+*S3 へのコールドデータの階層化*
+ a| 
+サポート
+
+|===
+. HAペアの場合、容量制限はHAペア全体に適用されます。ノードごとではありません。例えば、PAYGO Premiumライセンスを使用する場合、両ノード間で最大368TiBの容量を利用できます。
+. 一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。ディスク制限の詳細については、link:reference-limits-aws.html["ストレージの制限"]を参照してください。
++
+容量ベースのライセンスでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートします。階層化された総容量は、クラウド プロバイダのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保するために https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["『FabricPoolのベストプラクティス』"^]に従う必要があります。
+
+. PAYGO Explore を除くすべての Cloud Volumes ONTAP 構成で SSD を使用すると、書き込みパフォーマンスが向上します。
+. スループット最適化HDD（st1）を使用する場合、データをオブジェクトストレージに階層化することは推奨されません。
+. AWS ローカルゾーンの Cloud Volumes ONTAP 構成では、汎用 SSD（gp2）ディスクタイプのみがサポートされます。AWS ローカルゾーンでは、その他のディスクタイプはサポートされていません。
+. r5.12xlargeインスタンスタイプには、サポートに関する既知の制限があります。パニックによりノードが予期せず再起動した場合、システムは問題のトラブルシューティングと根本原因の特定に使用されるコアファイルを収集しない可能性があります。お客様はリスクと限定的なサポート条件を受け入れ、この状況が発生した場合のすべてのサポート責任を負います。この制限は、新しく導入されたHAペアと9.8からアップグレードされたHAペアに影響します。この制限は、新しく導入された単一ノードシステムには影響しません。
+. これらのEC2インスタンスタイプは64個以上のvCPUをサポートしていますが、Cloud Volumes ONTAPは最大64個のvCPUをサポートしています。
+. AWS ローカルゾーンは、サイズが xlarge から 4xlarge までの次の EC2 インスタンスタイプファミリーでサポートされています：M5、C5、C5d、R5、および R5d。link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/features/?nc=sn&loc=2["ローカルゾーンでサポートされているEC2インスタンスタイプに関する最新の完全な詳細については、AWSを参照してください"^]。
++
+AWS ローカルゾーンのこれらのインスタンスタイプでは、高速書き込み速度はサポートされていません。
+
+. これらのインスタンスタイプには、ONTAP 9.16.1 GA以降が必要です。
+
+
+--
+.その他のライセンス
+--
+[cols="h,d,d,d,d"]
+|===
+|  | PAYGO Explore | PAYGO Standard | PAYGO Premium | ノードベースのBYOL 
+
+
+| 最大システム容量（ディスク+オブジェクトストレージ） | 2 TiB | 10 TiB | 368 TiB ^2^ | ライセンスあたり 368 TiB ^2^ 
+
+
+| サポートされているマシンタイプ  a| 
+.M5シリーズ
+[%collapsible]
+=====
+* m5.xlarge ^8^
+
+
+=====
+.M6idシリーズ
+[%collapsible]
+=====
+* m6id.xlarge ^9^
+
+
+=====
+.M6idnシリーズ
+[%collapsible]
+=====
+* m6idn.xlarge ^9^
+
+
+===== a| 
+.M5シリーズ
+[%collapsible]
+=====
+* m5.2xlarge ^8^
+
+
+=====
+.M5aシリーズ
+[%collapsible]
+=====
+* m5a.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.M6idシリーズ
+[%collapsible]
+=====
+* m6id.2xlarge ^9^
+
+
+=====
+.M6idnシリーズ
+[%collapsible]
+=====
+* m6idn.2xlarge ^9^
+
+
+=====
+.R5シリーズ
+[%collapsible]
+=====
+* r5.xlarge ^8^
+
+
+===== a| 
+.C5シリーズ
+[%collapsible]
+=====
+* c5.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5.18xlarge ^7^
+
+
+=====
+.C5aシリーズ
+[%collapsible]
+=====
+* c5a.12xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.C5dシリーズ
+[%collapsible]
+=====
+* c5d.4xlarge ^8^
+* c5d.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5d.18xlarge ^7^
+
+
+=====
+.C5nシリーズ
+[%collapsible]
+=====
+* c5n.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5n.18xlarge ^7^
+
+
+=====
+.M5シリーズ
+[%collapsible]
+=====
+* m5.4xlarge ^8^
+* m5.16xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.M5aシリーズ
+[%collapsible]
+=====
+* m5a.16xlarge
+
+
+=====
+.M5dシリーズ
+[%collapsible]
+=====
+* m5d.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5d.12xlarge
+
+
+=====
+.M5dnシリーズ
+[%collapsible]
+=====
+* m5dn.4xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5dn.12xlarge
+* m5dn.24xlarge ^7^
+
+
+=====
+.M5nシリーズ
+[%collapsible]
+=====
+* m5n.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.M6idシリーズ
+[%collapsible]
+=====
+* m6id.4xlarge ^9^
+* m6id.8xlarge ^9^
+* m6id.16xlarge ^7,9^
+* m6id.32xlarge ^7,9^
+
+
+=====
+.M6idnシリーズ
+[%collapsible]
+=====
+* m6idn.4xlarge ^9^
+* m6idn.8xlarge ^9^
+* m6idn.16xlarge ^7,9^
+* m6idn.32xlarge ^9^
+
+
+=====
+.R5シリーズ
+[%collapsible]
+=====
+* r5.2xlarge ^8^
+* r5.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* r5.12xlarge ^6^
+
+
+=====
+.R5dシリーズ
+[%collapsible]
+=====
+* r5d.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+===== a| 
+.C5シリーズ
+[%collapsible]
+=====
+* c5.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5.18xlarge ^7^
+
+
+=====
+.C5aシリーズ
+[%collapsible]
+=====
+* c5a.12xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.C5dシリーズ
+[%collapsible]
+=====
+* c5d.4xlarge ^8^
+* c5d.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5d.18xlarge ^7^
+
+
+=====
+.C5nシリーズ
+[%collapsible]
+=====
+* c5n.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* c5n.18xlarge ^7^
+
+
+=====
+.M5シリーズ
+[%collapsible]
+=====
+* m5.xlarge ^8^
+* m5.2xlarge ^8^
+* m5.4xlarge ^8^
+* m5.16xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.M5aシリーズ
+[%collapsible]
+=====
+* m5a.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5a.16xlarge
+
+
+=====
+.M5dシリーズ
+[%collapsible]
+=====
+* m5d.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5d.12xlarge
+
+
+=====
+.M5dnシリーズ
+[%collapsible]
+=====
+* m5dn.4xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* m5dn.12xlarge
+* m5dn.24xlarge ^7^
+
+
+=====
+.M5nシリーズ
+[%collapsible]
+=====
+* m5n.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+.M6idシリーズ
+[%collapsible]
+=====
+* m6id.xlarge ^9^
+* m6id.2xlarge ^9^
+* m6id.4xlarge ^9^
+* m6id.8xlarge ^9^
+* m6id.16xlarge ^7,9^
+* m6id.32xlarge ^7,9^
+
+
+=====
+.M6idnシリーズ
+[%collapsible]
+=====
+* m6idn.xlarge ^9^
+* m6idn.2xlarge ^9^
+* m6idn.4xlarge ^9^
+* m6idn.8xlarge ^9^
+* m6idn.16xlarge ^7,9^
+* m6idn.32xlarge ^9^
+
+
+=====
+.R5シリーズ
+[%collapsible]
+=====
+* r5.xlarge ^8^
+* r5.2xlarge ^8^
+* r5.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+* r5.12xlarge ^6^
+
+
+=====
+.R5dシリーズ
+[%collapsible]
+=====
+* r5d.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。
+
+
+=====
+
+
+| サポートされているディスクタイプ  a| 
+* 汎用 SSD （ gp3 および gp2 ） ^3^,^5^
+* プロビジョニングされた IOPS SSD（io1）^3^
+* スループット最適化 HDD（st1）^4^
+
+
+
+
+| S3 へのコールドデータ階層化 | サポート対象外 3+| サポート 
+|===
+. HAペアの場合、容量制限はHAペア全体に適用されます。ノードごとではありません。例えば、PAYGO Premiumライセンスを使用する場合、両ノード間で最大368TiBの容量を利用できます。
+. 一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。ディスク制限の詳細については、link:reference-limits-aws.html["ストレージの制限"]を参照してください。
++
+容量ベースのライセンスでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートします。階層化された総容量は、クラウド プロバイダのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保するために https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["『FabricPoolのベストプラクティス』"^]に従う必要があります。
+
+. PAYGO Explore を除くすべての Cloud Volumes ONTAP 構成で SSD を使用すると、書き込みパフォーマンスが向上します。
+. スループット最適化HDD（st1）を使用する場合、データをオブジェクトストレージに階層化することは推奨されません。
+. AWS ローカルゾーンの Cloud Volumes ONTAP 構成では、汎用 SSD（gp2）ディスクタイプのみがサポートされます。AWS ローカルゾーンでは、その他のディスクタイプはサポートされていません。
+. r5.12xlargeインスタンスタイプには、サポートに関する既知の制限があります。パニックによりノードが予期せず再起動した場合、システムは問題のトラブルシューティングと根本原因の特定に使用されるコアファイルを収集しない可能性があります。お客様はリスクと限定的なサポート条件を受け入れ、この状況が発生した場合のすべてのサポート責任を負います。この制限は、新しく導入されたHAペアと9.8からアップグレードされたHAペアに影響します。この制限は、新しく導入された単一ノードシステムには影響しません。
+. これらのEC2インスタンスタイプは64個以上のvCPUをサポートしていますが、Cloud Volumes ONTAPは最大64個のvCPUをサポートしています。
+. AWS ローカルゾーンは、サイズが xlarge から 4xlarge までの次の EC2 インスタンスタイプファミリーでサポートされています：M5、C5、C5d、R5、および R5d。link:https://aws.amazon.com/about-aws/global-infrastructure/localzones/features/?nc=sn&loc=2["ローカルゾーンでサポートされているEC2インスタンスタイプに関する最新の完全な詳細については、AWSを参照してください"^]。
++
+AWS ローカルゾーンのこれらのインスタンスタイプでは、高速書き込み速度はサポートされていません。
+
+. これらのインスタンスタイプには、ONTAP 9.16.1 GA以降が必要です。
+
+
+--
+====
+
+
+[[c4-m4-and-r4-instances-no-longer-supported]]
+=== c4、m4、r4インスタンスはサポートされなくなりました
+
+Cloud Volumes ONTAP は AWS の c4、m4、r4 EC2 インスタンス タイプはサポートされなくなりました。
+
+お使いのシステムがc4、m4、またはr4インスタンスで動作している場合は、このリリースにアップグレードする前に、c5、m5、またはr5インスタンスに変更してください。
+
+link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-change-ec2-instance.html["Cloud Volumes ONTAPのEC2インスタンスタイプを変更する方法を学ぶ"^]。
+
+詳細については、次のリソースを参照してください。
+
+* https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Converting_an_AWS_Xen_CVO_instance_to_Nitro_KVM["ナレッジベース（KB）記事：AWS Xen CVO インスタンスを Nitro KVM に変換する"^]
+* https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Unable_to_change_the_instance_type_from_r4_to_r5_with_disk_count_error["KB 記事：ディスク カウント エラーによりインスタンス タイプを r4 から r5 に変更できない"^]
+* link:https://mysupport.netapp.com/info/communications/ECMLP2880231.html["これらのインスタンスタイプの提供終了とサポート終了の詳細については、こちらをご覧ください"^]
+
+
+
+
+[[support-for-flash-cache-and-high-write-speed]]
+== Flash Cache と高速書き込み速度に対応
+
+次の表は、Flash Cacheとハイパフォーマンスの書き込み速度をサポートする、サポート対象のEC2インスタンスタイプを示しています。
+
+[cols="d,d,d"]
+|===
+| サポートされているインスタンス | Flash Cache | 高速書き込み 
+
+
+| c5.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| c5.18xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| c5a.12xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| c5d.4xlarge | サポート | サポート 
+
+
+| c5d.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート | サポート 
+
+
+| c5d.18xlarge | サポート | サポート 
+
+
+| c5n.9xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| c5n.18xlarge | サポート対象外 | サポート 
+
+
+| m5.xlarge | サポート対象外 | サポートされています（単一ノードのみ） 
+
+
+| m5.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| m5.4xlarge | サポート対象外 | サポート 
+
+
+| m5.16xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| m5a.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| m5a.16xlarge | サポート対象外 | サポート 
+
+
+| m5d.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート | サポート 
+
+
+| m5d.12xlarge | サポート | サポート 
+
+
+| m5dn.4xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート | サポート 
+
+
+| m5dn.12xlarge | サポート | サポート 
+
+
+| m5dn.24xlarge | サポート | サポート 
+
+
+| m5n.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| m6id.xlarge | サポートされています ^*^ | サポートされています（単一ノードのみ） 
+
+
+| m6id.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポートされています ^*^ | サポート 
+
+
+| m6id.4xlarge | サポート | サポート 
+
+
+| m6id.8xlarge | サポート | サポート 
+
+
+| m6id.16xlarge | サポート | サポート 
+
+
+| m6id.32xlarge | サポート | サポート 
+
+
+| m6idn.xlarge | サポートされています ^*^ | サポートされています（単一ノードのみ） 
+
+
+| m6idn.2xlarge | サポートされています ^*^ | サポート 
+
+
+| m6idn.4xlarge | サポート | サポート 
+
+
+| m6idn.8xlarge | サポート | サポート 
+
+
+| m6idn.16xlarge | サポート | サポート 
+
+
+| m6idn.32xlarge | サポート | サポート 
+
+
+| r5.xlarge | サポート対象外 | サポートされています（単一ノードのみ） 
+
+
+| r5.2xlarge | サポート対象外 | サポート 
+
+
+| r5.8xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート対象外 | サポート 
+
+
+| r5.12xlarge | サポート対象外 | サポート 
+
+
+| r5d.2xlargeを使用したチャンク アップロード署名要求がサポートされるようになりました。 | サポート | サポート 
+|===
+pass:[*] Flash Cacheは、m6id.xlarge、m6id.2xlarge、m6idn.xlarge、およびm6idn.2xlargeでサポートされています。ただし、これらのインスタンスタイプはコアプロセッサ数が16個未満であるため、ハイパフォーマンスなワークロードやメモリを大量に消費するワークロードには推奨されません。高負荷時には、メモリ不足のため再起動する可能性があります。これを回避するには、コア数が多くメモリ容量の大きいインスタンスタイプを使用してください。
+
+以下の注記は、サポートされているインスタンスの動作と導入オプションに関する一般的なガイダンスを提供します。
+
+* 一部のインスタンスタイプにはローカルNVMeストレージが含まれており、Cloud Volumes ONTAPはこれをFlash Cacheとして使用します。Flash Cacheは、最近読み取られたユーザーデータとNetAppメタデータのリアルタイムインテリジェントキャッシングにより、データへのアクセスを高速化します。データベース、Eメール、ファイルサービスなど、ランダム読み取り集約型のワークロードに効果的です。Flash Cacheのパフォーマンス向上を活用するには、すべてのボリュームで圧縮を無効にする必要があります https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["Flash Cacheの詳細はこちら"^]。
+* Cloud Volumes ONTAPは、シングルノードシステムを使用する場合、サポートされているすべてのインスタンスタイプで高速な書き込み速度をサポートします。HAペアを使用する場合、高速書き込み速度はサポートされているインスタンスタイプでのみサポートされます https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["書き込み速度の選択について詳しくはこちら"^]。
+* EC2 インスタンスタイプを選択するときに、共有インスタンスか専用インスタンスかを指定できます。
+
+
+
+
+[[supported-regions]]
+=== サポートされているリージョン
+
+AWSリージョンのサポートについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes のグローバルリージョン"^]を参照してください。
+
+.関連情報
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html["Amazon EC2 インスタンスタイプ"^]
+* https://aws.amazon.com/ec2/instance-types/m5/["Amazon EC2 M5インスタンス"^]
+* https://aws.amazon.com/ec2/instance-types/m6i/["Amazon EC2 M6iインスタンス"^]
+* https://aws.amazon.com/ec2/instance-types/c5/["Amazon EC2 C5インスタンス"^]
+* https://aws.amazon.com/ec2/instance-types/r5/["Amazon EC2 R5インスタンス"^]
+

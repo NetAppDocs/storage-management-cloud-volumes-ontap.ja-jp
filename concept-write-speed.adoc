@@ -4,7 +4,7 @@ permalink: concept-write-speed.html
 keywords: write speed, high write speed, normal write speed, nvfail, writing speed, ldm, low durability mode 
 summary: NetApp Consoleを使用すると、Cloud Volumes ONTAPの通常書き込み速度または高速書き込み速度を選択できます。書き込み速度を選択する前に、標準設定と高速設定の違い、および高速書き込み速度を使用する場合のリスクと推奨事項を理解しておく必要があります。 
 ---
-= 書き込み速度
+= Cloud Volumes ONTAP の書き込み速度について
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -78,7 +78,7 @@ ifdef::aws[]
 
 9.8 リリース以降、 Cloud Volumes ONTAP は、 m5.xlarge と r5.xlarge を除く、サポートされているほぼすべての EC2 インスタンス タイプを使用する場合、HA ペアによる高速書き込みをサポートします。
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["Cloud Volumes ONTAPがサポートする Amazon EC2 インスタンスの詳細"^] 。
+link:reference-configs-aws.html["Cloud Volumes ONTAPがサポートする Amazon EC2 インスタンスの詳細"]。
 
 endif::aws[]
 
@@ -90,7 +90,7 @@ ifdef::azure[]
 
 単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのVMタイプで高速書き込み速度をサポートします。
 
-HA ペアを使用する場合、 Cloud Volumes ONTAP は、 9.8 リリース以降、いくつかの VM タイプで高速書き込み速度をサポートします。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html["Cloud Volumes ONTAPリリースノート"^]高速書き込みをサポートする VM タイプを表示します。
+HAペアを使用する場合、Cloud Volumes ONTAPはバージョン9.8以降、複数のVMタイプで高速書き込みをサポートしています。高速書き込みをサポートするVMタイプを確認するには、link:reference-configs-azure.html["Cloud Volumes ONTAPリリースノート"]を参照してください。
 
 endif::azure[]
 
@@ -102,9 +102,9 @@ ifdef::gcp[]
 
 単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのマシン タイプで高速書き込み速度をサポートします。
 
-HA ペアを使用する場合、 Cloud Volumes ONTAP は、 9.13.0 リリース以降、いくつかの VM タイプで高速書き込み速度をサポートします。に行く https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html#supported-configurations-by-license["Cloud Volumes ONTAPリリースノート"^]高速書き込みをサポートする VM タイプを表示します。
+HAペアを使用する場合、Cloud Volumes ONTAPはバージョン9.13.0以降、複数のVMタイプで高速書き込み速度をサポートします。高速書き込み速度をサポートするVMタイプを確認するには、link:reference-configs-gcp.html#supported-configurations-by-license["Cloud Volumes ONTAPリリースノート"^]を参照してください。
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html["Cloud Volumes ONTAPがサポートする Google Cloud マシンタイプの詳細"^] 。
+link:reference-configs-gcp.html["Cloud Volumes ONTAPがサポートする Google Cloud マシンタイプの詳細"^]。
 
 endif::gcp[]
 

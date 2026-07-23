@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: reference-provider-integrations.html 
+keywords: maintenance event, azure maintenance event, cloud provider, issues, support, SMB CA in CVO 
+summary: このページでは、NetApp がクラウド プロバイダと連携して、発生する可能性のある問題を解決する方法について説明します。 
+---
+= Cloud Volumes ONTAPとクラウド プロバイダの統合
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp がクラウド プロバイダと連携して潜在的な問題に対処する方法をご確認ください。
+
+
+
+[[collaborative-support-best-practices]]
+== 共同サポートのベストプラクティス
+
+NetAppは、ライセンシーにサポートを提供することを約束し、ライセンシーから報告されたCloud Volumes ONTAPの技術サポート問題を解決するために商業的に合理的な努力を払うものとします。NetAppおよび該当するクラウド プロバイダは、相互のライセンス供与されたソフトウェアまたはインフラストラクチャに対して、直接的なサポート義務を負いません。
+
+NetAppは、該当するクラウド プロバイダのサービスに起因する可能性のある顧客の技術的な問題について、該当するクラウド プロバイダと連携するためのツールを実装しています。ただし、シームレスなサポート フローを維持するための最善の方法は、顧客が（i）NetAppと該当するクラウド プロバイダの両方と最新のサポート契約を維持し、（ii）技術的な問題が発生し、どの製品またはサービスがその技術的な問題の原因であるかを明確にする必要がある場合に、NetAppと該当するクラウド プロバイダの両方との共同エスカレーション ミーティングを調整することです。
+
+
+
+[[azure-maintenance-events]]
+== Azure メンテナンス イベント
+
+Microsoft は、Cloud Volumes ONTAP VM に影響を与える可能性がある Azure 仮想マシン（ VM ）インフラのメンテナンス イベントをスケジュールし、プログラムでアナウンスします。これらのイベントは、メンテナンス ウィンドウの 15 分前に発表されます。
+
+メンテナンスイベントの特別な処理は、Cloud Volumes ONTAP高可用性（HA）ペアでサポートされています。アプリケーションの健全性を維持するために、安定性を優先する予防的なテイクオーバーを実行します。15秒を超える接続の損失により、フェイルオーバー機能が無効になるためです。
+
+メンテナンス ウィンドウがアナウンスされると、対象ノードのパートナー ノードがテイクオーバーを実行します。メンテナンスが完了すると、ギブバックが開始されます。ギブバック後、HA ペアは正常な状態に戻ると予想されます。これが発生しない場合は、NetApp Support にお問い合わせください。メンテナンス イベントは一度に HA ペアの VM の 1 つを対象とし、通常は比較的短い期間内に両方のノードが対象となることに注意してください。
+
+Cloud Volumes ONTAP の非継続的に利用可能な CIFS 共有を使用する CIFS/SMB クライアントでは、テイクオーバーが発生したときと、セッションが使用しているアグリゲートがアグリゲートのホーム ノードに戻されたときの両方でセッションが失われます。これは、CIFS/SMB プロトコル自体によって課せられる制限です。承認されたサードパーティ製品を使用することで、テイクオーバーとギブバックによって生じる問題を回避できます。さらにサポートが必要な場合は、NetApp Support にお問い合わせください。
+
+
+NOTE: https://kb.netapp.com/on-prem/ontap/da/NAS/NAS-KBs/What_are_SMB_Continuous_Availability_CA_Shares["継続的可用性を備えたSMB共有"^]による無停止運用は Cloud Volumes ONTAP ではサポートされていません。

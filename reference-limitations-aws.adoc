@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations-aws.html 
+keywords: limitations, aws, amazon web services, flashe cache, alarms, cloudwatch, giveback, govcloud, c2s, aws outpost, outposts 
+summary: これらの既知の制限事項は、Amazon Web ServicesのCloud Volumes ONTAPに固有のものです。 
+---
+= AWSのCloud Volumes ONTAPに関する既知の制限事項
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+以下の既知の制限事項は、Amazon Web ServicesのCloud Volumes ONTAPに固有のものです。link:reference-limitations.html["すべてのクラウド プロバイダにおけるCloud Volumes ONTAPの制限事項"]も必ず確認してください。
+
+
+
+[[aws-outpost-limitations]]
+== AWS Outpost の制限
+
+AWS Outpostをお持ちの場合は、導入時にOutpost VPCを選択することで、そのOutpostにCloud Volumes ONTAPを導入できます。エクスペリエンスは、AWSにある他のVPCと同じです。最初にAWS OutpostにConsoleエージェントを導入する必要があることに注意してください。
+
+指摘すべき制限がいくつかあります。
+
+* 現時点では、単一ノードのCloud Volumes ONTAPシステムのみがサポートされています。
+* Cloud Volumes ONTAPで使用できるEC2インスタンスは、Outpostで利用可能なものに限定されます。
+* 現時点では汎用SSD（gp2）のみがサポートされています
+
+
+
+
+[[flash-cache-limitations]]
+== Flash Cacheの制限事項
+
+C5DおよびR5DインスタンスタイプにはローカルNVMeストレージが含まれており、Cloud Volumes ONTAPでは_Flash Cache_として使用します。次の制限事項に注意してください：
+
+* Flash Cacheのパフォーマンス向上を利用するには、Cloud Volumes ONTAP 9.12.0までのすべてのボリュームで圧縮を無効にする必要があります。Cloud Volumes ONTAP 9.12.1に導入またはアップグレードする場合は、圧縮を無効にする必要はありません。
++
+NetApp Consoleからボリュームを作成するときにストレージ効率なしを選択するか、ボリュームを作成してから http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-8508A4CB-DB43-4D0D-97EB-859F58B29054.html["CLIを使用してデータ圧縮を無効にする"^]することができます。
+
+* 再起動後のキャッシュの再ウォームアップは、 Cloud Volumes ONTAPではサポートされていません。
+
+
+
+
+[[false-alarms-reported-by-amazon-cloudwatch]]
+== Amazon CloudWatchによって報告された誤警報
+
+Cloud Volumes ONTAPはアイドル時にCPUを解放しないため、 https://aws.amazon.com/cloudwatch/["Amazon CloudWatch"^]はEC2インスタンスの使用率が100%であることを確認すると、高CPU警告を報告することがあります。このアラームは無視できます。ONTAP statisticsコマンドは、CPUの実際の使用状況を表示します。
+
+
+
+[[cloud-volumes-ontap-ha-pairs-do-not-support-immediate-storage-giveback]]
+== Cloud Volumes ONTAP HAペアは即時ストレージギブバックをサポートしていません
+
+ノードが再起動した後、パートナーはストレージを返す前にデータを同期する必要があります。データの再同期にかかる時間は、ノードがダウンしている間にクライアントによって書き込まれたデータの量と、ギブバック時のデータ書き込み速度によって異なります。
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha.html["AWSで稼働するCloud Volumes ONTAP HAペアにおけるストレージの仕組みを学ぶ"^]。

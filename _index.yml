@@ -5,76 +5,105 @@ indexpage:
   tiles:
   - title: 始めましょう
     links:
-    - title: Cloud Volumes ONTAPについて学ぶ
+    - title: 新機能
+      url: whats-new.html
+    - title: Cloud Volumes ONTAP とは何ですか？
       url: concept-overview-cvo.html
-    - title: AWS クイックスタート
-      url: task-getting-started-aws.html
-    - title: AWS Top Secret/Secret Cloud リージョンのクイックスタート
-      url: task-getting-started-aws-c2s.html
-      flavor: aws
-    - title: Azure のクイック スタート
-      url: task-getting-started-azure.html
-      flavor: azure
-    - title: Google Cloud のクイックスタート
-      url: task-getting-started-gcp.html
-      flavor: gcp
-  - title: ライセンス
+    - title: セキュリティとコンプライアンス
+      url: concept-security.html
+    - title: サポート対象のバージョン
+      url: reference-versions.html
+    - title: サポートされているアップグレード パス
+      url: task-updating-ontap-cloud.html#supported-upgrade-paths
+    - title: デフォルト設定
+      url: reference-default-configs.html
+  - title: Cloud Volumes ONTAPについて学ぶ
     links:
-    - title: ライセンスの概要
+    - title: ライセンス
       url: concept-licensing.html
+    - title: セキュリティ
+      url: concept-security.html
+    - title: 暗号化について
+      url: concept-security.html
+    - title: ストレージ管理
+      url: concept-storage-management.html
+    - title: Cloud Volumes ONTAPクラスターに使用されるディスクとアグリゲート
+      url: reference-default-configs.html
+    - title: Cloud Volumes ONTAP ワークロードのパフォーマンス監視
+      url: concept-performance.html
+  - title: AWS
+    links:
+    - title: サポートされる構成
+      url: reference-configs-aws.html
+    - title: AWS のCloud Volumes ONTAP HA ペアについて学ぶ
+      url: concept-ha.html
+    - title: AWSにおけるネットワーク要件／セキュリティ要件
+      url: reference-networking-aws.html
+    - title: 迅速な導入
+      url: task-quick-deploy-aws.html
+    - title: AWSをシークレットクラウドにデプロイする
+      url: task-getting-started-aws-c2s.html
+    - title: AWS Key Management Service を使用して暗号化キーを管理する
+      url: task-aws-key-management.html
+  - title: Azure
+    links:
+    - title: サポートされる構成
+      url: reference-configs-azure.html
+    - title: Azure のCloud Volumes ONTAP HA ペアについて学ぶ
+      url: concept-ha-azure.html
+    - title: Azureにおけるネットワーク要件／セキュリティ要件
+      url: reference-networking-azure.html
+    - title: 迅速な導入
+      url: task-quick-deploy-azure.html
+    - title: マーケットプレイスにデプロイする
+      url: task-deploy-cvo-azure-mktplc.html
+    - title: Azure Key Vault を使用して暗号化キーを管理する
+      url: task-azure-key-vault.html
+  - title: Google Cloud
+    links:
+    - title: サポートされる構成
+      url: reference-configs-gcp.html
+    - title: Google Cloud のCloud Volumes ONTAP HA ペアについて学ぶ
+      url: concept-ha-google-cloud.html
+    - title: Google Cloudにおけるネットワーク要件／セキュリティ要件
+      url: reference-networking-gcp.html
+    - title: 迅速な導入
+      url: task-getting-started-gcp.html
+    - title: Google Cloud KMS を使用して暗号化キーを管理します
+      url: task-google-key-manager.html
+  - title: システムおよびストレージ管理
+    links:
     - title: 容量ベースのライセンスを管理する
       url: task-manage-capacity-licenses.html
-    - title: Exchangeの未割り当てノードベースライセンス
-      url: task-manage-node-licenses.html#exchange-unassigned-node-based-licenses
-    - title: Keystoneサブスクリプションの管理
-      url: task-manage-keystone.html
-  - title: ストレージ管理
-    links:
-    - title: ボリュームの作成
+    - title: ノードベースのライセンスを容量ベースのライセンスに変換する
+      url: task-convert-node-capacity.html
+    - title: システムに FlexVol ボリュームを作成する
       url: task-create-volumes.html
-    - title: 非アクティブなデータをオブジェクトストレージに階層化する
+    - title: 非アクティブデータの階層化
       url: task-tiering.html
-    - title: FlexCacheでデータアクセスを高速化
-      url: task-accelerate-data-access.html
-    - title: ONTAP SAN Host Configuration
-      url: https://docs.netapp.com/us-en/ontap-sanhost
-  - title: システム管理
-    links:
-    - title: Cloud Volumes ONTAP のアップグレード
-      url: task-updating-ontap-cloud.html
-    - title: Cloud Volumes ONTAPを停止して起動する
-      url: task-managing-state.html
-  - title: セキュリティ
-    links:
-    - title: NetApp暗号化でボリュームを暗号化する
+    - title: ストレージVMの管理
+      url: task-managing-svms.html
+    - title: Cloud Volumes ONTAP でボリュームを暗号化する
       url: task-encrypting-volumes.html
-    - title: ランサムウェア対策の強化
-      url: task-protecting-ransomware.html
-  - title: API
+  - title: APIリファレンス（NetApp Console Automation）
     links:
-    - title: Cloud Volumes ONTAP APIの概要
-      url: https://docs.netapp.com/us-en/bluexp-automation/cm/overview.html
-    - title: APIを使用する準備
-      url: https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html
     - title: APIリファレンス
-      url: https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html
-  - title: トラブルシューティング
+      url: https://docs.netapp.com/us-en/console-automation/cm/overview.html
+    - title: Cloud Volumes ONTAP APIの概要
+      url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
+    - title: APIを使用する準備
+      url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
+  - title: その他のリソース
     links:
-    - title: NetAppのナレッジ ベース
+    - title: トラブルシューティング
       url: https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Volumes_ONTAP_(CVO)
-  - title: 参照
-    links:
-    - title: サポートされている構成
-      url: https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html
+    - title: ONTAPのユーザ インターフェイス
+      url: https://docs.netapp.com/us-en/ontap/concepts/introducing-ontap-interfaces-concept.html
+    - title: Cloud Volumes ONTAP に ONTAP CLI を使用する
+      url: https://docs.netapp.com/us-en/ontap-cli/index.html
     - title: サポートされているクラウドリージョン
       url: https://bluexp.netapp.com/cloud-volumes-global-regions
     - title: 電卓
       url: https://www.netapp.com/ontap-cloud/pricing/
-  - title: ブログとコミュニティ
-    links:
-    - title: NetApp Console
-      url: https://www.netapp.com/console
-    - title: NetApp Data Services
-      url: https://www.netapp.com/data-services/
     - title: NetAppコミュニティ
       url: https://community.netapp.com/

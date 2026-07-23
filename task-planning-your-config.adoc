@@ -57,7 +57,7 @@ link:https://docs.aws.amazon.com/local-zones/latest/ug/getting-started.html["AWS
 
 Cloud Volumes ONTAP は、選択したライセンス タイプに応じて、いくつかのインスタンス タイプをサポートします。
 
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["AWS でサポートされているCloud Volumes ONTAPの構成"^]
+link:reference-configs-aws.html["AWS でサポートされているCloud Volumes ONTAPの構成"]
 
 
 

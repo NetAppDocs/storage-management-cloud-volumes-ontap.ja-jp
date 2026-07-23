@@ -582,7 +582,7 @@ NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込
 . コンソール エージェントに使用するタグを追加し、構成を保存します。
 
 
-.関連トピック
+.関連リンク
 * link:task-verify-autosupport.html["Cloud Volumes ONTAPのAutoSupport設定を確認する"]
 * https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["ONTAPの内部ポートについて学ぶ"^] 。
 
