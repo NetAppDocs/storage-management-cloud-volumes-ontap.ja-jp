@@ -1,0 +1,210 @@
+---
+sidebar: sidebar 
+permalink: task-azure-onelake.html 
+keywords: Azure, AI, integration, OneLake, analytics, ONTAP S3, Microsoft Fabric, OneLake shortcut, Azure AI Search, On-Premises Data Gateway, OPDG 
+summary: Cloud Volumes ONTAP を ONTAP S3 マルチプロトコル アクセスで設定し、Azure AI サービスが Microsoft OneLake を通じて Cloud Volumes ONTAP システムに保存されているデータを読み取れるようにします。 
+---
+= Cloud Volumes ONTAP システムを Microsoft OneLake と統合して AI と分析に活用する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAPを https://community.fabric.microsoft.com/["Microsoft Fabric"^]と統合し、 https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^]を使用することで、既存のCloud Volumes ONTAP NASデータをPower BI、Azure AI Search、OpenAI、Microsoft CopilotなどのMicrosoftの分析およびAIサービスで利用できるようになります。この統合には、データの移動や重複は一切必要ありません。この統合では、 https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["ONTAP S3マルチプロトコル"^]アクセスを使用して、Cloud Volumes ONTAPを既存のMicrosoft Fabricレイクハウスに接続します。
+
+
+
+[[create-a-root-ca-certificate-for-the-ontap-s3-server]]
+== ONTAP S3 サーバーのルート CA 証明書を作成する
+
+Microsoft OneLake と ONTAP S3 サーバー間の HTTPS 接続を保護するには、証明書が必要です。この手順では、Cloud Volumes ONTAP でルート CA 証明書を作成し、ONTAP S3 サーバー用の署名付き証明書を生成します。
+
+CA証明書の作成とインストールに関する詳細については、 https://docs.netapp.com/us-en/ontap/s3-config/create-install-ca-certificate-svm-task.html["ONTAP S3 対応 SVM に CA 証明書を作成してインストールする"^]を参照してください。
+
+.開始する前に
+統合プロセスを開始する前に、Cloud Volumes ONTAP システムが稼働していることを確認してください。
+
+.手順
+. 仮想ネットワーク（vNet）内のVMからSSHを使用するか、Azure Bastionを経由して、Cloud Volumes ONTAPシステムに接続します。
+. ルートCA証明書を作成します。
++
+[source, CLI]
+----
+security certificate create -vserver <svm_cvo> -type root-ca -common-name <svm_cvo_ca>
+----
++
+次に例を示します。
+
++
+[source, CLI]
+----
+security certificate create -vserver svm_cvopsa2 -type root-ca -common-name svm_cvo_ca
+
+The certificate's generated name for reference: svm_cvo_ca_159D1587CE21E9D4_svm_cvo_ca
+----
+. 証明書署名要求（CSR）と秘密鍵を生成します。
++
+
+NOTE: ONTAP S3エンドポイント（S3サーバー名）の完全修飾ドメイン名（FQDN）を選択してください（例： `s3.cvo.com`）。そして、 `-common-name`と `-dns-name`の両方のパラメータの値として指定します。この値は、後で ONTAP S3 サーバーを設定する際に必要になるため、メモしておいてください。
+
++
+[source, CLI]
+----
+security certificate generate-csr -common-name s3.cvo.com  -dns-name s3.cvo.com
+----
+. このコマンドはCSRと秘密鍵を生成します。両方の値をコピーして保存してください。次のステップではCSRが必要で、後で ONTAP S3 サービスを設定する際には秘密鍵が必要になります。出力からCSRと秘密鍵をコピーしてください。
+. ルートCA証明書を使用して証明書要求に署名します。プロンプトが表示されたら、前の手順で生成されたCSRを貼り付けてください。
++
+** `ca_cert_name` - ルートCA証明書の名前
+** `ca_cert_serial_number` - CAシリアル番号
++
+[source, CLI]
+----
+security certificate sign -vserver svm_name -ca <ca_cert_name> -ca-serial <ca_cert_serial_number>
+----
+
+
+. このコマンドは署名付き証明書を返します。証明書の内容をコピーして保存してください。前の手順で生成したこの証明書と秘密鍵は、ONTAP S3サーバーを設定する際に使用します。
+
+
+
+
+[[configure-cloud-volumes-ontap-s3]]
+== Cloud Volumes ONTAP S3 の設定
+
+ONTAP S3 マルチプロトコル アクセスを設定して、OneLake が Cloud Volumes ONTAP ボリュームに保存されているデータを読み取れるようにします。
+
+. Cloud Volumes ONTAP システム用に ONTAP S3 を設定します。
++
+.. NetApp Console の左側のナビゲーションメニューから、*ストレージ > 管理*を選択します。
+.. コンソールエージェントを選択し、Cloud Volumes ONTAP システムをクリックして、右側のメニューオプションから「System Manager」を選択します。
+.. SVM でS3 プロトコル アクセスを有効にします。詳細については、link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/enable-access-nas-data-task.html["ONTAPドキュメント：NASデータへのS3クライアントアクセスを有効にする"^]を参照してください。
++
+
+NOTE: 設定時には、前のセクションで作成した署名付き証明書と秘密鍵を使用してください。
+
++
+image::screenshot-ontap-s3-svm-config.png[スクリーンショット ONTAP S3 SVM 設定]
+
+.. 既存のLIFを再利用するか、新しいデータLIFを設定するには、*「SMB/CIFSまたはNFSプロトコルで使用されるデータインターフェイスを再利用する」*を選択します。
+
+
+. アクセスキーとシークレットアクセスキーをコピーして保存してください。OneLake ショートカットを作成する際に、これらの認証情報を使用する必要があります。
+. S3バケットに OneLake からアクセスするための読み取り専用グループを作成します。
++
+.. S3サーバーを有効にした後、S3サーバーを設定し、新しいグループを追加します。「グループ」を選択し、「追加」を選択します。
+.. 前の手順で自動的に作成された S3 ユーザーで新しいグループを追加し、 `ReadOnlyAccess`ポリシーを割り当てます。
++
+image::screenshot-onelake-s3-grp.png[onelake s3 grpのスクリーンショット]
+
+
+
+
+
+
+
+[[create-an-s3-nas-bucket]]
+== S3 NASバケットを作成する
+
+S3 NASバケットを作成します。詳細については、link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/create-nas-bucket-task.html["ONTAPドキュメント：S3 NASバケットを作成する"^]を参照してください。
+
+
+NOTE: バケットを作成する際に、OneLake を通じて利用可能にしたいデータを含む NAS ボリュームを選択します。
+
+
+
+[[install-and-configure-microsoft-on-premises-data-gateway]]
+== Microsoft オンプレミス データ ゲートウェイのインストールと構成
+
+Microsoft オンプレミス データ ゲートウェイを、Cloud Volumes ONTAP システムと同じ仮想ネットワーク（vNet）内の VM にインストールして構成します。ONTAP S3 サーバーへの HTTPS 接続の信頼を確立するために、VM に Cloud Volumes ONTAP ルート CA 証明書をインストールします。
+
+.開始する前に
+* VMと前のセクションで作成した ONTAP S3 サーバー間にネットワーク接続があることを確認してください。
+* 以前に設定した ONTAP S3 サーバー名が、ONTAP S3 サーバーに割り当てられたデータ インターフェイス （LIF） の IP アドレスに解決されること、および VM がこの名前を正常に解決できることを確認してください。
+
+
+.手順
+. Cloud Volumes ONTAP のCA証明書をインストールします。
++
+.. VM上でブラウザを開き、S3サーバーに移動してください： `\https://<CVO-S3-SERVER-URL>`
+.. アドレスバーの鍵アイコンを選択し、次に「証明書の詳細」を選択します。
+.. 「Certificate Viewer」ウィンドウで、「Details」タブを選択し、証明書リストのルート CA の最初の行を選択します。
++
+image::screenshot-onelake-dnld-cert.png[スクリーンショット onelake dnld cert]
+
+.. 「エクスポート…」を選択し、ファイルを `DER`形式でローカルに保存します。
++
+image::screenshot-onelake-save-cert.png[スクリーンショット onelake save cert]
+
+.. 保存した証明書ファイルを開き、「証明書のインストール…」を選択します。
++
+image::screenshot-onelake-install-cert.png[スクリーンショット onelake 証明書のインストール]
+
+.. 「証明書のインポートウィザード」で「ローカルマシン」を選択し、証明書を「信頼されたルート証明機関」ストアに配置します。
++
+image::screenshot-onelake-import-cert.png[スクリーンショット onelake import cert]
+
+.. 画面の指示に従って証明書のインストールを完了してください。
+.. 新しいブラウザウィンドウを開き、 `\https://<CVO-S3-SERVER-URL>`にアクセスして証明書のインストールを確認してください。ONTAP S3サーバーは、HTTPS通信が正しく機能していることを示すXMLアクセス拒否応答を返します。
+
+
+. Microsoft オンプレミス データ ゲートウェイを標準モードで VM にダウンロードしてインストールします。インストール手順については、link:https://learn.microsoft.com/en-us/data-integration/gateway/service-gateway-install["Microsoft ドキュメント：オンプレミス データ ゲートウェイのインストール"^] を参照してください。
+
+
+
+
+[[connect-to-onelake]]
+== OneLakeに接続する
+
+Microsoft Fabric レイクハウスに Amazon S3 互換のショートカットを作成して、Cloud Volumes ONTAP S3 バケットに保存されているデータにアクセスします。
+
+.開始する前に
+* 既存の https://learn.microsoft.com/en-us/fabric/onelake/create-lakehouse-onelake["Microsoft Fabric レイクハウス"^]ワークスペース内。
+* お使いの環境で、*設定 > 接続とゲートウェイの管理* に移動し、オンプレミス データ ゲートウェイが一覧表示され、接続されていることを確認してください。
+* Cloud Volumes ONTAPのルートCA証明書がゲートウェイVMにインストールされています。
+* 前の手順で得られた値は以下のとおりです：
++
+** ONTAP S3サーバー名（FQDN）
+** アクセス キー
+** シークレット アクセス キー
+
+
+
+
+.手順
+. レイクハウスで、以下の詳細情報を使用して Cloud Volumes ONTAP S3 バケットへの Amazon S3 互換ショートカットを作成します。ショートカットを作成する手順については、 https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut["Microsoft ドキュメント：Amazon S3 互換ショートカットを作成する"^]を参照してください。
++
+** URL：ONTAP S3サーバーの形式 `\https://<S3-SERVER-FQDN>`
+** データゲートウェイ：以前に設定したオンプレミスのデータゲートウェイ
+** アクセス キー ID
+** シークレット アクセス キー
++
+image::screenshot-onelake-shortcut1.png[スクリーンショット onelake shortcut1]
+
+
+
+. ショートカットが作成されたら、それがレイクハウスの*エクスプローラー > ファイル*の下に表示されること、およびショートカットを通じて Cloud Volumes ONTAP ボリュームに保存されているファイルを参照できることを確認してください。
++
+image::screenshot-cvo-s3-onelake-confirm.png[OneLake レイクハウス エクスプローラー ペインの「ファイル」の下に表示された、確認済みの Cloud Volumes ONTAP S3 ショートカット接続を示すスクリーンショット]
+
+
+
+
+
+[[next-steps-index-data-with-azure-ai-search]]
+== 次のステップ：Azure AI Search でデータをインデックス化する
+
+OneLake ショートカットを作成したら、Azure AI Search を構成して、OneLake を通じて Cloud Volumes ONTAP ボリュームに保存されているデータをインデックス化できます。Azure AI Search のインデックス作成機能により、Microsoft Copilot や Azure OpenAI などの AI アプリケーションでデータを利用できるようになります。
+
+詳細については、link:https://learn.microsoft.com/en-us/azure/search/search-how-to-index-onelake-files["Microsoft のドキュメント：OneLake ファイルのインデックス作成方法"^]を参照してください。
+
+.関連リンク
+* https://www.netapp.com/blog/optimize-ai-analytics-microsoft-onelake/["NetAppの Cloud Volumes ONTAP と OneLake に関するブログ"^]
+* https://learn.microsoft.com/en-us/fabric/onelake/create-lakehouse-onelake["Microsoft OneLake レイクハウス"^]
+* https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search?tabs=indexing%2Cquickstarts["Microsoft のドキュメント：Azure AI Search とは？"^]
+* https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["ONTAP ドキュメント：ONTAP S3 マルチプロトコルサポート"^]
+

@@ -3294,90 +3294,7 @@
   <block id="f21c1bc5bcee9dae9d5eb025e4c6d884" category="paragraph">アグリゲートの容量を少なくとも 256 GiB、またはアグリゲートのサイズの 10% 増やす必要があることに注意してください。たとえば、1.77 TiB の集約がある場合、10% は 181 GiB になります。これは 256 GiB より小さいため、集計のサイズを最小値の 256 GiB だけ増やす必要があります。</block>
   <block id="2eb14dc3edd9fb392b8095df85f2f222" category="summary">NetApp Consoleから容量ベースのライセンスを管理して、 NetAppアカウントにCloud Volumes ONTAPシステムに十分な容量があることを確認します。</block>
   <block id="05fef605ad17853dff22052e9ab0016f" category="doc">Cloud Volumes ONTAPの容量ベースのライセンスを管理する</block>
-  <block id="93ed65a89f306426be7980ddc22595e8" category="paragraph">_容量ベースのライセンス_ を使用すると、容量 1 TiB ごとにCloud Volumes ONTAPの料金を支払うことができます。</block>
-  <block id="96a603641f48a14047d20b26a1cfeefa" category="paragraph">容量ベースのCloud Volumes ONTAPライセンスは、 NetApp Consoleから管理できます。</block>
-  <block id="d3c2fb9e07de60e097ad32d8e9ad56eb" category="admonition">コンソールで管理される製品とサービスの実際の使用量と計測値は常に GiB と TiB で計算されますが、GB/GiB と TB/TiB という用語は同じ意味で使用されます。これは、クラウドマーケットプレイスのリスト、価格見積もり、リストの説明、およびその他のサポートドキュメントに反映されます。</block>
-  <block id="8caaaa4afae93c31b741be21eed669cc" category="inline-link">Cloud Volumes ONTAPライセンスの詳細</block>
-  <block id="25e7b507c919c21847b291c84a88ba36" category="paragraph"><block ref="73e1a6a2075a5d292111b694a644abf3" category="inline-link-rx"></block> 。</block>
-  <block id="a5e948b3ddd458b93125330e6dde9f94" category="section-title">NetApp Consoleにライセンスを追加する方法</block>
-  <block id="792eeb7f686f2ad37b664f6478d40bed" category="paragraph">NetApp の営業担当者からライセンスを購入すると、 NetAppシリアル番号と追加のライセンス詳細が記載されたメールが送信されます。</block>
-  <block id="8948f0f0bc878d55b118339a79ece349" category="paragraph">その間、コンソールは自動的に NetApp のライセンス サービスにクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがなければ、ライセンスが追加されます。</block>
-  <block id="ad0be4bc913a8026a3f5e42fc7656d23" category="inline-link">購入したライセンスをアカウントに追加する方法を学びます</block>
-  <block id="4db74114ac6514de873c5bc9b5b30cf1" category="paragraph">コンソールでライセンスを追加できない場合は、手動で追加する必要があります。たとえば、コンソール エージェントがインターネットにアクセスできない場所にインストールされている場合は、ライセンスを自分で追加する必要があります。<block ref="21379db3c6d74c3a5d2d6d121cdcf537" category="inline-link-rx"></block> 。</block>
-  <block id="03021ab228ad1d1c921bbf536e2913a4" category="section-title">アカウントで消費された容量を表示する</block>
-  <block id="61233c99902f0b66422b062168ba63a5" category="paragraph">コンソールには、アカウント内の消費済み容量の合計と、ライセンス パッケージ別の消費済み容量が表示されます。これにより、料金がどのように請求されるか、追加の容量を購入する必要があるかどうかを把握できます。</block>
-  <block id="f6d5cd6d364915d1012d5e7d29aa3d78" category="list-text">左側のナビゲーション ペインから、*管理 &gt;Licenses and subscriptions*を選択します。</block>
-  <block id="a495aa39c60dc5d48d7bb146e6f7265a" category="list-text">*概要*タブのCloud Volumes ONTAPタイルには、アカウントにプロビジョニングされている現在の容量が表示されます。</block>
-  <block id="85ac3ef33729a6408e85a09c9b5ebc4f" category="inline-image-macro">width=300 Cloud Volumes ONTAPライセンスとサブスクリプションの容量の概要を表示するスクリーンショット。</block>
-  <block id="ef94465b68195bb5523f36cf2d8ea3bd" category="paragraph"><block ref="ef94465b68195bb5523f36cf2d8ea3bd" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b989e51822e011c35b6e3fc2f6e007cf" category="list-text">_直接ライセンス_ は、 NetAppアカウント内のすべてのCloud Volumes ONTAPシステムのプロビジョニングされた合計容量です。課金は、ボリューム内のローカル、使用済み、保存済み、または有効なスペースに関係なく、各ボリュームのプロビジョニングされたサイズに基づいて行われます。</block>
-  <block id="80495a5c91b6e7cae60c8c5c750734bc" category="list-text">_年間契約_ は、 NetAppから購入したライセンス容量 (ライセンス持ち込み (BYOL) またはマーケットプレイス契約) の合計です。</block>
-  <block id="18ef4a3a3844dea97bcae43ccdf60b1e" category="list-text">_PAYGO_ は、クラウド マーケットプレイスのサブスクリプションを使用してプロビジョニングされた合計容量です。  PAYGO による課金は、消費容量がライセンス容量よりも大きい場合、またはコンソールで利用できる BYOL ライセンスがない場合にのみ使用されます。</block>
-  <block id="d02d58b5b8770f720f9d912913a80f1a" category="list-text">各ライセンス パッケージの消費容量を確認するには、[表示] を選択します。</block>
-  <block id="a4f95858d82d890dcc9a5123e1f315e6" category="list-text">購入した各パッケージ ライセンスの詳細を表示するには、[ライセンス] タブを選択します。</block>
-  <block id="d30bc4bd5cee7ac23a1df54311d1f4b3" category="inline-link">Essentials パッケージの料金について</block>
-  <block id="b2678f2b003e23f7f5f3a7cd8451a26b" category="paragraph">Essentials パッケージに表示される容量をよりよく理解するには、充電の仕組みを理解しておく必要があります。<block ref="8d04d0643798fbb69d5260f477ea213c" category="inline-link-rx"></block> 。</block>
-  <block id="452cf2122664eef3e8c620ec413c8d43" category="list-text">ライセンス消費モデル別に消費された容量を確認するには、「*サブスクリプション*」タブを選択します。このタブには、PAYGO ライセンスと年間契約ライセンスの両方が含まれます。</block>
-  <block id="a6fd7fff8d44ac917f29be623cc64da2" category="paragraph">現在表示している組織に関連付けられているサブスクリプションのみが表示されます。</block>
-  <block id="24456dcfa7781b6f3a972b5f11ed0d88" category="list-text">サブスクリプションに関する情報を表示しながら、テーブル内の詳細を操作できます。詳細を表示するには行を展開します。</block>
-  <block id="56594b7222b35921f9fe676eadf6bbdf" category="inline-image-macro">表のヘッダーの末尾にあるプラスアイコン</block>
-  <block id="2eab7ff26639a8d2e45cece515ff781f" category="list-text">選択<block ref="98b11313fea6c4106e5a3c018f0ffbc9" category="inline-image-macro-rx" type="image"></block>テーブルに表示する列を選択します。期間と自動更新の列はデフォルトでは表示されないことに注意してください。  「自動更新」列には、Azure 契約の更新情報のみが表示されます。</block>
-  <block id="8ac1ecc7ceb7a49d071b4f1b71f0e176" category="section-title">パッケージの詳細を表示する</block>
-  <block id="f88e8fee4b6b78cbc9779b73098653b5" category="paragraph">Cloud Volumes ONTAPページでレガシー モードに切り替えると、パッケージごとに使用されている容量の詳細を表示できます。</block>
-  <block id="4a95292c803539c8cf72591c54db0644" category="list-text">各ライセンス パッケージのプロビジョニングされた容量を確認するには、[表示] を選択します。</block>
-  <block id="40d1f3228e91a00383279859612f7ba5" category="list-text">*詳細表示に切り替える*を選択します。</block>
-  <block id="3df898a44cd4e747f0651fff3683bca8" category="inline-image-macro">詳細表示に切り替えるボタンのスクリーンショット</block>
-  <block id="4247aeb98dbe93036110943452fb15a7" category="paragraph"><block ref="4247aeb98dbe93036110943452fb15a7" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="cf5e0e2d5e3b97433dcea18ed2c97b91" category="list-text">確認したいパッケージの詳細を表示します。</block>
-  <block id="f651647ac9ca970bf81f92917731dcbb" category="inline-image-macro">標準ビューへの切り替えボタンのスクリーンショット</block>
-  <block id="322ba871ee257d334ca304536b56b324" category="paragraph"><block ref="322ba871ee257d334ca304536b56b324" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="662442d32a5fd91298fcf8b6391fdf17" category="section-title">充電方法を変更する</block>
-  <block id="3a320310638e1b673183daababec1ba0" category="paragraph">容量ベースのライセンスは、_パッケージ_の形式で利用できます。Cloud Volumes ONTAPシステムを作成するときは、ビジネス ニーズに応じて複数のライセンス パッケージから選択できます。システムを作成した後にニーズが変化した場合は、いつでもパッケージを変更できます。たとえば、Essentials パッケージから Professional パッケージに変更する場合があります。</block>
-  <block id="58dcfad3183b701a8f1b8781a5644d09" category="inline-link">容量ベースのライセンスパッケージの詳細</block>
-  <block id="6b5c2460f150173d3723de8a857a4d33" category="paragraph"><block ref="179c8a3ed717f2c4de3149f0e9edf685" category="inline-link-rx"></block> 。</block>
-  <block id="31ccaa5879eee7a69ef3c48f1004c59c" category="list-text">課金方法を変更しても、 NetAppから購入したライセンス (BYOL) を通じて課金されるか、クラウド プロバイダーのマーケットプレイスの従量課金制 (PAYGO) サブスクリプションを通じて課金されるかには影響しません。</block>
-  <block id="ac2e949b0b6c58b83082083327f0fd77" category="paragraph">コンソールは常に最初にライセンスに対して課金を試みます。ライセンスが利用できない場合は、マーケットプレイスのサブスクリプションに対して料金が請求されます。  BYOL サブスクリプションをマーケットプレイス サブスクリプションに変換したり、その逆を行ったりする必要はありません。</block>
-  <block id="cfdb32f80009b1e5c5c0468dda9f013d" category="list-text">クラウド プロバイダーのマーケットプレイスからプライベート オファーまたは契約を結んでいる場合、契約に含まれていない課金方法に変更すると、BYOL ( NetAppからライセンスを購入した場合) または PAYGO に対して課金されることになります。</block>
-  <block id="2daabc6822724771970f17e8ae6a4cee" category="list-text">*概要*タブを選択します。</block>
-  <block id="5b37c7034b369fcc6d9b931180eef46f" category="list-text">Cloud Volumes ONTAPタイルで、[*表示*] を選択します。</block>
-  <block id="13bb1907bdca20408e78b483332beab6" category="inline-image-macro">レガシービューに切り替えるボタンのスクリーンショット</block>
-  <block id="07d6c0208f77e132c7e96286497713f8" category="paragraph"><block ref="07d6c0208f77e132c7e96286497713f8" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0e4bc6fa91df5edc0eafb52c324b38f3" category="list-text">*容量ベースのライセンス*テーブルまで下にスクロールし、*課金方法の変更*を選択します。</block>
-  <block id="7c32cfa3b543a8f69513e758629bc263" category="inline-image-macro">コンソールのCloud Volumes ONTAPページのスクリーンショット。テーブルのすぐ上に「課金方法の変更」ボタンがあります。</block>
-  <block id="7c3ea09c5ec07ba244bc674f632d4c79" category="paragraph"><block ref="7c3ea09c5ec07ba244bc674f632d4c79" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="e6e33712a923fd615674fad11214317f" category="list-text">*課金方法の変更*ポップアップで、 Cloud Volumes ONTAPシステムを選択し、新しい課金方法を選択して、パッケージ タイプを変更するとサービス料金に影響することを理解していることを確認します。</block>
-  <block id="c2a404ae45ebabafb7f3598bcd8a1a18" category="list-text">*充電方法の変更*を選択します。</block>
   <block id="37532cd27e3c53471b1caed0ba1f90ed" category="section-title">使用状況レポートをダウンロードする</block>
-  <block id="85be1733025dd0b3e190d956ed6e380c" category="paragraph">コンソールから 4 つの使用状況レポートをダウンロードできます。これらの使用状況レポートには、サブスクリプションの容量の詳細が提供され、 Cloud Volumes ONTAPサブスクリプション内のリソースに対してどのように課金されるかが示されます。ダウンロード可能なレポートでは、ある時点でのデータが取得され、他のユーザーと簡単に共有できます。</block>
-  <block id="fe1db4ddb29c070770259869ba7aa5bb" category="inline-image-macro">スクリーンショットは、Cloud Volumes ONTAP の容量ベースのライセンス ページを示し、使用状況レポート ボタンが強調表示されています。</block>
-  <block id="61b0c512c4663de969f8c21e23e50f0e" category="paragraph"><block ref="61b0c512c4663de969f8c21e23e50f0e" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="d11dcbec58d47bd13de1dcccfbd640ff" category="paragraph">以下のレポートをダウンロードできます。表示される容量値は TiB 単位です。</block>
-  <block id="c596c9291f76a11af1aefc235c262de6" category="list-text">総消費容量</block>
-  <block id="8dd7541d6c4e83402d88448119068a02" category="list-text">事前コミット済み容量合計</block>
-  <block id="b01a146aed01aa8af61e034befc116ce" category="list-text">合計BYOL容量</block>
-  <block id="109323142d354af9ccc7eb636b1dcbce" category="list-text">マーケットプレイス契約総容量</block>
-  <block id="baf09c6c43fd26effd8f15e252649384" category="list-text">総PAYGO容量</block>
-  <block id="a65d4ec7ff2941ad2ea2bc688a6dbbb3" category="list-text">*ストレージ VM の使用状況*: このレポートには、課金された容量がCloud Volumes ONTAPシステムとストレージ仮想マシン (SVM) 全体でどのように内訳されているかが表示されます。この情報はレポートでのみ利用可能です。次の情報が含まれています。</block>
-  <block id="c8e2277ecfb1427838c488c217f99466" category="list-text">クラウド</block>
-  <block id="4736cd35bf5b3fe63e1b1785fb2aa664" category="list-text">NetAppアカウントID</block>
-  <block id="3c4e32d95f12c00d16a76057a7af18f6" category="list-text">システム設定</block>
-  <block id="203c4205822c007d08ecafe163b02ea2" category="list-text">SVM名</block>
-  <block id="b567847dd629376ac84ed4958fd61687" category="list-text">プロビジョニング済み容量</block>
-  <block id="a09b8df9fd0007770b0a8c10f9a17d81" category="list-text">充電容量のまとめ</block>
-  <block id="671095c17b0e9e0deda06cff2fa103e6" category="list-text">マーケットプレイスの請求期間</block>
-  <block id="d38764d5edf26bd9b744840cd2ea3c17" category="list-text">Cloud Volumes ONTAPパッケージまたは機能</block>
-  <block id="a016fcdfd1d7159ffd537d78d4b68f74" category="list-text">課金SaaSマーケットプレイスのサブスクリプション名</block>
-  <block id="fe6ac599d13d94a0ee0800482bec7e41" category="list-text">課金SaaSマーケットプレイスサブスクリプションID</block>
-  <block id="427af860f9733f0c5427a1408195bb2b" category="list-text">ワークロードの種類</block>
-  <block id="2d0394437aca88cac134fb1bce72e08f" category="list-text">*ボリュームの使用状況*: このレポートには、Cloud Volumes ONTAPシステム内のボリュームごとに課金容量がどのように内訳されているかが表示されます。この情報はコンソールのどの画面でも表示されません。以下の情報が含まれます。</block>
-  <block id="cccc95b62282240886ee975a3f122adb" category="list-text">ボリューム ID</block>
-  <block id="fc18634852d4299cd5f8c7ad55ddefbe" category="list-text">ボリューム タイプ</block>
-  <block id="3756f66a273f440893f16ee968ce3450" category="list-text">ボリュームプロビジョニング容量</block>
-  <block id="8b3da2ed858ee5c956acde26c9ef7dd0" category="admonition">FlexCloneボリュームは料金が発生しないため、このレポートには含まれません。</block>
-  <block id="b2b74732b80350970fadfac4db3ba17e" category="list-text">*概要*タブで、 Cloud Volumes ONTAPタイルから*表示*を選択します。</block>
-  <block id="f4c2ce2a853a74c3742ccc54482c074e" category="list-text">*使用状況レポート*を選択します。</block>
-  <block id="23e918e9f1c9f1bb5769dcc236489de2" category="paragraph">使用状況レポートがダウンロードされます。</block>
-  <block id="05655bb3cbd3604d6c71a1db823ad94f" category="list-text">レポートにアクセスするには、ダウンロードしたファイルを開きます。</block>
   <block id="2edd8edb29f9d701956a9cdf8a5325c4" category="doc">コンソールエージェントでCloud Volumes ONTAPアグリゲート容量を管理する</block>
   <block id="bd20e2ea38068ff0b9b9efb708d88c42" category="paragraph">各コンソール エージェントには、Cloud Volumes ONTAPの総容量を管理する方法を決定する設定があります。</block>
   <block id="5b930e91ec691a7af5d8bc5eb7a33ee7" category="paragraph">これらの設定は、コンソール エージェントによって管理されるすべてのCloud Volumes ONTAPシステムに影響します。別のコンソール エージェントがある場合は、別の方法で構成できます。</block>
@@ -3418,75 +3335,6 @@
   <block id="492847bcbc9ec0bd3075b612aa43e4a7" category="list-text">* Keystone*を選択します。</block>
   <block id="6e1a9790b199742bec95dea2070e2f3f" category="summary">NetApp Consoleでノードベースのライセンスを管理し、各Cloud Volumes ONTAPシステムに必要な容量を持つ有効なライセンスがあることを確認します。</block>
   <block id="160221c1e99e53b72af8a65c2440852b" category="doc">Cloud Volumes ONTAPのノードベースのライセンスを管理する</block>
-  <block id="63e5ea33dc9b9a10458ac73abae91075" category="paragraph">NetApp Consoleでノードベースのライセンスを管理して、各Cloud Volumes ONTAPシステムに必要な容量を持つ有効なライセンスがあることを確認します。</block>
-  <block id="4627bd080634e9380c75a1cc04a09486" category="paragraph">_ノードベースのライセンス_ は、以前の世代のライセンス モデルです (新規顧客には利用できません)。</block>
-  <block id="0d4e36aae457a1001b3373de2fd510f1" category="list-text">NetAppから購入したライセンスを持参 (BYOL)</block>
-  <block id="17ac9e85cf5b6f7b77acf61fb7721242" category="list-text">クラウド プロバイダーのマーケットプレイスから時間単位の従量課金制 (PAYGO) サブスクリプションを購入する</block>
-  <block id="3501754bb69f70ed8f72d23562bab97c" category="paragraph">NetApp ConsoleからノードベースのCloud Volumes ONTAPライセンスを管理できます。</block>
-  <block id="9426b05d2fc423b761e34f9d75b4066d" category="section-title">PAYGOライセンスの管理</block>
-  <block id="fcd2026c30c1b902d032e35337e8888c" category="paragraph">「Licenses and subscriptions」メニューでは、シリアル番号や PAYGO ライセンスの種類など、各 PAYGO Cloud Volumes ONTAPシステムの詳細を表示できます。</block>
-  <block id="343c7ed77049523f4d99e8d4c436a330" category="list-text">ドロップダウンから*ノードベースのライセンス*を選択します。</block>
-  <block id="87089bacab591352ad6ad6579e34d93e" category="list-text">[PAYGO]をクリックします。</block>
-  <block id="82be8e06ac169a3de0fce42cd01f5760" category="list-text">各 PAYGO ライセンスの詳細を表で表示します。</block>
-  <block id="bbfa86a1d5f6c6f85f7a434a983b34e1" category="inline-image-macro">Licenses and subscriptionsページに 3 つの PayGo ライセンスを含むテーブルが表示されているスクリーンショット。各行には、名前、システムの種類、シリアル番号、パッケージ、ライセンスを管理するためのリンクが表示されます。</block>
-  <block id="cf03ba6c2dea0eb29457f99fdcd69b82" category="paragraph"><block ref="cf03ba6c2dea0eb29457f99fdcd69b82" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a45c9786e45613660f519d740b30671a" category="list-text">必要に応じて、「*PAYGO ライセンスの管理*」をクリックして、PAYGO ライセンスを変更するか、インスタンス タイプを変更します。</block>
-  <block id="00b61e8d20d055a6505bd5bc88e18aeb" category="section-title">BYOLライセンスの管理</block>
-  <block id="33375e3f722897194d509130054856dd" category="paragraph">システム ライセンスと追加容量ライセンスを追加および削除することで、 NetAppから直接購入したライセンスを管理します。</block>
-  <block id="4742f5b0c38f7c105542ecb15a214212" category="section-title">割り当てられていないライセンスを追加する</block>
-  <block id="d0052e7943aa77623453a3374803765d" category="paragraph">新しいCloud Volumes ONTAPシステムを作成するときにライセンスを選択できるように、ノードベースのライセンスをコンソールに追加します。コンソールはこれらのライセンスを「未割り当て」として識別します。</block>
-  <block id="bec033f0535da0f58c9f0a7ccd96e793" category="paragraph">ライセンス ファイルをまだお持ちでない場合は、以下のセクションを参照してください。</block>
-  <block id="684d5df2e069e529d4a4c518d654dc44" category="paragraph">コンソールがライセンスを追加します。ライセンスは、新しいCloud Volumes ONTAPシステムに関連付けるまで、未割り当てとして識別されます。その後、ライセンスは *Licenses and subscriptions* の * BYOL * タブに移動します。</block>
-  <block id="df5b9d272738b4adaa43e7eb4949a0e5" category="section-title">Exchangeの未割り当てノードベースライセンス</block>
-  <block id="76a67f9205ca80ce535686592126df9d" category="paragraph">使用していないCloud Volumes ONTAPの未割り当てのノードベース ライセンスがある場合は、そのライセンスをNetApp Backup and Recoveryライセンス、 NetApp Data Classificationライセンス、またはNetApp Cloud Tieringライセンスに変換して交換できます。</block>
-  <block id="82330159ba1b86113008185841af38f9" category="paragraph">ライセンスを交換すると、 Cloud Volumes ONTAPライセンスが取り消され、サービスに対してドル相当のライセンスが作成されます。</block>
-  <block id="488b3f4a79a8819dabc209f2405c7ba7" category="list-text">Cloud Volumes ONTAP HAペアのライセンスは51 TiBの直接ライセンスに変換されます</block>
-  <block id="d8961eb56e3c50e0da29ec362dcb385a" category="list-text">Cloud Volumes ONTAPシングルノードのライセンスは 32 TiB の直接ライセンスに変換されます</block>
-  <block id="89f1c05b91f27a0ccc4736c51deee49f" category="paragraph">変換されたライセンスの有効期限は、 Cloud Volumes ONTAPライセンスと同じになります。</block>
-  <block id="e0225acc5a75bb0346dd94ed24206c81" category="inline-link-macro">ノードベースのライセンスを交換する方法のチュートリアルを表示します。</block>
-  <block id="d82de0388f091aa9d43371708eb95310" category="paragraph"><block ref="b4c22b5293d3ee433dee9c4b3632dbee" category="inline-link-macro-rx"></block></block>
-  <block id="fff69e388498c7da2216c0a49587cbc8" category="list-text">*ライセンスの交換*をクリックします。</block>
-  <block id="25abdaf706ab9bbfe1775de2626f958f" category="inline-image-macro">未割り当てライセンス ページに表示される Exchange ライセンス オプションのスクリーンショット。</block>
-  <block id="59069c86e2c388bcb56b4ec04ba7c1b1" category="paragraph"><block ref="59069c86e2c388bcb56b4ec04ba7c1b1" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b2bcb667f1a3e2cd665dce56fa38946c" category="list-text">ライセンスを交換するサービスを選択します。</block>
-  <block id="d54ac11d311c4a7a85e11a557ee305e3" category="list-text">プロンプトが表示されたら、HA ペアの追加ライセンスを選択します。</block>
-  <block id="1e4109afcb540c886b450b6944b83567" category="list-text">法的同意書を読み、「同意する」をクリックします。</block>
-  <block id="f56693ead48da8f8372b53a387f22165" category="paragraph">コンソールは、割り当てられていないライセンスを選択したサービスに変換します。新しいライセンスは、[*データ サービス ライセンス*] タブで確認できます。</block>
-  <block id="bed8ee00b54ae810def15122c80a9dba" category="section-title">システムライセンスファイルを取得する</block>
-  <block id="022919ed552faad7f4de98d1abe88fc1" category="paragraph">ほとんどの場合、コンソールはNetAppサポート サイトのアカウントを使用してライセンス ファイルを自動的に取得できます。ただし、それができない場合は、ライセンス ファイルを手動でアップロードする必要があります。ライセンス ファイルがない場合は、netapp.com から取得できます。</block>
-  <block id="3eff90cc077e6c35c01b4fa2ce08352e" category="list-text">に行く<block ref="d4604fbd185a778fcb9e2d4bce6d880d" category="inline-link-rx"></block>NetAppサポート サイトの認証情報を使用してログインします。</block>
-  <block id="7260bbc39295ef94e60be19b73affac6" category="inline-image-macro">スクリーン ショット: 利用可能な製品ラインを含むNetApp License Generator Web ページの例を示します。</block>
-  <block id="c7db6ec8c72cc25c90f19ebafe2ddfbd" category="paragraph"><block ref="c7db6ec8c72cc25c90f19ebafe2ddfbd" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="58f676020d30c00d4b3fb18fc835e7ca" category="section-title">システムライセンスを更新する</block>
-  <block id="b0f33031496e38b99d72e702000365e8" category="paragraph">NetApp の担当者に連絡して BYOL サブスクリプションを更新すると、コンソールはNetAppから新しいライセンスを自動的に取得し、 Cloud Volumes ONTAPシステムにインストールします。コンソールが安全なインターネット接続を介してライセンス ファイルにアクセスできない場合は、自分でファイルを取得し、手動でファイルをアップロードすることができます。</block>
-  <block id="eda4b0f5ee71694deda064c01799f329" category="list-text">*BYOL* タブで、 Cloud Volumes ONTAPシステムの詳細を展開します。</block>
-  <block id="d91a847294f18b5d31d438a059c2532d" category="list-text">システム ライセンスの横にあるアクション メニューをクリックし、*ライセンスの更新*を選択します。</block>
-  <block id="98022931ad96bfc8db710666a48e0416" category="list-text">ライセンス ファイル (HA ペアがある場合は複数のファイル) をアップロードします。</block>
-  <block id="1c523ff18e24f3b5d4d5fa45c4410b01" category="list-text">*ライセンスの更新*をクリックします。</block>
-  <block id="825a0cb9a8312e85f3aa745487c0dbe9" category="paragraph">コンソールは、Cloud Volumes ONTAPシステムのライセンスを更新します。</block>
-  <block id="2c2e7695734e076306fc8ba50ca70c1b" category="section-title">追加容量ライセンスの管理</block>
-  <block id="d452bdec5cf94a61fe23690b513f4a71" category="paragraph">Cloud Volumes ONTAP BYOL システムの追加容量ライセンスを購入して、BYOL システム ライセンスで提供される 368 TiB を超える容量を割り当てることができます。たとえば、最大 736 TiB の容量をCloud Volumes ONTAPに割り当てるために、追加のライセンス容量を 1 つ購入することができます。または、最大 1.4 PiB を得るために、追加容量ライセンスを 3 つ購入することもできます。</block>
-  <block id="6e869ff6c9fd5eb76baa394c52e2ef18" category="section-title">容量ライセンスを追加する</block>
-  <block id="41a0a4fe38c3f00a9fae3056955c9f80" category="paragraph">コンソールの右下にあるチャット アイコンからお問い合わせいただき、追加容量ライセンスを購入してください。ライセンスを購入したら、それをCloud Volumes ONTAPシステムに適用できます。</block>
-  <block id="423cdc57679399d47229e2f74dfc102b" category="list-text">*容量ライセンスの追加*をクリックします。</block>
-  <block id="b0bfc70f0e7f3f10c4334bd53c2c2a27" category="list-text">シリアル番号を入力するか、ライセンス ファイル (HA ペアがある場合は複数のファイル) をアップロードします。</block>
-  <block id="c4e9cc48e592b9354b10b9d54e14525c" category="section-title">容量ライセンスの更新</block>
-  <block id="2526a0404b7268bca72e19dd834baa1e" category="paragraph">追加容量ライセンスの期間を延長した場合は、コンソールでライセンスを更新する必要があります。</block>
-  <block id="555efdea73381bcd8582646f75b68253" category="list-text">容量ライセンスの横にあるアクション メニューをクリックし、[ライセンスの更新] を選択します。</block>
-  <block id="df478b8a8dcb38cfbba69a02ff5cae20" category="section-title">容量ライセンスを削除する</block>
-  <block id="9906134ee224bc081497b19c4269cc34" category="paragraph">追加容量ライセンスの有効期限が切れて使用されなくなった場合は、いつでも削除できます。</block>
-  <block id="c320af21170d1ca43751b7580a1125f4" category="list-text">容量ライセンスの横にあるアクション メニューをクリックし、[ライセンスの削除] を選択します。</block>
-  <block id="03b194a23dcb353466fbfb7acff64363" category="list-text">*削除*をクリックします。</block>
-  <block id="594cb44c6500d8855ad820b0653e02c7" category="section-title">PAYGOとBYOL間の変更</block>
-  <block id="a704128156d562fe5860508e9584ee34" category="paragraph">システムを PAYGO ノード単位ライセンスから BYOL ノード単位ライセンス (およびその逆) に変換することはサポートされていません。従量課金制サブスクリプションと BYOL サブスクリプションを切り替える場合は、新しいシステムをデプロイし、既存のシステムから新しいシステムにデータを複製する必要があります。</block>
-  <block id="c019dbada10848ba4363bd4710a34f6b" category="list-text">新しいCloud Volumes ONTAPシステムを作成します。</block>
-  <block id="9bd20ffd5e91ec2bb61bc593be38bb13" category="list-text">複製する必要があるボリュームごとに、システム間で 1 回限りのデータ レプリケーションを設定します。</block>
-  <block id="95b10ad2ca24b4c8bd5673b7383531a2" category="inline-link">システム間でデータを複製する方法を学ぶ</block>
-  <block id="882d5f98206dd8157654127073c920f2" category="paragraph"><block ref="882d5f98206dd8157654127073c920f2" category="inline-link-rx"></block></block>
-  <block id="ebf88a96d90d43fcac8c0ab5a9fda0dd" category="list-text">元のシステムを削除して、不要になったCloud Volumes ONTAPシステムを終了します。</block>
-  <block id="f979ec1d84a4416797fae20cc61f839b" category="inline-link">Cloud Volumes ONTAPシステムを削除する方法を学ぶ</block>
-  <block id="0d0947c9b1ebe3ee650df057f8192855" category="paragraph"><block ref="87175a08736eca79154ad91c69792fcd" category="inline-link-rx"></block> 。</block>
-  <block id="342dcce6bda294bb4b60fc9333bcafbe" category="inline-link-macro">ノードベースのライセンスを容量ベースのライセンスに変換する</block>
   <block id="5b5068830882d3d6b54d331cdd743e62" category="paragraph">ONTAP CLI の手順については、次のドキュメントを参照してください。</block>
   <block id="412af2a2404a4e920b18be59197204b0" category="inline-link">SVM Disaster Recovery Preparation Express Guide</block>
   <block id="c15bb50c43eaf0ceb1bc0ce3d7503ebd" category="list-text"><block ref="c15bb50c43eaf0ceb1bc0ce3d7503ebd" category="inline-link-rx"></block></block>
@@ -5949,7 +5797,6 @@
   <block id="4bd0b8ab4e553e751aa93406b40d5560" category="paragraph">単一ノード システムの場合、I/O が中断されます。</block>
   <block id="62fac2021144c76cdcd096ecd3c82eb4" category="paragraph">Azureで単一ノードシステムまたはHAペアを起動するには、NetApp ConsoleでCloud Volumes ONTAPシステムを作成します。</block>
   <block id="3b8ca986ea730316924e61b984071d11" category="paragraph">Azure で単一ノードの Cloud Volumes ONTAP システムを起動する場合は、コンソールで単一ノード システムを作成する必要があります。</block>
-  <block id="691e9010d46bcb06693d90df5c955334" category="paragraph">単一ノード システムまたは HA ペアに対して購入できるライセンスの数に制限はありません。</block>
   <block id="cdd566a2953665ed7135ca03058a8014" category="paragraph">2つのCloud Volumes ONTAPシステム間でSnapMirror SVMレプリケーションを設定する場合、レプリケーションは2つのHAペアシステム間または2つのシングルノードシステム間で実行する必要があります。HAペアとシングルノードシステム間でSnapMirror SVMレプリケーションを設定することはできません。</block>
   <block id="0af39724f1af28211a653a39e57d0598" category="paragraph">ストレージVMのオプションの管理LIFには、単一ノードシステムおよび単一AZ内のHAペア上のプライベートIPアドレスが必要であることに注意してください。この管理LIFは、SnapCenterなどの管理ツールへの接続を提供します。</block>
   <block id="2ec479bb11cd13a599380572acb1c0ce" category="list-text">単一ノード システム：未使用のセカンダリ プライベート IP が 1 つ必要です。</block>
@@ -6139,7 +5986,6 @@
   <block id="665103db45058514d7e3b032c990783d" category="list-text">容量を調整するサブスクリプションについて、<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> を選択し、*詳細を表示して編集*を選択します。</block>
   <block id="f638b98047aa1e2c9642d2de1bcdd0d0" category="list-text">下にスクロールし、リクエストに関する追加情報を入力してから、*Submit*を選択してください。</block>
   <block id="dc96e19fba7ac18b79e69398a4792825" category="list-text">リンクを解除するサブスクリプションで、<block ref="c9c50c6d591d91ccce1ee232fa490fb4" category="inline-image-macro-rx" type="image"></block> を選択し、*リンク解除*を選択します。</block>
-  <block id="5e5b6fbbd6a3b4edf3913541e4fecf17" category="list-text"><block ref="5e5b6fbbd6a3b4edf3913541e4fecf17" category="inline-link-rx"></block></block>
   <block id="66f0f207e553b92ff141bcd4fe27ad0f" category="doc">AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求</block>
   <block id="c6527bb2f1b87269be16603057b53a2c" category="paragraph">AWS エンタープライズ割引プログラム（EDP）の変更により、NetApp は AWS マーケットプレイスにスタンドアロンの Cloud Volumes ONTAP サブスクリプションを導入しました。これにより、Cloud Volumes ONTAP 容量の請求をデータサービスから分離できます。この分離により、EDP クレジットとコストの管理において、より柔軟性が高まります。NetApp は、Cloud Volumes ONTAP の使用に関するコスト管理を改善するために、スタンドアロンのサブスクリプションの使用をお勧めします。また、EDP 要件が発効する 2026 年 7 月 31 日以降も、請求データサービスには NIS サブスクリプションを引き続き使用してください。</block>
   <block id="bc5abfb3f56ed8d61846aead3435d204" category="paragraph">AWSのスタンドアロンCloud Volumes ONTAPサブスクリプションは、有効な容量ベースのEssentialsまたはFreemiumライセンスパッケージのみをサポートしています。Professionalパッケージはサポートされていません。ニーズに最適な課金方法を選択できます：</block>
@@ -6372,37 +6218,6 @@
   <block id="a39062ee3ffebf8265972bbfd12218d1" category="list-text">*ネットワーク構成と接続性*：該当するリージョンとゾーンを選択してください。HA構成用に4つの異なるVPCを選択し、各VPCにサブネットを1つずつ選択してから、ファイアウォールポリシーを選択します。</block>
   <block id="308f6c85e4f05242ebe84d06edc1939e" category="admonition">Cloud Volumes ONTAP 9.19.1以降は<block ref="bf5f8235b3ee6f722f42e2d7828e4aab" category="inline-link-macro-rx"></block>をサポートしており、メディエーターインスタンスはオプションとなります。この構成では、データレプリケーションのために、メディエーターゾーン、対応するVPC、およびサブネットを入力する必要はありません。</block>
   <block id="d0106c4491f5099769d6febfecd4ee36" category="paragraph">いずれかのパッケージを選択した場合、必要なのはボリュームを指定し、構成を確認して承認するだけです。事前設定済みのパッケージは、選択した Cloud Volumes ONTAP のバージョンと構成タイプによって異なります。例えば、Cloud Volumes ONTAP 9.19.1 以降で単一の AZ デプロイメントを選択した場合、C3 シリーズのマシンと Hyperdisk Balanced ディスクを搭載した事前構成済みパッケージが表示されます。以前のバージョンや複数の AZ の場合でも、n2-standard マシンと Persistent Disks を選択できます。ワークロードのニーズに応じて、IOPS やスループットなどのパラメータを変更できます。</block>
-  <block id="821a4394ac44729da9f70ce04118fc86" category="list-text">*高レベルの使用状況*：このレポートは、アカウント全体で消費された総容量を要約し、請求方法（事前コミットされたライセンスと従量課金制）ごとに分類します。これには以下の情報が含まれます：</block>
-  <block id="1976d7f704de389d9fe064e08ea35b2d" category="cell">列</block>
-  <block id="51163c1c09d1460ef27f5dd97ed9ea7f" category="cell">アカウント内のすべての Cloud Volumes ONTAP システムにわたる合計プロビジョニング済み容量。</block>
-  <block id="f70b0a4d5f326e83950dad59aec6fa68" category="cell">NetApp から購入したライセンス済み容量の合計（BYOL ライセンスとマーケットプレイス契約の両方を含む）。この値は、BYOL の総容量とマーケットプレイス契約の総容量の合計です。</block>
-  <block id="461f8f7091d5494362a76c93edc9a423" category="cell">事前にコミットされた容量のうち、NetApp から直接購入したBYOL（Bring Your Own License）ライセンスでカバーされている部分。</block>
-  <block id="78848eca2f87ad4a3c7b9b07889aae3a" category="cell">クラウド プロバイダのマーケットプレイスを通じて購入された年間マーケットプレイス契約またはプライベートオファーによってカバーされる事前契約済み容量の割合。</block>
-  <block id="f343ac0562a9bcbf4a1f16afb4d9c944" category="cell">事前契約済みのライセンスでカバーされていない消費容量の部分で、従量課金制（PAYGO）の時間単位マーケットプレイス料金で請求されます。</block>
-  <block id="de061f005aa315f137edfbea4185d9cf" category="list-text">*Cloud Volumes ONTAP パッケージ使用状況*：このレポートは、高レベル使用状況レポートと同じ容量の内訳を提供しますが、ライセンスパッケージごとに整理されています。これには以下の情報が含まれます。</block>
-  <block id="0f8a95f201dfe022d77e0b59d46d4c77" category="cell">アカウント内のすべての Cloud Volumes ONTAP システムにわたる、このパッケージの合計プロビジョニング容量。</block>
-  <block id="ba7a4b5109f3d946e68653e9dca24924" category="cell">NetApp から購入したこのパッケージの総ライセンス容量（BYOL ライセンスとマーケットプレイス契約の両方を含む）。この値は、BYOL の総容量とマーケットプレイス契約の総容量の合計です。</block>
-  <block id="da684f1b634af2847a1baa8db1db2ac7" category="cell">このパッケージの事前契約済み容量のうち、お客様が NetApp から直接購入した BYOL（Bring Your Own License）ライセンスでカバーされている部分。</block>
-  <block id="fa6bbae52be77ec691f2ed981782a8c3" category="cell">このパッケージの事前契約済み容量のうち、クラウド プロバイダのマーケットプレイスを通じて購入された年間マーケットプレイス契約またはプライベートオファーによってカバーされる部分。</block>
-  <block id="7978965a49086eecb3f75ef44abb3cbe" category="cell">このパッケージの消費容量のうち、事前契約済みのライセンスでカバーされていない部分で、従量課金制（PAYGO）の時間単位マーケットプレイス料金で請求される容量。</block>
-  <block id="40052c32370d83faceb0cb6dc62c2d53" category="cell">システムIDと名前</block>
-  <block id="d618d6f2db44ccd4eb860a4f494fc02b" category="cell">Cloud Volumes ONTAP システムの一意の識別子 （UUID） と表示名。</block>
-  <block id="f36be790a1c0b2db000cad5e1f143392" category="cell">システムがデプロイされているクラウド プロバイダ（例：AWS、Azure、または Google Cloud）。</block>
-  <block id="63af7f48ddc938f8833d32b0716868d6" category="cell">システムに関連付けられた NetApp アカウントの識別子。</block>
-  <block id="ad5c67cce7e6fab8ce505f2ae3c2df11" category="cell">システムの展開構成（例：シングルノードまたは HA ペア）。</block>
-  <block id="3355bd383b4614928e6109a99305d004" category="cell">Cloud Volumes ONTAP システム内のストレージ仮想マシン （SVM） の名前。</block>
-  <block id="c5f488f842043ae15f7cfa0e8b69385b" category="cell">SVMにプロビジョニングされた総容量。</block>
-  <block id="f8ae5e430a4359a104373b4d18d6f868" category="cell">SVMに対して実際に請求された容量。各SVMには、課金対象となる最小容量が設定されています（デフォルトでは4 TiBですが、アカウントによって異なる場合があります）。SVMのプロビジョニング済み容量がその最小値以下である場合、この値は最小値に切り上げられます。そうでない場合は、プロビジョニング済み容量と同じ値になります。</block>
-  <block id="4226ed0668452ac09bb7af302a7c9242" category="cell">関連するマーケットプレイスサブスクリプションの請求期間（例：時間単位または年単位）。</block>
-  <block id="ab31194e65fa04061f03e7c38298214e" category="cell">SVMに関連付けられたライセンスパッケージまたは機能（例：Essentials または Professional）。</block>
-  <block id="aab205b2459de7a7ecd46aff12fc336e" category="cell">請求に使用されるマーケットプレイスのサブスクリプション名。</block>
-  <block id="2c13015a3d1386955dffbbcbd1c49ce2" category="cell">課金に使用されるマーケットプレイスサブスクリプションの一意の識別子。</block>
-  <block id="e16dc33bf75ec44279b2f544d4b7a250" category="cell">SVM のボリュームが *プライマリ* （読み取り / 書き込み）で本番データに積極的に使用されているか、または *セカンダリ* （DP）でバックアップおよびレプリケーションに使用される SnapMirror レプリカなどのデータ保護宛先ボリュームであるかどうかを示します。</block>
-  <block id="de39b41004ed04a88578e2985a04fc6c" category="cell">ボリュームを格納する Cloud Volumes ONTAP システムの一意の識別子（UUID）と表示名。</block>
-  <block id="0d8e21203d5a81d1fa5620283cbeb8d9" category="cell">ボリュームを格納するストレージ仮想マシン（SVM）の名前。</block>
-  <block id="e7a38d895cb4f8d8f3a338217e14a339" category="cell">ボリュームの固有識別子。</block>
-  <block id="7860112ba253041aab5726c5a5f6777c" category="cell">ボリュームの種類（例：読み取り / 書き込みまたはデータ保護）。</block>
-  <block id="b41f9ba0b51c7f3d54a31c655a83017f" category="cell">ボリュームに対してプロビジョニングされた総容量。</block>
   <block id="b22fac92397ccbd6b8eaeaf6f44f36fe" category="summary">Cloud Volumes ONTAP のインスタンスを、単一システム構成または HA ペアとして Azure に迅速にデプロイできます。</block>
   <block id="f733cea5538d157d9ae59fb10ffe2360" category="summary">Cloud Volumes ONTAP インスタンスを、単一システム構成または HA ペアとして Google Cloud に迅速にデプロイできます。</block>
   <block id="7c40283f4f533a5903d1033c57ef27f4" category="list-text"><block ref="7c40283f4f533a5903d1033c57ef27f4" category="inline-link-macro-rx"></block></block>
@@ -7448,10 +7263,6 @@
   <block id="19d8bd352f2c40ce75403d13170b311b" category="paragraph">前提条件をすべて満たしたら、ウィザードの手順に従って Google Cloud に Cloud Volumes ONTAP をデプロイする手順を完了できます。</block>
   <block id="8db3889b9094da1779e8e10e063742d5" category="list-text"><block ref="8db3889b9094da1779e8e10e063742d5" category="inline-link-macro-rx"></block></block>
   <block id="7c9fa6cfa8bf4914f6804681fe5a5c2d" category="list-text"><block ref="7c9fa6cfa8bf4914f6804681fe5a5c2d" category="inline-link-macro-rx"></block></block>
-  <block id="a5ee806b0006dbb717d76ab0978076d5" category="list-text"><block ref="a5ee806b0006dbb717d76ab0978076d5" category="inline-link-rx"></block></block>
-  <block id="795be46eebc5026a1d8753abd5db6e4e" category="list-text"><block ref="795be46eebc5026a1d8753abd5db6e4e" category="inline-link-rx"></block></block>
-  <block id="17bd8adea048946d31406e0958df510f" category="list-text"><block ref="17bd8adea048946d31406e0958df510f" category="inline-link-rx"></block></block>
-  <block id="83cfd515beb90b979f55f0e4df5ae35f" category="list-text"><block ref="83cfd515beb90b979f55f0e4df5ae35f" category="inline-link-rx"></block></block>
   <block id="0375af31d39c4bfde1c980cd053ab2b9" category="doc">Cloud Volumes ONTAP ストレージVM</block>
   <block id="54448f9a8312c7b08e3e97308160554c" category="paragraph">ストレージVM（SVM）は、ONTAP内で実行される仮想マシンであり、クライアントにストレージおよびデータサービスを提供します。これは_SVM_または_vserver_として知られている場合があります。Cloud Volumes ONTAPはデフォルトで1つのストレージVMで構成されていますが、一部の構成では追加のストレージVMがサポートされています。</block>
   <block id="3298e455b39f3323fcb1a4a41454ef56" category="doc">Cloud Volumes ONTAP のシステム書き込み速度を変更する</block>
@@ -7529,4 +7340,154 @@
   <block id="74daf668e35e08a20a58d1c4568fda62" category="sidebar">Cloud Volumes ONTAPと他の製品との連携</block>
   <block id="b67ce24b0ef9db5e8910cc39a69b1ef6" category="sidebar">クラウド プロバイダの統合</block>
   <block id="e80ee78606b9fe45ef7d7303b64be29a" category="sidebar">Cloud Volumes ONTAP と AutoSupport - Digital Advisor</block>
+  <block id="aafe22f0aac02cfc773f108471a387c4" category="doc">Cloud Volumes ONTAP と Microsoft OneLake の統合</block>
+  <block id="41aa5ef466861e25c87ddbb36de43edd" category="inline-link">Microsoft OneLake</block>
+  <block id="293c823b8d8e2da1959829a580b33c90" category="inline-link">Microsoft Fabric</block>
+  <block id="4d664b02ce777c1e4699e94fd7d34ae7" category="inline-link">ONTAP S3マルチプロトコル</block>
+  <block id="401d011b2377a7c64751160aa39ff55c" category="paragraph">Cloud Volumes ONTAPは、パブリックプレビューとして<block ref="7296f85da7d270a15e9565051e07602b" category="inline-link-rx"></block>との統合をサポートするようになりました。Cloud Volumes ONTAPを<block ref="df6d917e247d0878fc8f4ddd737f9ab2" category="inline-link-rx"></block>と統合するには、<block ref="7296f85da7d270a15e9565051e07602b" category="inline-link-rx"></block>を使用して、既存のCloud Volumes ONTAP NASデータをPower BI、Azure AI Search、OpenAI、Microsoft CopilotなどのMicrosoftの分析およびAIサービスで利用できるようにします。この統合では、データの移動や複製は一切必要ありません。この統合では、<block ref="f8b4f97863c52739a61ab36e880c3d99" category="inline-link-rx"></block>アクセスを使用して、Cloud Volumes ONTAPを既存のMicrosoft Fabricレイクハウスに接続します。</block>
+  <block id="26ce65cbc7dbbe0f87186b28ea7c57b8" category="list-title">関連記事と関連資料：</block>
+  <block id="a66621d27a6944c58e46d1f565b22143" category="inline-link">NetApp ブログ：Microsoft OneLake と NetApp Cloud Volumes ONTAP を使用して AI とアナリティクスを最適化する</block>
+  <block id="2b4194522887509da7c9b51c70067cea" category="list-text"><block ref="ada46b265e2235c5ece497b9f3c94b84" category="inline-link-rx"></block></block>
+  <block id="ecbaa51ea44293a13a4eb6ca8d26d642" category="inline-link">Cloud Volumes ONTAP システムを Microsoft OneLake と統合して AI と分析に活用する</block>
+  <block id="3dad4d1eeaf9a01a63764a9bd6deee29" category="list-text"><block ref="3dad4d1eeaf9a01a63764a9bd6deee29" category="inline-link-rx"></block></block>
+  <block id="a4bbb449ad6bcfc9df369b041d7730ed" category="inline-link">Cloud Volumes ONTAP と Microsoft OneLake の統合 - 技術概要</block>
+  <block id="4271db1842db28d08bc52fe3025bc7b1" category="list-text"><block ref="4271db1842db28d08bc52fe3025bc7b1" category="inline-link-rx"></block></block>
+  <block id="25a7621f5136df7ea1f50ee60bab4529" category="section-title">Microsoft Azure の Cloud Volumes ONTAP の設定を修正、破棄、および再アクティブ化する</block>
+  <block id="3f2d6026e86cfc3a3e872a2f3cd8f989" category="paragraph">NetApp Console のウェルアーキテクチャダッシュボードで、Cloud Volumes ONTAP システムの構成に関する推奨事項を修正できるようになりました。</block>
+  <block id="e4eac83bd4922d84fdd323f4afe1066b" category="paragraph">また、適切なアーキテクチャ分析から1つまたは複数の構成を除外することもできます。これにより、ご自身の環境に適用されない特定の構成を無視することができます。</block>
+  <block id="d45ddb9ce602eba8b90aee11b1ee25cf" category="paragraph">後で却下した設定を含めたい場合は、ウェルアーキテクテッドダッシュボードで再度有効化できます。これにより、設定が分析に復元され、推奨事項や修正策を取得できるようになります。</block>
+  <block id="37c159a88b5bcfaeea126c1581ba5f53" category="list-text"><block ref="37c159a88b5bcfaeea126c1581ba5f53" category="inline-link-macro-rx"></block></block>
+  <block id="6cb16892d109192c0cd1c62fbd1330a2" category="summary">NetApp Console のウェルアーキテクチャダッシュボードは、ストレージシステムの構成を定期的に分析し、Cloud Volumes ONTAP システムに構成上の問題がないかどうかを判断します。問題が検出されると、ダッシュボードには問題の内容が表示され、ストレージシステムが最高のパフォーマンス、対費用効果の高い効率、およびベストプラクティスへの準拠を達成するために何を変更する必要があるかが説明されます。</block>
+  <block id="d3884a08dbd1a0feb34aaf7e47b2fb8c" category="doc">Well-architected ダッシュボードでの Cloud Volumes ONTAP の構成分析</block>
+  <block id="1c11d2e59190fe6a4e37f1e68abafcb4" category="paragraph">主な機能は次のとおりです：</block>
+  <block id="ebc3bf5de769bc75ad8e36a90a0ed695" category="list-text">日次構成分析</block>
+  <block id="d0367f15d2fd772d543d692442807fa1" category="list-text">NetApp ONTAPストレージシステムおよびパートナーストレージプロバイダーに対する自動ベストプラクティス検証</block>
+  <block id="3583e4a3e4e2e122cff65b8ad9045348" category="list-text">プロアクティブな可観測性</block>
+  <block id="16fcd85dc9469370b62b4b46381f8e2a" category="list-text">洞察から行動へ</block>
+  <block id="3cf81f2251f5d2b923d6011214221dc4" category="paragraph">未解決のディレクティブ（<block ref="c491f271fb4c6f62c68f73c7ad844350" category="inline-link-rx"></block>）- include::well-architected-workloads.adoc[]</block>
+  <block id="3f6f8b4e204fd3aa39cac35661de164d" category="section-title">分析要件</block>
+  <block id="021c4674734853c034b954078fa080f3" category="inline-link-macro">NetApp Consoleエージェントをデプロイします</block>
+  <block id="ed3de084ebd57dfb5d10d8d07d5ff7c2" category="paragraph">完全な Cloud Volumes ONTAP システム分析を行うには、システムと NetApp Console 間の接続を設定するために <block ref="19a2c83f86e8c849ea6629f601093445" category="inline-link-macro-rx"></block> する必要があります。</block>
+  <block id="f064aed6dd86a2b762ecf9bcf528b941" category="section-title">Cloud Volumes ONTAP システムのベストプラクティスと推奨事項</block>
+  <block id="df022fa81268ad87abe9b34e29e60ea4" category="paragraph">適切に設計されたダッシュボードは、ストレージ構成を評価し、ONTAP 構成のベストプラクティスおよび Azure Well-Architected Framework への準拠に関する詳細なビューを提供します。この評価では、改善点や修正点も推奨しています。</block>
+  <block id="ffd9fc00ab43b8283346c6266e00d684" category="paragraph">適切に設計された分析では、構成をフレームワークの次の柱に分類します：_信頼性_、_セキュリティ_、_運用効率_、_コスト最適化_、および_パフォーマンス効率_。</block>
+  <block id="820b8f74ad843d1574106ec4cadfc07e" category="section-title">信頼性</block>
+  <block id="f52eaa2b01823c61afb346f01ff37aec" category="paragraph">信頼性とは、障害発生時であっても、ワークロードが意図された機能を正確かつ一貫して実行することを保証するものです。</block>
+  <block id="ca512a483bb26b1b253abc6b2cc463bd" category="list-text">*Snapshotポリシー*</block>
+  <block id="ce36269ae95cd0ab7422d78bb843b720" category="paragraph">効率的なバックアップと迅速なリストアのために、ローカルSnapshotをスケジュール設定してください。Snapshotは、ボリュームのポイントインタイムイメージを瞬時に作成します。</block>
+  <block id="e5cdf4f9c0dda596826a91093d4f69f4" category="list-text">*SSDキャパシティのヘッドルーム*</block>
+  <block id="e1571d44d672c7a35fe7952a28f414b7" category="paragraph">SSDストレージ層の容量は、使用率が80%を超えないようにしてください。これは、キャパシティプールストレージ層へのデータの読み書きに影響を与え、システムのスループット容量にも影響を与える可能性があります。容量が不足すると、データボリュームは読み取り専用になります。新しいデータを書き込もうとするサービスも失敗します。</block>
+  <block id="7d7265a6929882bb433fc74e8bee871a" category="paragraph">セキュリティは、リスク評価と軽減戦略を通じて、データ、システム、資産を保護することを重視します。</block>
+  <block id="d08117d717007eeb4d6273695d9a7725" category="list-text">*AIによる自律型ランサムウェア対策（ARP/AI）*</block>
+  <block id="167fce45da752e074139dbfd85f1d96d" category="paragraph">NetApp Autonomous Ransomware Protection with AI（ARP/AI）は、サイバーレジリエンスを強化し、ランサムウェアの脅威からボリュームを保護します。すべてのボリュームでARP/AIを有効にすることをお勧めします。</block>
+  <block id="17d2a91a4f3c01de4c2f05b2242e49d3" category="section-title">運用の卓越性</block>
+  <block id="84c2d06d655e822b38b222df9c0aa965" category="paragraph">運用上の卓越性とは、最高のアーキテクチャとビジネス価値を提供することに重点を置くものです。</block>
+  <block id="bca05dfe73df2536775bb543bb367fb6" category="list-text">*ボリューム容量のヘッドルーム*</block>
+  <block id="70a83d0e2246f9bf751ee82d9d86782a" category="paragraph">ボリューム容量の使用率が80%を超えないようにすることをお勧めします。これは、アプリケーションへのデータの読み書きに影響を与える可能性があります。ボリューム容量の増加は、手動またはボリュームの自動拡張機能を使用して自動的に行うことができます。</block>
+  <block id="cb24245fc7fbb951739f0e037e8ed58f" category="list-text">*FlexCache 書き込みモード*</block>
+  <block id="fce6ac16b523a1ae826c8b02fe97af9a" category="paragraph">最適なパフォーマンスを得るために、ワークロードに最適な FlexCache 書き込みモードをお勧めします。ライトアラウンドモードは、小さなファイルを扱う読み込み中心のワークロードにおいて優れたパフォーマンスを発揮し、ライトバックモードは、大きなファイルを扱う書き込み中心のワークロードにおいて優れたパフォーマンスを発揮します。</block>
+  <block id="199b5a17e840b5e8165065942a5aba7f" category="list-text">*FlexCacheレプリカサイズ*</block>
+  <block id="7cba8fc6d012368d0bb1868a9da3aebb" category="paragraph">キャッシュボリュームの最適なサイズを維持し、頻繁にアクセスされる（ホット）データにキャッシュを集中させることで効率を最大限に高めるため、キャッシュボリュームのボリュームの自動拡張とスクラビングを有効にすることをお勧めします。</block>
+  <block id="7f14df7d96b168d75780c47437a63021" category="list-text">*ONTAPバージョン準拠*</block>
+  <block id="3bbb5a399ebdfb8d2d4a8a5c7bafb3fb" category="paragraph">完全な互換性、サポート、および新機能へのアクセスを実現するには、最新バージョンの ONTAP にアップグレードしてください。</block>
+  <block id="a39ae09f8be4327fc176cfeb76a0e366" category="section-title">コスト最適化</block>
+  <block id="394c926099d3d2cf7e0d7477f17faf38" category="paragraph">コストの最適化により、コストを低く抑えながらビジネスの価値を最大限に高めることができます。</block>
+  <block id="8611faa768b220ecb3795c6fda54fdaa" category="list-text">*SSD容量のオーバープロビジョニング*</block>
+  <block id="aafa79fe1c7925cadee2f2931c5a90a6" category="paragraph">過剰にプロビジョニングされたSSD容量階層は、不要なコストを増加させます。SSDティアの容量を削減しながら、20%の空き容量バッファを維持することをお勧めします。縮小操作には数時間から数日かかり、その間は他のファイルシステム操作はサポートされません。</block>
+  <block id="01fd10a8e7ac161e328da4eaf6292046" category="list-text">*コールドデータ階層化*</block>
+  <block id="038dede88376955fc6f5dc23c8915a6f" category="paragraph">コールドデータ階層化を有効にすると、コールドデータをSSDストレージ階層から低コストのストレージに移動できます。すべてのボリュームに対して階層化ポリシーを適用することをお勧めします。Azure Blob Storage は、非アクティブなデータの容量層として機能します。</block>
+  <block id="01e12de62fa77fda2815719aed8ff892" category="paragraph-title">次の手順</block>
+  <block id="8a4fd5d300e707a9269f6215138076a2" category="paragraph"><block ref="8a4fd5d300e707a9269f6215138076a2" category="inline-link-macro-rx"></block></block>
+  <block id="e99c9a581ad7f3ee001ba4518d21895d" category="list-text"><block ref="e99c9a581ad7f3ee001ba4518d21895d" category="inline-link-rx"></block></block>
+  <block id="1ec0779bb7e51cbc27ab486c62ef2d11" category="list-text">r5.12xlargeインスタンスタイプには、サポートに関する既知の制限があります。ノードがパニックによって予期せず再起動した場合、システムは問題のトラブルシューティングや根本原因の特定に使用されるコアファイルを収集できない可能性があります。お客様は、リスクおよび限定的なサポート条件を受け入れ、この状況が発生した場合のすべてのサポート責任を負うものとします。この制限は、新規にデプロイされたHAペアと、9.8からアップグレードされたHAペアに影響します。この制限は、新たに導入されたシングルノードシステムには影響しません。</block>
+  <block id="6c826d16193263c31494836004943717" category="summary">Cloud Volumes ONTAP を ONTAP S3 マルチプロトコル アクセスで設定し、Azure AI サービスが Microsoft OneLake を通じて Cloud Volumes ONTAP システムに保存されているデータを読み取れるようにします。</block>
+  <block id="e95a1d02467b7046c0090db76aa4420a" category="paragraph">Cloud Volumes ONTAPを<block ref="df6d917e247d0878fc8f4ddd737f9ab2" category="inline-link-rx"></block>と統合し、<block ref="7296f85da7d270a15e9565051e07602b" category="inline-link-rx"></block>を使用することで、既存のCloud Volumes ONTAP NASデータをPower BI、Azure AI Search、OpenAI、Microsoft CopilotなどのMicrosoftの分析およびAIサービスで利用できるようになります。この統合には、データの移動や重複は一切必要ありません。この統合では、<block ref="f8b4f97863c52739a61ab36e880c3d99" category="inline-link-rx"></block>アクセスを使用して、Cloud Volumes ONTAPを既存のMicrosoft Fabricレイクハウスに接続します。</block>
+  <block id="14fa8bd582301929e8385f26fb4ec09f" category="section-title">ONTAP S3 サーバーのルート CA 証明書を作成する</block>
+  <block id="e691fa86faf7caa89b9c040d851cff9c" category="paragraph">Microsoft OneLake と ONTAP S3 サーバー間の HTTPS 接続を保護するには、証明書が必要です。この手順では、Cloud Volumes ONTAP でルート CA 証明書を作成し、ONTAP S3 サーバー用の署名付き証明書を生成します。</block>
+  <block id="2f5c4a8b4f40d04dc60b798b4f87d61b" category="inline-link">ONTAP S3 対応 SVM に CA 証明書を作成してインストールする</block>
+  <block id="62198aa1c9add9893371192b1f2f6e2f" category="paragraph">CA証明書の作成とインストールに関する詳細については、<block ref="4bf7ae93337dbf9f9de9c16f2d492cf8" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="7274530d966eaaa657523240e14811f5" category="paragraph">統合プロセスを開始する前に、Cloud Volumes ONTAP システムが稼働していることを確認してください。</block>
+  <block id="ae31cff41732cc696d2678333829f065" category="list-text">仮想ネットワーク（vNet）内のVMからSSHを使用するか、Azure Bastionを経由して、Cloud Volumes ONTAPシステムに接続します。</block>
+  <block id="81403d48012b3b2861e271a61f7a2829" category="list-text">ルートCA証明書を作成します。</block>
+  <block id="cabbc139b7f74771c47e3eb24d94c92b" category="paragraph">次に例を示します。</block>
+  <block id="b0058fd04d6de71a4c58b1e445912da1" category="list-text">証明書署名要求（CSR）と秘密鍵を生成します。</block>
+  <block id="6e804ca81415bed642c117104afeac86" category="admonition">ONTAP S3エンドポイント（S3サーバー名）の完全修飾ドメイン名（FQDN）を選択してください（例：<block ref="eceb512539b427304ff3412519742a01" prefix=" " category="inline-code"></block>）。そして、<block ref="54a24d5e55eeb31ed1eb935137d8595c" prefix=" " category="inline-code"></block>と<block ref="754e76564b6efaebbac938540dd62673" prefix=" " category="inline-code"></block>の両方のパラメータの値として指定します。この値は、後で ONTAP S3 サーバーを設定する際に必要になるため、メモしておいてください。</block>
+  <block id="c645bc85add0f467cf08ebcd6f31ebd5" category="list-text">このコマンドはCSRと秘密鍵を生成します。両方の値をコピーして保存してください。次のステップではCSRが必要で、後で ONTAP S3 サービスを設定する際には秘密鍵が必要になります。出力からCSRと秘密鍵をコピーしてください。</block>
+  <block id="67d09aace1a958f33bfaba43d85f7fe8" category="list-text">ルートCA証明書を使用して証明書要求に署名します。プロンプトが表示されたら、前の手順で生成されたCSRを貼り付けてください。</block>
+  <block id="f2fe9285b875b0313c11d840886f4700" category="list-text"><block ref="dca93174085e70cccb0a8f1c070c09a0" prefix="" category="inline-code"></block> - ルートCA証明書の名前</block>
+  <block id="f00b6bdf3ff69b5bfe100f570af8512e" category="list-text"><block ref="c16b945125c7d944777f2b1cceb74253" prefix="" category="inline-code"></block> - CAシリアル番号</block>
+  <block id="32a525d1da59ec756e385cdc706f5ec6" category="list-text">このコマンドは署名付き証明書を返します。証明書の内容をコピーして保存してください。前の手順で生成したこの証明書と秘密鍵は、ONTAP S3サーバーを設定する際に使用します。</block>
+  <block id="aa6a1bd436e65d602a070b35436dfd9d" category="section-title">Cloud Volumes ONTAP S3 の設定</block>
+  <block id="064a2c328012b70c51cbf8f3bd2fe2d5" category="paragraph">ONTAP S3 マルチプロトコル アクセスを設定して、OneLake が Cloud Volumes ONTAP ボリュームに保存されているデータを読み取れるようにします。</block>
+  <block id="b7b2d385336edfb847c70a604f0a9e78" category="list-text">Cloud Volumes ONTAP システム用に ONTAP S3 を設定します。</block>
+  <block id="84e08e813880edfaf996a3619b39b002" category="list-text">NetApp Console の左側のナビゲーションメニューから、*ストレージ &gt; 管理*を選択します。</block>
+  <block id="d6beb0ccdf1bc3f6e242cc54c51be5b4" category="list-text">コンソールエージェントを選択し、Cloud Volumes ONTAP システムをクリックして、右側のメニューオプションから「System Manager」を選択します。</block>
+  <block id="f50e5bc31425433da453f5ee0ae8e51e" category="inline-link-macro">ONTAPドキュメント：NASデータへのS3クライアントアクセスを有効にする</block>
+  <block id="6b40b000796d51a4e8a6dd7126ced660" category="list-text">SVM でS3 プロトコル アクセスを有効にします。詳細については、<block ref="dbeab464985e009bbabd1dd197ac5939" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="5e008871c60258045027f49ef4835f65" category="admonition">設定時には、前のセクションで作成した署名付き証明書と秘密鍵を使用してください。</block>
+  <block id="55bafea40aa0e49bf37c468d9e242f53" category="image-alt">スクリーンショット ONTAP S3 SVM 設定</block>
+  <block id="95f74072e94491e390b2ad94e50b9b19" category="list-text">既存のLIFを再利用するか、新しいデータLIFを設定するには、*「SMB/CIFSまたはNFSプロトコルで使用されるデータインターフェイスを再利用する」*を選択します。</block>
+  <block id="6dbcfd0a27aeb89ed693dcf158bc6e26" category="list-text">アクセスキーとシークレットアクセスキーをコピーして保存してください。OneLake ショートカットを作成する際に、これらの認証情報を使用する必要があります。</block>
+  <block id="4d752f7b53d4730eb25b7e4bab2d74bc" category="list-text">S3バケットに OneLake からアクセスするための読み取り専用グループを作成します。</block>
+  <block id="e52bee75bef3c5a46ef4613b86e9830f" category="list-text">S3サーバーを有効にした後、S3サーバーを設定し、新しいグループを追加します。「グループ」を選択し、「追加」を選択します。</block>
+  <block id="ba64542a5520c4dc9669fc65a53a4066" category="list-text">前の手順で自動的に作成された S3 ユーザーで新しいグループを追加し、<block ref="cfa5c6b0fe5c9c78f025a2833355f6cf" prefix=" " category="inline-code"></block>ポリシーを割り当てます。</block>
+  <block id="447a706505ecbdc86aaf726d55fbe626" category="image-alt">onelake s3 grpのスクリーンショット</block>
+  <block id="378210ad44a694f6ef45d4433d52e23c" category="section-title">S3 NASバケットを作成する</block>
+  <block id="e5d2716119163ccfee52c270b98e14c3" category="inline-link-macro">ONTAPドキュメント：S3 NASバケットを作成する</block>
+  <block id="b382fb5c130ba2293afd6a8d55e56632" category="paragraph">S3 NASバケットを作成します。詳細については、<block ref="50308563aff554c7d4eb86ecb557c148" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="e883cb6de789c38add1bc2e1fcd07ccd" category="admonition">バケットを作成する際に、OneLake を通じて利用可能にしたいデータを含む NAS ボリュームを選択します。</block>
+  <block id="35c38964ebdc43e7241fadfbff972faf" category="section-title">Microsoft オンプレミス データ ゲートウェイのインストールと構成</block>
+  <block id="4d68fcf2ed49734174a583f55b985474" category="paragraph">Microsoft オンプレミス データ ゲートウェイを、Cloud Volumes ONTAP システムと同じ仮想ネットワーク（vNet）内の VM にインストールして構成します。ONTAP S3 サーバーへの HTTPS 接続の信頼を確立するために、VM に Cloud Volumes ONTAP ルート CA 証明書をインストールします。</block>
+  <block id="deca143cbb2ed3185eae88ad300c852f" category="list-text">VMと前のセクションで作成した ONTAP S3 サーバー間にネットワーク接続があることを確認してください。</block>
+  <block id="7a1c98bf276eb5b82ffacb6ddedc47dc" category="list-text">以前に設定した ONTAP S3 サーバー名が、ONTAP S3 サーバーに割り当てられたデータ インターフェイス （LIF） の IP アドレスに解決されること、および VM がこの名前を正常に解決できることを確認してください。</block>
+  <block id="1a4eaa32a33ff44ee78c16ff34eb4910" category="list-text">Cloud Volumes ONTAP のCA証明書をインストールします。</block>
+  <block id="f32f838bea15935850e3df15b3f9c3c2" category="list-text">VM上でブラウザを開き、S3サーバーに移動してください：<block ref="1cfe437221cfb69705aeb922769764fb" prefix=" " category="inline-code"></block></block>
+  <block id="42af570b9fa9f4a361b0e255be4ec545" category="list-text">アドレスバーの鍵アイコンを選択し、次に「証明書の詳細」を選択します。</block>
+  <block id="1e83331d7566d6eec86c36a12d51ea89" category="list-text">「Certificate Viewer」ウィンドウで、「Details」タブを選択し、証明書リストのルート CA の最初の行を選択します。</block>
+  <block id="2aba31027fa6ff9cf745197efbf9a10a" category="image-alt">スクリーンショット onelake dnld cert</block>
+  <block id="75c5753d8bfd764dd89cf6c91e610d0f" category="list-text">「エクスポート…」を選択し、ファイルを<block ref="e412c8a99ed51e5b86824e8b7d756a2b" prefix=" " category="inline-code"></block>形式でローカルに保存します。</block>
+  <block id="f3f224d2d526cea1a346d7b5ced71edd" category="image-alt">スクリーンショット onelake save cert</block>
+  <block id="5dfb75bae8a540cb907c10b85ca50436" category="list-text">保存した証明書ファイルを開き、「証明書のインストール…」を選択します。</block>
+  <block id="92aa554fddbca200279fa3cf42c83c99" category="image-alt">スクリーンショット onelake 証明書のインストール</block>
+  <block id="926b80c1bb279afad9f542cac78ce77a" category="list-text">「証明書のインポートウィザード」で「ローカルマシン」を選択し、証明書を「信頼されたルート証明機関」ストアに配置します。</block>
+  <block id="0e9a00255c68bc133b23dd018b839d18" category="image-alt">スクリーンショット onelake import cert</block>
+  <block id="cec46f4bbf37b840e07991def5e1919c" category="list-text">画面の指示に従って証明書のインストールを完了してください。</block>
+  <block id="254be0043ca16660bb9a6cde6f3c70bd" category="list-text">新しいブラウザウィンドウを開き、<block ref="1cfe437221cfb69705aeb922769764fb" prefix=" " category="inline-code"></block>にアクセスして証明書のインストールを確認してください。ONTAP S3サーバーは、HTTPS通信が正しく機能していることを示すXMLアクセス拒否応答を返します。</block>
+  <block id="6bba9c35bd0e410071db2365d0b1cfb2" category="inline-link-macro">Microsoft ドキュメント：オンプレミス データ ゲートウェイのインストール</block>
+  <block id="62f82bc3e72da2ef18bd77f4d818fbba" category="list-text">Microsoft オンプレミス データ ゲートウェイを標準モードで VM にダウンロードしてインストールします。インストール手順については、<block ref="648f317920c9c087f5967c6a4d208e54" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="8bd69f72a99d18acb81561400d465b39" category="section-title">OneLakeに接続する</block>
+  <block id="71ad988e7d81584ac0905427a405414d" category="paragraph">Microsoft Fabric レイクハウスに Amazon S3 互換のショートカットを作成して、Cloud Volumes ONTAP S3 バケットに保存されているデータにアクセスします。</block>
+  <block id="0cc8a8b1def64a9596a7806e33d89008" category="inline-link">Microsoft Fabric レイクハウス</block>
+  <block id="5c41707375217d5774ec4df49ce5ee2d" category="list-text">既存の<block ref="16c464d9b04db81a799a840a122d3e49" category="inline-link-rx"></block>ワークスペース内。</block>
+  <block id="aa2e561bb80c9f0deb95519e48c8d526" category="list-text">お使いの環境で、*設定 &gt; 接続とゲートウェイの管理* に移動し、オンプレミス データ ゲートウェイが一覧表示され、接続されていることを確認してください。</block>
+  <block id="36760beb3d6982a0808f11e3ab45b1f8" category="list-text">Cloud Volumes ONTAPのルートCA証明書がゲートウェイVMにインストールされています。</block>
+  <block id="523915e3ac05d7eb77c44a3ad36a8da8" category="list-text">前の手順で得られた値は以下のとおりです：</block>
+  <block id="b084129971df6058a444733035c94274" category="list-text">ONTAP S3サーバー名（FQDN）</block>
+  <block id="47b84fd1609df93c987377c912e3baf1" category="list-text">アクセス キー</block>
+  <block id="864021d1cb190319b62722e58e59a8bf" category="list-text">シークレット アクセス キー</block>
+  <block id="9f2f3fb652a717ec609f008c506d7109" category="inline-link">Microsoft ドキュメント：Amazon S3 互換ショートカットを作成する</block>
+  <block id="e8a5f0d9837152fe195b7fa5ee95c607" category="list-text">レイクハウスで、以下の詳細情報を使用して Cloud Volumes ONTAP S3 バケットへの Amazon S3 互換ショートカットを作成します。ショートカットを作成する手順については、<block ref="f7e880ccf9455eef5a4471da8517bb63" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="734d0b6c4dc32b630667e753675428df" category="list-text">URL：ONTAP S3サーバーの形式<block ref="a731622740a2cf06d4b2bf92e429dd07" prefix=" " category="inline-code"></block></block>
+  <block id="b8fe5746b187f5e7f6a82fbb26512ea3" category="list-text">データゲートウェイ：以前に設定したオンプレミスのデータゲートウェイ</block>
+  <block id="d407ce3c6418b602c5e62d17e75153e2" category="list-text">アクセス キー ID</block>
+  <block id="f03154f7f37caaaf71be53099307d2dd" category="image-alt">スクリーンショット onelake shortcut1</block>
+  <block id="a919cd6db92990e9b06efbf013b4fdcf" category="list-text">ショートカットが作成されたら、それがレイクハウスの*エクスプローラー &gt; ファイル*の下に表示されること、およびショートカットを通じて Cloud Volumes ONTAP ボリュームに保存されているファイルを参照できることを確認してください。</block>
+  <block id="c4def819c84308172fa9bda9ea6e62a6" category="image-alt">OneLake レイクハウス エクスプローラー ペインの「ファイル」の下に表示された、確認済みの Cloud Volumes ONTAP S3 ショートカット接続を示すスクリーンショット</block>
+  <block id="876e2bd10a8ed908ec1b5d07f979b521" category="section-title">次のステップ：Azure AI Search でデータをインデックス化する</block>
+  <block id="30417398e9fe4a1bffd15ca2840d9bb0" category="paragraph">OneLake ショートカットを作成したら、Azure AI Search を構成して、OneLake を通じて Cloud Volumes ONTAP ボリュームに保存されているデータをインデックス化できます。Azure AI Search のインデックス作成機能により、Microsoft Copilot や Azure OpenAI などの AI アプリケーションでデータを利用できるようになります。</block>
+  <block id="5edb5e6aaf1d17e92c8915d0f28994f7" category="inline-link-macro">Microsoft のドキュメント：OneLake ファイルのインデックス作成方法</block>
+  <block id="d04ad284d76f9123254a30d0ddecc3dd" category="paragraph">詳細については、<block ref="55c5b78106d0736636dce6f21b4ff462" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="0bcc8ae219242a12ec94651af9fe6e6b" category="inline-link">NetAppの Cloud Volumes ONTAP と OneLake に関するブログ</block>
+  <block id="458db05f958d70be08a09aebeef50565" category="list-text"><block ref="458db05f958d70be08a09aebeef50565" category="inline-link-rx"></block></block>
+  <block id="4d26941d9dd1a06ff5e94d3e55813b8d" category="inline-link">Microsoft OneLake レイクハウス</block>
+  <block id="ea970970524902af2a462dc7113321ed" category="list-text"><block ref="ea970970524902af2a462dc7113321ed" category="inline-link-rx"></block></block>
+  <block id="31645afcb22716068ebb80125c566fe7" category="inline-link">Microsoft のドキュメント：Azure AI Search とは？</block>
+  <block id="053caf626e9d43c46f92fe521566f3b6" category="list-text"><block ref="053caf626e9d43c46f92fe521566f3b6" category="inline-link-rx"></block></block>
+  <block id="943927e98f08f5eceb9f92c4aa75b01e" category="inline-link">ONTAP ドキュメント：ONTAP S3 マルチプロトコルサポート</block>
+  <block id="0deac7ad5245fcfcbef0120b299cd7a5" category="list-text"><block ref="0deac7ad5245fcfcbef0120b299cd7a5" category="inline-link-rx"></block></block>
+  <block id="ec8ffaaa6739d3cbfaf04807424e73ec" category="paragraph">include::https://raw.githubusercontent.com/NetAppDocs/console-licenses-subscriptions/main/task-manage-capacity-licenses.adoc[lines=15..-1]</block>
+  <block id="986293de703cc99b95fc2636d61190e5" category="paragraph">include::https://raw.githubusercontent.com/NetAppDocs/console-licenses-subscriptions/main/task-manage-node-based-licenses.adoc[lines=15..-1]</block>
+  <block id="91d90ea5487ed9ed44e834f42f272ccb" category="section-title">2026年8月3日</block>
+  <block id="1c1a960c3a731e7c8f48049e14d10120" category="sidebar">Cloud Volumes ONTAP と Microsoft OneLake</block>
+  <block id="cabae2c7e02c764400d120dec64c7495" category="sidebar">Cloud Volumes ONTAP と優れた設計のダッシュボード</block>
 </blocks>

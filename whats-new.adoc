@@ -20,6 +20,38 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+[[03-august-2026]]
+== 2026年8月3日
+
+
+
+[[cloud-volumes-ontap-integration-with-microsoft-onelake]]
+=== Cloud Volumes ONTAP と Microsoft OneLake の統合
+
+Cloud Volumes ONTAPは、パブリックプレビューとして https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^]との統合をサポートするようになりました。Cloud Volumes ONTAPを https://community.fabric.microsoft.com/["Microsoft Fabric"^]と統合するには、 https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^]を使用して、既存のCloud Volumes ONTAP NASデータをPower BI、Azure AI Search、OpenAI、Microsoft CopilotなどのMicrosoftの分析およびAIサービスで利用できるようにします。この統合では、データの移動や複製は一切必要ありません。この統合では、 https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["ONTAP S3マルチプロトコル"^]アクセスを使用して、Cloud Volumes ONTAPを既存のMicrosoft Fabricレイクハウスに接続します。
+
+.関連記事と関連資料：
+* https://www.netapp.com/blog/optimize-ai-analytics-microsoft-onelake/?utm_content=nativelink&utm_medium=internal&utm_source=linkedin&utm_campaign=b2d-port-all-na-ww-digi-blog-1747859361262&es_id=956c739202["NetApp ブログ：Microsoft OneLake と NetApp Cloud Volumes ONTAP を使用して AI とアナリティクスを最適化する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-onelake.html["Cloud Volumes ONTAP システムを Microsoft OneLake と統合して AI と分析に活用する"^]
+* https://www.netapp.com/media/160786-na-1263-netapp-cloud-volumes-ontap-azure-onelake.pdf["Cloud Volumes ONTAP と Microsoft OneLake の統合 - 技術概要"^]
+
+
+
+
+[[fix-dismiss-and-reactivate-configurations-for-cloud-volumes-ontap-in-microsoft-azure]]
+=== Microsoft Azure の Cloud Volumes ONTAP の設定を修正、破棄、および再アクティブ化する
+
+NetApp Console のウェルアーキテクチャダッシュボードで、Cloud Volumes ONTAP システムの構成に関する推奨事項を修正できるようになりました。
+
+また、適切なアーキテクチャ分析から1つまたは複数の構成を除外することもできます。これにより、ご自身の環境に適用されない特定の構成を無視することができます。
+
+後で却下した設定を含めたい場合は、ウェルアーキテクテッドダッシュボードで再度有効化できます。これにより、設定が分析に復元され、推奨事項や修正策を取得できるようになります。
+
+* link:https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["Microsoft Azure の Cloud Volumes ONTAP の設定を修正、破棄、および再アクティブ化する"^]
+
+
+
+
 [[23-july-2026]]
 == 2026年7月23日
 

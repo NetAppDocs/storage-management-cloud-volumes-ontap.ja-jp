@@ -1,0 +1,122 @@
+---
+sidebar: sidebar 
+permalink: configuration-analysis-cvo.html 
+keywords: Cloud Volumes ONTAP, license, well-architected, WAD, CVO 
+summary: NetApp Console のウェルアーキテクチャダッシュボードは、ストレージシステムの構成を定期的に分析し、Cloud Volumes ONTAP システムに構成上の問題がないかどうかを判断します。問題が検出されると、ダッシュボードには問題の内容が表示され、ストレージシステムが最高のパフォーマンス、対費用効果の高い効率、およびベストプラクティスへの準拠を達成するために何を変更する必要があるかが説明されます。 
+---
+= Well-architected ダッシュボードでの Cloud Volumes ONTAP の構成分析
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: https://docs.netapp.com/us-en/console-well-architected/media/
+
+
+[role="lead"]
+NetApp Console のウェルアーキテクチャダッシュボードは、ストレージシステムの構成を定期的に分析し、Cloud Volumes ONTAP システムに構成上の問題がないかどうかを判断します。問題が検出されると、ダッシュボードには問題の内容が表示され、ストレージシステムが最高のパフォーマンス、対費用効果の高い効率、およびベストプラクティスへの準拠を達成するために何を変更する必要があるかが説明されます。
+
+主な機能は次のとおりです：
+
+* 日次構成分析
+* NetApp ONTAPストレージシステムおよびパートナーストレージプロバイダーに対する自動ベストプラクティス検証
+* プロアクティブな可観測性
+* 洞察から行動へ
+
+
+未解決のディレクティブ（ https://raw.githubusercontent.com/NetAppDocs/console-well-architected/main/cvo/configuration-analysis-cvo.adoc[]）- include::well-architected-workloads.adoc[]
+
+
+
+[[analysis-requirements]]
+== 分析要件
+
+完全な Cloud Volumes ONTAP システム分析を行うには、システムと NetApp Console 間の接続を設定するために link:https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy["NetApp Consoleエージェントをデプロイします"^] する必要があります。
+
+
+
+[[best-practices-and-recommendations-for-cloud-volumes-ontap-systems]]
+== Cloud Volumes ONTAP システムのベストプラクティスと推奨事項
+
+適切に設計されたダッシュボードは、ストレージ構成を評価し、ONTAP 構成のベストプラクティスおよび Azure Well-Architected Framework への準拠に関する詳細なビューを提供します。この評価では、改善点や修正点も推奨しています。
+
+適切に設計された分析では、構成をフレームワークの次の柱に分類します：_信頼性_、_セキュリティ_、_運用効率_、_コスト最適化_、および_パフォーマンス効率_。
+
+
+
+[[reliability]]
+=== 信頼性
+
+信頼性とは、障害発生時であっても、ワークロードが意図された機能を正確かつ一貫して実行することを保証するものです。
+
+* *Snapshotポリシー*
++
+効率的なバックアップと迅速なリストアのために、ローカルSnapshotをスケジュール設定してください。Snapshotは、ボリュームのポイントインタイムイメージを瞬時に作成します。
+
+* *SSDキャパシティのヘッドルーム*
++
+SSDストレージ層の容量は、使用率が80%を超えないようにしてください。これは、キャパシティプールストレージ層へのデータの読み書きに影響を与え、システムのスループット容量にも影響を与える可能性があります。容量が不足すると、データボリュームは読み取り専用になります。新しいデータを書き込もうとするサービスも失敗します。
+
+
+
+
+
+[[security]]
+=== セキュリティ
+
+セキュリティは、リスク評価と軽減戦略を通じて、データ、システム、資産を保護することを重視します。
+
+* *AIによる自律型ランサムウェア対策（ARP/AI）*
++
+NetApp Autonomous Ransomware Protection with AI（ARP/AI）は、サイバーレジリエンスを強化し、ランサムウェアの脅威からボリュームを保護します。すべてのボリュームでARP/AIを有効にすることをお勧めします。
+
+
+
+
+
+[[operational-excellence]]
+=== 運用の卓越性
+
+運用上の卓越性とは、最高のアーキテクチャとビジネス価値を提供することに重点を置くものです。
+
+* *ボリューム容量のヘッドルーム*
++
+ボリューム容量の使用率が80%を超えないようにすることをお勧めします。これは、アプリケーションへのデータの読み書きに影響を与える可能性があります。ボリューム容量の増加は、手動またはボリュームの自動拡張機能を使用して自動的に行うことができます。
+
+* *FlexCache 書き込みモード*
++
+最適なパフォーマンスを得るために、ワークロードに最適な FlexCache 書き込みモードをお勧めします。ライトアラウンドモードは、小さなファイルを扱う読み込み中心のワークロードにおいて優れたパフォーマンスを発揮し、ライトバックモードは、大きなファイルを扱う書き込み中心のワークロードにおいて優れたパフォーマンスを発揮します。
+
+* *FlexCacheレプリカサイズ*
++
+キャッシュボリュームの最適なサイズを維持し、頻繁にアクセスされる（ホット）データにキャッシュを集中させることで効率を最大限に高めるため、キャッシュボリュームのボリュームの自動拡張とスクラビングを有効にすることをお勧めします。
+
+* *ONTAPバージョン準拠*
++
+完全な互換性、サポート、および新機能へのアクセスを実現するには、最新バージョンの ONTAP にアップグレードしてください。
+
+
+
+
+
+[[cost-optimization]]
+=== コスト最適化
+
+コストの最適化により、コストを低く抑えながらビジネスの価値を最大限に高めることができます。
+
+* *SSD容量のオーバープロビジョニング*
++
+過剰にプロビジョニングされたSSD容量階層は、不要なコストを増加させます。SSDティアの容量を削減しながら、20%の空き容量バッファを維持することをお勧めします。縮小操作には数時間から数日かかり、その間は他のファイルシステム操作はサポートされません。
+
+* *コールドデータ階層化*
++
+コールドデータ階層化を有効にすると、コールドデータをSSDストレージ階層から低コストのストレージに移動できます。すべてのボリュームに対して階層化ポリシーを適用することをお勧めします。Azure Blob Storage は、非アクティブなデータの容量層として機能します。
+
+
+
+.次の手順
+link:https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["適切に設計されたCloud Volumes ONTAPシステム構成を実装する"]
+
+.関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#well-architected-configuration-analysis-for-cloud-volumes-ontap-in-azure["Azure における Cloud Volumes ONTAP の適切に設計された構成分析"^]
+
