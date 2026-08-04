@@ -24,7 +24,7 @@ NetApp Console のウェルアーキテクチャダッシュボードは、ス�
 * 洞察から行動へ
 
 
-未解決のディレクティブ（ https://raw.githubusercontent.com/NetAppDocs/console-well-architected/main/cvo/configuration-analysis-cvo.adoc[]）- include::well-architected-workloads.adoc[]
+未解決のディレクティブ（ https://raw.githubusercontent.com/NetAppDocs/console-well-architected/main/cvo/configuration-analysis-cvo.adoc[]）- include::_include/well-architected-workloads.adoc[]
 
 
 
