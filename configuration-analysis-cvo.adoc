@@ -4,7 +4,7 @@ permalink: configuration-analysis-cvo.html
 keywords: Cloud Volumes ONTAP, license, well-architected, WAD, CVO 
 summary: NetApp Console のウェルアーキテクチャダッシュボードは、ストレージシステムの構成を定期的に分析し、Cloud Volumes ONTAP システムに構成上の問題がないかどうかを判断します。問題が検出されると、ダッシュボードには問題の内容が表示され、ストレージシステムが最高のパフォーマンス、対費用効果の高い効率、およびベストプラクティスへの準拠を達成するために何を変更する必要があるかが説明されます。 
 ---
-= Well-architected ダッシュボードでの Cloud Volumes ONTAP の構成分析
+= Cloud Volumes ONTAP の構成分析
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

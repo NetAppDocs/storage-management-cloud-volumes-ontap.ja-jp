@@ -315,9 +315,9 @@ sidebar:
     entries:
     - title: クラウド プロバイダの統合
       url: "/reference-provider-integrations.html"
-    - title: システムマネージャからの管理
+    - title: ONTAP System Manager からの管理
       url: "/task-administer-advanced-view.html"
-    - title: CLIからの管理
+    - title: ONTAP CLIを使用した管理
       url: "/task-connecting-to-otc.html"
     - title: Flash Cache と Cloud Volumes ONTAP
       url: "/concept-flash-cache.html"
@@ -325,11 +325,11 @@ sidebar:
       url: "/concept-active-iq.html"
     - title: AutoSupport の設定を確認する
       url: "/task-verify-autosupport.html"
-    - title: Keystoneサブスクリプションを管理する
+    - title: Cloud Volumes ONTAP と Keystone
       url: "/task-manage-keystone.html"
     - title: Cloud Volumes ONTAP と Microsoft OneLake
       url: "/task-azure-onelake.html"
-    - title: Cloud Volumes ONTAP と優れた設計のダッシュボード
+    - title: Cloud Volumes ONTAP とウェルアーキテクテッドダッシュボード
       url: "/configuration-analysis-cvo.html"
   - title: 知識とサポート
     entries:
