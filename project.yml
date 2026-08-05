@@ -319,7 +319,7 @@ sidebar:
       url: "/task-administer-advanced-view.html"
     - title: ONTAP CLIを使用した管理
       url: "/task-connecting-to-otc.html"
-    - title: Flash Cache と Cloud Volumes ONTAP
+    - title: Cloud Volumes ONTAP と Flash Cache
       url: "/concept-flash-cache.html"
     - title: Cloud Volumes ONTAP と AutoSupport - Digital Advisor
       url: "/concept-active-iq.html"

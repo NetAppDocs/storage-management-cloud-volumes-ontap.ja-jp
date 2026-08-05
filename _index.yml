@@ -21,16 +21,16 @@ indexpage:
     links:
     - title: ライセンス
       url: concept-licensing.html
-    - title: セキュリティ
-      url: concept-security.html
+    - title: ノードベースのライセンスを変換する
+      url: "/task-convert-node-capacity.html"
+    - title: Cloud Volumes ONTAP ストレージVM
+      url: task-managing-svms.html
     - title: 暗号化について
       url: concept-security.html
     - title: ストレージ管理
       url: concept-storage-management.html
     - title: Cloud Volumes ONTAPクラスターに使用されるディスクとアグリゲート
       url: reference-default-configs.html
-    - title: Cloud Volumes ONTAP ワークロードのパフォーマンス監視
-      url: concept-performance.html
   - title: AWS
     links:
     - title: サポートされる構成
@@ -93,6 +93,18 @@ indexpage:
       url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
     - title: APIを使用する準備
       url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
+  - title: Cloud Volumes ONTAPおよびその他のNetApp製品
+    links:
+    - title: Cloud Volumes ONTAP と Flash Cache
+      url: "/concept-flash-cache.html"
+    - title: Cloud Volumes ONTAP と AutoSupport - Digital Advisor
+      url: "/concept-active-iq.html"
+    - title: Cloud Volumes ONTAP と Microsoft OneLake
+      url: "/task-azure-onelake.html"
+    - title: Cloud Volumes ONTAP とウェルアーキテクテッドダッシュボード
+      url: "/configuration-analysis-cvo.html"
+    - title: Cloud Volumes ONTAP と Keystone
+      url: "/task-manage-keystone.html"
   - title: その他のリソース
     links:
     - title: トラブルシューティング

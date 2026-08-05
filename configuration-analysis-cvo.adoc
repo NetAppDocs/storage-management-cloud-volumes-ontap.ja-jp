@@ -24,7 +24,25 @@ NetApp Console のウェルアーキテクチャダッシュボードは、ス�
 * 洞察から行動へ
 
 
-未解決のディレクティブ（ https://raw.githubusercontent.com/NetAppDocs/console-well-architected/main/cvo/configuration-analysis-cvo.adoc[]）- include::_include/well-architected-workloads.adoc[]
+
+
+[[how-it-works]]
+== 仕組み
+
+Workload Factoryは、サポートされているクラウドストレージシステム上で実行されているワークロードを毎日分析します。この分析により、適切に設計されたステータス、インサイト、および推奨事項が提供されます。
+
+日々の分析が完了すると、デプロイメントのWell-architectedダッシュボードに、構成が「最適化済み」または「最適化されていない」として表示されます。設定に関する問題はカテゴリ別に整理されており、設定に関する問題とその推奨事項の一覧も掲載されています。設定に関する問題については、推奨事項をご確認ください。一部の問題はWorkload Factoryによって自動的に解決されますが、その他の問題は手動での対応が必要です。この場合、Workload Factoryは、推奨される変更を実装するのに役立つ詳細な手順を提供します。
+
+ご自身の環境に適用されない構成の分析を無視することができます。これにより、不要なアラートや不正確な最適化結果を回避できます。
+
+また、組織の標準とNetAppのベストプラクティスに照らして環境を検証するために、平易な言葉でカスタムルールを作成することもできます。ドライランでルールをテストし、各環境で実行するようにスケジュールを設定します。link:https://docs.netapp.com/us-en/console-well-architected/learn-custom-rules.html["カスタムルールについて詳しくはこちらをご覧ください"^]。
+
+
+
+[[why-it-matters]]
+== 重要な理由
+
+Workload Factoryは、継続的な評価と推奨事項、および修復策を組み合わせることで、大規模なストレージ、データベース、およびVMware環境にベストプラクティスを適用します。NetApp Consoleで適用された自動修正により、人的ミスを削減し、統一された管理を確保し、ワークロードインフラストラクチャ全体でパフォーマンスと信頼性を維持します。
 
 
 

@@ -7292,7 +7292,6 @@
   <block id="2e5d14f7919ff3c6138e7845aec4f915" category="sidebar">サポート対象のバージョン</block>
   <block id="c4d6a904ef528003bf03bc2e65cffd26" category="sidebar">サポートされているアップグレード パス</block>
   <block id="ed2ddb015b7b7b651921053fc149d928" category="sidebar">暗号化について</block>
-  <block id="757c7a545c3639d3a6d5c6664431b930" category="sidebar">Cloud Volumes ONTAP ワークロードのパフォーマンス監視</block>
   <block id="a470b9079d65fd390c8d7493dec5f4e9" category="sidebar">サポートされる構成</block>
   <block id="a7370487cf69c78f7ad768c8dae41fd6" category="sidebar">AWSにおけるネットワーク要件／セキュリティ要件</block>
   <block id="36403c3548e2e3931df74ecbe98ac96a" category="sidebar">迅速な導入</block>
@@ -7672,5 +7671,14 @@
   <block id="4375417a8b8f335f3352e1f741532269" category="sidebar">ONTAP CLIを使用した管理</block>
   <block id="932294ad5d34f659aa544ec559cad4ad" category="sidebar">Cloud Volumes ONTAP と Keystone</block>
   <block id="887238a149638ebe371e1475e7cf53de" category="sidebar">Cloud Volumes ONTAP とウェルアーキテクテッドダッシュボード</block>
-  <block id="973b36ffce6cb4dba1d81ef122b1f245" category="paragraph">未解決のディレクティブ（<block ref="c491f271fb4c6f62c68f73c7ad844350" category="inline-link-rx"></block>）- include::_include/well-architected-workloads.adoc[]</block>
+  <block id="9ffdb95250e26c7a6b468126ac7c75b0" category="section-title">仕組み</block>
+  <block id="874fbc8635967fd5300d05269c50cea0" category="paragraph">Workload Factoryは、サポートされているクラウドストレージシステム上で実行されているワークロードを毎日分析します。この分析により、適切に設計されたステータス、インサイト、および推奨事項が提供されます。</block>
+  <block id="27b3ab8a4b26cd2ee311ee2ac5911ba3" category="paragraph">日々の分析が完了すると、デプロイメントのWell-architectedダッシュボードに、構成が「最適化済み」または「最適化されていない」として表示されます。設定に関する問題はカテゴリ別に整理されており、設定に関する問題とその推奨事項の一覧も掲載されています。設定に関する問題については、推奨事項をご確認ください。一部の問題はWorkload Factoryによって自動的に解決されますが、その他の問題は手動での対応が必要です。この場合、Workload Factoryは、推奨される変更を実装するのに役立つ詳細な手順を提供します。</block>
+  <block id="8215457eb88ef1fb110b79579b908e3d" category="paragraph">ご自身の環境に適用されない構成の分析を無視することができます。これにより、不要なアラートや不正確な最適化結果を回避できます。</block>
+  <block id="8817b0c6f0795c52cab62044416eee8a" category="inline-link-macro">カスタムルールについて詳しくはこちらをご覧ください</block>
+  <block id="821af7226458ea25572e88e8ab2026e4" category="paragraph">また、組織の標準とNetAppのベストプラクティスに照らして環境を検証するために、平易な言葉でカスタムルールを作成することもできます。ドライランでルールをテストし、各環境で実行するようにスケジュールを設定します。<block ref="ce039b478eb432b675a03c04866f31ab" category="inline-link-macro-rx"></block>。</block>
+  <block id="ee25e0b6cd574166f206b4c5b7f02df3" category="section-title">重要な理由</block>
+  <block id="c2bf4ab5c816a6a7be03384125f4a5d6" category="paragraph">Workload Factoryは、継続的な評価と推奨事項、および修復策を組み合わせることで、大規模なストレージ、データベース、およびVMware環境にベストプラクティスを適用します。NetApp Consoleで適用された自動修正により、人的ミスを削減し、統一された管理を確保し、ワークロードインフラストラクチャ全体でパフォーマンスと信頼性を維持します。</block>
+  <block id="8f96dd86c3b476f91f5e8deb2f840342" category="sidebar">Cloud Volumes ONTAPおよびその他のNetApp製品</block>
+  <block id="632cbf73d084e28580f4f6dfbd84efcc" category="sidebar">Cloud Volumes ONTAP と Flash Cache</block>
 </blocks>
