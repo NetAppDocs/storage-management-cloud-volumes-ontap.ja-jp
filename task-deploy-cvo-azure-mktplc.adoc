@@ -4,7 +4,7 @@ permalink: task-deploy-cvo-azure-mktplc.html
 keywords: deploy cvo marketplace, marketplace direct cvo deployment, azure marketplace 
 summary:  
 ---
-= AzureマーケットプレイスからCloud Volumes ONTAPをデプロイする
+= Azure Marketplace から Cloud Volumes ONTAP をデプロイする
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,15 +14,15 @@ summary:
 
 
 [role="lead"]
-Azure マーケットプレイスの直接展開を使用すると、 Cloud Volumes ONTAP を迅速かつ簡単に展開できます。  Azure マーケットプレイスでは、数回クリックするだけでCloud Volumes ONTAPを迅速に導入し、そのコア機能と機能を自分の環境で試すことができます。
+Azure Marketplace の直接デプロイを使用すると、Cloud Volumes ONTAP を迅速かつ簡単にデプロイできます。Azure Marketplace から、数回クリックするだけで Cloud Volumes ONTAP をすばやくデプロイし、お客様の環境でその主要な機能と性能を検証できます。
 
 このオファーの詳細については、以下を参照してください。link:concept-azure-mktplace-direct.html["NetApp ConsoleとマーケットプレイスでCloud Volumes ONTAP のサービスについて学ぶ"] 。
 
 .タスク概要
-Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムには、次のプロパティがあります。  Azure マーケットプレイスを通じてデプロイされたスタンドアロン インスタンスの機能は、NetApp Consoleで検出された時点で変更されることに注意してください。
+Azure Marketplace の直接デプロイを使用してデプロイされた Cloud Volumes ONTAP システムには、以下の特性があります。Azure Marketplace を通じてデプロイされたスタンドアロン インスタンスの機能は、NetApp Console で検出されると変更されることに注意してください。
 
 * 最新のCloud Volumes ONTAPバージョン (9.16.1 以降)。
-* プロビジョニングされた容量が 500 GiB に制限されたCloud Volumes ONTAPの無料ライセンス。このライセンスにはNetAppサポートは含まれず、有効期限もありません。
+* Cloud Volumes ONTAP の無料ライセンスは、最大 500 GiB のプロビジョニング容量に対して提供されており、NetApp サポートはなく、有効期限もありません。500 GiB を超える容量を使用するには、有効なライセンス権限が必要となり、料金が発生する場合があります。Cloud Volumes ONTAP のフルエクスペリエンスと高度な管理機能にアクセスするには、Cloud Volumes ONTAP システムを NetApp Console に接続してください。NetApp Console を通じた検出と管理には、お客様の NetApp Console アカウントに関連付けられた有効な Azure Marketplace サブスクリプションが必要です。
 * 単一の可用性ゾーン (AZ) に高可用性 (HA) モードで構成され、デフォルトのシリアル番号でプロビジョニングされた 2 つのノード。ストレージ仮想マシン（ストレージVM）は、link:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["柔軟なオーケストレーションモード"] 。
 * デフォルトで作成されるインスタンスの集約。
 * 500 GiB のプロビジョニング容量を持つ Premium SSD v2 マネージド ディスク、ルート ディスク、およびデータ ディスク。
@@ -39,7 +39,7 @@ Azure マーケットプレイスの直接展開を使用して展開されたCl
 
 
 .開始する前に
-* 有効な Azure Marketplace サブスクリプションがあることを確認します。
+* デプロイされたシステムをNetApp Consoleで検出して管理する予定がある場合は、NetApp Consoleアカウントが有効なAzure Marketplaceサブスクリプションに関連付けられていることを確認してください。NetApp Consoleへのシステムの検出には、有効なサブスクリプションが必要です。
 * ネットワーク要件を満たしていることを確認してくださいlink:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["単一 AZ での HA 展開"]Azure で。。 link:reference-networking-azure.html["Cloud Volumes ONTAP用の Azure ネットワークを設定する"] 。
 * Cloud Volumes ONTAPをデプロイするには、次のいずれかの Azure ロールが割り当てられている必要があります。
 +
@@ -60,7 +60,7 @@ NOTE: リソースプロバイダー「Microsoft.storage」をサブスクリプ
 
 
 .手順
-. Azure Marketplace サイトから、 NetApp製品を検索します。
+. Azure Marketplace サイトから NetApp 製品を検索します。
 . * NetApp Cloud Volumes ONTAP direct*を選択します。
 . *作成* をクリックして、デプロイメント ウィザードを起動します。
 . プランを選択してください。  *プラン* リストには通常、 Cloud Volumes ONTAPの最新リリースが表示されます。
@@ -99,14 +99,14 @@ NOTE: Microsoft Azure の制限に準拠するには、新しい仮想ネット�
 [[troubleshoot-deployment-issues]]
 == デプロイメントの問題のトラブルシューティング
 
-Azure マーケットプレイスを通じて直接導入されたCloud Volumes ONTAPシステムには、 NetAppからのサポートは含まれません。展開中に問題が発生した場合、独自にトラブルシューティングして解決できます。
+Azure Marketplace を通じて直接デプロイされた Cloud Volumes ONTAP システムには、NetApp のサポートは含まれません。導入中に何らかの問題が発生した場合は、お客様ご自身でトラブルシューティングを行い、解決することができます。
 
 .手順
-. Azure Marketplace サイトで、*ブート診断 > シリアル ログ* に移動します。
+. Azure Marketplace サイトで、「ブート診断」>「シリアルログ」に移動します。
 . シリアルログをダウンロードして調査します。
 . トラブルシューティングについては、製品ドキュメントとナレッジベース (KB) の記事を参照してください。
 +
-** https://learn.microsoft.com/en-us/partner-center/["Azure マーケットプレイスのドキュメント"]
+** https://learn.microsoft.com/en-us/partner-center/["Azure Marketplace のドキュメント"]
 ** https://www.netapp.com/support-and-training/documentation/["NetAppのドキュメント"]
 ** https://kb.netapp.com/["NetApp KB記事"]
 
@@ -118,10 +118,10 @@ Azure マーケットプレイスを通じて直接導入されたCloud Volumes 
 [[discover-the-deployed-systems-in-console]]
 == コンソールで展開されたシステムを検出する
 
-Azure マーケットプレイスの直接展開を使用して展開したCloud Volumes ONTAPシステムを検出し、コンソールの *システム* ページで管理できます。コンソール エージェントはシステムを検出し、追加して必要なライセンスを適用し、これらのシステムに対してコンソールの全機能のロックを解除します。  PSSD v2 マネージド ディスクを使用した単一の AZ 内の元の HA 構成は保持され、システムは元のデプロイメントと同じ Azure サブスクリプションとリソース グループに登録されます。
+Azure Marketplace の直接デプロイを使用してデプロイした Cloud Volumes ONTAP システムを検出し、NetApp Console の「*システム*」ページで管理できます。NetApp Console エージェントはシステムを検出し、システムを追加して必要なライセンスを適用し、これらのシステムに対して NetApp Console のすべての機能を有効化します。PSSD v2 マネージドディスクを使用した単一の AZ における元の HA 構成は保持され、システムは元のデプロイメントと同じ Azure サブスクリプションおよびリソースグループに登録されます。
 
 .タスク概要
-Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムを検出すると、コンソール エージェントは次のタスクを実行します。
+Azure Marketplace の直接デプロイを使用してデプロイされた Cloud Volumes ONTAP システムを検出すると、コンソール エージェントは次のタスクを実行します：
 
 * 検出されたシステムの無料ライセンスを通常の容量ベースのライセンスに置き換えますlink:concept-licensing.html#packages["フリーミアムライセンス"]。
 * 展開されたシステムの既存の機能を保持し、データ保護、データ管理、セキュリティ機能などのコンソールの追加機能を追加します。
@@ -135,13 +135,13 @@ Azure マーケットプレイスの直接展開を使用して展開されたCl
 
 
 .開始する前に
-Azure マーケットプレイスでのデプロイが完了していることを確認します。コンソール エージェントは、展開が完了し、検出可能になった場合にのみシステムを検出できます。
+Azure Marketplace 上でデプロイが完了していることを確認してください。コンソール エージェントは、デプロイが完了し、システムが検出可能になった場合にのみ、システムを検出できます。
 
 .手順
 コンソールでは、既存のシステムを検出するための標準の手順に従います。。 link:task-adding-systems.html["既存のCloud Volumes ONTAPシステムをコンソールに追加する"] 。
 
 
-CAUTION: 検出中に失敗メッセージが表示される場合がありますが、検出プロセスが完了するまで無視できます。検出中に、Azure Marketplace ポータルでシステムによって生成されたCloud Volumes ONTAP構成、特にシステム タグを変更しないでください。これらの構成に変更を加えると、予期しないシステム動作が発生する可能性があります。
+CAUTION: 検出処理中にエラーメッセージが表示される場合がありますが、検出プロセスが完了するまでは無視して構いません。検出中は、Azure Marketplace ポータルでシステムが生成した Cloud Volumes ONTAP の構成（特にシステム タグ）を変更しないでください。これらの設定に変更を加えると、予期しないシステム動作が発生する可能性があります。
 
 .終了後の操作
 検出が完了すると、コンソールの *システム* ページにリストされているシステムを表示できます。次のようなさまざまな管理タスクを実行できます。link:task-manage-aggregates.html["総計を拡大する"] 、link:task-create-volumes.html["ボリュームの追加"] 、link:task-managing-svms-azure.html["追加のストレージVMのプロビジョニング"] 、 そしてlink:task-change-azure-vm.html["インスタンスタイプの変更"]。
@@ -149,6 +149,7 @@ CAUTION: 検出中に失敗メッセージが表示される場合がありま�
 .関連リンク
 ストレージの作成の詳細については、 ONTAP のドキュメントを参照してください。
 
+* https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["新しいマーケットプレイスのサブスクリプションを追加する"^]
 * https://docs.netapp.com/us-en/ontap/volumes/create-volume-task.html["NFS用のボリュームを作成する"^]
 * https://docs.netapp.com/us-en/ontap-cli/lun-create.html["iSCSI用のLUNを作成する"^]
 * https://docs.netapp.com/us-en/ontap-cli/vserver-cifs-share-create.html["CIFSの共有を作成する"^]

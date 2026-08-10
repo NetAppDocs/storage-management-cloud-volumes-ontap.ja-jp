@@ -160,7 +160,6 @@
   <block id="186b3997de3027cf87a351ba0a1f9bf4" category="doc">Cloud Volumes ONTAP 9.17.1RC</block>
   <block id="2a0942c706fe1023b055df5cfc6720d2" category="paragraph">BlueXPを使用して、Azure および Google Cloud でCloud Volumes ONTAP 9.17.1 のリリース候補 1 をデプロイおよび管理できるようになりました。ただし、このバージョンは AWS でのデプロイおよびアップグレードには使用できません。</block>
   <block id="1794b1ebac03efdd38e24eb28c47629a" category="inline-link-macro">Cloud Volumes ONTAPのこのリリースの詳細</block>
-  <block id="e0a027f4bdcd16cda78c830ace94fc76" category="paragraph"><block ref="539cae97b36c04420caaf667f01300c8" category="inline-link-macro-rx"></block> 。</block>
   <block id="bc2fe31b1e2682a9a79513d792e9c721" category="doc">BlueXPはNetApp Consoleになりました</block>
   <block id="995c8f79a8e07fbd8d519e45d03d6004" category="paragraph">NetApp Consoleは、強化され再構築されたBlueXP基盤上に構築され、オンプレミスとクラウド環境全体にわたるエンタープライズ グレードのNetAppストレージとNetApp Data Servicesの集中管理を提供し、リアルタイムの分析情報、より高速なワークフロー、および高度なセキュリティとコンプライアンスを備えた簡素化された管理を実現します。</block>
   <block id="2ef9d641d45afe99b74ad6f9a9f797ad" category="inline-link">NetApp Consoleのリリースノート</block>
@@ -747,7 +746,6 @@
   <block id="14f508f0826944b504efb176670357e8" category="list-text">*BYOL*: 自分のライセンスを持ち込みます (BYOL)。  NetAppから購入したライセンスで、任意のクラウド プロバイダーにCloud Volumes ONTAP を展開するために使用できます。</block>
   <block id="ceb2294714463ec73c3bb76a991ef103" category="admonition">はBYOLライセンスの購入、延長、および更新を制限しています。<block ref="73dc1b5468c2405a47da63a28335f079" category="inline-link-rx"></block> 。</block>
   <block id="3c7a90227f7481790a6d7eb5b1a274ea" category="list-text">*PAYGO*: 従量課金制 (PAYGO) サブスクリプションは、クラウド プロバイダーのマーケットプレイスからの時間単位のサブスクリプションです。</block>
-  <block id="146cb6145f5238f0a019636047844250" category="list-text">*年間*: クラウド プロバイダーのマーケットプレイスからの年間契約。</block>
   <block id="cf3a2d2c139bf5c9cc87fe714bfff3b1" category="paragraph">次の点に注意してください。</block>
   <block id="fb8439ec6848d4c09164235309706a2e" category="list-text">NetApp （BYOL）からライセンスを購入する場合は、クラウドプロバイダーのマーケットプレイスからPAYGOプランに加入する必要があります。NetAppはBYOLライセンスに制限を設けています。BYOLライセンスの有効期限が切れた場合は、クラウドマーケットプレイスのサブスクリプションに切り替えていただく必要があります。</block>
   <block id="0956d25698d6ea6e452e1cd574ab1eea" category="paragraph">ライセンスは常に最初に課金されますが、以下の場合にはマーケットプレイスの時間単位料金で課金されます。</block>
@@ -811,7 +809,6 @@
   <block id="e70747c71702cdc100bd5f592ed452be" category="summary">Cloud Volumes ONTAPにはいくつかのライセンス オプションがあります。各オプションにより、ニーズに合った構成を選択できます。</block>
   <block id="6b32e99bddf60938239aabe092cb4c16" category="paragraph">Cloud Volumes ONTAPにはいくつかのライセンス オプションがあります。各オプションにより、ニーズに合った消費モデルを選択できます。</block>
   <block id="8efc36afc2e7202a9c9bda00b8e8a75d" category="section-title">ライセンスの概要</block>
-  <block id="f008ecd5469e24eee31eb4e2e4a1e23f" category="paragraph">新規のお客様には、次のライセンス オプションをご利用いただけます。</block>
   <block id="771f877f73ed39c1ce2849efb746d509" category="list-text">容量ベースのライセンス</block>
   <block id="4bbac1ba6da1fae98898078ee927d707" category="inline-link-macro">容量ベースのライセンスについて詳しく見る</block>
   <block id="fc860be5f135f0d58f6a4cc1a552d57f" category="list-text">Keystoneサブスクリプション</block>
@@ -882,8 +879,6 @@
   <block id="d83127b1411e10b0e57743f291048e63" category="paragraph">このライセンスを使用して新しいCloud Volumes ONTAPシステムを展開する権利はありません。既存のシステムは引き続き動作する可能性がありますが、EOS 日以降はシステムに対するサポートやアップデートは受けられなくなります。</block>
   <block id="dddb9d06ec44b2f4783c5cbeb3b3f962" category="paragraph">PAYGOサブスクリプション付きの有効なノードベースのライセンス</block>
   <block id="1992166b3e269c648d4c3627fe482fa5" category="paragraph">EOS 日以降は、容量ベースのライセンスに移行するまで、 NetApp のサポートを受けられなくなります。</block>
-  <block id="ddbff06fb221c5c1396bb37c09f6f2fb" category="paragraph-title">除外事項</block>
-  <block id="60d1148bddcd69c1238a0b69f45bdaa5" category="paragraph">NetApp は、特定の状況では特別な考慮が必要であることを認識しており、ノードベースのライセンスの EOA と EOS は次の場合には適用されません。</block>
   <block id="0fda23bdfd335df1f36c51b87bc2b780" category="paragraph">これらの特定のシナリオでは、 NetApp は契約上の義務と運用上のニーズに準拠した固有のライセンス要件に対処するためのサポートを提供します。</block>
   <block id="913f6cd3e420105c804151f182c6938f" category="admonition">このようなシナリオの場合でも、新しいノードベースのライセンスとライセンスの更新は、承認日から最大 1 年間有効です。</block>
   <block id="5be0251ff1848cd4d292e0a684e70539" category="section-title">ライセンス変換</block>
@@ -2320,13 +2315,9 @@
   <block id="5ab578b73044132252d5442b12aeb846" category="paragraph">年間契約または長期契約の場合、 NetAppでは、EOA 日 (2024 年 11 月 11 日) またはライセンスの有効期限の前にNetApp の担当者に連絡して、移行の前提条件が満たされていることを確認することをお勧めします。 Cloud Volumes ONTAPノードの長期契約がなく、オンデマンドの従量課金制 (PAYGO) サブスクリプションに対してシステムを実行している場合は、2024 年 12 月 31 日のサポート終了 (EOS) 前に変換を計画することが重要です。どちらの場合も、シームレスな移行を実現するために、 NetApp Consoleのライセンス変換ツールを使用する前に、システムが要件を満たしていることを確認する必要があります。</block>
   <block id="4bedf07f0fb0e4e91062f6c20aefb983" category="paragraph">EOAとEOSの詳細については、以下を参照してください。<block ref="7f9a8649ca2d86db235ba56502d14f92" category="inline-link-macro-rx"></block> 。</block>
   <block id="aef6fd472f817709940e55ee0509b06b" category="list-text">ライセンス変換ツールを使用すると、ノードベースのライセンス モデルから容量ベースのライセンス モデルへの移行がオンラインで実行されるため、データの移行や追加のクラウド リソースのプロビジョニングが不要になります。</block>
-  <block id="1b740ae810dbba9c533dc649a7e00e1a" category="list-text">これは中断のない操作であり、サービスの中断やアプリケーションのダウンタイムは発生しません。</block>
   <block id="ae7204194871107f02073f12fcf8eef4" category="list-text">Cloud Volumes ONTAPシステム内のアカウントとアプリケーション データはそのまま残ります。</block>
   <block id="0caba03d6443607a5e6317db3c48768b" category="list-text">変換後も、基盤となるクラウド リソースは影響を受けません。</block>
   <block id="c71b87b7ddb6142065c0158af5ec7d67" category="list-text">ライセンス変換ツールは、単一ノード、単一可用性ゾーン (AZ) での高可用性 (HA)、複数 AZ での HA、ライセンス持ち込み (BYOL)、PAYGO など、すべてのデプロイメント タイプをサポートします。</block>
-  <block id="a555fa04b2345d39f8fdfff081afbc14" category="list-text">このツールは、すべてのノードベースライセンスをソースとして、すべての容量ベースライセンスをターゲットとしてサポートしています。例えば、PAYGO Standardのノードベースライセンスをお持ちの場合、マーケットプレイスで購入した任意の容量ベースライセンスに変換できます。NetAppはBYOLライセンスの購入、延長、および更新を制限しています。<block ref="73dc1b5468c2405a47da63a28335f079" category="inline-link-rx"></block> 。</block>
-  <block id="d83716c2cd131d390d1534102b05cd41" category="list-text">変換は、すべてのクラウド プロバイダー (AWS、Azure、Google Cloud) でサポートされています。</block>
-  <block id="17b44aa5dd5a227e033b4a869774c160" category="list-text">変換後、ノードベースのライセンスのシリアル番号は、容量ベースの形式に置き換えられます。これは変換の一環として実行され、 NetAppサポート サイト (NSS) アカウントに反映されます。</block>
   <block id="57badbd9aeb6e5152434b70bdd22ed2e" category="list-text">容量ベースのモデルに移行すると、データは引き続きノードベースのライセンスと同じ場所に保持されます。このアプローチにより、データ配置の中断が保証されず、移行全体を通じてデータ主権の原則が維持されます。</block>
   <block id="185df8fc7d6cba2b3dc4ddbb241610fe" category="list-title">始める前に</block>
   <block id="c89523d65a6a7e4c3fbcb8cbfee5d6e5" category="list-text">顧客アクセスまたは管理者アクセスを持つ NSS アカウントが必要です。</block>
@@ -2345,7 +2336,6 @@
   <block id="400c55906a66dfb0a544082037323a6b" category="list-text">宛先パッケージがアカウントの BYOL ライセンスの可用性と一致しない場合、また既存の容量ベースのライセンスに十分な容量がない場合は、マーケットプレイスのサブスクリプションを通じて料金が請求されます。</block>
   <block id="0e5c1be9c6aca6c1aaf08bf9ed203110" category="admonition">これらの要件のいずれかが満たされていない場合、ライセンスの変換は行われません。特定のケースでは、ライセンスは変換される可能性がありますが、使用することはできません。情報アイコンをクリックして問題を特定し、修正措置を講じます。</block>
   <block id="d15266cc5f90d2de0d43d4dfc0bb3f9c" category="list-text">*システム* ページで、ライセンスの種類を変更するシステムの名前をダブルクリックします。</block>
-  <block id="ccf71cd219d20a210964977da3ff250e" category="list-text">[概要] タブで、[機能] パネルをクリックします。</block>
   <block id="498a7301ce7f11c6c87ae04fa3f52b88" category="list-text">*充電方法*の横にある鉛筆アイコンを確認してください。システムの充電方法が<block ref="e71f388bff446d0d83b053510eafc3ce" prefix=" " category="inline-code"></block>容量課金に変更することができます。</block>
   <block id="1c72b9c278e1ac9dd3d0f1e9d9732d89" category="admonition">Cloud Volumes ONTAPシステムがすでに容量によって課金されている場合、またはいずれかの要件が満たされていない場合、アイコンは無効になります。</block>
   <block id="731ac9424395af5a16ebaa7d43ac7363" category="list-text">*ノードベースのライセンスを容量ベースに変換する*画面で、システム名とソース ライセンスの詳細を確認します。</block>
@@ -2353,7 +2343,6 @@
   <block id="ad55f0eebc5068e31eecc1bc08fae252" category="list-text">必需品。デフォルト値は<block ref="4d55f77f062bf48891bd0f749c36a36d" prefix=" " category="inline-code"></block>。</block>
   <block id="2afb5f4c96f686848c18c82d0403786c" category="list-text">BYOL ライセンスをお持ちの場合は、変換が完了した後にコンソールからノードベースのライセンスを削除するチェックボックスを選択できます。変換がまだ進行中の場合は、このチェックボックスを選択してもコンソールからライセンスは削除されません。このオプションはマーケットプレイスのサブスクリプションでは使用できません。</block>
   <block id="a42381ccb4c9b07d94af68aac09b97db" category="list-text">変更の影響を理解していることを確認するためにチェックボックスを選択し、「続行」をクリックします。</block>
-  <block id="0eb9e79eef04cea0e0859627689cc768" category="paragraph">新しいライセンスのシリアル番号を表示し、コンソールの *Licenses and subscriptions* メニューで変更を確認します。</block>
   <block id="64561f2ec1b6edafb724a07913dbf5b1" category="section-title">さまざまなハイパースカラーの価格設定</block>
   <block id="48663a71734c459a4eb7d42e979ef986" category="paragraph">価格の詳細については、<block ref="6dd6e0ebeffdbf7b0b2bee2f498a2c82" category="inline-link-rx"></block> 。</block>
   <block id="26592e143987ab40aba1ac379c886b8d" category="paragraph">特定のハイパースカラーのプライベートオファーに関する情報については、下記までお問い合わせください。</block>
@@ -2539,12 +2528,9 @@
   <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">例えば：</block>
   <block id="b1dde3304edf68afb6be3819b52b7152" category="inline-link">Cloud Volumes ONTAP APIについて学ぶ</block>
   <block id="40f3baabc19d523f34effa4916ea3369" category="paragraph"><block ref="40f3baabc19d523f34effa4916ea3369" category="inline-link-rx"></block></block>
-  <block id="116506219a3191e0250a50c5119faeae" category="paragraph">Azure マーケットプレイスの直接展開を使用すると、 Cloud Volumes ONTAP を迅速かつ簡単に展開できます。  Azure マーケットプレイスでは、数回クリックするだけでCloud Volumes ONTAPを迅速に導入し、そのコア機能と機能を自分の環境で試すことができます。</block>
   <block id="8961ce8062351f2634d0c6d59da1e838" category="inline-link-macro">NetApp ConsoleとマーケットプレイスでCloud Volumes ONTAP のサービスについて学ぶ</block>
   <block id="ffc422115a31323beb67b9e80bb88ec8" category="paragraph">このオファーの詳細については、以下を参照してください。<block ref="13a4bdf4a83beff605af38114243ed83" category="inline-link-macro-rx"></block> 。</block>
-  <block id="d15f6815308408695bb2a91b7207a65d" category="paragraph">Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムには、次のプロパティがあります。  Azure マーケットプレイスを通じてデプロイされたスタンドアロン インスタンスの機能は、NetApp Consoleで検出された時点で変更されることに注意してください。</block>
   <block id="307fba28eaa68023634ac12efe78443d" category="list-text">最新のCloud Volumes ONTAPバージョン (9.16.1 以降)。</block>
-  <block id="87449344416c32f88eeb38f3bd00e092" category="list-text">プロビジョニングされた容量が 500 GiB に制限されたCloud Volumes ONTAPの無料ライセンス。このライセンスにはNetAppサポートは含まれず、有効期限もありません。</block>
   <block id="152058aae87c0f08791efa9a9cbd8167" category="inline-link-macro">柔軟なオーケストレーションモード</block>
   <block id="35acff494427083599ef0a6b5f200d8d" category="list-text">単一の可用性ゾーン (AZ) に高可用性 (HA) モードで構成され、デフォルトのシリアル番号でプロビジョニングされた 2 つのノード。ストレージ仮想マシン（ストレージVM）は、<block ref="76b8e7a3e49d5a96c336355428b9cbdd" category="inline-link-macro-rx"></block> 。</block>
   <block id="860574f2fb3649a1d434d1ed47437a59" category="list-text">デフォルトで作成されるインスタンスの集約。</block>
@@ -2557,7 +2543,6 @@
   <block id="47f64097ec44c9f18f4025941f2e4436" category="list-text">FabricPool の階層化</block>
   <block id="39a42abacdd9ed9f78332fb060b29196" category="list-text">ストレージVMタイプの変更</block>
   <block id="b578dbfdde2bda79f859ef35aa53672e" category="list-text">高速書き込みモード</block>
-  <block id="cea379dc708683105165e44b4cd1a6aa" category="list-text">有効な Azure Marketplace サブスクリプションがあることを確認します。</block>
   <block id="a01bb8da3018252a01366ddb6767e8a3" category="inline-link-macro">単一 AZ での HA 展開</block>
   <block id="02ba5c8a00de1d81760f01a1677a04d1" category="list-text">ネットワーク要件を満たしていることを確認してください<block ref="83ccac9ef63ed88da88c49dabd89eaa8" category="inline-link-macro-rx"></block>Azure で。。 <block ref="76989abbcca6152c60f49caf5e88bdee" category="inline-link-macro-rx"></block> 。</block>
   <block id="6b499511e63bc63aeaf41ffb911727ea" category="list-text">Cloud Volumes ONTAPをデプロイするには、次のいずれかの Azure ロールが割り当てられている必要があります。</block>
@@ -2568,7 +2553,6 @@
   <block id="6766a739ae4fb6afa77da370f15622b7" category="paragraph">"permissions": [ { "actions": [ "Microsoft.AAD/register/action", "Microsoft.Resources/subscriptions/resourceGroups/write", "Microsoft.Network/loadBalancers/write", "Microsoft.ClassicCompute/virtualMachines/write", "Microsoft.Compute/capacityReservationGroups/deploy/action", "Microsoft.ClassicCompute/virtualMachines/networkInterfaces/associatedNetworkSecurityGroups/write", "Microsoft.Network/networkInterfaces/write", "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/extensions/write", "Microsoft.Resources/deployments/validate/action", "Microsoft.Resources/subscriptions/resourceGroups/read", "Microsoft.Network/virtualNetworks/write", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/networkSecurityGroups/write", "Microsoft.Network/networkSecurityGroups/read", "Microsoft.Compute/disks/write", "Microsoft.Compute/virtualMachineScaleSets/write", "Microsoft.Resources/deployments/write", "Microsoft.Network/virtualNetworks/subnets/read", "Microsoft.Network/virtualNetworks/subnets/write" ], "notActions": [], "dataActions": [], "notDataActions": [] } ]</block>
   <block id="645a169438346f46551a9b4ac5ab1e57" category="inline-link">Azure ドキュメント: ストレージの Azure アクセス許可</block>
   <block id="68e01e68bf1f5bcd729c6bd4e46062e7" category="admonition">リソースプロバイダー「Microsoft.storage」をサブスクリプションに登録している場合は、<block ref="a5247130ddf1c1aec9bf97e04b90b259" prefix=" " category="inline-code"></block>許可。詳細については、<block ref="d3458bbe37b36b18531c528f928d76ce" category="inline-link-rx"></block> 。</block>
-  <block id="fea8870db28737c6ef35d9b3e3a2ba87" category="list-text">Azure Marketplace サイトから、 NetApp製品を検索します。</block>
   <block id="bf8fb42f05fc0f00389a7a6bd708fddd" category="list-text">* NetApp Cloud Volumes ONTAP direct*を選択します。</block>
   <block id="18d9eb94444bbb5cc63acb692f56ca87" category="list-text">*作成* をクリックして、デプロイメント ウィザードを起動します。</block>
   <block id="3ad50573794660103eccc594ba3fb4f0" category="list-text">プランを選択してください。  *プラン* リストには通常、 Cloud Volumes ONTAPの最新リリースが表示されます。</block>
@@ -2591,19 +2575,13 @@
   <block id="0573433fb185b84611f18e3f6e506cd2" category="paragraph">通知アイコンを選択して、デプロイメントの進行状況を表示します。  Cloud Volumes ONTAPがデプロイされた後、操作用にリストされたストレージ VM を表示できます。</block>
   <block id="20a0bd63dc9b064c0cedc40d649eb29a" category="paragraph">アクセスできるようになったら、 ONTAP System Manager またはONTAP CLI を使用して、設定した管理者認証情報でストレージ VM にログインします。その後、ボリューム、LUN、または共有を作成し、 Cloud Volumes ONTAPのストレージ機能を使い始めることができます。</block>
   <block id="d4e7a9bbdf268719d1e4887b0bb7a121" category="section-title">デプロイメントの問題のトラブルシューティング</block>
-  <block id="0f14cbd67da8e5fe806dd5ee58c8ae05" category="paragraph">Azure マーケットプレイスを通じて直接導入されたCloud Volumes ONTAPシステムには、 NetAppからのサポートは含まれません。展開中に問題が発生した場合、独自にトラブルシューティングして解決できます。</block>
-  <block id="e9ad8cb2d3f7ad7951cb5e2ccdf98fcc" category="list-text">Azure Marketplace サイトで、*ブート診断 &gt; シリアル ログ* に移動します。</block>
   <block id="3473bcdf09ad8e881f1d60433d0651a8" category="list-text">シリアルログをダウンロードして調査します。</block>
   <block id="7afbb0eb51f3278f46cb4b6d919cf956" category="list-text">トラブルシューティングについては、製品ドキュメントとナレッジベース (KB) の記事を参照してください。</block>
-  <block id="31ba7b19ca3c214876b7398219977647" category="inline-link">Azure マーケットプレイスのドキュメント</block>
-  <block id="e6a36c01dbb836e81ba8524516c15d96" category="list-text"><block ref="e6a36c01dbb836e81ba8524516c15d96" category="inline-link-rx"></block></block>
   <block id="7a4e9cb5597c0c38152cde29a5ffea15" category="inline-link">NetAppのドキュメント</block>
   <block id="f34c4068e7529dd122f3896aa32177fd" category="list-text"><block ref="f34c4068e7529dd122f3896aa32177fd" category="inline-link-rx"></block></block>
   <block id="86b2dcafcdf6ee11674f3d4ddea97474" category="inline-link">NetApp KB記事</block>
   <block id="d59a7dcaf690c69cf296b9028f3f23e7" category="list-text"><block ref="d59a7dcaf690c69cf296b9028f3f23e7" category="inline-link-rx"></block></block>
   <block id="5775ea47ce218fd72bef02765075cfba" category="section-title">コンソールで展開されたシステムを検出する</block>
-  <block id="3fbbef8d735fc39da570964a7bdc604c" category="paragraph">Azure マーケットプレイスの直接展開を使用して展開したCloud Volumes ONTAPシステムを検出し、コンソールの *システム* ページで管理できます。コンソール エージェントはシステムを検出し、追加して必要なライセンスを適用し、これらのシステムに対してコンソールの全機能のロックを解除します。  PSSD v2 マネージド ディスクを使用した単一の AZ 内の元の HA 構成は保持され、システムは元のデプロイメントと同じ Azure サブスクリプションとリソース グループに登録されます。</block>
-  <block id="fe812c3a7bb2afed170446cf40a74dc2" category="paragraph">Azure マーケットプレイスの直接展開を使用して展開されたCloud Volumes ONTAPシステムを検出すると、コンソール エージェントは次のタスクを実行します。</block>
   <block id="9fb326c55818aec17fb7e0bd43bfac40" category="inline-link-macro">フリーミアムライセンス</block>
   <block id="b8967b77fd138bba59ac3f95d424502d" category="list-text">検出されたシステムの無料ライセンスを通常の容量ベースのライセンスに置き換えます<block ref="1b26e9041eb43ecd32ea6f7717f721cc" category="inline-link-macro-rx"></block>。</block>
   <block id="616aa81cdcfec45f18bf71977903d727" category="list-text">展開されたシステムの既存の機能を保持し、データ保護、データ管理、セキュリティ機能などのコンソールの追加機能を追加します。</block>
@@ -2616,7 +2594,6 @@
   <block id="b4f0b14a7c03bd1408d6f962ce6f783f" category="list-text">インスタンスを検出するために使用される NSS アカウントにインスタンスを登録します。</block>
   <block id="9ea9c6e19b1b679ebc8489e1abbcca81" category="inline-link-macro">自動モードと手動モード</block>
   <block id="cafedbc12625c51784900844db248af7" category="list-text">容量管理機能を有効にする<block ref="a953b070790e096be6f09488828337e6" category="inline-link-macro-rx"></block>発見されたシステムについて。</block>
-  <block id="6863151d09b16a30ba9facee46a4dfb0" category="paragraph">Azure マーケットプレイスでのデプロイが完了していることを確認します。コンソール エージェントは、展開が完了し、検出可能になった場合にのみシステムを検出できます。</block>
   <block id="8a458d8c60bb1dd40c3f86347edd3357" category="inline-link-macro">既存のCloud Volumes ONTAPシステムをコンソールに追加する</block>
   <block id="0ab166b904d43d7cbf272326c5e44598" category="paragraph">コンソールでは、既存のシステムを検出するための標準の手順に従います。。 <block ref="bce6bc60c7c6b3c4be175175db51ca28" category="inline-link-macro-rx"></block> 。</block>
   <block id="fd11d45aadcd4e9407d5c24aab385e8f" category="inline-link-macro">総計を拡大する</block>
@@ -3334,7 +3311,6 @@
   <block id="0c0401d1e9169d6dd38462b1e0d04126" category="section-title">サブスクリプションのリンクを解除する</block>
   <block id="492847bcbc9ec0bd3075b612aa43e4a7" category="list-text">* Keystone*を選択します。</block>
   <block id="6e1a9790b199742bec95dea2070e2f3f" category="summary">NetApp Consoleでノードベースのライセンスを管理し、各Cloud Volumes ONTAPシステムに必要な容量を持つ有効なライセンスがあることを確認します。</block>
-  <block id="160221c1e99e53b72af8a65c2440852b" category="doc">Cloud Volumes ONTAPのノードベースのライセンスを管理する</block>
   <block id="5b5068830882d3d6b54d331cdd743e62" category="paragraph">ONTAP CLI の手順については、次のドキュメントを参照してください。</block>
   <block id="412af2a2404a4e920b18be59197204b0" category="inline-link">SVM Disaster Recovery Preparation Express Guide</block>
   <block id="c15bb50c43eaf0ceb1bc0ce3d7503ebd" category="list-text"><block ref="c15bb50c43eaf0ceb1bc0ce3d7503ebd" category="inline-link-rx"></block></block>
@@ -5320,7 +5296,6 @@
   <block id="879701946bb2bc7241d0f85fd843455a" category="paragraph">endif::azure[]</block>
   <block id="6e1e9c83b80f4d22d34cbdf60a71383b" category="paragraph">ifdef::gcp[]</block>
   <block id="310c228207a0f8446bbe4c5d16978cb7" category="paragraph">endif::gcp[]</block>
-  <block id="f99b3d89987ba6dd6d51c370eaeea8f2" category="admonition">検出中に失敗メッセージが表示される場合がありますが、検出プロセスが完了するまで無視できます。検出中に、Azure Marketplace ポータルでシステムによって生成されたCloud Volumes ONTAP構成、特にシステム タグを変更しないでください。これらの構成に変更を加えると、予期しないシステム動作が発生する可能性があります。</block>
   <block id="950e7e695356602272f63f5a229978c6" category="inline-link-macro">Google Cloud でのCloud Volumes ONTAP構成の計画</block>
   <block id="b64ce252b77116ca032fd6f285079df7" category="list-text"><block ref="b64ce252b77116ca032fd6f285079df7" category="inline-link-macro-rx"></block></block>
   <block id="306ce3f6735e643338e201f2701d07a8" category="admonition">導入プロセスが完了したら、AWS クラウドポータルでシステムによって生成されたCloud Volumes ONTAP構成、特にシステムタグを変更しないでください。これらの構成に変更を加えると、予期しない動作やデータ損失が発生する可能性があります。</block>
@@ -6156,8 +6131,6 @@
   <block id="fbe952375aa3beae684faea7d44f613e" category="paragraph"><block ref="aaeef2d217066cd2eca41aa9288574cd" category="inline-link-macro-rx"></block>。</block>
   <block id="368df362649fb4d4bcc4049fba338707" category="doc">Cloud Volumes ONTAPの次世代Google Cloud VMのサポート</block>
   <block id="f6e70cdd9ff9d05c5228d01c9dd78150" category="paragraph">9.18.1では、NetAppが新しいCloud Volumes ONTAPのデプロイメントをN2 VMから次世代Google Cloud C3シリーズVMへ移行し、より高速でスケーラブルなエクスペリエンスを提供します。Google CloudでCloud Volumes ONTAP 9.18.1以降をデプロイする際に、C3シリーズVMを活用できるようになりました。C3シリーズのマシンは、Google Virtual NIC（gVNIC）とHyperdisk Balancedディスクを使用することで、パフォーマンスの向上と容量制限の拡大を実現し、負荷の高いワークロードに対してダイナミックなパフォーマンスを確保します。</block>
-  <block id="b6e501a3f9a9964fecae7c393bb7cf74" category="doc">Cloud Volumes ONTAP 9.19.1 RC</block>
-  <block id="f11434f81dce28dd60c981c553fa8539" category="paragraph">NetApp Console を使用して、Google Cloud に Cloud Volumes ONTAP 9.19.1 のリリース候補版 （RC） をデプロイおよび管理できるようになりました。このバージョンは、Amazon Web Service (AWS) および Microsoft Azure (Azure) へのデプロイおよびアップグレードには対応していません。</block>
   <block id="25e0da852d260d2649ca08106da6e096" category="section-title">Cloud Volumes ONTAP HAにおける次世代Google Cloud VMのサポート</block>
   <block id="8eb29cd4df495e469d2747ba84799174" category="paragraph">9.19.1では、NetAppはCloud Volumes ONTAPの高可用性（HA）デプロイメントをN2 VMから次世代Google Cloud C3シリーズVMに移行し、より高速でスケーラブルなエクスペリエンスを提供します。</block>
   <block id="6cc056a948dd84f835846a2201f9b4b5" category="admonition">このサポートは、単一のアベイラビリティゾーン（AZ）HA構成にのみ適用されます。</block>
@@ -6203,7 +6176,6 @@
   <block id="47da39c54c9f65768d8dc5f7d5110b69" category="paragraph">== HAペアにおけるストレージの仕組み</block>
   <block id="0ebfd0efa7f8474608b3e2e3ab2122eb" category="list-text">BYOLライセンスをお持ちで、マーケットプレイスとの年間契約を結んでいる場合、使用量と超過料金は、お客様が設定した請求設定に従って課金されます。料金の請求方法については、<block ref="895ee561f86a5b0bd9078aa957f421ed" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="124b9ac800df05ee7610d4fbd30cc172" category="paragraph">Cloud Volumes ONTAP は、9.18.1以降のシングルノード展開、および9.19.1以降のリリースにおける単一の可用性ゾーン（AZ）での高可用性（HA）構成に対して、Hyperdisk Balanced ディスクをサポートします。</block>
-  <block id="ed9eeab5c5b2e9634ca18379fe44e9a2" category="list-text">9.19.1 RC</block>
   <block id="de9583e6fce7a27a387782e9dccc41f2" category="list-text">コンソールエージェントに関連付けられたサービスアカウント<block ref="7bbaad5d325a365e141c19bc8c6c20e4" category="inline-link-rx"></block>。</block>
   <block id="4a4c37c91ec5c91b65063b5007c5b11d" category="list-text">*システムの詳細*：プロジェクトを選択し、クラスター名を指定し、必要に応じてサービスアカウントを選択し、必要に応じてラベルを追加し、最後に認証情報を指定します。</block>
   <block id="80866d7aec976fab87796b6194e9c082" category="cell">Google Cloudプロジェクトとマーケットプレイスのサブスクリプション</block>
@@ -7681,4 +7653,73 @@
   <block id="c2bf4ab5c816a6a7be03384125f4a5d6" category="paragraph">Workload Factoryは、継続的な評価と推奨事項、および修復策を組み合わせることで、大規模なストレージ、データベース、およびVMware環境にベストプラクティスを適用します。NetApp Consoleで適用された自動修正により、人的ミスを削減し、統一された管理を確保し、ワークロードインフラストラクチャ全体でパフォーマンスと信頼性を維持します。</block>
   <block id="8f96dd86c3b476f91f5e8deb2f840342" category="sidebar">Cloud Volumes ONTAPおよびその他のNetApp製品</block>
   <block id="632cbf73d084e28580f4f6dfbd84efcc" category="sidebar">Cloud Volumes ONTAP と Flash Cache</block>
+  <block id="0814f25d2fb19660c0f5a17f5faecd5b" category="doc">プライベートモードでCloud Volumes ONTAPを導入する</block>
+  <block id="f88a90c15ff08da20180a1e7c1e2cb55" category="paragraph">既存の環境内で、文書化された段階的な変換プロセスに従うことで、Cloud Volumes ONTAP をプライベートモードでデプロイできます。プライベートモード展開では、Cloud Volumes ONTAP システムはお客様独自の仮想プライベートクラウド（VPC）または仮想ネットワーク（VNet）にデプロイされ、パブリックインターネットには接続されません。プライベートモードでの展開を利用することで、組織のセキュリティおよびコンプライアンス要件を満たすことができます。</block>
+  <block id="dfbf98dc6589ce46f8f507664741a1b2" category="inline-link">2025/06/25</block>
+  <block id="833e5fa02f534c554c475beb9dc88522" category="paragraph">プライベートモードの展開では、以前は NetApp から調達できるノードベースのライセンスのみを使用していました。ノードベースのライセンスは、Cloud Volumes ONTAP の旧世代のライセンスです。NetApp は、例外を除き、ノードベースのライセンスの購入、延長、および更新を<block ref="442b2c7b239429db88d6f18cd76a6301" category="inline-link-rx"></block>以降に制限しています。2026年7月31日をもって、米国公共部門（USPS）やその他のプライベートモード展開などの例外的なケースにおけるノードベースのライセンスは、提供終了（EOA）を迎えます。</block>
+  <block id="956d7ac5202f446ef956439b30405e15" category="paragraph">ノードベースのライセンスを使用したプライベートデプロイメントの場合は、以下の手順に従ってください。</block>
+  <block id="1413e5fff8cfc90e97cde09a6dd4e77f" category="list-text">ノードベースのライセンスは、今後購入または更新できません。</block>
+  <block id="b8d13eefc4430b4596f9a4332354de31" category="list-text">最新の機能や強化された機能にアクセスできません。</block>
+  <block id="f5e0177af1238c0bbb1122354e33ba47" category="list-text">ノードベースの制約により、運用上の硬直性が引き続き高まります。</block>
+  <block id="b82c33523f5b28ca897ab966d26c2203" category="list-text">ノードベースのライセンスの有効期限が切れた後は、プライベートモードの容量ベースライセンスに移行する必要があります。手順については、<block ref="19941bf328ef30c0886fe8a18f87b8c7" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="5594c2174d528fb9d5b9250acc4fb0b3" category="doc">Cloud Volumes ONTAP 9.19.1</block>
+  <block id="a504c964d28135033096219100cd2752" category="paragraph">Cloud Volumes ONTAP 9.19.1 リリース候補版 （RC） は、9.19.1 一般提供版 （GA） へのアップグレード用として、Google Cloud でのみ利用可能です。</block>
+  <block id="5289c2eccb07f2de1b015934c3e3c499" category="paragraph"><block ref="a12e21b39ac968ec668c91e1c7ce7228" category="inline-link-rx"></block>.</block>
+  <block id="d1a290546aa0bd95540ad9a226d03984" category="paragraph">NetApp Console を使用して、Amazon Web Service （AWS）および Google Cloud に Cloud Volumes ONTAP 9.19.1 の一般提供（GA）バージョンをデプロイおよび管理できるようになりました。このバージョンは、Microsoft Azure （Azure）へのデプロイおよびアップグレードには対応していません。</block>
+  <block id="9c401333124a333afeb34fc1d3d80d23" category="section-title">プライベートモードでノードベースのライセンスを容量ベースのライセンスに変換する機能</block>
+  <block id="a66e68273ca1e28833ad2b50bddc700d" category="paragraph">NetAppは、プライベートモードの Cloud Volumes ONTAP デプロイメント向けに容量ベースのライセンスを発表できることを嬉しく思います。ノードベースのライセンスを容量ベースのライセンスに変換することで、プライベートモードの Cloud Volumes ONTAP デプロイメントのコストを最適化できるようになりました。プライベートモードでのデプロイメントには、既存のノードベースライセンスと同等の容量を持つ Essentials （ライセンス持ち込み（BYOL））パッケージを NetApp から直接購入できます。</block>
+  <block id="8d94a4670c9de52eee118828f4c8a497" category="paragraph">この変換オプションは、ノードベースのライセンスから容量ベースのライセンスへと段階的に移行するという NetApp の計画をサポートしています。ノードベースのライセンスでは各システムに固定容量が割り当てられますが、容量ベースのライセンスでは Cloud Volumes ONTAP システム全体で共有される容量プールから容量が引き出されます。これにより、ストレージのニーズの変化に応じてワークロードを再分配する際の柔軟性が向上します。</block>
+  <block id="7001fe21d803a81374a1df0d0c30c5f1" category="inline-link">プライベートモード展開における変換</block>
+  <block id="9b30aa0b7958fa3a6f20a3dc7995d44f" category="list-text"><block ref="9b30aa0b7958fa3a6f20a3dc7995d44f" category="inline-link-rx"></block></block>
+  <block id="c1abbf97e12a86fa8ee3d99a6d57e8d2" category="inline-link">Cloud Volumes ONTAP のノードベース ライセンスを管理する</block>
+  <block id="9bb44fee1ffc8cb84fe1dd304c171c38" category="list-text"><block ref="9bb44fee1ffc8cb84fe1dd304c171c38" category="inline-link-rx"></block></block>
+  <block id="4c1e65eea805e6ca20946bf66e4386fa" category="admonition">NetApp は、BYOLライセンスの購入、延長、および更新を制限しており、プライベートモードでの展開など、特定のシナリオでの利用可能性を制限しています。詳細については、<block ref="73dc1b5468c2405a47da63a28335f079" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="aca089c9cb85a069b94fd356fb2c64af" category="list-text">*マーケットプレイス サブスクリプション/年間契約*：クラウド プロバイダのマーケットプレイスからの年間契約。プライベート モードの展開では、マーケットプレイス サブスクリプションはサポートされていません。</block>
+  <block id="3a62e54bb4584af72048afe2c45e5267" category="paragraph">Cloud Volumes ONTAP にはいくつかのライセンス モデルがあります。各オプションを使用すると、お客様のニーズを満たす消費モデルを選択できます。</block>
+  <block id="8945528f136f9ac44ec85233b62972ed" category="paragraph">ライセンスやサブスクリプションの購入または更新は、クラウドマーケットプレイスまたは NetApp （お客様独自のライセンス持ち込み（BYOL））を通じて行うことができます。マーケットプレイスでは、年間サブスクリプションと従量課金制（PAYGO）オプションをご利用いただけます。詳細については、<block ref="555d033cff8f114fac45c99df6059058" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="44b133d7d2b64a8ecb188f7b262b15b3" category="paragraph">BYOLライセンスは NetApp から購入でき、あらゆるクラウド プロバイダに使用できます。BYOLライセンスの利用可能性に関する詳細については、<block ref="73dc1b5468c2405a47da63a28335f079" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="bf9fcd757b4dd631995eb6f549ed366b" category="paragraph">新規顧客は、容量ベースの年間マーケットプレイスサブスクリプションまたは Keystone サブスクリプションによる課金を選択できます。プライベートモードなど、一部のデプロイメントでは、前世代のノードベースの BYOL ライセンスも利用できます。</block>
+  <block id="400810b341f29ed98ab80839314d8449" category="admonition">プライベートモードでの Cloud Volumes ONTAP のプライベート展開。</block>
+  <block id="d5f1381c5f97f928df4ef8d18c2a27c0" category="paragraph-title">例外</block>
+  <block id="46702b00986502a0ba93f0d72b34e4cc" category="paragraph">NetApp は、AWS における Cloud Volumes ONTAP の中国リージョン展開など、特定の状況では特別な考慮が必要であることを認識しており、ノードベースのライセンスの EOA および EOS は以下のケースには適用されない場合があります：</block>
+  <block id="aaf58e5a5445d876b8f7b0fe22b5afbf" category="list-text">9.19.1</block>
+  <block id="fcb50b7114552006299f15c59968bbd0" category="section-title">標準モード展開における変換</block>
+  <block id="d765139c688eaef6ec6aed984d396a05" category="paragraph">標準モードのデプロイメントをご利用の場合は、NetApp Console のライセンス変換ツールを使用して、ノードベースのライセンスを容量ベースのライセンスに変換できます。この変換は、AWS、Azure、Google Cloud を含むすべてのクラウド プロバイダに対応しています。ノードベースのライセンスは、マーケットプレイスで購入した容量ベースのライセンスに変換できます。たとえば、PAYGO Standard のノードベースライセンスをお持ちの場合、マーケットプレイスで購入した任意の容量ベースライセンスに変換できます。</block>
+  <block id="049bfb95508348edbb0dffb383d3c982" category="list-text">これは無停止運用です。</block>
+  <block id="e0586682a4494ae8df5970f3a51b3305" category="list-text">サービスの中断やアプリケーションのダウンタイムは発生しません。</block>
+  <block id="37d1ba532be21b36f44c36cb1487e86d" category="list-text">標準モードでは、このツールはソースとしてすべてのノードベースライセンスを、宛先としてすべての容量ベースライセンスをサポートします。例えば、BYOLノードベースライセンスをお持ちの場合は、NetAppから購入した任意の容量ベースライセンスに変換できます。</block>
+  <block id="ea65110d9caa87a427e373b25c4e98a8" category="list-text">変換後、ノードベースライセンスのシリアル番号は、容量ベースの形式に置き換えられます。これは変換の一部として行われ、お客様のNetApp Support Site （NSS）アカウントに反映されます。</block>
+  <block id="7dc3868f50a82e16cb29523f9cd8c7d6" category="list-text">「概要」タブで、「機能」パネルをクリックします。</block>
+  <block id="6df37da891397d448439bd3e0c11c611" category="paragraph">新しいライセンスのシリアル番号を表示し、コンソールの *管理 &gt; Licenses and subscriptions* メニューで変更を確認します。</block>
+  <block id="6354fe9522f51b065b8da2bec7e6ad93" category="paragraph">プライベートモードのデプロイメントをご利用の場合は、NetApp Console のライセンス変換ツールを使用して、ノードベースのライセンスを容量ベースのライセンスに変換できます。この変換は、AWS、Azure、Google Cloud を含むすべてのクラウド プロバイダでサポートされています。</block>
+  <block id="c5eb35de0b7b7fc3a2e309675960df48" category="paragraph">プライベートモードではマーケットプレイスのサブスクリプションはサポートされていないため、NetApp から Essentials （ライセンス持ち込み（BYOL））パッケージを購入する必要があります。これにより、マーケットプレイスのサブスクリプションを必要とせずに、BYOL モデル内で容量ベースのライセンスの利点を維持することができます。</block>
+  <block id="43b95047b9651a9f6b309309baf2c6d1" category="admonition">プライベートモードでは、ノードベースのライセンスからEssentials以外の容量ベースのライセンスへの変換はサポートされていません。</block>
+  <block id="e148814771c2a4d194ec9a025ec5fc42" category="list-text">変換後、ノードベースライセンスの全容量は Essentials パッケージで管理され、BYOL 契約に基づいて引き続き請求されます。</block>
+  <block id="0bf20bba5024010985a96de70ab9cb4a" category="list-text">ライセンス変換ツールを使用すると、ノードベースから容量ベースのライセンス モデルへの移行が、データ移行や追加のクラウド リソースのプロビジョニングを必要とせずにその場で実行されます。</block>
+  <block id="da25db4b4fa32d93cec7e3daf851c19b" category="list-text">お客様のデータは、ノードベースのライセンスと同じ場所に引き続き保存されます。このアプローチにより、移行期間全体を通じてデータ配置の中断がなく、データ主権の原則が維持されます。</block>
+  <block id="2447df08554ddc6630c6c8f4da437614" category="list-text">ライセンス変換ツールは、単一ノード構成や、単一アベイラビリティゾーン（AZ）および複数AZにおける高可用性（HA）構成など、すべてのデプロイメントタイプをサポートしています。</block>
+  <block id="3c72799332f4b1aab90a8acbda8da2a5" category="list-text">変換後、Cloud Volumes ONTAP システムは新しいシリアル番号で更新されます。</block>
+  <block id="29baa0f31810ae20a104497e55707351" category="list-text">プライベートモードの Cloud Volumes ONTAP デプロイメントはマーケットプレイスのサブスクリプションをサポートしていないため、容量ベースの Essentials ライセンスは NetApp から調達する必要があります。</block>
+  <block id="bb66317cd0453054fb405849c52026c1" category="list-text">容量ベースのライセンスは、変換対象となるノードベースのライセンスと同等の容量を持つ必要があります。</block>
+  <block id="173213e6a806d9151db9cae626eccc0a" category="list-text">容量ベースの Essentials パッケージは、ノードベースの BYOL ライセンス タイプに対応している必要があります。例えば、セカンダリ ボリューム（HA）を使用したプライベート モードの展開には、それぞれの Essentials Secondary HA ライセンス、または Essentials Primary、Essentials Primary HA など、最も適合するライセンスが必要です。</block>
+  <block id="db15ee662ceba704719e32061a562a61" category="list-text">*Charging method* の横にある鉛筆アイコンを確認してください。お客様のシステムの課金方法が<block ref="e71f388bff446d0d83b053510eafc3ce" prefix=" " category="inline-code"></block>の場合、容量ベースのライセンスに変換できます。</block>
+  <block id="da87d7e7a64361035cc0e34458efc8ad" category="list-text">既存のライセンスを変換する際の変換先パッケージとして、Essentials を選択してください。</block>
+  <block id="d02431b3c418500914dda864390cf4f3" category="list-text">変換完了後、コンソールからノードベースのライセンスを削除するには、チェックボックスを選択してください。変換処理がまだ進行中の場合、このチェックボックスを選択しても、コンソールからライセンスは削除されません。</block>
+  <block id="17769cb7fca5b211bc545524162cdb9b" category="doc">Azure Marketplace から Cloud Volumes ONTAP をデプロイする</block>
+  <block id="89e89d68b4151e5d8f4ca5de0e1d2733" category="paragraph">Azure Marketplace の直接デプロイを使用すると、Cloud Volumes ONTAP を迅速かつ簡単にデプロイできます。Azure Marketplace から、数回クリックするだけで Cloud Volumes ONTAP をすばやくデプロイし、お客様の環境でその主要な機能と性能を検証できます。</block>
+  <block id="2eb690ea4652e421c3e51dd6085019ed" category="paragraph">Azure Marketplace の直接デプロイを使用してデプロイされた Cloud Volumes ONTAP システムには、以下の特性があります。Azure Marketplace を通じてデプロイされたスタンドアロン インスタンスの機能は、NetApp Console で検出されると変更されることに注意してください。</block>
+  <block id="21dd5156944102d55cd9ade369833082" category="list-text">Cloud Volumes ONTAP の無料ライセンスは、最大 500 GiB のプロビジョニング容量に対して提供されており、NetApp サポートはなく、有効期限もありません。500 GiB を超える容量を使用するには、有効なライセンス権限が必要となり、料金が発生する場合があります。Cloud Volumes ONTAP のフルエクスペリエンスと高度な管理機能にアクセスするには、Cloud Volumes ONTAP システムを NetApp Console に接続してください。NetApp Console を通じた検出と管理には、お客様の NetApp Console アカウントに関連付けられた有効な Azure Marketplace サブスクリプションが必要です。</block>
+  <block id="83776a163fbb96376e571a31d146ef23" category="list-text">デプロイされたシステムをNetApp Consoleで検出して管理する予定がある場合は、NetApp Consoleアカウントが有効なAzure Marketplaceサブスクリプションに関連付けられていることを確認してください。NetApp Consoleへのシステムの検出には、有効なサブスクリプションが必要です。</block>
+  <block id="dafc0a5d872858be8406e85eb31f93a9" category="list-text">Azure Marketplace サイトから NetApp 製品を検索します。</block>
+  <block id="d98c7da71ebf35b1e2ca8161b1966b59" category="paragraph">Azure Marketplace を通じて直接デプロイされた Cloud Volumes ONTAP システムには、NetApp のサポートは含まれません。導入中に何らかの問題が発生した場合は、お客様ご自身でトラブルシューティングを行い、解決することができます。</block>
+  <block id="6f99f6ffa31874382f91c0d7c2df5bcf" category="list-text">Azure Marketplace サイトで、「ブート診断」&gt;「シリアルログ」に移動します。</block>
+  <block id="2e4aa2ebea9035457a612c2e33a98723" category="inline-link">Azure Marketplace のドキュメント</block>
+  <block id="655158284af1d355b08d476dcba5a745" category="list-text"><block ref="655158284af1d355b08d476dcba5a745" category="inline-link-rx"></block></block>
+  <block id="97dd92b05cdb33e3226adee6f7fa87d5" category="paragraph">Azure Marketplace の直接デプロイを使用してデプロイした Cloud Volumes ONTAP システムを検出し、NetApp Console の「*システム*」ページで管理できます。NetApp Console エージェントはシステムを検出し、システムを追加して必要なライセンスを適用し、これらのシステムに対して NetApp Console のすべての機能を有効化します。PSSD v2 マネージドディスクを使用した単一の AZ における元の HA 構成は保持され、システムは元のデプロイメントと同じ Azure サブスクリプションおよびリソースグループに登録されます。</block>
+  <block id="143dcfc16663024a3b19b7595b25b428" category="paragraph">Azure Marketplace の直接デプロイを使用してデプロイされた Cloud Volumes ONTAP システムを検出すると、コンソール エージェントは次のタスクを実行します：</block>
+  <block id="b43a1773f1806b14eb8be329915ea364" category="paragraph">Azure Marketplace 上でデプロイが完了していることを確認してください。コンソール エージェントは、デプロイが完了し、システムが検出可能になった場合にのみ、システムを検出できます。</block>
+  <block id="5dd495348645ba0b8c457019d98c6c24" category="admonition">検出処理中にエラーメッセージが表示される場合がありますが、検出プロセスが完了するまでは無視して構いません。検出中は、Azure Marketplace ポータルでシステムが生成した Cloud Volumes ONTAP の構成（特にシステム タグ）を変更しないでください。これらの設定に変更を加えると、予期しないシステム動作が発生する可能性があります。</block>
+  <block id="aea9c467234db8f0360906cb49a2233c" category="inline-link">新しいマーケットプレイスのサブスクリプションを追加する</block>
+  <block id="6dee350fc875c2ca1694dcd7936e6fa8" category="list-text"><block ref="6dee350fc875c2ca1694dcd7936e6fa8" category="inline-link-rx"></block></block>
+  <block id="6ffc226d668d783acc3c710ae22bd61d" category="section-title">2026年8月10日</block>
 </blocks>

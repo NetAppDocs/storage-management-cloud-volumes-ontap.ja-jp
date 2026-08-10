@@ -26,7 +26,7 @@ summary: 容量ベースのライセンスの課金、消費モデル、価格�
 * *BYOL*: 自分のライセンスを持ち込みます (BYOL)。  NetAppから購入したライセンスで、任意のクラウド プロバイダーにCloud Volumes ONTAP を展開するために使用できます。
 +
 
-NOTE: はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。
+NOTE: NetApp は、BYOLライセンスの購入、延長、および更新を制限しており、プライベートモードでの展開など、特定のシナリオでの利用可能性を制限しています。詳細については、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
 
 
@@ -35,7 +35,7 @@ ifdef::azure[]
 endif::azure[]
 
 * *PAYGO*: 従量課金制 (PAYGO) サブスクリプションは、クラウド プロバイダーのマーケットプレイスからの時間単位のサブスクリプションです。
-* *年間*: クラウド プロバイダーのマーケットプレイスからの年間契約。
+* *マーケットプレイス サブスクリプション/年間契約*：クラウド プロバイダのマーケットプレイスからの年間契約。プライベート モードの展開では、マーケットプレイス サブスクリプションはサポートされていません。
 
 
 次の点に注意してください。

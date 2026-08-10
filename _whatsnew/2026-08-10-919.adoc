@@ -1,0 +1,27 @@
+= Cloud Volumes ONTAP 9.19.1
+:allow-uri-read: 
+
+
+
+
+[[cloud-volumes-ontap-9-19-1]]
+=== Cloud Volumes ONTAP 9.19.1
+
+NetApp Console を使用して、Amazon Web Service （AWS）および Google Cloud に Cloud Volumes ONTAP 9.19.1 の一般提供（GA）バージョンをデプロイおよび管理できるようになりました。このバージョンは、Microsoft Azure （Azure）へのデプロイおよびアップグレードには対応していません。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPのこのリリースの詳細"^].
+
+
+
+[[ability-to-convert-node-based-licenses-to-capacity-based-licensing-in-private-mode]]
+=== プライベートモードでノードベースのライセンスを容量ベースのライセンスに変換する機能
+
+NetAppは、プライベートモードの Cloud Volumes ONTAP デプロイメント向けに容量ベースのライセンスを発表できることを嬉しく思います。ノードベースのライセンスを容量ベースのライセンスに変換することで、プライベートモードの Cloud Volumes ONTAP デプロイメントのコストを最適化できるようになりました。プライベートモードでのデプロイメントには、既存のノードベースライセンスと同等の容量を持つ Essentials （ライセンス持ち込み（BYOL））パッケージを NetApp から直接購入できます。
+
+この変換オプションは、ノードベースのライセンスから容量ベースのライセンスへと段階的に移行するという NetApp の計画をサポートしています。ノードベースのライセンスでは各システムに固定容量が割り当てられますが、容量ベースのライセンスでは Cloud Volumes ONTAP システム全体で共有される容量プールから容量が引き出されます。これにより、ストレージのニーズの変化に応じてワークロードを再分配する際の柔軟性が向上します。
+
+.関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
+* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-convert-node-capacity.html#conversion-in-a-private-mode-deployment["プライベートモード展開における変換"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP のノードベース ライセンスを管理する"^]
+
