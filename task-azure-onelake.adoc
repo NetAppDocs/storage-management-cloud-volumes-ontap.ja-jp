@@ -195,8 +195,8 @@ image::screenshot-cvo-s3-onelake-confirm.png[OneLake レイクハウス エク�
 
 
 
-[[next-steps-index-data-with-azure-ai-search]]
-== 次のステップ：Azure AI Search でデータをインデックス化する
+[[enable-azure-ai-search]]
+== Azure AI Search を有効にする
 
 OneLake ショートカットを作成したら、Azure AI Search を構成して、OneLake を通じて Cloud Volumes ONTAP ボリュームに保存されているデータをインデックス化できます。Azure AI Search のインデックス作成機能により、Microsoft Copilot や Azure OpenAI などの AI アプリケーションでデータを利用できるようになります。
 

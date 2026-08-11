@@ -22,7 +22,7 @@ Azure Marketplace の直接デプロイを使用すると、Cloud Volumes ONTAP 
 Azure Marketplace の直接デプロイを使用してデプロイされた Cloud Volumes ONTAP システムには、以下の特性があります。Azure Marketplace を通じてデプロイされたスタンドアロン インスタンスの機能は、NetApp Console で検出されると変更されることに注意してください。
 
 * 最新のCloud Volumes ONTAPバージョン (9.16.1 以降)。
-* Cloud Volumes ONTAP の無料ライセンスは、最大 500 GiB のプロビジョニング容量に対して提供されており、NetApp サポートはなく、有効期限もありません。500 GiB を超える容量を使用するには、有効なライセンス権限が必要となり、料金が発生する場合があります。Cloud Volumes ONTAP のフルエクスペリエンスと高度な管理機能にアクセスするには、Cloud Volumes ONTAP システムを NetApp Console に接続してください。NetApp Console を通じた検出と管理には、お客様の NetApp Console アカウントに関連付けられた有効な Azure Marketplace サブスクリプションが必要です。
+* Cloud Volumes ONTAP の無料ライセンスは、最大500 GiBのプロビジョニング容量に対して提供されており、NetAppサポートはなく、有効期限もありません。500 GiBを超える容量を使用するには、有効なライセンス権限が必要となり、料金が発生する場合があります。Cloud Volumes ONTAP のすべての機能と高度な管理機能をご利用いただくには、Cloud Volumes ONTAP システムをコンソールに接続してください。コンソールを介した検出と管理には、コンソールアカウントに関連付けられた有効な Azure Marketplace サブスクリプションが必要です。
 * 単一の可用性ゾーン (AZ) に高可用性 (HA) モードで構成され、デフォルトのシリアル番号でプロビジョニングされた 2 つのノード。ストレージ仮想マシン（ストレージVM）は、link:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["柔軟なオーケストレーションモード"] 。
 * デフォルトで作成されるインスタンスの集約。
 * 500 GiB のプロビジョニング容量を持つ Premium SSD v2 マネージド ディスク、ルート ディスク、およびデータ ディスク。
@@ -39,7 +39,7 @@ Azure Marketplace の直接デプロイを使用してデプロイされた Clou
 
 
 .開始する前に
-* デプロイされたシステムをNetApp Consoleで検出して管理する予定がある場合は、NetApp Consoleアカウントが有効なAzure Marketplaceサブスクリプションに関連付けられていることを確認してください。NetApp Consoleへのシステムの検出には、有効なサブスクリプションが必要です。
+* コンソールでデプロイされたシステムを検出および管理する場合は、コンソールアカウントが有効な Azure Marketplace サブスクリプションに関連付けられていることを確認してください。コンソールにシステムを検出するには、有効なサブスクリプションが必要です。
 * ネットワーク要件を満たしていることを確認してくださいlink:concept-ha-azure.html#ha-single-availability-zone-configuration-with-shared-managed-disks["単一 AZ での HA 展開"]Azure で。。 link:reference-networking-azure.html["Cloud Volumes ONTAP用の Azure ネットワークを設定する"] 。
 * Cloud Volumes ONTAPをデプロイするには、次のいずれかの Azure ロールが割り当てられている必要があります。
 +

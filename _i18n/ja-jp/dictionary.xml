@@ -7440,7 +7440,6 @@
   <block id="f03154f7f37caaaf71be53099307d2dd" category="image-alt">スクリーンショット onelake shortcut1</block>
   <block id="a919cd6db92990e9b06efbf013b4fdcf" category="list-text">ショートカットが作成されたら、それがレイクハウスの*エクスプローラー &gt; ファイル*の下に表示されること、およびショートカットを通じて Cloud Volumes ONTAP ボリュームに保存されているファイルを参照できることを確認してください。</block>
   <block id="c4def819c84308172fa9bda9ea6e62a6" category="image-alt">OneLake レイクハウス エクスプローラー ペインの「ファイル」の下に表示された、確認済みの Cloud Volumes ONTAP S3 ショートカット接続を示すスクリーンショット</block>
-  <block id="876e2bd10a8ed908ec1b5d07f979b521" category="section-title">次のステップ：Azure AI Search でデータをインデックス化する</block>
   <block id="30417398e9fe4a1bffd15ca2840d9bb0" category="paragraph">OneLake ショートカットを作成したら、Azure AI Search を構成して、OneLake を通じて Cloud Volumes ONTAP ボリュームに保存されているデータをインデックス化できます。Azure AI Search のインデックス作成機能により、Microsoft Copilot や Azure OpenAI などの AI アプリケーションでデータを利用できるようになります。</block>
   <block id="5edb5e6aaf1d17e92c8915d0f28994f7" category="inline-link-macro">Microsoft のドキュメント：OneLake ファイルのインデックス作成方法</block>
   <block id="d04ad284d76f9123254a30d0ddecc3dd" category="paragraph">詳細については、<block ref="55c5b78106d0736636dce6f21b4ff462" category="inline-link-macro-rx"></block>を参照してください。</block>
@@ -7708,8 +7707,6 @@
   <block id="17769cb7fca5b211bc545524162cdb9b" category="doc">Azure Marketplace から Cloud Volumes ONTAP をデプロイする</block>
   <block id="89e89d68b4151e5d8f4ca5de0e1d2733" category="paragraph">Azure Marketplace の直接デプロイを使用すると、Cloud Volumes ONTAP を迅速かつ簡単にデプロイできます。Azure Marketplace から、数回クリックするだけで Cloud Volumes ONTAP をすばやくデプロイし、お客様の環境でその主要な機能と性能を検証できます。</block>
   <block id="2eb690ea4652e421c3e51dd6085019ed" category="paragraph">Azure Marketplace の直接デプロイを使用してデプロイされた Cloud Volumes ONTAP システムには、以下の特性があります。Azure Marketplace を通じてデプロイされたスタンドアロン インスタンスの機能は、NetApp Console で検出されると変更されることに注意してください。</block>
-  <block id="21dd5156944102d55cd9ade369833082" category="list-text">Cloud Volumes ONTAP の無料ライセンスは、最大 500 GiB のプロビジョニング容量に対して提供されており、NetApp サポートはなく、有効期限もありません。500 GiB を超える容量を使用するには、有効なライセンス権限が必要となり、料金が発生する場合があります。Cloud Volumes ONTAP のフルエクスペリエンスと高度な管理機能にアクセスするには、Cloud Volumes ONTAP システムを NetApp Console に接続してください。NetApp Console を通じた検出と管理には、お客様の NetApp Console アカウントに関連付けられた有効な Azure Marketplace サブスクリプションが必要です。</block>
-  <block id="83776a163fbb96376e571a31d146ef23" category="list-text">デプロイされたシステムをNetApp Consoleで検出して管理する予定がある場合は、NetApp Consoleアカウントが有効なAzure Marketplaceサブスクリプションに関連付けられていることを確認してください。NetApp Consoleへのシステムの検出には、有効なサブスクリプションが必要です。</block>
   <block id="dafc0a5d872858be8406e85eb31f93a9" category="list-text">Azure Marketplace サイトから NetApp 製品を検索します。</block>
   <block id="d98c7da71ebf35b1e2ca8161b1966b59" category="paragraph">Azure Marketplace を通じて直接デプロイされた Cloud Volumes ONTAP システムには、NetApp のサポートは含まれません。導入中に何らかの問題が発生した場合は、お客様ご自身でトラブルシューティングを行い、解決することができます。</block>
   <block id="6f99f6ffa31874382f91c0d7c2df5bcf" category="list-text">Azure Marketplace サイトで、「ブート診断」&gt;「シリアルログ」に移動します。</block>
@@ -7722,4 +7719,7 @@
   <block id="aea9c467234db8f0360906cb49a2233c" category="inline-link">新しいマーケットプレイスのサブスクリプションを追加する</block>
   <block id="6dee350fc875c2ca1694dcd7936e6fa8" category="list-text"><block ref="6dee350fc875c2ca1694dcd7936e6fa8" category="inline-link-rx"></block></block>
   <block id="6ffc226d668d783acc3c710ae22bd61d" category="section-title">2026年8月10日</block>
+  <block id="6663a337c6a8024d02aa9f2785f0f713" category="section-title">Azure AI Search を有効にする</block>
+  <block id="3a39d92162680621c6913009ec265358" category="list-text">Cloud Volumes ONTAP の無料ライセンスは、最大500 GiBのプロビジョニング容量に対して提供されており、NetAppサポートはなく、有効期限もありません。500 GiBを超える容量を使用するには、有効なライセンス権限が必要となり、料金が発生する場合があります。Cloud Volumes ONTAP のすべての機能と高度な管理機能をご利用いただくには、Cloud Volumes ONTAP システムをコンソールに接続してください。コンソールを介した検出と管理には、コンソールアカウントに関連付けられた有効な Azure Marketplace サブスクリプションが必要です。</block>
+  <block id="6199597ffe2b56ead0cc4e51afe97353" category="list-text">コンソールでデプロイされたシステムを検出および管理する場合は、コンソールアカウントが有効な Azure Marketplace サブスクリプションに関連付けられていることを確認してください。コンソールにシステムを検出するには、有効なサブスクリプションが必要です。</block>
 </blocks>
