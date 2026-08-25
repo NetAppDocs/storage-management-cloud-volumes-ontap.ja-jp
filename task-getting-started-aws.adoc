@@ -16,6 +16,8 @@ summary: AWS に Cloud Volumes ONTAP をデプロイするための前提条件�
 [role="lead"]
 Cloud Volumes ONTAP をデプロイするには、まず AWS サブスクリプションと Cloud Volumes ONTAP ライセンスについて理解しておく必要があります。また、AWS アカウント用に NetApp Console エージェントが作成されていることを確認する必要があります。このトピックの情報の多くは、Cloud Volumes ONTAP のデプロイを開始する前に、Console のセットアップの一部として実行する必要があります。
 
+AWS Marketplace または NetApp Console を使用して、AWS で Cloud Volumes ONTAP をオンボーディングできます。以下の表は、AWS で Cloud Volumes ONTAP をデプロイするために完了する必要があるタスクの概要を示しています。AWS Marketplace からのオンボーディングは、Console エージェントのデプロイとサブスクリプションの関連付けを自動化する、簡素化されたエクスペリエンスです。AWS Marketplace からのオンボーディングについては、link:task-onboard-cvo-aws-marketplace.html["AWS MarketplaceでCloud Volumes ONTAPをオンボードする"]を参照してください。
+
 [cols="20,35,25,25"]
 |===
 | Task | 説明 | 参照 | プライベートモード展開に関する注意事項 

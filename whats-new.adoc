@@ -20,6 +20,25 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+[[25-august-2026]]
+== 2026年8月25日
+
+
+
+[[support-for-austria-east-and-belgium-central-regions-in-azure]]
+=== Azure におけるオーストリア東部およびベルギー中部リージョンのサポート
+
+Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのAustria East（austriaeast）およびBelgium Central（belgiumcentral）リージョンにデプロイできるようになりました。以下のデプロイメントタイプがサポートされています：
+
+* シングルノード
+* ローカル冗長ストレージ（LRS）を使用した単一可用性ゾーンにおける高可用性（HA）
+* ゾーン冗長ストレージ（ZRS）を使用した複数可用性ゾーンにおける高可用性（HA）
+
+
+サポートされているすべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+
+
+
 [[10-august-2026]]
 == 2026年8月10日
 
@@ -122,6 +141,7 @@ NetAppは、AWS MarketplaceからのCloud Volumes ONTAPに対して簡素化さ�
 
 
 .関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-onboard-cvo-aws-marketplace.html["AWS MarketplaceからCloud Volumes ONTAPをオンボードする"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求"^]
 

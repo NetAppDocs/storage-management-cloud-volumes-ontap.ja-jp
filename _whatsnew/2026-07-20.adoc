@@ -21,6 +21,7 @@ NetAppは、AWS MarketplaceからのCloud Volumes ONTAPに対して簡素化さ�
 
 
 .関連リンク
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-onboard-cvo-aws-marketplace.html["AWS MarketplaceからCloud Volumes ONTAPをオンボードする"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求"^]
 

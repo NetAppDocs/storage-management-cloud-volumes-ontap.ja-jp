@@ -61,6 +61,8 @@ sidebar:
     - title: Amazon Web Servicesにデプロイする
       flavor: aws
       entries:
+      - title: AWS MarketplaceからCloud Volumes ONTAPをオンボードする
+        url: "/task-onboard-cvo-aws-marketplace.html"
       - title: 導入概要
         url: "/task-getting-started-aws.html"
       - title: 構成を計画する

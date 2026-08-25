@@ -1,0 +1,269 @@
+---
+sidebar: sidebar 
+permalink: task-onboard-cvo-aws-marketplace.html 
+keywords: aws marketplace, cloud volumes ontap, onboarding, subscribe, deploy agent, setup guide, organization, subscription association 
+summary: AWS Marketplace で Cloud Volumes ONTAP をサブスクライブし、組織の作成、サブスクリプションの関連付け、エージェントのデプロイ、および最初のシステムの作成を含むセットアップを NetApp Console で完了します。 
+---
+= AWS MarketplaceからCloud Volumes ONTAPをサブスクライブしてデプロイする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS Marketplace で Cloud Volumes ONTAP をサブスクライブし、NetApp Console のガイドに従ってオンボーディングを進めましょう。サブスクリプションからデプロイメントまでのシンプルな手順により、Cloud Volumes ONTAP をすぐに運用開始できます。ガイド付きエクスペリエンスにより、AWS Marketplace のサブスクリプションからデプロイメントまでのプロセスが簡素化され、クラウドや ONTAP の高度な専門知識がなくても Cloud Volumes ONTAP をデプロイできます。
+
+AWS Marketplace からの Cloud Volumes ONTAP のサブスクリプションとデプロイには、次の手順が含まれます。
+
+* AWS Marketplace での Cloud Volumes ONTAP のサブスクリプション。
+* コンソールに登録してください。
+* 組織の作成（必要に応じて）とマーケットプレイスサブスクリプションの関連付け。
+* AWSへのコンソールエージェントのデプロイ。
+* 最初のCloud Volumes ONTAPシステムの追加。
+
+
+簡素化されたオンボーディングにより、サブスクリプションの関連付け、IAMロールの設定、エージェントのプロビジョニング、およびシステムの初期化に関して、お客様からの入力を最小限に抑えながら、エージェントの自動展開が可能になります。バックエンドオーケストレーションにより、CloudFormationスタックの作成、VPC接続の検証、およびリソースの依存関係が自動的に処理されます。これにより、手動設定手順と画面遷移が削減され、セットアップエラーや中断を最小限に抑えながら、Cloud Volumes ONTAPをより迅速に展開できます。展開を進めるにつれて、右側のパネルで進捗状況を確認できます。
+
+.開始する前に
+オンボーディングワークフローを開始する前に、これらの前提条件を確認してください。
+
+* AWS Marketplaceで登録するには、権限を持つAWSアカウントが必要です。自動IAM設定を使用するには、AWS管理者であるか、以下に示す権限を持っている必要があります。
++
+[source, json]
+----
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudFormationStack",
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:CreateStack",
+        "cloudformation:DeleteStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:GetTemplateSummary",
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:PutRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:GetRolePolicy",
+        "iam:PassRole",
+        "lambda:CreateFunction",
+        "lambda:DeleteFunction",
+        "lambda:GetFunction",
+        "lambda:InvokeFunction"
+  ]
+}
+----
+* AWSでは、エージェントのデプロイにIAMロールを作成または使用できます。
+* NetApp Console にサインインするか、アカウントを作成することができます。
+
+
+AWS エージェントのデプロイに必要なすべての前提条件については、link:https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-aws-marketplace.html["AWS Marketplace から NetApp Console エージェントをデプロイする"^]を参照してください。
+
+
+
+[[subscribe-in-aws-marketplace]]
+== AWS Marketplaceで購読する
+
+AWS Marketplace で Cloud Volumes ONTAP のオファリングを見つけて、オンボーディングプロセスを開始します。
+
+.手順
+. AWSアカウントを使用してAWS Marketplaceにアクセスしてください。
+. NetApp Cloud Volumes ONTAPの製品を見つけます。AWS Marketplaceには、Cloud Volumes ONTAP向けに2つの製品が用意されています。
++
+** Cloud Volumes ONTAP 年間サブスクリプションのスタンドアロン製品
+** NetApp データサービスと Cloud Volumes ONTAP サブスクリプションのための NetApp インテリジェントサービス（NIS）の複合提供。このオンボーディングワークフローには、_スタンドアロン_ 版を選択してください。
+
+
+. 出品内容と料金条件をご確認ください。
+. 購読登録をして、決済手続きを完了してください。
+. 登録後、AWS はコンソールのサインアップまたはサインインページにリダイレクトします。
+
+
+
+
+[[sign-up-or-sign-in-to-netapp-console]]
+== NetApp Consoleにサインアップまたはサインインします
+
+マーケットプレイスの購読が完了したら、コンソールにアクセスしてセットアップを続行してください。
+
+.手順
+. コンソールページで、以下のいずれかを選択してください。
++
+** 新規ユーザーの方は、*登録*してください。
+** *すでにアカウントをお持ちの場合は、NetApp Console にサインインしてください。*
+
+
+. 「サインアップ」を選択した場合は、以下を完了してください。
++
+.. 必須項目を入力してください：
++
+*** Eメール
+*** Password
+*** フルネーム
+*** 会社
+*** 国
+
+
+.. 「次へ」を選択します。
+.. 任意：住所、市区町村、都道府県、郵便番号、電話番号などの連絡先情報を入力してください。
+.. 「サインアップ」を選択します。
+.. ライセンス条項に同意してください。
+.. service@console.netapp.comからのメッセージを使用して、メールアドレスを確認してください。
+
+
+. コンソールにサインインして認証を完了してください。
+
+
+
+
+[[create-your-organization]]
+== 組織を作成する
+
+初めてご利用のお客様、またはまだ NetApp Console の組織に所属していない場合にのみ、この手順を完了してください。
+
+既に組織に所属している場合は、このセクションをスキップして、<<サブスクリプションを関連付ける>>に進んでください。
+
+ユーザー、役割、権限、ライセンス、およびシステムを管理するための組織を作成します。
+
+.手順
+. 組織名を入力してください。
+. オプション：NetApp Support Site（NSS）アカウントを関連付けます。
+. 「作成」を選択します。
+
+
+
+
+[[associate-your-subscription]]
+== サブスクリプションを関連付ける
+
+組織を作成すると、Console は自動的にマーケットプレイスのサブスクリプションを組織にリンクしようとします。
+
+自動関連付けが失敗した場合は、手動でサブスクリプションを関連付けてください。link:https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["サブスクリプションの管理方法を確認する"^]。
+
+
+
+[[deploy-a-console-agent-in-aws]]
+== AWSにコンソールエージェントをデプロイする
+
+サブスクリプションを関連付けると、コンソールは自動的にエージェントのデプロイフローを開き、AWSリソースとCloud Volumes ONTAPシステムを管理します。
+
+エージェントの展開中に使用される権限の詳細については、link:https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["AWS権限リファレンス"^]を参照してください。
+
+.手順
+. エージェントをデプロイするための最小限の権限については、概要ページに記載されている手順に従うか、エージェントデプロイ用のロールを自動的に作成する手順を続行できます。
+. *AWS credentials* ページで、エージェントのデプロイに必要な認証情報を指定するために、以下のいずれかのオプションを選択してください。
++
+[role="tabbed-block"]
+====
+.自分専用のロールを作成する（推奨）
+--
+このオプションを選択すると、AWS CloudFormation のクイック作成フローが開き、エージェントデプロイメントロールを作成できます。管理者権限を持つユーザーであれば、このオプションを使用して CloudFormation スタックによりポリシーとロールを自動的に作成し、ユーザーを認証してエージェントを作成できます。
+
+.. AWSアカウントIDを追加し、必要に応じて外部IDも追加してください。コンソールはデフォルトのロール名を設定します。
+.. 利用規約に同意し、*スタックの作成*を選択します。
++
+image:screenshot-stack-creation.png["幅=50% AWS CloudFormation スタック作成ページのスクリーンショット。AWSアカウントIDと、必要に応じてエージェントデプロイロールの外部IDを入力します。"]
+
+.. AWSでIAMロールが設定され、ARNが生成されたら、ロールを確認して保存してください。
+
+
+--
+.役割を引き受ける
+--
+これは、手動によるロール割り当てワークフローの一部です。既存の IAM ロール ARN を入力してください。このロールの編集については、 https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html#associate-an-existing-subscription-with-your-organization["NetApp ConsoleのAWS認証情報とマーケットプレイスサブスクリプションを管理する"^]を参照してください。
+
+--
+.AWSキー
+--
+これは、手動による役割割り当てワークフローの一部です。AWSアクセスキーとシークレットキーを入力してください。詳細については、 https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html#add-the-credentials-to-an-existing-agent["NetApp ConsoleのAWS認証情報とマーケットプレイスサブスクリプションを管理する"^]を参照してください。
+
+--
+====
+. AWSエージェントをデプロイします：
++
+.. *AWS agent details* ページで、エージェントインスタンス名とエージェントロールを設定または確認します。
+.. 「ネットワーク」ページで、VPC、サブネット、キーペア、パブリック IP の動作、およびプロキシ設定を選択します。
+.. *セキュリティグループ*を設定します。エージェントVMへのトラブルシューティングアクセス用に、受信HTTP（80）、HTTPS（443）、およびSSH（22）を許可してください。
+
+
+. 各セクションの概要を確認し、*追加*を選択してデプロイしてください。
++
+ネットワークおよび権限に関する詳細な要件については、以下を参照してください：
+
++
+** https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-aws-marketplace.html#step-1-set-up-networking["AWS Marketplace のデプロイ用にネットワークを設定する"^]
+** https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-aws-marketplace.html#step-2-set-up-aws-permissions["AWS権限を設定する"^]
+** https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["AWS権限リファレンス"^]
+
+
+. デプロイの進行状況ダイアログが完了するまで追跡してください。イベントログを展開すると、詳細なアクティビティを確認できます。
+
+
+.終了後の操作
+デプロイが完了したら、最初のCloud Volumes ONTAPシステムを作成するか、システムページにとどまって後でシステムを追加することができます。
+
+
+
+[[add-your-first-cloud-volumes-ontap-system]]
+== 最初のCloud Volumes ONTAPシステムを追加する
+
+エージェントの準備ができたら、AWS で最初の Cloud Volumes ONTAP システムを作成します。
+
+.手順
+. 展開後のプロンプトから、*システムの追加*を選択します。
+. Cloud Volumes ONTAP システム作成ワークフローを開始します。
+. システム設定を完了してください。
+
+
+詳細なシステム導入手順については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]を参照してください。
+
+
+
+[[troubleshooting-and-recovery]]
+== トラブルシューティングと復旧
+
+オンボーディングフローを完了する前に離脱した場合、またはエージェントのデプロイが失敗した場合は、このセクションを使用してください。これらの手順は、中断したところから作業を再開したり、復旧してデプロイを再試行したりするのに役立ちます。
+
+
+
+[[resume-setup]]
+=== セットアップを再開
+
+設定が完了する前に中断した場合でも、最後に完了した手順から再開できます。
+
+.手順
+. NetApp Console のホームページに移動します。
+. オンボーディングを続行するには、*セットアップを再開*を選択してください。
+
+
+
+
+[[recover-from-deployment-failure]]
+=== デプロイメントの失敗から復旧する
+
+デプロイが失敗した場合：
+
+.手順
+. 導入レポートをダウンロードします。
+. 設定とログを確認してください。
+. デプロイを再試行するには、*最初からやり直す*を選択してください。
++
+link:https://docs.netapp.com/us-en/console-setup-admin/task-troubleshoot-agent.html["エージェントの問題のトラブルシューティング方法について説明します"^]。
+
+
+
+.関連リンク
+関連する設定作業やトラブルシューティングには、これらのリソースをご利用ください。
+
+* link:https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-aws-marketplace.html["AWS Marketplace から NetApp Console エージェントをデプロイする"^]
+* link:https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html#subscribe["AWSサブスクリプションを設定する"^]
+* link:https://docs.netapp.com/us-en/console-setup-admin/task-troubleshoot-agent.html["NetApp Console エージェントのトラブルシューティング"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/["Cloud Volumes ONTAPドキュメント"^]
+
