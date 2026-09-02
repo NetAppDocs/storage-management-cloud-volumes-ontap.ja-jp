@@ -20,6 +20,25 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+[[02-september-2026]]
+== 2026年9月2日
+
+
+
+[[cloud-volumes-ontap-support-in-azure-secret-and-top-secret-regions-private-preview]]
+=== Cloud Volumes ONTAP の Azure Secret および Top Secret リージョンでのサポート（プライベートプレビュー）
+
+Cloud Volumes ONTAP は、Azure Government Secret および Top Secret リージョンへのデプロイをプライベートプレビューとしてサポートするようになりました。この機能により、Cloud Volumes ONTAP が Microsoft の機密 Azure 環境に拡張され、政府機関および防衛関連のお客様が国家安全保障のワークロードをサポートするためのデータ管理、保護、およびディザスタリカバリに ONTAP を活用できるようになります。参加をご希望の場合は、NetApp のアカウント担当チームにお問い合わせください。
+
+詳細については、Azure のドキュメントを参照してください。
+
+* https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions/["米国政府ミッション向けクラウド^"]
+* https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security["Azure Government Secret"^]
+* https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions["Azure Government Top Secret"^]
+
+
+
+
 [[25-august-2026]]
 == 2026年8月25日
 
