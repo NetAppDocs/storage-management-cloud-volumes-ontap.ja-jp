@@ -457,7 +457,7 @@ NOTE: コンソールにアクセスするコンピューターは、Cloud Volum
 
 .手順
 . Cloud Volumes ONTAPシステムで、[*Aggregates*] タブをクリックします。
-. 必要な集計タイルで、image:icon-action.png[""]アイコンをクリックし、[集計の詳細を表示] を選択します。
+. 必要なアグリゲートタイルで、image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"]アイコンをクリックし、*アグリゲートの詳細を表示*を選択します。
 +
 image:screenshots_aggregate_details_state.png["スクリーン ショット: 集計の情報を表示するときに、状態フィールドが表示されます。"]
 
@@ -574,7 +574,7 @@ NOTE: 事前定義されたCloud Volumes ONTAPセキュリティ グループは
 ** `/opt/application/netapp/cloudmanager/ontap/images/`
 
 
-. システム上で、image:icon-action.png[""]アイコンをクリックし、* Cloud Volumes ONTAPの更新*をクリックします。
+. システム上で、image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"]アイコンをクリックし、次に「*Update Cloud Volumes ONTAP*」をクリックします。
 . Cloud Volumes ONTAPバージョンの更新ページで URL を入力し、[イメージの変更] をクリックします。
 +
 上記のパスにあるコンソール エージェントにソフトウェア イメージをコピーした場合は、次の URL を入力します。

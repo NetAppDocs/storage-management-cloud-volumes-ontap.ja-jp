@@ -29,7 +29,7 @@ CAUTION: このプロセスは CIFS クライアントに混乱をもたらす�
 
 .手順
 . 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。
-. クリックimage:icon-action.png[""]Cloud Volumes ONTAPシステムを管理するコンソール エージェントのアイコン。
+. Cloud Volumes ONTAP システムを管理するコンソールエージェントの image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"] アイコンをクリックします。
 . * Cloud Volumes ONTAP設定*を選択します。
 +
 image::screenshot-settings-cloud-volumes-ontap.png[[設定]アイコンの下のCloud Volumes ONTAP設定オプションのスクリーンショット。]
