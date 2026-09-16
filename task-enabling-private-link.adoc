@@ -51,7 +51,7 @@ image::screenshot-settings-cloud-volumes-ontap.png[[設定]アイコンの下の
 .終了後の操作
 Azure プライベート リンクを無効にし、コンソール エージェントがプロキシ サーバーを使用する場合は、直接 API トラフィックを有効にする必要があります。
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html#enable-a-proxy-on-a-connector["コンソールエージェントで直接APIトラフィックを有効にする方法を学びます"^]
+https://docs.netapp.com/us-en/console-setup-admin/task-configuring-proxy.html#enable-a-proxy-on-a-connector["コンソールエージェントで直接APIトラフィックを有効にする方法を学びます"^]
 
 
 

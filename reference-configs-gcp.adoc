@@ -26,6 +26,7 @@ Google Cloud では、複数の Cloud Volumes ONTAP 構成がサポートされ�
 
 
 [[internal-disks-for-system-data-in-single-node-systems]]
+[[google-cloud-single-node]]
 === シングルノードシステムにおけるシステムデータ用内蔵ディスク
 
 * ブートデータ用の 10 GiB SSD 永続ディスク 1 台
@@ -162,12 +163,12 @@ Cloud Volumes ONTAPは、クラウド プロバイダの予約済みまたはオ
 +
 custom-4-16384マシンタイプは、新しいCloud Volumes ONTAPシステムではサポートされなくなりました。このマシンタイプで既存のシステムを実行している場合は、引き続き使用できますが、n2-standard-4マシンタイプに切り替えることをお勧めします。
 
-. ^2^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達することができない場合があります。容量制限に達するには https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
+. ^2^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達することができない場合があります。容量制限に達するには https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
 +
 link:reference-limits-gcp.html["Google Cloud のディスク制限について詳しく見る"]。
 
 . ^3^ バランス永続ディスクとパフォーマンス（SSD）永続ディスクを使用すると、強化された書き込みパフォーマンスが有効になります。
-. ^4^ 2025年8月11日から、Cloud Volumes ONTAP Optimizedライセンスは廃止され、Google Cloud Marketplaceでの従量課金制（PAYGO）サブスクリプションの購入や更新ができなくなります。詳細については、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html["Cloud Volumes ONTAP の新機能"^]を参照してください。
+. ^4^ 2025年8月11日から、Cloud Volumes ONTAP Optimizedライセンスは廃止され、Google Cloud Marketplaceでの従量課金制（PAYGO）サブスクリプションの購入や更新ができなくなります。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html["Cloud Volumes ONTAP の新機能"^]を参照してください。
 . ^5^ 次世代 C3 ファミリー VM を https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#improved-cloud-volumes-ontap-support-with-google-cloud-c3-vms["Cloud Volumes ONTAP 9.18.1以降"^]にデプロイできます。c3-standard-44およびc3-standard-88マシンとそのLSSDバリアントは、Google Cloud ConsoleでデフォルトでTier-1帯域幅をサポートしています。LSSDバリアントの詳細については、link:reference-configs-gcp.html#flash-cache-support["Flash Cacheサポート"]を参照してください。
 
 
@@ -223,7 +224,7 @@ link:reference-limits-gcp.html["Google Cloud のディスク制限について�
 |===
 注：
 
-. ^1^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達するのを防ぐことができます。容量制限に達するには https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
+. ^1^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達するのを防ぐことができます。容量制限に達するには https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
 +
 link:reference-limits-gcp.html["Google Cloud のディスク制限について詳しく見る"]。
 
@@ -313,12 +314,12 @@ custom-4-16384マシンタイプは、新しいCloud Volumes ONTAPシステム�
 +
 custom-4-16384マシンタイプは、新しいCloud Volumes ONTAPシステムではサポートされなくなりました。このマシンタイプで既存のシステムを実行している場合は、引き続き使用できますが、n2-standard-4マシンタイプに切り替えることをお勧めします。
 
-. ^2^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達することができない場合があります。容量制限に達するには https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
+. ^2^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達することができない場合があります。容量制限に達するには https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
 +
 link:reference-limits-gcp.html["Google Cloud のディスク制限について詳しく見る"]。
 
 . ^3^ バランス永続ディスクとパフォーマンス（SSD）永続ディスクを使用すると、強化された書き込みパフォーマンスが有効になります。
-. ^4^ 2025年8月11日から、Cloud Volumes ONTAP Optimizedライセンスは廃止され、Google Cloud Marketplaceでの従量課金制（PAYGO）サブスクリプションの購入や更新ができなくなります。詳細については、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html["Cloud Volumes ONTAP の新機能"^]を参照してください。
+. ^4^ 2025年8月11日から、Cloud Volumes ONTAP Optimizedライセンスは廃止され、Google Cloud Marketplaceでの従量課金制（PAYGO）サブスクリプションの購入や更新ができなくなります。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html["Cloud Volumes ONTAP の新機能"^]を参照してください。
 . ^5^ 次世代C3ファミリーVMを https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#support-for-next-generation-google-cloud-vms-in-cloud-volumes-ontap-ha["Cloud Volumes ONTAP 9.19.1以降（シングルAZ HAデプロイメントの場合）"^]にデプロイできます。c3-standard-44およびc3-standard-88マシンとそのLSSDバリアントは、Google Cloud ConsoleでデフォルトでTier-1帯域幅をサポートしています。LSSDバリアントの詳細については、link:reference-configs-gcp.html#flash-cache-support["Flash Cacheサポート"]を参照してください。
 
 
@@ -372,7 +373,7 @@ link:reference-limits-gcp.html["Google Cloud のディスク制限について�
 |===
 注：
 
-. ^1^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達するのを防ぐことができます。容量制限に達するには https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
+. ^1^ ディスク制限により、ディスクのみを使用してシステムの最大容量制限に達するのを防ぐことができます。容量制限に達するには https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。
 +
 link:reference-limits-gcp.html["Google Cloud のディスク制限について詳しく見る"]。
 
@@ -401,7 +402,7 @@ Cloud Volumes ONTAP 9.13.0 以降、_Flash Cache_、高速書き込み速度、�
 * n2-標準-64
 
 
-対象となるインスタンスタイプを導入する際に、Flash Cacheと高速書き込みを有効にできます。8,896バイトの高い最大伝送単位を有効にするには、導入時にVPC-1、VPC-2、またはVPC-3を選択する必要があります。MTUが高いほど、ネットワークスループットが向上します。これらの導入の起動の詳細については、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html["Google CloudでCloud Volumes ONTAPを起動する"^]を参照してください。
+対象となるインスタンスタイプを導入する際に、Flash Cacheと高速書き込みを有効にできます。8,896バイトの高い最大伝送単位を有効にするには、導入時にVPC-1、VPC-2、またはVPC-3を選択する必要があります。MTUが高いほど、ネットワークスループットが向上します。これらの導入の起動の詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html["Google CloudでCloud Volumes ONTAPを起動する"^]を参照してください。
 
 
 NOTE: _Flash Cache_、高書き込みモード、およびMTU 8,896は機能依存であり、構成済みインスタンス内で個別に無効にすることはできません。

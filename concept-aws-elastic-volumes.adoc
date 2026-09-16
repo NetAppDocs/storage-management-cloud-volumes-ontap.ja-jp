@@ -74,7 +74,7 @@ Elastic Volumes 機能は、バージョン 9.11.0 以降で作成された新�
 * ec2:ボリュームの変更
 
 
-これらの権限は、 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html["NetAppが提供するポリシー"^]
+これらの権限は以下に含まれています https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["NetAppが提供するポリシー"^]
 
 
 
@@ -196,6 +196,6 @@ link:task-manage-aggregates.html["総容量を増やす方法を学ぶ"] 。
 宛先のCloud Volumes ONTAPシステムが Elastic Volumes をサポートしている場合、宛先ボリュームは Elastic Volumes が有効になっているアグリゲートに配置されます (gp3 または io1 ディスクを選択した場合)。
 
 +
-https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html["データレプリケーションの設定方法を学ぶ"^]
+https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html["データレプリケーションの設定方法を学ぶ"^]
 
 

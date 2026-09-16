@@ -26,7 +26,7 @@ summary: 容量ベースのライセンスの課金、消費モデル、価格�
 * *BYOL*: 自分のライセンスを持ち込みます (BYOL)。  NetAppから購入したライセンスで、任意のクラウド プロバイダーにCloud Volumes ONTAP を展開するために使用できます。
 +
 
-NOTE: NetApp は、BYOLライセンスの購入、延長、および更新を制限しており、プライベートモードでの展開など、特定のシナリオでの利用可能性を制限しています。詳細については、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
+NOTE: NetApp は、BYOLライセンスの購入、延長、および更新を制限しており、プライベートモードでの展開など、特定のシナリオでの利用可能性を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
 
 
@@ -71,7 +71,7 @@ link:task-manage-capacity-licenses.html["充電方法の変更方法を学ぶ"] 
 
 Cloud Volumes ONTAPでの課金は、パッケージやボリューム タイプなど、さまざまな要素に基づいて行われます。容量ベースのライセンス パッケージは、Cloud Volumes ONTAP 9.7 以降で利用できます。
 
-価格の詳細については、 https://bluexp.netapp.com/pricing/["NetApp Consoleのウェブサイト"^] 。
+価格の詳細については、link:https://www.netapp.com/pricing/["NetApp価格設定ウェブサイト"^]を参照してください。
 
 
 
@@ -200,7 +200,7 @@ NetAppから Essentials ライセンスを購入し (BYOL)、特定の Essential
 
 同様に、年間マーケットプレイス契約または複数の Essentials パッケージを含むプライベート オファーがあり、使用量が特定のパッケージのデプロイメントとボリューム タイプに対してコミットされた容量を超える場合、コンソールは利用可能な容量に基づいて、より高価な Essentials パッケージに対して超過分を請求します。容量が使い果たされると、残りの超過分はマーケットプレイス オンデマンド (PAYGO) の時間単位料金で課金され、毎月の請求額に加算されます。
 
-Essentialsライセンスの課金については、以下を参照してください。link:concept-licensing-charging.html#essentialscharging["エッセンシャルパッケージ"] 。
+Essentialsライセンスの課金に関する情報については、<<エッセンシャルパッケージ>>を参照してください。
 
 ここに例があります。Essentials パッケージの次のライセンスがあるとします。
 

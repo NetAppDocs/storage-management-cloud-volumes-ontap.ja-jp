@@ -25,7 +25,7 @@ Cloud Volumes ONTAPには、信頼性の高い操作を実現するために、�
 
 NetApp はシステム容量制限の超過をサポートしていません。ライセンス容量制限に達した場合、NetApp Console は対応が必要なメッセージを表示し、追加ディスクの追加ができなくなります。
 
-一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。詳細については、以下の容量とディスク制限を参照してください。
+一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。詳細については、以下の容量とディスク制限を参照してください。
 
 [[cap-license-aws]]
 .容量ベースのライセンスの容量制限
@@ -94,7 +94,7 @@ Cloud Volumes ONTAPはEBSボリュームをディスクとして使用し、そ�
 
 . データ ディスクの制限を超えてしまうため、HAペアの両方のノードに18個のアグリゲートを作成することはできません。
 . 最大アグリゲート サイズはディスクに依存しており、データ階層化に使用するオブジェクト ストレージは含まれません。
-. Amazon EBS Elastic Volumes 機能をサポートする設定がある場合、アグリゲートには最大 8 個のディスクを含めることができ、最大 128 TiB の容量が提供されます。デフォルトでは、Cloud Volumes ONTAP 9.11.0 以降のシステムでは、gp3 または io1 ディスクを使用する場合に Amazon EBS Elastic Volumes が有効になります。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"^]
+. Amazon EBS Elastic Volumes 機能をサポートする設定がある場合、アグリゲートには最大 8 個のディスクを含めることができ、最大 128 TiB の容量が提供されます。デフォルトでは、Cloud Volumes ONTAP 9.11.0 以降のシステムでは、gp3 または io1 ディスクを使用する場合に Amazon EBS Elastic Volumes が有効になります。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"^]
 . アグリゲート内のすべてのディスクは同じサイズである必要があります。
 
 
@@ -120,7 +120,7 @@ Cloud Volumes ONTAPはEBSボリュームをディスクとして使用し、そ�
 [[limits-for-different-deployment-modes-of-capacity-based-licensing]]
 === 容量ベースのライセンスのさまざまな導入モードの制限
 
-以下のディスク制限は、容量ベースのライセンス パッケージを使用する Cloud Volumes ONTAP システムに適用されます。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAP ライセンス オプションについて説明します"^]
+以下のディスク制限は、容量ベースのライセンス パッケージを使用する Cloud Volumes ONTAP システムに適用されます。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAP ライセンス オプションについて説明します"^]
 
 
 NOTE: 単一ノードおよびHA構成の最大システム容量とデータ階層化容量の制限については、<<cap-license-aws>>を参照してください。
@@ -178,7 +178,7 @@ NOTE: 単一ノードおよびHA構成の最大システム容量とデータ階
 
 以下のディスク制限は、ノードベースのライセンスを使用する Cloud Volumes ONTAP システムに適用されます。これは、ノードごとに Cloud Volumes ONTAP のライセンスを取得できるようにした前世代の ライセンス モデル です。ノードベースのライセンスは、既存のお客様も引き続き利用できます。
 
-Cloud Volumes ONTAP BYOL シングルノードまたは HA ペア システムに複数のノードベースのライセンスを購入して、368 TiB を超える容量を割り当て、テスト済みおよびサポートされている最大システム容量制限の 2 PiB まで使用できます。ディスク制限により、ディスクのみを使用すると容量制限に到達できなくなる可能性があることに注意してください。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^] https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP に追加のシステム ライセンスを追加する方法を学ぶ"^]によって、ディスク制限を超えることができます。Cloud Volumes ONTAP はテスト済みおよびサポートされている最大システム容量である 2 PiB までサポートされますが、2 PiB の制限を超えると、サポートされていないシステム構成になります。
+Cloud Volumes ONTAP BYOL シングルノードまたは HA ペア システムに複数のノードベースのライセンスを購入して、368 TiB を超える容量を割り当て、テスト済みおよびサポートされている最大システム容量制限の 2 PiB まで使用できます。ディスク制限により、ディスクのみを使用すると容量制限に到達できなくなる可能性があることに注意してください。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^] https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP に追加のシステム ライセンスを追加する方法を学ぶ"^]によって、ディスク制限を超えることができます。Cloud Volumes ONTAP はテスト済みおよびサポートされている最大システム容量である 2 PiB までサポートされますが、2 PiB の制限を超えると、サポートされていないシステム構成になります。
 
 AWS Secret CloudとTop Secret Cloudのリージョンでは、Cloud Volumes ONTAP 9.12.1以降で複数のノードベースのライセンスの購入がサポートされています。
 
@@ -283,7 +283,7 @@ AWS Secret CloudとTop Secret Cloudのリージョンでは、Cloud Volumes ONTA
 
 一部の構成では、Cloud Volumes ONTAP 用に追加のストレージ VM （ SVM ）を作成できます。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-aws.html["追加のストレージ VM を作成する方法を学ぶ"^]。
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-managing-svms-aws.html["追加のストレージ VM を作成する方法を学ぶ"^]。
 
 [cols="40,60"]
 |===

@@ -197,7 +197,7 @@ HA ペアの場合、4 つの VPC が必要です。これらの各 VPC は、�
 
 https://cloud.google.com/vpc/docs/shared-vpc["Google Cloud ドキュメント: 共有 VPC の概要"^] 。
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["コンソール エージェントのデプロイで説明されている必要な共有 VPC 権限を確認します。"^]
+https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["コンソール エージェントのデプロイで説明されている必要な共有 VPC 権限を確認します。"^]
 
 
 
@@ -213,7 +213,7 @@ https://cloud.google.com/vpc/docs/packet-mirroring["パケットミラーリン�
 
 Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。厳格なセキュリティ要件を持つ環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
 
-コンソール エージェントは、日常的な操作のために複数のエンドポイントにも接続します。エンドポイントの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]そして https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]。
+コンソールエージェントは、日常的な運用のため、複数のエンドポイントにも接続します。エンドポイントに関する情報については、 https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]および https://docs.netapp.com/us-en/console-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]を参照してください。
 
 
 
@@ -269,7 +269,7 @@ HA 構成には 2 セットのファイアウォール ルールが必要であ�
 
 
 
-TIP: コンソール エージェントに関する情報をお探しですか? https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-gcp.html["コンソールエージェントのファイアウォールルールを表示する"^]
+TIP: コンソールエージェントに関する情報をお探しですか？ https://docs.netapp.com/us-en/console-setup-admin/reference-ports-gcp.html["コンソールエージェントのファイアウォールルールを表示する"^]
 
 
 
@@ -557,8 +557,8 @@ NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込
 
 コンソール エージェントをまだ作成していない場合は、ネットワーク要件を確認する必要があります。
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["コンソールエージェントのネットワーク要件を表示する"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-gcp.html["Google Cloud のファイアウォール ルール"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["コンソールエージェントのネットワーク要件を表示する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-ports-gcp.html["Google Cloud のファイアウォール ルール"^]
 
 
 
@@ -572,7 +572,7 @@ NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込
 * *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェント プロキシ経由で自動的にルーティングするように構成されています。透過プロキシを設定する場合、コンソール エージェント管理者は、プロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
 
 
-コンソールエージェントのプロキシサーバーの構成については、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^] 。
+Console エージェントのプロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/console-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^]を参照してください。
 
 .Google Cloud でCloud Volumes ONTAPのネットワーク タグを構成する
 コンソール エージェントの透過プロキシ構成中に、管理者は Google Cloud のネットワーク タグを追加します。 Cloud Volumes ONTAP構成に同じネットワーク タグを取得して手動で追加する必要があります。このタグは、プロキシ サーバーが正しく機能するために必要です。

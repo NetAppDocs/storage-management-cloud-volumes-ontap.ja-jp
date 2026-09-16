@@ -9,7 +9,7 @@
 
 既存の環境内で、文書化された段階的な変換プロセスに従うことで、Cloud Volumes ONTAP をプライベートモードでデプロイできます。プライベートモード展開では、Cloud Volumes ONTAP システムはお客様独自の仮想プライベートクラウド（VPC）または仮想ネットワーク（VNet）にデプロイされ、パブリックインターネットには接続されません。プライベートモードでの展開を利用することで、組織のセキュリティおよびコンプライアンス要件を満たすことができます。
 
-プライベートモードの展開では、以前は NetApp から調達できるノードベースのライセンスのみを使用していました。ノードベースのライセンスは、Cloud Volumes ONTAP の旧世代のライセンスです。NetApp は、例外を除き、ノードベースのライセンスの購入、延長、および更新を https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["2025/06/25"]以降に制限しています。2026年7月31日をもって、米国公共部門（USPS）やその他のプライベートモード展開などの例外的なケースにおけるノードベースのライセンスは、提供終了（EOA）を迎えます。
+プライベートモードの展開では、以前は NetApp から調達できるノードベースのライセンスのみを使用していました。ノードベースのライセンスは、Cloud Volumes ONTAP の旧世代のライセンスです。NetApp は、例外を除き、ノードベースのライセンスの購入、延長、および更新を https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["2025/06/25"]以降に制限しています。2026年7月31日をもって、米国公共部門（USPS）やその他のプライベートモード展開などの例外的なケースにおけるノードベースのライセンスは、提供終了（EOA）を迎えます。
 
 ノードベースのライセンスを使用したプライベートデプロイメントの場合は、以下の手順に従ってください。
 

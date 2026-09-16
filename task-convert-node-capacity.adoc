@@ -20,7 +20,7 @@ summary: 'ノードベースのライセンスの提供終了 (EOA) 後は、ラ
 
 EOAとEOSの詳細については、以下を参照してください。link:concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"] 。
 
-はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。
+NetApp は、BYOLライセンスの購入、延長、更新を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
 
 

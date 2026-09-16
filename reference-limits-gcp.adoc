@@ -25,7 +25,7 @@ Cloud Volumes ONTAPシステムの最大システム容量は、ライセンス�
 
 NetApp はシステム容量制限の超過をサポートしていません。ライセンス容量制限に達した場合、NetApp Console は対応が必要なメッセージを表示し、追加ディスクの追加ができなくなります。
 
-一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。容量制限に達するには https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。詳細については、以下のディスク制限を参照してください。
+一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。容量制限に達するには https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]。詳細については、以下のディスク制限を参照してください。
 
 [[cap-license-gcp]]
 .容量ベースのライセンスの容量制限
@@ -131,7 +131,7 @@ Cloud Volumes ONTAP は Google Cloud Platform ディスクを _アグリゲー�
 
 これらはテストされた制限です。ストレージ VM をこれ以上設定することはサポートされていません。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.html["追加のストレージ VM を作成する方法を学ぶ"^]。
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-managing-svms-gcp.html["追加のストレージ VM を作成する方法を学ぶ"^]。
 
 [cols="2*"]
 |===
@@ -259,4 +259,4 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.
 
 ノードが再起動した後、パートナーはストレージを返す前にデータを同期する必要があります。データの再同期にかかる時間は、ノードがダウンしている間にクライアントによって書き込まれたデータの量と、ギブバック時のデータ書き込み速度によって異なります。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha-google-cloud.html["Google Cloud で実行される Cloud Volumes ONTAP HA ペアでのストレージの仕組みを学ぶ"^]。
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-ha-google-cloud.html["Google Cloud で実行される Cloud Volumes ONTAP HA ペアでのストレージの仕組みを学ぶ"^]。

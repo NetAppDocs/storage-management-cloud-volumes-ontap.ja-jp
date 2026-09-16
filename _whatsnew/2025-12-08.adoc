@@ -9,7 +9,7 @@
 
 IOPS およびスループット パラメーターを変更することで、Azure の Premium SSD v2 マネージド ディスクのパフォーマンスを向上できるようになりました。この機能を使用すると、ワークロード要件に基づいてシステムのストレージ パフォーマンスを最適化できます。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-perf-params-azure.html["Azure のCloud Volumes ONTAPの Premium SSD v2 ディスク パフォーマンスを管理する"^]。
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-perf-params-azure.html["Azure のCloud Volumes ONTAPの Premium SSD v2 ディスク パフォーマンスを管理する"^]。
 
 
 

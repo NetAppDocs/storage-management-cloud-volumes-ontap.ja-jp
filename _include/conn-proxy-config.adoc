@@ -13,4 +13,4 @@ NetApp Consoleエージェントのプロキシ サーバー構成を使用し�
 * *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェントのプロキシを介して自動的にルーティングするように構成されています。透過プロキシを設定する場合、管理者はプロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
 
 
-プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^] 。
+プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/console-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^]を参照してください。

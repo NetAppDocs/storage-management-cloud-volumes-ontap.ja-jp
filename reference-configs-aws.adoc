@@ -26,6 +26,7 @@ AWS では、複数の Cloud Volumes ONTAP 構成がサポートされていま�
 
 
 [[internal-disks-for-system-data]]
+[[aws]]
 === システムデータ用の内部ディスク
 
 AWSでは、システムデータ用に以下の内部ディスクが使用されます。
@@ -84,7 +85,7 @@ NOTE: スループット最適化 HDD (st1) を使用する場合、オブジェ
 [[supported-disk-sizes]]
 === サポートされているディスクサイズ
 
-AWS では、アグリゲートには最大 6 個の同じサイズのディスクを含めることができます。ただし、Amazon EBS Elastic Volumes 機能をサポートする構成がある場合、アグリゲートには最大 8 個のディスクを含めることができます。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"^]
+AWS では、アグリゲートには最大 6 個の同じサイズのディスクを含めることができます。ただし、Amazon EBS Elastic Volumes 機能をサポートする構成がある場合、アグリゲートには最大 8 個のディスクを含めることができます。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-aws-elastic-volumes.html["エラスティックボリュームのサポートについて詳しくはこちら"^]
 
 [cols="3*"]
 |===
@@ -335,7 +336,7 @@ Cloud Volumes ONTAP は、リザーブド EC2 インスタンスまたはオン�
 
 |===
 . HAペアの場合、容量制限はHAペア全体に適用されます。ノードごとではありません。例えば、PAYGO Premiumライセンスを使用する場合、両ノード間で最大368TiBの容量を利用できます。
-. 一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。ディスク制限の詳細については、link:reference-limits-aws.html["ストレージの制限"]を参照してください。
+. 一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。ディスク制限の詳細については、link:reference-limits-aws.html["ストレージの制限"]を参照してください。
 +
 容量ベースのライセンスでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートします。階層化された総容量は、クラウド プロバイダのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保するために https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["『FabricPoolのベストプラクティス』"^]に従う必要があります。
 
@@ -654,7 +655,7 @@ AWS ローカルゾーンのこれらのインスタンスタイプでは、高�
 | S3 へのコールドデータ階層化 | サポート対象外 3+| サポート 
 |===
 . HAペアの場合、容量制限はHAペア全体に適用されます。ノードごとではありません。例えば、PAYGO Premiumライセンスを使用する場合、両ノード間で最大368TiBの容量を利用できます。
-. 一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。ディスク制限の詳細については、link:reference-limits-aws.html["ストレージの制限"]を参照してください。
+. 一部の構成では、ディスク制限により、ディスクのみを使用して容量制限に到達できなくなります。このような場合は、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^]容量制限に到達できます。ディスク制限の詳細については、link:reference-limits-aws.html["ストレージの制限"]を参照してください。
 +
 容量ベースのライセンスでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートします。階層化された総容量は、クラウド プロバイダのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保するために https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["『FabricPoolのベストプラクティス』"^]に従う必要があります。
 
@@ -681,7 +682,7 @@ Cloud Volumes ONTAP は AWS の c4、m4、r4 EC2 インスタンス タイプは
 
 お使いのシステムがc4、m4、またはr4インスタンスで動作している場合は、このリリースにアップグレードする前に、c5、m5、またはr5インスタンスに変更してください。
 
-link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-change-ec2-instance.html["Cloud Volumes ONTAPのEC2インスタンスタイプを変更する方法を学ぶ"^]。
+link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-change-ec2-instance.html["Cloud Volumes ONTAPのEC2インスタンスタイプを変更する方法を学ぶ"^]。
 
 詳細については、次のリソースを参照してください。
 
@@ -816,8 +817,8 @@ pass:[*] Flash Cacheは、m6id.xlarge、m6id.2xlarge、m6idn.xlarge、およびm
 
 以下の注記は、サポートされているインスタンスの動作と導入オプションに関する一般的なガイダンスを提供します。
 
-* 一部のインスタンスタイプにはローカルNVMeストレージが含まれており、Cloud Volumes ONTAPはこれをFlash Cacheとして使用します。Flash Cacheは、最近読み取られたユーザーデータとNetAppメタデータのリアルタイムインテリジェントキャッシングにより、データへのアクセスを高速化します。データベース、Eメール、ファイルサービスなど、ランダム読み取り集約型のワークロードに効果的です。Flash Cacheのパフォーマンス向上を活用するには、すべてのボリュームで圧縮を無効にする必要があります https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-flash-cache.html["Flash Cacheの詳細はこちら"^]。
-* Cloud Volumes ONTAPは、シングルノードシステムを使用する場合、サポートされているすべてのインスタンスタイプで高速な書き込み速度をサポートします。HAペアを使用する場合、高速書き込み速度はサポートされているインスタンスタイプでのみサポートされます https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-write-speed.html["書き込み速度の選択について詳しくはこちら"^]。
+* 一部のインスタンスタイプにはローカルNVMeストレージが含まれており、Cloud Volumes ONTAPはこれをFlash Cacheとして使用します。Flash Cacheは、最近読み取られたユーザーデータとNetAppメタデータのリアルタイムインテリジェントキャッシングにより、データへのアクセスを高速化します。データベース、Eメール、ファイルサービスなど、ランダム読み取り集約型のワークロードに効果的です。Flash Cacheのパフォーマンス向上を活用するには、すべてのボリュームで圧縮を無効にする必要があります https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-flash-cache.html["Flash Cacheの詳細はこちら"^]。
+* Cloud Volumes ONTAPは、シングルノードシステムを使用する場合、サポートされているすべてのインスタンスタイプで高速な書き込み速度をサポートします。HAペアを使用する場合、高速書き込み速度はサポートされているインスタンスタイプでのみサポートされます https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-write-speed.html["書き込み速度の選択について詳しくはこちら"^]。
 * EC2 インスタンスタイプを選択するときに、共有インスタンスか専用インスタンスかを指定できます。
 
 

@@ -165,7 +165,7 @@ HA構成を選択した場合は、以下の情報を入力してください：
 
 .複数のAZでのHA
 ... *アベイラビリティゾーンとメディエーター*: 各ノードとメディエーターのアベイラビリティゾーン (AZ) と、 Cloud Volumes ONTAP HA ペアを展開する対応するサブネットを選択します。
-... *フローティング IP*: 複数の AZ を選択した場合は、NFS および CIFS サービスとクラスターおよび SVM 管理のフローティング IP アドレスを指定します。 IP アドレスは、リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZ におけるCloud Volumes ONTAP HA の AWS ネットワーク要件"^] 。
+... *フローティングIP*: 複数のAZを選択した場合は、NFSおよびCIFSサービス、クラスタおよびSVM管理用のフローティングIPアドレスを指定します。IPアドレスは、リージョン内のすべてのVPCのCIDRブロックの範囲外である必要があります。詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZ におけるCloud Volumes ONTAP HA の AWS ネットワーク要件"^]を参照してください。
 ... *メディエーター アクセス*: メディエーター アクセス情報を指定します。メディエーターは、HA ペアの健全性を監視し、障害発生時にクォーラムを提供する別のインスタンスです。キーペア名を指定して、メディエーターインスタンスが AWS EC2 サービスに接続できるようにし、接続方法を選択します。
 ... *ルート テーブル*: 複数の AZ を選択した場合は、フローティング IP アドレスへのルートを含むルート テーブルを選択します。ルート テーブルが複数ある場合は、正しいルート テーブルを選択することが重要です。そうしないと、一部のクライアントがCloud Volumes ONTAP HA ペアにアクセスできなくなる可能性があります。ルートテーブルの詳細については、 http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS ドキュメント: ルートテーブル"^] 。
 

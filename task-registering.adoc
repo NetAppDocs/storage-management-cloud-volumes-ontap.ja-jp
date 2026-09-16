@@ -24,7 +24,7 @@ TIP: サポートに登録されていないシステムでも、新しいバー
 .手順
 . NetAppサポート サイト アカウントをコンソールにまだ追加していない場合は、[アカウント設定] に移動して今すぐ追加してください。
 +
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["NetAppサポートサイトアカウントを追加する方法を学ぶ"^] 。
+https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["NetAppサポートサイトアカウントを追加する方法を学ぶ"^]。
 
 . *システム* ページで、登録するシステムの名前をダブルクリックします。
 . [概要] タブで [機能] パネルをクリックし、[サポート登録] の横にある鉛筆アイコンをクリックします。

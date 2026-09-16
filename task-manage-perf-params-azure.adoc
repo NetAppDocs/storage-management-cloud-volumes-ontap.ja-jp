@@ -18,7 +18,7 @@ Premium SSD v2 ディスクの IOPS およびスループット パラメータ�
 
 Premium SSD v2 ディスクは、低レイテンシ、高 IOPS、高スループットを備えた高速で信頼性の高いパフォーマンスを必要とするワークロードをサポートします。  IOPS とスループットの設定を調整することで、展開内のアグリゲートのパフォーマンスをカスタマイズできます。  Premium SSD v2ディスクの詳細については、以下を参照してください。 https://learn.microsoft.com/en-us/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli["Premium SSD v2ディスクを展開する"] 。
 
-API を使用して、Premium SSD v2 ディスク設定を変更するプロセスを自動化します。  Cloud Volumes ONTAP API呼び出しの実行については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^] 。
+APIを使用して、Premium SSD v2のディスク設定を変更するプロセスを自動化します。Cloud Volumes ONTAP APIコールの実行については、 https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^]を参照してください。
 
 .タスク概要
 * この機能は、Azure 単一可用性ゾーンでのCloud Volumes ONTAPデプロイメントに適用されます。
@@ -66,9 +66,9 @@ NOTE: この API は 24 時間以内に最大 4 回呼び出すことができ�
 API が操作が成功したことを示す応答を返した後、 Cloud Volumes ONTAPシステムの Azure ポータルでディスクの詳細を確認して、変更されたパラメーターを確認します。
 
 .関連情報
-* https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html["APIを使用する準備"^]
-* https://docs.netapp.com/us-en/bluexp-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Cloud Volumes ONTAPワークフロー"^]
-* https://docs.netapp.com/us-en/bluexp-automation/platform/get_identifiers.html#get-the-connector-identifier["必要な識別子を取得する"^]
-* https://docs.netapp.com/us-en/bluexp-automation/platform/use_rest_apis.html["Cloud Volumes ONTAPの REST API を使用する"^]
+* https://docs.netapp.com/us-en/console-automation/cm/prepare.html["APIを使用する準備"^]
+* https://docs.netapp.com/us-en/console-automation/cm/workflow_processes.html#organization-of-cloud-volumes-ontap-workflows["Cloud Volumes ONTAPワークフロー"^]
+* https://docs.netapp.com/us-en/console-automation/platform/get_identifiers.html#get-the-connector-identifier["必要な識別子を取得する"^]
+* https://docs.netapp.com/us-en/console-automation/platform/use_rest_apis.html["Cloud Volumes ONTAPの REST API を使用する"^]
 * https://learn.microsoft.com/en-us/azure/virtual-machines/use-premium-ssd-v2-with-availability-set?tabs=CLI["可用性セット内の VM で Premium SSD v2 を使用する"^]
 

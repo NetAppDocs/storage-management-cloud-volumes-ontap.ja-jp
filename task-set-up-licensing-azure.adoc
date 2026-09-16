@@ -21,7 +21,7 @@ Cloud Volumes ONTAPで使用するライセンス オプションを決定した
 [[freemium]]
 == フリーミアム
 
-最大 500 GiB のプロビジョニング容量でCloud Volumes ONTAP を無料で使用するには、Freemium オファリングを選択してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages["フリーミアムプランの詳細"^] 。
+Freemium プランを選択すると、最大 500 GiB のプロビジョニング容量まで Cloud Volumes ONTAP を無料でご利用いただけます。link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#packages["フリーミアムプランの詳細"^]。
 
 .手順
 . NetApp Consoleの左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
@@ -29,7 +29,7 @@ Cloud Volumes ONTAPで使用するライセンス オプションを決定した
 +
 .. *詳細と資格情報*ページで、*資格情報の編集 > サブスクリプションの追加*をクリックし、プロンプトに従って Azure Marketplace の従量課金制オファリングをサブスクライブします。
 +
-プロビジョニングされた容量が500GiBを超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。その時点で、システムは自動的にlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["エッセンシャルパッケージ"^]。
+プロビジョニングされた容量が 500 GiB を超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。超過した場合、システムは自動的に link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["エッセンシャルパッケージ"^] に変換されます。
 
 +
 image:screenshot-azure-paygo-subscription.png["Cloud Volumes ONTAPシステムを作成する際の PAYGO サブスクリプション オプションのスクリーンショット。"]
@@ -70,11 +70,11 @@ link:concept-licensing.html["容量ベースのライセンスについて詳し
 NetAppからライセンス (BYOL) を購入して前払いすることで、任意のクラウド プロバイダーにCloud Volumes ONTAPシステムを導入できます。
 
 
-NOTE: はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。
+NOTE: NetApp は、BYOLライセンスの購入、延長、更新を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
 .手順
 . https://www.netapp.com/forms/sales-contact/["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをコンソールに追加します"^]
+. https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをコンソールに追加します"^]
 +
 コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがない場合、コンソールはライセンスを自動的にコンソールに追加します。
 
@@ -128,7 +128,7 @@ image:screenshot-professional.png["Cloud Volumes ONTAPシステムを作成す�
 link:task-deploying-otc-azure.html["AzureでCloud Volumes ONTAPを起動するための手順を見る"] 。
 
 
-TIP: Azure アカウントに関連付けられている Azure Marketplace サブスクリプションは、[設定] > [資格情報] ページから管理できます。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html["Azure アカウントとサブスクリプションを管理する方法を学びます"^]
+TIP: Azure アカウントに関連付けられている Azure Marketplace サブスクリプションは、「設定」>「資格情報」ページから管理できます。 https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html["Azure アカウントとサブスクリプションを管理する方法を学びます"^]
 
 
 

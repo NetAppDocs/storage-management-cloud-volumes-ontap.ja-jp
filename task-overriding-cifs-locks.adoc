@@ -25,7 +25,7 @@ Microsoft Azure は、仮想マシン上で定期的なメンテナンス イベ
 CAUTION: このプロセスは CIFS クライアントに混乱をもたらす可能性があります。  CIFS クライアントからコミットされていないデータは失われる可能性があります。
 
 .開始する前に
-コンソール設定を変更する前に、コンソール エージェントを作成する必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html#how-to-create-a-connector["方法を学ぶ"^] 。
+コンソール設定を変更するには、まずコンソールエージェントを作成する必要があります。 https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html#how-to-create-a-connector["方法を学ぶ"^]。
 
 .手順
 . 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。

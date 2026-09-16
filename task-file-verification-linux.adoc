@@ -19,7 +19,7 @@ Linux 上でエクスポートされた VHD ファイル署名の検証には、
 .手順
 . Azureイメージファイルを以下からダウンロードします。 https://mysupport.netapp.com/site/["NetAppサポート サイト"^]ダイジェスト (.sig) ファイル、公開鍵証明書 (.pem) ファイル、チェーン証明書 (.pem) ファイルを抽出します。
 +
-参照 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-azure-download-digest-file.html["Azure イメージ ダイジェスト ファイルをダウンロードする"^]詳細についてはこちらをご覧ください。
+詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-download-digest-file.html["Azure イメージ ダイジェスト ファイルをダウンロードする"^]を参照してください。
 
 . 信頼チェーンを検証します。
 +

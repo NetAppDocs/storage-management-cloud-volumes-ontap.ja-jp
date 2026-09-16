@@ -30,7 +30,7 @@ NOTE: システムを削除しても、 NetApp Backup and Recoveryによって�
 
 . このシステムでデータ分類を有効にしていて、他のシステムでこのサービスが使用されていない場合は、サービスのインスタンスを削除する必要があります。
 +
-https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html#the-cloud-data-sense-instance["データ分類インスタンスの詳細"^] 。
+https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-compliance.html#the-cloud-data-sense-instance["データ分類インスタンスの詳細"^]。
 
 . Cloud Volumes ONTAPシステムを削除します。
 +

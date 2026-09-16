@@ -108,7 +108,7 @@ Cloud Volumes ONTAP は Azure ストレージをディスクとして使用し�
 [[limits-for-different-deployment-modes-of-capacity-based-licensing]]
 === 容量ベースのライセンスのさまざまな導入モードの制限
 
-以下のディスク制限は、容量ベースのライセンス パッケージを使用する Cloud Volumes ONTAP システムに適用されます https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAP ライセンス オプションについて説明します"^]。
+以下のディスク制限は、容量ベースのライセンス パッケージを使用する Cloud Volumes ONTAP システムに適用されます https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAP ライセンス オプションについて説明します"^]。
 
 
 NOTE: 単一ノード、ページブロブを含む単一アベイラビリティゾーン内のHAペア、および共有マネージドディスクを含む単一および複数のアベイラビリティゾーン内のHAペアの最大システム容量とデータ階層化容量制限については、<<cap-license-azure>>を参照してください。
@@ -341,7 +341,7 @@ NOTE: 単一ノード、ページブロブを含む単一アベイラビリテ�
 
 以下のディスク制限は、ノードベースのライセンスを使用する Cloud Volumes ONTAP システムに適用されます。ノードベースのライセンスは、ノード単位で Cloud Volumes ONTAP のライセンスを付与できる旧世代のモデルです。ノードベースのライセンスは、既存のお客様も引き続き利用できます。
 
-Cloud Volumes ONTAP BYOL シングルノードまたは HA ペア システムに複数のノードベースのライセンスを購入して、368 TiB を超える容量を割り当て、テスト済みおよびサポートされている最大システム容量制限の 2 PiB まで使用できます。ディスク制限により、ディスクのみを使用すると容量制限に到達できなくなる可能性があることに注意してください。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^] https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP に追加のシステム ライセンスを追加する方法を学ぶ"^]によって、ディスク制限を超えることができます。Cloud Volumes ONTAP は、テスト済みおよびサポートされている最大システム容量 2 PiB までサポートしており、2 PiB の制限を超えると、サポートされていないシステム構成になります。
+Cloud Volumes ONTAP BYOL シングルノードまたは HA ペア システムに複数のノードベースのライセンスを購入して、368 TiB を超える容量を割り当て、テスト済みおよびサポートされている最大システム容量制限の 2 PiB まで使用できます。ディスク制限により、ディスクのみを使用すると容量制限に到達できなくなる可能性があることに注意してください。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"^] https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP に追加のシステム ライセンスを追加する方法を学ぶ"^]によって、ディスク制限を超えることができます。Cloud Volumes ONTAP は、テスト済みおよびサポートされている最大システム容量 2 PiB までサポートしており、2 PiB の制限を超えると、サポートされていないシステム構成になります。
 
 
 
@@ -631,7 +631,7 @@ HA ペアには、ページ BLOB と複数の可用性ゾーンの 2 つの構�
 
 これらはテストされた制限です。ストレージ VM をこれ以上セットアップすることはサポートされていません。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-azure.html["追加のストレージ VM を作成する方法を学ぶ"^]。
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-managing-svms-azure.html["追加のストレージ VM を作成する方法を学ぶ"^]。
 
 [cols="2*"]
 |===

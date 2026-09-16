@@ -110,7 +110,7 @@ http-httpsカテゴリのステータスが `OK` これは、 AutoSupportが適�
 . ステータスがまだ失敗の場合、ポート経由でCloud Volumes ONTAPとコンソールエージェント間の接続があることを確認してください。 `3128`。
 . 検証後もステータスが失敗の場合は、コンソール エージェントに SSH で接続します。
 +
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm["コンソールエージェントの Linux VM への接続の詳細"^]
+https://docs.netapp.com/us-en/console-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm["コンソールエージェントの Linux VM への接続の詳細"^]
 
 . へ移動 `/opt/application/netapp/cloudmanager/docker_occm/data/`。
 . プロキシ設定ファイルを開く `squid.conf`。ファイルの構造は次のとおりです。

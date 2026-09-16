@@ -131,7 +131,7 @@ NOTE: コンソールは、階層化されている選択されたディスク �
 ボリュームのサイズを変更する必要がある場合は、コンソールのONTAP System Manager から変更できます。
 
 .手順
-. ONTAP System Manager を通じてボリュームのサイズを変更するには、System Manager ビューをクリックします。。 link:task-administer-advanced-view.html#how-to-get-started["始め方"] 。
+. ONTAP System Manager でボリュームのサイズを変更するには、System Manager ビューを選択します。link:task-administer-advanced-view.html#get-started-with-system-manager["システムマネージャーを使い始める"]を参照してください。
 . 左側のナビゲーション メニューから、*ストレージ > ボリューム*を選択します。
 . ボリュームのリストから、サイズを変更するボリュームを特定します。
 . オプションアイコンをクリックしますimage:screenshot_gallery_options.gif["ケバブのアイコン"]。
@@ -237,7 +237,7 @@ ONTAP System Manager でボリュームを移動するには、ボリューム�
 コンソールには、容量の問題を回避するためにボリュームの移動が必要であるが、問題を自分で修正する必要があることを示すアクションが必要なメッセージが表示される場合があります。このような場合は、問題を修正する方法を特定し、1 つ以上のボリュームを移動する必要があります。
 
 
-TIP: アグリゲートの使用容量が 90% に達すると、コンソールにこれらのアクションが必要なメッセージが表示されます。データ階層化が有効になっている場合、アグリゲートの使用容量が 80% に達するとメッセージが表示されます。デフォルトでは、データ階層化用に 10% の空き領域が予約されています。link:task-tiering.html#changing-the-free-space-ratio-for-data-tiering["データ階層化の空き領域比率について詳しく見る"^] 。
+TIP: コンソールは、アグリゲートの使用容量が90%に達すると、これらの「対応が必要です」というメッセージを表示します。データ階層化が有効になっている場合、アグリゲートの使用容量が80%に達したときにメッセージが表示されます。デフォルトでは、データ階層化のために10%の空き容量が確保されます。link:task-tiering.html#change-the-free-space-ratio-for-data-tiering["データ階層化の空き領域比率について詳しく見る"^]。
 
 .手順
 . <<容量の問題を修正する方法を特定する>> 。
@@ -312,11 +312,11 @@ image::screenshot_aggr_volume_overview.png[スクリーンショット aggr ボ�
 . 使用可能な容量を持つCloud Volumes ONTAPシステムを特定するか、新しいシステムを展開します。
 . ソース システムをターゲット システムにドラッグ アンド ドロップして、ボリュームの 1 回限りのデータ レプリケーションを実行します。
 +
-詳細については、link:https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html["システム間でのデータの複製"^] 。
+詳細については、link:https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html["システム間でのデータの複製"^]を参照してください。
 
 . 「レプリケーション ステータス」ページに移動し、 SnapMirror関係を解除して、複製されたボリュームをデータ保護ボリュームから読み取り/書き込みボリュームに変換します。
 +
-詳細については、link:https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html#managing-data-replication-schedules-and-relationships["データ複製スケジュールと関係の管理"^] 。
+詳細については、link:https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html#managing-data-replication-schedules-and-relationships["データ複製スケジュールと関係の管理"^]を参照してください。
 
 . データ アクセス用にボリュームを構成します。
 +

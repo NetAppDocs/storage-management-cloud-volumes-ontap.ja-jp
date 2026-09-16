@@ -11,9 +11,9 @@ BlueXP は、既存の明示的なプロキシ接続に加えて、透過プロ�
 
 Cloud Volumes ONTAPでのプロキシ サーバーの使用の詳細については、以下を参照してください。
 
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#network-configurations-to-support-connector-proxy-servers["AWS でコネクタ プロキシをサポートするためのネットワーク構成"^]
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/azure/reference-networking-azure.html#network-configurations-to-support-connector["Azure でコネクタ プロキシをサポートするためのネットワーク構成"^]
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-gcp.html#network-configurations-to-support-connector-proxy["Google Cloud でコネクタ プロキシをサポートするためのネットワーク構成"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-aws.html#network-configurations-to-support-connector-proxy-servers["AWS でコネクタ プロキシをサポートするためのネットワーク構成"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/azure/reference-networking-azure.html#network-configurations-to-support-connector["Azure でコネクタ プロキシをサポートするためのネットワーク構成"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#network-configurations-to-support-connector-proxy["Google Cloud でコネクタ プロキシをサポートするためのネットワーク構成"^]
 
 
 

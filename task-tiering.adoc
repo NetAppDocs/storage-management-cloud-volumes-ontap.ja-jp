@@ -173,7 +173,7 @@ ifdef::azure[]
 "Microsoft.Network/virtualNetworks/subnets/write",
 "Microsoft.Network/routeTables/join/action",
 ----
-カスタム ロールには、デフォルトで権限が含まれます。 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["コンソール エージェントの Azure 権限を表示する"^]
+カスタムロールには、デフォルトで権限が含まれています。 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["コンソール エージェントの Azure 権限を表示する"^]
 
 endif::azure[]
 
@@ -301,7 +301,7 @@ Cloud Volumes ONTAP は、データ保護ボリュームから容量層にデー
 image:screenshot_replication_tiering.gif["ボリュームを複製する際の S3 階層化オプションを示すスクリーンショット。"]
 
 +
-データの複製に関するヘルプについては、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-replication/task-replicating-data.html["クラウドとの間でデータを複製する"^] 。
+データの複製に関するヘルプについては、 https://docs.netapp.com/us-en/data-services-replication/task-replicating-data.html["クラウドとの間でデータを複製する"^]を参照してください。
 
 
 

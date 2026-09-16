@@ -61,7 +61,7 @@ Cloud Volumes ONTAPシステムを追加すると、WORM ストレージを有�
 
 NFS または CIFS を介して WORM にファイルをコミットするにはアプリケーションを使用するか、 ONTAP CLI を使用してファイルを WORM に自動的にコミットします。WORM 追記可能ファイルを使用すると、ログ情報のように増分的に書き込まれるデータを保持することもできます。詳細については、 https://docs.netapp.com/us-en/ontap/snaplock/commit-files-worm-state-manual-task.html#commit-files-to-worm-manually["ONTAP SnapLockを使用してファイルをWORMにコミット"^]を参照してください。
 
-Cloud Volumes ONTAPシステムで WORM ストレージをアクティブ化した後は、WORM ストレージのすべての管理にONTAP CLI を使用する必要があります。手順については、 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-arch-con/home.html["SnapLockに関するONTAPドキュメント"^] 。
+Cloud Volumes ONTAP システムで WORM ストレージを有効化した後は、WORM ストレージのすべての管理に ONTAP CLI を使用する必要があります。手順については、link:https://docs.netapp.com/us-en/ontap/snaplock/index.html["SnapLockに関するONTAPドキュメント"^]を参照してください。
 
 
 

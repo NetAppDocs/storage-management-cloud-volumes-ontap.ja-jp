@@ -11,7 +11,7 @@ NetApp は、Cloud Volumes ONTAPノードベース ライセンスの提供終�
 
 年間契約または長期契約の場合、 NetApp、EOA 日付またはライセンス有効期限の前にNetApp の担当者に連絡して、移行の前提条件が満たされていることを確認することをお勧めします。 Cloud Volumes ONTAPノードの長期契約がなく、オンデマンドの従量課金制 (PAYGO) サブスクリプションに対してシステムを実行している場合は、EOS 日付の前に変換を計画することが重要です。長期契約と PAYGO サブスクリプションの両方において、 BlueXPライセンス変換ツールを使用してシームレスな変換を行うことができます。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^] https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-convert-node-capacity.html["Cloud Volumes ONTAPノードベースのライセンスを容量ベースのライセンスに変換する"^]
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^] https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["Cloud Volumes ONTAPノードベースのライセンスを容量ベースのライセンスに変換する"^]
 
 
 
@@ -28,7 +28,7 @@ NetApp は、契約上の義務と運用上のニーズに準拠する次の固�
 * 有効で期限切れでないノードごとのライセンス（BYOLライセンス）をお持ちの場合
 
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
 
 
 
@@ -37,7 +37,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#
 
 BlueXPでは、Azure Blob ストレージに非アクティブな容量層データを保存するためにコールド層を選択できるようになりました。既存のホット層とクール層にコールド層を追加すると、より手頃なストレージ オプションが提供され、コスト効率が向上します。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.html#data-tiering-in-azure["Azure のデータ階層化"^]
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-data-tiering.html#data-tiering-in-azure["Azure のデータ階層化"^]
 
 
 
@@ -46,7 +46,7 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-data-tiering.ht
 
 Azure のCloud Volumes ONTAPシステムのストレージ アカウントへのパブリック アクセスを制限するオプションが追加されました。アクセスを無効にすると、組織のセキュリティ ポリシーに準拠する必要がある場合でも、同じ VNet 内であってもプライベート IP アドレスが公開されることを防ぐことができます。このオプションは、 Cloud Volumes ONTAPシステムのデータ階層化も無効にし、単一ノードと高可用性ペアの両方に適用できます。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["セキュリティグループルール"^] 。
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["セキュリティグループルール"^]。
 
 
 
@@ -55,4 +55,4 @@ https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-az
 
 BlueXPを使用して、既存のCloud Volumes ONTAPシステムで、Write Once、Read Many (WORM) ストレージをアクティブ化できるようになりました。この機能により、作成時に WORM が有効になっていなかった場合でも、作業環境で WORM を有効にする柔軟性が得られます。一度有効にすると、WORM を無効にすることはできません。
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-worm.html#enabling-worm-on-a-cloud-volumes-ontap-working-environment["Cloud Volumes ONTAP作業環境で WORM を有効にする"^]
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-worm.html#enabling-worm-on-a-cloud-volumes-ontap-working-environment["Cloud Volumes ONTAP作業環境で WORM を有効にする"^]

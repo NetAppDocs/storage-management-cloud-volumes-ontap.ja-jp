@@ -22,6 +22,6 @@ NetAppは、プライベートモードの Cloud Volumes ONTAP デプロイメ�
 
 .関連リンク
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-convert-node-capacity.html#conversion-in-a-private-mode-deployment["プライベートモード展開における変換"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html#conversion-in-a-private-mode-deployment["プライベートモード展開における変換"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP のノードベース ライセンスを管理する"^]
 

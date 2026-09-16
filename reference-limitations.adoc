@@ -71,7 +71,7 @@ Cloud Volumes ONTAPの同時SnapMirrorまたはSnapVault転送の最大数は、
 
 Cloud Volumes ONTAPデータのバックアップおよびリカバリ計画の一部として、クラウド プロバイダのスナップショットを使用しないでください。Cloud Volumes ONTAPでホストされているデータをバックアップおよび復元するには、常にONTAPスナップショットコピーまたはサードパーティのバックアップソリューションを使用する必要があります。
 
-https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryを使用してONTAPデータをバックアップおよびリストアする方法を学習します"^]。
+https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryを使用してONTAPデータをバックアップおよびリストアする方法を学習します"^]。
 
 
 NOTE: WAFLファイルシステムのONTAP整合性ポイントによって、データの整合性が決まります。ONTAPだけがWAFLファイルシステムを休止してcrash-consistentバックアップを作成できます。

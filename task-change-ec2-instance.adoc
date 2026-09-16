@@ -36,7 +36,7 @@ TIP: NetApp Consoleは、テイクオーバーを開始し、ギブバックを�
 
 
 .参照
-AWSでサポートされているインスタンスタイプのリストについては、link:reference-configs-aws.html#supported-ec2-compute["サポートされているEC2インスタンス"]を参照してください。
+AWSでサポートされているインスタンスタイプのリストについては、link:reference-configs-aws.html#supported-storage["サポートされているEC2インスタンス"]を参照してください。
 
 インスタンスタイプをc4、m4、またはr4インスタンスから変更できない場合は、KB記事を参照してください。link:https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/Converting_an_AWS_Xen_CVO_instance_to_Nitro_(KVM)["AWS Xen CVO インスタンスを Nitro (KVM) に変換する"^] 。
 

@@ -18,6 +18,6 @@ WORM (Write Once Read Many) と ARP (Autonomous Ransomware Protection) の組み
 
 これらの機能の詳細については、以下をご覧ください。
 
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-protecting-ransomware.html["Cloud Volumes ONTAPでNetAppランサムウェア保護ソリューションを有効にする"]
-* https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-worm.html["WORMストレージ"]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-protecting-ransomware.html["Cloud Volumes ONTAPでNetAppランサムウェア保護ソリューションを有効にする"]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-worm.html["WORMストレージ"]
 

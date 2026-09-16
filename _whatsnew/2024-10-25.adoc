@@ -21,4 +21,4 @@ BlueXP は、プライベート モードでのCloud Volumes ONTAP高可用性 (
 
 NOTE: BlueXP を制限モードで使用する場合、AWS ローカルゾーンはサポートされません。
 
-HAデプロイメントを備えたAWSローカルゾーンの詳細については、以下を参照してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-ha.html#aws-local-zones["AWS ローカルゾーン"^] 。
+AWS ローカルゾーンと HA デプロイメントの詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-ha.html#aws-local-zones["AWS ローカルゾーン"^]を参照してください。

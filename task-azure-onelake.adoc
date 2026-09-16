@@ -14,7 +14,7 @@ summary: Cloud Volumes ONTAP を ONTAP S3 マルチプロトコル アクセス�
 
 
 [role="lead"]
-Cloud Volumes ONTAPを https://community.fabric.microsoft.com/["Microsoft Fabric"^]と統合し、 https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^]を使用することで、既存のCloud Volumes ONTAP NASデータをPower BI、Azure AI Search、OpenAI、Microsoft CopilotなどのMicrosoftの分析およびAIサービスで利用できるようになります。この統合には、データの移動や重複は一切必要ありません。この統合では、 https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["ONTAP S3マルチプロトコル"^]アクセスを使用して、Cloud Volumes ONTAPを既存のMicrosoft Fabricレイクハウスに接続します。
+Cloud Volumes ONTAP をlink:https://community.fabric.microsoft.com/["Microsoft Fabric"^]と統合するには、link:https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview["Microsoft OneLake"^]を使用して、既存の Cloud Volumes ONTAP NAS データを Power BI、Azure AI Search、OpenAI、Microsoft Copilot などの Microsoft の分析および AI サービスで利用できるようにします。この統合には、データの移動や重複は一切必要ありません。この統合では、link:https://docs.netapp.com/us-en/ontap/s3-multiprotocol/index.html["ONTAP S3マルチプロトコル"^]アクセスを使用して、Cloud Volumes ONTAP を既存の Microsoft Fabric レイクハウスに接続します。
 
 
 

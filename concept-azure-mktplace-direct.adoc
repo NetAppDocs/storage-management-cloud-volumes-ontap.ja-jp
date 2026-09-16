@@ -67,5 +67,5 @@ Eds_v5 および Ls_v3 インスタンスタイプ
 .関連リンク
 * Azure マーケットプレイスの直接展開:link:task-deploy-cvo-azure-mktplc.html["AzureマーケットプレイスからCloud Volumes ONTAPをデプロイする"]
 * コンソール経由のデプロイメント:link:task-getting-started-azure.html["Azure でのCloud Volumes ONTAPのクイック スタート"]
-* https://docs.netapp.com/us-en/bluexp-family/index.html["NetApp Consoleのドキュメント"^]
+* link:https://docs.netapp.com/us-en/console-family/index.html["NetApp Consoleのドキュメント"^]
 

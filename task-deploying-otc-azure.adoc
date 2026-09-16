@@ -22,8 +22,8 @@ Azureで単一ノードシステムまたはHAペアを起動するには、NetA
 [[licensing]]
 * 稼働中のコンソール エージェント。
 +
-** あなたは https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["システムに関連付けられたコンソールエージェント"^]。
-** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^] 。
+**  https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html["システムに関連付けられたコンソールエージェント"^]が必要です。
+** https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^]。
 
 
 * 使用する構成を理解すること。
@@ -58,7 +58,7 @@ Azure で単一ノードの Cloud Volumes ONTAP システムを起動する場�
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
 . [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
 . *場所の選択*: *Microsoft Azure* と * Cloud Volumes ONTAP Single Node* を選択します。
-. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントを作成する"^] 。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントを作成する"^]。
 . *詳細と資格情報*: 必要に応じて Azure の資格情報とサブスクリプションを変更し、クラスター名を指定し、必要に応じてタグを追加して、資格情報を指定します。
 +
 次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
@@ -78,12 +78,12 @@ Azure で単一ノードの Cloud Volumes ONTAP システムを起動する場�
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するために、異なる Azure 資格情報と異なる Azure サブスクリプションを選択できます。従量課金制のCloud Volumes ONTAPシステムを展開するには、Azure Marketplace サブスクリプションを選択した Azure サブスクリプションに関連付ける必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html["資格情報を追加する方法を学ぶ"^] 。 
+| 資格情報の編集 | この Cloud Volumes ONTAP システムで使用する別の Azure 認証情報と別の Azure サブスクリプションを選択できます。従量課金制の Cloud Volumes ONTAP システムをデプロイするには、Azure Marketplace サブスクリプションを選択した Azure サブスクリプションに関連付ける必要があります。 https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html["資格情報を追加する方法を学ぶ"^]。 
 |===
 . *サービス*: Cloud Volumes ONTAPで使用する、または使用しないサービスを個別に有効または無効にします。
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
-** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
+** https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
+** https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
 +
 
 TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
@@ -109,7 +109,7 @@ NOTE: 中国地域では、単一ノードの展開はCloud Volumes ONTAP 9.12.1
 Cloud Volumes ONTAPの新しいリソース グループを作成するか、既存のリソース グループを使用します。ベストプラクティスは、 Cloud Volumes ONTAP専用の新しいリソースグループを使用することです。 Cloud Volumes ONTAP を既存の共有リソース グループにデプロイすることは可能ですが、データ損失のリスクがあるためお勧めしません。詳細については上記の警告を参照してください。
 
 
-TIP: 使用しているAzureアカウントに https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["必要な権限"^]、コンソールは、デプロイメントの失敗または削除の場合に、リソース グループからCloud Volumes ONTAPリソースを削除します。
+TIP: 使用している Azure アカウントに https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["必要な権限"^]がある場合、コンソールはデプロイの失敗または削除の場合に、リソースグループから Cloud Volumes ONTAP リソースを削除します。
 
 
 
@@ -122,7 +122,7 @@ TIP: 使用しているAzureアカウントに https://docs.netapp.com/us-en/blu
 
 
 
-| 既存のものを使用する | 既存のセキュリティ グループを選択する場合は、 Cloud Volumes ONTAP の要件を満たしている必要があります。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["デフォルトのセキュリティ グループを表示する"^] 。 
+| 既存のものを使用する | 既存のセキュリティグループを選択する場合は、Cloud Volumes ONTAP の要件を満たしている必要があります。link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["デフォルトのセキュリティ グループを表示する"^]。 
 |===
 . *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイト アカウントを指定します。
 +
@@ -149,7 +149,7 @@ NOTE: 選択したバージョンに対して、より新しいリリース候�
 ** ディスク タイプは初期ボリューム用です。後続のボリュームには異なるディスク タイプを選択できます。
 ** ディスク サイズは、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのすべてのディスクに適用されます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
 +
-ディスクの種類とサイズの選択については、以下を参照してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^] 。
+ディスクの種類とサイズの選択については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^]を参照してください。
 
 ** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
 ** データ階層化を無効にした場合、後続の集約で有効にすることができます。
@@ -166,7 +166,7 @@ link:concept-write-speed.html["書き込み速度について詳しくはこち�
 
 .. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
 +
-このオプションは、特定のVMタイプでのみ利用可能です。サポートされているVMタイプを確認するには、link:link:reference-configs-azure.html#ha-pairs["HAペアのライセンスでサポートされる構成"]を参照してください。
+このオプションは、特定のVMタイプでのみ利用可能です。サポートされているVMタイプを確認するには、link:reference-configs-azure.html#ha-pairs["HAペアのライセンスでサポートされる構成"]を参照してください。
 
 +
 Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
@@ -238,11 +238,11 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 | DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
 
 
-| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+| NTPサーバ | Active Directory DNSを使用してNTPサーバーを設定するには、「Active Directoryドメインを使用する」を選択してください。別のアドレスを使用してNTPサーバーを設定する必要がある場合は、APIを使用してください。詳細については https://docs.netapp.com/us-en/console-automation/index.html["NetApp Console自動化ドキュメント"^]を参照してください。NTPサーバーの設定は、CIFSサーバーを作成する際にのみ可能です。CIFSサーバーを作成した後は、設定を変更することはできません。 
 |===
 . *使用プロファイル、ディスク タイプ、階層化ポリシー*: 必要に応じて、ストレージ効率機能を有効にするかどうか、およびボリューム階層化ポリシーを変更するかどうかを選択します。
 +
-詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#choose-a-volume-usage-profile["ボリューム使用プロファイルの理解"^]そしてlink:concept-data-tiering.html["データ階層化の概要"^]。
+詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#choose-a-volume-usage-profile["ボリューム使用プロファイルの理解"^]およびlink:concept-data-tiering.html["データ階層化の概要"^]を参照してください。
 
 . *確認と承認*: 選択内容を確認して確定します。
 +
@@ -282,7 +282,7 @@ Azure でCloud Volumes ONTAP HA ペアを起動する場合は、コンソール
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
 . [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
-. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントを作成する"^] 。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントを作成する"^]。
 . *詳細と資格情報*: 必要に応じて Azure の資格情報とサブスクリプションを変更し、クラスター名を指定し、必要に応じてタグを追加して、資格情報を指定します。
 +
 次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
@@ -302,12 +302,12 @@ Azure でCloud Volumes ONTAP HA ペアを起動する場合は、コンソール
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するために、異なる Azure 資格情報と異なる Azure サブスクリプションを選択できます。従量課金制のCloud Volumes ONTAPシステムを展開するには、Azure Marketplace サブスクリプションを選択した Azure サブスクリプションに関連付ける必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html["資格情報を追加する方法を学ぶ"^] 。 
+| 資格情報の編集 | この Cloud Volumes ONTAP システムで使用する別の Azure 認証情報と別の Azure サブスクリプションを選択できます。従量課金制の Cloud Volumes ONTAP システムをデプロイするには、Azure Marketplace サブスクリプションを選択した Azure サブスクリプションに関連付ける必要があります。 https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html["資格情報を追加する方法を学ぶ"^]。 
 |===
 . *サービス*: Cloud Volumes ONTAPで使用するかどうかに基づいて、個々のサービスを有効または無効にします。
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
-** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
+** https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
+** https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
 +
 
 TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
@@ -344,7 +344,7 @@ Cloud Volumes ONTAPの新しいリソース グループを作成するか、既
 Azure にデプロイするCloud Volumes ONTAP HA ペアごとに専用のリソース グループを使用する必要があります。リソース グループでは 1 つの HA ペアのみがサポートされます。  Azure リソース グループに 2 番目のCloud Volumes ONTAP HA ペアをデプロイしようとすると、コンソールで接続の問題が発生します。
 
 
-TIP: 使用しているAzureアカウントに https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["必要な権限"^]、コンソールは、デプロイメントの失敗または削除の場合に、リソース グループからCloud Volumes ONTAPリソースを削除します。
+TIP: 使用している Azure アカウントに https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["必要な権限"^]がある場合、コンソールはデプロイの失敗または削除の場合に、リソースグループから Cloud Volumes ONTAP リソースを削除します。
 
 
 
@@ -357,7 +357,7 @@ TIP: 使用しているAzureアカウントに https://docs.netapp.com/us-en/blu
 
 
 
-| 既存のものを使用する | 既存のセキュリティ グループを選択する場合は、 Cloud Volumes ONTAP の要件を満たしている必要があります。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["デフォルトのセキュリティ グループを表示する"^] 。 
+| 既存のものを使用する | 既存のセキュリティグループを選択する場合は、Cloud Volumes ONTAP の要件を満たしている必要があります。link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-azure.html#security-group-rules["デフォルトのセキュリティ グループを表示する"^]。 
 |===
 . *課金方法と NSS アカウント*: このシステムで使用する課金オプションを指定し、 NetAppサポート サイト アカウントを指定します。
 +
@@ -382,7 +382,7 @@ NOTE: 選択したバージョンに対して新しいリリース候補、一�
 +
 ** ディスク サイズは、初期アグリゲート内のすべてのディスクと、シンプル プロビジョニング オプションを使用するときにコンソールが作成する追加のアグリゲートのすべてのディスクに適用されます。高度な割り当てオプションを使用して、異なるディスク サイズを使用するアグリゲートを作成できます。
 +
-ディスクサイズの選択については、以下を参照してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でシステムのサイズを決定する"^] 。
+ディスクサイズの選択については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でシステムのサイズを決定する"^]を参照してください。
 
 ** VNet 内でストレージ アカウントへのパブリック アクセスが無効になっている場合、 Cloud Volumes ONTAPシステムでデータ階層化を有効にすることはできません。詳細については、link:reference-networking-azure.html#security-group-rules["セキュリティグループルール"] 。
 ** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
@@ -392,7 +392,7 @@ link:concept-data-tiering.html["データ階層化の詳細"^] 。
 
 ** Cloud Volumes ONTAP 9.15.0P1 以降、新しい高可用性ペアの展開では Azure ページ BLOB はサポートされなくなりました。現在、既存の高可用性ペアの展開で Azure ページ BLOB を使用している場合は、Edsv4 シリーズ VM および Edsv5 シリーズ VM の新しい VM インスタンス タイプに移行できます。
 +
-link:link:reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"^]。
+link:reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"^]。
 
 
 
@@ -404,7 +404,7 @@ link:concept-write-speed.html["書き込み速度について詳しくはこち�
 
 .. 必要に応じて、一度書き込み、何度も読み取り可能な (WORM) ストレージをアクティブ化します。
 +
-このオプションは、特定のVMタイプでのみ利用可能です。サポートされているVMタイプを確認するには、link:link:reference-configs-azure.html#ha-pairs["HAペアのライセンスでサポートされる構成"^]を参照してください。
+このオプションは、特定のVMタイプでのみ利用可能です。サポートされているVMタイプを確認するには、link:reference-configs-azure.html#ha-pairs["HAペアのライセンスでサポートされる構成"^]を参照してください。
 
 +
 Cloud Volumes ONTAPバージョン 9.7 以下でデータ階層化が有効になっている場合、WORM を有効にすることはできません。  WORM と階層化を有効にした後、 Cloud Volumes ONTAP 9.8 への復元またはダウングレードはブロックされます。
@@ -489,11 +489,11 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 | DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
 
 
-| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+| NTPサーバ | Active Directory DNSを使用してNTPサーバーを設定するには、「Active Directoryドメインを使用する」を選択してください。別のアドレスを使用してNTPサーバーを設定する必要がある場合は、APIを使用してください。詳細については https://docs.netapp.com/us-en/console-automation/index.html["NetApp Console自動化ドキュメント"^]を参照してください。NTPサーバーの設定は、CIFSサーバーを作成する際にのみ可能です。CIFSサーバーを作成した後は、設定を変更することはできません。 
 |===
 . *使用プロファイル、ディスク タイプ、階層化ポリシー*: 必要に応じて、ストレージ効率機能を有効にするかどうか、およびボリューム階層化ポリシーを変更するかどうかを選択します。
 +
-詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^] 、link:concept-data-tiering.html["データ階層化の概要"^] 、 そして https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]
+詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^]、link:concept-data-tiering.html["データ階層化の概要"^]、および https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]を参照してください。
 
 . *確認と承認*: 選択内容を確認して確定します。
 +

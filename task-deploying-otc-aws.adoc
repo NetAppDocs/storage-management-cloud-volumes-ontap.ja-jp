@@ -26,8 +26,8 @@ Cloud Volumes ONTAP は、単一システム構成で、または AWS の HA ペ
 [[licensing]]
 * 稼働中のコンソール エージェント。
 +
-** あなたは https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["システムに関連付けられたコンソールエージェント"^]。
-** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^] 。
+**  https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html["システムに関連付けられたコンソールエージェント"^]が必要です。
+** https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html["コンソールエージェントを常に実行しておく必要があります"^]。
 
 
 * 使用する構成を理解すること。
@@ -59,7 +59,7 @@ AWS でCloud Volumes ONTAPを起動する場合は、 NetApp Consoleで新しい
 . [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
 . *Amazon Web Services* と * Cloud Volumes ONTAP Single Node* を選択します。
 . *詳細作成*を選択します。デフォルトでは*クイック作成*モードが選択されているため、デフォルト値に関するメッセージが表示される場合があります。*続行*をクリックします。
-. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["コンソールエージェントを作成する"^] 。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html["コンソールエージェントを作成する"^]。
 . *詳細と認証情報*: オプションで AWS 認証情報とサブスクリプションを変更し、システム名を入力し、必要に応じてタグを追加して、パスワードを入力します。
 +
 このページのいくつかのフィールドは説明不要です。次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
@@ -79,7 +79,7 @@ AWS でCloud Volumes ONTAPを起動する場合は、 NetApp Consoleで新しい
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | このシステムをデプロイするアカウントに関連付けられている AWS 認証情報を選択します。このCloud Volumes ONTAPシステムで使用する AWS マーケットプレイス サブスクリプションを関連付けることもできます。「サブスクリプションを追加」をクリックすると、選択した認証情報が新しいAWSマーケットプレイスサブスクリプションに関連付けられます。サブスクリプションは年間契約または時間単位でCloud Volumes ONTAPをお支払いいただくことができます。NetApphttps://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["NetApp ConsoleにAWS認証情報を追加する方法を学びます"^] 。 
+| 資格情報の編集 | このシステムをデプロイするアカウントに関連付けられているAWS認証情報を選択してください。このCloud Volumes ONTAPシステムで使用するAWS Marketplaceサブスクリプションを関連付けることもできます。「サブスクリプションの追加」をクリックして、選択した認証情報を新しいAWS Marketplaceサブスクリプションに関連付けます。サブスクリプションは、年間契約またはCloud Volumes ONTAPの時間単位の料金支払いに使用できます。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["NetApp ConsoleにAWS認証情報を追加する方法を学びます"^]。 
 |===
 +
 
@@ -87,15 +87,15 @@ TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場�
 
 . *サービス*: サービスを有効のままにするか、 Cloud Volumes ONTAPで使用しない個々のサービスを無効にします。
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
-** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
+** https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
+** https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
 +
 
 TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
 
 
 
-. *場所と接続*: 記録したネットワーク情報を入力します。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#collect-networking-information["AWS ワークシート"^] 。
+. *場所と接続性*： 記録したネットワーク情報を https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config.html#collect-networking-information["AWS ワークシート"^]に入力してください。
 +
 次の表では、ガイダンスが必要になる可能性のあるフィールドについて説明します。
 
@@ -248,11 +248,11 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 | DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
 
 
-| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+| NTPサーバ | Active Directory DNSを使用してNTPサーバーを設定するには、「Active Directoryドメインを使用する」を選択してください。別のアドレスを使用してNTPサーバーを設定する必要がある場合は、APIを使用してください。詳細については https://docs.netapp.com/us-en/console-automation/index.html["NetApp Console自動化ドキュメント"^]を参照してください。NTPサーバーの設定は、CIFSサーバーを作成する際にのみ可能です。CIFSサーバーを作成した後は、設定を変更することはできません。 
 |===
 . *使用プロファイル、ディスク タイプ、階層化ポリシー*: ストレージ効率機能を有効にするかどうかを選択し、必要に応じてボリューム階層化ポリシーを編集します。
 +
-詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリューム使用プロファイルの理解"^] 、link:concept-data-tiering.html["データ階層化の概要"^] 、 そして https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]
+詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリューム使用プロファイルの理解"^]、link:concept-data-tiering.html["データ階層化の概要"^]、および https://kb.netapp.com/Cloud/Cloud_Volumes_ONTAP/What_Inline_Storage_Efficiency_features_are_supported_with_CVO#["KB: CVO ではどのようなインライン ストレージ効率機能がサポートされていますか?"^]を参照してください。
 
 . *確認と承認*: 選択内容を確認して確定します。
 +
@@ -327,7 +327,7 @@ AWS Local Zones を使用する前に、Local Zones を有効にし、AWS アカ
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するAWS認証情報とマーケットプレイスサブスクリプションを選択してください。「サブスクリプションを追加」をクリックすると、選択した認証情報が新しいAWSマーケットプレイスサブスクリプションに関連付けられます。サブスクリプションは年間契約または時間単位でCloud Volumes ONTAPをお支払いいただくことができます。NetAppから直接ライセンスを購入された場合（ NetApp （Bring Your Own License））、AWSサブスクリプションは不要です。NetAppはBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["コンソールにAWS認証情報を追加する方法を学びます"^] 。 
+| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するAWS認証情報とマーケットプレイスサブスクリプションを選択してください。*サブスクリプションの追加*をクリックして、選択した認証情報を新しいAWSマーケットプレイスサブスクリプションに関連付けます。サブスクリプションは、年間契約またはCloud Volumes ONTAPを時間単位で支払うためのものです。ライセンスをNetAppから直接購入した場合（ライセンス持ち込み（BYOL））、AWSサブスクリプションは不要です。NetAppはBYOLライセンスの購入、延長、および更新を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["コンソールにAWS認証情報を追加する方法を学びます"^]。 
 |===
 +
 
@@ -335,8 +335,8 @@ TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場�
 
 . *サービス*: サービスを有効のままにするか、このCloud Volumes ONTAPシステムで使用しない個々のサービスを無効にします。
 +
-** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
-** https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["バックアップとリカバリの詳細"^]
+** https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-compliance.html["NetApp Data Classificationの詳細"^]
+** https://docs.netapp.com/us-en/data-services-backup-recovery/task-backup-to-s3.html["バックアップとリカバリの詳細"^]
 +
 
 TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
@@ -371,7 +371,7 @@ TIP: WORM とデータ階層化を利用する場合は、バックアップと�
 . *接続と SSH 認証*: HA ペアとメディエーターの接続方法を選択します。
 . *フローティング IP*: 複数の AZ を選択した場合は、フローティング IP アドレスを指定します。
 +
-IP アドレスは、リージョン内のすべての VPC の CIDR ブロックの外側にある必要があります。詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZ におけるCloud Volumes ONTAP HA の AWS ネットワーク要件"^] 。
+IPアドレスは、リージョン内のすべてのVPCのCIDRブロックの範囲外である必要があります。詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZ におけるCloud Volumes ONTAP HA の AWS ネットワーク要件"^]を参照してください。
 
 . *ルート テーブル*: 複数の AZ を選択した場合は、フローティング IP アドレスへのルートを含めるルート テーブルを選択します。
 +
@@ -506,11 +506,11 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 | DNSドメイン | Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
 
 
-| NTPサーバ | Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。参照 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^]詳細については。  NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。 
+| NTPサーバ | Active Directory DNSを使用してNTPサーバーを設定するには、「Active Directoryドメインを使用する」を選択してください。別のアドレスを使用してNTPサーバーを設定する必要がある場合は、APIを使用してください。詳細については https://docs.netapp.com/us-en/console-automation/index.html["NetApp Console自動化ドキュメント"^]を参照してください。NTPサーバーの設定は、CIFSサーバーを作成する際にのみ可能です。CIFSサーバーを作成した後は、設定を変更することはできません。 
 |===
 . *使用プロファイル、ディスク タイプ、階層化ポリシー*: ストレージ効率機能を有効にするかどうかを選択し、必要に応じてボリューム階層化ポリシーを編集します。
 +
-詳細については、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^]そしてlink:concept-data-tiering.html["データ階層化の概要"^]。
+詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリューム使用プロファイルを選択する"^]およびlink:concept-data-tiering.html["データ階層化の概要"^]を参照してください。
 
 . *確認と承認*: 選択内容を確認して確定します。
 +

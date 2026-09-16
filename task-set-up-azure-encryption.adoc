@@ -221,7 +221,7 @@ NOTE: Azure カスタマー管理暗号化キーを使用するには、キー �
 "Microsoft.KeyVault/vaults/accessPolicies/write",
 "Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"
 ----
-https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["最新の権限リストを表示する"^]
+https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["最新の権限リストを表示する"^]
 
 .手順
 . 以下の API 呼び出しを使用して、Azure サブスクリプション内のキーコンテナーのリストを取得します。
@@ -293,5 +293,5 @@ NOTE: 含める `"userAssignedIdentity": " userAssignedIdentityId"`このリソ�
 
 .関連リンク
 * https://docs.netapp.com/us-en/console-automation/cm/wf_cvo_before.html["Cloud Volumes ONTAP APIワークフローを使用する準備をしてください"^]。
-* https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#azure-haworking-environments["ONTAP管理REST APIについて学ぶ"^]。
+* https://docs.netapp.com/us-en/console-automation/cm/api_ref_resources.html#azure-haworking-environments["ONTAP管理REST APIについて学ぶ"^]。
 

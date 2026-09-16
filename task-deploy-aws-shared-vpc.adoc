@@ -82,7 +82,7 @@ Action": [
 }
 ----
 +
-https://docs.netapp.com/us-en/bluexp-automation/cm/overview.html["Cloud Volumes ONTAP APIについて学ぶ"^]
+https://docs.netapp.com/us-en/console-automation/cm/overview.html["Cloud Volumes ONTAP APIについて学ぶ"^]
 
 
 

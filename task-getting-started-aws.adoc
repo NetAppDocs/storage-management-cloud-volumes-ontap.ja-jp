@@ -28,9 +28,9 @@ AWS Marketplace または NetApp Console を使用して、AWS で Cloud Volumes
  a| 
 コンソールエージェントがまだない場合は、Cloud Volumes ONTAP をデプロイする前に作成してください。インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのエージェント上で実行されている NetApp Console にアクセスしてください。
  a| 
-コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["AWSでコンソールエージェントを作成する"^]
+コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html["AWSでコンソールエージェントを作成する"^]
  a| 
-インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネット接続なしでコンソールエージェントを手動でインストールする"^]
+インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html["インターネット接続なしでコンソールエージェントを手動でインストールする"^]
 
 
 
@@ -89,8 +89,8 @@ link:task-setting-up-kms.html["AWS KMSを設定する"]
 
 |===
 .関連リンク
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html["AWS のコンソールエージェントを作成する"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-marketplace.html["AWS Marketplaceからコンソールエージェントを作成する"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["オンプレミスでコンソールエージェントをインストールしてセットアップする"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html["コンソールエージェントのAWS権限"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-bluexp.html["AWS のコンソールエージェントを作成する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-marketplace.html["AWS Marketplaceからコンソールエージェントを作成する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html["オンプレミスでコンソールエージェントをインストールしてセットアップする"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["コンソールエージェントのAWS権限"^]
 

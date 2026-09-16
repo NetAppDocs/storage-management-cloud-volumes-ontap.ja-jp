@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-getting-started-aws-c2s.html 
 keywords: commercial cloud services, c2s, secret cloud, top secret cloud, aws secret region, the Console 
-summary: 標準の AWS リージョンと同様に、クラウド ストレージにエンタープライズクラスの機能を提供する AWS Secret Cloud および Top Secret Cloud 環境にCloud Volumes ONTAP をデプロイできます。  AWS Secret Cloud および Top Secret Cloud リージョンは、米国インテリジェンスコミュニティに固有のクローズドリージョンです。このページの手順は、AWS Secret Cloud および Top Secret Cloud リージョンのユーザーにのみ適用されます。 
+summary: Cloud Volumes ONTAP を AWS Secret Cloud および Top Secret Cloud 環境に導入できます。AWS Secret Cloud および Top Secret Cloud リージョンは、米国諜報機関専用の非公開リージョンです。このページに記載されている手順は、AWS Secret Cloud および Top Secret Cloud リージョンのユーザーにのみ適用されます。 
 ---
 = AWS Secret Cloud または AWS Top Secret Cloud にCloud Volumes ONTAP を導入する
 :hardbreaks:
@@ -33,7 +33,7 @@ AWS でCloud Volumes ONTAP をデプロイおよび管理するには、コン�
 AWS Secret Cloud および Top Secret Cloud では、コンソールは _プライベート モード_ で動作します。プライベート モードでは、コンソールから SaaS レイヤーに接続できません。コンソール エージェントにアクセスできるローカルの Web ベースのアプリケーションを通じてコンソールにアクセスできます。
 
 +
-プライベートモードの仕組みの詳細については、以下を参照してください。link:https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html#private-mode["コンソールのプライベート展開モード"^] 。
+プライベートモードの仕組みについて詳しくは、link:https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html#private-mode["コンソールのプライベート展開モード"^]を参照してください。
 
 
 

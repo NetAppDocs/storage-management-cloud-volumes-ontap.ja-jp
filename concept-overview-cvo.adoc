@@ -34,7 +34,7 @@ Cloud Volumes ONTAP は、業界をリードする NetApp のレプリケーシ�
 Cloud Volumes ONTAP はNetApp Backup and Recoveryとも統合されており、クラウド データの保護と長期アーカイブのためのバックアップおよび復元機能も提供します。
 
 +
-link:https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["バックアップとリカバリの詳細"^]
+link:https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["バックアップとリカバリの詳細"^]
 
 * データ階層化
 +
@@ -56,7 +56,7 @@ Cloud Volumes ONTAP はデータ暗号化をサポートし、ウイルスやラ
 NetApp Data Classificationとの統合により、データのコンテキストを理解し、機密データを識別できるようになります。
 
 +
-https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["データ分類の詳細"^]
+https://docs.netapp.com/us-en/data-services-data-classification/concept-cloud-compliance.html["データ分類の詳細"^]
 
 
 
@@ -65,4 +65,4 @@ NOTE: ONTAP機能のライセンスは、Cloud Volumes ONTAPに含まれてい�
 
 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["サポートされているCloud Volumes ONTAP構成を表示する"^]
 
-https://bluexp.netapp.com/ontap-cloud["Cloud Volumes ONTAPの詳細"^]
+link:https://www.netapp.com/ontap-cloud/["Cloud Volumes ONTAPの詳細"^]

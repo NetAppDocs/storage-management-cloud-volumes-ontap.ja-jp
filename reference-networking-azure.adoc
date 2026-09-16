@@ -30,7 +30,7 @@ Azure では次のネットワーク要件を満たす必要があります。
 
 Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。厳格なセキュリティ要件を持つ環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
 
-コンソール エージェントは、日常的な操作のために複数のエンドポイントにも接続します。エンドポイントの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]そして https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]。
+コンソールエージェントは、日常的な運用のため、複数のエンドポイントにも接続します。エンドポイントに関する情報については、 https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]および https://docs.netapp.com/us-en/console-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]を参照してください。
 
 
 
@@ -89,7 +89,7 @@ NetApp Consoleエージェントのプロキシ サーバー構成を使用し�
 * *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェントのプロキシを介して自動的にルーティングするように構成されています。透過プロキシを設定する場合、管理者はプロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
 
 
-プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^] 。
+プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/console-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^]を参照してください。
 
 
 
@@ -224,7 +224,7 @@ Azure リソース グループに 2 番目のCloud Volumes ONTAP HA ペアを�
 [[security-group-rules]]
 === セキュリティグループルール
 
-コンソールは、Cloud Volumes ONTAP が正常に動作するためのインバウンド ルールとアウトバウンド ルールを含む Azure セキュリティ グループを作成します。 https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["コンソールエージェントのセキュリティグループルールを表示する"^] 。
+コンソールは、Cloud Volumes ONTAP が正常に動作するための受信ルールと送信ルールを含む Azure セキュリティグループを作成します。 https://docs.netapp.com/us-en/console-setup-admin/reference-ports-azure.html["コンソールエージェントのセキュリティグループルールを表示する"^]。
 
 Cloud Volumes ONTAPの Azure セキュリティ グループでは、ノード間の内部通信用に適切なポートが開いている必要があります。 https://docs.netapp.com/us-en/ontap/networking/ontap_internal_ports.html["ONTAPの内部ポートについて学ぶ"^] 。
 
@@ -505,8 +505,8 @@ NOTE: ソースは、Cloud Volumes ONTAPシステム上のインターフェー�
 
 コンソール エージェントをまだ作成していない場合は、コンソール エージェントのネットワーク要件も確認する必要があります。
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントのネットワーク要件を表示する"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["Azure のセキュリティ グループ ルール"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html["コンソールエージェントのネットワーク要件を表示する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-ports-azure.html["Azure のセキュリティ グループ ルール"^]
 
 
 .関連リンク

@@ -28,7 +28,7 @@ Cloud Volumes ONTAP をデプロイするには、まず Google Cloud サブス�
  a| 
 コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html["Google Cloud でコンソールエージェントを作成する"^]
  a| 
-インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネット接続なしでコンソールエージェントを手動でインストールする"^]
+インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html["インターネット接続なしでコンソールエージェントを手動でインストールする"^]
 
 
 
@@ -70,7 +70,7 @@ Cloud Volumes ONTAPでは、コールドデータをGoogle Cloudの低コスト�
  a| 
 * link:task-creating-gcp-service-account.html["サービスアカウントを設定する"]
 * link:concept-data-tiering.html["データ階層化について"]
-* を参照してください https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryに関するドキュメント"^]
+* を参照してください https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryに関するドキュメント"^]
 
  a| 
 プライベートモードでの展開に関して、追加の考慮事項はありません。
@@ -109,7 +109,7 @@ APIを有効にする必要があります。クラウド管理者と協力し�
 
 |===
 .関連リンク
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["コンソールエージェントの作成"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Linuxホストにコンソールエージェントソフトウェアをインストールする"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["コンソールエージェントの作成"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html["Linuxホストにコンソールエージェントソフトウェアをインストールする"^]
 * https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["コンソール エージェントの Google Cloud 権限"^]
 

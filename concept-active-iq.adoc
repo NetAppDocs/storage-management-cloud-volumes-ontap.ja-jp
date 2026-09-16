@@ -55,7 +55,7 @@ Digital Advisorユーザー インターフェイスはコンソールに完全�
 +
 image:screenshot_aiq_digital_advisor.png["コンソールのDigital Advisorユーザー インターフェースのスクリーンショット。"]
 
-* コンソールに NSS アカウントを登録していない場合は、今すぐ NSS アカウントを登録すると、 Digital Advisor UI が表示されます。参照 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["組織またはアカウントに関連付けられた NSS 認証情報を管理する"]手順についてはこちらをご覧ください。
+* コンソールで NSS アカウントを登録していない場合は、今すぐ NSS アカウントを登録してください。Digital Advisor の UI が表示されます。手順については、 https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["組織またはアカウントに関連付けられた NSS 認証情報を管理する"]を参照してください。
 
 
 

@@ -375,7 +375,7 @@ Cloud Volumes ONTAP は、 c4、m4、および r4 EC2 インスタンス タイ�
 
 c4、m4、r4 EC2 インスタンス タイプでは、c5、m5、r5 EC2 インスタンス タイプよりもノードあたりのディスク数が多くなります。実行中の c4、m4、または r4 EC2 インスタンスのノードあたりのディスク数が、c5、m5、および r5 インスタンスのノードあたりの最大ディスク許容量を下回っている場合は、EC2 インスタンスタイプを c5、m5、または r5 に変更できます。
 
-link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.html#disk-and-tiering-limits-by-ec2-instance["EC2インスタンスごとにディスクと階層化の制限を確認する"^] link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-change-ec2-instance.html["Cloud Volumes ONTAPのEC2インスタンスタイプを変更する"^]
+link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-aws.html#disk-and-tiering-limits-by-ec2-instance["EC2インスタンスごとにディスクと階層化の制限を確認する"^] link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-change-ec2-instance.html["Cloud Volumes ONTAPのEC2インスタンスタイプを変更する"^]
 
 インスタンスタイプを変更できない場合は、<<拡張ネットワークを有効にする>> 。
 
@@ -618,6 +618,6 @@ _maxDownloadSessions_ の値は 1 または 1 より大きい任意の整数に�
 
 32 は例の値であることに注意してください。使用する値は、NAT 構成と同時に実行できるセッションの数によって異なります。
 
-https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html#occmconfig["/occm/config API呼び出しの詳細"^] 。
+https://docs.netapp.com/us-en/console-automation/cm/api_ref_resources.html#occmconfig["/occm/config API呼び出しの詳細"^]。
 
 endif::gcp[]

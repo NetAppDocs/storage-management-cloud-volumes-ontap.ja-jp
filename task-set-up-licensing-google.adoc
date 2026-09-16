@@ -67,16 +67,16 @@ link:concept-licensing.html#capacity-based-licensing["容量ベースのライ�
 NetAppからライセンス (BYOL) を購入して前払いすることで、任意のクラウド プロバイダーにCloud Volumes ONTAPシステムを導入できます。
 
 
-NOTE: はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。
+NOTE: NetApp は、BYOLライセンスの購入、延長、更新を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
 .手順
 . https://www.netapp.com/forms/sales-contact/["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをNetApp Consoleに追加します"^]
+. https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをNetApp Consoleに追加します"^]
 +
 コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがなければ、コンソールはライセンスを追加します。
 
 +
-Cloud Volumes ONTAPでライセンスを使用するには、コンソールからライセンスを利用できる必要があります。必要であれば、link:task-manage-capacity-licenses.html#add-purchased-licenses-to-your-account["コンソールにライセンスを手動で追加する"] 。
+Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソールからライセンスが利用可能な状態になっている必要があります。必要であれば、link:https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html#add-a-license["コンソールにライセンスを手動で追加する"]。
 
 . *システム*ページで*システムの追加*をクリックし、手順に従います。
 +
@@ -119,7 +119,7 @@ image:screenshot-professional.png["Cloud Volumes ONTAPシステムを作成す�
 link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
 
 
-TIP: アカウントに関連付けられている Google Cloud Marketplace サブスクリプションは、[設定] > [認証情報] ページから管理できます。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-gcp-accounts.html["Google Cloud の認証情報とサブスクリプションを管理する方法を学びます"^]
+TIP: アカウントに関連付けられている Google Cloud Marketplace のサブスクリプションは、「設定」>「認証情報」ページから管理できます。 https://docs.netapp.com/us-en/console-setup-admin/task-adding-gcp-accounts.html["Google Cloud の認証情報とサブスクリプションを管理する方法を学びます"^]
 
 
 

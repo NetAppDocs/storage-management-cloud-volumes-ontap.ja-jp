@@ -21,7 +21,7 @@ NOTE: ノードベースライセンスは、Cloud Volumes ONTAPの旧世代ラ�
 
 link:concept-licensing.html["Cloud Volumes ONTAPライセンスについて学ぶ"]。
 
-link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html["ノードベースのライセンスの管理方法について詳しくは、こちらをご覧ください。"^] 。
+link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["ノードベースのライセンスの管理方法について詳しくは、こちらをご覧ください。"^]。
 
 
 
@@ -31,7 +31,7 @@ link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-l
 ノードベースのライセンスはNetAppから取得できます。単一ノード システムまたは HA ペアに対して購入できるライセンスの数に制限はありません。
 
 
-NOTE: はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPPの BYOL ライセンスの利用制限"^] 。
+NOTE: NetApp は、BYOLライセンスの購入、延長、更新を制限しました。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPPの BYOL ライセンスの利用制限"^]を参照してください。
 
 ノードベースのライセンスでは、単一ノードまたはHAペアに最大368TiBの容量が提供されます。CloudCloud Volumes ONTAP BYOLシステムで368TiBを超える容量を割り当てるために、複数のライセンスをご購入いただいた場合があります。例えば、2つのライセンスで最大736TiBの容量をCloud Volumes ONTAPに割り当てることができます。あるいは、4つのライセンスで最大1.4TiBの容量を確保することも可能です。
 
@@ -44,7 +44,7 @@ NOTE: はBYOLライセンスの購入、延長、および更新を制限して�
 
 ノードベースの BYOL システムを作成すると、コンソールにライセンスのシリアル番号とNetAppサポート サイト アカウントの入力が求められます。コンソールは、アカウントを使用してNetAppからライセンス ファイルをダウンロードし、 Cloud Volumes ONTAPシステムにインストールします。
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["NetAppサポートサイトアカウントをコンソールに追加する方法を学びます"^] 。
+https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["NetAppサポートサイトアカウントをコンソールに追加する方法を学びます"^]。
 
 コンソールが安全なインターネット接続経由でライセンスファイルにアクセスできない場合は、link:task-manage-node-licenses.html["ファイルを自分で入手し、手動でコンソールにアップロードする"] 。
 

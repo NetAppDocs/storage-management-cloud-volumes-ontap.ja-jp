@@ -18,4 +18,4 @@ NetApp Consoleは、強化され再構築されたBlueXP基盤上に構築され
 
 シングルノード構成と高可用性 (HA) 構成の両方で、クイック デプロイメント メソッドを使用して、AWS にCloud Volumes ONTAP をデプロイメントできるようになりました。この合理化されたプロセスにより、高度な方法に比べて手順数が削減され、1 ページにデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられるため、展開がより迅速かつ容易になります。
 
- https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-quick-deploy-aws.html["クイックデプロイメントを使用してAWSにCloud Volumes ONTAPをデプロイする"^] 。
+詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイックデプロイメントを使用してAWSにCloud Volumes ONTAPをデプロイする"^]を参照してください。

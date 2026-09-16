@@ -30,7 +30,7 @@ AWS で次の要件を満たしていることを確認してください。
 
 Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。厳格なセキュリティ要件を持つ環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
 
-コンソール エージェントは、日常的な操作のために複数のエンドポイントに接続します。使用されるエンドポイントの詳細については、以下を参照してください。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]そして https://docs.netapp.com/us-en/bluexp-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]。
+コンソールエージェントは、日常業務のために複数のエンドポイントに接続します。使用されるエンドポイントについては、 https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]および https://docs.netapp.com/us-en/console-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]を参照してください。
 
 
 
@@ -108,7 +108,7 @@ NetApp Consoleエージェントのプロキシ サーバー構成を使用し�
 * *透過プロキシ*: ネットワークは、 Cloud Volumes ONTAPからの送信トラフィックをコンソール エージェントのプロキシを介して自動的にルーティングするように構成されています。透過プロキシを設定する場合、管理者はプロキシ サーバーの HTTP アドレスではなく、 Cloud Volumes ONTAPからの接続用のルート CA 証明書のみを提供する必要があります。同じルートCA証明書を取得し、 Cloud Volumes ONTAPシステムにアップロードしてください。 https://docs.netapp.com/us-en/ontap-cli/security-certificate-install.html["ONTAP CLI: セキュリティ証明書のインストール"^]指示。
 
 
-プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^] 。
+プロキシサーバーの設定方法については、 https://docs.netapp.com/us-en/console-setup-admin/task-configuring-proxy.html["プロキシサーバーを使用するようにコンソールエージェントを構成する"^]を参照してください。
 
 
 
@@ -228,7 +228,7 @@ TIP: 複数のアベイラビリティゾーンに展開する場合、複数の
 コンソールが自動的にセキュリティ グループを作成するので、セキュリティ グループを作成する必要はありません。独自のものを使用する必要がある場合は、link:reference-security-groups.html["セキュリティグループルール"] 。
 
 
-TIP: コンソール エージェントに関する情報をお探しですか? https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-aws.html["コンソールエージェントのセキュリティグループルールを表示する"^]
+TIP: コンソールエージェントに関する情報をお探しですか？ https://docs.netapp.com/us-en/console-setup-admin/reference-ports-aws.html["コンソールエージェントのセキュリティグループルールを表示する"^]
 
 
 
@@ -340,8 +340,8 @@ image:diagram_ha_networking.png["Cloud Volumes ONTAP HA アーキテクチャの
 
 コンソール エージェントをまだ作成していない場合は、ネットワーク要件を確認する必要があります。
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-install-options-aws.html["コンソールエージェントのネットワーク要件を表示する"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-aws.html["AWSのセキュリティグループルール"^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-install-options-aws.html["コンソールエージェントのネットワーク要件を表示する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-ports-aws.html["AWSのセキュリティグループルール"^]
 
 
 .関連リンク

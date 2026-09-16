@@ -30,6 +30,6 @@ Cloud Volumes ONTAPは、パケットミラーリングが有効になってい�
 [[google-private-service-connect-limitations]]
 == Google Private Service Connectの制限事項
 
-Cloud Volumes ONTAPをデプロイするVPC内で https://cloud.google.com/vpc/docs/private-service-connect["Google Private Service Connect"^]を利用する場合は、必要な https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["APIエンドポイント"^]にトラフィックを転送するDNSレコードを実装する必要があります。
+Cloud Volumes ONTAPをデプロイするVPC内で https://cloud.google.com/vpc/docs/private-service-connect["Google Private Service Connect"^]を利用する場合は、必要な https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["APIエンドポイント"^]にトラフィックを転送するDNSレコードを実装する必要があります。
 
 Cloud Volumes ONTAP から Google Cloud Storage バケットへのデータの階層化は、現在 Private Service Connect ではサポートされていません。

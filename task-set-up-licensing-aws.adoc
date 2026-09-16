@@ -68,16 +68,16 @@ link:concept-licensing.html["容量ベースのライセンスについて詳し
 
 NetAppからライセンス (BYOL) を購入して前払いすることで、任意のクラウド プロバイダーにCloud Volumes ONTAPシステムを導入できます。
 
-はBYOLライセンスの購入、延長、および更新を制限しています。 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^] 。
+NetApp は、BYOLライセンスの購入、延長、更新を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
 .手順
 . https://www.netapp.com/forms/sales-contact["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをコンソールに追加します"^]
+. https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをコンソールに追加します"^]
 +
 コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがない場合、コンソールはライセンスを自動的にコンソールに追加します。
 
 +
-Cloud Volumes ONTAPでライセンスを使用するには、コンソールからライセンスを利用できる必要があります。必要であれば、link:task-manage-capacity-licenses.html#add-purchased-licenses-to-your-account["コンソールにライセンスを手動で追加する"] 。
+Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソールでライセンスが利用可能になっている必要があります。必要に応じて、link:https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html#add-a-license["コンソールにライセンスを手動で追加する"^]。
 
 . コンソールの *システム* ページで、*システムの追加* をクリックし、手順に従います。
 +
@@ -126,7 +126,7 @@ image:screenshot-professional.png["Cloud Volumes ONTAPシステムを作成す�
 link:task-deploying-otc-aws.html["AWS でCloud Volumes ONTAP を起動するための手順をご覧ください"] 。
 
 
-TIP: AWS アカウントに関連付けられている AWS Marketplace サブスクリプションは、[設定] > [認証情報] ページから管理できます。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["AWSアカウントとサブスクリプションの管理方法を学ぶ"^]
+TIP: AWS アカウントに関連付けられている AWS Marketplace サブスクリプションは、「設定」>「認証情報」ページから管理できます。 https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["AWSアカウントとサブスクリプションの管理方法を学ぶ"^]
 
 
 
@@ -159,7 +159,7 @@ link:task-deploying-otc-aws.html["AWS でCloud Volumes ONTAP を起動するた�
 [[freemium]]
 == フリーミアム
 
-最大 500 GiB のプロビジョニング容量でCloud Volumes ONTAP を無料で使用するには、Freemium オファリングを選択してください。link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#free-trials["フリーミアムプランの詳細"^] 。
+フリーミアムプランを選択すると、Cloud Volumes ONTAP を最大 500 GiB のプロビジョニング容量まで無料でご利用いただけます。link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#free-trials["フリーミアムプランの詳細"^]。
 
 .手順
 . NetApp Consoleの左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
@@ -167,7 +167,7 @@ link:task-deploying-otc-aws.html["AWS でCloud Volumes ONTAP を起動するた�
 +
 .. *詳細と認証情報*ページで、*認証情報の編集 > サブスクリプションの追加*をクリックし、プロンプトに従ってAWS Marketplaceの従量課金制サービスにサブスクライブします。
 +
-プロビジョニングされた容量が500GiBを超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。その時点で、システムは自動的にlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages["エッセンシャルパッケージ"^]。
+プロビジョニングされた容量が 500 GiB を超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。500 GiB を超えた時点で、システムは自動的に link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#packages["エッセンシャルパッケージ"^] に変換されます。
 
 +
 image:screenshot-aws-paygo-subscription.png["Cloud Volumes ONTAPシステムを作成する際の PAYGO サブスクリプション オプションのスクリーンショット。"]

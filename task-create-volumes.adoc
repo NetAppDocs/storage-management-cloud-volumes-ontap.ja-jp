@@ -30,7 +30,7 @@ summary: 最初のCloud Volumes ONTAPシステムを起動した後にさらに�
 
 ボリュームのプロビジョニングに関する注意事項:
 
-* iSCSI ボリュームを作成すると、コンソールによって LUN が自動的に作成されます。ボリュームごとに 1 つの LUN を作成するだけで簡単になり、管理の手間がかかりません。ボリュームを作成したら、link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-connect-lun.html["IQNを使用してホストからLUNに接続します"^] 。
+* iSCSIボリュームを作成すると、コンソールが自動的にLUNを作成します。ボリュームごとに1つのLUNを作成するだけで済むように簡素化したので、管理作業は一切不要です。ボリュームを作成したら、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-connect-lun.html["IQNを使用してホストからLUNに接続します"^]。
 * ONTAP System Manager またはONTAP CLI から追加の LUN を作成できます。
 
 
@@ -157,7 +157,7 @@ ifdef::gcp[]
 endif::gcp[]
 
 DNSドメイン:: Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。
-NTPサーバ:: Active Directory DNS を使用して NTP サーバーを構成するには、「*Active Directory ドメインを使用する*」を選択します。別のアドレスを使用して NTP サーバーを構成する必要がある場合は、API を使用する必要があります。詳細については、 https://docs.netapp.com/us-en/bluexp-automation/index.html["NetApp Console自動化ドキュメント"^] 。
+NTPサーバ:: Active Directory DNSを使用してNTPサーバーを設定するには、*Active Directoryドメインを使用する*を選択してください。別のアドレスを使用してNTPサーバーを設定する必要がある場合は、APIを使用してください。詳細については、 https://docs.netapp.com/us-en/console-automation/index.html["NetApp Console自動化に関するドキュメント"^]を参照してください。
 +
 --
 NTP サーバーを設定できるのは、CIFS サーバーを作成するときだけであることに注意してください。  CIFS サーバーを作成した後は構成できません。
@@ -180,7 +180,7 @@ LUN:: iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼�
 ifdef::aws[]
 
 +
-*** link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#size-your-system-in-aws["AWS でのシステムのサイズ設定"^]
+*** link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config.html#size-your-system-in-aws["AWS でのシステムのサイズ設定"^]
 
 
 
@@ -191,14 +191,14 @@ endif::aws[]
 
 ifdef::azure[]
 
-* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^]
+* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^]
 
 
 endif::azure[]
 
 ifdef::gcp[]
 
-* link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config-gcp.html#size-your-system-in-gcp["Google Cloud でのシステムのサイズ設定"^]
+* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-gcp.html#size-your-system-in-gcp["Google Cloud でのシステムのサイズ設定"^]
 
 
 endif::gcp[]

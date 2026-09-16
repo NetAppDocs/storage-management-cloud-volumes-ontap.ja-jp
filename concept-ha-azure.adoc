@@ -34,7 +34,7 @@ NetApp Consoleによって展開される Azure コンポーネントについ�
 
 Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volumes ONTAP HA ペアへの着信トラフィックを管理します。
 単一のアベイラビリティゾーン内のVM:: Cloud Volumes ONTAP 9.15.1 以降では、単一のアベイラビリティーゾーン (AZ) で異機種仮想マシン (VM) を作成および管理できます。同じ AZ 内の別々の障害ドメインに高可用性 (HA) ノードを展開して、最適な可用性を保証できます。この機能を可能にする柔軟なオーケストレーションモードの詳細については、 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/["Microsoft Azure ドキュメント: 仮想マシン スケール セット"^] 。
-ディスク:: 顧客データは Premium Storage ページ BLOB に保存されます。各ノードは他のノードのストレージにアクセスできます。追加のストレージも必要ですlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["ブート、ルート、コアデータ"^]。
+ディスク:: 顧客データはプレミアムストレージページのブロブに保存されます。各ノードは、他のノードのストレージにアクセスできます。追加のストレージはlink:reference-configs-azure.html#azure-ha-pair["ブート、ルート、コアデータ"]にも必要です。
 ストレージアカウント::
 +
 --
@@ -52,7 +52,7 @@ https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-target
 
 
 
-NOTE: Cloud Volumes ONTAP 9.15.0P1以降、Azureページblobは新しい高可用性ペアデプロイメントではサポートされなくなりました。現在、既存の高可用性ペアデプロイメントでAzureページblobを使用している場合は、Edsv4シリーズVMおよびEdsv5シリーズVMの新しいVMインスタンスタイプに移行できます。link:link:reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"]。
+NOTE: Cloud Volumes ONTAP 9.15.0P1以降、Azureページblobは新しい高可用性ペアデプロイメントではサポートされなくなりました。現在、既存の高可用性ペアデプロイメントでAzureページblobを使用している場合は、Edsv4シリーズVMおよびEdsv5シリーズVMの新しいVMインスタンスタイプに移行できます。link:reference-configs-azure.html#ha-pairs["Azureでサポートされている構成の詳細"]。
 
 
 
@@ -82,7 +82,7 @@ Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volu
 
 NOTE: 上記の条件を満たす環境で Premium SSD マネージド ディスクを選択した場合、コンソールは自動的に Premium SSD v2 マネージド ディスクを展開します。Premium SSD v1 マネージド ディスクに切り替えることはできません。
 
-ディスク:: 顧客データは、ローカル冗長ストレージ (LRS) 管理ディスクに保存されます。各ノードは他のノードのストレージにアクセスできます。追加のストレージも必要ですlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["ブート、ルート、パートナールート、コア、 NVRAMデータ"^]。
+ディスク:: 顧客データは、ローカル冗長ストレージ（LRS）で管理されるディスクに保存されます。各ノードは、他のノードのストレージにアクセスできます。追加のストレージはlink:reference-configs-azure.html#azure-ha-pair["ブート、ルート、パートナールート、コア、 NVRAMデータ"]にも必要です。
 ストレージアカウント:: ストレージ アカウントは、診断ログと BLOB ストレージへの階層化を処理するために、マネージド ディスク ベースの展開に使用されます。
 
 
@@ -99,7 +99,7 @@ image:diagram_ha_azure_maz.png["コンソールとクライアントからの着
 
 Azure 標準ロードバランサー:: ロードバランサーは、 Cloud Volumes ONTAP HA ペアへの着信トラフィックを管理します。
 アベイラビリティ ゾーン:: HA マルチアベイラビリティゾーン構成では、2 つのCloud Volumes ONTAPノードが異なるアベイラビリティゾーンにデプロイされるデプロイメント モデルが利用され、ノードが異なる障害ドメインに配置されることで冗長性と可用性が確保されます。フレキシブルオーケストレーションモードの仮想マシンスケールセットがAzureの可用性ゾーンをどのように使用できるかについては、 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones?tabs=cli-1%2Cportal-2["Microsoft Azure ドキュメント: 可用性ゾーンを使用する仮想マシン スケール セットを作成する"^] 。
-ディスク:: 顧客データは、ゾーン冗長ストレージ (ZRS) マネージド ディスクに保存されます。各ノードは他のノードのストレージにアクセスできます。追加のストレージも必要ですlink:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html#azure-ha-pair["ブート、ルート、パートナールート、コアデータ"^]。
+ディスク:: 顧客データは、ゾーン冗長ストレージ（ZRS）で管理されるディスクに保存されます。各ノードは、他のノードのストレージにアクセスできます。追加のストレージもlink:reference-configs-azure.html#azure-ha-pair["ブート、ルート、パートナールート、コアデータ"]に必要です。
 ストレージアカウント:: ストレージ アカウントは、診断ログと BLOB ストレージへの階層化を処理するために、マネージド ディスク ベースの展開に使用されます。
 
 

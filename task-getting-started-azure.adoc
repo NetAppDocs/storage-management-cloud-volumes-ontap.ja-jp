@@ -26,9 +26,9 @@ Cloud Volumes ONTAP をデプロイするには、まず Azure サブスクリ�
  a| 
 コンソールエージェントがまだない場合は、Cloud Volumes ONTAP をデプロイする前に作成してください。
  a| 
-コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["Azureでコンソールエージェントを作成する"^]
+コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html["Azureでコンソールエージェントを作成する"^]
  a| 
-インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネット接続なしでコンソールエージェントを手動でインストールする"^]
+インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html["インターネット接続なしでコンソールエージェントを手動でインストールする"^]
 
 
 
@@ -77,8 +77,8 @@ AutoSupport のアウトバウンドインターネットアクセスは必須�
 
 |===
 .関連リンク
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コンソールからコンソールエージェントを作成する"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-azure-marketplace.html["Azure Marketplace からコンソール エージェントを作成する"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Linuxホストにコンソールエージェントソフトウェアをインストールする"^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["コンソールが権限を使って行うこと"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html["コンソールからコンソールエージェントを作成する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-azure-marketplace.html["Azure Marketplace からコンソール エージェントを作成する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html["Linuxホストにコンソールエージェントソフトウェアをインストールする"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["コンソールが権限を使って行うこと"^]
 
