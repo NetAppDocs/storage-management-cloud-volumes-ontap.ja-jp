@@ -161,7 +161,7 @@ NetAppは、AWS MarketplaceからのCloud Volumes ONTAPに対して簡素化さ�
 
 .関連リンク
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-onboard-cvo-aws-marketplace.html["AWS MarketplaceからCloud Volumes ONTAPをオンボードする"^]
-* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["AWS でクイック作成を使用して Cloud Volumes ONTAP を導入する"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["AWS における Cloud Volumes ONTAP とデータサービスの柔軟な請求"^]
 
 
@@ -243,7 +243,7 @@ https://docs.cloud.google.com/compute/docs/general-purpose-machines#c3_series["G
 *クイック作成*ウィザードを使用して、シングルノード構成と高可用性（HA）構成の両方で Google Cloud に Cloud Volumes ONTAP をデプロイできるようになりました。この合理化されたプロセスにより、手順が削減され、デフォルト値が単一ページで自動的に設定され、ナビゲーションが最小限に抑えられるため、より迅速かつ容易なデプロイが可能になります。
 
 .関連リンク
-* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-gcp.html["Quick create を使用して Google Cloud に Cloud Volumes ONTAP を導入する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-gcp.html["Google Cloud の Quick create を使用して Cloud Volumes ONTAP を導入する"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html["Google Cloud の拡張オプションを使用して Cloud Volumes ONTAP を導入する"^]
 
 
@@ -320,7 +320,7 @@ Cloud Volumes ONTAP 9.16.1以降では、AWSにおける新規および既存の
 Quick createを使用して、シングルノード構成と高可用性（HA）構成の両方でAzureにCloud Volumes ONTAPを導入できるようになりました。この合理化されたプロセスにより、拡張方式と比較して手順数が削減され、単一ページでデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられるため、導入がより迅速かつ容易になります。
 
 .関連リンク
-* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-azure.html["クイック作成を使用してAzureにCloud Volumes ONTAPを導入"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-azure.html["Azure でクイック作成を使用して Cloud Volumes ONTAP を導入する"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-azure.html["Azure の拡張方式を使用した Cloud Volumes ONTAP の導入"^]
 
 

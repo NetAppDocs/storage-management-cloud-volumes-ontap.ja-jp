@@ -75,7 +75,7 @@ link:task-setting-up-kms.html["AWS KMSを設定する"]
  a| 
 前提条件をすべて満たしたら、ウィザードの手順に従って AWS に Cloud Volumes ONTAP をデプロイする手順を完了できます。
  a| 
-* link:task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"]
+* link:task-quick-deploy-aws.html["AWS でクイック作成を使用して Cloud Volumes ONTAP を導入する"]
 * link:task-deploying-otc-aws.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
  a| 
@@ -83,7 +83,6 @@ link:task-setting-up-kms.html["AWS KMSを設定する"]
 
 * link:concept-license-management.html["ノードベースBYOLのライセンス管理"]
 * link:task-manage-node-licenses.html["ノードベースのBYOLライセンスを管理する"]
-* link:task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"]
 * link:task-deploying-otc-aws.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
 

@@ -63,7 +63,7 @@ AutoSupport のアウトバウンドインターネットアクセスは必須�
  a| 
 参照：
 
-* link:task-quick-deploy-azure.html["クイック作成でCloud Volumes ONTAPを導入する"]
+* link:task-quick-deploy-azure.html["Azure でクイック作成を使用して Cloud Volumes ONTAP を導入する"]
 * link:task-deploying-otc-azure.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
  a| 
@@ -71,7 +71,6 @@ AutoSupport のアウトバウンドインターネットアクセスは必須�
 
 * link:concept-license-management.html["ノードベースBYOLのライセンス管理"]
 * link:task-manage-node-licenses.html["ノードベースのBYOLライセンスを管理する"]
-* link:task-quick-deploy-azure.html["クイック作成でCloud Volumes ONTAPを導入する"]
 * link:task-deploying-otc-azure.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
 

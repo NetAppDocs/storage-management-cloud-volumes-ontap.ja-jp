@@ -38,7 +38,7 @@ AWS アカウントに関連付けられた NIS サブスクリプションを�
 . AWSタブで、スタンドアロンサブスクリプションを選択し、オプションアイコンimage:screenshot_gallery_options.gif["ケバブのアイコン"]をクリックします。
 . 設定の編集ウィンドウで、*AWSアカウント認証情報*フィールドにスタンドアロンリストのサブスクリプション番号を選択します。
 . * Configure * をクリックします。AWS での Cloud Volumes ONTAP の課金について、サブスクリプションが優先オプションとして表示されます。
-. 新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]を参照してください。
+. 新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["AWS でクイック作成を使用して Cloud Volumes ONTAP を導入する"^]を参照してください。
 
 
 データサービスにNISサブスクリプションを使用するには、*Data services*タブでNISサブスクリプションに対して同じ手順を繰り返してください。新しいCloud Volumes ONTAPシステムをデプロイする際は、NISサブスクリプションを通じて請求されるProfessionalパッケージを選択してください。

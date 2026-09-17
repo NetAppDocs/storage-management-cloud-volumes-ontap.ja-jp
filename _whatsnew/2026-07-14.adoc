@@ -55,7 +55,7 @@ https://docs.cloud.google.com/compute/docs/general-purpose-machines#c3_series["G
 *クイック作成*ウィザードを使用して、シングルノード構成と高可用性（HA）構成の両方で Google Cloud に Cloud Volumes ONTAP をデプロイできるようになりました。この合理化されたプロセスにより、手順が削減され、デフォルト値が単一ページで自動的に設定され、ナビゲーションが最小限に抑えられるため、より迅速かつ容易なデプロイが可能になります。
 
 .関連リンク
-* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-gcp.html["Quick create を使用して Google Cloud に Cloud Volumes ONTAP を導入する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-gcp.html["Google Cloud の Quick create を使用して Cloud Volumes ONTAP を導入する"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html["Google Cloud の拡張オプションを使用して Cloud Volumes ONTAP を導入する"^]
 
 

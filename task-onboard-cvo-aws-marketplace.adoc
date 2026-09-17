@@ -222,7 +222,7 @@ image:screenshot-stack-creation.png["幅=50% AWS CloudFormation スタック作�
 . システム設定を完了してください。
 
 
-詳細なシステム導入手順については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["クイック作成でCloud Volumes ONTAPを導入する"^]を参照してください。
+詳細なシステム導入手順については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["AWS でクイック作成を使用して Cloud Volumes ONTAP を導入する"^]を参照してください。
 
 
 

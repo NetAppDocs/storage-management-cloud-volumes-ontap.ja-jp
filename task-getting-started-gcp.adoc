@@ -95,7 +95,7 @@ APIを有効にする必要があります。クラウド管理者と協力し�
  a| 
 参照：
 
-* link:task-quick-deploy-gcp.html["クイック作成でCloud Volumes ONTAPを導入する"]
+* link:task-quick-deploy-gcp.html["Google Cloud の Quick create を使用して Cloud Volumes ONTAP を導入する"]
 * link:task-deploying-gcp.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
  a| 
@@ -103,7 +103,6 @@ APIを有効にする必要があります。クラウド管理者と協力し�
 
 * link:concept-license-management.html["ノードベースBYOLのライセンス管理"]
 * link:task-manage-node-licenses.html["ノードベースのBYOLライセンスを管理する"]
-* link:task-quick-deploy-gcp.html["クイック作成でCloud Volumes ONTAPを導入する"]
 * link:task-deploying-gcp.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
 

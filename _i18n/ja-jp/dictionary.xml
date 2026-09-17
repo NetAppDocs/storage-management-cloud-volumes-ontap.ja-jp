@@ -1478,7 +1478,6 @@
   <block id="80292c326dbd4c631ce6da31d922620c" category="paragraph">Azure にデプロイするCloud Volumes ONTAP HA ペアごとに専用のリソース グループを使用する必要があります。リソース グループでは 1 つの HA ペアのみがサポートされます。</block>
   <block id="2d7b1fe0a5512f641a66eaf3dabde3d2" category="paragraph">Azure リソース グループに 2 番目のCloud Volumes ONTAP HA ペアをデプロイしようとすると、コンソールで接続の問題が発生します。</block>
   <block id="72cb359256f1b923869ffe5643075163" category="paragraph">Cloud Volumes ONTAPの Azure セキュリティ グループでは、ノード間の内部通信用に適切なポートが開いている必要があります。<block ref="9235b6a724dccf5c41be51f4736123ae" category="inline-link-rx"></block> 。</block>
-  <block id="e3f7f3a3bb47d39a7fd58de8d5070b2b" category="paragraph">定義済みのセキュリティ グループを変更したり、カスタム セキュリティ グループを使用することはお勧めしません。ただし、必要な場合は、展開プロセスでCloud Volumes ONTAPシステムが独自のサブネット内でフルアクセス権を持つ必要があることに注意してください。デプロイが完了したら、ネットワーク セキュリティ グループを変更する場合は、クラスター ポートと HA ネットワーク ポートを開いたままにしておいてください。これにより、Cloud Volumes ONTAPクラスター内でのシームレスな通信 (ノード間の any-to-any 通信) が保証されます。</block>
   <block id="302d2301b273d2d6c222fdca1f337988" category="paragraph">Cloud Volumes ONTAPシステムを追加し、定義済みのセキュリティ グループを選択すると、次のいずれかの範囲内でトラフィックを許可することを選択できます。</block>
   <block id="3ed4080616d1d3c88deef90096108130" category="list-text">*選択した VNet のみ*: 受信トラフィックのソースは、Cloud Volumes ONTAPシステムの VNet のサブネット範囲と、コンソール エージェントが存在する VNet のサブネット範囲です。これは推奨されるオプションです。</block>
   <block id="cd8b82367babbe39683e8fb9f0c22ed5" category="list-text">*すべての VNet*: 受信トラフィックのソースは、0.0.0.0/0 IP 範囲です。</block>
@@ -5771,8 +5770,6 @@
   <block id="055fe1da24359dd71a9c8b67896496aa" category="list-text">AWSタブで、スタンドアロンサブスクリプションを選択し、オプションアイコン<block ref="ac91b27a7720c4844510cacb9be7afe5" category="inline-image-macro-rx" type="image"></block>をクリックします。</block>
   <block id="ca114d54630fd2217b0a7f7b707b2524" category="list-text">設定の編集ウィンドウで、*AWSアカウント認証情報*フィールドにスタンドアロンリストのサブスクリプション番号を選択します。</block>
   <block id="1a8a4084eaf9e7b7e14963049e616310" category="list-text">* Configure * をクリックします。AWS での Cloud Volumes ONTAP の課金について、サブスクリプションが優先オプションとして表示されます。</block>
-  <block id="5308f0957f4f665b7b8a7a70e7f26dbb" category="inline-link">クイック作成でCloud Volumes ONTAPを導入する</block>
-  <block id="69bad18c1431b72e27676656dcb02294" category="list-text">新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、<block ref="3bd26a21bb4b5b57e3e4e28150d4f309" category="inline-link-rx"></block>を参照してください。</block>
   <block id="a731966b7a272e5b052ef9a7b9ea958e" category="paragraph">データサービスにNISサブスクリプションを使用するには、*Data services*タブでNISサブスクリプションに対して同じ手順を繰り返してください。新しいCloud Volumes ONTAPシステムをデプロイする際は、NISサブスクリプションを通じて請求されるProfessionalパッケージを選択してください。</block>
   <block id="55a36fface9a3342eae20532f4dd2f82" category="section-title">2026年5月12日</block>
   <block id="fe315d7471968d18b362c1b1144a20b0" category="paragraph">始める前に、以下のものを用意してください：</block>
@@ -5826,8 +5823,6 @@
   <block id="edbf603043ea71af5a3f46821ad9d4a3" category="admonition">導入プロセスが完了したら、AWSまたはAzureクラウドポータルでシステムが生成したCloud Volumes ONTAP設定（特にシステムタグ）を変更しないでください。これらの設定を変更すると、予期しない動作やデータ損失が発生する可能性があります。</block>
   <block id="a4ad56ab8baa8582d6dba6091a9bd877" category="doc">Azure での Cloud Volumes ONTAP の簡易導入</block>
   <block id="8bfd035a33aa401829a9de89b5e0c246" category="paragraph">Quick createを使用して、シングルノード構成と高可用性（HA）構成の両方でAzureにCloud Volumes ONTAPを導入できるようになりました。この合理化されたプロセスにより、拡張方式と比較して手順数が削減され、単一ページでデフォルト値が自動的に設定され、ナビゲーションが最小限に抑えられるため、導入がより迅速かつ容易になります。</block>
-  <block id="da7aee176a6e0989fc4edf2b02e0af34" category="inline-link">クイック作成を使用してAzureにCloud Volumes ONTAPを導入</block>
-  <block id="8928e512cc17b6dd2c97fcb7dff5a06a" category="list-text"><block ref="8928e512cc17b6dd2c97fcb7dff5a06a" category="inline-link-rx"></block></block>
   <block id="6d1c2cdb212ea73452146a3edb82fe12" category="inline-link">Azure の拡張方式を使用した Cloud Volumes ONTAP の導入</block>
   <block id="3cf666a1e5ff2ecf85c4a0bcf868d65f" category="list-text"><block ref="3cf666a1e5ff2ecf85c4a0bcf868d65f" category="inline-link-rx"></block></block>
   <block id="94b7b54556632ab5a087eae13f0e0af9" category="doc">AWSの拡張方式を使用したCloud Volumes ONTAPの導入</block>
@@ -5910,8 +5905,6 @@
   <block id="7f779554154f7bbce7ebe34e61b8a90f" category="list-text">NetApp Console またはAPI<block ref="566e7ce0d4fe7a4872db87a6368a9417" prefix=" " category="inline-code"></block>を使用してアグリゲートを追加する際に、IOPS とスループットの設定を変更できます。</block>
   <block id="2d6c818daeac263c2afd4036d7f74e1e" category="section-title">Google Cloud への Cloud Volumes ONTAP のデプロイの簡略化</block>
   <block id="cb811eee80c50a73b0cadcc740ccb6e0" category="paragraph">*クイック作成*ウィザードを使用して、シングルノード構成と高可用性（HA）構成の両方で Google Cloud に Cloud Volumes ONTAP をデプロイできるようになりました。この合理化されたプロセスにより、手順が削減され、デフォルト値が単一ページで自動的に設定され、ナビゲーションが最小限に抑えられるため、より迅速かつ容易なデプロイが可能になります。</block>
-  <block id="66ac7407a9c84ca6778fae23ed993062" category="inline-link">Quick create を使用して Google Cloud に Cloud Volumes ONTAP を導入する</block>
-  <block id="0dfb1e2c47e659e01c54c2e333c51aab" category="list-text"><block ref="0dfb1e2c47e659e01c54c2e333c51aab" category="inline-link-rx"></block></block>
   <block id="2ac8bb0efb00600c2a41354a94948174" category="inline-link">Google Cloud の拡張オプションを使用して Cloud Volumes ONTAP を導入する</block>
   <block id="6c9068df44f8a14533034d80a58ea324" category="list-text"><block ref="6c9068df44f8a14533034d80a58ea324" category="inline-link-rx"></block></block>
   <block id="12d92330947695a8724da477e7db5baa" category="section-title">Cloud Volumes ONTAP のアクセスロールの概要</block>
@@ -5965,7 +5958,6 @@
   <block id="3545b8b6c97019ee16382e1e9f1566d6" category="list-text">サブスクリプションの関連付け：サブスクリプションをコンソールに自動的に関連付けることができるため、手動でリンクする手順を省略できます。</block>
   <block id="7fe500a5c571cd7ec037fadddeb65e6d" category="list-text">AWS認証情報構成を使用したコンソールエージェントのデプロイ：必要なAWSロールを自動的に作成できます。このプロセスでは、必要なロールとポリシーを含むAWS CloudFormationスタックをAWSアカウントにデプロイして確認し、それらをNetApp Consoleに関連付けることで、手動でのIAM設定が不要になります。その後、エージェントの設定、ネットワーク設定、セキュリティグループ設定を進めて、エージェントのデプロイを開始します。</block>
   <block id="1dc23a84b7e2b375289ce6857c758408" category="list-text">AWS に新しい Cloud Volumes ONTAP システムをデプロイする：<block ref="956eaa6186169471a13345860cad0757" prefix=" " category="inline-code"></block>ウィザードに直接移動して、より迅速かつシンプルに Cloud Volumes ONTAP をデプロイできます。</block>
-  <block id="92818173e0caa5fc0e16c368b850e85b" category="list-text"><block ref="92818173e0caa5fc0e16c368b850e85b" category="inline-link-rx"></block></block>
   <block id="45155a6d96a264e24647f30ebb774e4f" category="list-text"><block ref="45155a6d96a264e24647f30ebb774e4f" category="inline-link-rx"></block></block>
   <block id="e8f7f517a7c22ec0466a4d916c974b67" category="section-title">Azure における Cloud Volumes ONTAP の適切に設計された構成分析</block>
   <block id="8579a865aaeb9e025994731e2e5b4b7b" category="paragraph">NetApp Console は、Microsoft Azure で稼働する Cloud Volumes ONTAP システムのウェルアーキテクテッド構成分析をサポートするようになりました。Console はデプロイメントを毎日分析し、ウェルアーキテクテッドのステータス、インサイト、および推奨事項を提供することで、NetApp のベストプラクティスとウェルアーキテクテッドフレームワークに沿ったシステムの維持をサポートします。</block>
@@ -6905,7 +6897,6 @@
   <block id="2890ecdc70e02afe7e3a31c92bf55434" category="paragraph">プライベート環境での展開にも同様の手順が適用されます。</block>
   <block id="ce7ffa9f1434857273b5b40df89fe170" category="paragraph">コンソールから Cloud Volumes ONTAP を導入する</block>
   <block id="9afbf91fc5dacff8aee5144e68e0c23c" category="paragraph">前提条件をすべて満たしたら、ウィザードの手順に従って AWS に Cloud Volumes ONTAP をデプロイする手順を完了できます。</block>
-  <block id="7988489db427729a73853b519bbd74e5" category="list-text"><block ref="7988489db427729a73853b519bbd74e5" category="inline-link-macro-rx"></block></block>
   <block id="dd80703f7d89793c8c6bcd9eb27c0ffa" category="inline-link-macro">詳細オプションを使用して Cloud Volumes ONTAP を導入する</block>
   <block id="63e3b7b0b8eabb63c1a575019f00025a" category="list-text"><block ref="63e3b7b0b8eabb63c1a575019f00025a" category="inline-link-macro-rx"></block></block>
   <block id="13a8f9ff894e3f4bcda70be513c557c4" category="paragraph">デプロイを開始する前に、NetApp から Cloud Volumes ONTAP ライセンスを購入済みであることを確認してください。プライベート環境のデプロイには、ノードベースの BYOL ライセンスが必要です。Marketplace サブスクリプションは、Cloud Volumes ONTAP の使用料金の請求には対応していません。ライセンスファイルを NetApp から入手し、デプロイ時にアップロードしてください。参照：</block>
@@ -6923,7 +6914,6 @@
   <block id="8067dceda8c922cafa53a5f6a696c873" category="paragraph"><block ref="8067dceda8c922cafa53a5f6a696c873" category="inline-link-macro-rx"></block></block>
   <block id="34f79dfeddc8c0c0cf29bb075dba1e0a" category="paragraph">前提条件をすべて満たしたら、ウィザードの手順に従って Azure に Cloud Volumes ONTAP をデプロイする手順を完了できます。</block>
   <block id="6563093287f74a616e9d7ac49b4d6a44" category="paragraph">参照：</block>
-  <block id="a0e1f80d9ffd45a9a79c524fcf4e035b" category="list-text"><block ref="a0e1f80d9ffd45a9a79c524fcf4e035b" category="inline-link-macro-rx"></block></block>
   <block id="e67c04a7ad4eeda74ceb878c0553eff4" category="list-text"><block ref="e67c04a7ad4eeda74ceb878c0553eff4" category="inline-link-macro-rx"></block></block>
   <block id="755ff4f3bf37dc77238bd9ce18d2513f" category="doc">Google Cloud における Cloud Volumes ONTAP の導入概要</block>
   <block id="3c0c2050848fa2bd86d68cd9d6bc0637" category="paragraph">Cloud Volumes ONTAP をデプロイするには、まず Google Cloud サブスクリプションと Cloud Volumes ONTAP ライセンスについて理解しておく必要があります。また、Google Cloud プロジェクトおよび組織向けに NetApp Console エージェントが作成されていることを確認する必要があります。このトピックの情報の多くは、Cloud Volumes ONTAP のデプロイを開始する前に、Console のセットアップの一部として実行する必要があります。</block>
@@ -6946,7 +6936,6 @@
   <block id="3aa88e14f76a8581416d0bc54d696335" category="paragraph">Google Cloud のドキュメントを参照してください：<block ref="0d7e4a8564255c1fc289d23249d3b568" category="inline-link-rx"></block></block>
   <block id="17e44be1a44fd14dacaae11875ff356b" category="paragraph">APIを有効にする必要があります。クラウド管理者と協力して、プライベート環境で必要なAPIを有効にしてください。</block>
   <block id="19d8bd352f2c40ce75403d13170b311b" category="paragraph">前提条件をすべて満たしたら、ウィザードの手順に従って Google Cloud に Cloud Volumes ONTAP をデプロイする手順を完了できます。</block>
-  <block id="8db3889b9094da1779e8e10e063742d5" category="list-text"><block ref="8db3889b9094da1779e8e10e063742d5" category="inline-link-macro-rx"></block></block>
   <block id="7c9fa6cfa8bf4914f6804681fe5a5c2d" category="list-text"><block ref="7c9fa6cfa8bf4914f6804681fe5a5c2d" category="inline-link-macro-rx"></block></block>
   <block id="0375af31d39c4bfde1c980cd053ab2b9" category="doc">Cloud Volumes ONTAP ストレージVM</block>
   <block id="54448f9a8312c7b08e3e97308160554c" category="paragraph">ストレージVM（SVM）は、ONTAP内で実行される仮想マシンであり、クライアントにストレージおよびデータサービスを提供します。これは_SVM_または_vserver_として知られている場合があります。Cloud Volumes ONTAPはデフォルトで1つのストレージVMで構成されていますが、一部の構成では追加のストレージVMがサポートされています。</block>
@@ -7527,7 +7516,6 @@
   <block id="b0845b98104086e018330dff1f994b3a" category="list-text">展開後のプロンプトから、*システムの追加*を選択します。</block>
   <block id="beec7c8b8f52f7e44dec39ce075d3abb" category="list-text">Cloud Volumes ONTAP システム作成ワークフローを開始します。</block>
   <block id="e4998cdb09fc1ae76d7c7b0f97a04fd9" category="list-text">システム設定を完了してください。</block>
-  <block id="8dbb4c9a73791ff9189a74648db065ad" category="paragraph">詳細なシステム導入手順については、<block ref="3bd26a21bb4b5b57e3e4e28150d4f309" category="inline-link-rx"></block>を参照してください。</block>
   <block id="72d7b93cee23363a2907b2be8b237290" category="section-title">トラブルシューティングと復旧</block>
   <block id="cb1bc5edf506394ee9927cb447901c17" category="paragraph">オンボーディングフローを完了する前に離脱した場合、またはエージェントのデプロイが失敗した場合は、このセクションを使用してください。これらの手順は、中断したところから作業を再開したり、復旧してデプロイを再試行したりするのに役立ちます。</block>
   <block id="90a521d73cad15b4a353df47ccdc06d8" category="section-title">セットアップを再開</block>
@@ -7849,4 +7837,16 @@
   <block id="7df6c0dd0528ad9774b45898063090a4" category="paragraph"><block ref="dc9f69e3a8e3128c351ac73e19819cc9" category="inline-link-rx"></block>。</block>
   <block id="01988715156f44a53eb56faf9b69550d" category="paragraph"><block ref="fdf6f50138bbdc950c2bd1272476f30e" category="inline-link-rx"></block>。</block>
   <block id="8798ec6bebe0dbdc8a5621562ddc3007" category="list-text"><block ref="8798ec6bebe0dbdc8a5621562ddc3007" category="inline-link-rx"></block></block>
+  <block id="1b74bdaaeb695f9d39e8913cd8508559" category="inline-link">Azure でクイック作成を使用して Cloud Volumes ONTAP を導入する</block>
+  <block id="0796c5be1b7e3f0ba6006690f24de331" category="list-text"><block ref="0796c5be1b7e3f0ba6006690f24de331" category="inline-link-rx"></block></block>
+  <block id="fa64a8ba43091dc1f18b40ede22ba208" category="inline-link">Google Cloud の Quick create を使用して Cloud Volumes ONTAP を導入する</block>
+  <block id="c334239a4338073665306baf11363bc2" category="list-text"><block ref="c334239a4338073665306baf11363bc2" category="inline-link-rx"></block></block>
+  <block id="d9862ed1f24a79da571ce975d43849ac" category="inline-link">AWS でクイック作成を使用して Cloud Volumes ONTAP を導入する</block>
+  <block id="a8756e706557440388ef829ae5f6fe1f" category="list-text"><block ref="a8756e706557440388ef829ae5f6fe1f" category="inline-link-rx"></block></block>
+  <block id="fd857327903d761ee1b293fadbb70f89" category="paragraph">定義済みのセキュリティグループを変更したり、カスタムセキュリティグループを使用したりすることはお勧めしません。ただし、どうしても必要な場合は、デプロイプロセスでCloud Volumes ONTAPシステムが自身のサブネット内で完全なアクセス権を持つ必要があることに注意してください。デプロイが完了した後、ネットワークセキュリティグループを変更する場合は、クラスタポートとHAネットワークポートを開いたままにしておくようにしてください。HAネットワークは、2つのノード間の制限のない通信に依存しているためです。また、ノードのIPアドレスはデプロイ時に自動的に定義されます。これにより、Cloud Volumes ONTAPクラスタ内でのシームレスな通信（ノード間の任意対任意通信）が保証されます。</block>
+  <block id="0f37e7019150020ad56dacb33e050ce0" category="list-text"><block ref="0f37e7019150020ad56dacb33e050ce0" category="inline-link-macro-rx"></block></block>
+  <block id="c5ff6e289ca10cde1a5f81d196d305dc" category="list-text"><block ref="c5ff6e289ca10cde1a5f81d196d305dc" category="inline-link-macro-rx"></block></block>
+  <block id="0a96b1cb21a865ff7a38d495809cc48e" category="list-text"><block ref="0a96b1cb21a865ff7a38d495809cc48e" category="inline-link-macro-rx"></block></block>
+  <block id="75b888c439b50482e442b156f85f8b7b" category="paragraph">詳細なシステム導入手順については、<block ref="51799ed8a3c9382ecde3d4e502dc227c" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="60bc46bac54334a76b532d0019347623" category="list-text">新しい Cloud Volumes ONTAP システムをデプロイする際は、スタンドアロンのサブスクリプションを通じて請求される Essentials パッケージを選択してください。詳細については、<block ref="51799ed8a3c9382ecde3d4e502dc227c" category="inline-link-rx"></block>を参照してください。</block>
 </blocks>

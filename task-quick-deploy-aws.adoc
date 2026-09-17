@@ -4,7 +4,7 @@ permalink: task-quick-deploy-aws.html
 keywords: aws quick deploy, quick deploy, aws, single screen deployment AWS, SAZ, MAZ, single node, HA pair 
 summary: Cloud Volumes ONTAPインスタンスを単一システム構成で、または AWS の HA ペアとして迅速に導入できます。 
 ---
-= クイック作成でCloud Volumes ONTAPを導入する
+= AWS でクイック作成を使用して Cloud Volumes ONTAP を導入する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
