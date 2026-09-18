@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: reference-networking-gcp.html 
-keywords: networking, network, requirements, connection, connections, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, bucket, private google access, set up data requirement, gcp networking, google networking, shared vpc, host project, service project 
-summary: Cloud Volumes ONTAPシステムが適切に動作できるように、Google Cloud ネットワークを設定します。 
+keywords: networking, network, requirements, connection, connections, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, bucket, private google access, set up data requirement, gcp networking, google networking, shared vpc, host project, service project; private mode or in a project protected by VPC Service Controls 
+summary: Google Cloud ネットワークを設定して、Cloud Volumes ONTAP システムが正常に動作できるようにします。CVO のネットワーク要件、プライベート IP アドレス、VPC、サブネット、パケットミラーリング、ファイアウォールルール、HA 構成、およびコンソールエージェントの要件について説明します。 
 ---
 = Cloud Volumes ONTAP用に Google Cloud ネットワークを設定する
 :hardbreaks:
@@ -512,10 +512,10 @@ NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込
 
 
 
-[[infrastructure-manager-configuration-for-private-mode-deployments]]
-=== プライベートモード展開のInfrastructure Manager構成
+[[infrastructure-manager-configuration-in-private-mode-or-protected-environments]]
+=== プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成
 
-プライベートモードでCloud Volumes ONTAP 9.16.1以降を導入する場合は、Googleが最終的に廃止する予定のDeployment Managerの代わりに、Cloud Volumes ONTAPがGoogle Cloud Infrastructure Managerを導入サービスとして使用できるように、いくつかの設定変更を行う必要があります。
+プライベートモードまたは VPC Service Controls で保護されたプロジェクトに Cloud Volumes ONTAP 9.16.1 以降をデプロイする場合は、Google が最終的に廃止する予定の Deployment Manager の代わりに、Cloud Volumes ONTAP がデプロイメントサービスとして Google Cloud Infrastructure Manager を使用できるよう、いくつかの構成変更を行う必要があります。
 
 .開始する前に
 * Cloud Volumes ONTAPシステムが9.16.1以降であることを確認してください。そうでない場合は、システムをアップグレードしてください。手順については https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html["Cloud Volumes ONTAP のアップグレード"]を参照してください。
@@ -526,6 +526,9 @@ NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込
 
 .手順
 . Cloud Volumes ONTAPデプロイメントと同じリージョンにこの構成でプライベートワーカープールを作成します。プライベートワーカープールの作成については、 https://docs.cloud.google.com/build/docs/private-pools/create-manage-private-pools#creating_a_new_private_pool["Google Cloud ドキュメント：プライベート プールの作成と管理"^]および https://cloud.google.com/build/pricing["Google Cloud Build の料金"^]を参照してください。
++
+VPC Service Controls で保護されているプロジェクトに Cloud Volumes ONTAP をデプロイする場合は、Console エージェントと同じプロジェクト内にプライベートワーカープールを作成してください。ワーカープールは稼働状態である必要があります。Google Cloud のデフォルトのパブリック Cloud Build ワーカープールは、サービス境界内で実行できません。
+
 +
 ワーカー プールには次の構成が必要です：
 
@@ -548,6 +551,13 @@ NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込
 
 . このワーカープールを展開し、Cloud Volumes ONTAP管理のために実行し続けます。Google Cloudは、このワーカープールを使用して、すべてのTerraform操作を分離された環境で実行します。
 . Cloud Volumes ONTAPをプライベートモードで導入する場合は、*GCPワーカープール*フィールドでこのワーカープールの名前を選択します。手順については、link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAPを起動する"]を参照してください。
++
+VPC Service Controls で保護されたプロジェクトに Cloud Volumes ONTAP を導入する場合は、API を使用して Cloud Volumes ONTAP システムを作成し、作成リクエスト本文に `workerPool`パラメータを含めてください。
+
++
+
+NOTE: コンソール UI を使用して Cloud Volumes ONTAP をデプロイする場合、ワーカープールを含めることは現在サポートされていません。VPC Service Controls で保護されているプロジェクトでは、Cloud Volumes ONTAP をデプロイする唯一のサポート方法は API です。
+
 
 
 

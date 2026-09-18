@@ -474,7 +474,7 @@ Console リリースにリストされているすべての権限：
 
 
 |===
-プライベートモードの展開では、Cloud Volumes ONTAP が Infrastructure Manager の使用を開始するために、いくつかの構成変更が必要です。参照 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["プライベートモード展開のInfrastructure Manager構成"^]。
+プライベートモードの展開では、Cloud Volumes ONTAP が Infrastructure Manager の使用を開始するために、いくつかの構成変更が必要です。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモード展開のInfrastructure Manager構成"^]を参照してください。
 
 .関連リンク
 * https://docs.netapp.com/us-en/console-setup-admin/whats-new.html#console-agent-4-2-0["NetApp Console Agent 4.2.0 リリースノート"^]

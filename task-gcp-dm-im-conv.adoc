@@ -44,7 +44,7 @@ Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、デ
 ====
 ** 最新バージョンのConsoleエージェントがインストールされていることを確認してください。NetApp Support Siteから製品インストーラをダウンロードし、エージェントがInfrastructure Manager APIを使用できるように、ホストにエージェントを手動でインストールします。
 ** ツールをプライベート モードで実行している場合は、他の API とともに Cloud Build API が有効になっていることを確認してください https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]。
-** ネットワーク構成が完了し、プライベート モードのデプロイメント用のワーカー プールが作成されたことを確認します。link:reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["プライベートモード展開のInfrastructure Manager構成"]を参照してください。
+** ネットワーク構成が完了し、プライベート モードのデプロイメント用のワーカー プールが作成されたことを確認します。link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモード展開のInfrastructure Manager構成"]を参照してください。
 
 
 ====
@@ -293,7 +293,7 @@ dmconvert \
 .プライベートモードのデプロイメントでツールを実行する
 [%collapsible]
 ====
- `--worker-pool`パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、link:reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["プライベートモード展開のInfrastructure Manager構成"]を参照してください。
+ `--worker-pool`パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモード展開のInfrastructure Manager構成"]を参照してください。
 
 [source, cli]
 ----

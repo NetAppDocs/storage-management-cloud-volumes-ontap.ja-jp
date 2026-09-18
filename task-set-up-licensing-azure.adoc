@@ -79,7 +79,7 @@ NOTE: NetApp は、BYOLライセンスの購入、延長、更新を制限して
 コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがない場合、コンソールはライセンスを自動的にコンソールに追加します。
 
 +
-Cloud Volumes ONTAPでライセンスを使用するには、コンソールからライセンスを利用できる必要があります。必要であれば、link:task-manage-capacity-licenses.html#add-purchased-licenses-to-your-account["コンソールにライセンスを手動で追加する"] 。
+Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソールからライセンスが利用可能な状態になっている必要があります。必要であれば、link:task-manage-capacity-licenses.html#how-licenses-are-added-to-netapp-console["コンソールにライセンスを手動で追加する"]。
 
 . *システム*ページで*システムの追加*をクリックし、手順に従います。
 +
