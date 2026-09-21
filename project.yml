@@ -287,7 +287,7 @@ sidebar:
         url: "/concept-licensing-charging.html"
       - title: 容量ベースのライセンスを管理する
         url: "/task-manage-capacity-licenses.html"
-      - title: ノードベースのBYOLについて
+      - title: BYOLライセンスについて学ぶ
         url: "/concept-license-management.html"
       - title: ノードベースのライセンスを管理する
         url: "/task-manage-node-licenses.html"

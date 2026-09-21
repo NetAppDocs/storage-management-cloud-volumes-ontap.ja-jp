@@ -149,6 +149,7 @@ CAUTION: 検出処理中にエラーメッセージが表示される場合が�
 .関連リンク
 ストレージの作成の詳細については、 ONTAP のドキュメントを参照してください。
 
+* link:task-onboard-cvo-aws-marketplace.html["AWS MarketplaceからCloud Volumes ONTAPをサブスクライブしてデプロイする"]
 * https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["新しいマーケットプレイスのサブスクリプションを追加する"^]
 * https://docs.netapp.com/us-en/ontap/volumes/create-volume-task.html["NFS用のボリュームを作成する"^]
 * https://docs.netapp.com/us-en/ontap-cli/lun-create.html["iSCSI用のLUNを作成する"^]

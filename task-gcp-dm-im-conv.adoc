@@ -39,12 +39,12 @@ Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、デ
 * Google Cloud API が有効になっていることを確認します。 https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]を参照してください。他の API とともに、Google Cloud Quotas API が有効になっていることを確認します。
 * NetApp Console エージェントのサービス アカウントに必要なすべての権限があることを確認します。を参照してください https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#service-account-permissions["コンソール エージェントの Google Cloud 権限"^]。
 +
-.プライベート モードの展開の場合は、次の追加の前提条件を確認してください：
+.プライベートモードでの展開の場合、以下の追加要件を満たしていることを確認してください。
 [%collapsible]
 ====
 ** 最新バージョンのConsoleエージェントがインストールされていることを確認してください。NetApp Support Siteから製品インストーラをダウンロードし、エージェントがInfrastructure Manager APIを使用できるように、ホストにエージェントを手動でインストールします。
 ** ツールをプライベート モードで実行している場合は、他の API とともに Cloud Build API が有効になっていることを確認してください https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]。
-** ネットワーク構成が完了し、プライベート モードのデプロイメント用のワーカー プールが作成されたことを確認します。link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモード展開のInfrastructure Manager構成"]を参照してください。
+** プライベートモード展開の場合は、ネットワーク構成が完了し、ワーカープールが作成されていることを確認してください。link:reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["プライベートモード展開のためのインフラストラクチャマネージャの設定"]を参照してください。
 
 
 ====
@@ -162,7 +162,7 @@ includedPermissions:
 - storage.objects.list
 ----
 +
-.プライベートモード導入に追加の権限を含める
+.プライベートモード展開のための追加権限を含める
 [%collapsible]
 ====
 ツールをプライベートモードで実行している場合は、 `cloudbuild.workerpools.get`権限も YAML ファイルに追加します。
@@ -290,10 +290,10 @@ dmconvert \
 --service-account=<the service account attached to the Console agent>
 ----
 +
-.プライベートモードのデプロイメントでツールを実行する
+.プライベートモードでツールを実行する
 [%collapsible]
 ====
- `--worker-pool`パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモード展開のInfrastructure Manager構成"]を参照してください。
+ `--worker-pool`パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、link:reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["プライベートモード展開のためのインフラストラクチャマネージャの設定"]を参照してください。
 
 [source, cli]
 ----

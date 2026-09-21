@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-getting-started-gcp.html 
 keywords: google cloud platform, gcp, cloud manager, deploy the Console, launch the Console, create the Console, getting started, networking, gcp networking, service account, tiering, data tiering, bucket, fabricpool, cloud backup, storage access key, gcp role, role, iam role, permissions, gcp permissions, cloud backup, the Console 
-summary: 数ステップでCloud Volumes ONTAP for Google Cloud を使い始めましょう。 
+summary: Google Cloud で Cloud Volumes ONTAP を使い始めるには、わずか数ステップで設定できます。 
 ---
 = Google Cloud における Cloud Volumes ONTAP の導入概要
 :hardbreaks:
@@ -19,6 +19,17 @@ Cloud Volumes ONTAP をデプロイするには、まず Google Cloud サブス�
 [cols="20,35,25,25"]
 |===
 | Task | 説明 | 参照 | プライベートモード展開に関する注意事項 
+
+
+ a| 
+NetApp Consoleのロールを確認する
+ a| 
+コンソールエージェントを作成して Cloud Volumes ONTAP の他のデプロイメントタスクを実行する前に、必要な IAM ロールと権限が設定されていることを確認する必要があります。
+ a| 
+コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Cloud Volumes ONTAP の NetApp Console におけるアクセスロール"^] https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Cloud Volumes ONTAP のロールベースアクセスを設定する"^]
+ a| 
+役割が正しく設定されていることを確認してください。
+
 
 
  a| 
@@ -39,7 +50,7 @@ Cloud Volumes ONTAP をデプロイするには、まず Google Cloud サブス�
  a| 
 link:task-planning-your-config-gcp.html["構成を計画する"]
  a| 
-プライベート環境での展開についても、同様の計画上の考慮事項が必要です。
+プライベートモードでの展開についても、同様の計画上の考慮事項が必要です。
 
 
 
@@ -99,10 +110,10 @@ APIを有効にする必要があります。クラウド管理者と協力し�
 * link:task-deploying-gcp.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
  a| 
-デプロイを開始する前に、NetApp から Cloud Volumes ONTAP ライセンスを購入済みであることを確認してください。プライベート環境のデプロイには、ノードベースの BYOL ライセンスが必要です。Marketplace サブスクリプションは、Cloud Volumes ONTAP の使用料金の請求には対応していません。ライセンスファイルを NetApp から入手し、デプロイ時にアップロードしてください。参照：
+プライベートモードは高度なデプロイメントのみをサポートします。デプロイメントを開始する前に、NetApp から Cloud Volumes ONTAP ライセンスを購入していることを確認してください。プライベートモードのデプロイメントは BYOL ライセンスを使用します。Marketplace サブスクリプションは、Cloud Volumes ONTAP の使用料金の請求にはサポートされていません。ライセンスファイルを NetApp から入手し、デプロイメント時にアップロードしてください。参照：
 
-* link:concept-license-management.html["ノードベースBYOLのライセンス管理"]
-* link:task-manage-node-licenses.html["ノードベースのBYOLライセンスを管理する"]
+* link:concept-license-management.html["ライセンス管理"]
+* link:task-manage-node-licenses.html["BYOLライセンスの管理"]
 * link:task-deploying-gcp.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
 

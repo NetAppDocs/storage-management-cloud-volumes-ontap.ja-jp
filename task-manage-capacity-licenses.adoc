@@ -73,8 +73,8 @@ Essentialsパッケージに表示される容量をよりよく理解するに�
 
 
 
-[[viewing-package-details]]
-== パッケージの詳細を表示
+[[view-package-details]]
+== パッケージの詳細を表示する
 
 パッケージごとの使用容量の詳細については、Cloud Volumes ONTAPページでレガシーモードに切り替えることで確認できます。
 

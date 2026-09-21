@@ -65,7 +65,7 @@ Cloud Volumes ONTAP は、ワークロードを分析して、ランサムウェ
 
 ファイル拡張子保護とは別に、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-protecting-ransomware.html#protection-from-common-ransomware-file-extensions["ランサムウェア保護設定"]ARP機能はワークロード分析を使用して、検出された「異常なアクティビティ」に基づいて潜在的な攻撃についてユーザーに警告します。ランサムウェア対策設定とARP機能は、どちらも併用することで包括的なランサムウェア対策を実現できます。
 
-ARP 機能は、BYOL (個人ライセンス使用) およびマーケットプレイス サブスクリプションで追加料金なしでご利用いただけます。
+ARP機能は、Bring-Your-Own License（BYOL）およびマーケットプレイスでのライセンスサブスクリプションにおいて、追加料金なしでご利用いただけます。
 
 ARP 対応ボリュームには、「学習モード」または「アクティブ」という指定状態があります。
 

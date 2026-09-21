@@ -53,7 +53,7 @@ link:task-deploying-otc-azure.html["AzureでCloud Volumes ONTAPを起動する�
 
 Essentials および Professional パッケージは、次の消費モデルまたは購入オプションで利用できます。
 
-* NetAppから購入したライセンス（BYOL）
+* NetApp から購入したライセンス（Bring-Your-Own License または BYOL）
 * Azure Marketplace からの時間単位の従量課金制 (PAYGO) サブスクリプション
 * 年間契約
 

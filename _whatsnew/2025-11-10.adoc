@@ -11,4 +11,4 @@
 
 ライセンスが不足している既存の NVMe-TCP デプロイメントの場合、 Cloud Volumes ONTAP はライセンスを自動的に適用します。ライセンスを有効にするには、システムを再起動する必要があります。
 
-詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-client-protocols.html#nvme-tcp["Cloud Volumes ONTAPでサポートされているクライアント プロトコル: NVMe-TCP"^] 。
+詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-client-protocols.html#nvme-tcp["Cloud Volumes ONTAPでサポートされているクライアント プロトコル: NVMe-TCP"^]を参照してください。

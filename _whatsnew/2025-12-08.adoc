@@ -16,7 +16,7 @@ https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage
 [[overage-charging-for-essentials-licenses-simplified]]
 === Essentialsライセンスの超過料金の簡素化
 
-Cloud Volumes ONTAPマーケットプレイスの年間契約/プライベート オファーの場合、Essentials ライセンスの超過計算が Bring Your Own License (BYOL) パッケージと一致するようになりました。以前は、超過分は、Essentials パッケージそのものに対して、時間単位のマーケットプレイス料金で請求されていました。現在、マーケットプレイスの年間契約に複数の Essentials パッケージが含まれている場合、 NetApp Consoleは、サブスクリプション内のより高額な Essentials パッケージの利用可能な容量に対して、Essentials パッケージの超過料金を請求します。これにより、Essentials パッケージの超過計算が簡素化され、BYOL ライセンスからサブスクリプション ベースのモデルへのスムーズな移行が保証されます。
+Cloud Volumes ONTAPマーケットプレイスの年間契約／プライベートオファーにおけるEssentialsライセンスの超過料金の計算方法は、Bring-Your-Own License（BYOL）パッケージと整合されるようになりました。以前は、超過料金は、対象のEssentialsパッケージに対して時間単位のマーケットプレイスレートで請求されていました。マーケットプレイスの年間契約に複数のEssentialsパッケージが含まれている場合、NetApp Consoleは、お客様の契約に含まれるより高額なEssentialsパッケージの利用可能容量に対して、Essentialsパッケージの超過料金を請求します。これにより、Essentialsパッケージの超過料金計算が簡素化され、BYOLライセンスからサブスクリプションベースのモデルへのスムーズな移行が実現されます。
 
 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing-charging.html#how-overages-are-charged-for-essentials-licenses["Essentialsライセンスの超過料金の請求方法"^]
 

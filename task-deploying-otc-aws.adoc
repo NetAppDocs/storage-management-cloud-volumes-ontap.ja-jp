@@ -327,7 +327,7 @@ AWS Local Zones を使用する前に、Local Zones を有効にし、AWS アカ
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | このCloud Volumes ONTAPシステムで使用するAWS認証情報とマーケットプレイスサブスクリプションを選択してください。*サブスクリプションの追加*をクリックして、選択した認証情報を新しいAWSマーケットプレイスサブスクリプションに関連付けます。サブスクリプションは、年間契約またはCloud Volumes ONTAPを時間単位で支払うためのものです。ライセンスをNetAppから直接購入した場合（ライセンス持ち込み（BYOL））、AWSサブスクリプションは不要です。NetAppはBYOLライセンスの購入、延長、および更新を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["コンソールにAWS認証情報を追加する方法を学びます"^]。 
+| 資格情報の編集 | この Cloud Volumes ONTAP システムで使用する AWS 認証情報とマーケットプレイスサブスクリプションを選択してください。*サブスクリプションの追加* をクリックして、選択した認証情報を新しい AWS マーケットプレイスサブスクリプションに関連付けます。サブスクリプションは、年間契約または Cloud Volumes ONTAP を時間単位で支払うためのものです。ライセンスを NetApp から直接購入した場合（Bring-Your-Own License または BYOL）、AWS サブスクリプションは必要ありません。NetApp は BYOL ライセンスの購入、延長、および更新を制限しました。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["コンソールにAWS認証情報を追加する方法を学びます"^]。 
 |===
 +
 
@@ -539,7 +539,22 @@ CAUTION: 導入プロセスが完了したら、AWS クラウドポータルで�
 
 
 
+
+
+[[deploy-cloud-volumes-ontap-in-private-mode]]
+== プライベートモードでCloud Volumes ONTAPを導入する
+
+プライベートモードの展開オプションは、組織のセキュリティおよびコンプライアンス要件を満たすのに役立ちます。プライベートモードでの展開は、標準モードでの展開と同じ手順に従います。パブリックインターネット接続なしで、独自の仮想プライベートクラウド（VPC）または仮想ネットワーク（VNet）内で動作します。
+
+プライベートモードでは、容量ベースのBring-Your-Own License（BYOL）またはlink:concept-license-management.html["BYOL"] _Essentials_ パッケージをNetAppから購入し、デプロイ時にシステムに割り当てる必要があります。最初の500 GiBの使用容量はライセンス料金の対象外です。ワークロードの要件が増加するにつれて、追加のEssentialsパッケージをご購入ください。デプロイ後、コンソールでライセンスのシリアル番号を確認できます。
+
+プライベートモードのデプロイメントにライセンスファイルをアップロードする方法については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP のノードベース ライセンスを管理する"]を参照してください。
+
+.ノードベースライセンスの制限
+プライベートモードでの展開では、従来はノードベースのライセンスのみが使用されていました。NetApp は、限定的な場合を除き、これらの旧世代ライセンスの購入、延長、更新を https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["2025/06/25"]以降制限しています。ノードベースのライセンスを使用している既存のプライベートモード展開がある場合は、それらを容量ベースのライセンスに変換する必要があります。手順については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換"^]を参照してください。
+
 .関連リンク
+* link:task-onboard-cvo-aws-marketplace.html["AWS MarketplaceからCloud Volumes ONTAPをサブスクライブしてデプロイする"]
 * link:task-planning-your-config.html["Cloud Volumes ONTAP構成の計画"]
 * link:task-quick-deploy-aws.html["クイックデプロイメントを使用してAWSにCloud Volumes ONTAPをデプロイする"]
 

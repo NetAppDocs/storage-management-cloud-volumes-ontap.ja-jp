@@ -20,6 +20,29 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+[[21-september-2026]]
+== 2026年9月21日
+
+
+
+[[support-for-capacity-based-licenses-in-private-mode-deployments]]
+=== プライベートモード展開における容量ベースライセンスのサポート
+
+AWS、Azure、およびGoogle Cloudで、容量ベースのライセンスを使用したプライベートモードのCloud Volumes ONTAPシステムをデプロイできるようになりました。
+
+NetApp は、プライベートモードにおける容量ベースのライセンスについて、Essentials パッケージのみをサポートします。容量ベースの BYOL（Bring-Your-Own License）Essentials パッケージを NetApp から購入し、デプロイ時にシステムに割り当ててください。最初の 500 GiB の消費容量は、ライセンス料金の対象になりません。ワークロードの要件の増加に応じて、追加のパッケージを購入することができます。
+
+NetApp は、すべてのプライベートモード Cloud Volumes ONTAP デプロイメントに対して容量ベースのライセンスを推奨しています。ノードベースのライセンスを使用している既存のプライベートモードのデプロイメントがある場合は、NetApp から Essentials パッケージを購入することで、容量ベースのライセンスに変換できます。この新しいデプロイメント機能は、変換オプションと組み合わせることで、NetApp がノードベースのライセンスから容量ベースのライセンスへと段階的に移行していく計画を支援します。
+
+.関連リンク
+* https://review.docs.netapp.com/us-en/storage-management-cloud-volumes-ontap_capacity-license-darkmode/concept-licensing.html["Cloud Volumes ONTAPライセンス"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-license-management.html["Cloud Volumes ONTAP BYOL について"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP のノードベース ライセンスを管理する"^]
+
+
+
+
 [[02-september-2026]]
 == 2026年9月2日
 
@@ -75,7 +98,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAP
 [[ability-to-convert-node-based-licenses-to-capacity-based-licensing-in-private-mode]]
 === プライベートモードでノードベースのライセンスを容量ベースのライセンスに変換する機能
 
-NetAppは、プライベートモードの Cloud Volumes ONTAP デプロイメント向けに容量ベースのライセンスを発表できることを嬉しく思います。ノードベースのライセンスを容量ベースのライセンスに変換することで、プライベートモードの Cloud Volumes ONTAP デプロイメントのコストを最適化できるようになりました。プライベートモードでのデプロイメントには、既存のノードベースライセンスと同等の容量を持つ Essentials （ライセンス持ち込み（BYOL））パッケージを NetApp から直接購入できます。
+NetAppは、プライベートモードの Cloud Volumes ONTAP デプロイメント向けに容量ベースのライセンスを提供できることを嬉しく思います。ノードベースのライセンスを容量ベースのライセンスに変換することで、プライベートモードの Cloud Volumes ONTAP デプロイメントのコストを最適化できるようになりました。プライベートモードでのデプロイメントの場合、既存のノードベースのライセンスと同等の容量で、Essentials （ライセンス持ち込みまたは BYOL） パッケージを NetApp から直接購入できます。
 
 この変換オプションは、ノードベースのライセンスから容量ベースのライセンスへと段階的に移行するという NetApp の計画をサポートしています。ノードベースのライセンスでは各システムに固定容量が割り当てられますが、容量ベースのライセンスでは Cloud Volumes ONTAP システム全体で共有される容量プールから容量が引き出されます。これにより、ストレージのニーズの変化に応じてワークロードを再分配する際の柔軟性が向上します。
 
@@ -436,11 +459,11 @@ https://docs.netapp.com/us-en/console-automation/cvo/put-occm-config.html["変�
 
 
 [[support-for-google-infrastructure-manager-for-private-mode-deployments]]
-=== プライベートモード導入における Google Infrastructure Manager のサポート
+=== プライベートモードデプロイメントにおけるGoogle Infrastructure Managerのサポート
 
-Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しいプライベートモードの導入時に https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]（IM）が https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]（DM）の代わりにサポートされるようになりました。Googleは、より高度なInfrastructure Managerへの移行のため、近い将来インフラサービスとしてDeployment Managerを廃止します。
+Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しいプライベートモードのデプロイにおいて、 https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]（DM）の代わりに https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]（IM）をサポートするようになりました。Googleは、より高度なInfrastructure Managerへの移行に伴い、近い将来、インフラサービスとしてのDeployment Managerを非推奨にする予定です。
 
-2026年2月25日より、Cloud Volumes ONTAPは新規および既存のプライベート モードの展開に Infrastructure Manager を使用します。次の表は、基本的なワークフローを説明しています：
+2026年2月25日から、Cloud Volumes ONTAPは新規および既存のプライベートモード展開にInfrastructure Managerを使用します。この表では、基本的なワークフローを説明します：
 
 [cols="1,4,1,1,1,1"]
 |===
@@ -470,11 +493,11 @@ Console リリースにリストされているすべての権限：
 
 | 新しいエージェントと新しい導入 | 新しいエージェントを作成し、新しいCloud Volumes ONTAPシステムをプライベートモードで導入します。 |  |  |   a| 
 * https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html["Google Cloud から Console エージェントを作成する"^]
-* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html["プライベートモード導入のクイックスタート"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html["プライベートモード展開のクイックスタート"^]
 
 
 |===
-プライベートモードの展開では、Cloud Volumes ONTAP が Infrastructure Manager の使用を開始するために、いくつかの構成変更が必要です。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモード展開のInfrastructure Manager構成"^]を参照してください。
+プライベートモード環境では、Cloud Volumes ONTAP が Infrastructure Manager の使用を開始するためにいくつかの設定変更が必要です。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-for-private-mode-deployments["プライベートモード展開のためのインフラストラクチャマネージャの設定"^]を参照してください。
 
 .関連リンク
 * https://docs.netapp.com/us-en/console-setup-admin/whats-new.html#console-agent-4-2-0["NetApp Console Agent 4.2.0 リリースノート"^]
@@ -667,7 +690,7 @@ https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage
 [[overage-charging-for-essentials-licenses-simplified]]
 === Essentialsライセンスの超過料金の簡素化
 
-Cloud Volumes ONTAPマーケットプレイスの年間契約/プライベート オファーの場合、Essentials ライセンスの超過計算が Bring Your Own License (BYOL) パッケージと一致するようになりました。以前は、超過分は、Essentials パッケージそのものに対して、時間単位のマーケットプレイス料金で請求されていました。現在、マーケットプレイスの年間契約に複数の Essentials パッケージが含まれている場合、 NetApp Consoleは、サブスクリプション内のより高額な Essentials パッケージの利用可能な容量に対して、Essentials パッケージの超過料金を請求します。これにより、Essentials パッケージの超過計算が簡素化され、BYOL ライセンスからサブスクリプション ベースのモデルへのスムーズな移行が保証されます。
+Cloud Volumes ONTAPマーケットプレイスの年間契約／プライベートオファーにおけるEssentialsライセンスの超過料金の計算方法は、Bring-Your-Own License（BYOL）パッケージと整合されるようになりました。以前は、超過料金は、対象のEssentialsパッケージに対して時間単位のマーケットプレイスレートで請求されていました。マーケットプレイスの年間契約に複数のEssentialsパッケージが含まれている場合、NetApp Consoleは、お客様の契約に含まれるより高額なEssentialsパッケージの利用可能容量に対して、Essentialsパッケージの超過料金を請求します。これにより、Essentialsパッケージの超過料金計算が簡素化され、BYOLライセンスからサブスクリプションベースのモデルへのスムーズな移行が実現されます。
 
 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing-charging.html#how-overages-are-charged-for-essentials-licenses["Essentialsライセンスの超過料金の請求方法"^]
 
@@ -694,7 +717,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azu
 
 ライセンスが不足している既存の NVMe-TCP デプロイメントの場合、 Cloud Volumes ONTAP はライセンスを自動的に適用します。ライセンスを有効にするには、システムを再起動する必要があります。
 
-詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-client-protocols.html#nvme-tcp["Cloud Volumes ONTAPでサポートされているクライアント プロトコル: NVMe-TCP"^] 。
+詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-client-protocols.html#nvme-tcp["Cloud Volumes ONTAPでサポートされているクライアント プロトコル: NVMe-TCP"^]を参照してください。
 
 
 
@@ -807,7 +830,7 @@ Cloud Volumes ONTAP 9.13.1 以降、L8s_v3 は、新規および既存の高可�
 [[restricted-availability-of-byol-licensing-for-cloud-volumes-ontap]]
 === Cloud Volumes ONTAPの BYOL ライセンスの利用制限
 
-2025年6月25日より、 NetAppはCloud Volumes ONTAPのBYOL（Bring Your Own License）ライセンスモデルを制限いたします。この制限は、AWS、Azure、Google Cloudのすべてのお客様とCloud Volumes ONTAP導入環境に適用されます。例外となるのは、米国公共部門のお客様と中国リージョンの導入環境です。
+2025年6月25日以降、NetAppはCloud Volumes ONTAPのBring Your Own License（BYOL）ライセンス モデルを制限しました。この制限は、すべてのお客様およびAWS、Azure、Google CloudにおけるCloud Volumes ONTAPのデプロイメントに適用されます。唯一の例外は、米国パブリック セクターのお客様および中国リージョンへのデプロイメントです。
 
 NetAppのサポートとサービスはBYOL契約の有効期限まで継続されますが、有効期限切れのライセンスは更新または延長されません。BYOLライセンスの有効期限が切れた場合は、クラウドマーケットプレイスのサブスクリプションを通じて容量ベースのライセンスを購入して切り替える必要があります。ハイパースケーラーマーケットプレイスを通じた容量ベースのライセンスモデルは、ライセンス手続きを効率化し、より大きなビジネスメリットをもたらします。切り替えのオプションについてご相談いただくには、 NetAppアカウントチームまたはカスタマーサクセス担当者までお問い合わせください。
 
@@ -821,7 +844,7 @@ NetAppのサポートとサービスはBYOL契約の有効期限まで継続さ�
 
 
 [[private-mode-deployments-enabled-for-cloud-volumes-ontap-9-15-1]]
-=== Cloud Volumes ONTAP 9.15.1 でプライベート モードのデプロイメントが有効になりました
+=== Cloud Volumes ONTAP 9.15.1 のプライベートモード展開が有効化されました
 
 AWS、Azure、Google Cloud でCloud Volumes ONTAP 9.15.1 をプライベート モードでデプロイできるようになりました。プライベート モードは、Cloud Volumes ONTAP 9.15.1 のシングル ノードと高可用性 (HA) の両方の展開で有効になります。
 
@@ -895,7 +918,7 @@ https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-managi
 
 
 [[private-mode-deployments-enabled-for-cloud-volumes-ontap-9-14-1]]
-=== Cloud Volumes ONTAP 9.14.1 でプライベート モードのデプロイメントが有効になりました
+=== Cloud Volumes ONTAP 9.14.1 に対してプライベートモードの展開が有効になりました
 
 AWS、Azure、Google Cloud でCloud Volumes ONTAP 9.14.1 をプライベート モードでデプロイできるようになりました。プライベート モードは、Cloud Volumes ONTAP 9.14.1 のシングル ノードと高可用性 (HA) の両方の展開で有効になります。
 
@@ -1056,7 +1079,7 @@ NetApp は、契約上の義務と運用上のニーズに準拠する次の固�
 * 米国公共部門の顧客
 * プライベートモードでのデプロイメント
 * AWS におけるCloud Volumes ONTAPの中国リージョン展開
-* 有効で期限切れでないノードごとのライセンス（BYOLライセンス）をお持ちの場合
+* 有効期限切れでない、ノードごとのBYOL（Bring-Your-Own License）パッケージをお持ちの場合
 
 
 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
@@ -1243,7 +1266,7 @@ Edge Cache 容量ベースのライセンス パッケージは、Cloud Volumes 
 
 Azure で Flash Cache を構成するために必要な最小のCloud Volumes ONTAPバージョンは 9.13.1 GA です。  Azure のCloud Volumes ONTAPシステムに Flash Cache をデプロイするには、 ONTAP 9.13.1 GA 以降のバージョンのみを使用できます。
 
-サポートされている構成については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#single-node-systems["Azureでサポートされている構成"^] 。
+サポートされている構成については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#single-node-systems["Azureでサポートされている構成"^]を参照してください。
 
 
 
@@ -2687,7 +2710,7 @@ image:screenshot_cvo_charging_methods.png["課金方法を選択できるCloud V
 [[support-for-m5dn-24xlarge-in-aws]]
 === AWS での m5dn.24xlarge のサポート
 
-9.9.1 リリース以降、 Cloud Volumes ONTAP は、PAYGO Premium、BYOL (お客様独自のライセンス使用)、Freemium の課金方法で m5dn.24xlarge インスタンス タイプをサポートするようになりました。
+9.9.1リリース以降、Cloud Volumes ONTAP はm5dn.24xlargeインスタンスタイプを以下の課金方法でサポートするようになりました：PAYGO Premium、Bring-Your-Own License（BYOL）、およびFreemium。
 
 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html["AWS でCloud Volumes ONTAPがサポートする構成を表示する"^] 。
 

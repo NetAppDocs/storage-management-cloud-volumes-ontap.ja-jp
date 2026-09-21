@@ -7,14 +7,11 @@
 [[deploy-cloud-volumes-ontap-in-private-mode]]
 == プライベートモードでCloud Volumes ONTAPを導入する
 
-既存の環境内で、文書化された段階的な変換プロセスに従うことで、Cloud Volumes ONTAP をプライベートモードでデプロイできます。プライベートモード展開では、Cloud Volumes ONTAP システムはお客様独自の仮想プライベートクラウド（VPC）または仮想ネットワーク（VNet）にデプロイされ、パブリックインターネットには接続されません。プライベートモードでの展開を利用することで、組織のセキュリティおよびコンプライアンス要件を満たすことができます。
+プライベートモードの展開オプションは、組織のセキュリティおよびコンプライアンス要件を満たすのに役立ちます。プライベートモードでの展開は、標準モードでの展開と同じ手順に従います。パブリックインターネット接続なしで、独自の仮想プライベートクラウド（VPC）または仮想ネットワーク（VNet）内で動作します。
 
-プライベートモードの展開では、以前は NetApp から調達できるノードベースのライセンスのみを使用していました。ノードベースのライセンスは、Cloud Volumes ONTAP の旧世代のライセンスです。NetApp は、例外を除き、ノードベースのライセンスの購入、延長、および更新を https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["2025/06/25"]以降に制限しています。2026年7月31日をもって、米国公共部門（USPS）やその他のプライベートモード展開などの例外的なケースにおけるノードベースのライセンスは、提供終了（EOA）を迎えます。
+プライベートモードでは、容量ベースのBring-Your-Own License（BYOL）またはlink:concept-license-management.html["BYOL"] _Essentials_ パッケージをNetAppから購入し、デプロイ時にシステムに割り当てる必要があります。最初の500 GiBの使用容量はライセンス料金の対象外です。ワークロードの要件が増加するにつれて、追加のEssentialsパッケージをご購入ください。デプロイ後、コンソールでライセンスのシリアル番号を確認できます。
 
-ノードベースのライセンスを使用したプライベートデプロイメントの場合は、以下の手順に従ってください。
+プライベートモードのデプロイメントにライセンスファイルをアップロードする方法については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP のノードベース ライセンスを管理する"]を参照してください。
 
-* ノードベースのライセンスは、今後購入または更新できません。
-* 最新の機能や強化された機能にアクセスできません。
-* ノードベースの制約により、運用上の硬直性が引き続き高まります。
-* ノードベースのライセンスの有効期限が切れた後は、プライベートモードの容量ベースライセンスに移行する必要があります。手順については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換"^]を参照してください。
-
+.ノードベースライセンスの制限
+プライベートモードでの展開では、従来はノードベースのライセンスのみが使用されていました。NetApp は、限定的な場合を除き、これらの旧世代ライセンスの購入、延長、更新を https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["2025/06/25"]以降制限しています。ノードベースのライセンスを使用している既存のプライベートモード展開がある場合は、それらを容量ベースのライセンスに変換する必要があります。手順については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換"^]を参照してください。

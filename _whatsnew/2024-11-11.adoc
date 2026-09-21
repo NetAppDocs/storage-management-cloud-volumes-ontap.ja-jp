@@ -25,7 +25,7 @@ NetApp は、契約上の義務と運用上のニーズに準拠する次の固�
 * 米国公共部門の顧客
 * プライベートモードでのデプロイメント
 * AWS におけるCloud Volumes ONTAPの中国リージョン展開
-* 有効で期限切れでないノードごとのライセンス（BYOLライセンス）をお持ちの場合
+* 有効期限切れでない、ノードごとのBYOL（Bring-Your-Own License）パッケージをお持ちの場合
 
 
 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]

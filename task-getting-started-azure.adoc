@@ -22,6 +22,17 @@ Cloud Volumes ONTAP をデプロイするには、まず Azure サブスクリ�
 
 
  a| 
+NetApp Consoleのロールを確認する
+ a| 
+コンソールエージェントを作成して Cloud Volumes ONTAP の他のデプロイメントタスクを実行する前に、必要な IAM ロールと権限が設定されていることを確認する必要があります。
+ a| 
+コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Cloud Volumes ONTAP の NetApp Console におけるアクセスロール"^] https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Cloud Volumes ONTAP のロールベースアクセスを設定する"^]
+ a| 
+役割が正しく設定されていることを確認してください。
+
+
+
+ a| 
 コンソールエージェントを作成する
  a| 
 コンソールエージェントがまだない場合は、Cloud Volumes ONTAP をデプロイする前に作成してください。
@@ -39,7 +50,7 @@ Cloud Volumes ONTAP をデプロイするには、まず Azure サブスクリ�
  a| 
 link:task-planning-your-config-azure.html["AzureでCloud Volumes ONTAPの構成を計画する"]
  a| 
-プライベート環境での展開についても、同様の計画上の考慮事項が必要です。
+プライベートモードでの展開についても、同様の計画上の考慮事項が必要です。
 
 
 
@@ -67,10 +78,10 @@ AutoSupport のアウトバウンドインターネットアクセスは必須�
 * link:task-deploying-otc-azure.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
  a| 
-デプロイを開始する前に、NetApp から Cloud Volumes ONTAP ライセンスを購入済みであることを確認してください。プライベート環境のデプロイには、ノードベースの BYOL ライセンスが必要です。Marketplace サブスクリプションは、Cloud Volumes ONTAP の使用料金の請求には対応していません。ライセンスファイルを NetApp から入手し、デプロイ時にアップロードしてください。参照：
+プライベートモードは高度なデプロイメントのみをサポートします。デプロイメントを開始する前に、NetApp から Cloud Volumes ONTAP ライセンスを購入していることを確認してください。プライベートモードのデプロイメントは BYOL ライセンスを使用します。Marketplace サブスクリプションは、Cloud Volumes ONTAP の使用料金の請求にはサポートされていません。ライセンスファイルを NetApp から入手し、デプロイメント時にアップロードしてください。参照：
 
-* link:concept-license-management.html["ノードベースBYOLのライセンス管理"]
-* link:task-manage-node-licenses.html["ノードベースのBYOLライセンスを管理する"]
+* link:concept-license-management.html["ライセンス管理"]
+* link:task-manage-node-licenses.html["BYOLライセンスの管理"]
 * link:task-deploying-otc-azure.html["詳細オプションを使用して Cloud Volumes ONTAP を導入する"]
 
 

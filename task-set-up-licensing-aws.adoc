@@ -52,7 +52,7 @@ AWS アカウントに関連付けられた NIS サブスクリプションを�
 
 Essentials および Professional パッケージは、次の消費モデルまたは購入オプションで利用できます。
 
-* NetAppから購入したライセンス（BYOL）
+* NetApp から購入したライセンス（Bring-Your-Own License または BYOL）
 * AWS Marketplace からの時間単位従量課金制 (PAYGO) サブスクリプション
 * AWS Marketplaceからの年間契約
 

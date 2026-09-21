@@ -14,33 +14,29 @@ summary: 容量ベースのライセンスの課金、消費モデル、価格�
 
 
 [role="lead"]
-容量ベースのライセンスの課金と容量の使用法について理解しておく必要があります。
+Cloud Volumes ONTAP の容量ベースのライセンス体系は、ストレージ容量、パッケージ、および超過料金の請求方法を決定します。この情報は、特に標準モードでのデプロイにおける課金と容量消費を理解するために役立ちます。
+
+プライベートモードでの展開では、容量ベースのEssentialsパッケージは、BYOL（Bring-Your-Own License）モデルでのみ使用できます。プライベートモード展開のライセンスの詳細については、link:concept-license-management.html["Cloud Volumes ONTAP BYOL について"^]を参照してください。
 
 
 
-[[consumption-models-or-license-purchase-options]]
-== 消費モデルまたはライセンス購入オプション
+[[consumption-models-and-purchase-options]]
+== 消費モデルと購入オプション
 
 容量ベースのライセンス パッケージは、次の消費モデルまたは購入オプションで利用できます。
 
-* *BYOL*: 自分のライセンスを持ち込みます (BYOL)。  NetAppから購入したライセンスで、任意のクラウド プロバイダーにCloud Volumes ONTAP を展開するために使用できます。
+* *マーケットプレイス サブスクリプション/年間契約*：クラウド プロバイダのマーケットプレイスからの年間契約。プライベートモードの展開では、マーケットプレイス サブスクリプションはサポートされていません。
+* *PAYGO*: 従量課金制 (PAYGO) サブスクリプションは、クラウド プロバイダーのマーケットプレイスからの時間単位のサブスクリプションです。
+* *BYOL*: ライセンス持ち込み（BYOL）。NetApp から購入したライセンスで、任意のクラウド プロバイダに Cloud Volumes ONTAP を導入するために使用できます。
 +
 
-NOTE: NetApp は、BYOLライセンスの購入、延長、および更新を制限しており、プライベートモードでの展開など、特定のシナリオでの利用可能性を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
+NOTE: NetApp は、BYOL ライセンスの購入、延長、および更新を制限しており、プライベートモード展開などの特定のシナリオでの利用を制限しています。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
-
-
-ifdef::azure[]
-
-endif::azure[]
-
-* *PAYGO*: 従量課金制 (PAYGO) サブスクリプションは、クラウド プロバイダーのマーケットプレイスからの時間単位のサブスクリプションです。
-* *マーケットプレイス サブスクリプション/年間契約*：クラウド プロバイダのマーケットプレイスからの年間契約。プライベート モードの展開では、マーケットプレイス サブスクリプションはサポートされていません。
 
 
 次の点に注意してください。
 
-* NetApp （BYOL）からライセンスを購入する場合は、クラウドプロバイダーのマーケットプレイスからPAYGOプランに加入する必要があります。NetAppはBYOLライセンスに制限を設けています。BYOLライセンスの有効期限が切れた場合は、クラウドマーケットプレイスのサブスクリプションに切り替えていただく必要があります。
+* BYOLライセンスをNetAppから購入する場合は、クラウド プロバイダのマーケットプレイスでPAYGOサービスにもサブスクライブする必要があります。NetAppは、標準モード展開のBYOLライセンスを制限しています。BYOLライセンスの有効期限が切れたら、クラウドマーケットプレイスのサブスクリプションに切り替えてください。
 +
 ライセンスは常に最初に課金されますが、以下の場合にはマーケットプレイスの時間単位料金で課金されます。
 
@@ -55,30 +51,21 @@ endif::azure[]
 
 
 
-[[changing-of-license-packages]]
-== ライセンスパッケージの変更
-
-展開後に、容量ベースのライセンスを使用するCloud Volumes ONTAPシステムのパッケージを変更できます。たとえば、Essentials パッケージを使用してCloud Volumes ONTAPシステムを導入した場合、ビジネス ニーズの変化に応じて Professional パッケージに変更できます。
-
-link:task-manage-capacity-licenses.html["充電方法の変更方法を学ぶ"] 。
-
-ノードベースのライセンスを容量ベースのライセンスに変換する方法については、以下を参照してください。
-
-
-
 [[how-you-are-charged-for-supported-storage-types-and-packages]]
 == サポートされているストレージタイプとパッケージの課金方法
 
 Cloud Volumes ONTAPでの課金は、パッケージやボリューム タイプなど、さまざまな要素に基づいて行われます。容量ベースのライセンス パッケージは、Cloud Volumes ONTAP 9.7 以降で利用できます。
 
-価格の詳細については、link:https://www.netapp.com/pricing/["NetApp価格設定ウェブサイト"^]を参照してください。
+以下のセクションでは、料金が発生する内容、最低料金が適用される場合、および超過料金の請求方法について説明します。
+
+価格の詳細については、 https://bluexp.netapp.com/pricing/["NetApp Consoleのウェブサイト"^]を参照してください。
 
 
 
 [[storage-vms]]
 === Storage VM
 
-* 追加のデータ サービス ストレージ VM (SVM) には追加のライセンス コストは発生しませんが、データ サービス SVM ごとに 4 TiB の最小容量料金が発生します。
+* データ配信用ストレージ VM（SVM）を追加しても、ライセンス料は追加されませんが、データ配信用 SVM 1 台あたり最低 4 TiB の容量料金が発生します。
 * ディザスタリカバリ SVM は、プロビジョニングされた容量に応じて課金されます。
 
 
@@ -103,14 +90,14 @@ HA ペアの場合、ノードにプロビジョニングされた容量に対�
 [[readwrite-volumes]]
 === 読み取り/書き込みボリューム
 
-書き込み可能 (読み取り/書き込み) ボリュームを作成または使用する場合、そのボリュームはプライマリ ボリュームとみなされ、ストレージ VM (SVM) あたりの最小料金に基づいてプロビジョニングされた容量に対して課金されます。例としては、 FlexVol読み取り/書き込みボリューム、 SnapLock監査ボリューム、CIFS/NFS 監査ボリュームなどがあります。ユーザーが作成したすべてのデータ ボリュームは、サブスクリプションとパッケージ タイプごとに課金されます。  SVM ルート ボリュームなど、自動的に作成され、データを保存できないONTAP内部ボリュームは課金されません。
+書き込み可能な（読み取り / 書き込み）ボリュームはプライマリボリュームです。システムは、ストレージVM（SVM）ごとの最小料金に基づいて、プロビジョニングされた容量に対して課金します。例としては、FlexVol 読み取り / 書き込みボリューム、SnapLock監査ボリューム、およびCIFS/NFS監査ボリュームがあります。ユーザーが作成したすべてのデータボリュームは、お客様のサブスクリプションとパッケージタイプに応じて課金されます。SVMルートボリュームなどのONTAP内部ボリュームは、自動的に作成されデータを保存できないため、課金されません。
 
 
 
 [[essentials-packages]]
 === エッセンシャルパッケージ
 
-Essentials パッケージでは、デプロイメント タイプ (HA または単一ノード) とボリューム タイプ (プライマリまたはセカンダリ) に基づいて課金されます。価格は、高いものから低いものの順に、_Essentials Primary HA_、_Essentials Primary Single Node_、_Essentials Secondary HA_、_Essentials Secondary Single Node_ となります。あるいは、マーケットプレイス契約を購入するか、プライベート オファーを受け入れる場合、容量料金はどのデプロイメントまたはボリューム タイプでも同じになります。
+Essentials パッケージの料金は、デプロイメントタイプ（HA またはシングルノード）とボリュームタイプ（プライマリまたはセカンダリ）に基づいて課金されます。価格が高い順から低い順に、_Essentials Primary HA_、_Essentials Primary Single Node_、_Essentials Secondary HA_、_Essentials Secondary Single Node_ となります。マーケットプレイス契約を購入する場合、またはプライベートオファーを受け入れる場合、容量料金はデプロイメントタイプやボリュームタイプに関わらず同じです。
 
 ライセンスは、Cloud Volumes ONTAPシステム内で作成されたボリューム タイプに基づいて決定されます。
 
@@ -119,53 +106,10 @@ Essentials パッケージでは、デプロイメント タイプ (HA または
 * Essentials セカンダリ シングル ノード: 1 つのONTAPノードのみを使用してCloud Volumes ONTAPシステム上に作成されたデータ保護 (DP) タイプのボリューム (通常は読み取り専用のSnapMirrorまたはSnapVault宛先ボリューム)。
 +
 
-NOTE: 読み取り専用/DP ボリュームがプライマリ ボリュームになった場合、コンソールはそれをプライマリ データと見なし、ボリュームが読み取り/書き込みモードであった時間に基づいて課金コストを計算します。ボリュームが再び読み取り専用/DP になると、ボリュームは再びセカンダリ データとして扱われ、コンソール内の最適なライセンスを使用してそれに応じて課金されます。
+NOTE: 読み取り専用の DP ボリュームがプライマリ ボリュームになると、コンソールはそれをプライマリ データとして扱い、ボリュームが読み取り / 書き込みモードのまま保持されている時間に基づいて料金を計算します。ボリュームが再び読み取り専用になった場合、コンソールはそれをセカンダリ データとして扱い、コンソール内で最も適切なライセンスに基づいて課金します。
 
 * Essentials セカンダリ HA: 中断のないデータ アクセスのために相互にフェイルオーバーできる 2 つのONTAPSnapMirrorを使用してCloud Volumes ONTAPシステム上に作成されたデータ保護 (DP) タイプのボリューム (通常はSnapVault専用の SnapMirror または SnapVault 宛先ボリューム)。
 
-
-
-
-[[capacity-limit]]
-== 容量制限
-
-容量ベースのライセンス モデルでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートし、階層化された合計容量はクラウド プロバイダーのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、 https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["『FabricPoolのベストプラクティス』"^]階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保します。
-
-各クラウド プロバイダーの容量制限については、各プロバイダーのドキュメントを参照してください。
-
-* https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html["AWSのドキュメント"^]
-* https://learn.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account["マネージド ディスクに関する Azure ドキュメント"^]そして https://learn.microsoft.com/en-us/azure/storage/blobs/scalability-targets["BLOB ストレージに関する Azure ドキュメント"^]
-* https://cloud.google.com/storage/docs/buckets["Google Cloud ドキュメント"^]
-
-
-
-
-[[max-number-of-systems]]
-== システムの最大数
-
-容量ベースのライセンスでは、Cloud Volumes ONTAPシステムの最大数は、NetApp Console組織あたり24に制限されています。_システム_とは、Cloud Volumes ONTAP HAペア、Cloud Volumes ONTAP単一ノードシステム、または作成した追加のストレージVMのことです。デフォルトのストレージVMは制限にカウントされません。この制限はすべてのライセンスモデルに適用されます。
-
-たとえば、次の 3 つのシステムがあるとします。
-
-* 1 つのストレージ VM を備えた単一ノードのCloud Volumes ONTAPシステム (これは、Cloud Volumes ONTAPを展開するときに作成されるデフォルトのストレージ VM です)
-+
-このシステムは 1 つのシステムとしてカウントされます。
-
-* 2 つのストレージ VM (デフォルトのストレージ VM と、作成した追加のストレージ VM 1 つ) を備えた単一ノードのCloud Volumes ONTAPシステム
-+
-このシステムは、シングルノード システム用と追加のストレージ VM 用の 2 つのシステムとしてカウントされます。
-
-* 3 つのストレージ VM (デフォルトのストレージ VM と、作成した 2 つの追加ストレージ VM) を備えたCloud Volumes ONTAP HA ペア
-+
-このシステムは、HA ペア用に 1 つ、追加のストレージ VM 用に 2 つ、合わせて 3 つのシステムとしてカウントされます。
-
-
-
-合計で6つのシステムになります。すると、組織内にさらに 14 個のシステムを追加できる余裕が生まれます。
-
-24 台を超えるシステムが必要な大規模な展開の場合は、アカウント担当者または営業チームにお問い合わせください。
-
-https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["AWS、Azure、Google Cloud のストレージ制限について学ぶ"^] 。
 
 
 
@@ -198,7 +142,7 @@ Essentials パッケージの場合、4 TiB の最小容量料金は、セカン
 
 NetAppから Essentials ライセンスを購入し (BYOL)、特定の Essentials パッケージのライセンス容量を超えた場合、コンソールはより高価な Essentials ライセンス (使用可能な容量がある場合) に対して超過分を請求します。コンソールは、マーケットプレイスに対して請求する前に、まず支払った利用可能な容量を使用します。  BYOL ライセンスで利用可能な容量がない場合、超過した容量はマーケットプレイスのオンデマンド時間料金 (PAYGO) で課金され、毎月の請求額に加算されます。
 
-同様に、年間マーケットプレイス契約または複数の Essentials パッケージを含むプライベート オファーがあり、使用量が特定のパッケージのデプロイメントとボリューム タイプに対してコミットされた容量を超える場合、コンソールは利用可能な容量に基づいて、より高価な Essentials パッケージに対して超過分を請求します。容量が使い果たされると、残りの超過分はマーケットプレイス オンデマンド (PAYGO) の時間単位料金で課金され、毎月の請求額に加算されます。
+同様に、年間マーケットプレイス契約または複数のEssentialsパッケージを含むプライベートオファーをご利用の場合、特定のデプロイメントおよびボリュームタイプでコミット済み容量を超えて使用した場合、Consoleは利用可能な容量のあるより高額なEssentialsパッケージに対して超過料金を請求します。その容量を使い切った後は、残りの超過分はマーケットプレイスのオンデマンド（PAYGO）時間制料金で請求され、月額料金に加算されます。
 
 Essentialsライセンスの課金に関する情報については、<<エッセンシャルパッケージ>>を参照してください。
 
@@ -222,10 +166,67 @@ Essentialsライセンスの課金に関する情報については、<<エッ�
 
 この例では、コンソールは追加の 100 TiB に対してマーケットプレイス レートで超過料金を請求します。超過料金は毎月の請求書に表示されます。
 
+
+
+[[change-license-packages]]
+== ライセンス パッケージの変更
+
+デプロイ後、容量ベースのライセンスを使用する Cloud Volumes ONTAP システムのパッケージを変更できます。例えば、Essentials パッケージで Cloud Volumes ONTAP システムをデプロイした場合、ビジネスニーズの変化に応じて Professional パッケージに変更できます。link:task-manage-capacity-licenses.html["充電方法の変更方法を学ぶ"]。
+
+NetApp は、ノードベースのライセンスを段階的に廃止し、容量ベースのライセンスに移行しています。ノードベースのライセンスは、USPS のお客様や中国でのデプロイメントなど、一部の古いシステムでは引き続き利用可能です。ノードベースのライセンスをお持ちの場合は、容量ベースのライセンスに変換できます。ノードベースのライセンスを容量ベースのライセンスに変換する方法については、link:task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"] を参照してください。
+
+
+
+[[capacity-limit]]
+== 容量制限
+
+容量ベースのライセンス モデルでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートし、階層化された合計容量はクラウド プロバイダーのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、 https://www.netapp.com/pdf.html?item=/media/17239-tr-4598.pdf["『FabricPoolのベストプラクティス』"^]階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保します。
+
+各クラウド プロバイダーの容量制限については、各プロバイダーのドキュメントを参照してください。
+
+* https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html["AWSのドキュメント"^]
+* https://learn.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account["マネージド ディスクに関する Azure ドキュメント"^]そして https://learn.microsoft.com/en-us/azure/storage/blobs/scalability-targets["BLOB ストレージに関する Azure ドキュメント"^]
+* https://cloud.google.com/storage/docs/buckets["Google Cloud ドキュメント"^]
+
+
+
+
+[[max-number-of-systems]]
+== システムの最大数
+
+容量ベースのライセンスは、各NetApp Console組織を24つのCloud Volumes ONTAPシステムに制限します。_システム_ とは、Cloud Volumes ONTAP HAペア、Cloud Volumes ONTAPシングルノードシステム、またはお客様が作成する追加のストレージVMを指します。デフォルトのストレージVMは、制限の対象に含まれません。この制限は、すべてのライセンス モデルに適用されます。
+
+たとえば、次の 3 つのシステムがあるとします。
+
+* 1 つのストレージ VM を備えた単一ノードのCloud Volumes ONTAPシステム (これは、Cloud Volumes ONTAPを展開するときに作成されるデフォルトのストレージ VM です)
++
+このシステムは 1 つのシステムとしてカウントされます。
+
+* 2 つのストレージ VM (デフォルトのストレージ VM と、作成した追加のストレージ VM 1 つ) を備えた単一ノードのCloud Volumes ONTAPシステム
++
+このシステムは、シングルノード システム用と追加のストレージ VM 用の 2 つのシステムとしてカウントされます。
+
+* 3 つのストレージ VM (デフォルトのストレージ VM と、作成した 2 つの追加ストレージ VM) を備えたCloud Volumes ONTAP HA ペア
++
+このシステムは、HA ペア用に 1 つ、追加のストレージ VM 用に 2 つ、合わせて 3 つのシステムとしてカウントされます。
+
+
+
+合計で6つのシステムになります。すると、組織内にさらに 14 個のシステムを追加できる余裕が生まれます。
+
+24台以上のシステムを必要とする大規模な導入の場合は、担当のアカウント担当者または営業チームにご連絡ください。
+
+以下のストレージ制限について説明します：
+
+* AWS：link:reference-limits-aws.html["AWS のCloud Volumes ONTAPのストレージ制限"]
+* Azure：link:reference-limits-azure.html["Azure のCloud Volumes ONTAPのストレージ制限"]
+* Google Cloud：link:reference-limits-gcp.html["Google CloudのCloud Volumes ONTAPのストレージ制限"]
+
+
 .関連リンク
-* link:concept-licensing.html["Cloud Volumes ONTAPのライセンス"]
-* link:task-manage-capacity-licenses.html["Cloud Volumes ONTAPの容量ベースのライセンスを管理する"]
-* link:task-manage-node-licenses.html["ノードベースのライセンスを管理する"]
-* link:task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"]
-* link:task-manage-keystone.html["Keystoneサブスクリプションを管理する"]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAPのライセンス"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-capacity-licenses.html["Cloud Volumes ONTAPの容量ベースのライセンスを管理する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["ノードベースのライセンスを管理する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-keystone.html["Keystoneサブスクリプションを管理する"^]
 

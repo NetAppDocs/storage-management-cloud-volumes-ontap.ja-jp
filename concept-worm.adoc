@@ -16,7 +16,7 @@ summary: Cloud Volumes ONTAPシステムでWrite Once Read Many（WORM）スト�
 [role="lead"]
 Cloud Volumes ONTAPシステムでWrite Once Read Many（WORM）ストレージをアクティブ化すると、指定した保持期間中、変更されない状態でファイルを保管できます。Cloud WORMストレージはSnapLockテクノロジを使用しているため、WORMファイルはファイル レベルで保護されます。
 
-WORM 機能は、BYOL (お客様独自のライセンスの持ち込み) およびライセンスのマーケットプレイス サブスクリプションで追加料金なしで使用できます。現在のライセンスに WORM を追加するには、 NetApp の営業担当者にお問い合わせください。
+WORM機能は、マーケットプレイスのサブスクリプションおよびBYOL（Bring-Your-Own License）で追加料金なしでご利用いただけます。現在のライセンスにWORMを追加するには、NetAppの営業担当者にお問い合わせください。
 
 
 

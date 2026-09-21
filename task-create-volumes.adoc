@@ -36,7 +36,7 @@ summary: 最初のCloud Volumes ONTAPシステムを起動した後にさらに�
 
 ifdef::aws[]
 
-* AWS で CIFS を使用する場合は、DNS と Active Directory を設定する必要があります。詳細については、link:reference-networking-aws.html["Cloud Volumes ONTAP for AWS のネットワーク要件"] 。
+* AWSでCIFSを使用するには、DNSとActive Directoryの設定が必要です。詳細については、link:reference-networking-aws.html["AWS におけるCloud Volumes ONTAPのネットワーク要件"]を参照してください。
 * Cloud Volumes ONTAP構成がAmazon EBS Elastic Volumes機能をサポートしている場合は、link:concept-aws-elastic-volumes.html["ボリュームを作成すると何が起こるかについて詳しく知る"] 。
 
 

@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept-licensing.html 
-keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, cloud backup, digital wallet, bluexp license conversion for node based, end of support, eos, end of availability, eoa, node-based 
+keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, cloud backup, digital wallet, license conversion for node based, end of support, eos, end of availability, eoa, node-based 
 summary: Cloud Volumes ONTAPにはいくつかのライセンス オプションがあります。各オプションにより、ニーズに合った構成を選択できます。 
 ---
 = Cloud Volumes ONTAPのライセンス
@@ -16,7 +16,7 @@ summary: Cloud Volumes ONTAPにはいくつかのライセンス オプション
 [role="lead"]
 Cloud Volumes ONTAP にはいくつかのライセンス モデルがあります。各オプションを使用すると、お客様のニーズを満たす消費モデルを選択できます。
 
-ライセンスやサブスクリプションの購入または更新は、クラウドマーケットプレイスまたは NetApp （お客様独自のライセンス持ち込み（BYOL））を通じて行うことができます。マーケットプレイスでは、年間サブスクリプションと従量課金制（PAYGO）オプションをご利用いただけます。詳細については、link:concept-license-management.html["Cloud Volumes ONTAPの容量ベースのライセンスの詳細"]を参照してください。
+ライセンスやサブスクリプションの購入または更新は、クラウドマーケットプレイスまたは NetApp （Bring-Your-Own License または BYOL）を通じて行うことができます。マーケットプレイスでは、年間サブスクリプションと従量課金制（PAYGO）オプションをご利用いただけます。詳細については、link:concept-license-management.html["Cloud Volumes ONTAPの容量ベースのライセンスの詳細"] を参照してください。
 
 BYOLライセンスは NetApp から購入でき、あらゆるクラウド プロバイダに使用できます。BYOLライセンスの利用可能性に関する詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
 
@@ -258,21 +258,21 @@ NOTE: プライベートモードでの Cloud Volumes ONTAP のプライベー�
 
 
  a| 
-BYOL（個人ライセンス持ち込み）を通じて購入した有効なノードベースのライセンス
+NetApp から購入した有効なノードベースライセンス、または BYOL。
  a| 
 ライセンスは有効期限まで有効です。既存の未使用のノードベースのライセンスは、新しいCloud Volumes ONTAPシステムの展開に使用できます。
 
 
 
  a| 
-BYOL を通じて購入したノードベースのライセンスの期限切れ
+BYOLノードベースライセンスの有効期限が切れました。
  a| 
 このライセンスを使用して新しいCloud Volumes ONTAPシステムを展開する権利はありません。既存のシステムは引き続き動作する可能性がありますが、EOS 日以降はシステムに対するサポートやアップデートは受けられなくなります。
 
 
 
  a| 
-PAYGOサブスクリプション付きの有効なノードベースのライセンス
+有効なノードベースライセンスと従量課金制サブスクリプション。
  a| 
 EOS 日以降は、容量ベースのライセンスに移行するまで、 NetApp のサポートを受けられなくなります。
 
@@ -288,11 +288,13 @@ NOTE: このようなシナリオの場合でも、新しいノードベース�
 
 
 [[license-conversion]]
-== ライセンス変換
+=== ライセンス変換
 
-コンソールでは、ライセンス変換ツールを使用して、ノードベースのライセンスを容量ベースのライセンスにシームレスに変換できます。ノードベースライセンスのEOAについては、以下を参照してください。link:concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"] 。
+コンソールを使用すると、ライセンス変換ツールを通じて、ノードベースのライセンスを容量ベースのライセンスにシームレスに変換できます。ノードベースライセンスのEOAに関する情報については、link:concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"]を参照してください。
 
 移行する前に、2 つのライセンス モデルの違いを理解しておくことをお勧めします。ノードベースのライセンスには各ONTAPインスタンスの固定容量が含まれるため、柔軟性が制限される可能性があります。一方、容量ベースのライセンスでは、複数のインスタンス間でストレージの共有プールが可能になり、柔軟性が向上し、リソース使用率が最適化され、ワー​​クロードを再配分する際の金銭的なペナルティの可能性が軽減されます。容量ベースの課金により、変化するストレージ要件にシームレスに適応します。
+
+##マーケットプレイスのサブスクリプションまたはノードベースのライセンスを使用したプライベートデプロイメントがある場合は、Console のライセンス変換ツールを使用してlink:task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換します"]できます。##
 
 この変換を実行する方法については、link:task-convert-node-capacity.html["Cloud Volumes ONTAPノードベースのライセンスを容量ベースのライセンスに変換する"] 。
 

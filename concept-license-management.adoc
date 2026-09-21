@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: concept-license-management.html 
 keywords: byol, bring your own license, expiration, warning, node-based byol, node license, capacity 
-summary: ノードベースの BYOL を持つ各Cloud Volumes ONTAPシステムには、アクティブなサブスクリプションとともにシステム ライセンスがインストールされている必要があります。コンソールは、ライセンスを管理し、有効期限が切れる前に警告を表示することで、プロセスを簡素化します。 
+summary: 標準モードおよびプライベートモードの Cloud Volumes ONTAP デプロイメントにおける容量ベースおよびノードベースの BYOL ライセンスの仕組み（更新および有効期限切れの動作を含む）について説明します。 
 ---
-= Cloud Volumes ONTAP ノードベース BYOL について
+= Cloud Volumes ONTAP の BYOL ライセンスについて
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,80 +14,113 @@ summary: ノードベースの BYOL を持つ各Cloud Volumes ONTAPシステム�
 
 
 [role="lead"]
-ノードベースの BYOL (個人ライセンス持ち込み) を持つ各Cloud Volumes ONTAPシステムには、アクティブなサブスクリプションとともにシステム ライセンスがインストールされている必要があります。  NetApp Consoleは、ライセンスを管理し、有効期限が切れる前に警告を表示することで、プロセスを簡素化します。
+Bring-Your-Own License（BYOL）は、クラウド マーケットプレイスのサブスクリプションを使用する代わりに、NetApp から直接ライセンスを購入する Cloud Volumes ONTAP の課金モデルです。
 
+BYOLは、標準モードおよびプライベートモードの展開で利用可能ですが、利用制限があります。BYOLライセンスは、NetApp Consoleの「*ライセンスとサブスクリプション*」セクションの「*直接ライセンス*」で管理できます。各ライセンスは、お客様の会社および特定のNetApp Support Siteの認証情報に関連付けられています。
 
-NOTE: ノードベースライセンスは、Cloud Volumes ONTAPの旧世代ライセンスです。ノードベースライセンスはNetApp （BYOL）から取得でき、特定のケースに限りライセンス更新に利用できます。
-
-link:concept-licensing.html["Cloud Volumes ONTAPライセンスについて学ぶ"]。
-
-link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["ノードベースのライセンスの管理方法について詳しくは、こちらをご覧ください。"^]。
-
-
-
-[[byol-system-licenses]]
-== BYOLシステムライセンス
-
-ノードベースのライセンスはNetAppから取得できます。単一ノード システムまたは HA ペアに対して購入できるライセンスの数に制限はありません。
-
-
-NOTE: NetApp は、BYOLライセンスの購入、延長、更新を制限しました。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPPの BYOL ライセンスの利用制限"^]を参照してください。
-
-ノードベースのライセンスでは、単一ノードまたはHAペアに最大368TiBの容量が提供されます。CloudCloud Volumes ONTAP BYOLシステムで368TiBを超える容量を割り当てるために、複数のライセンスをご購入いただいた場合があります。例えば、2つのライセンスで最大736TiBの容量をCloud Volumes ONTAPに割り当てることができます。あるいは、4つのライセンスで最大1.4TiBの容量を確保することも可能です。
-
-ディスク制限により、ディスクのみを使用すると容量制限に到達できなくなる可能性があることに注意してください。ディスク制限を超えるにはlink:concept-data-tiering.html["非アクティブなデータをオブジェクトストレージに階層化する"]。ディスク制限の詳細については、 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAPリリースノートのストレージ制限"^] 。
+* NetApp は、有効なマーケットプレイスサブスクリプションを持つ標準モード展開における BYOL ライセンスの購入、延長、および更新を制限しました。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。
+* NetAppはノードベースのライセンスを段階的に廃止し、容量ベースのライセンスに移行しています。ノードベースのライセンスは、一部のUSPS顧客向け導入事例や中国における導入事例など、限られた既存の導入事例に対して引き続き利用可能です。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]を参照してください。
 
 
 
-[[license-management-for-a-new-system]]
-== 新しいシステムのライセンス管理
 
-ノードベースの BYOL システムを作成すると、コンソールにライセンスのシリアル番号とNetAppサポート サイト アカウントの入力が求められます。コンソールは、アカウントを使用してNetAppからライセンス ファイルをダウンロードし、 Cloud Volumes ONTAPシステムにインストールします。
+[[byol-deployment-modes]]
+== BYOL展開モード
 
-https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["NetAppサポートサイトアカウントをコンソールに追加する方法を学びます"^]。
+[role="tabbed-block"]
+====
+.標準モード展開
+--
+* BYOLの代わりに、NetAppは年間または従量課金制（PAYGO）マーケットプレイスのサブスクリプションによる消費量の課金を推奨しています。
+* 標準モードの導入では、一般的にノードベースのライセンスではなく、容量ベースのライセンスが使用されます。既存の標準モード展開のうち、ノードベースのライセンスを使用しているものはごく少数です。
 
-コンソールが安全なインターネット接続経由でライセンスファイルにアクセスできない場合は、link:task-manage-node-licenses.html["ファイルを自分で入手し、手動でコンソールにアップロードする"] 。
+
+--
+.プライベートモードでの展開
+--
+* プライベートモードでの展開は、マーケットプレイスのサブスクリプションがプライベートモードでは利用できないため、BYOL ライセンスに完全に依存します。
+* 新規導入の場合は、ノードベースのライセンスではなく、容量ベースのEssentialsパッケージを使用してください。ノードベースのライセンスは、一部の古いプライベートモードのデプロイメントで使用されています。
+
+
+--
+====
+
+
+[[compare-byol-license-types-in-private-mode]]
+=== BYOLライセンスの種類をプライベートモードで比較する
+
+以下の表は、プライベートモードにおける容量ベースライセンスとノードベースライセンスの違いをまとめたものです。
+
+[cols="25,37,38"]
+|===
+| 機能 | 容量ベースのライセンス | ノードベースのライセンス 
+
+
+| 導入サポート  a| 
+新しいプライベートモードの展開では、容量ベースのライセンス（具体的には Essentials パッケージ）のみがサポートされます。
+ a| 
+新規のプライベートモード展開では、ノードベースのライセンスはサポートされていません。既存のノードベースの展開のうち、引き続き使用できるのは限られた数のみです。
 
 
 
-[[license-expiration]]
-== ライセンスの有効期限
+| 購入  a| 
+容量ベースの BYOL Essentials パッケージを NetApp から購入し、デプロイ時にシステムに割り当ててください。
+ a| 
+ノードベースのライセンスで既存のプライベートモード展開がある場合は、NetApp から Essentials パッケージを購入することで容量ベースのライセンスに変換できます。
 
-コンソールには、ノードベースのライセンスの有効期限が切れる 30 日前と、ライセンスの有効期限が切れたときに再度警告が表示されます。次の画像は、ユーザー インターフェースに表示される 30 日間の有効期限の警告を示しています。
+
+
+| Capacity  a| 
+最初の500 GiBの消費容量は、ライセンス料金の対象外です。ワークロードの要件が増大するにつれて、追加のパッケージを購入することができます。
+ a| 
+ノードベースのライセンスでは、単一ノードまたは HA ペアに対して最大 368 TiB の容量が提供されます。Cloud Volumes ONTAP システムに 368 TiB 以上を割り当てるには、複数のライセンスを購入してください。例えば、ライセンス 2 つで最大 736 TiB、ライセンス 4 つで最大 1.4 PiB の容量が提供されます。
+
+
+
+| Scope  a| 
+容量ベースのライセンスは、Cloud Volumes ONTAP システム全体で共有される容量プールから利用されます。ストレージのニーズの変化に応じて、利用可能な容量を再配分できます。
+ a| 
+各ノードベースのライセンスは、1つの Cloud Volumes ONTAP システムに適用され、そのシステムに一定量の容量を提供します。
+
+
+
+| 移転可能性  a| 
+容量ベースのライセンスはそれぞれ、Console アカウントに関連付けられています。そのアカウントで作成されたシステムは、ライセンス容量とシリアル番号を共有できます。例えば、5 TiB のライセンスは、それぞれ 2.5 TiB のシステム 2 台、または 5 TiB のシステム 1 台をサポートできます。Console でライセンスのシリアル番号を確認でき、同じアカウントで複数のシステムに同じライセンスを割り当てることができます。
+ a| 
+ノードベースのBYOLライセンスは、既存のシステムを削除し、そのライセンスを使用して新しいシステムを作成することで移行できます。クラウド プロバイダに依存しないシリアル番号のみが、複数のクラウド プロバイダ間で機能します。これらのシリアル番号は_908xxxx_という接頭辞で始まります。
+
+|===
+
+
+[[manage-and-renew-byol-licenses]]
+== BYOLライセンスの管理と更新
+
+
+
+[[renew-a-byol-license]]
+=== BYOLライセンスを更新する
+
+BYOLライセンスを更新するには、NetAppの担当者にお問い合わせください。コンソールは、更新されたライセンスを自動的に取得して Cloud Volumes ONTAP システムにインストールします。
+
+コンソールが安全なインターネット接続経由でライセンスファイルにアクセスできない場合は、ライセンスファイルをダウンロードしてlink:task-manage-node-licenses.html["コンソールに手動でアップロードする"]。
+
+Console に関連付けられた NetApp Support Site の認証情報を管理するには、 https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["NetApp Console に関連付けられた NSS 認証情報の管理"^]を参照してください。
+
+
+
+[[respond-to-an-expiration-warning]]
+=== 有効期限切れ警告に対応する
+
+コンソールには、ノードベースのライセンスの有効期限が切れる30日前と、ライセンスの有効期限が切れた際に警告が表示されます。Cloud Volumes ONTAP システムを選択して、警告内容を確認し、ライセンスを更新してください。
 
 image:screenshot_warning.gif["スクリーンショット: 警告アイコンを含むCloud Volumes ONTAPシステムを示しています。アイコンはアクションが必要であることを示します。"]
 
-メッセージを確認するシステムを選択できます。
+組織管理者またはアカウント管理者で、このオプションを有効にしている場合、コンソールには Cloud Volumes ONTAP レポートにライセンスの有効期限切れ警告が含まれ、お客様にメールで送信されます。
 
-組織またはアカウント管理者であり、オプションを有効にしている場合、コンソールには、メールで送信されるCloud Volumes ONTAPレポートにライセンス有効期限の警告が含まれます。電子メールで送信されるレポートには、2 週間ごとのライセンス有効期限の警告が含まれます。
-
-ライセンスを期限内に更新しないと、 Cloud Volumes ONTAPシステムは自動的にシャットダウンします。再起動すると、再びシャットダウンします。
-
-
-
-[[license-renewal]]
-== ライセンスの更新
-
-NetApp の担当者に連絡してノードベースの BYOL サブスクリプションを更新すると、コンソールはNetAppから新しいライセンスを自動的に取得し、 Cloud Volumes ONTAPシステムにインストールします。
-
-コンソールが安全なインターネット接続経由でライセンスファイルにアクセスできない場合は、link:task-manage-node-licenses.html["ファイルを自分で入手し、手動でコンソールにアップロードする"] 。
-
-
-
-[[license-transfer-to-a-new-system]]
-== 新しいシステムへのライセンスの移行
-
-既存のシステムを削除し、同じライセンスを使用して新しいシステムを作成すると、ノードベースの BYOL ライセンスはCloud Volumes ONTAPシステム間で転送可能になります。
-
-たとえば、既存のライセンス システムを削除し、別の VPC/VNet またはクラウド プロバイダーの新しい BYOL システムでそのライセンスを使用する場合があります。どのクラウド プロバイダーでも機能するのは、クラウドに依存しないシリアル番号のみであることに注意してください。クラウドに依存しないシリアル番号は、_908xxxx_ というプレフィックスで始まります。
-
-BYOL ライセンスは会社と特定のNetAppサポート サイトの認証情報に関連付けられていることに注意することが重要です。
+ライセンスの有効期限が切れる前に更新しない場合、Cloud Volumes ONTAP システムがシャットダウンします。ライセンスを更新せずにシステムを再起動すると、再びシャットダウンします。
 
 .関連リンク
-* link:concept-licensing.html["Cloud Volumes ONTAPのライセンス"^]
-* link:concept-licensing-charging.html["容量ベースのライセンスについて詳しく見る"^]
-* link:task-manage-capacity-licenses.html["Cloud Volumes ONTAPの容量ベースのライセンスを管理する"^]
-* link:task-manage-node-licenses.html["ノードベースのライセンスを管理する"^]
-* link:task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"^]
-* link:task-manage-keystone.html["Keystoneサブスクリプションを管理する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAPのライセンス"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["プライベートモードのBYOLアップロードを含む、ノードベースのライセンスを管理します"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-convert-node-capacity.html["ノードベースのライセンスを容量ベースのライセンスに変換する"^]
 

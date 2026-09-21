@@ -242,7 +242,7 @@ Cloud Volumes ONTAP はこれらのエンドポイントを使用してさまざ
 | \https://mysupport.netapp.com/aods/asupmessage \https://mysupport.netapp.com/asupprod/post/1.0/postAsup | AutoSupport | AutoSupportテレメトリ データをNetAppサポートに送信するために使用されます。 | 標準モードと制限モード。 | AutoSupport情報は未配信のままです。 
 
 
-| \https://cloudbuild.googleapis.com/v1（プライベートモードの展開のみ）\https://cloudkms.googleapis.com/v1 \https://cloudresourcemanager.googleapis.com/v1/projects \https://compute.googleapis.com/compute/v1 \https://www.googleapis.com/compute/beta \https://www.googleapis.com/compute/v1/projects/ \https://www.googleapis.com/deploymentmanager/v2/projects \https://www.googleapis.com/storage/v1 \https://www.googleapis.com/upload/storage/v1 \https://config.googleapis.com/v1 \https://iam.googleapis.com/v1 \https://storage.googleapis.com/storage/v1 | Google Cloud（商用利用）。 | Google Cloud サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Google Cloud サービスと通信して、Google Cloud のコンソールの特定の操作を実行できません。 
+| \https://cloudbuild.googleapis.com/v1 （プライベートモード展開のみ） \https://cloudkms.googleapis.com/v1 \https://cloudresourcemanager.googleapis.com/v1/projects \https://compute.googleapis.com/compute/v1 \https://www.googleapis.com/compute/beta \https://www.googleapis.com/compute/v1/projects/ \https://www.googleapis.com/deploymentmanager/v2/projects \https://www.googleapis.com/storage/v1 \https://www.googleapis.com/upload/storage/v1 \https://config.googleapis.com/v1 \https://iam.googleapis.com/v1 \https://storage.googleapis.com/storage/v1 | Google Cloud（商用利用）。 | Google Cloud サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Google Cloud サービスと通信して、Google Cloud のコンソールの特定の操作を実行できません。 
 |===
 
 
