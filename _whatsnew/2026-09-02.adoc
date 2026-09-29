@@ -11,7 +11,7 @@ Cloud Volumes ONTAP は、Azure Government Secret および Top Secret リージ
 
 詳細については、Azure のドキュメントを参照してください。
 
-* https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions/["米国政府ミッション向けクラウド^"]
+* https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions/["米国政府ミッション向けクラウド"^]
 * https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security["Azure Government Secret"^]
 * https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions["Azure Government Top Secret"^]
 

@@ -14,4 +14,4 @@ Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのChile Central（chilecentral）
 * ゾーン冗長ストレージ（ZRS）を使用した複数可用性ゾーンにおける高可用性（HA）
 
 
-サポートされているすべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+サポートされているすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。

@@ -9,4 +9,4 @@
 
 中国リージョンの AWS にCloud Volumes ONTAP 9.13.1 をデプロイできるようになりました。これには、単一ノードと高可用性 (HA) の両方の展開のサポートが含まれます。NetAppから直接購入したライセンスのみがサポートされます。
 
-地域ごとの提供状況については、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAPのグローバル リージョン マップ"^] 。
+地域ごとの利用可能状況については、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes ONTAPのグローバル リージョン マップ"^]を参照してください。

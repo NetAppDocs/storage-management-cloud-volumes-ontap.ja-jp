@@ -1,0 +1,158 @@
+---
+sidebar: sidebar 
+permalink: concept-cvo-automation.html 
+keywords: automation, infrastructure as code, IaC, Terraform, Ansible, Cloud Volumes ONTAP, API procedures, ONTAP CLI procedures, list of API and CLI procedures in Cloud Volumes ONTAP or CVO 
+summary: NetApp が Cloud Volumes ONTAP 向けにサポートする自動化テクノロジーについて説明します。 
+---
+= Cloud Volumes ONTAP の自動化オプションについて
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+DevOpsチームは、データセンターのランタイム環境のセットアップと管理を自動化するために、さまざまなツールを使用しています。NetApp Console に加えて、NetApp Console API、ONTAP CLI 手順、Ansible や Terraform などの自動化ツールを含む、これらのテクノロジーのいくつかを Cloud Volumes ONTAP の自動化に使用できます。外部自動化ツールは一般的に、Infrastructure as Code（IaC）設計に基づいています。
+
+ https://labondemand.netapp.com/["ラボ オンデマンド"^]を使用して、Cloud Volumes ONTAP の自動化を練習します。
+
+
+
+[[netapp-console-apis]]
+== NetApp Console API
+
+NetApp Consoleは、Cloud Volumes ONTAPリソースをプログラムで管理するために使用できるREST APIを提供します。APIは、Cloud Volumes ONTAPシステムの作成と管理、およびAmazon Web Services（AWS）、Microsoft Azure（Azure）、Google Cloudへのアグリゲートとボリュームの追加などの操作をサポートします。利用可能なAPI呼び出しは、クラウド プロバイダおよびシングルノード構成と高可用性（HA）構成を含む展開タイプによって異なります。
+
+Cloud Volumes ONTAP の API ワークフローを使用して、一般的なデプロイメントとそれに続くストレージ管理を自動化できます。ワークフローには、デプロイの準備、システムの構築、ストレージの管理などが含まれており、AWS、Azure、Google Cloud といったクラウド プロバイダ固有のワークフローも用意されています。
+
+[cols="2,2,3"]
+|===
+| アクティビティ | 使用するAPIとインターフェース | APIリファレンス 
+
+
+| Cloud Volumes ONTAP システムを作成します。API 呼び出しは、クラウド プロバイダおよびシングルノード構成か HA 構成かによって異なります。 | NetApp Console REST APIとCloud Volumes ONTAP APIワークフロー  a| 
+* https://docs.netapp.com/us-en/console-automation/cm/wf_aws_cloud_create_we_capacity.html["AWS：システムを作成する"^] - `POST /occm/api/vsa/working-environments` または `POST /occm/api/aws/ha/working-environments`
+* https://docs.netapp.com/us-en/console-automation/cm/wf_azure_cloud_create_we_capacity.html["Azure：システムを作成する"^] - `POST /occm/api/azure/vsa/working-environments` または `POST /occm/api/azure/ha/working-environments`
+* https://docs.netapp.com/us-en/console-automation/cm/wf_gcp_cloud_create_we_capacity.html["Google Cloud：システムを作成する"^] - `POST /occm/api/gcp/vsa/working-environments` または `POST /occm/api/gcp/ha/working-environments`
+
+
+
+
+| Cloud Volumes ONTAP システムのアグリゲートを作成します。 | NetApp Console REST APIs  a| 
+* https://docs.netapp.com/us-en/console-automation/cm/wf_aws_ontap_create_aggr.html["AWS：アグリゲートを作成する"^] - `POST /occm/api/vsa/aggregates` または `POST /occm/api/aws/ha/aggregates`
+* https://docs.netapp.com/us-en/console-automation/cm/wf_aws_cloud_add_capacity.html["AWS: Elastic Volume アグリゲートに容量を追加する"^] - `POST /occm/api/vsa/aggregates/{workingEnvironmentId}/{aggregateName}/add-capacity` または `POST /occm/api/aws/ha/aggregates/{workingEnvironmentId}/{aggregateName}/add-capacity`
+* https://docs.netapp.com/us-en/console-automation/cm/wf_aws_ontap_add_disks_aggr.html["AWS: アグリゲートにディスクを追加する"^] - `POST /occm/api/vsa/aggregates/{workingEnvironmentId}/{aggregateName}/disks` または `POST /occm/api/aws/ha/aggregates/{workingEnvironmentId}/{aggregateName}/disks`
+
+
+
+
+| Cloud Volumes ONTAP システム用の CIFS サーバーを設定します。 | NetApp Console REST APIs  a| 
+* https://docs.netapp.com/us-en/console-automation/cm/wf_aws_ontap_create_cifs.html["AWS: CIFSサーバー構成を作成する"^] - `POST /occm/api/vsa/working-environments/{workingEnvironmentId}/cifs` または `POST /occm/api/aws/ha/working-environments/{workingEnvironmentId}/cifs`
+* https://docs.netapp.com/us-en/console-automation/cm/wf_azure_ontap_create_cifs.html["Azure：CIFSサーバー構成を作成する"^] - `POST /occm/api/azure/vsa/working-environments/{workingEnvironmentId}/cifs` または `POST /occm/api/azure/ha/working-environments/{workingEnvironmentId}/cifs`
+* https://docs.netapp.com/us-en/console-automation/cm/wf_gcp_ontap_create_cifs.html["Google Cloud：CIFSサーバー構成を作成する"^] - `POST /occm/api/gcp/vsa/working-environments/{workingEnvironmentId}/cifs` または `POST /occm/api/gcp/ha/working-environments/{workingEnvironmentId}/cifs`
+
+
+
+
+| AzureおよびGoogle Cloudで、追加のデータ配信用ストレージVMを作成および管理し、必要なネットワークインターフェイスを構成します。 | Cloud Volumes ONTAP APIs （NetApp Console 用）  a| 
+link:task-managing-svms-azure.html["Azure でストレージ VM を管理する"] link:task-managing-svms-gcp.html["Google Cloud でストレージ VM を管理する"]
+
+
+
+| 顧客が管理する暗号化キーを使用する Cloud Volumes ONTAP システムを作成します。 | NetApp Console API  a| 
+link:task-set-up-azure-encryption.html["Azure で顧客管理キーを使用する"] link:task-setting-up-gcp-encryption.html["Google Cloud で顧客管理キーを使用する"]
+
+
+
+| デプロイ後に、Azure Premium SSD v2 ディスクの IOPS およびスループット設定を変更します。 | Cloud Volumes ONTAP API  a| 
+link:task-manage-perf-params-azure.html["Premium SSD v2 ディスクのパフォーマンスを管理する"]
+
+
+
+| AWS共有サブネットにCloud Volumes ONTAP HAペアを導入する。 | Cloud Volumes ONTAP API  a| 
+link:task-deploy-aws-shared-vpc.html["AWS共有サブネットにHAペアをデプロイする"]
+
+
+
+| オブジェクトストアがデプロイ時に構成されなかった場合、システム作成後にデータ階層化を有効にします。 | Cloud Volumes ONTAP API | link:task-tiering.html["データ階層化を有効にする"] 
+
+
+| 既存の Cloud Volumes ONTAP クラスタに NTP サーバーを設定します。 | NetApp Console API | link:task-sync-time.html["NTPサーバーの設定"] 
+|===
+詳細については、以下を参照してください。
+
+* https://docs.netapp.com/us-en/console-automation/cm/overview.html["ONTAP管理REST APIについて学ぶ"^]
+* https://docs.netapp.com/us-en/console-automation/cm/wf_cvo_before.html["Cloud Volumes ONTAP APIワークフローを使用する準備をしてください"^]
+* https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html["最初のAPI呼び出し"^]
+* https://docs.netapp.com/us-en/console-automation/cm/cvo_deployment.html["REST APIを使用した典型的なCloud Volumes ONTAPのデプロイメント"^]
+
+
+
+
+[[ontap-cli]]
+== ONTAP CLI
+
+ONTAP CLIは、Cloud Volumes ONTAPのいくつかの管理タスクに使用できます。使用可能な手順とコマンドは、機能およびクラウド プロバイダによって異なります。ONTAP CLIまたはONTAP System Managerを使用して、Cloud Volumes ONTAPをアップグレードしないでください。アップグレードはNetApp Consoleから実行してください。
+
+[cols="2,2,3"]
+|===
+| アクティビティ | CLI手順またはコマンド | 参考資料 
+
+
+| Cloud Volumes ONTAP の暗号化キー管理を設定します。 | AWS KMS、Azure Key Vault、またはGoogle Cloud KMS コマンド（ONTAP CLI）  a| 
+link:task-aws-key-management.html["AWS KMSキー管理の設定"] link:task-azure-key-vault.html["Azure Key Vault のキー管理を構成する"] link:task-google-key-manager.html["Google Cloud KMSキー管理の設定"]
+
+
+
+| イベント管理システム（EMS）のイベント送信先と経路を設定します。 | ONTAP CLI の EMS 構成コマンド | link:task-configure-ems.html["EMSの設定"] 
+
+
+| 既存の Cloud Volumes ONTAP クラスタに NTP サーバーを設定します。 | `cluster time-service ntp server create` | link:task-sync-time.html["NTPサーバーの設定"] 
+
+
+| ストレージ効率を無効にしたボリュームを作成する場合は、データ圧縮を無効にしてください。 | ONTAP CLI ボリューム効率化コマンド  a| 
+link:concept-flash-cache.html["ストレージ効率化オプションを確認する"] link:reference-limitations-aws.html["AWSストレージ効率の制限事項を確認する"]
+
+
+
+| 追加のLUNを作成します。 | ONTAP CLIでのLUN作成コマンド | link:task-create-volumes.html["ボリュームと追加のLUNを作成する"] 
+
+
+| WORM を無効にしたボリュームを作成するか、該当する場合は SnapLock ボリュームの Snapshot コピーを作成します。 | ONTAP CLI でのボリュームとスナップショットの管理コマンド  a| 
+link:concept-worm.html["WORMストレージの管理"] link:reference-worm-snaplock.html["WORMストレージのSnapshotコピーを作成する"]
+
+
+
+| データ損失イベント発生後、問題が解決されるまでデータへのアクセスを防止するために、NVFAIL の動作を設定します。 | ONTAP CLI での NVFAIL 設定コマンド | link:concept-write-speed.html["NVFAILの設定"] 
+
+
+| Azure シングルノード環境における SnapMirror レプリケーショントラフィックを分離します。 | ONTAP CLI ネットワーキングとSnapMirrorコマンド | link:task-segregate-snapmirror-azure.html["Azure でSnapMirrorトラフィックを分離する"] 
+|===
+詳細については、 https://docs.netapp.com/us-en/ontap-cli/man.html["ONTAP CLI リファレンスガイド"^]を参照してください。
+
+
+
+[[ansible]]
+== Ansible
+
+Ansibleは、手続き型構成ファイルに基づいたオープンソースの構成管理ツールです。
+
+* https://galaxy.ansible.com/ui/repo/published/netapp/ontap/["Ansible Galaxy"^]
+* https://docs.ansible.com/ansible/latest/user_guide/index.html["Ansibleドキュメント"^]
+
+
+
+
+[[terraform]]
+== Terraform
+
+Terraformは、宣言型構成ファイルを使用するオープンソースのオーケストレーションツールです。NetAppは、Cloud Volumes ONTAP向けのTerraformプロバイダーを提供しています。これを利用すると、インフラストラクチャを自動化し、IaCと統合できます。詳細については、 https://registry.terraform.io/providers/NetApp/netapp-cloudmanager/latest["NetApp Terraform プロバイダー"^]を参照してください。
+
+.関連情報
+* https://docs.netapp.com/us-en/console-automation/automate/overview.html["NetApp Console 自動化の概要"^]
+* https://www.netapp.com/devops/what-is-infrastructure-as-code-iac/["インフラストラクチャ・アズ・コード"^]
+* https://www.terraform.io/["Terraform"^]
+* https://www.ansible.com/["Ansible"^]
+

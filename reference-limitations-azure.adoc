@@ -72,4 +72,4 @@ Cloud Volumes ONTAPは、一部のVMタイプでローカルNVMeストレージ�
 
 一部のリージョンでは HA ペアはサポートされていません。
 
-https://bluexp.netapp.com/cloud-volumes-global-regions["サポートされているAzureリージョンのリストを表示します"^]。
+https://www.netapp.com/cloud-volumes-ontap/supported-regions/["サポートされているAzureリージョンのリストを表示します"^]。

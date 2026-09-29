@@ -827,7 +827,7 @@ pass:[*] Flash Cacheは、m6id.xlarge、m6id.2xlarge、m6idn.xlarge、およびm
 [[supported-regions]]
 === サポートされているリージョン
 
-AWSリージョンのサポートについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes のグローバルリージョン"^]を参照してください。
+AWSリージョンのサポートについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes のグローバルリージョン"^]を参照してください。
 
 .関連情報
 * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html["Amazon EC2 インスタンスタイプ"^]

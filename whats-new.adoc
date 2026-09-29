@@ -55,7 +55,7 @@ Cloud Volumes ONTAP は、Azure Government Secret および Top Secret リージ
 
 詳細については、Azure のドキュメントを参照してください。
 
-* https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions/["米国政府ミッション向けクラウド^"]
+* https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions/["米国政府ミッション向けクラウド"^]
 * https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security["Azure Government Secret"^]
 * https://azure.microsoft.com/en-us/blog/azure-government-top-secret-now-generally-available-for-us-national-security-missions["Azure Government Top Secret"^]
 
@@ -77,7 +77,7 @@ Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのAustria East（austriaeast）�
 * ゾーン冗長ストレージ（ZRS）を使用した複数可用性ゾーンにおける高可用性（HA）
 
 
-サポートされているすべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+サポートされているすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -157,7 +157,7 @@ Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのChile Central（chilecentral）
 * ゾーン冗長ストレージ（ZRS）を使用した複数可用性ゾーンにおける高可用性（HA）
 
 
-サポートされているすべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+サポートされているすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -308,7 +308,7 @@ Cloud Volumes ONTAPのロールは、Amazon Web Service (AWS)、Microsoft Azure 
 
 これで、マレーシア西部（malaysiawest）リージョンの Azure の単一および複数の可用性ゾーンに Cloud Volumes ONTAP 9.12.1 GA 以降をデプロイできます。これには、シングルノード構成と高可用性（HA）構成の両方のサポートが含まれます。
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -520,7 +520,7 @@ Console リリースにリストされているすべての権限：
 * インドネシア中部（indonesiacentral）
 
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -880,7 +880,7 @@ https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploy
 * メキシコ中央
 
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -908,7 +908,7 @@ https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-managi
 
 中国リージョンの AWS にCloud Volumes ONTAP 9.13.1 をデプロイできるようになりました。これには、単一ノードと高可用性 (HA) の両方の展開のサポートが含まれます。NetAppから直接購入したライセンスのみがサポートされます。
 
-地域ごとの提供状況については、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAPのグローバル リージョン マップ"^] 。
+地域ごとの利用可能状況については、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes ONTAPのグローバル リージョン マップ"^]を参照してください。
 
 
 
@@ -940,7 +940,7 @@ Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の 
 * US Gov Virginia (米国政府地域 - バージニア州)
 
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -982,7 +982,7 @@ link:https://docs.netapp.com/us-en/cloud-volumes-ontap-9161-relnotes/["Cloud Vol
 
 Cloud Volumes ONTAP 9.12.1 GA 以降の単一ノードおよび高可用性 (HA) 構成では、Azure でニュージーランド北部リージョンがサポートされるようになりました。このリージョンでは Lsv3 インスタンス タイプはサポートされていないことに注意してください。
 
-サポートされているすべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+サポートされているすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1188,7 +1188,7 @@ WORM (Write Once Read Many) と ARP (Autonomous Ransomware Protection) の組み
 
 Cloud Volumes ONTAP 9.12.1 GA 以降では、カナダ西部リージョンが AWS でサポートされるようになりました。
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["AWS のグローバルリージョンマップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["AWS のグローバルリージョンマップ"^]を参照してください。
 
 
 
@@ -1326,7 +1326,7 @@ Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の 
 * カナダ中部
 
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1335,7 +1335,7 @@ Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の 
 
 ヨハネスブルグ地域(`africa-south1`Google Cloud for Cloud Volumes ONTAP 9.12.1 GA 以降では、リージョンがサポートされるようになりました。
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Google Cloud のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Google Cloud のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1483,7 +1483,7 @@ Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の�
 * アラブ首長国連邦北部
 
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1499,7 +1499,7 @@ Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の�
 
 Google Cloud のCloud Volumes ONTAP 9.12.1 GA 以降では、ベルリン リージョンがサポートされるようになりました。
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Google Cloud のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Google Cloud のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1515,7 +1515,7 @@ Google Cloud のCloud Volumes ONTAP 9.12.1 GA 以降では、ベルリン リー
 
 Cloud Volumes ONTAP 9.12.1 GA 以降では、テルアビブ リージョンが AWS でサポートされるようになりました。
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["AWS のグローバルリージョンマップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["AWS のグローバルリージョンマップ"^]を参照してください。
 
 
 
@@ -1531,7 +1531,7 @@ Cloud Volumes ONTAP 9.12.1 GA 以降では、テルアビブ リージョンが 
 
 Google Cloud のCloud Volumes ONTAPおよび Connector for Cloud Volumes ONTAP 9.12.1 GA 以降で、サウジアラビア リージョンがサポートされるようになりました。
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Google Cloud のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Google Cloud のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1557,7 +1557,7 @@ Azure の次のリージョンでは、 Cloud Volumes ONTAP 9.12.1 GA 以降の�
 * 米国西部2
 
 
-複数のアベイラビリティゾーンをサポートするすべてのリージョンのリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+複数の可用性ゾーンをサポートするすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1662,7 +1662,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-9131-relnotes/["Cloud Volumes 
 
 Azure の日本東部と韓国中部では、 Cloud Volumes ONTAP 9.12.1 GA 以降の HA 複数可用性ゾーンの展開がサポートされるようになりました。
 
-複数のアベイラビリティゾーンをサポートするすべてのリージョンのリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+複数の可用性ゾーンをサポートするすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
 
 
 
@@ -1782,7 +1782,7 @@ Cloud Volumes ONTAP 9.12.1 GA 以降、AWS では次のように中国リージ�
 * NetAppから直接購入したライセンスがサポートされます。
 
 
-地域ごとの提供状況については、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAPのグローバル リージョン マップ"^] 。
+地域ごとの利用可能状況については、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes ONTAPのグローバル リージョン マップ"^]を参照してください。
 
 
 
@@ -1852,7 +1852,7 @@ Azure でのCloud Volumes ONTAP 9.12.1 GA および 9.13.0 GA の単一ノード
 
 NOTE: 中国地域でのCloud Volumes ONTAPの新規導入は、9.12.1 GA および 9.13.0 GA でのみサポートされます。これらのバージョンを、 Cloud Volumes ONTAPの新しいパッチおよびリリースにアップグレードできます。中国地域で新しいバージョンのCloud Volumes ONTAPを展開する場合は、 NetAppサポートにお問い合わせください。
 
-地域ごとの提供状況については、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAPのグローバル リージョン マップ"^] 。
+地域ごとの利用可能状況については、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes ONTAPのグローバル リージョン マップ"^]を参照してください。
 
 
 
@@ -2212,7 +2212,7 @@ https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["ONTAP�
 
 9.10.1 リリース以降、 Cloud Volumes ONTAP はAzure West US 3 リージョンでサポートされるようになりました。
 
-https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAPでサポートされているリージョンの完全なリストを表示します。"^]
+https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes ONTAPでサポートされているリージョンの完全なリストを表示します。"^]
 
 
 
@@ -2387,7 +2387,7 @@ Cloud Volumes ONTAP は、9.10.1 リリース以降、次の Google Cloud リー
 * サンティアゴ (southamerica-west1) - 単一ノードのみ
 
 
-https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAPでサポートされているリージョンの完全なリストを表示します。"^]
+https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes ONTAPでサポートされているリージョンの完全なリストを表示します。"^]
 
 
 

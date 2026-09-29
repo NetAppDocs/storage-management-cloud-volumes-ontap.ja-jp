@@ -311,6 +311,8 @@ sidebar:
       url: "/task-azure-onelake.html"
     - title: Cloud Volumes ONTAP とウェルアーキテクテッドダッシュボード
       url: "/configuration-analysis-cvo.html"
+    - title: Cloud Volumes ONTAP の自動化オプションについて
+      url: "/concept-cvo-automation.html"
   - title: 知識とサポート
     entries:
     - title: サポートに登録する

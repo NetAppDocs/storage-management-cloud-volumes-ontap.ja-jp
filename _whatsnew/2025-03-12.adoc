@@ -13,4 +13,4 @@ Cloud Volumes ONTAP 9.12.1 GA 以降では、次のリージョンで Azure の 
 * US Gov Virginia (米国政府地域 - バージニア州)
 
 
-すべての地域のリストについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Azure のグローバル地域マップ"^] 。
+すべての地域のリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。

@@ -85,14 +85,18 @@ indexpage:
       url: task-managing-svms.html
     - title: Cloud Volumes ONTAP でボリュームを暗号化する
       url: task-encrypting-volumes.html
-  - title: APIリファレンス（NetApp Console Automation）
+  - title: Cloud Volumes ONTAPオートメーション
     links:
+    - title: Cloud Volumes ONTAP の自動化オプションについて
+      url: concept-cvo-automation.html
     - title: APIリファレンス
-      url: https://docs.netapp.com/us-en/console-automation/cm/overview.html
-    - title: Cloud Volumes ONTAP APIの概要
-      url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
-    - title: APIを使用する準備
-      url: https://docs.netapp.com/us-en/console-automation/cm/prepare.html
+      url: https://docs.netapp.com/us-en/console-automation/index.html
+    - title: NetApp Console REST API の概念
+      url: https://docs.netapp.com/us-en/console-automation/platform/concepts.html
+    - title: APIワークフロープロセスについて
+      url: https://docs.netapp.com/us-en/console-automation/cm/workflow_processes.html
+    - title: AWS、Azure、Google Cloud の Cloud Volumes ONTAP API 呼び出しのリスト
+      url: https://docs.netapp.com/us-en/console-automation/cm/cvo_deployment.html
   - title: Cloud Volumes ONTAPおよびその他のNetApp製品
     links:
     - title: Cloud Volumes ONTAP の NetApp Console におけるロール
@@ -116,7 +120,7 @@ indexpage:
     - title: Cloud Volumes ONTAP に ONTAP CLI を使用する
       url: https://docs.netapp.com/us-en/ontap-cli/index.html
     - title: サポートされているクラウドリージョン
-      url: https://bluexp.netapp.com/cloud-volumes-global-regions
+      url: https://www.netapp.com/cloud-volumes-ontap/supported-regions/
     - title: 電卓
       url: https://www.netapp.com/ontap-cloud/pricing/
     - title: NetAppコミュニティ

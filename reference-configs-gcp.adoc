@@ -477,7 +477,7 @@ C3シリーズVMのローカルSSD（LSSD）バリアントは、Cloud Volumes O
 [[supported-regions]]
 == サポートされているリージョン
 
-Google Cloud のリージョンサポートについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes のグローバルリージョン"^]を参照してください。
+Google Cloud のリージョンサポートについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes のグローバルリージョン"^]を参照してください。
 
 .関連リンク
 * https://cloud.google.com/compute/docs/disks/["Google Cloud ドキュメント: ストレージ オプション"^]

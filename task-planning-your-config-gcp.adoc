@@ -32,7 +32,7 @@ Cloud Volumes ONTAPにはいくつかのライセンス オプションがあり
 [[choose-a-supported-region]]
 == サポートされている地域を選択してください
 
-Cloud Volumes ONTAP は、ほとんどの Google Cloud リージョンでサポートされています。 https://bluexp.netapp.com/cloud-volumes-global-regions["サポートされている地域の完全なリストを見る"^] 。
+Cloud Volumes ONTAPは、ほとんどのGoogle Cloudリージョンでサポートされています。 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["サポートされている地域の完全なリストを見る"^]。
 
 
 

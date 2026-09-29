@@ -1298,7 +1298,7 @@ HA ペアは Azure Managed Disks を使用します。次のディスクタイ�
 [[supported-regions]]
 === サポートされているリージョン
 
-Azureリージョンのサポートについては、 https://bluexp.netapp.com/cloud-volumes-global-regions["Cloud Volumes のグローバルリージョン"^]を参照してください。
+Azureリージョンのサポートについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Cloud Volumes のグローバルリージョン"^]を参照してください。
 
 .関連リンク
 * link:task-planning-your-config-azure.html["Azure のシステムに適したディスクの種類とディスク サイズを選択する方法を学びます"]

@@ -32,7 +32,7 @@ Cloud Volumes ONTAPにはいくつかのライセンス オプションがあり
 [[choose-a-supported-region]]
 == サポートされている地域を選択してください
 
-Cloud Volumes ONTAP は、ほとんどの AWS リージョンでサポートされています。 https://bluexp.netapp.com/cloud-volumes-global-regions["サポートされている地域の完全なリストを見る"^] 。
+Cloud Volumes ONTAPは、ほとんどのAWSリージョンでサポートされています。 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["サポートされている地域の完全なリストを見る"^]。
 
 新しい AWS リージョンでリソースを作成および管理するには、その前に新しい AWS リージョンを有効にする必要があります。 https://docs.aws.amazon.com/general/latest/gr/rande-manage.html["AWSドキュメント: リージョンを有効にする方法を学ぶ"^] 。
 
