@@ -36,25 +36,11 @@ video::PBNPVRUeT1o[youtube,width=848,height=480]
 
 .開始する前に
 . *暗号化の設定*: ソース ボリュームが完全に暗号化され、動作可能であることを確認します。  Cloud Volumes ONTAPシステムの場合、これにはクラウド固有のキー管理サービスとの統合が含まれます。
++
+** *AWS の場合*、これは通常、AWS Key Management Service（KMS）を使用することを意味します。詳細については、link:task-aws-key-management.html["AWS Key Management Service でキーを管理する"]を参照してください。
+** *Azure の場合*、NetApp Volume Encryption （NVE）のために Azure Key Vault をセットアップする必要があります。詳細については、link:task-azure-key-vault.html["Azure Key Vault でキーを管理する"]を参照してください。
+** *Google Cloud の場合*、Google Cloud Key Management Service を使用してください。詳細については、link:task-google-key-manager.html["Google の Cloud Key Management Service で鍵を管理する"]を参照してください。
 
-
-ifdef::aws[]
-
-AWS の場合、これは通常、AWS Key Management Service (KMS) を使用することを意味します。詳細については、link:task-aws-key-management.html["AWS Key Management Service でキーを管理する"] 。
-
-endif::aws[]
-
-ifdef::azure[]
-
-Azure の場合、 NetApp Volume Encryption (NVE) 用に Azure Key Vault を設定する必要があります。詳細については、link:task-azure-key-vault.html["Azure Key Vault でキーを管理する"] 。
-
-endif::azure[]
-
-ifdef::gcp[]
-
-Google Cloud の場合は、Google Cloud Key Management Service です。詳細については、link:task-google-key-manager.html["Google の Cloud Key Management Service で鍵を管理する"] 。
-
-endif::gcp[]
 
 . *キー管理サービス*: FlexCacheボリュームを作成する前に、 Cloud Volumes ONTAPシステムでキー管理サービスが正しく設定されていることを確認します。この構成は、 FlexCacheボリュームが元のボリュームからのデータを復号化するために不可欠です。
 . *ライセンス*: 有効なFlexCacheライセンスがCloud Volumes ONTAPシステムで使用可能であり、アクティブ化されていることを確認します。

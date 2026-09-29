@@ -57,21 +57,12 @@ NOTE: NetApp Consoleで管理される製品とサービスの実際の使用量
 
 Cloud Volumes ONTAPでは、次の容量ベースのパッケージが利用できます。容量ベースのライセンスパッケージの詳細については、以下を参照してください。link:concept-licensing-charging.html["容量ベースのライセンスについて詳しく見る"] 。
 
-次の容量ベースのパッケージでサポートされている VM タイプの一覧については、以下を参照してください。
+クラウド プロバイダ別のストレージ制限については、以下を参照してください：
 
-ifdef::azure[]
+* link:reference-limits-aws.html["AWS のCloud Volumes ONTAPのストレージ制限"]
+* link:reference-limits-azure.html["Azure のCloud Volumes ONTAPのストレージ制限"]
+* link:reference-limits-gcp.html["Google CloudのCloud Volumes ONTAPのストレージ制限"]
 
-* link:reference-configs-azure.html["Azureでサポートされている構成"]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
-* link:reference-configs-gcp.html["Google Cloud でサポートされている構成"^]
-
-
-endif::gcp[]
 
 
 
@@ -144,26 +135,10 @@ NOTE: NetApp は、BYOLライセンスの購入、延長、更新を制限しま
 
 容量ベースのライセンスを開始する方法については、以下をご覧ください。
 
-ifdef::aws[]
-
 * link:task-set-up-licensing-aws.html["AWSでCloud Volumes ONTAPのライセンスを設定する"]
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * link:task-set-up-licensing-azure.html["AzureでCloud Volumes ONTAPのライセンスを設定する"]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * link:task-set-up-licensing-google.html["Google Cloud でCloud Volumes ONTAPのライセンスを設定する"]
 
-
-endif::gcp[]
 
 
 
@@ -206,26 +181,10 @@ Keystoneサブスクリプションは HA ペアでサポートされます。�
 
 Keystoneサブスクリプションの開始方法については、以下をご覧ください。
 
-ifdef::aws[]
-
 * link:task-set-up-licensing-aws.html["AWSでCloud Volumes ONTAPのライセンスを設定する"]
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * link:task-set-up-licensing-azure.html["AzureでCloud Volumes ONTAPのライセンスを設定する"]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * link:task-set-up-licensing-google.html["Google Cloud でCloud Volumes ONTAPのライセンスを設定する"]
 
-
-endif::gcp[]
 
 
 

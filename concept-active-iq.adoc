@@ -49,7 +49,7 @@ Digital Advisor は、NSS アカウント内のすべてのオンプレミスONT
 
 Digital Advisorユーザー インターフェイスはコンソールに完全に統合されています。
 
-左側のパネルから、*ヘルス >Digital Advisor*をクリックします。
+左側のパネルから *Health > Digital Advisor* を選択します。
 
 * コンソールに既存のNSSアカウントを登録している場合は、 Digital Advisor UIはスタンドアロン実装の場合と同じように表示されます。 https://activeiq.netapp.com/[] 。
 +

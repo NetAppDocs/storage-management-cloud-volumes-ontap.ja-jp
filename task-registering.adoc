@@ -27,11 +27,11 @@ TIP: サポートに登録されていないシステムでも、新しいバー
 https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["NetAppサポートサイトアカウントを追加する方法を学ぶ"^]。
 
 . *システム* ページで、登録するシステムの名前をダブルクリックします。
-. [概要] タブで [機能] パネルをクリックし、[サポート登録] の横にある鉛筆アイコンをクリックします。
+. 概要タブで、「機能」パネルを選択し、*サポート登録*の横にある鉛筆アイコンを選択します。
 +
 image::screenshot_features_support_registration_2.png[400]
 
-. NetAppサポート サイトのアカウントを選択し、[登録] をクリックします。
+. NetApp Support Site アカウントを選択し、*登録* を選択します。
 
 
 .結果

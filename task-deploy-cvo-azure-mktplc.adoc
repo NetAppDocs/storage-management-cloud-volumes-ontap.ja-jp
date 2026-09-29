@@ -62,7 +62,7 @@ NOTE: リソースプロバイダー「Microsoft.storage」をサブスクリプ
 .手順
 . Azure Marketplace サイトから NetApp 製品を検索します。
 . * NetApp Cloud Volumes ONTAP direct*を選択します。
-. *作成* をクリックして、デプロイメント ウィザードを起動します。
+. 「作成」を選択して、デプロイメントウィザードを起動します。
 . プランを選択してください。  *プラン* リストには通常、 Cloud Volumes ONTAPの最新リリースが表示されます。
 . *基本*タブで、次の詳細を入力します。
 +

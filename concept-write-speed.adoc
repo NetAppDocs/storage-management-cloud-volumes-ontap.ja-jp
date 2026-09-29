@@ -46,67 +46,46 @@ NetApp Consoleを使用すると、ほとんどのCloud Volumes ONTAP構成で�
 [[recommendations-when-using-high-write-speed]]
 === 高速書き込みを使用する場合の推奨事項
 
-高速書き込みを有効にする場合は、アプリケーション層での書き込み保護を確保するか、データ損失が発生した場合でもアプリケーションがデータ損失を許容できるようにする必要があります。
-
-ifdef::aws[]
+高速書き込みを有効にする場合は、アプリケーション層での書き込み保護を確保するか、データ損失が発生した場合にアプリケーションがそれを許容できることを確認する必要があります。すべての Cloud Volumes ONTAP 構成が高速書き込みに対応しているわけではありません。これらの構成では、デフォルトで通常の書き込み速度が使用されます。
 
 
 
-[[high-write-speed-with-an-ha-pair-in-aws]]
-=== AWS の HA ペアによる高速書き込み
+[[high-write-speed-in-aws]]
+=== AWSの高速書き込み
 
-AWS の HA ペアで高速書き込みを有効にする予定の場合は、複数のアベイラビリティーゾーン (AZ) 展開と単一の AZ 展開間の保護レベルの違いを理解する必要があります。複数の AZ にわたって HA ペアを展開すると、回復力が高まり、データ損失の可能性を軽減できます。
+シングルノードシステム:: 単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのインスタンス タイプで高速書き込み速度をサポートします。
+HAペア:: 9.8 リリース以降、 Cloud Volumes ONTAP は、 m5.xlarge と r5.xlarge を除く、サポートされているほぼすべての EC2 インスタンス タイプを使用する場合、HA ペアによる高速書き込みをサポートします。
++
+--
+link:reference-configs-aws.html["Cloud Volumes ONTAPがサポートする Amazon EC2 インスタンスの詳細"]。AWSのHAペアで高速書き込みを有効にする予定がある場合は、複数のアベイラビリティゾーン（AZ）展開と単一のAZ展開における保護レベルの違いを理解しておく必要があります。複数のアベイラビリティゾーン（AZ）にHAペアを導入することで、耐障害性が向上し、データ損失の可能性を軽減できます。
 
 link:concept-ha.html["AWSのHAペアについて詳しくはこちら"] 。
 
-endif::aws[]
+--
 
 
 
-[[configurations-that-support-high-write-speed]]
-=== 高速書き込みをサポートする構成
 
-すべてのCloud Volumes ONTAP構成が高速書き込み速度をサポートしているわけではありません。これらの構成では、デフォルトで通常の書き込み速度が使用されます。
+[[high-write-speed-in-azure]]
+=== Azureでの高速書き込み
 
-ifdef::aws[]
-
-
-
-==== AWS
-
-単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのインスタンス タイプで高速書き込み速度をサポートします。
-
-9.8 リリース以降、 Cloud Volumes ONTAP は、 m5.xlarge と r5.xlarge を除く、サポートされているほぼすべての EC2 インスタンス タイプを使用する場合、HA ペアによる高速書き込みをサポートします。
-
-link:reference-configs-aws.html["Cloud Volumes ONTAPがサポートする Amazon EC2 インスタンスの詳細"]。
-
-endif::aws[]
-
-ifdef::azure[]
+シングルノードシステム:: 単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのVMタイプで高速書き込み速度をサポートします。
+HAペア:: HAペアを使用する場合、Cloud Volumes ONTAPはバージョン9.8以降、複数のVMタイプで高速書き込みをサポートしています。高速書き込みをサポートするVMタイプを確認するには、link:reference-configs-azure.html["Cloud Volumes ONTAPリリースノート"]を参照してください。
 
 
 
-==== Azure
 
-単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのVMタイプで高速書き込み速度をサポートします。
+[[high-write-speed-in-google-cloud]]
+=== Google Cloud の高速書き込み
 
-HAペアを使用する場合、Cloud Volumes ONTAPはバージョン9.8以降、複数のVMタイプで高速書き込みをサポートしています。高速書き込みをサポートするVMタイプを確認するには、link:reference-configs-azure.html["Cloud Volumes ONTAPリリースノート"]を参照してください。
-
-endif::azure[]
-
-ifdef::gcp[]
-
-
-
-==== Google Cloud
-
-単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのマシン タイプで高速書き込み速度をサポートします。
-
-HAペアを使用する場合、Cloud Volumes ONTAPはバージョン9.13.0以降、複数のVMタイプで高速書き込み速度をサポートします。高速書き込み速度をサポートするVMタイプを確認するには、link:reference-configs-gcp.html#supported-configurations-by-license["Cloud Volumes ONTAPリリースノート"^]を参照してください。
-
+シングルノードシステム:: 単一ノードシステムを使用する場合、Cloud Volumes ONTAPはすべてのマシン タイプで高速書き込み速度をサポートします。
+HAペア:: HAペアを使用する場合、Cloud Volumes ONTAPはバージョン9.13.0以降、複数のVMタイプで高速書き込み速度をサポートします。高速書き込み速度をサポートするVMタイプを確認するには、link:reference-configs-gcp.html#supported-configurations-by-license["Cloud Volumes ONTAPリリースノート"^]を参照してください。
++
+--
 link:reference-configs-gcp.html["Cloud Volumes ONTAPがサポートする Google Cloud マシンタイプの詳細"^]。
 
-endif::gcp[]
+--
+
 
 
 
@@ -142,7 +121,7 @@ endif::gcp[]
 
 
 [[how-to-stop-data-access-if-data-loss-occurs]]
-== データ損失が発生した場合にデータアクセスを停止する方法
+=== データ損失が発生した場合にデータアクセスを停止する方法
 
 データ損失が懸念される場合、データ損失時にアプリケーションの実行を停止し、データ損失の問題が適切に解決された後にデータ アクセスを再開するには、CLI から NVFAIL オプションを使用してその目的を達成できます。
 

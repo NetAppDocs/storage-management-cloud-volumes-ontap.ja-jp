@@ -24,28 +24,10 @@ Cloud Volumes ONTAP はデータ暗号化をサポートし、ウイルスやラ
 Cloud Volumes ONTAP は、次の暗号化テクノロジーをサポートしています。
 
 * NetApp暗号化ソリューション (NVE および NAE)
-
-
-ifdef::aws[]
-
 * AWS Key Management Service
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * Azure Storage Service Encryption
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * Google Cloud Platformのデフォルトの暗号化
 
-
-endif::gcp[]
 
 NetApp暗号化ソリューションは、ハイパーバイザー レベルでデータを暗号化するクラウド プロバイダーのネイティブ暗号化と組み合わせて使用​​できます。こうすることで二重暗号化が実現され、非常に機密性の高いデータには望ましいものとなる可能性があります。暗号化されたデータにアクセスすると、そのデータは 2 回暗号化解除されます。1 回目はハイパーバイザー レベルで (クラウド プロバイダーのキーを使用)、2 回目はNetApp暗号化ソリューションを使用して (外部キー マネージャーのキーを使用) です。
 
@@ -66,32 +48,14 @@ Cloud Volumes ONTAP は、 ONTAPが使用する標準の Key Management Interope
 
 NVE を使用する場合は、クラウド プロバイダーのキー ボールトを使用してONTAP暗号化キーを保護するオプションがあります。
 
-ifdef::aws[]
-
 * AWS キー管理サービス (KMS)
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * Azure キー コンテナー (AKV)
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * Google Cloud Key Management Service
 
-
-endif::gcp[]
 
 外部キー マネージャーを設定すると、新しいアグリゲートではNetApp Aggregate Encryption (NAE) がデフォルトで有効になります。  NAE アグリゲートの一部ではない新しいボリュームでは、NVE がデフォルトで有効になっています (たとえば、外部キー マネージャーを設定する前に作成された既存のアグリゲートがある場合)。
 
 サポートされているキー マネージャーを設定することだけが、必要な手順です。セットアップ手順については、link:task-encrypting-volumes.html["NetApp暗号化ソリューションでボリュームを暗号化"] 。
-
-ifdef::aws[]
 
 
 
@@ -105,10 +69,6 @@ TIP: Cloud Volumes ONTAPシステムを作成した後、AWS データ暗号化�
 
 この暗号化オプションを使用する場合は、AWS KMS が適切に設定されていることを確認する必要があります。詳細については、link:task-setting-up-kms.html["AWS KMSの設定"] 。
 
-endif::aws[]
-
-ifdef::azure[]
-
 
 
 [[azure-storage-service-encryption]]
@@ -118,10 +78,6 @@ ifdef::azure[]
 
 必要に応じて独自の暗号化キーを使用することもできます。link:task-set-up-azure-encryption.html["Azureで顧客管理キーを使用するためにCloud Volumes ONTAPを設定する方法を学びます"] 。
 
-endif::azure[]
-
-ifdef::gcp[]
-
 
 
 [[google-cloud-platform-default-encryption]]
@@ -130,8 +86,6 @@ ifdef::gcp[]
 https://cloud.google.com/security/encryption-at-rest/["Google Cloud Platform の保存データ暗号化"^]Cloud Volumes ONTAPではデフォルトで有効になっています。セットアップは必要ありません。
 
 Google Cloud Storage では、データがディスクに書き込まれる前に常に暗号化されますが、コンソール API を使用して、_顧客管理の暗号化キー_ を使用するCloud Volumes ONTAPシステムを作成できます。これらは、Cloud Key Management Service を使用して GCP で生成および管理するキーです。link:task-setting-up-gcp-encryption.html["詳細情報"] 。
-
-endif::gcp[]
 
 
 

@@ -32,15 +32,13 @@ summary: 最初のCloud Volumes ONTAPシステムを起動した後にさらに�
 
 * iSCSIボリュームを作成すると、コンソールが自動的にLUNを作成します。ボリュームごとに1つのLUNを作成するだけで済むように簡素化したので、管理作業は一切不要です。ボリュームを作成したら、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-connect-lun.html["IQNを使用してホストからLUNに接続します"^]。
 * ONTAP System Manager またはONTAP CLI から追加の LUN を作成できます。
+* AWSでは：
++
+** AWSでCIFSを使用するには、DNSとActive Directoryの設定が必要です。詳細については、link:reference-networking-aws.html["AWS向けCloud Volumes ONTAPのネットワーク要件"]を参照してください。
+** Cloud Volumes ONTAP構成がAmazon EBS Elastic Volumes機能をサポートしている場合は、link:concept-aws-elastic-volumes.html["ボリュームを作成すると何が起こるかについて詳しく知る"] 。
 
 
-ifdef::aws[]
 
-* AWSでCIFSを使用するには、DNSとActive Directoryの設定が必要です。詳細については、link:reference-networking-aws.html["AWS におけるCloud Volumes ONTAPのネットワーク要件"]を参照してください。
-* Cloud Volumes ONTAP構成がAmazon EBS Elastic Volumes機能をサポートしている場合は、link:concept-aws-elastic-volumes.html["ボリュームを作成すると何が起こるかについて詳しく知る"] 。
-
-
-endif::aws[]
 
 
 
@@ -60,12 +58,12 @@ endif::aws[]
 ====
 .あらゆる集合体
 --
-[ボリューム] タブを選択し、[ボリュームの追加] をクリックします。image:screenshot_add_volume_button.png["「概要」タブの「ボリュームの追加」ボタンのスクリーンショット。"]
+「ボリューム」タブを選択し、*ボリュームの追加*を選択します。image:screenshot_add_volume_button.png["「概要」タブの「ボリュームの追加」ボタンのスクリーンショット。"]
 
 --
 .特定の骨材
 --
-.. 「アグリゲート」タブで、必要なアグリゲートに移動してimage:icon-action.png["追加操作のための3つの横長の点を示すアイコン"]アイコンをクリックします。
+.. 「アグリゲート」タブで、必要なアグリゲートに移動して、image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"]アイコンを選択します。
 .. *ボリュームの追加*を選択します。image:screenshot_add_volume_button_agg.png["「アグリゲート」タブの「ボリュームの追加」ボタンのスクリーンショット。"]
 
 
@@ -96,7 +94,7 @@ endif::aws[]
 |===
 .. *プロトコル*: ボリュームのプロトコル (NFS、CIFS、または iSCSI) を選択し、必要な情報を入力します。
 +
-CIFS を選択し、サーバーが設定されていない場合は、*次へ* をクリックした後に、コンソールで CIFS 接続を設定するように求められます。
+CIFSを選択した場合で、サーバーが設定されていない場合は、*次へ*を選択した後、コンソールにCIFS接続を設定するように求められます。
 
 +
 link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"] 。
@@ -120,42 +118,21 @@ link:concept-client-protocols.html["サポートされているクライアン�
 DNSプライマリおよびセカンダリIPアドレス:: CIFS サーバーの名前解決を提供する DNS サーバーの IP アドレス。これらのDNSサーバには、Active DirectoryのLDAPサーバと、CIFSサーバが参加するドメインのドメイン コントローラを見つけるために必要なサービス ロケーション レコード（SRV）が含まれている必要があります。
 +
 --
-ifdef::gcp[]
-
---
-
-
 Google マネージド Active Directory を構成している場合、デフォルトでは 169.254.169.254 IP アドレスを使用して AD にアクセスできます。
 
-endif::gcp[]
-
+--
 参加するActive Directoryドメイン:: CIFS サーバーが参加する Active Directory (AD) ドメインの FQDN。
 ドメインへの参加を許可された資格情報:: AD ドメイン内の指定された組織単位 (OU) にコンピューターを追加するのに十分な権限を持つ Windows アカウントの名前とパスワード。
 CIFS server NetBIOS name:: AD ドメイン内で一意の CIFS サーバー名。
 組織単位:: CIFS サーバーに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。
-
-
-ifdef::aws[]
-
++
+--
 *** AWS Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして設定するには、このフィールドに *OU=Computers,OU=corp* と入力します。
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 *** Azure AD Domain Services をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=AADDC Computers* または *OU=AADDC Users* と入力します。https://docs.microsoft.com/en-us/azure/active-directory-domain-services/create-ou["Azure ドキュメント: Azure AD Domain Services マネージド ドメインに組織単位 (OU) を作成する"^]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 *** Google Managed Microsoft AD をCloud Volumes ONTAPの AD サーバーとして構成するには、このフィールドに *OU=Computers,OU=Cloud* と入力します。https://cloud.google.com/managed-microsoft-ad/docs/manage-active-directory-objects#organizational_units["Google Cloud ドキュメント: Google Managed Microsoft AD の組織単位"^]
 
 
-endif::gcp[]
-
+--
 DNSドメイン:: Cloud Volumes ONTAPストレージ仮想マシン (SVM) の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。
 NTPサーバ:: Active Directory DNSを使用してNTPサーバーを設定するには、*Active Directoryドメインを使用する*を選択してください。別のアドレスを使用してNTPサーバーを設定する必要がある場合は、APIを使用してください。詳細については、 https://docs.netapp.com/us-en/console-automation/index.html["NetApp Console自動化に関するドキュメント"^]を参照してください。
 +
@@ -177,33 +154,12 @@ LUN:: iSCSI ストレージ ターゲットは LUN (論理ユニット) と呼�
 ====
 .. *ディスク タイプ*: パフォーマンスのニーズとコストの要件に基づいて、ボリュームの基盤となるディスク タイプを選択します。
 +
-ifdef::aws[]
-
-+
 *** link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config.html#size-your-system-in-aws["AWS でのシステムのサイズ設定"^]
+*** link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^]
+*** link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-gcp.html#size-your-system-in-gcp["Google Cloud でのシステムのサイズ設定"^]
 
 
-
-
-
-
-endif::aws[]
-
-ifdef::azure[]
-
-* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-azure.html#size-your-system-in-azure["Azure でのシステムのサイズ設定"^]
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
-* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-planning-your-config-gcp.html#size-your-system-in-gcp["Google Cloud でのシステムのサイズ設定"^]
-
-
-endif::gcp[]
-
-. *使用プロファイルと階層化ポリシー*:ボリュームのストレージ効率機能を有効にするか無効にするかを選択し、link:concept-data-tiering.html["ボリューム階層化ポリシー"] 。
+.. *使用プロファイルと階層化ポリシー*:ボリュームのストレージ効率機能を有効にするか無効にするかを選択し、link:concept-data-tiering.html["ボリューム階層化ポリシー"] 。
 +
 ONTAPには、必要なストレージの総量を削減できるいくつかのストレージ効率機能が含まれています。  NetAppストレージ効率機能には、次のような利点があります。
 
@@ -213,7 +169,9 @@ ONTAPには、必要なストレージの総量を削減できるいくつかの
 圧縮:: プライマリ、セカンダリ、アーカイブ ストレージのボリューム内のデータを圧縮することで、データの保存に必要な物理容量を削減します。
 
 
-. *確認*: ボリュームの詳細を確認し、[*追加*] をクリックします。
+.. *確認*: ボリュームの詳細を確認してから、*追加*を選択します。
+
+
 
 
 .結果
@@ -230,24 +188,20 @@ ONTAPには、必要なストレージの総量を削減できるいくつかの
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
 . *システム*ページで、アグリゲートを管理するCloud Volumes ONTAPシステムの名前をダブルクリックします。
-. 「集計」タブで、「集計の追加」をクリックし、集計を作成します。
+. 「Aggregates」タブで「Add Aggregate」を選択し、アグリゲートを作成します。
 +
 image:screenshot_add_aggregate_cvo.png["集計の追加の進行状況を示すスクリーンショット。"]
 
 . ホーム ノードでは、HA ペアの 2 番目のノードを選択します。
-. コンソールがアグリゲートを作成したら、それを選択し、「ボリュームの作成」をクリックします。
-. 新しいボリュームの詳細を入力し、「作成」をクリックします。
+. コンソールがアグリゲートを作成したら、それを選択し、*ボリュームの作成*を選択します。
+. 新しいボリュームの詳細を入力し、*作成*を選択します。
 
 
 .結果
 コンソールは、HA ペアの 2 番目のノードにボリュームを作成します。
 
-ifdef::aws[]
-
 
 TIP: 複数の AWS アベイラビリティーゾーンにデプロイされた HA ペアの場合、ボリュームが存在するノードのフローティング IP アドレスを使用して、ボリュームをクライアントにマウントする必要があります。
-
-endif::aws[]
 
 
 

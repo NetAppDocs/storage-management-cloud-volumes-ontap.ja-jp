@@ -59,7 +59,7 @@ NetApp Consoleでシステムを作成し、Google Cloud でCloud Volumes ONTAP 
 
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
-. [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
+. [[subscribe]]「システム」ページで「システムの追加」を選択し、プロンプトに従ってください。
 . *場所を選択*: *Google Cloud* と * Cloud Volumes ONTAP* を選択します。
 . プロンプトが表示されたら、 https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["コンソールエージェントを作成する"^]。
 . *詳細と認証情報*: プロジェクトを選択し、クラスター名を指定し、オプションでサービス アカウントを選択し、オプションでラベルを追加して、認証情報を指定します。
@@ -92,7 +92,7 @@ Cloud Volumes ONTAPを配置するプロジェクトを選択します。デフ�
 
 NOTE: これはコンソール用に設定したサービスアカウントです、link:https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["このページに記載されている通り"^]。
 
-選択した資格情報をサブスクリプションに関連付けるには、「*サブスクリプションの追加*」をクリックします。
+選択した認証情報をサブスクリプションに関連付けるには、*サブスクリプションの追加*を選択してください。
 
 従量課金制の Cloud Volumes ONTAP システムを作成するには、Google Cloud Marketplace の Cloud Volumes ONTAP サブスクリプションに関連付けられた Google Cloud プロジェクトを選択する必要があります。 https://docs.netapp.com/us-en/console-setup-admin/task-adding-gcp-accounts.html["マーケットプレイスのサブスクリプションを Google Cloud 認証情報に関連付ける"^]を参照してください。
 
@@ -132,7 +132,7 @@ TIP: WORM とデータ階層化を利用する場合は、バックアップと�
 ** link:task-set-up-licensing-google.html["ライセンスの設定方法を学ぶ"^]
 
 
-. *事前構成済みパッケージ*：パッケージの1つを選択してCloud Volumes ONTAPシステムを迅速に導入するか、*独自の構成を作成*をクリックします。事前構成済みパッケージは、選択したCloud Volumes ONTAPバージョンによって異なります。たとえば、Cloud Volumes ONTAP 9.18.1以降では、ConsoleにはHyperdisk Balancedディスクを含むC3 VMを含むパッケージが表示されます。ワークロードのニーズに応じて、IOPSやスループットパラメータなどの構成を変更できます。
+. *事前設定済みパッケージ*：パッケージのいずれかを選択してCloud Volumes ONTAPシステムをすばやく展開するか、*独自の構成を作成する*を選択してください。事前設定済みのパッケージは、選択したCloud Volumes ONTAPのバージョンによって異なります。たとえば、Cloud Volumes ONTAP 9.18.1以降では、コンソールにHyperdisk BalancedディスクをサポートするC3 VMを含むパッケージが表示されます。ワークロードのニーズに応じて、IOPSやスループットパラメータなどの設定を変更できます。
 +
 いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認し、承認するだけです。
 
@@ -185,7 +185,7 @@ link:concept-data-tiering.html["データ階層化の詳細"^] 。
 
 
 
-. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
+. *ボリュームの作成*：新しいボリュームの詳細を入力するか、*スキップ*を選択してください。
 +
 link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
 
@@ -255,9 +255,9 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 . *確認と承認*: 選択内容を確認して確定します。
 +
 .. 構成の詳細を確認します。
-.. *詳細情報* をクリックすると、サポートと、コンソールで購入する Google Cloud リソースの詳細を確認できます。
+.. *詳細情報* を選択すると、サポートの詳細やコンソールが購入する Google Cloud リソースについて確認できます。
 .. *理解しました...* チェックボックスを選択します。
-.. [Go] をクリックします。
+.. 「Go」を選択してください。
 
 
 
@@ -265,7 +265,7 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 .結果
 コンソールはCloud Volumes ONTAPシステムを展開します。  *監査*ページで進捗状況を追跡できます。
 
-Cloud Volumes ONTAPシステムのデプロイ中に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+Cloud Volumes ONTAP システムの導入で問題が発生した場合は、エラーメッセージを確認してください。システムを選択して「環境の再作成」を選択することもできます。
 
 さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
 
@@ -289,7 +289,7 @@ CAUTION: 展開プロセスが完了したら、Google Cloud ポータル内の�
 
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
-. *システム* ページで、*ストレージ > システム* をクリックし、指示に従います。
+. 「システム」ページで、「ストレージ」＞「システム」を選択し、画面の指示に従ってください。
 . *場所を選択*: *Google Cloud* と * Cloud Volumes ONTAP HA* を選択します。
 . *システムの詳細*：プロジェクトを選択し、クラスター名を指定し、必要に応じてサービスアカウントを選択し、必要に応じてラベルを追加し、最後に認証情報を指定します。
 +
@@ -304,7 +304,7 @@ CAUTION: 展開プロセスが完了したら、Google Cloud ポータル内の�
 | Google Cloudプロジェクトとマーケットプレイスのサブスクリプション  a| 
 このシステムで使用する Google プロジェクトとサブスクリプションを選択してください。これは、コンソール用に設定したサービスアカウントです。詳細については、link:https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["コンソール設定ドキュメント"^]を参照してください。コンソールはプロジェクトを使用して Cloud Volumes ONTAP システムを作成し、サブスクリプションを使用して請求と使用状況を決定します。ドロップダウンリストに他のプロジェクトが表示されない場合は、サービスアカウントがまだ他のプロジェクトに関連付けられていないことを意味します。Google Cloud Console にアクセスし、IAM サービスを開いて、プロジェクトを選択します。コンソールで使用するロールを持つサービスアカウントを、そのプロジェクトに追加してください。この手順はプロジェクトごとに繰り返す必要があります。
 
-選択した資格情報をサブスクリプションに関連付けるには、「*サブスクリプションの追加*」をクリックします。
+選択した認証情報をサブスクリプションに関連付けるには、*サブスクリプションの追加*を選択してください。
 
 従量課金制の Cloud Volumes ONTAP システムを作成するには、Google Cloud Marketplace の Cloud Volumes ONTAP へのサブスクリプションに関連付けられた Google Cloud プロジェクトを選択する必要があります。コンソール設定ドキュメントを参照してください： https://docs.netapp.com/us-en/console-setup-admin/task-adding-gcp-accounts.html["マーケットプレイスのサブスクリプションを Google Cloud 認証情報に関連付ける"^]。
 
@@ -364,7 +364,7 @@ link:reference-networking-gcp.html["ネットワーク要件の詳細"^] 。
 ** link:task-set-up-licensing-google.html["ライセンスの設定方法を学ぶ"^] 。
 
 
-. *事前構成済みパッケージ*: パッケージの 1 つを選択してCloud Volumes ONTAPシステムをすばやく展開するか、*独自の構成を作成*をクリックします。
+. *事前設定済みパッケージ*：パッケージのいずれかを選択して Cloud Volumes ONTAP システムをすばやく導入するか、*独自の構成を作成する*を選択してください。
 +
 いずれかのパッケージを選択した場合、必要なのはボリュームを指定し、構成を確認して承認するだけです。事前設定済みのパッケージは、選択した Cloud Volumes ONTAP のバージョンと構成タイプによって異なります。例えば、Cloud Volumes ONTAP 9.19.1 以降で単一の AZ デプロイメントを選択した場合、C3 シリーズのマシンと Hyperdisk Balanced ディスクを搭載した事前構成済みパッケージが表示されます。以前のバージョンや複数の AZ の場合でも、n2-standard マシンと Persistent Disks を選択できます。ワークロードのニーズに応じて、IOPS やスループットなどのパラメータを変更できます。
 
@@ -416,7 +416,7 @@ link:concept-data-tiering.html["データ階層化の詳細"^] 。
 
 
 
-. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
+. *ボリュームの作成*：新しいボリュームの詳細を入力するか、*スキップ*を選択してください。
 +
 link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
 
@@ -486,9 +486,9 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 . *確認と承認*: 選択内容を確認して確定します。
 +
 .. 構成の詳細を確認します。
-.. *詳細情報* をクリックすると、サポートと、コンソールで購入する Google Cloud リソースの詳細を確認できます。
+.. *詳細情報* を選択すると、サポートの詳細やコンソールが購入する Google Cloud リソースについて確認できます。
 .. *理解しました...* チェックボックスを選択します。
-.. [Go] をクリックします。
+.. 「Go」を選択してください。
 
 
 
@@ -496,7 +496,7 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 .結果
 コンソールはCloud Volumes ONTAPシステムを展開します。  *監査*ページで進捗状況を追跡できます。
 
-Cloud Volumes ONTAPシステムのデプロイ中に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+Cloud Volumes ONTAP システムの導入で問題が発生した場合は、エラーメッセージを確認してください。システムを選択して「環境の再作成」を選択することもできます。
 
 .終了後の操作
 * CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。

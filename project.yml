@@ -10,19 +10,6 @@ settings:
     pdf_enabled: true
     harmony_enabled: false
   rss_page: whats-new.html
-  filter:
-    label: クラウド プロバイダ
-    default: すべてのクラウドプロバイダー
-    options:
-    - name: Amazon Web Services
-      alias: AWS
-      id: aws
-    - name: Google Cloud
-      alias: Google Cloud
-      id: gcp
-    - name: Microsoft Azure
-      alias: Azure
-      id: azure
   langs: ja-jp,us-en,de-de,es-es,fr-fr,it-it,pt-br,ko-kr,zh-cn,zh-tw
 sidebar:
   entries:
@@ -59,7 +46,6 @@ sidebar:
       - title: Cloud Volumes ONTAP HA構成
         url: "/concept-degraded-ha-pair.html"
     - title: Amazon Web Servicesにデプロイする
-      flavor: aws
       entries:
       - title: AWS MarketplaceからCloud Volumes ONTAPをオンボードする
         url: "/task-onboard-cvo-aws-marketplace.html"
@@ -92,7 +78,6 @@ sidebar:
       - title: AWS シークレットリージョンにCloud Volumes ONTAPをデプロイする
         url: "/task-getting-started-aws-c2s.html"
     - title: Microsoft Azureにデプロイする
-      flavor: azure
       entries:
       - title: Azure でのCloud Volumes ONTAP の展開オプションについて学習します
         url: "/concept-azure-mktplace-direct.html"
@@ -133,7 +118,6 @@ sidebar:
       - title: Azure Marketplace にデプロイ
         url: "/task-deploy-cvo-azure-mktplc.html"
     - title: Google Cloud にデプロイする
-      flavor: gcp
       entries:
       - title: 導入概要
         url: "/task-getting-started-gcp.html"
@@ -172,13 +156,10 @@ sidebar:
       - title: Cloud Volumes ONTAP ストレージVM
         url: "/task-managing-svms.html"
       - title: AWS でストレージ VM を管理する
-        flavor: aws
         url: "/task-managing-svms-aws.html"
       - title: Azure でストレージ VM を管理する
-        flavor: azure
         url: "/task-managing-svms-azure.html"
       - title: Google Cloud でストレージ VM を管理する
-        flavor: gcp
         url: "/task-managing-svms-gcp.html"
     - title: 集計管理
       entries:
@@ -219,7 +200,6 @@ sidebar:
   - title: クラウドインフラストラクチャ管理
     entries:
     - title: AWS管理
-      flavor: aws
       entries:
       - title: AWSでサポートされている構成
         url: "/reference-configs-aws.html"
@@ -236,7 +216,6 @@ sidebar:
       - title: HAペアのルートテーブルを変更する
         url: "/task-change-route-tables.html"
     - title: Azure管理
-      flavor: azure
       entries:
       - title: Azureでサポートされている構成
         url: "/reference-configs-azure.html"
@@ -261,7 +240,6 @@ sidebar:
       - title: Azure のディスク パフォーマンス層をアップグレードする
         url: "/task-upgrade-disk-perf-azure.html"
     - title: Google Cloud 管理
-      flavor: gcp
       entries:
       - title: Google Cloud でサポートされている構成
         url: "/reference-configs-gcp.html"

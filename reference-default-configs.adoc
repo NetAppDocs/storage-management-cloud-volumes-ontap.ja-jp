@@ -33,7 +33,13 @@ Cloud Volumes ONTAPがデフォルトでどのように構成されているか�
 ** iSCSI
 ** Cloud Volumes ONTAP 9.12.1 GA から開始されるマルチテナント暗号化キー管理 (MTEKM)
 ** NetApp Volume Encryption（Bring-Your-Own License（BYOL）または登録済みの従量課金制（PAYGO）システムのみ）
-** NFS ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[]
+** NFS
+** ONTAP S3
++
+*** AWS：Cloud Volumes ONTAP 9.11.0以降
+*** Azure：Cloud Volumes ONTAP 9.9.1 以降
+
+
 ** SnapMirror
 ** SnapRestore
 ** SnapVault
@@ -43,55 +49,29 @@ Cloud Volumes ONTAPがデフォルトでどのように構成されているか�
 +
 ** クラスタ管理LIF
 ** クラスタ間LIF
+** AWSシングルノードシステム：SVM管理LIF
+** Azure HA システム：SVM 管理 LIF
+** Google Cloud HAシステム：SVM管理LIF
+** ノード管理LIF
++
+Google Cloud：このLIFは、クラスター間LIFと統合されています。
 
-
-
-
-ifdef::azure[]
-
-* Azure の HA システム上の SVM 管理 LIF
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
-* Google Cloud の HA システム上の SVM 管理 LIF
-
-
-endif::gcp[]
-
-ifdef::aws[]
-
-* AWSのシングルノードシステム上のSVM管理LIF
-
-
-endif::aws[]
-
-* ノード管理LIF
-
-
-ifdef::gcp[]
-
-+ Google Cloud では、この LIF はクラスタ間 LIF と組み合わされます。
-
-endif::gcp[]
-
-* iSCSIデータLIF
-* CIFSおよびNFSデータLIF
+** iSCSIデータLIF
+** CIFSおよびNFSデータLIF
 +
 
 NOTE: クラウド プロバイダーの要件により、 Cloud Volumes ONTAPでは LIF フェイルオーバーはデフォルトで無効になっています。  LIF を別のポートに移行すると、インスタンス上の IP アドレスとネットワーク インターフェイス間の外部マッピングが壊れ、LIF にアクセスできなくなります。
 
-+
-** Cloud Volumes ONTAP は、 HTTP を使用して構成バックアップをコンソール エージェントに送信します。
+
+
+* Cloud Volumes ONTAP は、 HTTP を使用して構成バックアップをコンソール エージェントに送信します。
 +
 バックアップは \http://ipaddress/occm/offboxconfig/ からアクセスできます。ここで、_ipaddress_ はコンソール エージェントのホストの IP アドレスです。
 
 +
 バックアップを使用して、 Cloud Volumes ONTAPシステムを再構成できます。設定バックアップの詳細については、 https://docs.netapp.com/us-en/ontap/system-admin/config-backup-file-concept.html["ONTAPのドキュメント"^] 。
 
-** コンソールは、他の管理ツール (たとえば、 ONTAP System Manager やONTAP CLI) とは異なる方法でいくつかのボリューム属性を設定します。
+* コンソールは、他の管理ツール (たとえば、 ONTAP System Manager やONTAP CLI) とは異なる方法でいくつかのボリューム属性を設定します。
 +
 次の表は、デフォルトとは異なる設定のボリューム属性を示しています。
 
@@ -122,8 +102,6 @@ NOTE: 組織またはアカウント管理者は、[設定] ページからこ�
 |===
 +
 これらの属性の詳細については、link:https://docs.netapp.com/us-en/ontap-cli-9121/volume-create.html["ONTAP _volume create_ マニュアルページ"] 。
-
-
 
 
 

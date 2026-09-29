@@ -18,4 +18,39 @@ Cloud Volumes ONTAP は、 NetApp Volume Encryption (NVE) とNetApp Aggregate En
 
 NVE と NAE はどちらも外部キー マネージャーでサポートされます。
 
-ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[] ifdef::gcp[] endif::gcp[] ifdef::aws[] endif::aws[] ifdef::azure[] endif::azure[] ifdef::gcp[] endif::gcp[]
+NVE を使用する場合は、クラウド プロバイダーのキー ボールトを使用してONTAP暗号化キーを保護するオプションがあります。
+
+* AWS Key Management Service（9.12.0以降）
+* Azure キー コンテナー (AKV)
+* Google Cloud Key Management Service
+
+
+外部キーマネージャを設定すると、新しいアグリゲートではデフォルトでNAEが有効になります。NAEアグリゲートの一部ではない新しいボリュームでは、デフォルトでNVEが有効になります（たとえば、外部キーマネージャを設定する前に作成された既存のアグリゲートがある場合など）。
+
+Cloud Volumes ONTAPはオンボードキー管理をサポートしていません。
+
+.開始する前に
+お客様のCloud Volumes ONTAPシステムは、NetAppサポートに登録する必要があります。NetApp Volume Encryptionライセンスは、NetAppサポートに登録されている各Cloud Volumes ONTAPシステムに自動的にインストールされます。
+
+* https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["NetApp サポートサイトアカウントをコンソールに追加する"^]
+* link:task-registering.html["従量課金制システムを登録する"]
+
+
+
+NOTE: NetApp Consoleは、中国リージョンに存在するシステムにはNVEライセンスをインストールしません。
+
+.手順
+. サポートされているキーマネージャーのリストを http://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"^]で確認してください。
++
+
+TIP: 「Key Managers」ソリューションを検索してください。
+
+. link:task-connecting-to-otc.html["Cloud Volumes ONTAP CLIへの接続"^]。
+. 外部キー管理を設定します。
++
+** AWS：link:task-aws-key-management.html["AWS Key Management Service"]
+** Azure：link:task-azure-key-vault.html["Azure キー コンテナー (AKV)"]
+** Google Cloud：link:task-google-key-manager.html["Google Cloud Key Management Service"]
+
+
+

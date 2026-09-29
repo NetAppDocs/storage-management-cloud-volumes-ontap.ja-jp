@@ -1031,8 +1031,8 @@ link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-a
 BlueXP digital wallet内の改善されたナビゲーション ポイントを使用することで、 Cloud Volumes ONTAPライセンスの管理が簡素化されました。
 
 * *管理 >Licenses and subscriptions> 概要/直接ライセンス* タブから、 Cloud Volumes ONTAPライセンス情報に簡単にアクセスできます。
-* 容量ベースのライセンスを包括的に理解するには、[概要] タブの Cloud Volume ONTAPパネルで [表示] をクリックします。この詳細ビューでは、ライセンスとサブスクリプションに関する詳細な情報が表示されます。
-* 以前のインターフェースを希望する場合は、[*従来のビューに切り替える*] ボタンをクリックして、ライセンスの詳細をタイプ別に表示し、ライセンスの課金方法を変更できます。
+* 容量ベースのライセンスについて包括的に理解するには、「*概要*」タブの Cloud Volume ONTAP パネルで「*表示*」を選択してください。この詳細ビューでは、ライセンスとサブスクリプションに関する詳細な情報が表示されます。
+* 以前のインターフェイスをご希望の場合は、「レガシービューに切り替える」ボタンを選択すると、ライセンスの詳細を種類別に表示したり、ライセンスの課金方法を変更したりできます。
 
 
 link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-capacity-licenses.html["容量ベースのライセンスを管理する"^]。

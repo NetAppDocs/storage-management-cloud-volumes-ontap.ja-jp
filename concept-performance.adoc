@@ -21,35 +21,19 @@ summary: パフォーマンス結果を確認することで、どのワーク�
 [[performance-technical-reports]]
 == パフォーマンス技術レポート
 
-ifdef::aws[]
-
 * Cloud Volumes ONTAP for AWS
 +
 link:https://www.netapp.com/pdf.html?item=/media/9088-tr4383.pdf["NetAppテクニカルレポート4383：Amazon Web Servicesにおけるアプリケーションワークロードを用いたCloud Volumes ONTAPのパフォーマンス特性"^]
 
-
-
-endif::aws[]
-
-ifdef::azure[]
-
 * Microsoft Azure 向けCloud Volumes ONTAP
 +
 link:https://www.netapp.com/pdf.html?item=/media/9089-tr-4671.pdf["NetAppテクニカル レポート 4671: Azure におけるCloud Volumes ONTAPのアプリケーション ワークロードのパフォーマンス特性"^]
-
-
-
-endif::azure[]
-
-ifdef::gcp[]
 
 * Cloud Volumes ONTAP for Google Cloud
 +
 link:https://www.netapp.com/pdf.html?item=/media/9090-tr4816pdf.pdf["NetAppテクニカルレポート 4816: Google Cloud 向けCloud Volumes ONTAPのパフォーマンス特性"^]
 
 
-
-endif::gcp[]
 
 
 

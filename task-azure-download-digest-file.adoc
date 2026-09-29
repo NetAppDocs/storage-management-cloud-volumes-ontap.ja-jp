@@ -20,7 +20,7 @@ _tar.gz_ ファイルには、イメージ署名の検証に必要なファイ�
 
 .手順
 . に行く https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetAppサポート サイトのCloud Volumes ONTAP製品ページ"^]*ダウンロード*セクションから必要なソフトウェア バージョンをダウンロードします。
-. Cloud Volumes ONTAP のダウンロード ページで、Azure イメージのダウンロード可能なファイルをクリックし、_tar.gz_ ファイルをダウンロードします。
+. Cloud Volumes ONTAP のダウンロードページで、Azure イメージのダウンロード可能なファイルを選択し、_tar.gz_ ファイルをダウンロードします。
 +
 image::screenshot_cloud_volumes_ontap_tar.gz.png[スクリーンショット クラウドボリューム OnTap tar.gz]
 

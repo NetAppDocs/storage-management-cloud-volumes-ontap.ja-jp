@@ -78,7 +78,7 @@ link:reference-networking-gcp.html["Google Cloudにおけるネットワーク�
 
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
-. [[subscribe]]Canvas ページで、[*システムの追加*] をクリックし、指示に従います。
+. [[subscribe]]Canvas ページで「システムの追加」を選択し、指示に従ってください。
 . クラウド プロバイダ（*Amazon Web Services*、*Microsoft Azure*、または *Google Cloud*）> *Cloud Volumes ONTAP/Cloud Volumes ONTAP HA* > *新規追加* を選択します。*クイック作成* オプションがデフォルトで選択されています。
 +
 .Quick createオプションのサンプルスクリーンショット
@@ -106,24 +106,12 @@ image:screenshot-quick-start-gcp.png["width=500,alt=\"Google Cloud Quick Create\
 
 
 .システムの詳細
-. *クラウド プロバイダのアカウント/認証情報/Google Cloud プロジェクト*：アカウントとサブスクリプションの詳細は、コンソール エージェントに基づいて自動的に入力されます。複数のアカウントまたはサブスクリプションをお持ちの場合は、使用するものを選択してください。コンソール エージェントが利用できない場合は、 https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html["コンソールエージェントを作成する"^]するよう求められます。
-
-
-ifdef::gcp[]
-
-Google Cloud の場合は、プロジェクト名を含むマーケットプレイスのサブスクリプションを選択する必要があります。
-
-endif::gcp[]
-
+. *クラウド プロバイダのアカウント/認証情報/Google Cloud プロジェクト*：アカウントとサブスクリプションの詳細は、コンソール エージェントに基づいて自動的に入力されます。複数のアカウントまたはサブスクリプションをお持ちの場合は、使用するものを選択してください。コンソール エージェントが利用できない場合は、 https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html["コンソールエージェントを作成する"^]するよう求められます。Google Cloud の場合は、プロジェクト名を含むマーケットプレイスのサブスクリプションを選択する必要があります。
 . *名前*：Cloud Volumes ONTAP システム（クラスタ名とも呼ばれる）の名前を入力します。NetApp Console は、システム（クラスタ）名を使用して Cloud Volumes ONTAP システムと VM インスタンスに名前を付けます。また、そのオプションを選択した場合、事前定義されたセキュリティグループのプレフィックスとしてその名前が使用されます。
 . *ONTAP認証情報*：これらは、Cloud Volumes ONTAPクラスタ管理者アカウントの認証情報です。これらの認証情報を使用して、ONTAP System ManagerまたはONTAP CLIを通じてCloud Volumes ONTAPに接続できます。デフォルトの_admin_ユーザー名をそのまま使用することも、カスタムユーザー名に変更することもできます。
 
 
-ifdef::gcp[]
-
 _Google Cloud_ の場合、Cloud Volumes ONTAP で link:concept-data-tiering.html["データ階層化"] または  https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recovery"^] を使用する予定がある場合は、*Service Account* を有効にして、事前定義された Storage Admin ロールを持つサービスアカウントを選択する必要があります。link:task-creating-gcp-service-account.html["サービスアカウントの作成方法を学ぶ"^]。コンソールエージェントに関連付けられたサービスアカウント https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["必要な権限を持っている必要があります"^]。
-
-endif::gcp[]
 
 . *タグ/ラベル*：タグは、AWS または Azure リソースのメタデータです。コンソールは、Cloud Volumes ONTAP インスタンスおよびそのインスタンスに関連付けられている各リソースにタグを追加します。Cloud Volumes ONTAP システムの作成時にユーザーインターフェースから最大 15 個のタグを追加でき、作成後にさらに追加することもできます。詳細については、以下を参照してください。
 +
@@ -202,40 +190,24 @@ NOTE: Cloud Volumes ONTAP 9.19.1以降はlink:concept-ha-google-cloud.html["単�
 
 .充電とサービス
 . *ライセンス*：このCloud Volumes ONTAPシステムで使用するライセンスタイプを選択します。Professional、Essentials、Freemiumライセンスから選択できます。各種ライセンスの詳細については、link:concept-licensing.html["Cloud Volumes ONTAPライセンスについて学ぶ"^]を参照してください。
-. *データ サービスと機能*: Cloud Volumes ONTAPで使用しないサービスを有効のままにするか、無効にします。
-
-
-ifdef::gcp[]
-
-_Google Cloud_ では、バックアップと復元を選択するか、NetApp Cloud Tiering を使用する場合は、サービスアカウントを指定する必要があります。
-
-endif::gcp[]
-
-* https://docs.netapp.com/us-en/data-services-data-classification/concept-classification.html["NetAppの分類について詳しくはこちら"^]
-* https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
-* link:concept-worm.html["Cloud Volumes ONTAPの WORM ストレージについて学ぶ"]
+. *データサービスと機能*: 必要なサービスを有効にしたままにするか、Cloud Volumes ONTAP で使用しないサービスを無効にします。_Google Cloud_ では、バックアップと復元を選択するか、NetApp Cloud Tiering を使用する場合は、サービスアカウントを指定する必要があります。
++
+** https://docs.netapp.com/us-en/data-services-data-classification/concept-classification.html["NetAppの分類について詳しくはこちら"^]
+** https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
+** link:concept-worm.html["Cloud Volumes ONTAPの WORM ストレージについて学ぶ"]
 +
 
 TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
 
-+
-.. * NetAppサポート サイト アカウント*: 複数のアカウントがある場合は、使用するアカウントを選択します。
-.. 入力した詳細を確認または編集し、「*作成*」をクリックします。
 
 
+. * NetAppサポート サイト アカウント*: 複数のアカウントがある場合は、使用するアカウントを選択します。
+. 入力した内容を確認または編集してから、*作成*を選択してください。
 
-
-ifdef::azure[]
 
 _Azure_ では、*概要*セクションに、デプロイプロセスが完了したときに割り当てられるリソースが表示されます。
 
-endif::azure[]
-
-ifdef::aws[]
-
 _AWS_では、Cloud Volumes ONTAPシステムの作成後すぐに、NetApp Consoleは、指定されたVPC内にテストインスタンスを起動し、接続性を検証します。処理が成功すると、Consoleは直ちにインスタンスを終了し、システムのデプロイを開始します。Consoleが接続を確認できない場合、システムの作成は失敗します。テストインスタンスは、 `t2.nano`（デフォルトのVPCテナントの場合）または `m3.medium`（専用VPCテナント向け）のいずれかです。
-
-endif::aws[]
 
 .終了後の操作
 コンソールはCloud Volumes ONTAPシステムを展開します。監査ページで進捗状況を追跡できます。

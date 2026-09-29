@@ -38,14 +38,14 @@ Cloud Volumes ONTAP は、関連付けられたストレージ アカウント�
 
 .手順
 . 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。
-. Cloud Volumes ONTAP システムを管理するコンソールエージェントの image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"] アイコンをクリックします。
+. Cloud Volumes ONTAP システムを管理するコンソールエージェントの image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"] アイコンを選択します。
 . * Cloud Volumes ONTAP設定*を選択します。
 +
 image::screenshot-settings-cloud-volumes-ontap.png[[設定]アイコンの下のCloud Volumes ONTAP設定オプションのスクリーンショット。]
 
-. *Azure* の下で、*Azure Private Link を使用する* をクリックします。
+. 「Azure」の下にある「Azure Private Linkを使用する」を選択します。
 . * Cloud Volumes ONTAPとストレージアカウント間のプライベートリンク接続*の選択を解除します。
-. *保存*をクリックします。
+. *保存*を選択します。
 
 
 .終了後の操作

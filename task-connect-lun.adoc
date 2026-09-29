@@ -27,8 +27,8 @@ iSCSI ボリュームを作成すると、 NetApp Consoleによって LUN が自
 . *システム*ページで、ボリュームを管理するCloud Volumes ONTAPシステムをダブルクリックします。
 . システムで、[ボリューム] タブを選択します。
 . 必要なボリューム タイルに移動し、*ボリュームの管理* を選択して、右側のボリュームの管理パネルにアクセスします。
-. *ターゲット iQN* をクリックします。
-. *コピー* をクリックして iQN 名をコピーします。
+. *ターゲットiQN*を選択します。
+. iQN名をコピーするには、*コピー*を選択してください。
 . ホストから LUN への iSCSI 接続を設定します。
 +
 ** http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-iscsi-rhel-cg/GUID-15E8C226-BED5-46D0-BAED-379EA4311340.html["Red Hat Enterprise Linux 用ONTAP 9 iSCSI 高速構成: ターゲットとの iSCSI セッションの開始"^]

@@ -24,26 +24,10 @@ summary: ホット データ用の SSD または HDD パフォーマンス層と
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]Cloud Volumes ONTAPとオブジェクトストレージ間の接続を確保する
 [role="quick-margin-list"]
-ifdef::aws[]
-
-* AWSの場合、Amazon Simple Storage Service（Amazon S3）へのVPCエンドポイントが必要です。<<Requirements to tier cold data to AWS S3,詳細情報>>.
-
-
-endif::aws[]
-
-ifdef::azure[]
-
+* AWSの場合、Amazon Simple Storage Service（Amazon S3）へのVPCエンドポイントが必要です。<<Requirements to tier cold data to AWS S3,詳細情報>>。
 * Azure の場合、 NetApp Consoleに必要な権限がある限り、何もする必要はありません。<<コールドデータをAzure Blobストレージに階層化するための要件,詳細情報>> 。
-
-
-endif::azure[]
-
-ifdef::gcp[]
-
 * Google Cloud の場合、プライベート Google アクセスのサブネットを構成し、サービス アカウントを設定する必要があります。<<コールドデータを Google Cloud Storage バケットに階層化するための要件,詳細情報>> 。
 
-
-endif::gcp[]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]階層化が有効になっているアグリゲートがあることを確認します
 [role="quick-margin-para"]
@@ -77,8 +61,6 @@ NetApp Consoleでは、ボリュームを作成、変更、または複製する
 
 特定の構成と機能を使用する場合、データ階層化を有効にすることができます。
 
-ifdef::aws[]
-
 
 
 [[support-in-aws]]
@@ -92,10 +74,6 @@ NOTE: スループット最適化 HDD (st1) を使用する場合は、オブジ
 
 * 非アクティブなデータは Amazon S3 バケットに階層化されます。他のプロバイダーへの階層化はサポートされていません。
 
-
-endif::aws[]
-
-ifdef::azure[]
 
 
 
@@ -112,10 +90,6 @@ ifdef::azure[]
 * 非アクティブなデータは Microsoft Azure Blob に階層化されます。他のプロバイダーへの階層化はサポートされていません。
 
 
-endif::azure[]
-
-ifdef::gcp[]
-
 
 
 [[support-in-google-cloud]]
@@ -125,8 +99,6 @@ ifdef::gcp[]
 * パフォーマンス レベルは、SSD 永続ディスク、バランス永続ディスク、標準永続ディスクのいずれかになります。
 * 非アクティブなデータは Google Cloud Storage に階層化されます。他のプロバイダーへの階層化はサポートされていません。
 
-
-endif::gcp[]
 
 
 
@@ -144,8 +116,6 @@ endif::gcp[]
 
 クラウド プロバイダーによっては、 Cloud Volumes ONTAP がコールド データをオブジェクト ストレージに階層化できるように、特定の接続とアクセス許可を設定する必要があります。
 
-ifdef::aws[]
-
 
 
 [[requirements-to-tier-cold-data-to-amazon-s3]]
@@ -156,10 +126,6 @@ Cloud Volumes ONTAPがAmazon S3に接続されていることを確認します�
 VPC エンドポイントを作成するときは、 Cloud Volumes ONTAPインスタンスに対応するリージョン、VPC、ルートテーブルを選択してください。また、セキュリティ グループを変更して、S3 エンドポイントへのトラフィックを有効にする送信 HTTPS ルールを追加する必要があります。そうしないと、 Cloud Volumes ONTAP はS3 サービスに接続できません。
 
 問題が発生した場合は、 https://aws.amazon.com/premiumsupport/knowledge-center/connect-s3-vpc-endpoint/["AWS サポート ナレッジセンター: ゲートウェイ VPC エンドポイントを使用して S3 バケットに接続できないのはなぜですか?"^] 。
-
-endif::aws[]
-
-ifdef::azure[]
 
 
 
@@ -174,10 +140,6 @@ ifdef::azure[]
 "Microsoft.Network/routeTables/join/action",
 ----
 カスタムロールには、デフォルトで権限が含まれています。 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["コンソール エージェントの Azure 権限を表示する"^]
-
-endif::azure[]
-
-ifdef::gcp[]
 
 
 
@@ -200,8 +162,6 @@ Cloud Volumes ONTAPシステムを作成するときに、このサービス ア
 link:task-setting-up-gcp-encryption.html["Cloud Volumes ONTAPで顧客管理の暗号化キーを使用する方法を学びます"] 。
 
 
-
-endif::gcp[]
 
 
 
@@ -240,9 +200,9 @@ image:screenshot_aggregate_tiering_enabled.png["階層化ステータスを含�
 
 
 .アグリゲート上で階層化を有効にする手順
-. ONTAP System Manager で、*ストレージ > 階層* をクリックします。
-. アグリゲートのアクション メニューをクリックし、*クラウド ティアの接続*を選択します。
-. アタッチするクラウド層を選択し、「*保存*」をクリックします。
+. ONTAP System Manager で、*ストレージ > 階層*を選択します。
+. アグリゲートのアクションメニューを選択し、*クラウドティアのアタッチ*を選択します。
+. 接続するクラウドティアを選択し、*保存*を選択します。
 
 
 .次の手順
@@ -263,10 +223,10 @@ Cloud Volumes ONTAP は、読み取り/書き込みボリューム上の非ア�
 | Task | アクション 
 
 
-| 新しいボリュームを作成 | *新しいボリュームの追加*をクリックします。 
+| 新しいボリュームを作成 | 「新しいボリュームを追加」を選択します。 
 
 
-| 既存のボリュームの変更 | 目的のボリューム タイルを選択し、*ボリュームの管理* をクリックしてボリュームの管理の右側のパネルにアクセスし、右側のパネルの下にある *詳細アクション* と *階層化ポリシーの変更* をクリックします。 
+| 既存のボリュームの変更 | 目的のボリュームタイルを選択し、*ボリュームの管理*を選択して右側の「ボリュームの管理」パネルにアクセスし、右側のパネルの下にある*高度な操作*と*階層化ポリシーの変更*を選択します。 
 |===
 . 階層化ポリシーを選択します。
 +
@@ -317,8 +277,8 @@ Cloud Volumes ONTAPを導入した後、30 日間アクセスされていない�
 サポートされているストレージクラスの詳細については、link:concept-data-tiering.html["データ階層化の概要"] 。
 
 .手順
-. Cloud Volumes ONTAPシステムで、メニュー アイコンをクリックし、*ストレージ クラス* または *Blob ストレージ階層化* をクリックします。
-. ストレージ クラスを選択し、[*保存*] をクリックします。
+. Cloud Volumes ONTAPシステムで、メニューアイコンを選択し、次に「ストレージクラス」または「Blobストレージ階層化」を選択します。
+. ストレージクラスを選択し、*保存*を選択します。
 
 
 
@@ -337,16 +297,16 @@ CAUTION: 十分なスペースがない場合、 Cloud Volumes ONTAP はデー�
 
 .手順
 . 左側のナビゲーション ペインから、*管理 > エージェント* に移動します。
-. Cloud Volumes ONTAP システムを管理するコンソールエージェントの image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"] アイコンをクリックします。
+. Cloud Volumes ONTAP システムを管理するコンソールエージェントの image:icon-action.png["追加操作のための3つの横長の点を示すアイコン"] アイコンを選択します。
 . * Cloud Volumes ONTAP設定*を選択します。
 +
 image::screenshot-settings-cloud-volumes-ontap.png[[設定]アイコンの下のCloud Volumes ONTAP設定オプションのスクリーンショット。]
 
-. *容量*の下で、*総容量しきい値 - データ階層化の空き領域比率*をクリックします。
+. 「容量」で、「集計容量しきい値 - データ階層化の空きスペース比率」を選択します。
 +
 image:screenshot-cvo-settings-page.png["Cloud Volumes ONTAPの容量設定の概要。"]
 
-. 要件に応じて空き領域の比率を変更し、「*保存*」をクリックします。
+. 必要に応じて空き容量比率を変更し、*保存*を選択します。
 
 
 

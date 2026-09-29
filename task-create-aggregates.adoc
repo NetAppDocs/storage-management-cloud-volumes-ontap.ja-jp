@@ -22,12 +22,10 @@ CAUTION: すべてのディスクとアグリゲートは、コンソールか�
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
 . *システム*ページで、アグリゲートを管理するCloud Volumes ONTAPシステムの名前をダブルクリックします。
-. 「集計」タブで、「*集計の追加*」をクリックし、集計の詳細を指定します。
+. 「Aggregates」タブで、「Add Aggregate」を選択し、アグリゲートの詳細を指定します。
 +
 [role="tabbed-block"]
 ====
-ifdef::aws[]
-
 .AWS
 --
 ** ディスクの種類とサイズを選択するように求められた場合は、link:task-planning-your-config.html["AWS でCloud Volumes ONTAP構成を計画する"] 。
@@ -41,26 +39,16 @@ link:concept-aws-elastic-volumes.html["エラスティックボリュームの�
 
 
 --
-endif::aws[]
-
-ifdef::azure[]
-
 .Azure
 --
 ディスクの種類とディスクサイズに関するヘルプについては、link:task-planning-your-config-azure.html["AzureでCloud Volumes ONTAPの構成を計画する"] 。
 
 --
-endif::azure[]
-
-ifdef::gcp[]
-
 .Google Cloud
 --
 ディスクの種類とディスクサイズに関するヘルプについては、link:task-planning-your-config-gcp.html["Google Cloud でCloud Volumes ONTAP構成を計画する"] 。
 
 --
-endif::gcp[]
-
 ====
-. *追加*をクリックし、*承認して購入*をクリックします。
+. 「追加」を選択し、次に「承認して購入」を選択します。
 

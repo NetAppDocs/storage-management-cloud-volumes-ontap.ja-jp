@@ -56,9 +56,9 @@ AWS でCloud Volumes ONTAPを起動する場合は、 NetApp Consoleで新しい
 
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
-. [[subscribe]]*システム*ページで、*システムの追加*をクリックし、指示に従います。
+. [[subscribe]]「システム」ページで「システムの追加」を選択し、プロンプトに従ってください。
 . *Amazon Web Services* と * Cloud Volumes ONTAP Single Node* を選択します。
-. *詳細作成*を選択します。デフォルトでは*クイック作成*モードが選択されているため、デフォルト値に関するメッセージが表示される場合があります。*続行*をクリックします。
+. *詳細作成*を選択してください。デフォルトで*クイック作成*モードが選択されているため、デフォルト値に関するメッセージが表示される場合があります。*続行*を選択してください。
 . プロンプトが表示されたら、 https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html["コンソールエージェントを作成する"^]。
 . *詳細と認証情報*: オプションで AWS 認証情報とサブスクリプションを変更し、システム名を入力し、必要に応じてタグを追加して、パスワードを入力します。
 +
@@ -79,11 +79,11 @@ AWS でCloud Volumes ONTAPを起動する場合は、 NetApp Consoleで新しい
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | このシステムをデプロイするアカウントに関連付けられているAWS認証情報を選択してください。このCloud Volumes ONTAPシステムで使用するAWS Marketplaceサブスクリプションを関連付けることもできます。「サブスクリプションの追加」をクリックして、選択した認証情報を新しいAWS Marketplaceサブスクリプションに関連付けます。サブスクリプションは、年間契約またはCloud Volumes ONTAPの時間単位の料金支払いに使用できます。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["NetApp ConsoleにAWS認証情報を追加する方法を学びます"^]。 
+| 資格情報の編集 | このシステムをデプロイするアカウントに関連付けられているAWS認証情報を選択してください。AWS Marketplace サブスクリプションを関連付けて、この Cloud Volumes ONTAP システムで使用することもできます。*サブスクリプションの追加*を選択すると、選択した認証情報が新しいAWS Marketplace サブスクリプションに関連付けられます。サブスクリプションは、年間契約またはCloud Volumes ONTAPを時間単位で支払うためのものです。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["NetApp ConsoleにAWS認証情報を追加する方法を学びます"^]。 
 |===
 +
 
-TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場合は、各ユーザーがサブスクライブする必要があります。最初のユーザーがサブスクライブすると、AWS マーケットプレイスは、以下の画像に示すように、後続のユーザーにすでにサブスクライブしていることを通知します。 AWS アカウントにサブスクリプションが設定されている場合は、各 IAM ユーザーが自分自身をそのサブスクリプションに関連付ける必要があります。以下のメッセージが表示された場合は、「*ここをクリック*」リンクをクリックしてコンソールの Web サイトに移動し、プロセスを完了してください。image:screenshot_aws_marketplace.gif["AWS アカウントにはすでにサブスクリプションがあるが、特定の IAM ユーザーにはない可能性がある場合の、Console for Cloud Volumes ONTAPのサブスクリプション ページを示すスクリーンショット。"]
+TIP: 複数のIAMユーザーが同じAWSアカウントで作業する場合、各ユーザーはそれぞれ登録する必要があります。最初のユーザーが登録すると、AWS Marketplaceは後続のユーザーに対し、既に登録済みであることを通知します。その様子は下の画像に示されています。AWSアカウントのサブスクリプションが有効になっている間は、各IAMユーザーは自身をそのサブスクリプションに関連付ける必要があります。下記のメッセージが表示された場合は、*ここをクリック*リンクを選択してコンソールWebサイトにアクセスし、手続きを完了してください。image:screenshot_aws_marketplace.gif["AWS アカウントにはすでにサブスクリプションがあるが、特定の IAM ユーザーにはない可能性がある場合の、Console for Cloud Volumes ONTAPのサブスクリプション ページを示すスクリーンショット。"]
 
 . *サービス*: サービスを有効のままにするか、 Cloud Volumes ONTAPで使用しない個々のサービスを無効にします。
 +
@@ -139,11 +139,11 @@ link:concept-security.html#encryption-of-data-at-rest["サポートされてい�
 ** link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"^] 。
 
 
-. * Cloud Volumes ONTAP構成* (年間 AWS マーケットプレイス契約のみ): デフォルトの構成を確認して [続行] をクリックするか、[構成の変更] をクリックして独自の構成を選択します。
+. *Cloud Volumes ONTAP Configuration*（AWS Marketplaceの年間契約のみ）：デフォルトの設定を確認し、*Continue*を選択するか、*Change Configuration*を選択して独自の設定を選択します。
 +
 デフォルト構成を維持する場合は、ボリュームを指定して、構成を確認して承認するだけです。
 
-. *事前構成済みパッケージ*：いずれかのパッケージを選択してCloud Volumes ONTAP をすばやく起動するか、*構成の変更*をクリックして独自の構成を選択します。
+. *事前設定済みパッケージ*：パッケージを1つ選択してCloud Volumes ONTAPをすばやく起動するか、*構成の変更*を選択して独自の構成を選択してください。
 +
 いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認して承認するだけです。
 
@@ -187,7 +187,7 @@ link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 
 .. WORM ストレージを有効にする場合は、保持期間を選択します。
 
 
-. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
+. *ボリュームの作成*：新しいボリュームの詳細を入力するか、*スキップ*を選択してください。
 +
 link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
 
@@ -257,9 +257,9 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 . *確認と承認*: 選択内容を確認して確定します。
 +
 .. 構成の詳細を確認します。
-.. *詳細情報* をクリックすると、サポートとコンソールが購入する AWS リソースの詳細を確認できます。
+.. 「詳細情報」を選択すると、サポートの詳細やコンソールが購入する AWS リソースについて確認できます。
 .. *理解しました...* チェックボックスを選択します。
-.. [Go] をクリックします。
+.. 「Go」を選択してください。
 
 
 
@@ -267,7 +267,7 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 .結果
 コンソールはCloud Volumes ONTAPインスタンスを起動します。  *監査*ページで進捗状況を追跡できます。
 
-Cloud Volumes ONTAPインスタンスの起動で問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「*環境の再作成*」をクリックすることもできます。
+Cloud Volumes ONTAP インスタンスの起動に問題が発生した場合は、エラーメッセージを確認してください。システムを選択して「環境の再作成」を選択することもできます。
 
 さらに詳しいヘルプについては、 https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAPサポート"^] 。
 
@@ -297,7 +297,7 @@ Cloud Volumes ONTAPシステムを作成するとすぐに、コンソールは�
 
 .手順
 . 左側のナビゲーション メニューから、*ストレージ > 管理* を選択します。
-. *システム*ページで*システムの追加*をクリックし、指示に従います。
+. 「システム」ページで「システムの追加」を選択し、画面の指示に従ってください。
 . *Amazon Web Services* と * Cloud Volumes ONTAP HA* を選択します。
 +
 いくつかの AWS ローカルゾーンが利用可能です。
@@ -327,11 +327,11 @@ AWS Local Zones を使用する前に、Local Zones を有効にし、AWS アカ
 | ユーザ名とパスワード | これらは、Cloud Volumes ONTAPクラスター管理者アカウントの資格情報です。これらの資格情報を使用して、 ONTAP System Manager またはONTAP CLI を介してCloud Volumes ONTAPに接続できます。デフォルトの _admin_ ユーザー名をそのまま使用するか、カスタム ユーザー名に変更します。 
 
 
-| 資格情報の編集 | この Cloud Volumes ONTAP システムで使用する AWS 認証情報とマーケットプレイスサブスクリプションを選択してください。*サブスクリプションの追加* をクリックして、選択した認証情報を新しい AWS マーケットプレイスサブスクリプションに関連付けます。サブスクリプションは、年間契約または Cloud Volumes ONTAP を時間単位で支払うためのものです。ライセンスを NetApp から直接購入した場合（Bring-Your-Own License または BYOL）、AWS サブスクリプションは必要ありません。NetApp は BYOL ライセンスの購入、延長、および更新を制限しました。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["コンソールにAWS認証情報を追加する方法を学びます"^]。 
+| 資格情報の編集 | この Cloud Volumes ONTAP システムで使用する AWS 認証情報とマーケットプレイスサブスクリプションを選択してください。*サブスクリプションの追加*を選択すると、選択した認証情報が新しい AWS マーケットプレイスサブスクリプションに関連付けられます。サブスクリプションは、年間契約または Cloud Volumes ONTAP の時間単位の料金支払いに使用できます。ライセンスを NetApp から直接購入した場合（Bring-Your-Own License または BYOL）、AWS サブスクリプションは必要ありません。NetApp は、BYOL ライセンスの購入、延長、および更新を制限しました。詳細については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#restricted-availability-of-byol-licensing-for-cloud-volumes-ontap["Cloud Volumes ONTAPの BYOL ライセンスの利用制限"^]を参照してください。https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html["コンソールにAWS認証情報を追加する方法を学びます"^]。 
 |===
 +
 
-TIP: 複数の IAM ユーザーが同じ AWS アカウントで作業する場合は、各ユーザーがサブスクライブする必要があります。最初のユーザーがサブスクライブすると、AWS マーケットプレイスは、以下の画像に示すように、後続のユーザーにすでにサブスクライブしていることを通知します。 AWS アカウントにサブスクリプションが設定されている場合は、各 IAM ユーザーが自分自身をそのサブスクリプションに関連付ける必要があります。以下のメッセージが表示された場合は、「*ここをクリック*」リンクをクリックしてコンソールの Web サイトに移動し、プロセスを完了してください。image:screenshot_aws_marketplace.gif["AWS アカウントにはすでにサブスクリプションがあるが、特定の IAM ユーザーにはない可能性がある場合の、Console for Cloud Volumes ONTAPのサブスクリプション ページを示すスクリーンショット。"]
+TIP: 複数のIAMユーザーが同じAWSアカウントで作業する場合、各ユーザーはそれぞれ登録する必要があります。最初のユーザーが登録すると、AWS Marketplaceは後続のユーザーに対し、既に登録済みであることを通知します。詳細は以下の画像をご覧ください。AWSアカウントのサブスクリプションが有効になっている間は、各IAMユーザーは自身をそのサブスクリプションに関連付ける必要があります。下記のメッセージが表示された場合は、*click here* リンクを選択してコンソールWebサイトにアクセスし、手続きを完了してください。image:screenshot_aws_marketplace.gif["AWS アカウントにはすでにサブスクリプションがあるが、特定の IAM ユーザーにはない可能性がある場合の、Console for Cloud Volumes ONTAPのサブスクリプション ページを示すスクリーンショット。"]
 
 . *サービス*: サービスを有効のままにするか、このCloud Volumes ONTAPシステムで使用しない個々のサービスを無効にします。
 +
@@ -397,11 +397,11 @@ link:concept-security.html#encryption-of-data-at-rest["サポートされてい�
 ** link:task-set-up-licensing-aws.html["ライセンスの設定方法を学ぶ"^] 。
 
 
-. * Cloud Volumes ONTAP構成* (年間 AWS Marketplace 契約のみ): デフォルトの構成を確認して [*続行*] をクリックするか、[*構成の変更*] をクリックして独自の構成を選択します。
+. *Cloud Volumes ONTAP Configuration*（AWS Marketplace の年間契約のみ）：デフォルトの設定を確認し、*Continue* を選択するか、*Change Configuration* を選択して独自の設定を選択します。
 +
 デフォルト構成を維持する場合は、ボリュームを指定して、構成を確認して承認するだけです。
 
-. *事前構成済みパッケージ*（時間単位またはBYOLのみ）：いずれかのパッケージを選択してCloud Volumes ONTAPをすばやく起動するか、*構成の変更*をクリックして独自の構成を選択します。
+. *事前設定済みパッケージ*（時間単位またはBYOLのみ）：パッケージを1つ選択してCloud Volumes ONTAPをすぐに起動するか、*構成の変更*を選択して独自の構成を選択してください。
 +
 いずれかのパッケージを選択した場合は、ボリュームを指定して構成を確認して承認するだけです。
 
@@ -445,7 +445,7 @@ link:concept-worm.html["WORMストレージについて詳しくはこちら"^] 
 .. WORM ストレージを有効にする場合は、保持期間を選択します。
 
 
-. *ボリュームの作成*: 新しいボリュームの詳細を入力するか、[スキップ] をクリックします。
+. *ボリュームの作成*：新しいボリュームの詳細を入力するか、*スキップ*を選択してください。
 +
 link:concept-client-protocols.html["サポートされているクライアントプロトコルとバージョンについて学ぶ"^] 。
 
@@ -515,9 +515,9 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 . *確認と承認*: 選択内容を確認して確定します。
 +
 .. 構成の詳細を確認します。
-.. *詳細情報* をクリックすると、サポートとコンソールが購入する AWS リソースの詳細を確認できます。
+.. 「詳細情報」を選択すると、サポートの詳細やコンソールが購入する AWS リソースについて確認できます。
 .. *理解しました...* チェックボックスを選択します。
-.. [Go] をクリックします。
+.. 「Go」を選択してください。
 
 
 
@@ -525,7 +525,7 @@ image:screenshot_cot_vol.gif["スクリーンショット: Cloud Volumes ONTAP�
 .結果
 コンソールはCloud Volumes ONTAP HA ペアを起動します。  *監査*ページで進捗状況を追跡できます。
 
-HA ペアの起動時に問題が発生した場合は、失敗メッセージを確認してください。システムを選択して、「環境の再作成」をクリックすることもできます。
+HAペアの起動時に問題が発生した場合は、エラーメッセージを確認してください。システムを選択して「環境の再作成」を選択することもできます。
 
 .終了後の操作
 * CIFS共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、ユーザが共有にアクセスしてファイルを作成できることを確認してください。

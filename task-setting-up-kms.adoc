@@ -53,7 +53,7 @@ Amazon Web Services (AWS) の暗号化を Cloud Volumes ONTAP で使用する場
 --
 . AWS Console で、*KMS > Customer managed keys* に移動し、CMEK キーを選択します。
 . *キーユーザー*セクションで、*追加*を選択します。
-. コンソールエージェントインスタンスのロールを選択します（例： `occm-role`）。*追加*をクリックします。
+. コンソールエージェントインスタンスロールを選択します（例： `occm-role`）。*追加*を選択します。
 . 変更を保存します。
 
 

@@ -20,8 +20,6 @@ image:diagram_data_tiering.png["これは、ホット データが EBS ストレ
 
 データ階層化はFabricPoolテクノロジーによって実現されます。 Cloud Volumes ONTAP は、追加のライセンスなしで、すべてのCloud Volumes ONTAPクラスターのデータ階層化を提供します。データ階層化を有効にすると、オブジェクト ストレージに階層化されたデータに対して料金が発生します。オブジェクト ストレージのコストの詳細については、クラウド プロバイダーのドキュメントを参照してください。
 
-ifdef::aws[]
-
 
 
 [[data-tiering-in-aws]]
@@ -64,10 +62,6 @@ NetApp Consoleは、システムごとに 1 つの S3 バケットを作成し�
 
 --
 
-
-endif::aws[]
-
-ifdef::azure[]
 
 
 
@@ -112,10 +106,6 @@ Cloud Volumes ONTAPシステムを追加するときにストレージ層を選�
 --
 
 
-endif::azure[]
-
-ifdef::gcp[]
-
 
 
 [[data-tiering-in-google-cloud]]
@@ -147,8 +137,6 @@ Google Cloud でデータ階層化を有効にすると、Cloud Volumes ONTAP �
 
 --
 
-
-endif::gcp[]
 
 
 
