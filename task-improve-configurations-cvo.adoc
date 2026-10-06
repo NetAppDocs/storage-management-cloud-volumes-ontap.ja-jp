@@ -1,0 +1,144 @@
+---
+sidebar: sidebar 
+permalink: task-improve-configurations-cvo.html 
+keywords: improve configurations, optimize configurations, implement best practices, well-architected file system, Cloud Volumes ONTAP, Microsoft Azure 
+summary: ウェルアーキテクチャダッシュボードは、Cloud Volumes ONTAP の構成をスキャンし、運用上の卓越性を達成するためのインサイトと推奨事項を提供します。 
+---
+= Workload Factoryを使用してAzureのCloud Volumes ONTAP構成を改善する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp ConsoleからNetApp Workload Factoryを使用して、Azure上のCloud Volumes ONTAPシステムにベストプラクティスを実装します。適切に設計されたシステムの状態を簡単に確認し、構成上の問題点を把握し、問題を修正することで、信頼性、セキュリティ、効率性、パフォーマンス、コストの面で最適化されていないシステムのアーキテクチャを改善できます。
+
+link:concept-configuration-analysis-cvo.html["構成分析とWell-Architectedステータスについて説明します。"]
+
+
+
+[[about-this-task]]
+== タスク概要
+
+Workload Factoryは、Microsoft Azure上のCloud Volumes ONTAPシステム構成を毎日分析します。
+
+ストレージ構成の要件は様々であるため、ご自身のストレージ環境に当てはまらない特定の構成の分析は省略しても構いません。
+
+
+
+[[before-you-begin]]
+== 開始する前に
+
+* 適切に設計された状態と構成上の問題に対する推奨事項を表示するには、Azureにlink:concept-azure-mktplace-direct.html["デプロイ済み"]Cloud Volumes ONTAPシステムが必要です。
+* Cloud Volumes ONTAPに関連付けられたエージェントが、以下のエンドポイントにアクセスできることを確認してください：
++
+** \https://api.workloads.netapp.com
+** \https://ws.workloads.bluexp.netapp.com
+
+
+
+
+
+
+[[fix-a-configuration-issue]]
+== 設定の問題を修正する
+
+Cloud Volumes ONTAPシステムまたは選択したボリュームの構成の問題を修正します。修正する構成を1つ以上選択できます。
+
+修復作業は、インスタンスのダウンタイムやサービスの中断を引き起こす可能性があります。設定上の問題を修正する前に、各推奨事項を注意深く確認してください。
+
+.手順
+. link:https://console.netapp.com/home["NetApp Console"^]にログインします。
+. NetApp Consoleメニューから、*ワークロード* > *Well-architected* > *Cloud Volumes ONTAP for Azure* を選択します。
+. Well-architectedダッシュボードから、任意の構成に対して*表示と修正*を選択します。推奨事項をよく確認してください。
++
+この推奨事項では、ベストプラクティスと最適化されていない設定における潜在的な問題点について説明しています。
+
+. リソースを選択し、*Fix* を選択してください。
++
+一部の修正は特定の構成にのみ適用可能であり、複数のリソースに適用できない場合もあります。例えば、単一のボリュームの構成は修正できても、複数のボリュームの構成は修正できない場合があります。
+
+. インスタンスのダウンタイムやサービスの中断など、この修正による影響を把握するために、アクション項目を確認してください。
+. Workload Factory に推奨される変更を適用する場合は、「修正」を選択してください。
+
+
+.結果
+Workload Factory は問題解決のためのプロセスを開始します。
+
+
+
+[[dismiss-a-configuration-analysis]]
+== 構成分析を却下する
+
+Cloud Volumes ONTAP システムまたは選択したボリュームの構成分析を停止します。必要に応じて分析を再開できます。
+
+[role="tabbed-block"]
+====
+.システムの構成分析を却下する
+--
+.手順
+. link:https://console.netapp.com/home["NetApp Console"^]にログインします。
+. NetApp Consoleメニューから、*ワークロード* > *Well-architected* > *Cloud Volumes ONTAP for Azure* を選択します。
+. ［構成］で、環境に適用されない構成を特定し、［*無視*］を選択します。
+. 「設定を閉じる」ダイアログで「*閉じる*」を選択すると、設定分析が停止します。
+
+
+--
+.ボリュームの構成分析を破棄する
+--
+.手順
+. link:https://console.netapp.com/home["NetApp Console"^]にログインします。
+. NetApp Consoleメニューから、*ワークロード* > *Well-architected* > *Cloud Volumes ONTAP for Azure* を選択します。
+. 「構成」で、リソースに対して無視する構成を特定し、*表示と修正*を選択します。
+. 設定ページで、設定分析から除外するリソースを選択します。
++
+** 1つのリソースの場合：アクションメニューを選択し、*ボリュームを閉じる*を選択します。
+** 複数のリソースの場合：リソースを選択し、「一括操作」の横にある「閉じる」を選択します。
+
+
+. 構成の分析を停止するには、*Dismiss* を選択してください。
+. 「ボリュームの非表示」ダイアログで、「非表示」を選択して確定します。
+
+
+--
+====
+.結果
+Workload Factoryは、選択された構成の構成分析を停止します。
+
+
+
+[[reactivate-a-dismissed-configuration-analysis]]
+== 却下された構成分析を再アクティブ化する
+
+却下された構成分析は、Cloud Volumes ONTAP システムでいつでも再アクティブ化できます。再アクティブ化する構成を1つ以上選択できます。
+
+[role="tabbed-block"]
+====
+.システムの構成分析を再開する
+--
+.手順
+. link:https://console.netapp.com/home["NetApp Console"^]にログインします。
+. NetApp Consoleメニューから、*ワークロード* > *Well-architected* > *Cloud Volumes ONTAP for Azure* を選択します。
+. *無視された構成* を選択します。
+. 再アクティブ化する構成を特定し、*再アクティブ化*を選択してください。
+
+
+--
+.リソースの構成分析を再アクティブ化する
+--
+.手順
+. link:https://console.netapp.com/home["NetApp Console"^]にログインします。
+. NetApp Consoleメニューから、*ワークロード* > *Well-architected* > *Cloud Volumes ONTAP for Azure* を選択します。
+. *無視された構成* を選択します。
+. 設定ページで、再アクティブ化するリソースを選択します。
++
+** 1つのリソースの場合：アクションメニューを選択し、*再アクティブ化*を選択します。
+** 複数のリソースの場合：リソースを選択し、「一括操作」の横にある「再アクティブ化」を選択します。
+
+
+
+
+--
+====
+.結果
+Workload Factoryは構成分析を再開し、毎日新しい分析を実行します。

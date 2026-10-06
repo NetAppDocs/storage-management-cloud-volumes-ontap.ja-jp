@@ -24,24 +24,24 @@ AWS Marketplace または NetApp Console を使用して、AWS で Cloud Volumes
 
 
  a| 
-NetApp Consoleのロールを確認する
- a| 
-コンソールエージェントを作成して Cloud Volumes ONTAP の他のデプロイメントタスクを実行する前に、必要な IAM ロールと権限が設定されていることを確認する必要があります。
- a| 
-コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Cloud Volumes ONTAP の NetApp Console におけるアクセスロール"^] https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Cloud Volumes ONTAP のロールベースアクセスを設定する"^]
- a| 
-役割が正しく設定されていることを確認してください。
-
-
-
- a| 
 コンソールエージェントを作成する
  a| 
 コンソールエージェントがまだない場合は、Cloud Volumes ONTAP をデプロイする前に作成してください。インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのエージェント上で実行されている NetApp Console にアクセスしてください。
  a| 
 コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html["AWSでコンソールエージェントを作成する"^]
  a| 
-インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html["インターネット接続なしでコンソールエージェントを手動でインストールする"^]
+インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/task-install-private-mode.html["プライベートモードで NetApp Console エージェントをデプロイする"^]
+
+
+
+ a| 
+NetApp Consoleのロールを確認する
+ a| 
+コンソールエージェントを作成したら、必要なIAMロールとCloud Volumes ONTAPのロールおよび権限が適切に設定されていることを確認する必要があります。
+ a| 
+コンソール設定ガイドを参照してください：https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Cloud Volumes ONTAP の NetApp Console におけるアクセスロール"^] https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Cloud Volumes ONTAP のロールベースアクセスを設定する"^]
+ a| 
+プライベートモードでは、コンソールエージェントに必要な役割と権限が正しく設定されている必要があります。しかし、Cloud Volumes ONTAPロールはプライベートモードのデプロイメントには適用されません。コンソール設定ガイドを参照してください： https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html["NetApp Console アクセスロール"^]
 
 
 

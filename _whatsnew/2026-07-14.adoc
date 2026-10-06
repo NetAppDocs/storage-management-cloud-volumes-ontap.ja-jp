@@ -64,7 +64,9 @@ https://docs.cloud.google.com/compute/docs/general-purpose-machines#c3_series["G
 [[introducing-access-roles-for-cloud-volumes-ontap]]
 === Cloud Volumes ONTAP のアクセスロールの概要
 
-NetAppは、Cloud Volumes ONTAPにアイデンティティおよびアクセス管理（IAM）ロールを導入し、セキュリティの向上とコンプライアンス遵守の容易化のためのロールベースアクセス制御（RBAC）を実現します。ユーザーは、Cloud Volumes ONTAPの操作に既存の認証情報を使用して、引き続きNetApp Consoleにログインできます。ただし、認証はIDフェデレーションを介して行われるようになり、Console管理者がこれらの機能をより細かく制御できるようになりました。すべてのユーザーは、Cloud Volumes ONTAPで操作を実行するために、以下のいずれかのロールを持っている必要があります。ロールがない場合、ユーザーはCloud Volumes ONTAPインスタンスを表示またはアクセスすることができません。
+NetAppは、Cloud Volumes ONTAP向けのIDおよびアクセス管理（IAM）ロールを導入し、セキュリティの向上とコンプライアンスの簡素化を実現するロールベースアクセス制御（RBAC）を可能にします。ユーザーは、Cloud Volumes ONTAPの操作に既存のクレデンシャルを使用して、引き続きNetApp Consoleにログインできます。ただし、認証はIDフェデレーションを介してルーティングされるようになり、Console管理者はこれらの機能をよりきめ細かく制御できるようになりました。Cloud Volumes ONTAPのロールを有効にする前に、Consoleエージェントでバージョン4.9.0以降が実行されている必要があります。
+
+すべてのユーザーは、Cloud Volumes ONTAPで操作を実行するために、以下のいずれかのロールを持っている必要があります。ロールがない場合、ユーザーはCloud Volumes ONTAPインスタンスを表示またはアクセスすることができません。
 
 * *Cloud Volumes ONTAP ビューアー*：Cloud Volumes ONTAP の画面とタブへの読み取り専用アクセスを許可します。このロールでは、一部の画面と操作ボタンが無効になっています。
 * *Cloud Volumes ONTAP operator*：ボリュームの追加、ストレージの管理、レプリケーションの設定など、日常的な管理タスクを可能にします。
@@ -76,11 +78,11 @@ Console管理者は、*管理 > ID* からCloud Volumes ONTAPユーザーにロ�
 Cloud Volumes ONTAPは、各ユーザーの権限のローカルキャッシュを使用してRBACを適用します。このキャッシュは1時間ごとに自動的に更新されます。ユーザーに新しいロールが割り当てられた場合、または既存のロールが変更された場合、その変更が有効になるまでに最大1時間かかることがあります。その後、そのロールによって許可されているすべてのワークフローが有効になります。
 
 
-NOTE: Console エージェントが初めてデプロイされるとき、または既存の Console エージェントが Console 4.9.0 以降にアップグレードされると、1 回限りのシード処理によって、組織内の既存ユーザー全員に Cloud Volumes ONTAP のロールが自動的に割り当てられます。この処理には最大 30 分かかる場合があります。処理が完了すると、Console は既存のユーザーに適切なロールを割り当てます。
+NOTE: Consoleエージェントを初めてデプロイしたとき、または既存のConsoleエージェントをConsole 4.9.0以降にアップグレードしたときは、1回のシード処理によって、組織内の既存のすべてのユーザーにCloud Volumes ONTAPのロールが自動的に割り当てられます。この処理が完了するまでに最大30分かかる場合があります。完了すると、Consoleは既存のユーザーに適切なロールを割り当てます。エージェントが実行されていない限り、シード処理は実行されません。
 
-Cloud Volumes ONTAPのロールは、Amazon Web Service (AWS)、Microsoft Azure (Azure)、およびGoogle Cloud環境に適用されます。
+Cloud Volumes ONTAPのロールは、Amazon Web Service（AWS）、Microsoft Azure（Azure）、およびGoogle Cloud環境に適用されます。これらのロールは、プライベートおよび制限付きの導入モードには適用されません。
 
 .関連リンク
-* https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html["NetApp Console アクセスロール"^]
 * https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Cloud Volumes ONTAP の NetApp Console におけるアクセスロール"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Cloud Volumes ONTAP のロールベースアクセスを NetApp Console で設定する"^]
 

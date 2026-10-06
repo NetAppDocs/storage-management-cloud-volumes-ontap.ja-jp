@@ -42,6 +42,6 @@ NetApp Console は、Microsoft Azure で稼働する Cloud Volumes ONTAP シス�
 
 
 .関連リンク
-* https://docs.netapp.com/us-en/console-well-architected/cvo/configuration-analysis-cvo.html["Cloud Volumes ONTAP の構成分析"^]
-* https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["適切に設計されたCloud Volumes ONTAPシステム構成を実装する"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-configuration-analysis-cvo.html["Cloud Volumes ONTAP の構成分析"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-improve-configurations-cvo.html["Workload Factoryを使用してAzureのCloud Volumes ONTAP構成を改善する"^]
 

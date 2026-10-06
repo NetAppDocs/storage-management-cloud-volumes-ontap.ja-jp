@@ -5621,16 +5621,12 @@
   <block id="2ac8bb0efb00600c2a41354a94948174" category="inline-link">Google Cloud の拡張オプションを使用して Cloud Volumes ONTAP を導入する</block>
   <block id="6c9068df44f8a14533034d80a58ea324" category="list-text"><block ref="6c9068df44f8a14533034d80a58ea324" category="inline-link-rx"></block></block>
   <block id="12d92330947695a8724da477e7db5baa" category="section-title">Cloud Volumes ONTAP のアクセスロールの概要</block>
-  <block id="ae05e9d1fb64b3f3eb3c2b718a64b7c2" category="paragraph">NetAppは、Cloud Volumes ONTAPにアイデンティティおよびアクセス管理（IAM）ロールを導入し、セキュリティの向上とコンプライアンス遵守の容易化のためのロールベースアクセス制御（RBAC）を実現します。ユーザーは、Cloud Volumes ONTAPの操作に既存の認証情報を使用して、引き続きNetApp Consoleにログインできます。ただし、認証はIDフェデレーションを介して行われるようになり、Console管理者がこれらの機能をより細かく制御できるようになりました。すべてのユーザーは、Cloud Volumes ONTAPで操作を実行するために、以下のいずれかのロールを持っている必要があります。ロールがない場合、ユーザーはCloud Volumes ONTAPインスタンスを表示またはアクセスすることができません。</block>
   <block id="ac12122f7d4bba19a9bdf9634b8cc548" category="list-text">*Cloud Volumes ONTAP ビューアー*：Cloud Volumes ONTAP の画面とタブへの読み取り専用アクセスを許可します。このロールでは、一部の画面と操作ボタンが無効になっています。</block>
   <block id="147d529d31a33dd1ffe2aed02030d216" category="list-text">*Cloud Volumes ONTAP operator*：ボリュームの追加、ストレージの管理、レプリケーションの設定など、日常的な管理タスクを可能にします。</block>
   <block id="ccb8cf6de876397f5af5fd2969199a4c" category="list-text">*Cloud Volumes ONTAP admin*：すべての Cloud Volumes ONTAP 操作へのフルアクセスを提供します。</block>
   <block id="9118c1f5d2016b980f9d65d7ab66a79b" category="paragraph">Console管理者は、*管理 &gt; ID* からCloud Volumes ONTAPユーザーにロールを割り当てます。ロールの権限はユーザーの組織に基づいており、その組織内のすべてのCloud Volumes ONTAPシステムに適用されます。</block>
   <block id="7e04f92c9f24c942f442e9d0b64d902d" category="paragraph">Cloud Volumes ONTAPは、各ユーザーの権限のローカルキャッシュを使用してRBACを適用します。このキャッシュは1時間ごとに自動的に更新されます。ユーザーに新しいロールが割り当てられた場合、または既存のロールが変更された場合、その変更が有効になるまでに最大1時間かかることがあります。その後、そのロールによって許可されているすべてのワークフローが有効になります。</block>
-  <block id="cacd0669e0e9c09f881a4cca5340e098" category="admonition">Console エージェントが初めてデプロイされるとき、または既存の Console エージェントが Console 4.9.0 以降にアップグレードされると、1 回限りのシード処理によって、組織内の既存ユーザー全員に Cloud Volumes ONTAP のロールが自動的に割り当てられます。この処理には最大 30 分かかる場合があります。処理が完了すると、Console は既存のユーザーに適切なロールを割り当てます。</block>
-  <block id="2c3736b0de2c7956e8b876c728c32036" category="paragraph">Cloud Volumes ONTAPのロールは、Amazon Web Service (AWS)、Microsoft Azure (Azure)、およびGoogle Cloud環境に適用されます。</block>
   <block id="f50849d7a51a2af22661c16f98df65ff" category="inline-link">NetApp Console アクセスロール</block>
-  <block id="ccca36d58a98cb8fda0efa22f507ff91" category="list-text"><block ref="ccca36d58a98cb8fda0efa22f507ff91" category="inline-link-rx"></block></block>
   <block id="38231d7ab948e14954505c434dbc3406" category="inline-link">Cloud Volumes ONTAP の NetApp Console におけるアクセスロール</block>
   <block id="ad25b993a54c0c353ed1957e95a74d22" category="list-text"><block ref="ad25b993a54c0c353ed1957e95a74d22" category="inline-link-rx"></block></block>
   <block id="09ea0908fbfc4cde85bf416e35dc55c8" category="inline-link">NetAppサポート</block>
@@ -5680,7 +5676,6 @@
   <block id="3e21d0873324d070ffd9f5112b99ce4d" category="list-text">*運用上の卓越性*：ビジネス価値を最大化するためにアーキテクチャを最適化します。</block>
   <block id="886863730bd12cb56f89bdf0ee2221be" category="list-text">*コスト最適化*：コストを削減・最適化することで、ビジネス価値を高めます。</block>
   <block id="109cdb23e41e8df9e7f4319a28a800c9" category="inline-link">Cloud Volumes ONTAP の構成分析</block>
-  <block id="30e75dda73d152784f441d20f2d17069" category="list-text"><block ref="30e75dda73d152784f441d20f2d17069" category="inline-link-rx"></block></block>
   <block id="8381df48e9be426c5a0c10881c1deb6b" category="paragraph">Amazon Web Services (AWS) の暗号化を Cloud Volumes ONTAP で使用する場合は、AWS Key Management Service (KMS) を設定する必要があります。</block>
   <block id="d4a0c1bae3ce52b89988e4025c15728f" category="paragraph">カスタマーマスターキー（CMK）は、AWSまたは顧客自身が管理できます。NetApp Console および Cloud Volumes ONTAP と同じ AWS アカウント、または別の AWS アカウント（共有アカウント）に配置できます。AWS では、キー管理は AWS Console を通じてのみ可能です。詳細については、<block ref="489bfcd850e0fa4bfd74a278f7f67b66" category="inline-link-rx"></block>を参照してください。</block>
   <block id="6268b495b409110e383079b8b2ae93f9" category="list-text">NetApp Console エージェントの AWS の ID およびアクセス管理（IAM）ロールに関する情報を確認してください。</block>
@@ -5724,8 +5719,6 @@
   <block id="51c9eb8f2bdf1ba7a4e0dbc5ca8299bd" category="inline-link">NetApp ConsoleのAWS認証情報とマーケットプレイスサブスクリプションを管理する</block>
   <block id="fd6c8706b70c72f62dc54104dbcb57c2" category="list-text"><block ref="fd6c8706b70c72f62dc54104dbcb57c2" category="inline-link-rx"></block></block>
   <block id="ac750267020c9b3c0e32de825d9b57fc" category="section-title">2026年7月20日</block>
-  <block id="12959707639320f789d4bb4fbba777f1" category="inline-link">適切に設計されたCloud Volumes ONTAPシステム構成を実装する</block>
-  <block id="e8227a8388a93064d0bbb4e13f50ff6e" category="list-text"><block ref="e8227a8388a93064d0bbb4e13f50ff6e" category="inline-link-rx"></block></block>
   <block id="1fa61fc2f5b77b2d0fa94849b6af3dbb" category="paragraph">容量ベースのライセンスでは、各Cloud Volumes ONTAPシステムはオブジェクト ストレージへの階層化をサポートします。階層化された総容量は、クラウド プロバイダのバケット制限まで拡張できます。ライセンスには容量制限はありませんが、階層化を構成および管理する際に最適なパフォーマンス、信頼性、コスト効率を確保するために<block ref="c6ca22161b60218024eaf899637cc82e" category="inline-link-rx"></block>に従う必要があります。</block>
   <block id="a085284f5224dbc53fb00943e5efc79a" category="doc">Azure におけるチリ中央地域のサポート</block>
   <block id="b8f489089455a848257f3e898316d7b6" category="paragraph">Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのChile Central（chilecentral）リージョンにデプロイできるようになりました。以下のデプロイメントタイプがサポートされています。</block>
@@ -6714,8 +6707,6 @@
   <block id="3f2d6026e86cfc3a3e872a2f3cd8f989" category="paragraph">NetApp Console のウェルアーキテクチャダッシュボードで、Cloud Volumes ONTAP システムの構成に関する推奨事項を修正できるようになりました。</block>
   <block id="e4eac83bd4922d84fdd323f4afe1066b" category="paragraph">また、適切なアーキテクチャ分析から1つまたは複数の構成を除外することもできます。これにより、ご自身の環境に適用されない特定の構成を無視することができます。</block>
   <block id="d45ddb9ce602eba8b90aee11b1ee25cf" category="paragraph">後で却下した設定を含めたい場合は、ウェルアーキテクテッドダッシュボードで再度有効化できます。これにより、設定が分析に復元され、推奨事項や修正策を取得できるようになります。</block>
-  <block id="37c159a88b5bcfaeea126c1581ba5f53" category="list-text"><block ref="37c159a88b5bcfaeea126c1581ba5f53" category="inline-link-macro-rx"></block></block>
-  <block id="6cb16892d109192c0cd1c62fbd1330a2" category="summary">NetApp Console のウェルアーキテクチャダッシュボードは、ストレージシステムの構成を定期的に分析し、Cloud Volumes ONTAP システムに構成上の問題がないかどうかを判断します。問題が検出されると、ダッシュボードには問題の内容が表示され、ストレージシステムが最高のパフォーマンス、対費用効果の高い効率、およびベストプラクティスへの準拠を達成するために何を変更する必要があるかが説明されます。</block>
   <block id="1c11d2e59190fe6a4e37f1e68abafcb4" category="paragraph">主な機能は次のとおりです：</block>
   <block id="ebc3bf5de769bc75ad8e36a90a0ed695" category="list-text">日次構成分析</block>
   <block id="d0367f15d2fd772d543d692442807fa1" category="list-text">NetApp ONTAPストレージシステムおよびパートナーストレージプロバイダーに対する自動ベストプラクティス検証</block>
@@ -6723,36 +6714,27 @@
   <block id="16fcd85dc9469370b62b4b46381f8e2a" category="list-text">洞察から行動へ</block>
   <block id="3f6f8b4e204fd3aa39cac35661de164d" category="section-title">分析要件</block>
   <block id="f064aed6dd86a2b762ecf9bcf528b941" category="section-title">Cloud Volumes ONTAP システムのベストプラクティスと推奨事項</block>
-  <block id="df022fa81268ad87abe9b34e29e60ea4" category="paragraph">適切に設計されたダッシュボードは、ストレージ構成を評価し、ONTAP 構成のベストプラクティスおよび Azure Well-Architected Framework への準拠に関する詳細なビューを提供します。この評価では、改善点や修正点も推奨しています。</block>
   <block id="ffd9fc00ab43b8283346c6266e00d684" category="paragraph">適切に設計された分析では、構成をフレームワークの次の柱に分類します：_信頼性_、_セキュリティ_、_運用効率_、_コスト最適化_、および_パフォーマンス効率_。</block>
   <block id="820b8f74ad843d1574106ec4cadfc07e" category="section-title">信頼性</block>
   <block id="f52eaa2b01823c61afb346f01ff37aec" category="paragraph">信頼性とは、障害発生時であっても、ワークロードが意図された機能を正確かつ一貫して実行することを保証するものです。</block>
   <block id="ca512a483bb26b1b253abc6b2cc463bd" category="list-text">*Snapshotポリシー*</block>
   <block id="ce36269ae95cd0ab7422d78bb843b720" category="paragraph">効率的なバックアップと迅速なリストアのために、ローカルSnapshotをスケジュール設定してください。Snapshotは、ボリュームのポイントインタイムイメージを瞬時に作成します。</block>
   <block id="e5cdf4f9c0dda596826a91093d4f69f4" category="list-text">*SSDキャパシティのヘッドルーム*</block>
-  <block id="e1571d44d672c7a35fe7952a28f414b7" category="paragraph">SSDストレージ層の容量は、使用率が80%を超えないようにしてください。これは、キャパシティプールストレージ層へのデータの読み書きに影響を与え、システムのスループット容量にも影響を与える可能性があります。容量が不足すると、データボリュームは読み取り専用になります。新しいデータを書き込もうとするサービスも失敗します。</block>
   <block id="7d7265a6929882bb433fc74e8bee871a" category="paragraph">セキュリティは、リスク評価と軽減戦略を通じて、データ、システム、資産を保護することを重視します。</block>
   <block id="d08117d717007eeb4d6273695d9a7725" category="list-text">*AIによる自律型ランサムウェア対策（ARP/AI）*</block>
   <block id="167fce45da752e074139dbfd85f1d96d" category="paragraph">NetApp Autonomous Ransomware Protection with AI（ARP/AI）は、サイバーレジリエンスを強化し、ランサムウェアの脅威からボリュームを保護します。すべてのボリュームでARP/AIを有効にすることをお勧めします。</block>
   <block id="17d2a91a4f3c01de4c2f05b2242e49d3" category="section-title">運用の卓越性</block>
   <block id="84c2d06d655e822b38b222df9c0aa965" category="paragraph">運用上の卓越性とは、最高のアーキテクチャとビジネス価値を提供することに重点を置くものです。</block>
   <block id="bca05dfe73df2536775bb543bb367fb6" category="list-text">*ボリューム容量のヘッドルーム*</block>
-  <block id="70a83d0e2246f9bf751ee82d9d86782a" category="paragraph">ボリューム容量の使用率が80%を超えないようにすることをお勧めします。これは、アプリケーションへのデータの読み書きに影響を与える可能性があります。ボリューム容量の増加は、手動またはボリュームの自動拡張機能を使用して自動的に行うことができます。</block>
   <block id="cb24245fc7fbb951739f0e037e8ed58f" category="list-text">*FlexCache 書き込みモード*</block>
-  <block id="fce6ac16b523a1ae826c8b02fe97af9a" category="paragraph">最適なパフォーマンスを得るために、ワークロードに最適な FlexCache 書き込みモードをお勧めします。ライトアラウンドモードは、小さなファイルを扱う読み込み中心のワークロードにおいて優れたパフォーマンスを発揮し、ライトバックモードは、大きなファイルを扱う書き込み中心のワークロードにおいて優れたパフォーマンスを発揮します。</block>
   <block id="199b5a17e840b5e8165065942a5aba7f" category="list-text">*FlexCacheレプリカサイズ*</block>
-  <block id="7cba8fc6d012368d0bb1868a9da3aebb" category="paragraph">キャッシュボリュームの最適なサイズを維持し、頻繁にアクセスされる（ホット）データにキャッシュを集中させることで効率を最大限に高めるため、キャッシュボリュームのボリュームの自動拡張とスクラビングを有効にすることをお勧めします。</block>
   <block id="7f14df7d96b168d75780c47437a63021" category="list-text">*ONTAPバージョン準拠*</block>
   <block id="3bbb5a399ebdfb8d2d4a8a5c7bafb3fb" category="paragraph">完全な互換性、サポート、および新機能へのアクセスを実現するには、最新バージョンの ONTAP にアップグレードしてください。</block>
   <block id="a39ae09f8be4327fc176cfeb76a0e366" category="section-title">コスト最適化</block>
   <block id="394c926099d3d2cf7e0d7477f17faf38" category="paragraph">コストの最適化により、コストを低く抑えながらビジネスの価値を最大限に高めることができます。</block>
   <block id="8611faa768b220ecb3795c6fda54fdaa" category="list-text">*SSD容量のオーバープロビジョニング*</block>
-  <block id="aafa79fe1c7925cadee2f2931c5a90a6" category="paragraph">過剰にプロビジョニングされたSSD容量階層は、不要なコストを増加させます。SSDティアの容量を削減しながら、20%の空き容量バッファを維持することをお勧めします。縮小操作には数時間から数日かかり、その間は他のファイルシステム操作はサポートされません。</block>
   <block id="01fd10a8e7ac161e328da4eaf6292046" category="list-text">*コールドデータ階層化*</block>
-  <block id="038dede88376955fc6f5dc23c8915a6f" category="paragraph">コールドデータ階層化を有効にすると、コールドデータをSSDストレージ階層から低コストのストレージに移動できます。すべてのボリュームに対して階層化ポリシーを適用することをお勧めします。Azure Blob Storage は、非アクティブなデータの容量層として機能します。</block>
   <block id="01e12de62fa77fda2815719aed8ff892" category="paragraph-title">次の手順</block>
-  <block id="8a4fd5d300e707a9269f6215138076a2" category="paragraph"><block ref="8a4fd5d300e707a9269f6215138076a2" category="inline-link-macro-rx"></block></block>
-  <block id="e99c9a581ad7f3ee001ba4518d21895d" category="list-text"><block ref="e99c9a581ad7f3ee001ba4518d21895d" category="inline-link-rx"></block></block>
   <block id="1ec0779bb7e51cbc27ab486c62ef2d11" category="list-text">r5.12xlargeインスタンスタイプには、サポートに関する既知の制限があります。ノードがパニックによって予期せず再起動した場合、システムは問題のトラブルシューティングや根本原因の特定に使用されるコアファイルを収集できない可能性があります。お客様は、リスクおよび限定的なサポート条件を受け入れ、この状況が発生した場合のすべてのサポート責任を負うものとします。この制限は、新規にデプロイされたHAペアと、9.8からアップグレードされたHAペアに影響します。この制限は、新たに導入されたシングルノードシステムには影響しません。</block>
   <block id="6c826d16193263c31494836004943717" category="summary">Cloud Volumes ONTAP を ONTAP S3 マルチプロトコル アクセスで設定し、Azure AI サービスが Microsoft OneLake を通じて Cloud Volumes ONTAP システムに保存されているデータを読み取れるようにします。</block>
   <block id="14fa8bd582301929e8385f26fb4ec09f" category="section-title">ONTAP S3 サーバーのルート CA 証明書を作成する</block>
@@ -7003,15 +6985,10 @@
   <block id="3fad075b9721b22aae0e7e5689caf7ba" category="sidebar">ONTAP System Manager からの管理</block>
   <block id="4375417a8b8f335f3352e1f741532269" category="sidebar">ONTAP CLIを使用した管理</block>
   <block id="932294ad5d34f659aa544ec559cad4ad" category="sidebar">Cloud Volumes ONTAP と Keystone</block>
-  <block id="887238a149638ebe371e1475e7cf53de" category="sidebar">Cloud Volumes ONTAP とウェルアーキテクテッドダッシュボード</block>
   <block id="9ffdb95250e26c7a6b468126ac7c75b0" category="section-title">仕組み</block>
   <block id="874fbc8635967fd5300d05269c50cea0" category="paragraph">Workload Factoryは、サポートされているクラウドストレージシステム上で実行されているワークロードを毎日分析します。この分析により、適切に設計されたステータス、インサイト、および推奨事項が提供されます。</block>
-  <block id="27b3ab8a4b26cd2ee311ee2ac5911ba3" category="paragraph">日々の分析が完了すると、デプロイメントのWell-architectedダッシュボードに、構成が「最適化済み」または「最適化されていない」として表示されます。設定に関する問題はカテゴリ別に整理されており、設定に関する問題とその推奨事項の一覧も掲載されています。設定に関する問題については、推奨事項をご確認ください。一部の問題はWorkload Factoryによって自動的に解決されますが、その他の問題は手動での対応が必要です。この場合、Workload Factoryは、推奨される変更を実装するのに役立つ詳細な手順を提供します。</block>
   <block id="8215457eb88ef1fb110b79579b908e3d" category="paragraph">ご自身の環境に適用されない構成の分析を無視することができます。これにより、不要なアラートや不正確な最適化結果を回避できます。</block>
-  <block id="8817b0c6f0795c52cab62044416eee8a" category="inline-link-macro">カスタムルールについて詳しくはこちらをご覧ください</block>
-  <block id="821af7226458ea25572e88e8ab2026e4" category="paragraph">また、組織の標準とNetAppのベストプラクティスに照らして環境を検証するために、平易な言葉でカスタムルールを作成することもできます。ドライランでルールをテストし、各環境で実行するようにスケジュールを設定します。<block ref="ce039b478eb432b675a03c04866f31ab" category="inline-link-macro-rx"></block>。</block>
   <block id="ee25e0b6cd574166f206b4c5b7f02df3" category="section-title">重要な理由</block>
-  <block id="c2bf4ab5c816a6a7be03384125f4a5d6" category="paragraph">Workload Factoryは、継続的な評価と推奨事項、および修復策を組み合わせることで、大規模なストレージ、データベース、およびVMware環境にベストプラクティスを適用します。NetApp Consoleで適用された自動修正により、人的ミスを削減し、統一された管理を確保し、ワークロードインフラストラクチャ全体でパフォーマンスと信頼性を維持します。</block>
   <block id="8f96dd86c3b476f91f5e8deb2f840342" category="sidebar">Cloud Volumes ONTAPおよびその他のNetApp製品</block>
   <block id="632cbf73d084e28580f4f6dfbd84efcc" category="sidebar">Cloud Volumes ONTAP と Flash Cache</block>
   <block id="0814f25d2fb19660c0f5a17f5faecd5b" category="doc">プライベートモードでCloud Volumes ONTAPを導入する</block>
@@ -7197,7 +7174,6 @@
   <block id="c465a7bd98f96ab6b7e15dbed5471998" category="list-text">リモートデータレプリケーション</block>
   <block id="b03b92c4dfcafd9226ecc9026f960e01" category="paragraph">リモートレプリケーションによってCloud Volumes ONTAPのデータを保護します。リモートデータレプリケーションは、データの同期コピーを異なる場所に保持することで、災害復旧機能を提供し、システム障害や災害が発生した場合でも事業継続性を確保します。</block>
   <block id="5e6b403f3ce4af919738fd94fe35d2d0" category="section-title">2026年9月2日</block>
-  <block id="ee3e9d951c79faa2be7ec2e79fdaf3dd" category="paragraph">Workload Factory はストレージシステム構成を定期的に分析し、Cloud Volumes ONTAP システムに構成上の問題がないかどうかを判断します。問題が検出されると、ウェルアーキテクテッドダッシュボードには、問題の内容と、ストレージシステムが最高のパフォーマンス、コスト効率、およびベストプラクティスへの準拠を達成するために必要な変更に関する推奨事項が表示されます。</block>
   <block id="e7f639747125ba0ea26f45843967eecd" category="inline-image-macro">追加操作のための3つの横長の点を示すアイコン</block>
   <block id="c6f3be6f5fd2a7a00e040c02adef2a44" category="list-text"><block ref="21d1ea15f76c8e0170375dc9a7026afb" category="inline-image-macro-rx" type="image"></block> メニューで使用可能なオプションからアグリゲートを管理します。</block>
   <block id="45ee631d373eb4731eace15e86035ee3" category="paragraph">プロキシサーバーの設定方法については、<block ref="ee748f633e32a464408350c15b5a4a4d" category="inline-link-rx"></block>を参照してください。</block>
@@ -7587,7 +7563,6 @@
   <block id="215b4e349fc2537280c6e13bf20c54d0" category="paragraph">有効なノードベースライセンスと従量課金制サブスクリプション。</block>
   <block id="14479c0c41f20ac2c95d0fb2bfd1f372" category="paragraph">コンソールを使用すると、ライセンス変換ツールを通じて、ノードベースのライセンスを容量ベースのライセンスにシームレスに変換できます。ノードベースライセンスのEOAに関する情報については、<block ref="7f9a8649ca2d86db235ba56502d14f92" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="77ed1894c70b52c4bd276c4386e398b5" category="inline-link-macro">ノードベースのライセンスを容量ベースのライセンスに変換します</block>
-  <block id="f6baf1b492e955e0279a9f14cb4d1a91" category="paragraph">##マーケットプレイスのサブスクリプションまたはノードベースのライセンスを使用したプライベートデプロイメントがある場合は、Console のライセンス変換ツールを使用して<block ref="db4ec6a978acbab7786496b22aa52409" category="inline-link-macro-rx"></block>できます。##</block>
   <block id="6a5ecd454fa726d7a1f82f34b7971296" category="paragraph">WORM機能は、マーケットプレイスのサブスクリプションおよびBYOL（Bring-Your-Own License）で追加料金なしでご利用いただけます。現在のライセンスにWORMを追加するには、NetAppの営業担当者にお問い合わせください。</block>
   <block id="fa8cd47e4ec2a3db59105b2bede68a28" category="list-text">NetApp Volume Encryption（Bring-Your-Own License（BYOL）または登録済みの従量課金制（PAYGO）システムのみ）</block>
   <block id="10e6e33e8d7a64d70c731d40ea252ed8" category="paragraph">以下の注記では、下記の表に記載されている数値について詳しく説明しています。</block>
@@ -7606,10 +7581,8 @@
   <block id="aeb0575b4b66e933e9c5b96f7153308c" category="paragraph"><block ref="8fc12ad6381abbb87712055c7f5e50f1" prefix=" " category="inline-code"></block>パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、<block ref="35e5e66305f1922881221779e510e2d8" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="d672c069be18026b86395f27a7724ba5" category="cell">プライベートモード展開に関する注意事項</block>
   <block id="4fbfded360b8289b829cf1c33cae0e0f" category="paragraph">NetApp Consoleのロールを確認する</block>
-  <block id="154665f702970d938a3cc50836f1cab4" category="paragraph">コンソールエージェントを作成して Cloud Volumes ONTAP の他のデプロイメントタスクを実行する前に、必要な IAM ロールと権限が設定されていることを確認する必要があります。</block>
   <block id="769bcb1b917e9456afc908e3923e871d" category="inline-link">Cloud Volumes ONTAP のロールベースアクセスを設定する</block>
   <block id="22e1589a303aa3fc57392ca5216e9d16" category="paragraph">コンソール設定ガイドを参照してください：<block ref="ad25b993a54c0c353ed1957e95a74d22" category="inline-link-rx"></block> <block ref="2205e26c5be2613487e20c49521c249f" category="inline-link-rx"></block></block>
-  <block id="2c0cbb16169e28bbe43da96de58484d2" category="paragraph">役割が正しく設定されていることを確認してください。</block>
   <block id="04979a9e4bb2872b4340d1087f214291" category="paragraph">プライベートモードでの展開についても、同様の計画上の考慮事項が必要です。</block>
   <block id="9b32539664be63d47ad3930f9813d1ed" category="paragraph">プライベートモードでの展開にも同様の手順が適用されます。</block>
   <block id="dec2094122d4c1e1fd30e4e8f39fc23a" category="paragraph">プライベートモードは高度なデプロイメントのみをサポートします。デプロイメントを開始する前に、NetApp から Cloud Volumes ONTAP ライセンスを購入していることを確認してください。プライベートモードのデプロイメントは BYOL ライセンスを使用します。Marketplace サブスクリプションは、Cloud Volumes ONTAP の使用料金の請求にはサポートされていません。ライセンスファイルを NetApp から入手し、デプロイメント時にアップロードしてください。参照：</block>
@@ -7621,7 +7594,6 @@
   <block id="e2c28fe1b1e987a06f636ae7c3482bae" category="paragraph">BYOL（Bring-Your-Own License）は、Cloud Volumes ONTAP における課金モデルの一つで、マーケットプレイスのサブスクリプションではなく、NetApp から直接購入したライセンスを通じて容量消費に対して料金を支払う方式です。Cloud Volumes ONTAP システムに必要な容量を備えた有効なライセンスが付与されていることを確認するために、NetApp Console で BYOL ライセンスを管理してください。詳細については、<block ref="d9d28f09a38154804862cc0742f76db1" category="inline-link-rx"></block>を参照してください。</block>
   <block id="847e45a642e11ad647bc1b931aa93b6f" category="paragraph">NetApp は、新規導入にはすべて容量ベースのライセンスを推奨します。旧世代のノードベースモデルを使用した既存のライセンスをお持ちの場合は、容量ベースのライセンスに移行する必要があります。手順については、<block ref="6c9714235e53a411b3b31b5a9d910769" category="inline-link-rx"></block>を参照してください。</block>
   <block id="6eb61ba1a2f61db4d9f72f3888890463" category="admonition">クラウド プロバイダのマーケットプレイスからの PAYGO （従量課金制）サブスクリプションは、プライベートモード展開では利用できません。プライベートモードでは、NetApp が BYOL ライセンスを直接提供します。ノードベースのライセンスは、既存のプライベートモード展開でのみ利用可能であり、新規展開はできません。NetApp は、2025年6月25日以降、プライベートモードでのノードベースライセンスの購入、延長、および更新を制限しています。既存のノードベースライセンスをお持ちの場合は、容量ベースライセンスに変換する必要があります。</block>
-  <block id="993fca3d74b4e0c45a0b63335fff4fc2" category="paragraph">新規のプライベートモード展開には、容量ベースのライセンスを使用してください。参照<block ref="a830c5764652e2ca74bb3dce260e01c7" category="inline-link-rx"></block>。</block>
   <block id="63a4063cbdde53629f056f26faa6a46b" category="section-title">PAYGOサブスクリプションの管理</block>
   <block id="27d6a6ca8e88ba1cb467019b29f60d17" category="paragraph">Licenses and subscriptions メニューでは、各 PAYGO Cloud Volumes ONTAP システムの詳細（シリアル番号および PAYGO サブスクリプションタイプを含む）を表示できます。クラウド プロバイダのマーケットプレイスからの PAYGO サブスクリプションは、容量ベースのライセンスのみに対応しています。</block>
   <block id="13cd5e1a4f18ae48c4acaf913e719713" category="list-text">左側のナビゲーション ペインから、*管理 &gt; Licenses and subscriptions* を選択します。</block>
@@ -7854,7 +7826,6 @@
   <block id="2c75f8b945372b634e9e18b99c136ff5" category="list-text">「セキュリティグループ」を選択します。</block>
   <block id="11ce8fc378ad1e71fa11777c66fc27b8" category="list-text">「ルールを追加」を選択します。</block>
   <block id="575a791f9a30787a33d3ffa1e153d74f" category="list-text">変更を適用するには、「ルールを保存」を選択してください。</block>
-  <block id="e077119f4ea7fb417ccec23198b24ffa" category="list-text">AWSの場合、Amazon Simple Storage Service（Amazon S3）へのVPCエンドポイントが必要です。<block ref="8bf18368a4d50e7d264c6ce0821cc35b" category="inline-xref-macro-rx"></block>。</block>
   <block id="94b9c9690f23092831b71a91d85ed9e4" category="list-text">ONTAP System Manager で、*ストレージ &gt; 階層*を選択します。</block>
   <block id="e8eaa508caa22b6a16b153ffc33a3d68" category="list-text">アグリゲートのアクションメニューを選択し、*クラウドティアのアタッチ*を選択します。</block>
   <block id="991945168db3b31dcbd5a4d700e55ce7" category="list-text">接続するクラウドティアを選択し、*保存*を選択します。</block>
@@ -8012,4 +7983,84 @@
   <block id="0c06b5982fa51b01bda9bbbf8f86e47a" category="sidebar">NetApp Console REST API の概念</block>
   <block id="532a9bd10ba3f29a7e5525254f60da9a" category="sidebar">APIワークフロープロセスについて</block>
   <block id="86c38aa977344df13fe2cdfd45f82392" category="sidebar">AWS、Azure、Google Cloud の Cloud Volumes ONTAP API 呼び出しのリスト</block>
+  <block id="4ffb16f35f5e9aee9dee7b4d07e72ec5" category="paragraph">NetAppは、Cloud Volumes ONTAP向けのIDおよびアクセス管理（IAM）ロールを導入し、セキュリティの向上とコンプライアンスの簡素化を実現するロールベースアクセス制御（RBAC）を可能にします。ユーザーは、Cloud Volumes ONTAPの操作に既存のクレデンシャルを使用して、引き続きNetApp Consoleにログインできます。ただし、認証はIDフェデレーションを介してルーティングされるようになり、Console管理者はこれらの機能をよりきめ細かく制御できるようになりました。Cloud Volumes ONTAPのロールを有効にする前に、Consoleエージェントでバージョン4.9.0以降が実行されている必要があります。</block>
+  <block id="fc587a597771f80d7a6ba4e7b2d90d37" category="paragraph">すべてのユーザーは、Cloud Volumes ONTAPで操作を実行するために、以下のいずれかのロールを持っている必要があります。ロールがない場合、ユーザーはCloud Volumes ONTAPインスタンスを表示またはアクセスすることができません。</block>
+  <block id="cb5ee3ecd31c69fc46d3da114a16ed83" category="admonition">Consoleエージェントを初めてデプロイしたとき、または既存のConsoleエージェントをConsole 4.9.0以降にアップグレードしたときは、1回のシード処理によって、組織内の既存のすべてのユーザーにCloud Volumes ONTAPのロールが自動的に割り当てられます。この処理が完了するまでに最大30分かかる場合があります。完了すると、Consoleは既存のユーザーに適切なロールを割り当てます。エージェントが実行されていない限り、シード処理は実行されません。</block>
+  <block id="58589b55d1f4e063bc5f101e0aaacde5" category="paragraph">Cloud Volumes ONTAPのロールは、Amazon Web Service（AWS）、Microsoft Azure（Azure）、およびGoogle Cloud環境に適用されます。これらのロールは、プライベートおよび制限付きの導入モードには適用されません。</block>
+  <block id="07ee22b21ec2682df904eeff73509ddc" category="inline-link">Cloud Volumes ONTAP のロールベースアクセスを NetApp Console で設定する</block>
+  <block id="c1fb6aa9d061f2b296f150910042d1d2" category="list-text"><block ref="c1fb6aa9d061f2b296f150910042d1d2" category="inline-link-rx"></block></block>
+  <block id="675e5c95b67dc978d87e55c19d5da7e8" category="list-text"><block ref="675e5c95b67dc978d87e55c19d5da7e8" category="inline-link-rx"></block></block>
+  <block id="b27aa3c0e44a53b3c16b5a2e40086669" category="inline-link">Workload Factoryを使用してAzureのCloud Volumes ONTAP構成を改善する</block>
+  <block id="f436c99a1822c57781e57709a1694485" category="list-text"><block ref="f436c99a1822c57781e57709a1694485" category="inline-link-rx"></block></block>
+  <block id="21b943021728acb873fd80e1597c6721" category="list-text"><block ref="21b943021728acb873fd80e1597c6721" category="inline-link-macro-rx"></block></block>
+  <block id="6f949577a89acb540c2feac1c32cdede" category="summary">NetApp Consoleから、Workload Factoryはストレージシステムの構成を定期的に分析し、Cloud Volumes ONTAPシステムに構成上の問題がないかどうかを判断します。</block>
+  <block id="f476707cc34d6443fb3395b42de7046f" category="doc">AzureのCloud Volumes ONTAPシステムの構成分析</block>
+  <block id="84075a62c8a1ffbfc237b2f7ca0e825d" category="paragraph">Workload Factoryは、NetApp Consoleからストレージシステムの構成を定期的に分析し、Azure上のCloud Volumes ONTAPシステムに構成上の問題がないかどうかを判断します。問題が検出されると、Well-Architectedダッシュボードに問題の内容と、ストレージシステムが最高のパフォーマンス、コスト効率、およびベストプラクティスへの準拠を達成するために必要な変更に関する推奨事項が表示されます。</block>
+  <block id="fc5c62a62be404e612778d7bfb0b2449" category="inline-link-macro">Workload Factoryの詳細をご覧ください。</block>
+  <block id="30dd86e65cb917e7834fe29250cfffe5" category="paragraph"><block ref="30dd86e65cb917e7834fe29250cfffe5" category="inline-link-macro-rx"></block></block>
+  <block id="081bb4ab1716ea656b2b52715598f415" category="paragraph">日々の分析が完了すると、デプロイメントのWell-architectedダッシュボードに、構成が「最適化済み」または「最適化されていない」として表示されます。設定に関する問題はカテゴリ別に整理されており、設定に関する問題とその推奨事項の一覧も掲載されています。設定に関する問題については、推奨事項をご確認ください。Workload Factoryは一部の問題を自動的に修正できますが、その他の問題には手動での対応が必要です。この場合、Workload Factoryは、推奨される変更を実装するための詳細な手順を提供します。</block>
+  <block id="8be08850265c9930c26a8e5b28183a2e" category="paragraph">また、組織の標準とNetAppのベストプラクティスに照らして環境を検証するために、平易な言葉でカスタムルールを作成することもできます。ドライランでルールをテストし、各環境で実行するようにスケジュールを設定します。</block>
+  <block id="8feb6c8d13e912657481adbe0cafebb3" category="paragraph">Workload Factory は、継続的な評価と推奨事項、および修復策を組み合わせることで、大規模なストレージ、データベース、および VMware 環境にベストプラクティスを適用します。自動化された修正機能は、人的ミスを減らし、均一な管理を確保し、ワークロードインフラストラクチャ全体でパフォーマンスと信頼性を維持します。</block>
+  <block id="a455642b6d08e55358a5b7b715b2a022" category="paragraph">Workload Factoryはストレージ構成を評価し、ONTAP構成のベストプラクティスやAzure Well-Architected Frameworkへの準拠に関する詳細なビューを提供します。この評価では、改善点や修正点も推奨します。</block>
+  <block id="fcee73fda93b51f2062d8a7a3b3a7c9f" category="paragraph">アプリケーションの読み取り / 書き込みやスループットに影響が及ぶのを防ぐため、SSDストレージ階層の使用率は80%未満に維持してください。容量は手動または自動で増やすことができます。</block>
+  <block id="47bbd8baef0cacd39277e4da47b13e41" category="paragraph">アプリケーションの読み取り / 書き込みやスループットに影響が及ぶのを防ぐため、ボリュームの使用率は80%未満に維持してください。容量は手動で、またはボリュームの自動拡張を使用して増やすことができます。</block>
+  <block id="7a1c697dfc80a0af16ac8385d1fc8e04" category="paragraph">最適なパフォーマンスを得るには、ワークロードに最適なFlexCache書き込みモードを選択してください。ライトアラウンドモードは、小さなファイルを扱う読み込み中心のワークロードにおいて優れたパフォーマンスを発揮し、ライトバックモードは、大きなファイルを扱う書き込み中心のワークロードにおいて優れたパフォーマンスを発揮します。</block>
+  <block id="48962e2bd8d287020b93803ab33e2b37" category="paragraph">キャッシュボリュームの自動サイズ変更とスクラビングを有効にして、最適なサイズを維持し、頻繁にアクセスされる（ホット）データにキャッシュを集中させることで、最高の効率を実現します。</block>
+  <block id="bed459e6df93ff6f9fe5d1a77eb803e3" category="paragraph">過剰なSSD容量は、不必要なコスト増につながります。SSDの容量を減らしつつ、20%の空き容量バッファを維持します。この操作には数時間から数日かかる場合があり、その間は他のファイルシステム操作はサポートされません。</block>
+  <block id="fe74e3d6069d6e3b0abc5a608352fbcb" category="paragraph">コールドデータ階層化を有効にして、コールドデータをSSDストレージ階層から低コストのストレージに移動します。すべてのボリュームに階層化ポリシーを適用します。</block>
+  <block id="51eb8c5bc84dae0daf3cfe28900bc13b" category="paragraph"><block ref="51eb8c5bc84dae0daf3cfe28900bc13b" category="inline-link-macro-rx"></block></block>
+  <block id="5d501ad8198f79f39de48560c5722d1e" category="paragraph">ノードベースのライセンスを使用したマーケットプレイスのサブスクリプションまたはプライベートデプロイメントをお持ちの場合は、コンソールのライセンス変換ツールを使用して<block ref="db4ec6a978acbab7786496b22aa52409" category="inline-link-macro-rx"></block>ことができます。</block>
+  <block id="fb0147398e4c8a5b077a1394aed4389e" category="inline-link">プライベートモードで NetApp Console エージェントをデプロイする</block>
+  <block id="d7758adbfebba00b7b4101d670263bc5" category="paragraph">インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのコンソールエージェント上で動作している NetApp Console ユーザーインターフェースにアクセスしてください。コンソール設定ガイドを参照してください：<block ref="c773f3709d9679eedc95217358ef5683" category="inline-link-rx"></block></block>
+  <block id="0b8c04c10b3278013001602c5c74edf9" category="paragraph">コンソールエージェントを作成したら、必要なIAMロールとCloud Volumes ONTAPのロールおよび権限が適切に設定されていることを確認する必要があります。</block>
+  <block id="d1338dafa7fd0fe58848d12cfd231e3a" category="paragraph">プライベートモードでは、コンソールエージェントに必要な役割と権限が正しく設定されている必要があります。しかし、Cloud Volumes ONTAPロールはプライベートモードのデプロイメントには適用されません。コンソール設定ガイドを参照してください：<block ref="649a12b1226d0452fe3b0c061e0f668b" category="inline-link-rx"></block></block>
+  <block id="2b4d9723a34936112e4a4945c03eafb0" category="summary">ウェルアーキテクチャダッシュボードは、Cloud Volumes ONTAP の構成をスキャンし、運用上の卓越性を達成するためのインサイトと推奨事項を提供します。</block>
+  <block id="1362bc6d891ce46b20bd9f14b5d20bd8" category="paragraph">NetApp ConsoleからNetApp Workload Factoryを使用して、Azure上のCloud Volumes ONTAPシステムにベストプラクティスを実装します。適切に設計されたシステムの状態を簡単に確認し、構成上の問題点を把握し、問題を修正することで、信頼性、セキュリティ、効率性、パフォーマンス、コストの面で最適化されていないシステムのアーキテクチャを改善できます。</block>
+  <block id="2481fd47e889a8c5be960ceeee3fc039" category="inline-link-macro">構成分析とWell-Architectedステータスについて説明します。</block>
+  <block id="bb0ead911621e5df4a13bafd73abb288" category="paragraph"><block ref="bb0ead911621e5df4a13bafd73abb288" category="inline-link-macro-rx"></block></block>
+  <block id="59f30b51d90b672b7f39da83bc3e409c" category="paragraph">Workload Factoryは、Microsoft Azure上のCloud Volumes ONTAPシステム構成を毎日分析します。</block>
+  <block id="432cde80af7aede16dd04f981eecdffc" category="paragraph">ストレージ構成の要件は様々であるため、ご自身のストレージ環境に当てはまらない特定の構成の分析は省略しても構いません。</block>
+  <block id="4ceaf19fb3d0a70e329fcd3777bb05ea" category="inline-link-macro">デプロイ済み</block>
+  <block id="fff36a3e5977f0339bc636e4a98482da" category="list-text">適切に設計された状態と構成上の問題に対する推奨事項を表示するには、Azureに<block ref="645fa5b039844afebaf146683ddeb134" category="inline-link-macro-rx"></block>Cloud Volumes ONTAPシステムが必要です。</block>
+  <block id="ea6bb2a380bcfe53fc0389ef76c5e079" category="list-text">Cloud Volumes ONTAPに関連付けられたエージェントが、以下のエンドポイントにアクセスできることを確認してください：</block>
+  <block id="74bdd3d51d7fef35f3c1e1829b2c63fe" category="section-title">設定の問題を修正する</block>
+  <block id="f1d08eb73549875db80c43cd9a925fa8" category="paragraph">Cloud Volumes ONTAPシステムまたは選択したボリュームの構成の問題を修正します。修正する構成を1つ以上選択できます。</block>
+  <block id="fa86b77bd202fbee06c4800f9441c22d" category="paragraph">修復作業は、インスタンスのダウンタイムやサービスの中断を引き起こす可能性があります。設定上の問題を修正する前に、各推奨事項を注意深く確認してください。</block>
+  <block id="5838891146d1517c2bdea92fd1f98c7f" category="list-text"><block ref="7416259fdf1662634baa26751ef5cd92" category="inline-link-macro-rx"></block>にログインします。</block>
+  <block id="674cdd9d0643c21337fb29007e8823da" category="list-text">NetApp Consoleメニューから、*ワークロード* &gt; *Well-architected* &gt; *Cloud Volumes ONTAP for Azure* を選択します。</block>
+  <block id="7ca53d4270a5ef830e9b23a161121575" category="list-text">Well-architectedダッシュボードから、任意の構成に対して*表示と修正*を選択します。推奨事項をよく確認してください。</block>
+  <block id="c9e425055996f71ecfc858708d926276" category="paragraph">この推奨事項では、ベストプラクティスと最適化されていない設定における潜在的な問題点について説明しています。</block>
+  <block id="a4ae5a230015c0a679cee86f84a28962" category="list-text">リソースを選択し、*Fix* を選択してください。</block>
+  <block id="2af3c9fde17ed17e2cb74daff4214448" category="paragraph">一部の修正は特定の構成にのみ適用可能であり、複数のリソースに適用できない場合もあります。例えば、単一のボリュームの構成は修正できても、複数のボリュームの構成は修正できない場合があります。</block>
+  <block id="5d1f387838383b2d368f6e7f1c840316" category="list-text">インスタンスのダウンタイムやサービスの中断など、この修正による影響を把握するために、アクション項目を確認してください。</block>
+  <block id="53274680f8c8a77a8f6eea3b3540d8e8" category="list-text">Workload Factory に推奨される変更を適用する場合は、「修正」を選択してください。</block>
+  <block id="726bf0c95b7d224357eed255c4a10e8b" category="paragraph">Workload Factory は問題解決のためのプロセスを開始します。</block>
+  <block id="a46fab6bb1626887eac54858dc05cb71" category="section-title">構成分析を却下する</block>
+  <block id="4a98f536eaad8a4f8fba5780c2425562" category="paragraph">Cloud Volumes ONTAP システムまたは選択したボリュームの構成分析を停止します。必要に応じて分析を再開できます。</block>
+  <block id="b4bb104bc7f6b013b24aa5c7a44aa055" category="open-title">システムの構成分析を却下する</block>
+  <block id="7e12ec579b2b712008a0313c32f73260" category="list-text">［構成］で、環境に適用されない構成を特定し、［*無視*］を選択します。</block>
+  <block id="36ed461a33f462df70ba0e617165352a" category="list-text">「設定を閉じる」ダイアログで「*閉じる*」を選択すると、設定分析が停止します。</block>
+  <block id="894ee870661e494e23b4326cec5b3c29" category="open-title">ボリュームの構成分析を破棄する</block>
+  <block id="0b75d0f51d0af9418adc1dfa9e70aaef" category="list-text">「構成」で、リソースに対して無視する構成を特定し、*表示と修正*を選択します。</block>
+  <block id="c221226095e354a5e5a331d8d2b4b96c" category="list-text">設定ページで、設定分析から除外するリソースを選択します。</block>
+  <block id="4ddd20f2e74d8c101dd2fb7ca2d68381" category="list-text">1つのリソースの場合：アクションメニューを選択し、*ボリュームを閉じる*を選択します。</block>
+  <block id="eb1f9234defa9a86f32519be3fcb787a" category="list-text">複数のリソースの場合：リソースを選択し、「一括操作」の横にある「閉じる」を選択します。</block>
+  <block id="7efbc096eb8818df22ad0ea26cc99905" category="list-text">構成の分析を停止するには、*Dismiss* を選択してください。</block>
+  <block id="2773330e4a665ad4a0b2217458b38f4d" category="list-text">「ボリュームの非表示」ダイアログで、「非表示」を選択して確定します。</block>
+  <block id="035c78581554c14599153884930c42fa" category="paragraph">Workload Factoryは、選択された構成の構成分析を停止します。</block>
+  <block id="61ab3b6f044b76185565a9f1d6db2113" category="section-title">却下された構成分析を再アクティブ化する</block>
+  <block id="1ba6be935ab946465d05505a4c53e7a7" category="paragraph">却下された構成分析は、Cloud Volumes ONTAP システムでいつでも再アクティブ化できます。再アクティブ化する構成を1つ以上選択できます。</block>
+  <block id="77239733a61971463cfe9a0499111a99" category="open-title">システムの構成分析を再開する</block>
+  <block id="e1b530152da44e105ca4a8d377616f64" category="list-text">*無視された構成* を選択します。</block>
+  <block id="270bcb2a3b0d4dcdf87bf4e7c1c99a97" category="list-text">再アクティブ化する構成を特定し、*再アクティブ化*を選択してください。</block>
+  <block id="ecb092b253afce33e8f8f745bc02e5da" category="open-title">リソースの構成分析を再アクティブ化する</block>
+  <block id="6f8513c04e28c27f7f5f28a792579726" category="list-text">設定ページで、再アクティブ化するリソースを選択します。</block>
+  <block id="c8722f7d59ae6b72c8f75298ee9eac38" category="list-text">1つのリソースの場合：アクションメニューを選択し、*再アクティブ化*を選択します。</block>
+  <block id="a38e01e3ec63bd595f916620c9db95f2" category="list-text">複数のリソースの場合：リソースを選択し、「一括操作」の横にある「再アクティブ化」を選択します。</block>
+  <block id="90bf65e5861f1213fc5134e7f7138cc3" category="paragraph">Workload Factoryは構成分析を再開し、毎日新しい分析を実行します。</block>
+  <block id="c04205f36d58d2d1ec62c2899d062abf" category="paragraph">新規のプライベートモード展開には、容量ベースのライセンスを使用してください。参照<block ref="e18a894e162de115535720d8609168d7" category="inline-link-rx"></block>。</block>
+  <block id="ef0a2b24c4d241810a5cc26a0a481a06" category="sidebar">AzureおよびWorkload FactoryでのCloud Volumes ONTAP</block>
+  <block id="180f505a7fc07d3f76f768c6fcc4a74c" category="sidebar">Workload Factory を使用した構成分析と改善</block>
+  <block id="7f8dc6515dcacddbb5d244b704ed2660" category="sidebar">AzureでのCloud Volumes ONTAPの構成分析</block>
+  <block id="a4103c06761e189279517f49433e8fdc" category="sidebar">AzureでのCloud Volumes ONTAP構成の改善</block>
 </blocks>

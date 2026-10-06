@@ -26,5 +26,5 @@ NetApp Console のウェルアーキテクチャダッシュボードで、Cloud
 
 後で却下した設定を含めたい場合は、ウェルアーキテクテッドダッシュボードで再度有効化できます。これにより、設定が分析に復元され、推奨事項や修正策を取得できるようになります。
 
-* link:https://docs.netapp.com/us-en/console-well-architected/cvo/improve-configurations-cvo.html["Microsoft Azure の Cloud Volumes ONTAP の設定を修正、破棄、および再アクティブ化する"^]
+* link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-improve-configurations-cvo.html["Microsoft Azure の Cloud Volumes ONTAP の設定を修正、破棄、および再アクティブ化する"^]
 

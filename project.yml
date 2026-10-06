@@ -239,6 +239,16 @@ sidebar:
         url: "/task-manage-perf-params-azure.html"
       - title: Azure のディスク パフォーマンス層をアップグレードする
         url: "/task-upgrade-disk-perf-azure.html"
+      - title: Workload Factory を使用した構成分析と改善
+        entries:
+        - title: AzureでのCloud Volumes ONTAPの構成分析
+          url: "/concept-configuration-analysis-cvo.html"
+        - title: AzureでのCloud Volumes ONTAP構成の改善
+          url: "/task-improve-configurations-cvo.html"
+      - title: AzureでのCloud Volumes ONTAPの構成分析
+        url: "/concept-configuration-analysis-cvo.html"
+      - title: AzureでのCloud Volumes ONTAP構成の改善
+        url: "/task-improve-configurations-cvo.html"
     - title: Google Cloud 管理
       entries:
       - title: Google Cloud でサポートされている構成
@@ -309,8 +319,6 @@ sidebar:
       url: "/task-manage-keystone.html"
     - title: Cloud Volumes ONTAP と Microsoft OneLake
       url: "/task-azure-onelake.html"
-    - title: Cloud Volumes ONTAP とウェルアーキテクテッドダッシュボード
-      url: "/configuration-analysis-cvo.html"
     - title: Cloud Volumes ONTAP の自動化オプションについて
       url: "/concept-cvo-automation.html"
   - title: 知識とサポート

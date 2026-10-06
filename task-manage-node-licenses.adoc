@@ -21,7 +21,7 @@ NetApp は、新規導入にはすべて容量ベースのライセンスを推�
 
 NOTE: クラウド プロバイダのマーケットプレイスからの PAYGO （従量課金制）サブスクリプションは、プライベートモード展開では利用できません。プライベートモードでは、NetApp が BYOL ライセンスを直接提供します。ノードベースのライセンスは、既存のプライベートモード展開でのみ利用可能であり、新規展開はできません。NetApp は、2025年6月25日以降、プライベートモードでのノードベースライセンスの購入、延長、および更新を制限しています。既存のノードベースライセンスをお持ちの場合は、容量ベースライセンスに変換する必要があります。
 
-新規のプライベートモード展開には、容量ベースのライセンスを使用してください。参照 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap_capacity-license-darkmode/task-deploying-otc-aws.html#deploy-cloud-volumes-ontap-in-private-mode["プライベートモードでCloud Volumes ONTAPを導入する"^]。
+新規のプライベートモード展開には、容量ベースのライセンスを使用してください。参照 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-aws.html#deploy-cloud-volumes-ontap-in-private-mode["プライベートモードでCloud Volumes ONTAPを導入する"^]。
 
 
 
