@@ -7051,46 +7051,15 @@
   <block id="44e833213a99257d69192896111996f4" category="paragraph">Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのAustria East（austriaeast）およびBelgium Central（belgiumcentral）リージョンにデプロイできるようになりました。以下のデプロイメントタイプがサポートされています：</block>
   <block id="0eda8bbe61d2248f5418aba76b8dc5b1" category="list-text">\https://api.workloads.netapp.com</block>
   <block id="9f45fe3cd2af64a1afc3f4b7f81bdae6" category="list-text">\https://ws.workloads.bluexp.netapp.com</block>
-  <block id="69fad001104806c7d3df4d9a347564cb" category="inline-link-macro">AWS MarketplaceでCloud Volumes ONTAPをオンボードする</block>
-  <block id="96b530e768c1d37cb28e1a93deb3f72b" category="paragraph">AWS Marketplace または NetApp Console を使用して、AWS で Cloud Volumes ONTAP をオンボーディングできます。以下の表は、AWS で Cloud Volumes ONTAP をデプロイするために完了する必要があるタスクの概要を示しています。AWS Marketplace からのオンボーディングは、Console エージェントのデプロイとサブスクリプションの関連付けを自動化する、簡素化されたエクスペリエンスです。AWS Marketplace からのオンボーディングについては、<block ref="837547e59085e904a77e7f4e64639022" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="dbf314f960a580dec77c3328f5a7dcfe" category="list-text">AWS マーケットプレイスのスタンドアロン Cloud Volumes ONTAP サブスクリプションを通じて Cloud Volumes ONTAP の容量を課金する予定がある場合、Cloud Volumes ONTAP システムはサポートされている容量ベースのパッケージ（Essentials または Freemium）を使用する必要があります。Professional パッケージはスタンドアロンリストには対応しておらず、引き続き NIS サブスクリプションを通じて課金されます。希望するパッケージを選択した後、NetApp Console の *請求設定* を使用して、Cloud Volumes ONTAP の課金に使用するマーケットプレイスのサブスクリプションを選択してください。</block>
   <block id="a21deb009c8ff7309664108fdf426e10" category="summary">AWS Marketplace で Cloud Volumes ONTAP をサブスクライブし、組織の作成、サブスクリプションの関連付け、エージェントのデプロイ、および最初のシステムの作成を含むセットアップを NetApp Console で完了します。</block>
   <block id="ce95e653013e10f07ac1b69529baf3bb" category="doc">AWS MarketplaceからCloud Volumes ONTAPをサブスクライブしてデプロイする</block>
-  <block id="a56d9a462f5d920c9293b0c67186d9e1" category="paragraph">AWS Marketplace で Cloud Volumes ONTAP をサブスクライブし、NetApp Console のガイドに従ってオンボーディングを進めましょう。サブスクリプションからデプロイメントまでのシンプルな手順により、Cloud Volumes ONTAP をすぐに運用開始できます。ガイド付きエクスペリエンスにより、AWS Marketplace のサブスクリプションからデプロイメントまでのプロセスが簡素化され、クラウドや ONTAP の高度な専門知識がなくても Cloud Volumes ONTAP をデプロイできます。</block>
-  <block id="6a38f577211073eeb02102781c7a7724" category="paragraph">AWS Marketplace からの Cloud Volumes ONTAP のサブスクリプションとデプロイには、次の手順が含まれます。</block>
-  <block id="9d45170ac0ac56a9ff0cb7cc857e63f0" category="list-text">AWS Marketplace での Cloud Volumes ONTAP のサブスクリプション。</block>
-  <block id="02ab25857b97c370d093230f750bedf8" category="list-text">コンソールに登録してください。</block>
-  <block id="07fed0f9fcd003852926ec161d68a5ed" category="list-text">組織の作成（必要に応じて）とマーケットプレイスサブスクリプションの関連付け。</block>
-  <block id="a5dea32886a7e080be6f9329f1fb446a" category="list-text">AWSへのコンソールエージェントのデプロイ。</block>
-  <block id="aff1b02ecbb84d53a7ea17d4cd323753" category="list-text">最初のCloud Volumes ONTAPシステムの追加。</block>
-  <block id="1216ca4f430de5c3a0d9702bcbabaa02" category="paragraph">簡素化されたオンボーディングにより、サブスクリプションの関連付け、IAMロールの設定、エージェントのプロビジョニング、およびシステムの初期化に関して、お客様からの入力を最小限に抑えながら、エージェントの自動展開が可能になります。バックエンドオーケストレーションにより、CloudFormationスタックの作成、VPC接続の検証、およびリソースの依存関係が自動的に処理されます。これにより、手動設定手順と画面遷移が削減され、セットアップエラーや中断を最小限に抑えながら、Cloud Volumes ONTAPをより迅速に展開できます。展開を進めるにつれて、右側のパネルで進捗状況を確認できます。</block>
-  <block id="d102ad960823e2e5bdf818a47be9d5b3" category="paragraph">オンボーディングワークフローを開始する前に、これらの前提条件を確認してください。</block>
-  <block id="172b7630d3591caad16d4e53bb8caa5b" category="list-text">AWS Marketplaceで登録するには、権限を持つAWSアカウントが必要です。自動IAM設定を使用するには、AWS管理者であるか、以下に示す権限を持っている必要があります。</block>
-  <block id="6a5a62604841f01985bd66ce12b68800" category="list-text">AWSでは、エージェントのデプロイにIAMロールを作成または使用できます。</block>
-  <block id="48a51e79fb6a62108e71ba7e037a9b37" category="list-text">NetApp Console にサインインするか、アカウントを作成することができます。</block>
-  <block id="09f8a40b3c8ade5b73c631a145579e8d" category="inline-link-macro">AWS Marketplace から NetApp Console エージェントをデプロイする</block>
-  <block id="2884c4b8debb63cfcef54c15dde97b1f" category="paragraph">AWS エージェントのデプロイに必要なすべての前提条件については、<block ref="d87c3906dbbd3aa004bc4ac3ab4610c2" category="inline-link-macro-rx"></block>を参照してください。</block>
-  <block id="f444f7c358bbe34ac520595600b8b22c" category="section-title">AWS Marketplaceで購読する</block>
-  <block id="c8a45b103b3411fa57280389e905876d" category="paragraph">AWS Marketplace で Cloud Volumes ONTAP のオファリングを見つけて、オンボーディングプロセスを開始します。</block>
-  <block id="d30611ae1c4aa386020b8e622fda43df" category="list-text">AWSアカウントを使用してAWS Marketplaceにアクセスしてください。</block>
-  <block id="65a60fa3ef358594aeb5c3013a500873" category="list-text">NetApp Cloud Volumes ONTAPの製品を見つけます。AWS Marketplaceには、Cloud Volumes ONTAP向けに2つの製品が用意されています。</block>
-  <block id="6bf9cb27d1125662310a04223e3dedcf" category="list-text">Cloud Volumes ONTAP 年間サブスクリプションのスタンドアロン製品</block>
-  <block id="fdfb3edef005048dd4efa8424b37cd80" category="list-text">NetApp データサービスと Cloud Volumes ONTAP サブスクリプションのための NetApp インテリジェントサービス（NIS）の複合提供。このオンボーディングワークフローには、_スタンドアロン_ 版を選択してください。</block>
   <block id="a4cede66de2477ac18bbdee0f03c3b4b" category="list-text">出品内容と料金条件をご確認ください。</block>
   <block id="885d2379a584c302d318353e375f294c" category="list-text">購読登録をして、決済手続きを完了してください。</block>
-  <block id="f1b64129ed9863a99f0398b63b8a21eb" category="list-text">登録後、AWS はコンソールのサインアップまたはサインインページにリダイレクトします。</block>
   <block id="af9938b36ef2a60606b45bb8ffe35344" category="section-title">NetApp Consoleにサインアップまたはサインインします</block>
-  <block id="96b3a57bf37c129501b50b711ec35358" category="paragraph">マーケットプレイスの購読が完了したら、コンソールにアクセスしてセットアップを続行してください。</block>
   <block id="e7d1b65dd28597571fba7d964af5a41c" category="list-text">コンソールページで、以下のいずれかを選択してください。</block>
   <block id="df754221abc49063bd0903d180e996c6" category="list-text">新規ユーザーの方は、*登録*してください。</block>
   <block id="7056635c8b9f8d28fc7e21996cb93294" category="list-text">*すでにアカウントをお持ちの場合は、NetApp Console にサインインしてください。*</block>
-  <block id="115e2aa74ec72f678a8f9c0ff8a23d84" category="list-text">「サインアップ」を選択した場合は、以下を完了してください。</block>
-  <block id="0ed642aae1713d162a22c10261227792" category="list-text">必須項目を入力してください：</block>
-  <block id="ce8ae9da5b7cd6c3df2929543a9af92d" category="list-text">Eメール</block>
-  <block id="dc647eb65e6711e155375218212b3964" category="list-text">Password</block>
-  <block id="f11b368cddfe37c47af9b9d91c6ba4f0" category="list-text">フルネーム</block>
-  <block id="1c76cbfe21c6f44c1d1e59d54f3e4420" category="list-text">会社</block>
-  <block id="59716c97497eb9694541f7c3d37b1a4d" category="list-text">国</block>
   <block id="e6cd86d61f4639c8a27006c6c29b3e9f" category="list-text">「次へ」を選択します。</block>
   <block id="39f666f68e0b42f2f9f878864293d3b0" category="list-text">任意：住所、市区町村、都道府県、郵便番号、電話番号などの連絡先情報を入力してください。</block>
   <block id="7408a50737fd936622eeec54bbeb439c" category="list-text">「サインアップ」を選択します。</block>
@@ -7098,66 +7067,32 @@
   <block id="606b520330e1b3dd8468aa4c696f320b" category="list-text">service@console.netapp.comからのメッセージを使用して、メールアドレスを確認してください。</block>
   <block id="e01bdff1ce4770f66f1a74a9b5892c8b" category="list-text">コンソールにサインインして認証を完了してください。</block>
   <block id="ac9188736d7d24740d106bad6d2f1a24" category="section-title">組織を作成する</block>
-  <block id="db32d51e7a32c3835f9ca7138ba5e779" category="paragraph">初めてご利用のお客様、またはまだ NetApp Console の組織に所属していない場合にのみ、この手順を完了してください。</block>
-  <block id="dfa6580bc43676ec0428470c4226197e" category="paragraph">既に組織に所属している場合は、このセクションをスキップして、<block ref="5a5b9f60942f56579652f4a550dadca9" category="inline-xref-macro-rx"></block>に進んでください。</block>
-  <block id="b60fce2f30234b8c655d26812f8d684c" category="paragraph">ユーザー、役割、権限、ライセンス、およびシステムを管理するための組織を作成します。</block>
   <block id="4c27c7ddbdd91ad9f40d0e69913d02f8" category="list-text">組織名を入力してください。</block>
   <block id="340e0bcb7d46eb5bd14fee5c751d3175" category="list-text">オプション：NetApp Support Site（NSS）アカウントを関連付けます。</block>
   <block id="bf18811faac9b8e4fcaebab51afd1113" category="list-text">「作成」を選択します。</block>
-  <block id="34c93ad83166c6e80fe3fea1d5eaa0df" category="section-title">サブスクリプションを関連付ける</block>
-  <block id="e7044d37a1ed84ca9f7caa2b9d24ef7f" category="paragraph">組織を作成すると、Console は自動的にマーケットプレイスのサブスクリプションを組織にリンクしようとします。</block>
   <block id="3bdc84428bee979e77f1781f40304f42" category="inline-link-macro">サブスクリプションの管理方法を確認する</block>
-  <block id="6038ef325e8557cc84b0ef6c053a062d" category="paragraph">自動関連付けが失敗した場合は、手動でサブスクリプションを関連付けてください。<block ref="31ece82e919075b6d4fa8e64ff8627ac" category="inline-link-macro-rx"></block>。</block>
   <block id="999c350fcbd9f270e794eb9f39020947" category="section-title">AWSにコンソールエージェントをデプロイする</block>
-  <block id="5cb502f88565459be3dfd091651deb1b" category="paragraph">サブスクリプションを関連付けると、コンソールは自動的にエージェントのデプロイフローを開き、AWSリソースとCloud Volumes ONTAPシステムを管理します。</block>
   <block id="0e5a6ed81e42dfb7b8082abc4bd85af9" category="inline-link-macro">AWS権限リファレンス</block>
-  <block id="57a69cea62fbfee2c988421746b5ec77" category="paragraph">エージェントの展開中に使用される権限の詳細については、<block ref="8640373d61143a22452f799c5e012ff9" category="inline-link-macro-rx"></block>を参照してください。</block>
-  <block id="b11b04338f764b72f59f7c3db188b3ad" category="list-text">エージェントをデプロイするための最小限の権限については、概要ページに記載されている手順に従うか、エージェントデプロイ用のロールを自動的に作成する手順を続行できます。</block>
-  <block id="701ad266790171c293af9ebdab49b1dd" category="list-text">*AWS credentials* ページで、エージェントのデプロイに必要な認証情報を指定するために、以下のいずれかのオプションを選択してください。</block>
   <block id="f6775e307e0e96c3d2d2aa4261c2dc06" category="open-title">自分専用のロールを作成する（推奨）</block>
-  <block id="7d1dd887a48c9c23271325fc57dc9b7d" category="paragraph">このオプションを選択すると、AWS CloudFormation のクイック作成フローが開き、エージェントデプロイメントロールを作成できます。管理者権限を持つユーザーであれば、このオプションを使用して CloudFormation スタックによりポリシーとロールを自動的に作成し、ユーザーを認証してエージェントを作成できます。</block>
   <block id="947040282161ce63e6c467b9272f0987" category="list-text">AWSアカウントIDを追加し、必要に応じて外部IDも追加してください。コンソールはデフォルトのロール名を設定します。</block>
-  <block id="058984dad8b35b2edf4e90cc0d99e422" category="list-text">利用規約に同意し、*スタックの作成*を選択します。</block>
-  <block id="dd9b75b6f9c28d257df9b082c4cd3f22" category="inline-image-macro">幅=50% AWS CloudFormation スタック作成ページのスクリーンショット。AWSアカウントIDと、必要に応じてエージェントデプロイロールの外部IDを入力します。</block>
-  <block id="cb8aa7095d78f4373b1a7bc44eb8ccc3" category="paragraph"><block ref="cb8aa7095d78f4373b1a7bc44eb8ccc3" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1a8675104d64ecc19112dddcea8c45b8" category="list-text">AWSでIAMロールが設定され、ARNが生成されたら、ロールを確認して保存してください。</block>
   <block id="c922cc18eca71598d4a86b7707d7eba0" category="open-title">役割を引き受ける</block>
-  <block id="6a2a0f10cb2f085ebdbde5eebef49a3e" category="paragraph">これは、手動によるロール割り当てワークフローの一部です。既存の IAM ロール ARN を入力してください。このロールの編集については、<block ref="4d74176964b79f9dc8cf6e9b4edd3262" category="inline-link-rx"></block>を参照してください。</block>
   <block id="e656cb1ebc2e559e3bcc2002585434ed" category="open-title">AWSキー</block>
-  <block id="dfb7a0fc5277c45a86764545309957ce" category="paragraph">これは、手動による役割割り当てワークフローの一部です。AWSアクセスキーとシークレットキーを入力してください。詳細については、<block ref="075c8733f05483e5267d384d7c0db32a" category="inline-link-rx"></block>を参照してください。</block>
-  <block id="68ff9a106c651bd2460baf0343787e09" category="list-text">AWSエージェントをデプロイします：</block>
-  <block id="bb65b2f90c49dcd84ae767d9f986f148" category="list-text">*AWS agent details* ページで、エージェントインスタンス名とエージェントロールを設定または確認します。</block>
-  <block id="4d3d862d7ac1ef0cd306cce2d43b61c6" category="list-text">「ネットワーク」ページで、VPC、サブネット、キーペア、パブリック IP の動作、およびプロキシ設定を選択します。</block>
-  <block id="0cb0d7dbb504e41f0b9980e3f106ae8e" category="list-text">*セキュリティグループ*を設定します。エージェントVMへのトラブルシューティングアクセス用に、受信HTTP（80）、HTTPS（443）、およびSSH（22）を許可してください。</block>
-  <block id="e60a9f11dba1e6072ec9503cca905c92" category="list-text">各セクションの概要を確認し、*追加*を選択してデプロイしてください。</block>
-  <block id="3ed9f44843bea0baa9e9721e607d24c2" category="paragraph">ネットワークおよび権限に関する詳細な要件については、以下を参照してください：</block>
   <block id="ef9fe436c6881c3aeb226ecf309827f0" category="inline-link">AWS Marketplace のデプロイ用にネットワークを設定する</block>
   <block id="13ccd8cfe31fc2437285f8fa41bb39d0" category="list-text"><block ref="13ccd8cfe31fc2437285f8fa41bb39d0" category="inline-link-rx"></block></block>
   <block id="2d3fc94cd0898448a15e6e05f4098b6f" category="inline-link">AWS権限を設定する</block>
   <block id="57d5f449d9cc74edd78470cc9873c16e" category="list-text"><block ref="57d5f449d9cc74edd78470cc9873c16e" category="inline-link-rx"></block></block>
   <block id="43663d02f9f2280fb62656e0e2171f96" category="list-text"><block ref="43663d02f9f2280fb62656e0e2171f96" category="inline-link-rx"></block></block>
-  <block id="7ac3658f7b2ea40441a46f7d503df9d6" category="list-text">デプロイの進行状況ダイアログが完了するまで追跡してください。イベントログを展開すると、詳細なアクティビティを確認できます。</block>
-  <block id="40b1bbcf1d63550b5ee1a9ca612f354d" category="paragraph">デプロイが完了したら、最初のCloud Volumes ONTAPシステムを作成するか、システムページにとどまって後でシステムを追加することができます。</block>
   <block id="63919d343a2d06159ee93f9535a4ca2e" category="section-title">最初のCloud Volumes ONTAPシステムを追加する</block>
-  <block id="e1373b355aa6da2aad7bba187ff4e9f2" category="paragraph">エージェントの準備ができたら、AWS で最初の Cloud Volumes ONTAP システムを作成します。</block>
-  <block id="b0845b98104086e018330dff1f994b3a" category="list-text">展開後のプロンプトから、*システムの追加*を選択します。</block>
-  <block id="beec7c8b8f52f7e44dec39ce075d3abb" category="list-text">Cloud Volumes ONTAP システム作成ワークフローを開始します。</block>
-  <block id="e4998cdb09fc1ae76d7c7b0f97a04fd9" category="list-text">システム設定を完了してください。</block>
   <block id="72d7b93cee23363a2907b2be8b237290" category="section-title">トラブルシューティングと復旧</block>
-  <block id="cb1bc5edf506394ee9927cb447901c17" category="paragraph">オンボーディングフローを完了する前に離脱した場合、またはエージェントのデプロイが失敗した場合は、このセクションを使用してください。これらの手順は、中断したところから作業を再開したり、復旧してデプロイを再試行したりするのに役立ちます。</block>
   <block id="90a521d73cad15b4a353df47ccdc06d8" category="section-title">セットアップを再開</block>
-  <block id="e933831d8f6e421c7eea9aa2e2c76bb9" category="paragraph">設定が完了する前に中断した場合でも、最後に完了した手順から再開できます。</block>
   <block id="e440edd270e603c687695db87b77144a" category="list-text">NetApp Console のホームページに移動します。</block>
   <block id="733fbe662fa606d61fff360b4b1246b5" category="list-text">オンボーディングを続行するには、*セットアップを再開*を選択してください。</block>
   <block id="2a208a77ab0c5ca79397c57987de1a1a" category="section-title">デプロイメントの失敗から復旧する</block>
-  <block id="628f962201a560f694204274ce3d88ec" category="paragraph">デプロイが失敗した場合：</block>
   <block id="1b523bb53ad2000e3344ff316e869855" category="list-text">導入レポートをダウンロードします。</block>
   <block id="07be83ce12a3bf78ef715d65c6c54020" category="list-text">設定とログを確認してください。</block>
   <block id="160e5aa077c7539416162287f02990f8" category="list-text">デプロイを再試行するには、*最初からやり直す*を選択してください。</block>
   <block id="d2cfcb99c2e8baa996b4db2415ca247d" category="inline-link-macro">エージェントの問題のトラブルシューティング方法について説明します</block>
   <block id="69adeb1c49bb37715a017c9a902b7d1d" category="paragraph"><block ref="61813908742cfb0bf968ca5176776caa" category="inline-link-macro-rx"></block>。</block>
-  <block id="8c157a27a72f45bb42efe091d45115ef" category="paragraph">関連する設定作業やトラブルシューティングには、これらのリソースをご利用ください。</block>
-  <block id="d87c3906dbbd3aa004bc4ac3ab4610c2" category="list-text"><block ref="d87c3906dbbd3aa004bc4ac3ab4610c2" category="inline-link-macro-rx"></block></block>
   <block id="ff462988ef2bf728297fe5ed85ddc08d" category="inline-link-macro">AWSサブスクリプションを設定する</block>
   <block id="187e653c7125a081fc8f4c8454b7978a" category="list-text"><block ref="187e653c7125a081fc8f4c8454b7978a" category="inline-link-macro-rx"></block></block>
   <block id="2639be1d095a58dd96a72a823ff1b61b" category="inline-link-macro">NetApp Console エージェントのトラブルシューティング</block>
@@ -7446,7 +7381,6 @@
   <block id="0f37e7019150020ad56dacb33e050ce0" category="list-text"><block ref="0f37e7019150020ad56dacb33e050ce0" category="inline-link-macro-rx"></block></block>
   <block id="c5ff6e289ca10cde1a5f81d196d305dc" category="list-text"><block ref="c5ff6e289ca10cde1a5f81d196d305dc" category="inline-link-macro-rx"></block></block>
   <block id="0a96b1cb21a865ff7a38d495809cc48e" category="list-text"><block ref="0a96b1cb21a865ff7a38d495809cc48e" category="inline-link-macro-rx"></block></block>
-  <block id="75b888c439b50482e442b156f85f8b7b" category="paragraph">詳細なシステム導入手順については、<block ref="51799ed8a3c9382ecde3d4e502dc227c" category="inline-link-rx"></block>を参照してください。</block>
   <block id="54675850f07c5f375dabbd24ce963055" category="paragraph">Cloud Volumes ONTAP に関連付けられたコンソールエージェントが、以下のエンドポイントにアクセスできることを確認してください。</block>
   <block id="8e7b9a9e43a2aeb3a7aabc300317310a" category="summary">Google Cloud ネットワークを設定して、Cloud Volumes ONTAP システムが正常に動作できるようにします。CVO のネットワーク要件、プライベート IP アドレス、VPC、サブネット、パケットミラーリング、ファイアウォールルール、HA 構成、およびコンソールエージェントの要件について説明します。</block>
   <block id="ecdc6a1891228ecd86842e25403089c2" category="section-title">プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成</block>
@@ -8063,4 +7997,80 @@
   <block id="65f9ec8af69f87b7b7419485ecdc45e9" category="list-text"><block ref="65f9ec8af69f87b7b7419485ecdc45e9" category="inline-link-rx"></block></block>
   <block id="3a7bbb1b9e5b37872fef8f715efc7171" category="list-text">プライベートモード展開の場合は、ネットワーク構成が完了し、ワーカープールが作成されていることを確認してください。<block ref="36efb7ae258f0de12028dabdb108a37a" category="inline-link-macro-rx"></block>をご参照ください。</block>
   <block id="6ed0cfe5d8872e13ec685679d0c5586b" category="paragraph"><block ref="8fc12ad6381abbb87712055c7f5e50f1" prefix=" " category="inline-code"></block>パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、<block ref="36efb7ae258f0de12028dabdb108a37a" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="2ebfd6a7d346b4f849cfb04c2d3a5434" category="paragraph">AWS Marketplace または NetApp Console を使用して、AWS で Cloud Volumes ONTAP をオンボーディングできます。以下の表は、AWS で Cloud Volumes ONTAP をデプロイするために完了する必要があるタスクの概要を示しています。</block>
+  <block id="5e51aa22235e0104a5fffb9b0e0b97ac" category="inline-link-macro">AWS MarketplaceでのCloud Volumes ONTAPスタンドアロン製品のオンボード</block>
+  <block id="c15e37bc266e7b7e0212916e681f40ad" category="admonition">AWS MarketplaceでCloud Volumes ONTAPの単体オファリングをサブスクライブする場合、手順は異なります。AWS Marketplaceからのオンボーディングに関する情報については、<block ref="e7b82cae26dca0ede070f2a3673c283d" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="956257b7d0ca445001951932f7e84848" category="doc">AWS MarketplaceからCloud Volumes ONTAPスタンドアロン製品をサブスクライブしてデプロイする</block>
+  <block id="723d1c9b2cb416390ec6382bd2a185db" category="paragraph">AWS MarketplaceでスタンドアロンのCloud Volumes ONTAPオファリングをサブスクライブし、Consoleエージェントをデプロイして、最初のシステムを作成します。</block>
+  <block id="a579432a8e3b22d3a85649d7f57e5065" category="paragraph">始める前に、以下のものを用意してください：</block>
+  <block id="7f9aae631f852dc3f30a5113d517404f" category="list-text">NetApp Consoleアカウント、またはアカウント作成に必要な情報。</block>
+  <block id="2cdcb75cdf45ad60c49310aa4953ecf2" category="inline-link-macro">Consoleエージェントのネットワーク要件について</block>
+  <block id="9c29150d1a4df0c7450a869ce2723638" category="list-text">コンソールエージェントネットワークが要件を満たしていることを確認しました。<block ref="a3f5b6fd7f8b50cbffb3cbeb6fa40451" category="inline-link-macro-rx"></block></block>
+  <block id="9706dc62b1cd200c516832184fe17aea" category="list-text">AWS Marketplaceへの登録権限と提供条件への同意権限を持つAWSアカウントおよびID。</block>
+  <block id="40452a9c0c304507d341249cbb861fed" category="paragraph">*Create role for me* を選択した場合、CloudFormation Quick Create スタックを送信する AWS ID には以下の権限が必要です。スタックのサブスクライブと送信に同じ ID を使用する場合は、開始前にこれらの権限を付与してください。スタックの送信に別の ID を使用する場合は、代わりにその ID に権限を付与してください。これらの権限は、CloudFormation がデプロイメントロールを作成できるようにするためのものであり、実行中のエージェントが使用する権限ではありません。</block>
+  <block id="30e4c20d5d10c9da535f38ab1c548e1b" category="listing-title">最低限の権限（CloudFormationクイック作成用）</block>
+  <block id="fc232400356fdfe067adadb406acd776" category="section-title">AWS Marketplaceでスタンドアロン版Cloud Volumes ONTAPをサブスクライブする</block>
+  <block id="288d38f29d8eeeb99070bff4f65525c0" category="paragraph">AWS MarketplaceでスタンドアロンのCloud Volumes ONTAPオファリングを見つけます。</block>
+  <block id="a11a0a42613839623b80519a128fe81d" category="list-text">必要な権限を持つAWSアカウントを使用して、AWS Marketplaceにアクセスしてください。</block>
+  <block id="ef6da38a0094b683cff50de6f2edfb73" category="list-text">NetApp Cloud Volumes ONTAPのスタンドアロンオファリングを見つけます。AWS Marketplaceでは、Cloud Volumes ONTAP向けに2つのオファリングを提供しています：</block>
+  <block id="65e2afdf3ea7ead73c73f2ccc67a88bb" category="list-text">Cloud Volumes ONTAP年間サブスクリプションの単体提供</block>
+  <block id="828bc789f8fea62d7d9dcfb1c8df6b67" category="list-text">NetAppデータサービスおよびCloud Volumes ONTAPサブスクリプション向けのNetApp Intelligent Service統合オファリング。</block>
+  <block id="f734624cb745f5a29fe5ff81d7f7049f" category="list-text">_スタンドアロン_版を選択してください。これらの手順では、スタンドアロン版をサブスクライブする方法を説明します。</block>
+  <block id="0bede5b2fb82cb93a6b7341f902bd965" category="list-text">サブスクリプションの登録後、*Set up product* を選択すると、NetApp Console にリダイレクトされ、デプロイを完了できます。</block>
+  <block id="8e54d24c608de9f6d76f0ddf776cd3cc" category="paragraph">Marketplaceのサブスクリプションが完了したら、NetApp Consoleでセットアップを続行します。</block>
+  <block id="e17e44482e762e707860b1c0d43859ab" category="list-text">「サインアップ」を選択した場合は、以下の項目を完了してください：</block>
+  <block id="001e71c8221c566f7d55a6c444a3bb93" category="list-text">必須項目を入力してください。</block>
+  <block id="7f80592ced9735452b147a4ca330f6d9" category="paragraph">初めて利用する方、またはまだ組織に所属していない場合のみ、組織を作成してください。既に組織に所属している場合は、このセクションをスキップして<block ref="7acf9f6f7caab8589fdd395956f11b46" category="inline-xref-macro-rx"></block>に進んでください。</block>
+  <block id="4e153039c8e6ff6a95edc5ef7d826812" category="paragraph">組織は、ユーザー、ロール、権限、ライセンス、およびシステムの管理に役立ちます。</block>
+  <block id="af155629373d274993ac8a266ab76b89" category="paragraph">サブスクリプションがNetApp Consoleに関連付けられたら、AWSリソースとCloud Volumes ONTAPシステムを管理するためのConsoleエージェントをデプロイします。</block>
+  <block id="d53a7c0871705c4ac01b2df9d5b241e5" category="paragraph">エージェントをデプロイする前に、AWSの認証要件とネットワーク要件を確認してください。</block>
+  <block id="03f6071650b6469d9c9a93a196a61040" category="list-text">コンソールがエージェントをデプロイするための承認方法を決定します。</block>
+  <block id="05a3fe2e02c1f1540ccef223505a2330" category="inline-xref">上記のJSONの例</block>
+  <block id="d5bfbb2ca7dde59b481ff309b6bec285" category="list-text">*Create role for me* の場合、CloudFormation Quick Createスタックを送信するAWS IDには、AWS管理者権限、または<block ref="7156c9b2f9143a675b60fc91ab28fcb2" category="inline-xref-macro-rx"></block>の最低限の権限が必要です。</block>
+  <block id="ee1fa866b1036ae536c488636502e9c2" category="inline-link-macro">エージェントをデプロイするためのAWS権限</block>
+  <block id="0607e2a460bfd565aa14109e030961be" category="list-text">*ロールの引き受け*または*AWSキー*については、<block ref="4f7e9163cfde6ff2377419c6fdae5558" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="68ea4d5293026e87aacb258b4be2e6f7" category="inline-link-macro">コンソールエージェントのネットワーク要件</block>
+  <block id="68c2d10650903953a14604c3c3109692" category="list-text"><block ref="57e30a23131f96ed68767f7cb3969724" category="inline-link-macro-rx"></block> に従ってネットワークを設定します。</block>
+  <block id="9ae31cce7f4f997ca6a4ce974729dc69" category="list-text">ようこそページで、*セットアップを再開*を選択してください。</block>
+  <block id="c65772ff5c5b2b004272e64e76129adb" category="paragraph">コンソールは、マーケットプレイスのサブスクリプションを組織に関連付けようとします。自動関連付けに失敗した場合は、手動でサブスクリプションを関連付けてください。<block ref="31ece82e919075b6d4fa8e64ff8627ac" category="inline-link-macro-rx"></block>。</block>
+  <block id="760b2cce1bdd91643828cb336e30011d" category="paragraph">サブスクリプションが関連付けられると、コンソールはコンソールエージェントをデプロイするように指示します。</block>
+  <block id="a6b0b13c48c4edabf130e29f6c2aede6" category="list-text">コンソールがエージェントをデプロイするための承認方法を選択してください：</block>
+  <block id="d03dc9a97d84741e0fd10a2dd0247fe2" category="paragraph">デプロイメント認証情報により、コンソールはエージェントをデプロイする権限を得ます。実行中のエージェントは、そのEC2インスタンスに紐づけられた別のIAMロールを使用します。コンソールは、そのロールを作成することも、必要な権限を持つ既存のロールを使用することもできます。<block ref="e480ed58fa8c12ab0039f7c0d6e93451" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="81f02468fbacade145190951812b5c52" category="list-text">「Create role for me」を選択して、Consoleが引き受けることができるロールをCloudFormationに作成させます。</block>
+  <block id="55e0ed57514dd8e3614d3cc5e64dab17" category="list-text">「Assume role」を選択し、信頼ポリシーによってコンソールがそのロールを引き受けることが許可され、かつ必要なデプロイ権限を持つ既存のIAMロールのARNを指定します。</block>
+  <block id="61f0b94adca0bfbe32231ebb50e6f6f3" category="list-text">*AWSキー*を選択し、必要なデプロイ権限を持つIAMユーザーのアクセスキーを指定してください。</block>
+  <block id="c22156a97b61c41d0b27a531f1be22fd" category="paragraph">コンソールで CloudFormation Quick Create を使用してロールを作成するには、スタックを送信する AWS ID に管理者権限、または<block ref="7156c9b2f9143a675b60fc91ab28fcb2" category="inline-xref-macro-rx"></block>に記載されている最低限の権限が必要です。</block>
+  <block id="8b09bca331c2d114372940628cdbfd53" category="list-text">*自分用のロールを作成する*を選択します。</block>
+  <block id="15640fe1eda1ab1476d294aff63b245a" category="list-text">*CloudFormation クイック作成を開く*を選択します。</block>
+  <block id="3ea12154582fce476dd101329847499e" category="list-text">AWS CloudFormationのクイック作成ページで、利用規約に同意し、*スタックの作成*を選択します。</block>
+  <block id="547352482e47f8c24f1b5834a6bcd147" category="inline-image-macro">幅=35% AWS CloudFormation スタック作成ページのスクリーンショット。AWSアカウントIDと、必要に応じてエージェントデプロイロールの外部IDを入力します。</block>
+  <block id="185318e8d0d0e687a38b5cced6d01d4c" category="paragraph"><block ref="185318e8d0d0e687a38b5cced6d01d4c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f904293ff082e78cf2be783cd8904daa" category="list-text">AWSがIAMロールを設定し、ARNを生成したら、ロールを確認して保存してください。</block>
+  <block id="5b7f5df4a7a01162f4bed8b97f90562e" category="inline-link-macro">ロールの作成について学ぶ</block>
+  <block id="e2821614155d778a682e7da539728675" category="paragraph">必要なAWS権限を持つロールがすでにある場合は、Consoleがそのロールを引き受けてエージェントをデプロイできるように、そのARNを指定してください。<block ref="317303ab0e471a0d3619a16accefb685" category="inline-link-macro-rx"></block>。</block>
+  <block id="61a42cfed56b2ddd6374f98e34e921bc" category="list-text">*Assume role*を選択します。</block>
+  <block id="c62afca1b3bd89404213a6f0e7d2efe4" category="paragraph">コンソールは引き受けたロールの名前を作成しますが、必要に応じて変更できます。</block>
+  <block id="773589cad93758ea895e6e7d3f6d269d" category="list-text">既存のロールのARNを入力してください。</block>
+  <block id="98af778bae37b93b59c535e2a555cb8e" category="list-text">*資格情報の検証*を選択します。</block>
+  <block id="f31ef44b0f2acc926f4cbe2b14abc63a" category="inline-link-macro">ユーザーのロールの作成について</block>
+  <block id="2d70ada56c746e0b77ba13c0324201e9" category="paragraph">エージェントのデプロイを認証するためにアクセスキーを使用する場合は、AWSアクセスキーとシークレットキーを指定してください。<block ref="a374fc742560a6fa685b34b6e92d873c" category="inline-link-macro-rx"></block>。</block>
+  <block id="ed7aab9934f873f9bcc01963b18ef05e" category="list-text">*AWSキー*を選択します。</block>
+  <block id="4e231d57b5ff3fb02e79c5e9519d1239" category="list-text">使用したいロールのアクセスキーとシークレットを入力してください。</block>
+  <block id="070673c42aa09e5b740913726c0c83c0" category="list-text">エージェントインスタンス名や、実行中のエージェント用にコンソールがIAMロールを作成するか既存のロールを使用するかなど、エージェントのデプロイの詳細を設定します。</block>
+  <block id="5b648a602c64391c13459b2242feaccf" category="inline-link-macro">コンソールエージェントのIAMポリシーの詳細については、こちらをご覧ください。</block>
+  <block id="5da5e1a2666b568b0f2281c713180ef8" category="paragraph">コンソールがコンソールエージェントを作成する際、エージェント用のIAMロールとプロファイルを作成するか、お客様が指定したロールを使用します。このロールには、エージェントがAWSリソースを管理できるようにする権限が含まれています。今後のリリースで新しい権限が追加された場合は、ロールが必ず更新されるようにしてください。<block ref="7f447941d99d36030500c16d428fc2ff" category="inline-link-macro-rx"></block>。</block>
+  <block id="9ca3e0361a9e911cee0cf7cfaf465ecc" category="list-text">必要に応じて、VPC、サブネット、キーペア、パブリックIPの動作、プロキシ設定を選択してネットワークを構成します。</block>
+  <block id="1e01fdf07bb63446d747d736af983957" category="list-text">エージェントVMへのトラブルシューティングアクセス用に、インバウンドのHTTP（80）、HTTPS（443）、およびSSH（22）を許可するようにセキュリティグループのルールを設定します。</block>
+  <block id="461008ea76e4abfc7758a2885f6cdf98" category="inline-link-macro">AWS のセキュリティ グループ ルールを表示する</block>
+  <block id="4d37b17ba71df69ed4e85e9136279e66" category="paragraph"><block ref="5a44bc318dad7e87d5b99ce757b946bd" category="inline-link-macro-rx"></block>。</block>
+  <block id="2e28a83454833bd4dc7264c2ee2760a6" category="list-text">各セクションの概要を確認し、*Add*を選択してConsoleエージェントをデプロイします。</block>
+  <block id="d34ca49cea2b1e9ae7d439596fd49f50" category="paragraph">デプロイが完了するまで、その進捗状況を追跡してください。イベントログを展開すると、詳細なアクティビティを確認できます。</block>
+  <block id="bdd1d9820619a1ccc976a093ca5d4720" category="paragraph">Console agentのネットワークおよび権限に関する要件の詳細は、以下を参照してください：</block>
+  <block id="787c504b628f17f67b110fffe7ae00a8" category="paragraph">コンソールがエージェントをデプロイしたら、<block ref="51799ed8a3c9382ecde3d4e502dc227c" category="inline-link-rx"></block>の手順に従って最初のシステムを作成します。</block>
+  <block id="a1e7b53d70ba6579ff07cffd44cfdf8d" category="paragraph">Cloud Volumes ONTAPシステムの作成準備が整っていない場合は、いつでもシステムページに戻って、後でシステムを作成できます。</block>
+  <block id="7aa08f57a5f5ecd2cec4636034d53f91" category="paragraph">中断したところからオンボーディングを再開するか、失敗した場合はエージェントのデプロイを再試行してください。</block>
+  <block id="5302bc1044bf2997c712f10444d007ae" category="paragraph">オンボーディングが完了する前に退出した場合は、最後に完了したステップから再開してください。</block>
+  <block id="9aca15ba5b18529516b4cd632ddf7639" category="paragraph">コンソールでエージェントをデプロイできない場合は、以下の手順で再試行してください：</block>
+  <block id="492b64735bc91205336e73d3b231f7ea" category="paragraph">エージェントのデプロイ、AWS サブスクリプション、またはCloud Volumes ONTAPタスクについては、以下を参照してください：</block>
+  <block id="76d37acbce48c445bc735fe56c61f7ac" category="sidebar">AWS MarketplaceからスタンドアロンのCloud Volumes ONTAPをデプロイする</block>
 </blocks>

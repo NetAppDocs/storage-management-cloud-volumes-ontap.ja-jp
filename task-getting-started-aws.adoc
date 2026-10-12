@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-getting-started-aws.html 
-keywords: amazon web services, aws, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, vpc, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, get started, network, vpn, multi-cloud, tier, storage tier, data tier, vpc endpoint, endpoint, S3, subscribe, subscribing, marketplace, granting, permissions, policy, iam policy, ec2 console, ami, mediator, connectivity, internet, outbound, endpoint, connection, networks, replicating, ec2 service, policies, attach, iam user, access key, secret key, keys, sign up, cloud manager, cloud volumes ontap, cloud ontap, create, console 
+keywords: amazon web services, aws, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, vpc, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, get started, network, vpn, multi-cloud, tier, storage tier, data tier, vpc endpoint, endpoint, S3, subscribe, subscribing, marketplace, granting, permissions, policy, iam policy, ec2 console, ami, mediator, connectivity, internet, outbound, endpoint, connection, networks, replicating, ec2 service, policies, attach, iam user, access key, secret key, keys, sign up, cloud manager, cloud volumes ontap, cloud ontap, create, console, console agent 
 summary: AWS に Cloud Volumes ONTAP をデプロイするための前提条件が完了していることを確認してください。 
 ---
 = AWS での Cloud Volumes ONTAP の導入概要
@@ -16,7 +16,10 @@ summary: AWS に Cloud Volumes ONTAP をデプロイするための前提条件�
 [role="lead"]
 Cloud Volumes ONTAP をデプロイするには、まず AWS サブスクリプションと Cloud Volumes ONTAP ライセンスについて理解しておく必要があります。また、AWS アカウント用に NetApp Console エージェントが作成されていることを確認する必要があります。このトピックの情報の多くは、Cloud Volumes ONTAP のデプロイを開始する前に、Console のセットアップの一部として実行する必要があります。
 
-AWS Marketplace または NetApp Console を使用して、AWS で Cloud Volumes ONTAP をオンボーディングできます。以下の表は、AWS で Cloud Volumes ONTAP をデプロイするために完了する必要があるタスクの概要を示しています。AWS Marketplace からのオンボーディングは、Console エージェントのデプロイとサブスクリプションの関連付けを自動化する、簡素化されたエクスペリエンスです。AWS Marketplace からのオンボーディングについては、link:task-onboard-cvo-aws-marketplace.html["AWS MarketplaceでCloud Volumes ONTAPをオンボードする"]を参照してください。
+AWS Marketplace または NetApp Console を使用して、AWS で Cloud Volumes ONTAP をオンボーディングできます。以下の表は、AWS で Cloud Volumes ONTAP をデプロイするために完了する必要があるタスクの概要を示しています。
+
+
+NOTE: AWS MarketplaceでCloud Volumes ONTAPの単体オファリングをサブスクライブする場合、手順は異なります。AWS Marketplaceからのオンボーディングに関する情報については、link:task-onboard-cvo-aws-marketplace.html["AWS MarketplaceでのCloud Volumes ONTAPスタンドアロン製品のオンボード"]を参照してください。
 
 [cols="20,35,25,25"]
 |===

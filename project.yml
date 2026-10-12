@@ -47,7 +47,7 @@ sidebar:
         url: "/concept-degraded-ha-pair.html"
     - title: Amazon Web Servicesにデプロイする
       entries:
-      - title: AWS MarketplaceからCloud Volumes ONTAPをオンボードする
+      - title: AWS MarketplaceからスタンドアロンのCloud Volumes ONTAPをデプロイする
         url: "/task-onboard-cvo-aws-marketplace.html"
       - title: 導入概要
         url: "/task-getting-started-aws.html"
