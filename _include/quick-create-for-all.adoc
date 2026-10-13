@@ -2,7 +2,6 @@
 :allow-uri-read: 
 
 
-[role="lead"]
 Cloud Volumes ONTAP を Amazon Web Services (AWS)、Microsoft Azure、および Google Cloud に `Quick create`を使用してデプロイすることで、シングルノード構成と高可用性（HA）構成の両方においてより迅速な導入が可能です。この簡素化されたプロセスは、単一ページにデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、拡張方式と比較してデプロイ手順を削減します。
 
 .開始する前に
