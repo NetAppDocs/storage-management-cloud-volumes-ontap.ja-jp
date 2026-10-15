@@ -1,0 +1,61 @@
+= AzureでのCloud Volumes ONTAP 9.19.1
+:allow-uri-read: 
+
+
+
+
+[[cloud-volumes-ontap-9-19-1-in-azure]]
+=== AzureでのCloud Volumes ONTAP 9.19.1
+
+AzureでCloud Volumes ONTAP 9.19.1の一般提供（GA）バージョンをデプロイおよび管理するために、NetApp Consoleを使用できるようになりました。
+
+コンソールでは、2026年8月からAWSおよびGoogle CloudでのCloud Volumes ONTAP 9.19.1をサポートしています。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-new.html["Cloud Volumes ONTAP 9.19.1 リリースノート"^]
+
+
+
+[[azure-encryption-at-host-for-cloud-volumes-ontap]]
+=== Cloud Volumes ONTAP のホストでの Azure 暗号化
+
+Cloud Volumes ONTAP 9.19.1 GA以降、前提条件を満たす新しいAzureシングルノードおよび高可用性（HA）デプロイメントにおいて、ホストでのAzure暗号化がデフォルトで有効になります。この機能は、データがホストに書き込まれたりホストから読み取られたりする際に、エフェメラルディスクや関連するホストレベルのキャッシュを含む、VMをホストする物理サーバ上のデータを暗号化します。
+
+AzureにCloud Volumes ONTAPを展開する前に、以下の前提条件が満たされていることを確認してください：
+
+*  `EncryptionAtHost` 機能は、お客様のAzureサブスクリプションに登録されています。 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli["Microsoft ドキュメント：ホストでの暗号化を有効にする"^]を参照してください。
+* 選択したVMインスタンスタイプは、Azureリージョン内のホストでの暗号化をサポートしています。 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli#finding-supported-vm-sizes["Microsoft ドキュメント：サポートされている VM サイズの検索"^]を参照してください。
+
+
+以下の点に注意してください：
+
+* 追加の設定は不要です。
+* これらの前提条件が満たされていない場合、Cloud Volumes ONTAPの展開でホストでのAzure暗号化は有効になりません。
+* ホスト側での暗号化はAzureにのみ適用され、AWSやGoogle Cloudには適用されません。
+
+
+Microsoftのドキュメント： https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-host-based-encryption-portal["Azureポータルを使用して、ホストでの暗号化によるエンドツーエンドの暗号化を有効にします"^]
+
+
+
+[[backend-network-encryption-on-cloud-volumes-ontap-clusters-in-azure-and-google-cloud]]
+=== AzureおよびGoogle CloudのCloud Volumes ONTAPクラスタにおけるバックエンドネットワーク暗号化
+
+Cloud Volumes ONTAP 9.19.1以降では、AzureおよびGoogle CloudにおけるHA構成のバックエンドクラスタネットワーク暗号化がサポートされています。
+
+クラスタネットワーク暗号化を有効にすると、クラスタのパフォーマンスに影響を与える可能性があります。この機能を有効にする前に、注意を払い、環境が追加の負荷に対応できることを確認してください。
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-enable-cluster-encryption.html["Cloud Volumes ONTAPクラスタでバックエンドネットワーク暗号化を有効にする"^]
+
+
+
+[[ability-to-reduce-disruptions-during-azure-scheduled-maintenance]]
+=== Azureの定期メンテナンス中の障害を軽減する機能
+
+定期メンテナンス中、AzureはCloud Volumes ONTAP HAペアのVMを一時的に停止する場合があります。ONTAPはこの一時停止をノード障害と解釈してストレージ処理をパートナーノードに移行し、VMの再開時に元のノードに戻す場合があります（テイクオーバーとギブバック）。このプロセスにより、ノード障害が発生していない場合でも、アクティブなクライアント接続が中断される可能性があります。
+
+Cloud Volumes ONTAP 9.19.1以降では、オプションの設定を有効にすることで、Azureの定期メンテナンスによるフリーズ期間中もHAペアが動作を継続し、自動的にテイクオーバーとギブバックを開始しないようにすることができます。
+
+
+NOTE: この機能は、Cloud Volumes ONTAP 9.19.1でパブリックプレビューとして利用できます。
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-prevent-freeze.html["Cloud Volumes ONTAP HAペアのAzureメンテナンス中の中断を防止する"^]

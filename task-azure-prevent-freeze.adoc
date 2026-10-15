@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: task-azure-prevent-freeze.html 
+keywords: Azure, maintenance event, HA, takeover, giveback, freeze, disruption 
+summary: Cloud Volumes ONTAP HAペアの自動テイクオーバーとギブバックを抑制して、Azureメンテナンス中の中断を防ぎます。 
+---
+= Cloud Volumes ONTAP HAペアのAzureメンテナンス中の中断を防止する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azureの計画メンテナンス中に自動テイクオーバーとギブバックを抑制するように、Cloud Volumes ONTAP HAペアを設定できます。このオプション機能はCloud Volumes ONTAP 9.19.1以降で利用可能であり、デフォルトでは無効になっています。
+
+
+NOTE: この機能は、Cloud Volumes ONTAP 9.19.1でパブリックプレビューとして利用できます。
+
+Microsoft Azureでは、定期メンテナンス中にVMを一時的に停止する場合があります。Cloud Volumes ONTAP HA構成では、ONTAPがこの一時停止をノード障害として扱い、ストレージ処理をパートナーノードに移行し、一時停止したVMが再開した際に自動的に元に戻す（テイクオーバーとギブバック）可能性があります。これにより、アクティブなクライアント接続が中断される可能性があります。この機能を有効にすると、HAペアはAzureの定期メンテナンスによるフリーズ期間中も、自動的にテイクオーバーとギブバックを開始することなく動作を継続します。
+
+.タスク概要
+* Azure VMがフリーズしている間、クライアントのI/Oが停止する可能性があります。ONTAPは自動的にテイクオーバーを開始しないため、クライアントのI/OはHAパートナーに移行せず、影響を受けるノードに残ります。ノードが再開するまで、I/O処理が停止する可能性があります。
+* 中断の継続時間は、Azure VM のフリーズ状況によって異なります。フリーズ時間が長くなると、I/Oの中断時間も長くなる可能性があります。
+* 通常のHA保護機能は、その他の障害発生時には引き続き有効です。この機能は、Azureの定期メンテナンスによるフリーズ時のみ、テイクオーバーとギブバックを抑制します。ノード障害やパニックなど、通常テイクオーバーをトリガーするその他の状況では、引き続きテイクオーバーが実行されます。
+* この機能は、HAペアを構成する両方のノードに適用されます。メンテナンスイベントの動作は両方のノードで設定する必要があり、片方のノードだけで有効にすることはできません。
+* この機能は再起動後も有効であり、無効にするまで継続されます。これを無効にすると、デフォルトの定期メンテナンス時のテイクオーバーとギブバックの動作に戻ります。
+
+
+.開始する前に
+* Cloud Volumes ONTAPシステムのバージョンは9.19.1以降である必要があります。
+* この手順を完了するには、Cloud Volumes ONTAPの管理者権限が必要です。
+* Azureの定期メンテナンスによるフリーズ中に一時的なI/O停止が発生してもワークロードが許容できること、およびデフォルトのテイクオーバーとギブバック応答よりもフリーズ中も処理を継続する方が望ましいことを確認してください。
+
+
+
+
+[[prevent-automatic-takeover-and-giveback-during-azure-scheduled-maintenance]]
+== Azureの定期メンテナンス中の自動テイクオーバーとギブバックを防止する
+
+.手順
+. Azure HAペアのシステムIDを特定します。リソースの識別とAPI呼び出しの実行については、 https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^]を参照してください。
+. 以下のエンドポイントに `PUT`リクエストを送信します。 `{id}`をシステム ID に置き換えてください：
++
+`PUT /occm/api/azure/ha/working-environments/{id}/opt-off-maintenance-event`
+
++
+リクエスト本文で `enabled`を `true`に設定します：
+
++
+[source, json]
+----
+{
+  "enabled": true
+}
+----
+
+
+.結果
+リクエストが成功すると、空のボディを持つHTTP 202が返されます。
+
+
+IMPORTANT: APIは、HAペア内のノードを順次更新します。操作が完了する前にリクエストが失敗した場合は、ノード間で設定が異なる可能性があるため、リクエストを再試行する前に両方のノードの設定を確認してください。
+
+
+
+[[disable-the-feature-to-restore-default-behavior]]
+== デフォルトの動作に戻すには、この機能を無効にしてください
+
+Azureの定期メンテナンス中にデフォルトのテイクオーバーとギブバックの動作を復元するには、この機能を無効にしてください。
+
+.手順
+. 同じエンドポイントに `PUT`リクエストを送信し、 `{id}`をシステムIDに置き換えます：
++
+`PUT /occm/api/azure/ha/working-environments/{id}/opt-off-maintenance-event`
+
++
+リクエスト本文で `enabled`を `false`に設定します：
+
++
+[source, json]
+----
+{
+  "enabled": false
+}
+----
+

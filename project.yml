@@ -197,6 +197,8 @@ sidebar:
         url: "/task-protecting-ransomware.html"
       - title: WORMストレージ用の改ざん防止スナップショットコピーを作成する
         url: "/reference-worm-snaplock.html"
+      - title: バックエンドクラスタネットワーク暗号化を有効にする
+        url: "/task-enable-cluster-encryption.html"
   - title: クラウドインフラストラクチャ管理
     entries:
     - title: AWS管理
@@ -223,6 +225,8 @@ sidebar:
         url: "/reference-limits-azure.html"
       - title: Azure の HA ペアについて
         url: "/concept-ha-azure.html"
+      - title: Cloud Volumes ONTAP HAのAzureメンテナンス中の停止を防ぐ
+        url: "/task-azure-prevent-freeze.html"
       - title: Azure Key Vault でキーを管理する
         url: "/task-azure-key-vault.html"
       - title: Azure VMの種類を変更する
@@ -245,10 +249,6 @@ sidebar:
           url: "/concept-configuration-analysis-cvo.html"
         - title: AzureでのCloud Volumes ONTAP構成の改善
           url: "/task-improve-configurations-cvo.html"
-      - title: AzureでのCloud Volumes ONTAPの構成分析
-        url: "/concept-configuration-analysis-cvo.html"
-      - title: AzureでのCloud Volumes ONTAP構成の改善
-        url: "/task-improve-configurations-cvo.html"
     - title: Google Cloud 管理
       entries:
       - title: Google Cloud でサポートされている構成

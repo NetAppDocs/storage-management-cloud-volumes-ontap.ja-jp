@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: task-enable-cluster-encryption.html 
+keywords: Backend cluster network encryption, encryption, security, TLS, IPsec, CSM, kTLS, backend encryption 
+summary: ONTAP IPsecでまだ保護されていないCloud Volumes ONTAPクラスタトラフィックを保護するために、バックエンドクラスタネットワーク暗号化を有効にします。 
+---
+= AzureおよびGoogle CloudのCloud Volumes ONTAPでバックエンドクラスタネットワーク暗号化を有効にする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 9.19.1以降では、AzureおよびGoogle Cloudの高可用性（HA）構成における内部の東西トラフィックを保護するために、バックエンドクラスタのネットワーク暗号化を有効にします。この設定は転送中のトラフィックを保護するものであり、保存されているボリュームデータを暗号化するものではありません。
+
+ONTAPは、HA構成のバックエンドネットワーク上のトラフィックを保護するために、カーネルTLS（kTLS）上のクラスタセッション管理（CSM）とソフトウェアIPsecを使用します。Cloud Volumes ONTAP 9.19.1以降では、この保護機能をバックエンドクラスタのトラフィックにも拡張します。
+
+
+NOTE: クラスタネットワーク暗号化を有効にすると、クラスタのパフォーマンスに影響を与える可能性があります。この機能を有効にする前に、注意を払い、環境が追加の負荷に対応できることを確認してください。
+
+.開始する前に
+* Cloud Volumes ONTAP 9.19.1以降を実行している必要があります。
+* クラスタ管理者の権限が必要です。
+* Cloud Volumes ONTAPの導入環境でサポートされている構成が使用されていることを確認する必要があります。
+
+
+.手順
+. ONTAP CLIを使用して、Cloud Volumes ONTAPクラスタに接続します。
+. クラスタネットワーク暗号化の設定が正しいことを確認してください：
++
+[source, cli]
+----
+security cluster-network show
+    Enabled: false
+    Mode: tls
+    Status: READY
+----
+. TLSおよびIPsecモードでクラスタネットワーク暗号化を有効にする：
++
+[source, cli]
+----
+security cluster-network modify -enabled true -mode tls_ipsec
+----
+. クラスタネットワーク暗号化が有効になっていることを確認してください：
++
+[source, cli]
+----
+security cluster-network show
+    Enabled: true
+    Mode: tls_ipsec
+    Status: READY
+----
++
+
+NOTE:  `tls_ipsec`モードを有効にすると、CSMトラフィックはTLSを使用し、他のクラスタ ネットワーク トラフィックはIPsecを使用します。ONTAPは、必要な証明書とバックエンドのIPsecポリシーを生成および管理します。
+
+
+
+.関連情報
+* https://docs.netapp.com/us-en/ontap/networking/configure-backend-encryption.html["ONTAPバックエンド クラスタ ネットワーク暗号化を設定する"^]
+* https://docs.netapp.com/us-en/ontap-cli/security-cluster-network-show.html["security cluster-network show"^]
+* https://docs.netapp.com/us-en/ontap-cli/security-cluster-network-modify.html["security cluster-network modify"^]
+

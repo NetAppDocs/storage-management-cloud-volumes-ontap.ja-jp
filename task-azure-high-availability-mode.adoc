@@ -14,22 +14,22 @@ summary: 計画外のフェイルオーバー時間を短縮し、 Cloud Volumes
 
 
 [role="lead"]
-予期しないフェイルオーバー時間を削減し、Cloud Volumes ONTAP の NFSv4 サポートを有効にするには、Microsoft Azure の高可用性（HA）モードを有効にする必要があります。このモードを有効にすると、Cloud Volumes ONTAP HA ノードは、CIFS および NFSv4 クライアントでの計画外のフェイルオーバー時に、低い（60 秒）復旧時間目標（RTO）を達成できます。
+Cloud Volumes ONTAP HAペアでMicrosoft Azureの高可用性（HA）モードを有効にして、予期せぬフェイルオーバー時間を短縮し、NFSv4をサポートします。このモードでは、予期せぬフェイルオーバー発生時に、CIFSおよびNFSv4クライアントに対して60秒の復旧時間目標（RTO）を提供できます。
 
-Cloud Volumes ONTAP 9.10.1 以降では、Microsoft Azure で実行されているCloud Volumes ONTAP HA ペアの計画外のフェイルオーバー時間を短縮し、NFSv4 のサポートを追加しました。これらの拡張機能をCloud Volumes ONTAPで利用できるようにするには、Azure サブスクリプションで高可用性機能を有効にする必要があります。
+Cloud Volumes ONTAP 9.10.1以降では、Microsoft Azureで実行されているCloud Volumes ONTAP HAペアの計画外フェイルオーバー時間を短縮し、NFSv4のサポートを追加しました。これらの機能強化をCloud Volumes ONTAPで利用できるようにするには、AzureサブスクリプションでHA機能を有効にする必要があります。
 
 .タスク概要
-NetApp Console は、Azure サブスクリプションで機能を有効にする必要がある場合、これらの詳細を表示します。次の点に注意してください：
+Azureサブスクリプションでこの機能を有効にする必要がある場合、NetApp Consoleにプロンプトが表示されます。以下の点にご注意ください：
 
-* Cloud Volumes ONTAP HA ペアの高可用性に問題はありません。この Azure 機能はONTAPと連携して動作し、計画外のフェイルオーバー イベントによって発生する NFS プロトコルのクライアントで観測されるアプリケーション停止時間を短縮します。
-* この機能を有効にしても、 Cloud Volumes ONTAP HA ペアは中断されません。
-* Azure サブスクリプションでこの機能を有効にしても、他の VM に問題は発生しません。
-* Cloud Volumes ONTAP は、 CIFS および NFS クライアント上のクラスターおよび SVM 管理 LIF のフェイルオーバー中に内部 Azure ロード バランサーを使用します。
-* HA モードが有効になっている場合、コンソールは 12 時間ごとにシステムをスキャンして、Azure Load Balancer の内部ルールを更新します。
+* この機能はONTAPと連携し、予期せぬフェイルオーバーの発生時にNFSクライアントで発生するアプリケーションの停止時間を短縮します。これを有効にしても、Cloud Volumes ONTAP HAペアの可用性に問題があることを示すわけではありません。
+* このAzure機能を有効にしても、Cloud Volumes ONTAP HAペアは中断されません。
+* Azureサブスクリプションでこの機能を有効にしても、環境内の他のVMや、同じサブスクリプション内の単一ノードシステムには影響しません。
+* フェイルオーバー中、Cloud Volumes ONTAPは、CIFSおよびNFSクライアントにサービスを提供するクラスターおよびSVM管理LIFに内部Azureロードバランサーを使用します。
+* HAモードを有効にすると、コンソールは12時間ごとにシステムをスキャンして、Azureロードバランサーの内部ルールを更新します。
 
 
 .手順
-_Owner_ 権限を持つ Azure ユーザーは、Azure CLI からこの機能を有効にできます。
+Azure CLI を使用して、_Owner_ 権限を持つ Azure ユーザーとしてこの機能を有効にしてください。
 
 . https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart["Azure ポータルから Azure Cloud Shell にアクセスする"^]
 . 高可用性モード機能を登録します。

@@ -160,7 +160,7 @@ Keystoneサブスクリプションは、成長に応じて支払うサブスク
 .手順
 . まだ購読していない場合は、 https://www.netapp.com/forms/keystone-sales-contact/["ネットアップに連絡"^]
 . mailto:ng-keystone-success@netapp.com[ NetAppに問い合わせ] して、コンソール ユーザー アカウントに 1 つ以上のKeystoneサブスクリプションを承認します。
-. NetAppがアカウントを承認すると、link:task-manage-keystone.html#link-a-subscription["Cloud Volumes ONTAPで使用するためにサブスクリプションをリンクします"] 。
+. NetAppがお客様のアカウントを承認したあと、link:task-manage-keystone.html["Cloud Volumes ONTAPで使用するためにサブスクリプションをリンクします"]。
 . 「システム」ページで、「システムの追加」を選択し、手順に従ってください。
 +
 .. 課金方法を選択するように求められたら、 Keystoneサブスクリプションの課金方法を選択します。

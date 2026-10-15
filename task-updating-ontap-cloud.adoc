@@ -161,6 +161,9 @@ Cloud Volumes ONTAP は、 ONTAP System Manager またはONTAP CLI ではなく�
 | 現在のバージョン | 直接アップグレードできるバージョン 
 
 
+| 9.18.1 | 9.19.1 
+
+
 | 9.17.1 P1 | 9.18.1 
 
 
