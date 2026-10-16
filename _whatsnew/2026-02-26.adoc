@@ -7,16 +7,16 @@
 [[support-for-google-infrastructure-manager-for-private-mode-deployments]]
 === プライベートモードデプロイメントにおけるGoogle Infrastructure Managerのサポート
 
-Cloud Volumes ONTAP 9.16.1以降では、Google Cloudでの新しいプライベートモードのデプロイにおいて、 https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]（DM）の代わりに https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]（IM）をサポートするようになりました。Googleは、より高度なInfrastructure Managerへの移行に伴い、近い将来、インフラサービスとしてのDeployment Managerを非推奨にする予定です。
+Cloud Volumes ONTAP 9.16.1 以降では、Google Cloud での新しいプライベートモード展開において、 https://docs.cloud.google.com/deployment-manager/docs/deprecations["Cloud Deployment Manager"^]（DM）の代わりに https://docs.cloud.google.com/infrastructure-manager/docs/overview["Google Cloud Infrastructure Manager"^]（IM）がサポートされるようになりました。Google は、より高度な Infrastructure Manager を優先して、インフラサービスとしての Deployment Manager を廃止する予定です。
 
-2026年2月25日から、Cloud Volumes ONTAPは新規および既存のプライベートモード展開にInfrastructure Managerを使用します。この表では、基本的なワークフローを説明します：
+2026年2月25日以降、Cloud Volumes ONTAPは新規および既存のプライベートモード環境の導入にInfrastructure Managerを使用します。基本的なワークフローは、状況によって異なります：
 
 [cols="1,4,1,1,1,1"]
 |===
 | シナリオ | アクション | エージェント用の新しいAPI | エージェントの新しい権限 | Cloud Volumes ONTAP向けの新しいGoogle Cloud API | ドキュメントリソース 
 
 
-| 既存のエージェントとプライベートモードでの既存の導入 | NetApp Support Siteからインストーラをダウンロードし、ホストにエージェントを手動でインストールして、Infrastructure Manager APIを使用できるようにすることで、NetApp Consoleエージェントを最新バージョンにアップグレードします。その後、既存のCloud Volumes ONTAPシステムをInfrastructure Managerを使用するように変換します。  a| 
+| 既存のエージェントとプライベートモードでの既存の導入 | NetApp Support Siteからインストーラをダウンロードし、ホストにエージェントを手動でインストールして、Consoleエージェントを最新バージョンにアップグレードします。これにより、Infrastructure Manager APIを使用できるようになります。次に、既存のCloud Volumes ONTAPシステムを、Infrastructure Managerを使用するように変換します。  a| 
 * クラウドインフラストラクチャマネージャAPI
 * Cloud Quotas API
 * Cloud Build API
@@ -43,7 +43,7 @@ Console リリースにリストされているすべての権限：
 
 
 |===
-プライベートモード環境では、Cloud Volumes ONTAP が Infrastructure Manager の使用を開始するためにいくつかの設定変更が必要です。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成"^]を参照してください。
+プライベートモードの展開では、Cloud Volumes ONTAPがInfrastructure Managerの使用を開始できるように、いくつかの設定変更を行う必要があります。 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成"^]を参照してください。
 
 .関連リンク
 * https://docs.netapp.com/us-en/console-setup-admin/whats-new.html#console-agent-4-2-0["NetApp Console Agent 4.2.0 リリースノート"^]

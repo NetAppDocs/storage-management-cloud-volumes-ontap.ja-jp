@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-set-up-licensing-google.html 
 keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, digital wallet 
-summary: Cloud Volumes ONTAPに使用するライセンス オプションを決定したら、新しいシステムを展開するときにそのライセンス オプションを選択する前に、いくつかの手順を実行する必要があります。 
+summary: システムを作成する前に、Google CloudでCloud Volumes ONTAPのフリーミアム、容量ベース、またはKeystoneサブスクリプションのライセンスを設定してください。 
 ---
 = Google Cloud でCloud Volumes ONTAPのライセンスを設定する
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Cloud Volumes ONTAPに使用するライセンス オプションを決
 
 
 [role="lead"]
-Cloud Volumes ONTAPで使用するライセンス オプションを決定したら、新しいシステムを作成するときにそのライセンス オプションを選択する前に、いくつかの手順を実行する必要があります。
+Google CloudのCloud Volumes ONTAPでどのライセンスオプションを使用するかを決定したら、システムを作成する際にそのオプションを選択する前に、いくつかの設定手順を完了する必要があります。
 
 
 
@@ -29,7 +29,7 @@ Cloud Volumes ONTAPで使用するライセンス オプションを決定した
 +
 .. 「詳細と認証情報」ページで、「認証情報の編集」>「サブスクリプションの追加」を選択し、プロンプトに従ってGoogle Cloud Marketplaceの従量課金制オファリングにサブスクライブします。
 +
-プロビジョニングされた容量が500GiBを超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。その時点で、システムは自動的にlink:concept-licensing.html#packages["エッセンシャルパッケージ"]。
+マーケットプレイスのサブスクリプションでは、プロビジョニングされた容量が500GiBを超えない限り、料金は発生しません。超えた場合、システムは自動的にlink:concept-licensing.html#packages["エッセンシャルパッケージ"]に変換されます。
 
 .. コンソールに戻ったら、課金方法のページにアクセスして「*Freemium*」を選択します。
 +
@@ -46,7 +46,7 @@ link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動す�
 [[capacity-based-license]]
 == 容量ベースのライセンス
 
-容量ベースのライセンスでは、容量 1 TiB ごとにCloud Volumes ONTAPの料金を支払うことができます。容量ベースのライセンスは、Essentials パッケージまたは Professional パッケージというパッケージ形式で提供されます。
+容量ベースのライセンスでは、Cloud Volumes ONTAPの容量1TiB単位で料金を支払うことができます。容量ベースのライセンスは、_パッケージ_：EssentialsまたはProfessionalとして提供されます。
 
 Essentials および Professional パッケージは、次の消費モデルまたは購入オプションで利用できます。
 
@@ -57,7 +57,7 @@ Essentials および Professional パッケージは、次の消費モデルま�
 
 link:concept-licensing.html#capacity-based-licensing["容量ベースのライセンスについて詳しく見る"] 。
 
-次のセクションでは、それぞれの消費モデルを開始する方法について説明します。
+これらの消費モデルをそれぞれ使い始めるには、次のセクションの手順に従ってください。
 
 
 
@@ -82,7 +82,7 @@ Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソ
 +
 .. 「詳細と認証情報」ページで、「認証情報の編集」>「サブスクリプションの追加」を選択し、プロンプトに従ってGoogle Cloud Marketplaceの従量課金制オファリングにサブスクライブします。
 +
-NetAppから購入したライセンスに対しては常に最初に課金されますが、ライセンス容量を超えた場合、またはライセンスの有効期限が切れた場合は、マーケットプレイスの時間単位料金で課金されます。
+お客様がNetAppから購入したライセンスが常に最初に課金されますが、ライセンス容量を超過した場合、またはライセンス期間が満了した場合は、時間当たりのマーケットプレイス料金が課金されます。
 
 .. コンソールに戻ったら、課金方法ページにアクセスして容量ベースのパッケージを選択します。
 +
@@ -159,7 +159,7 @@ Keystoneサブスクリプションは、成長に応じて支払うサブスク
 
 .手順
 . まだ購読していない場合は、 https://www.netapp.com/forms/keystone-sales-contact/["ネットアップに連絡"^]
-. mailto:ng-keystone-success@netapp.com[ NetAppに問い合わせ] して、コンソール ユーザー アカウントに 1 つ以上のKeystoneサブスクリプションを承認します。
+. コンソールユーザーアカウントを1つ以上のKeystoneサブスクリプションで承認するには、mailto:ng-keystone-success@netapp.com[NetAppにお問い合わせ]ください。
 . NetAppがお客様のアカウントを承認したあと、link:task-manage-keystone.html["Cloud Volumes ONTAPで使用するためにサブスクリプションをリンクします"]。
 . 「システム」ページで、「システムの追加」を選択し、手順に従ってください。
 +
@@ -179,7 +179,7 @@ link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動す�
 [[node-based-license]]
 == ノードベースのライセンス
 
-ノードベースライセンスは、Cloud Volumes ONTAPの旧世代ライセンスです。ノードベースライセンスはNetApp （BYOL）から取得でき、特定のケースに限りライセンス更新に利用できます。詳細については、以下を参照してください。
+ノードベースのライセンスは、Cloud Volumes ONTAPの旧世代のライセンスです。ノードベースのライセンスはNetAppから購入できました（BYOL）。ノードベースのライセンスは現在、特定のケースでのみ更新可能です。詳細については、以下を参照してください：
 
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["ノードベースライセンスの提供終了"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]

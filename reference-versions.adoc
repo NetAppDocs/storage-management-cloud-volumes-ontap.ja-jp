@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: reference-versions.html 
 keywords: versions, supported versions, new versions, cloud volumes ontap version 
-summary: NetApp Consoleを使用すると、新しいCloud Volumes ONTAPシステムを作成するときに、複数の異なるONTAPバージョンから選択できます。 
+summary: AWS、Azure、およびGoogle Cloudの新しいCloud Volumes ONTAPシステム（シングルノード構成およびHAペア構成）で利用可能なONTAPバージョンを確認します。 
 ---
 = Cloud Volumes ONTAPデプロイメントでサポートされているONTAPバージョン
 :hardbreaks:

@@ -2,18 +2,18 @@
 :allow-uri-read: 
 
 
-Cloud Volumes ONTAP を Amazon Web Services (AWS)、Microsoft Azure、および Google Cloud に `Quick create`を使用してデプロイすることで、シングルノード構成と高可用性（HA）構成の両方においてより迅速な導入が可能です。この簡素化されたプロセスは、単一ページにデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、拡張方式と比較してデプロイ手順を削減します。
+Amazon Web Services（AWS）、Microsoft Azure、および Google Cloud では、 `Quick create` を使用して Cloud Volumes ONTAP を展開することで、シングルノード構成と高可用性（HA）構成の両方でより迅速な導入が可能になります。この簡素化されたプロセスでは、単一のページでデフォルト値を自動的に設定し、ナビゲーションを最小限に抑えることで、拡張方式と比較して展開手順を削減します。
 
 .開始する前に
-始める前に、以下のものを用意してください：
+必ず以下のものを用意してください：
 
-. コンソールエージェントが起動して実行されており、プロジェクトまたはワークスペースに関連付けられていること。コンソールエージェントは常に実行されている必要があることに注意してください。詳細については、以下を参照してください：
+. コンソールエージェントが起動して実行されており、プロジェクトまたはワークスペースに関連付けられていること。コンソールエージェントは常に実行されている必要があります。詳細については、以下を参照してください：
 +
 ** https://docs.netapp.com/us-en/console-setup-admin/concept-agents.html["NetApp Console エージェントについて学ぶ"^]
 ** https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html["Console エージェントの導入方法を選択"^]
 
 
-. 使用する構成について理解していること。開始する前に、構成を選択し、管理者からネットワーク情報を入手してください。詳細については、以下を参照してください：
+. 使用したい構成を理解すること。構成を選択し、管理者からネットワーク情報を入手してください。詳細については、以下を参照してください：
 +
 [role="tabbed-block"]
 ====
@@ -110,7 +110,7 @@ image:screenshot-quick-start-gcp.png["width=500,alt=\"Google Cloud Quick Create\
 . *ONTAP認証情報*：これらは、Cloud Volumes ONTAPクラスタ管理者アカウントの認証情報です。これらの認証情報を使用して、ONTAP System ManagerまたはONTAP CLIを通じてCloud Volumes ONTAPに接続できます。デフォルトの_admin_ユーザー名をそのまま使用することも、カスタムユーザー名に変更することもできます。
 
 
-_Google Cloud_ の場合、Cloud Volumes ONTAP で link:concept-data-tiering.html["データ階層化"] または  https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recovery"^] を使用する予定がある場合は、*Service Account* を有効にして、事前定義された Storage Admin ロールを持つサービスアカウントを選択する必要があります。link:task-creating-gcp-service-account.html["サービスアカウントの作成方法を学ぶ"^]。コンソールエージェントに関連付けられたサービスアカウント https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["必要な権限を持っている必要があります"^]。
+_Google Cloud_ の場合、Cloud Volumes ONTAP でlink:concept-data-tiering.html["データ階層化"]または https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recovery"^]を使用する場合は、*Service Account* を有効にし、事前定義されたストレージ管理者ロールを持つサービスアカウントを選択する必要があります。link:task-creating-gcp-service-account.html["サービスアカウントの作成方法を学ぶ"^]。Console エージェントに関連付けられたサービスアカウント https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html["必要な権限を持っている必要があります"^]。
 
 . *タグ/ラベル*：タグは、AWS または Azure リソースのメタデータです。コンソールは、Cloud Volumes ONTAP インスタンスおよびそのインスタンスに関連付けられている各リソースにタグを追加します。Cloud Volumes ONTAP システムの作成時にユーザーインターフェースから最大 15 個のタグを追加でき、作成後にさらに追加することもできます。詳細については、以下を参照してください。
 +
@@ -135,18 +135,18 @@ https://docs.cloud.google.com/storage/docs/tags-and-labels["Google Cloud ドキ�
 
 
 .展開と構成
-. *デプロイメントタイプ/トポロジ*：使用するデプロイメントタイプ（シングルノード、単一のアベイラビリティゾーン（AZ）での高可用性（HA）、または複数のAZでのHA）を選択します。
+. *デプロイメントタイプ/トポロジ*：使用するデプロイメントタイプを選択します：シングルノード、単一のアベイラビリティゾーン（AZ）での高可用性（HA）、または複数のAZでのHA。
 . *ネットワーク構成*：計画ワークシートに記録したリージョン、VNet、サブネットのネットワーク情報を入力してください。
 +
 .. *リージョン*：デフォルトでは、リソースに関連付けられているクラウド アカウントのリージョンが選択されます。
-.. *可用性ゾーン*：選択したデプロイメントタイプに基づいて可用性ゾーンを選択でき、選択したリージョンが可用性ゾーンをサポートしている場合に選択できます。
+.. *アベイラビリティゾーン*：選択したデプロイメントタイプと、選択したリージョンがそのゾーンをサポートしているかどうかに基づいて、アベイラビリティゾーンを選択できます。
 .. *サブネット*：リージョンのサブネットを選択してください。
 +
 [role="tabbed-block"]
 ====
 .AWS向け
 --
-*VPC*: AWS の場合、計画したデプロイメントに従って、リージョンの Amazon Virtual Private Cloud (VPC) ネットワークとサブネットを入力してください。
+*VPC*：AWS の場合、計画しているデプロイメントに応じて、リージョンの Amazon Virtual Private Cloud（VPC）ネットワークとサブネットを入力してください。
 
 .AWSの高可用性機能
 HA構成を選択した場合は、以下の情報を入力してください：
@@ -159,7 +159,7 @@ HA構成を選択した場合は、以下の情報を入力してください：
 ... *アベイラビリティゾーンとメディエーター*: 各ノードとメディエーターのアベイラビリティゾーン (AZ) と、 Cloud Volumes ONTAP HA ペアを展開する対応するサブネットを選択します。
 ... *フローティングIP*: 複数のAZを選択した場合は、NFSおよびCIFSサービス、クラスタおよびSVM管理用のフローティングIPアドレスを指定します。IPアドレスは、リージョン内のすべてのVPCのCIDRブロックの範囲外である必要があります。詳細については、link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZ におけるCloud Volumes ONTAP HA の AWS ネットワーク要件"^]を参照してください。
 ... *メディエーター アクセス*: メディエーター アクセス情報を指定します。メディエーターは、HA ペアの健全性を監視し、障害発生時にクォーラムを提供する別のインスタンスです。キーペア名を指定して、メディエーターインスタンスが AWS EC2 サービスに接続できるようにし、接続方法を選択します。
-... *ルート テーブル*: 複数の AZ を選択した場合は、フローティング IP アドレスへのルートを含むルート テーブルを選択します。ルート テーブルが複数ある場合は、正しいルート テーブルを選択することが重要です。そうしないと、一部のクライアントがCloud Volumes ONTAP HA ペアにアクセスできなくなる可能性があります。ルートテーブルの詳細については、 http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS ドキュメント: ルートテーブル"^] 。
+... *ルートテーブル*：複数のAZを選択した場合は、フローティングIPアドレスへのルートを含むルートテーブルを選択してください。複数のルートテーブルがある場合は、正しいルートテーブルを選択していることを確認してください。そうしないと、一部のクライアントがCloud Volumes ONTAP HAペアにアクセスできなくなる可能性があります。ルートテーブルの詳細については、 http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS ドキュメント: ルートテーブル"^]を参照してください。
 
 
 .充電とサービス
@@ -173,7 +173,7 @@ HA構成を選択した場合は、以下の情報を入力してください：
 --
 .Google Cloud 用
 --
-*VPCとサブネット*：Google Cloudの場合、計画しているデプロイメントに応じて、リージョンのGoogle Virtual Private Cloud（VPC）ネットワークとサブネットを入力してください。
+*VPCとサブネット*：Google Cloudの場合、リージョンに対応するGoogle仮想プライベートクラウド（VPC）ネットワークと、計画しているデプロイメントに応じたサブネットを入力してください。
 
 .単一AZまたは複数AZにおけるHA
 HA構成を選択した場合は、次の情報を入力してください。*ノード1と2、およびメディエーターのゾーン*：2つのノードとメディエーターのゾーンを追加します。*接続性* HA構成用に4つの異なるVPCを選択し、各VPCにサブネットを1つずつ選択します。VPC-1、VPC-2、およびVPC-3の詳細については、link:reference-networking-gcp.html#requirements-specific-to-single-node-systems["VPC-1、VPC-2、VPC-3のルール"]を参照してください。
@@ -189,14 +189,14 @@ NOTE: Cloud Volumes ONTAP 9.19.1以降はlink:concept-ha-google-cloud.html["単�
 
 .充電とサービス
 . *ライセンス*：このCloud Volumes ONTAPシステムで使用するライセンスタイプを選択します。Professional、Essentials、Freemiumライセンスから選択できます。各種ライセンスの詳細については、link:concept-licensing.html["Cloud Volumes ONTAPライセンスについて学ぶ"^]を参照してください。
-. *データサービスと機能*: 必要なサービスを有効にしたままにするか、Cloud Volumes ONTAP で使用しないサービスを無効にします。_Google Cloud_ では、バックアップと復元を選択するか、NetApp Cloud Tiering を使用する場合は、サービスアカウントを指定する必要があります。
+. *データサービスと機能*：サービスを有効にしたままにするか、Cloud Volumes ONTAPで使用しないサービスを無効にします。_Google Cloud_では、バックアップとリカバリを選択するか、NetApp Cloud Tieringを使用する場合、サービスアカウントを指定する必要があります。
 +
 ** https://docs.netapp.com/us-en/data-services-data-classification/concept-classification.html["NetAppの分類について詳しくはこちら"^]
 ** https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html["NetApp Backup and Recoveryの詳細"^]
 ** link:concept-worm.html["Cloud Volumes ONTAPの WORM ストレージについて学ぶ"]
 +
 
-TIP: WORM とデータ階層化を利用する場合は、バックアップとリカバリを無効にし、バージョン 9.8 以降のCloud Volumes ONTAPシステムを展開する必要があります。
+TIP: WORMとデータ階層化を使用する場合は、バックアップとリカバリを無効にし、バージョン9.8以降のCloud Volumes ONTAPシステムを導入する必要があります。
 
 
 
@@ -206,7 +206,7 @@ TIP: WORM とデータ階層化を利用する場合は、バックアップと�
 
 _Azure_ では、*概要*セクションに、デプロイプロセスが完了したときに割り当てられるリソースが表示されます。
 
-_AWS_では、Cloud Volumes ONTAPシステムの作成後すぐに、NetApp Consoleは、指定されたVPC内にテストインスタンスを起動し、接続性を検証します。処理が成功すると、Consoleは直ちにインスタンスを終了し、システムのデプロイを開始します。Consoleが接続を確認できない場合、システムの作成は失敗します。テストインスタンスは、 `t2.nano`（デフォルトのVPCテナントの場合）または `m3.medium`（専用VPCテナント向け）のいずれかです。
+_AWS_では、Cloud Volumes ONTAPシステムを作成した直後に、NetApp Consoleが指定されたVPC内でテストインスタンスを起動し、接続性を検証します。テストが成功すると、コンソールは直ちにインスタンスを終了し、システムのデプロイを開始します。コンソールが接続を検証できない場合、システムの作成は失敗します。テストインスタンスは、 `t2.nano`（デフォルトのVPCテナンシーの場合）または `m3.medium`（専用VPCテナンシーの場合）のいずれかです。
 
 .終了後の操作
 コンソールはCloud Volumes ONTAPシステムを展開します。監査ページで進捗状況を追跡できます。
@@ -214,4 +214,4 @@ _AWS_では、Cloud Volumes ONTAPシステムの作成後すぐに、NetApp Cons
 Cloud Volumes ONTAPシステムの導入時に問題が発生した場合は、障害メッセージを確認してください。また、システムで*環境の再作成*を選択して、 `Advanced`モードウィザードを使用して導入を続行することもできます。
 
 
-CAUTION: 導入プロセスが完了したら、AWSまたはAzureクラウドポータルでシステムが生成したCloud Volumes ONTAP設定（特にシステムタグ）を変更しないでください。これらの設定を変更すると、予期しない動作やデータ損失が発生する可能性があります。
+CAUTION: 展開プロセスが完了したあとは、AWSまたはAzureクラウドポータルでシステムによって生成されたCloud Volumes ONTAPの設定、特にシステムタグを変更しないでください。これらの設定を変更すると、予期せぬ動作やデータ損失が発生する可能性があります。

@@ -10,7 +10,7 @@
 Cloud Volumes ONTAP 9.12.1 GA以降を、AzureのAustria East（austriaeast）およびBelgium Central（belgiumcentral）リージョンにデプロイできるようになりました。以下のデプロイメントタイプがサポートされています：
 
 * シングルノード
-* ローカル冗長ストレージ（LRS）を使用した単一可用性ゾーンにおける高可用性（HA）
+* ローカル冗長ストレージ（LRS）を使用した単一アベイラビリティゾーンにおけるHA
 * ゾーン冗長ストレージ（ZRS）を使用した複数可用性ゾーンにおける高可用性（HA）
 
 

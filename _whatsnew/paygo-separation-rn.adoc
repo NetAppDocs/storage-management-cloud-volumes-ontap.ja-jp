@@ -1,0 +1,10 @@
+= AWS MarketplaceでのCloud Volumes ONTAPの個別のPAYGOリスト
+:allow-uri-read: 
+
+
+
+
+[[separate-paygo-listing-for-cloud-volumes-ontap-in-aws-marketplace]]
+=== AWS MarketplaceでのCloud Volumes ONTAPの個別のPAYGOリスト
+
+NetAppは現在、NetApp Standalone Listing（NSL）を通じて、AWS MarketplaceでCloud Volumes ONTAPの個別の従量課金制（PAYGO）リストを提供しています。NetAppは以前、AWSエンタープライズ割引プログラム（EDP）の変更に対応するため、スタンドアロンのCloud Volumes ONTAPサブスクリプションを導入しました。PAYGOリストは現在、Cloud Volumes ONTAPの年間契約とともに同じNSLオファリングで利用できるようになり、PAYGOの利用状況の追跡、超過料金の監視、および消費コストの管理が容易になりました。Cloud Volumes ONTAPの年間契約とPAYGOリストはどちらも、NetApp Intelligence Services（NIS）の年間契約およびPAYGOリストとは別になっており、Cloud Volumes ONTAPの容量とデータサービスに対して個別の請求が可能です。

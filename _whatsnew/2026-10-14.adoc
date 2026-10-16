@@ -20,7 +20,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-new.html["C
 
 Cloud Volumes ONTAP 9.19.1 GA以降、前提条件を満たす新しいAzureシングルノードおよび高可用性（HA）デプロイメントにおいて、ホストでのAzure暗号化がデフォルトで有効になります。この機能は、データがホストに書き込まれたりホストから読み取られたりする際に、エフェメラルディスクや関連するホストレベルのキャッシュを含む、VMをホストする物理サーバ上のデータを暗号化します。
 
-AzureにCloud Volumes ONTAPを展開する前に、以下の前提条件が満たされていることを確認してください：
+AzureにCloud Volumes ONTAPを展開する前に、環境が以下の前提条件を満たしていることを確認してください：
 
 *  `EncryptionAtHost` 機能は、お客様のAzureサブスクリプションに登録されています。 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli["Microsoft ドキュメント：ホストでの暗号化を有効にする"^]を参照してください。
 * 選択したVMインスタンスタイプは、Azureリージョン内のホストでの暗号化をサポートしています。 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli#finding-supported-vm-sizes["Microsoft ドキュメント：サポートされている VM サイズの検索"^]を参照してください。

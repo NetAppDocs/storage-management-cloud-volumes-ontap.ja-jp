@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-azure-high-availability-mode.html 
 keywords: high availability mode, EnableHighAvailabilityMode, action required, nfsv4 
-summary: 計画外のフェイルオーバー時間を短縮し、 Cloud Volumes ONTAPの NFSv4 サポートを有効にするには、Microsoft Azure の高可用性モードを有効にする必要があります。 
+summary: Cloud Volumes ONTAP HAペアの計画外のフェイルオーバー時間を短縮し、NFSv4をサポートするために、Microsoft Azureの高可用性モードを有効にします。 
 ---
 = AzureでCloud Volumes ONTAPの高可用性モードを有効にする
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 計画外のフェイルオーバー時間を短縮し、 Cloud Volumes
 
 
 [role="lead"]
-Cloud Volumes ONTAP HAペアでMicrosoft Azureの高可用性（HA）モードを有効にして、予期せぬフェイルオーバー時間を短縮し、NFSv4をサポートします。このモードでは、予期せぬフェイルオーバー発生時に、CIFSおよびNFSv4クライアントに対して60秒の復旧時間目標（RTO）を提供できます。
+計画外のフェイルオーバー時間を短縮し、NFSv4をサポートするために、Cloud Volumes ONTAP HAペアでMicrosoft Azureの高可用性（HA）モードを有効にします。このモードでは、計画外のフェイルオーバー発生時に、CIFSおよびNFSv4クライアントに対して60秒の目標復旧時間（RTO）を提供できます。
 
 Cloud Volumes ONTAP 9.10.1以降では、Microsoft Azureで実行されているCloud Volumes ONTAP HAペアの計画外フェイルオーバー時間を短縮し、NFSv4のサポートを追加しました。これらの機能強化をCloud Volumes ONTAPで利用できるようにするには、AzureサブスクリプションでHA機能を有効にする必要があります。
 

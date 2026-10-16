@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-set-up-licensing-azure.html 
 keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, digital wallet 
-summary: Cloud Volumes ONTAPに使用するライセンス オプションを決定したら、新しいシステムを展開するときにそのライセンス オプションを選択する前に、いくつかの手順を実行する必要があります。 
+summary: 新しいシステムをデプロイする前に、AzureでのCloud Volumes ONTAP向けに、フリーミアム、容量ベース（BYOL、PAYGO、年間契約）、またはKeystoneサブスクリプションのライセンスを設定します。 
 ---
 = AzureでCloud Volumes ONTAPのライセンスを設定する
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Cloud Volumes ONTAPに使用するライセンス オプションを決
 
 
 [role="lead"]
-Cloud Volumes ONTAPで使用するライセンス オプションを決定したら、新しいシステムを作成するときにそのライセンス オプションを選択する前に、いくつかの手順を実行する必要があります。
+AzureのCloud Volumes ONTAPで使用するライセンスオプションを決定したら、新しいシステムを作成する際にそのライセンスオプションを選択する前に、いくつかの手順を完了する必要があります。
 
 
 
@@ -29,7 +29,7 @@ Freemium プランを選択すると、最大 500 GiB のプロビジョニン�
 +
 .. 「詳細と認証情報」ページで、「認証情報の編集」>「サブスクリプションの追加」を選択し、プロンプトに従ってAzure Marketplaceの従量課金制オファリングにサブスクライブします。
 +
-プロビジョニングされた容量が 500 GiB を超えない限り、マーケットプレイスのサブスクリプションを通じて課金されることはありません。超過した場合、システムは自動的に link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["エッセンシャルパッケージ"^] に変換されます。
+マーケットプレイスのサブスクリプションでは、プロビジョニングされた容量が500 GiBを超えない限り、料金は発生しません。その時点で、システムは自動的にlink:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing["エッセンシャルパッケージ"^]に変換されます。
 
 +
 image:screenshot-azure-paygo-subscription.png["Cloud Volumes ONTAPシステムを作成する際の PAYGO サブスクリプション オプションのスクリーンショット。"]
@@ -49,7 +49,7 @@ link:task-deploying-otc-azure.html["AzureでCloud Volumes ONTAPを起動する�
 [[capacity-based-license]]
 == 容量ベースのライセンス
 
-容量ベースのライセンスでは、容量 1 TiB ごとにCloud Volumes ONTAPの料金を支払うことができます。容量ベースのライセンスは、Essentials パッケージまたは Professional パッケージというパッケージ形式で提供されます。
+容量ベースのライセンスでは、Cloud Volumes ONTAPの容量1TiB単位で料金を支払うことができます。容量ベースのライセンスは、_パッケージ_として提供されます：EssentialsパッケージまたはProfessionalパッケージ。
 
 Essentials および Professional パッケージは、次の消費モデルまたは購入オプションで利用できます。
 
@@ -60,7 +60,7 @@ Essentials および Professional パッケージは、次の消費モデルま�
 
 link:concept-licensing.html["容量ベースのライセンスについて詳しく見る"] 。
 
-次のセクションでは、それぞれの消費モデルを開始する方法について説明します。
+開始するには、使用する消費モデルの手順に従ってください。
 
 
 
@@ -76,7 +76,7 @@ NOTE: NetApp は、BYOLライセンスの購入、延長、更新を制限して
 . https://www.netapp.com/forms/sales-contact/["ライセンスを取得するには、 NetApp の営業担当者にお問い合わせください。"^]
 . https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html#add-an-nss-account["NetAppサポートサイトのアカウントをコンソールに追加します"^]
 +
-コンソールは NetApp のライセンス サービスに自動的にクエリを実行し、 NetAppサポート サイト アカウントに関連付けられているライセンスの詳細を取得します。エラーがない場合、コンソールはライセンスを自動的にコンソールに追加します。
+コンソールは自動的にNetAppのライセンスサービスにクエリを実行し、お客様のNetApp Support Siteアカウントに関連付けられているライセンスの詳細を取得します。エラーがなければ、コンソールは自動的にライセンスを追加します。
 
 +
 Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソールからライセンスが利用可能な状態になっている必要があります。必要であれば、link:task-manage-capacity-licenses.html["コンソールにライセンスを手動で追加する"]。
@@ -85,7 +85,7 @@ Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソ
 +
 .. 「詳細と認証情報」ページで、「認証情報の編集」>「サブスクリプションの追加」を選択し、プロンプトに従ってAzure Marketplaceの従量課金制オファリングにサブスクライブします。
 +
-NetAppから購入したライセンスに対しては常に最初に課金されますが、ライセンス容量を超えた場合、またはライセンスの有効期限が切れた場合は、マーケットプレイスの時間単位料金で課金されます。
+お客様がNetAppから購入したライセンスが常に最初に請求されますが、ライセンス容量を超過した場合、またはライセンスの有効期限が切れた場合は、マーケットプレイスの時間単位の料金が請求されます。
 
 +
 image:screenshot-azure-paygo-subscription.png["Cloud Volumes ONTAPシステムを作成する際の PAYGO サブスクリプション オプションのスクリーンショット。"]
@@ -187,7 +187,7 @@ link:task-deploying-otc-azure.html["AzureでCloud Volumes ONTAPを起動する�
 [[node-based-license]]
 == ノードベースのライセンス
 
-ノードベースライセンスは、Cloud Volumes ONTAPの旧世代ライセンスです。ノードベースライセンスはNetApp （BYOL）から取得でき、特定のケースに限りライセンス更新に利用できます。詳細については、以下を参照してください。
+ノードベースのライセンスは、Cloud Volumes ONTAPの旧世代のライセンスです。ノードベースのライセンスはNetApp（BYOL）から購入できました。ノードベースのライセンスは、特定のケースにおいてのみ更新可能です。詳細については、以下を参照してください：
 
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["ノードベースライセンスの提供終了"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]

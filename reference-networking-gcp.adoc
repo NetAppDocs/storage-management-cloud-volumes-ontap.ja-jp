@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: reference-networking-gcp.html 
 keywords: networking, network, requirements, connection, connections, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, bucket, private google access, set up data requirement, gcp networking, google networking, shared vpc, host project, service project, private mode or in a project protected by VPC Service Controls 
-summary: Google Cloud ネットワークを設定して、Cloud Volumes ONTAP システムが正常に動作できるようにします。CVO のネットワーク要件、プライベート IP アドレス、VPC、サブネット、パケットミラーリング、ファイアウォールルール、HA 構成、およびコンソールエージェントの要件について説明します。 
+summary: プライベートIPアドレス、VPC、サブネット、パケットミラーリング、ファイアウォールルール、Consoleエージェントの要件など、Cloud Volumes ONTAPのGoogle Cloudネットワーク要件を確認します。 
 ---
-= Cloud Volumes ONTAP用に Google Cloud ネットワークを設定する
+= Cloud Volumes ONTAP の Google Cloud ネットワーク要件
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Google Cloud ネットワークを設定して、Cloud Volumes ONTAP �
 
 
 [role="lead"]
-NetApp Consoleは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。
+NetApp Consoleは、Google Cloud上のCloud Volumes ONTAP向けに、IPアドレス、ネットマスク、ルートなどのネットワークコンポーネントをセットアップします。アウトバウンドのインターネットアクセスが利用可能であること、十分な数のプライベートIPアドレスが利用可能であること、および適切な接続が確立されていることを確認する必要があります。
 
 HAペアを導入する場合は、link:concept-ha-google-cloud.html["Google Cloud での HA ペアの仕組みを学ぶ"] 。
 
@@ -23,7 +23,7 @@ HAペアを導入する場合は、link:concept-ha-google-cloud.html["Google Clo
 [[requirements-for-cloud-volumes-ontap]]
 == Cloud Volumes ONTAPの要件
 
-Google Cloud では次の要件を満たす必要があります。
+お客様のGoogle Cloud環境は、以下の要件を満たしている必要があります。
 
 
 
@@ -69,11 +69,11 @@ HA ペアを展開する場合は、ネットワークが次の要件を満た�
 
 ==== 1つまたは複数のゾーン
 
-複数のゾーンまたは単一のゾーンに HA 構成を展開することで、データの高可用性を確保できます。  HA ペアを作成するときに、コンソールで複数のゾーンまたは単一のゾーンを選択するように求められます。
+複数のゾーン、または単一のゾーンにHA構成を導入することで、データの高可用性を確保できます。HAペアを作成する際、コンソールで複数のゾーンまたは単一のゾーンを選択するよう求められます。
 
 * 複数のゾーン（推奨）
 +
-3 つのゾーンにわたって HA 構成を展開すると、ゾーン内で障害が発生した場合でも継続的なデータ可用性が確保されます。書き込みパフォーマンスは単一ゾーンを使用する場合と比べてわずかに低下しますが、最小限であることに注意してください。
+3つのゾーンにまたがるHA構成を導入することで、いずれかのゾーンで障害が発生した場合でも、データの継続的な可用性が確保されます。書き込み性能はシングルゾーンの場合よりも若干劣りますが、その差はごくわずかです。
 
 * 単一ゾーン
 +
@@ -88,7 +88,7 @@ HA ペアを展開する場合は、ネットワークが次の要件を満た�
 
 ==== 4つの仮想プライベートクラウド
 
-HA 構成には 4 つの仮想プライベート クラウド (VPC) が必要です。  Google Cloud では各ネットワーク インターフェースが個別の VPC ネットワークに存在する必要があるため、4 つの VPC が必要です。
+Google Cloudでは各ネットワークインターフェースが個別の仮想プライベートクラウド（VPC）ネットワーク内に配置される必要があるため、HA構成には4つのVPCが必要です。
 
 HA ペアを作成するときに、コンソールで 4 つの VPC を選択するように求められます。
 
@@ -104,9 +104,9 @@ image:diagram_gcp_ha.png["Cloud Volume HA ペアと構成に必要な 4 つの V
 
 各 VPC にはプライベート サブネットが必要です。
 
-コンソール エージェントを VPC-0 に配置する場合は、API にアクセスしてデータ階層化を有効にするために、サブネットでプライベート Google アクセスを有効にする必要があります。
+コンソールエージェントをVPC-0に配置する場合は、APIへのアクセスとデータ階層化を有効にするために、サブネット上でプライベートGoogleアクセスを有効にする必要があります。
 
-これらの VPC 内のサブネットには、異なる CIDR 範囲が必要です。重複する CIDR 範囲を持つことはできません。
+これらのVPC内のサブネットは、重複しない異なるCIDR範囲を持つ必要があります。
 
 
 
@@ -116,7 +116,7 @@ image:diagram_gcp_ha.png["Cloud Volume HA ペアと構成に必要な 4 つの V
 
 Cloud Volumes ONTAP に割り当てられる LIF の数は、単一ノード システムを導入するか HA ペアを導入するかによって異なります。LIF は、物理ポートに関連付けられた IP アドレスです。SVM 管理 LIF は、SnapCenter などの管理ツールに必要です。
 
-* *単一ノード* NetApp Consoleは単一ノード システムに 4 つの IP アドレスを割り当てます：
+* *シングルノード* コンソールは、シングルノードシステムに4つのIPアドレスを割り当てます：
 +
 ** ノード管理LIF
 ** クラスタ管理LIF
@@ -137,15 +137,15 @@ API を使用してCloud Volumes ONTAPをデプロイし、次のフラグを指
 * *HA ペア* コンソールは HA ペアに 12 ～ 13 個の IP アドレスを割り当てます。
 +
 ** 2つのノード管理LIF（e0a）
-** 1 クラスタ管理LIF（e0a）
-** 2 つの iSCSI LIF (e0a)
+** クラスタ管理LIF（e0a）1つ
+** 2つのiSCSI LIF（e0a）
 +
 
 NOTE: iSCSI LIF は、iSCSI プロトコルを介したクライアント アクセスを提供し、システムによって他の重要なネットワーク ワークフローに使用されます。これらの LIF は必須であり、削除しないでください。
 
-** 1 個または 2 個の NAS LIF (e0a)
-** 2 つのクラスタ LIF (e0b)
-** 2 つの HA 相互接続 IP アドレス (e0c)
+** 1つまたは2つのNAS LIF（e0a）
+** 2つのクラスターLIF（e0b）
+** 2つのHAインターコネクトIPアドレス（e0c）
 ** 2つのRSM iSCSI IPアドレス（e0d）
 +
 API を使用してCloud Volumes ONTAPをデプロイし、次のフラグを指定すると、ストレージ VM (SVM) 管理 LIF の作成をスキップできます。
@@ -161,7 +161,7 @@ API を使用してCloud Volumes ONTAPをデプロイし、次のフラグを指
 
 ==== 内部ロードバランサ
 
-コンソールは、Cloud Volumes ONTAP HA ペアへの受信トラフィックを管理する 4 つの Google Cloud 内部ロードバランサ（TCP/UDP）を作成します。お客様側での設定は必要ありません。これを要件としてリストしたのは、ネットワーク トラフィックを通知し、セキュリティ上の懸念を軽減するためだけです。
+コンソールは、Cloud Volumes ONTAP HAペアへの着信トラフィックを管理する4つのGoogle Cloud内部ロードバランサ（TCP/UDP）を作成します。設定は不要です。この情報は、ネットワーク トラフィックを理解し、セキュリティ上の懸念に対処するのに役立ちます。
 
 1 つのロード バランサはクラスタ管理用、1 つはストレージ VM (SVM) 管理用、1 つはノード 1 への NAS トラフィック用、最後の 1 つはノード 2 への NAS トラフィック用です。
 
@@ -178,7 +178,7 @@ API を使用してCloud Volumes ONTAPをデプロイし、次のフラグを指
 * 1つのUDP転送ルール
 * グローバルアクセスが無効になっています
 +
-グローバル アクセスはデフォルトで無効になっていますが、デプロイ後に有効にすることがサポートされています。リージョン間のトラフィックのレイテンシが大幅に増加するため、これを無効にしました。誤ってリージョンをまたいでマウントすることによって、ネガティブな体験をすることがないようにしたいと考えました。このオプションを有効にするかどうかは、ビジネス ニーズによって異なります。
+グローバルアクセスはデフォルトでは無効になっていますが、デプロイ後に有効にすることができます。リージョン間トラフィックはレイテンシが著しく高くなるため、意図しないリージョン間マウントによるユーザーエクスペリエンスの低下を防ぐために、この機能を無効にしました。業務上の必要性がある場合にのみ、グローバルアクセスを有効にしてください。
 
 
 
@@ -211,7 +211,7 @@ https://cloud.google.com/vpc/docs/packet-mirroring["パケットミラーリン�
 [[outbound-internet-access]]
 === アウトバウンドインターネットアクセス
 
-Cloud Volumes ONTAPシステムでは、さまざまな機能の外部エンドポイントにアクセスするために、アウトバウンド インターネット アクセスが必要です。厳格なセキュリティ要件を持つ環境でこれらのエンドポイントがブロックされている場合、 Cloud Volumes ONTAP は正常に動作しません。
+Cloud Volumes ONTAPシステムは、さまざまな機能のために外部エンドポイントにアクセスするアウトバウンドインターネット接続を必要とします。厳格なセキュリティ要件のある環境でこれらのエンドポイントがブロックされている場合、Cloud Volumes ONTAPは正常に動作しません。
 
 コンソールエージェントは、日常的な運用のため、複数のエンドポイントにも接続します。エンドポイントに関する情報については、 https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html#step-3-set-up-networking["コンソールエージェントから接続されたエンドポイントを表示する"^]および https://docs.netapp.com/us-en/console-setup-admin/reference-networking-saas-console.html["コンソールを使用するためのネットワークの準備"^]を参照してください。
 
@@ -236,13 +236,13 @@ Cloud Volumes ONTAP はこれらのエンドポイントを使用してさまざ
 
 
 
-| \https://api.bluexp.netapp.com/tenancy | 賃貸借 | コンソールからCloud Volumes ONTAPリソースを取得して、リソースとユーザーを承認するために使用されます。 | 標準モードと制限モード。 | Cloud Volumes ONTAPリソースとユーザーは承認されていません。 
+| \https://api.bluexp.netapp.com/tenancy | 賃貸借 | コンソールからCloud Volumes ONTAPリソースを取得し、リソースとユーザーを認証するために使用されます。 | 標準モードと制限モード。 | Cloud Volumes ONTAPリソースとユーザーは承認されていません。 
 
 
 | \https://mysupport.netapp.com/aods/asupmessage \https://mysupport.netapp.com/asupprod/post/1.0/postAsup | AutoSupport | AutoSupportテレメトリ データをNetAppサポートに送信するために使用されます。 | 標準モードと制限モード。 | AutoSupport情報は未配信のままです。 
 
 
-| \https://cloudbuild.googleapis.com/v1 （プライベートモード展開のみ） \https://cloudkms.googleapis.com/v1 \https://cloudresourcemanager.googleapis.com/v1/projects \https://compute.googleapis.com/compute/v1 \https://www.googleapis.com/compute/beta \https://www.googleapis.com/compute/v1/projects/ \https://www.googleapis.com/deploymentmanager/v2/projects \https://www.googleapis.com/storage/v1 \https://www.googleapis.com/upload/storage/v1 \https://config.googleapis.com/v1 \https://iam.googleapis.com/v1 \https://storage.googleapis.com/storage/v1 | Google Cloud（商用利用）。 | Google Cloud サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAP は、 Google Cloud サービスと通信して、Google Cloud のコンソールの特定の操作を実行できません。 
+| \https://cloudbuild.googleapis.com/v1 （プライベートモード展開のみ） \https://cloudkms.googleapis.com/v1 \https://cloudresourcemanager.googleapis.com/v1/projects \https://compute.googleapis.com/compute/v1 \https://www.googleapis.com/compute/beta \https://www.googleapis.com/compute/v1/projects/ \https://www.googleapis.com/deploymentmanager/v2/projects \https://www.googleapis.com/storage/v1 \https://www.googleapis.com/upload/storage/v1 \https://config.googleapis.com/v1 \https://iam.googleapis.com/v1 \https://storage.googleapis.com/storage/v1 | Google Cloud（商用利用）。 | Google Cloud サービスとの通信。 | 標準、制限、プライベートのモード。 | Cloud Volumes ONTAPは、Google Cloudのコンソールで特定の操作を実行するためにGoogle Cloudサービスと通信できません。 
 |===
 
 
@@ -260,12 +260,12 @@ https://cloud.google.com/vpn/docs/concepts/overview["Google Cloud ドキュメ�
 
 コンソールは、Cloud Volumes ONTAP が正常に動作するために必要な受信ルールと送信ルールを含む Google Cloud ファイアウォール ルールを作成します。テスト目的の場合、または独自のファイアウォール ルールを使用する場合は、ポートを参照することをお勧めします。
 
-Cloud Volumes ONTAPのファイアウォール ルールには、インバウンド ルールとアウトバウンド ルールの両方が必要です。  HA 構成を展開する場合、これらは VPC-0 のCloud Volumes ONTAPのファイアウォール ルールです。
+Cloud Volumes ONTAPのファイアウォールルールには、受信ルールと送信ルールの両方が必要です。HA構成をデプロイする場合、VPC-0内のCloud Volumes ONTAPのファイアウォールルールは次のようになります。
 
-HA 構成には 2 セットのファイアウォール ルールが必要であることに注意してください。
+HA構成には、2組のファイアウォールルールが必要です：
 
 * VPC-0 の HA コンポーネントに対する 1 セットのルール。これらのルールにより、Cloud Volumes ONTAPへのデータ アクセスが可能になります。
-* VPC-1、VPC-2、VPC-3 の HA コンポーネントに対する別のルール セット。これらのルールは、HA コンポーネント間の受信および送信通信に対して有効です。<<rules-for-vpc,詳細情報>> 。
+* VPC-1、VPC-2、およびVPC-3におけるHAコンポーネントに関する別のルールセット。これらのルールは、HAコンポーネント間の受信および送信通信に適用されます。<<rules-for-vpc,詳細情報>>。
 
 
 
@@ -281,7 +281,7 @@ Cloud Volumes ONTAPシステムを追加する場合、展開時に事前定義�
 * *すべての VPC*: 受信トラフィックのソース フィルターは 0.0.0.0/0 IP 範囲です。
 
 
-独自のファイアウォール ポリシーを使用する場合は、 Cloud Volumes ONTAPと通信する必要があるすべてのネットワークを追加するだけでなく、内部 Google ロードバランサが正しく機能できるように両方のアドレス範囲も追加してください。これらのアドレスは 130.211.0.0/22 と 35.191.0.0/16 です。詳細については、 https://cloud.google.com/load-balancing/docs/tcp#firewall_rules["Google Cloud ドキュメント: ロードバランサのファイアウォール ルール"^] 。
+独自のファイアウォール ポリシーを使用する場合は、Cloud Volumes ONTAPと通信する必要があるすべてのネットワークを追加し、内部のGoogleロードバランサーが正しく機能するように両方のアドレス範囲も追加してください。これらのアドレスは130.211.0.0/22と35.191.0.0/16です。詳細については、 https://cloud.google.com/load-balancing/docs/tcp#firewall_rules["Google Cloud ドキュメント: ロードバランサのファイアウォール ルール"^]を参照してください。
 
 [cols="10,10,80"]
 |===
@@ -385,7 +385,7 @@ Cloud Volumes ONTAPの定義済みセキュリティ グループには、次の
 | すべてUDP | 全て | すべての送信トラフィック 
 |===
 .高度なアウトバウンドルール
-送信トラフィックに厳格なルールが必要な場合は、次の情報を使用して、 Cloud Volumes ONTAPによる送信通信に必要なポートのみを開くことができます。  Cloud Volumes ONTAPクラスターは、ノード トラフィックを制御するために次のポートを使用します。
+送信トラフィックに厳格なルールが必要な場合は、この情報を使用して、Cloud Volumes ONTAPが送信通信に必要とするポートのみを開放してください。Cloud Volumes ONTAPクラスタは、ノードのトラフィックを制御するために以下のポートを使用します。
 
 
 NOTE: ソースは、Cloud Volumes ONTAPシステムのインターフェース (IP アドレス) です。
@@ -473,7 +473,7 @@ NOTE: ソースは、Cloud Volumes ONTAPシステムのインターフェース 
 | NDMP | TCP | 18600～18699 | ノード管理LIF | 宛先サーバー | NDMPコピー 
 
 
-| SMTP | TCP | 25 | ノード管理LIF | メール サーバ | SMTPアラートはAutoSupportに使用できます 
+| SMTP | TCP | 25 | ノード管理LIF | メール サーバ | SMTPアラート（AutoSupportに使用可能） 
 
 
 .4+| SNMP | TCP | 161 | ノード管理LIF | 監視サーバー | SNMPトラップによる監視 
@@ -508,26 +508,26 @@ Google Cloud では、HA 構成が 4 つの VPC にデプロイされます。  
 HA ノードから HA メディエーターへの通信は、ポート 3260 (iSCSI) を介して行われます。
 
 
-NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速書き込みを有効にするには、VPC-1、VPC-2、VPC-3 に少なくとも 8,896 バイトの最大転送単位 (MTU) が必要です。既存の VPC-1、VPC-2、および VPC-3 を 8,896 バイトの MTU にアップグレードすることを選択した場合は、設定プロセス中にこれらの VPC を使用している既存の HA システムをすべてシャットダウンする必要があります。
+NOTE: 新しい Google Cloud HA ペアのデプロイメントで高速な書き込みを実現するには、VPC-1、VPC-2、および VPC-3 に対して、少なくとも 8,896 バイトの最大伝送単位（MTU）が必要です。既存のVPC-1、VPC-2、およびVPC-3のMTUを8,896バイトにアップグレードする場合は、構成プロセス中にこれらのVPCを使用している既存のすべてのHAシステムをシャットダウンする必要があります。
 
 
 
 [[infrastructure-manager-configuration-in-private-mode-or-protected-environments]]
 === プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成
 
-プライベートモードまたは VPC Service Controls で保護されたプロジェクトに Cloud Volumes ONTAP 9.16.1 以降をデプロイする場合は、Google が最終的に廃止する予定の Deployment Manager の代わりに、Cloud Volumes ONTAP がデプロイメントサービスとして Google Cloud Infrastructure Manager を使用できるよう、いくつかの構成変更を行う必要があります。
+Cloud Volumes ONTAP 9.16.1以降をプライベートモード、またはVPC Service Controlsで保護されたプロジェクトにデプロイする場合は、Cloud Volumes ONTAPがDeployment Managerの代わりにGoogle Cloud Infrastructure Managerをデプロイサービスとして使用できるように、いくつかの構成変更を行う必要があります。
 
 .開始する前に
-* Cloud Volumes ONTAPシステムが9.16.1以降であることを確認してください。そうでない場合は、システムをアップグレードしてください。手順については https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html["Cloud Volumes ONTAP のアップグレード"]を参照してください。
+* Cloud Volumes ONTAPシステムが9.16.1以降であることを確認してください。そうでない場合は、システムをアップグレードしてください。手順については、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html["Cloud Volumes ONTAP のアップグレード"]を参照してください。
 * Google Cloud API が有効になっていることを確認します。 https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]を参照してください。
 * Cloud Build API が有効になっていることを確認します。参照 https://console.cloud.google.com/flows/enableapi?apiid=cloudbuild.googleapis.com&redirect=https://console.cloud.google.com/build/docs/private-pools/set-up-private-pool-environment["ここで Cloud Build API を有効にします"^]。
-* Console エージェントのサービスアカウントにすべての標準権限があることを確認します。さらに、サービスアカウントに `cloudbuild.workerpools.get`および `cloudbuild.workerpools.list`権限があることを確認します。 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#service-account-permissions["コンソール エージェントの Google Cloud 権限"^]を参照してください。
+* Consoleエージェントのサービスアカウントに、すべての標準権限が付与されていることを確認してください。さらに、サービスアカウントに `cloudbuild.workerpools.get`および `cloudbuild.workerpools.list`の権限があることを確認してください。 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#service-account-permissions["コンソール エージェントの Google Cloud 権限"^]を参照してください。
 
 
 .手順
 . Cloud Volumes ONTAPデプロイメントと同じリージョンにこの構成でプライベートワーカープールを作成します。プライベートワーカープールの作成については、 https://docs.cloud.google.com/build/docs/private-pools/create-manage-private-pools#creating_a_new_private_pool["Google Cloud ドキュメント：プライベート プールの作成と管理"^]および https://cloud.google.com/build/pricing["Google Cloud Build の料金"^]を参照してください。
 +
-VPC Service Controls で保護されているプロジェクトに Cloud Volumes ONTAP をデプロイする場合は、Console エージェントと同じプロジェクト内にプライベートワーカープールを作成してください。ワーカープールは稼働状態である必要があります。Google Cloud のデフォルトのパブリック Cloud Build ワーカープールは、サービス境界内で実行できません。
+VPC Service Controlsで保護されているプロジェクトにCloud Volumes ONTAPを展開する場合は、Consoleエージェントと同じプロジェクトにプライベートワーカープールを作成します。ワーカープールは稼働状態である必要があります。Google CloudのデフォルトのパブリックCloud Buildワーカープールは、サービス境界内で実行できません。
 
 +
 ワーカー プールには次の構成が必要です：
@@ -536,7 +536,7 @@ VPC Service Controls で保護されているプロジェクトに Cloud Volumes
 ** マシンタイプ：e2-medium
 ** ディスクサイズ：100 GB
 ** 外部IPの割り当て：False
-** ネットワーク：デフォルトまたはプライベート。
+** ネットワーク：デフォルトまたはプライベートネットワーク。
 **  https://cloud.google.com/apis["Google Cloud API"^]にアクセスするように設定されたサブネット。サブネットが Google API にアクセスできることを確認するには、次の手順を実行します：
 +
 ... サブネットに対して「プライベート Google アクセス」がオンになっていることを確認します。
@@ -565,7 +565,7 @@ NOTE: コンソール UI を使用して Cloud Volumes ONTAP をデプロイす�
 [[requirements-for-the-console-agent]]
 == コンソールエージェントの要件
 
-コンソール エージェントをまだ作成していない場合は、ネットワーク要件を確認する必要があります。
+コンソールエージェントをまだ作成していない場合は、ネットワーク要件を確認してください。
 
 * https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html["コンソールエージェントのネットワーク要件を表示する"^]
 * https://docs.netapp.com/us-en/console-setup-admin/reference-ports-gcp.html["Google Cloud のファイアウォール ルール"^]

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-saz-feature.html 
 keywords: Microsoft Azure feature, HA in SAZ, single availability zone, Azure feature, Virtual Machine Scale Sets in Flexible mode, VMOrchestratorZonalMultiFD, VM Orchestrator, Zonal, MultiFD, VMOrchestratorZonalMultiFD feature 
-summary: この Microsoft Azure 機能を有効にして、SAZ に HA を展開します。 
+summary: AzureでVMOrchestratorZonalMultiFD機能を有効にして、単一の可用性ゾーンの別々の障害ドメインにCloud Volumes ONTAP HAノードをデプロイします。 
 ---
 = Azure でCloud Volumes ONTAPの VMOrchestratorZonalMultiFD を有効にする
 :hardbreaks:
@@ -14,11 +14,11 @@ summary: この Microsoft Azure 機能を有効にして、SAZ に HA を展開�
 
 
 [role="lead"]
-ローカル冗長ストレージ（LRS）の単一アベイラビリティゾーン（AZ）にVMインスタンスを展開するには、Microsoft `Microsoft.Compute/VMOrchestratorZonalMultiFD`サブスクリプションの機能。高可用性 (HA) モードでは、この機能により、同じ可用性ゾーン内の別々の障害ドメインにノードを展開することが容易になります。
+Azureのローカル冗長ストレージ（LRS）の単一可用性ゾーン（AZ）にCloud Volumes ONTAP VMインスタンスを展開するには、サブスクリプションでMicrosoft `Microsoft.Compute/VMOrchestratorZonalMultiFD`機能をアクティブ化します。高可用性（HA）モードでは、この機能により、同じ可用性ゾーン内の別々の障害ドメインにノードを配置できます。
 
 この機能を有効にしないと、ゾーン展開は行われず、以前の LRS 非ゾーン展開が有効になります。
 
-単一のアベイラビリティゾーンでのVMの展開については、以下を参照してください。link:concept-ha-azure.html["Azureのハイアベイラビリティ ペア"] 。
+単一のアベイラビリティゾーンでのVMのデプロイについては、link:concept-ha-azure.html["Azureのハイアベイラビリティ ペア"]を参照してください。
 
 「所有者」権限を持つユーザーとして次の手順を実行します。
 
@@ -31,7 +31,7 @@ summary: この Microsoft Azure 機能を有効にして、SAZ に HA を展開�
 az account set -s _<Azure サブスクリプション名または ID>_ az feature register --name VMOrchestratorZonalMultiFD --namespace Microsoft.Compute
 
 ====
-. 登録ステータスと出力サンプルを確認します。
+. このコマンドを実行して登録状況を確認します。次のような出力が返されます：
 +
 []
 ====
