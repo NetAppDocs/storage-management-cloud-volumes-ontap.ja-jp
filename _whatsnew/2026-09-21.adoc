@@ -14,7 +14,7 @@ NetApp は、プライベートモードにおける容量ベースのライセ�
 NetApp は、すべてのプライベートモード Cloud Volumes ONTAP デプロイメントに対して容量ベースのライセンスを推奨しています。ノードベースのライセンスを使用している既存のプライベートモードのデプロイメントがある場合は、NetApp から Essentials パッケージを購入することで、容量ベースのライセンスに変換できます。この新しいデプロイメント機能は、変換オプションと組み合わせることで、NetApp がノードベースのライセンスから容量ベースのライセンスへと段階的に移行していく計画を支援します。
 
 .関連リンク
-* https://review.docs.netapp.com/us-en/storage-management-cloud-volumes-ontap_capacity-license-darkmode/concept-licensing.html["Cloud Volumes ONTAPライセンス"^]
+* https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html["Cloud Volumes ONTAPライセンス"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-license-management.html["Cloud Volumes ONTAP BYOL について"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html["Cloud Volumes ONTAP のノードベース ライセンスを管理する"^]

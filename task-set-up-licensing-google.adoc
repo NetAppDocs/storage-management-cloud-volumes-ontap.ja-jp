@@ -14,7 +14,7 @@ summary: システムを作成する前に、Google CloudでCloud Volumes ONTAP�
 
 
 [role="lead"]
-Google CloudのCloud Volumes ONTAPでどのライセンスオプションを使用するかを決定したら、システムを作成する際にそのオプションを選択する前に、いくつかの設定手順を完了する必要があります。
+Google CloudでCloud Volumes ONTAPとどのライセンスオプションを使用するかを決定したら、新しいシステムを作成する際にそのオプションを選択できるように、いくつかの設定手順を完了してください。
 
 
 
@@ -57,7 +57,7 @@ Essentials および Professional パッケージは、次の消費モデルま�
 
 link:concept-licensing.html#capacity-based-licensing["容量ベースのライセンスについて詳しく見る"] 。
 
-これらの消費モデルをそれぞれ使い始めるには、次のセクションの手順に従ってください。
+開始するには、使用する消費モデルの手順に従ってください。
 
 
 
@@ -82,7 +82,7 @@ Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソ
 +
 .. 「詳細と認証情報」ページで、「認証情報の編集」>「サブスクリプションの追加」を選択し、プロンプトに従ってGoogle Cloud Marketplaceの従量課金制オファリングにサブスクライブします。
 +
-お客様がNetAppから購入したライセンスが常に最初に課金されますが、ライセンス容量を超過した場合、またはライセンス期間が満了した場合は、時間当たりのマーケットプレイス料金が課金されます。
+お客様がNetAppから購入したライセンスが常に最初に課金されますが、ライセンス容量を超過した場合、またはライセンス期間が満了した場合は、時間単位のマーケットプレイス料金が課金されます。
 
 .. コンソールに戻ったら、課金方法ページにアクセスして容量ベースのパッケージを選択します。
 +
@@ -179,7 +179,7 @@ link:task-deploying-gcp.html["Google Cloud でCloud Volumes ONTAP を起動す�
 [[node-based-license]]
 == ノードベースのライセンス
 
-ノードベースのライセンスは、Cloud Volumes ONTAPの旧世代のライセンスです。ノードベースのライセンスはNetAppから購入できました（BYOL）。ノードベースのライセンスは現在、特定のケースでのみ更新可能です。詳細については、以下を参照してください：
+ノードベースのライセンスは、Cloud Volumes ONTAPの旧世代のライセンスです。ノードベースのライセンスはNetAppから購入できました（BYOL）。ノードベースのライセンスは、特定のケースにおいてのみ更新可能です。詳細については、以下を参照してください：
 
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["ノードベースライセンスの提供終了"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]

@@ -140,7 +140,7 @@ link:concept-worm.html["WORMストレージの管理"] link:reference-worm-snapl
 Ansibleは、手続き型構成ファイルに基づいたオープンソースの構成管理ツールです。
 
 * https://galaxy.ansible.com/ui/repo/published/netapp/ontap/["Ansible Galaxy"^]
-* https://docs.ansible.com/ansible/latest/user_guide/index.html["Ansibleドキュメント"^]
+* https://docs.ansible.com/projects/ansible/latest/getting_started/index.html["Ansibleドキュメント"^]
 
 
 

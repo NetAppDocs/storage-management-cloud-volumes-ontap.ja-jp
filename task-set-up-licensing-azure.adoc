@@ -14,7 +14,7 @@ summary: 新しいシステムをデプロイする前に、AzureでのCloud Vol
 
 
 [role="lead"]
-AzureのCloud Volumes ONTAPで使用するライセンスオプションを決定したら、新しいシステムを作成する際にそのライセンスオプションを選択する前に、いくつかの手順を完了する必要があります。
+AzureのCloud Volumes ONTAPでどのライセンスオプションを使用するかを決定したら、新しいシステムを作成する際にそのオプションを選択できるように、いくつかの設定手順を完了してください。
 
 
 
@@ -85,7 +85,7 @@ Cloud Volumes ONTAP でライセンスを使用するには、事前にコンソ
 +
 .. 「詳細と認証情報」ページで、「認証情報の編集」>「サブスクリプションの追加」を選択し、プロンプトに従ってAzure Marketplaceの従量課金制オファリングにサブスクライブします。
 +
-お客様がNetAppから購入したライセンスが常に最初に請求されますが、ライセンス容量を超過した場合、またはライセンスの有効期限が切れた場合は、マーケットプレイスの時間単位の料金が請求されます。
+お客様がNetAppから購入したライセンスが常に最初に課金されますが、ライセンス容量を超過した場合、またはライセンス期間が満了した場合は、時間単位のマーケットプレイス料金が課金されます。
 
 +
 image:screenshot-azure-paygo-subscription.png["Cloud Volumes ONTAPシステムを作成する際の PAYGO サブスクリプション オプションのスクリーンショット。"]
@@ -187,7 +187,7 @@ link:task-deploying-otc-azure.html["AzureでCloud Volumes ONTAPを起動する�
 [[node-based-license]]
 == ノードベースのライセンス
 
-ノードベースのライセンスは、Cloud Volumes ONTAPの旧世代のライセンスです。ノードベースのライセンスはNetApp（BYOL）から購入できました。ノードベースのライセンスは、特定のケースにおいてのみ更新可能です。詳細については、以下を参照してください：
+ノードベースのライセンスは、Cloud Volumes ONTAPの旧世代のライセンスです。ノードベースのライセンスはNetAppから購入できました（BYOL）。ノードベースのライセンスは、特定のケースにおいてのみ更新可能です。詳細については、以下を参照してください：
 
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/whats-new.html#end-of-availability-for-node-based-licenses["ノードベースライセンスの提供終了"^]
 * https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#end-of-availability-of-node-based-licenses["ノードベースライセンスの提供終了"^]

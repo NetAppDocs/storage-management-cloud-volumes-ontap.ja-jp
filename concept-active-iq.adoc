@@ -53,7 +53,7 @@ Digital Advisorユーザー インターフェイスはコンソールに完全�
 
 * コンソールに既存のNSSアカウントを登録している場合は、 Digital Advisor UIはスタンドアロン実装の場合と同じように表示されます。 https://activeiq.netapp.com/[] 。
 +
-image:screenshot_aiq_digital_advisor.png["コンソールのDigital Advisorユーザー インターフェースのスクリーンショット。"]
+image:screenshot_aiq_digital_advisor.png["健全性、インベントリ、計画、アップグレードの概要を示すNetApp ConsoleのDigital Advisorダッシュボード"]
 
 * コンソールで NSS アカウントを登録していない場合は、今すぐ NSS アカウントを登録してください。Digital Advisor の UI が表示されます。手順については、 https://docs.netapp.com/us-en/console-setup-admin/task-adding-nss-accounts.html["組織またはアカウントに関連付けられた NSS 認証情報を管理する"]を参照してください。
 

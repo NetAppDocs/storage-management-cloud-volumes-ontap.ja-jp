@@ -41,7 +41,7 @@ Microsoft Azureでは、定期メンテナンス中にVMを一時的に停止さ
 == Azureの定期メンテナンス中の自動テイクオーバーとギブバックを防止する
 
 .手順
-. Azure HAペアのシステムIDを特定します。リソースの識別とAPI呼び出しの実行については、 https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html#step-1-select-the-identifie["最初のAPI呼び出し"^]を参照してください。
+. Azure HAペアのシステムIDを特定します。リソースの識別とAPI呼び出しの方法については、 https://docs.netapp.com/us-en/console-automation/cm/your_api_call.html#step-1-select-the-identifier["ONTAP管理REST API呼び出しを発行します"^]を参照してください。
 . 以下のエンドポイントに `PUT`リクエストを送信します。 `{id}`をシステム ID に置き換えてください：
 +
 `PUT /occm/api/azure/ha/working-environments/{id}/opt-off-maintenance-event`

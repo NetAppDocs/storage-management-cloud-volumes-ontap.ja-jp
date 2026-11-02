@@ -59,14 +59,10 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.
 
 Cloud Volumes ONTAPシステムのサイズを設定すると、パフォーマンスと容量の要件を満たすことができます。マシン タイプ、ディスク タイプ、ディスク サイズを選択するときは、いくつかの重要なポイントに注意する必要があります。
 
-機械の種類:: サポートされているマシンタイプをlink:reference-configs-gcp.html["Cloud Volumes ONTAPリリースノート"^]で確認し、各サポート対象マシンタイプの詳細についてはGoogleの情報をご参照ください。ワークロードの要件に合わせて、マシンタイプのvCPU数とメモリ容量を選択してください。各CPUコアはネットワークパフォーマンスを向上させることに注意してください。
+機械の種類:: link:reference-configs-gcp.html["サポートされているマシンタイプ"]をご覧になり、サポートされている各マシンタイプに関するGoogleの詳細情報を確認してください。ワークロードの要件を、マシンタイプのvCPU数とメモリに照らし合わせてください。各CPUコアによってネットワークパフォーマンスが向上することに注意してください。
 +
 --
-詳細については、以下を参照してください。
-
-* https://cloud.google.com/compute/docs/machine-types#n1_machine_types["Google Cloud ドキュメント: N1 標準マシンタイプ"^]
-* https://cloud.google.com/docs/compare/data-centers/networking#performance["Google Cloud ドキュメント: パフォーマンス"^]
-
+詳細については https://cloud.google.com/compute/docs/machine-types["Googleドキュメント：マシンファミリーのリソースと比較ガイド"^]を参照してください
 
 --
 ディスク タイプ:: Cloud Volumes ONTAPのボリュームを作成するときは、 Cloud Volumes ONTAP がディスクに使用する基盤となるクラウド ストレージを選択する必要があります。ディスク タイプは次のいずれかになります。

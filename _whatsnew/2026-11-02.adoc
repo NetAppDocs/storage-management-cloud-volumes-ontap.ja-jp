@@ -1,0 +1,22 @@
+= 特定のCloud Volumes ONTAPバージョン向けのONTAPホットフィックスのアップグレードに関するガイダンス
+:allow-uri-read: 
+
+
+
+
+[[guidance-for-upgrading-ontap-hotfixes-for-specific-cloud-volumes-ontap-versions]]
+=== 特定のCloud Volumes ONTAPバージョン向けのONTAPホットフィックスのアップグレードに関するガイダンス
+
+ONTAPは、Cloud Volumes ONTAPバージョン9.14.1、9.15.1、9.16.1、9.17.1、9.18.1、および9.19.1と互換性のある以下のホットフィックスをリリースしました：
+
+* 9.14.1P18HF1を使用したチャンク アップロード署名要求がサポートされるようになりました。
+* 9.15.1P20HF1
+* 9.16.1P16HF1
+* 9.17.1P11HF1
+* 9.18.1P8HF1
+* 9.19.1P3HF1
+
+
+詳細については、 https://security.netapp.com/advisory/ntap-20261021-0021["NTAPセキュリティアドバイザリ 20261021-0021"^]を参照してください。
+
+Cloud Volumes ONTAPシステムでは、NetApp Consoleでこれらのホットフィックスへのアップグレードを求められる場合があります。ただし、これらのホットフィックスは、Consoleエージェントのバージョンが4.12.0以降の場合にのみサポートされます。Consoleエージェントのバージョンが4.12.0より前の場合は、プロンプトを無視してください。

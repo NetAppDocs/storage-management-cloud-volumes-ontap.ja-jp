@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-gcp-dm-im-conv.html 
 keywords: manual conversion tool, gcp dm im conversion, gcp deployment manager to infrastructure manager, gcp dm to im conversion 
-summary: Google Cloud 上の既存の Cloud Volumes ONTAP システムを 9.16.1 以降にアップグレードしてから、移行ツールを実行して Deployment Manager から Infrastructure Manager に変換します。 
+summary: Google Cloud 内の既存の Cloud Volumes ONTAP システムを 9.16.1 以降にアップグレードしてから、変換ツールを実行して Deployment Manager から Infrastructure Manager に変換します。 
 ---
 = 既存の Cloud Volumes ONTAP デプロイメントを Infrastructure Manager に変換
 :hardbreaks:
@@ -180,7 +180,7 @@ includedPermissions:
 ** マシンタイプ：Google Compute Engine マシンタイプ e2-medium
 ** OS：要件に応じて、次のいずれかのイメージを選択します。
 +
-*** Ubuntu 25.10 AMD64 Minimal（イメージ：ubuntu-minimal-2510-amd64）
+*** Ubuntu 26.04 LTS Minimal （ubuntu-2604-resolute-amd64）
 *** SUSE Linux Enterprise Server 15 SP7 x86_64
 
 
@@ -203,7 +203,7 @@ includedPermissions:
 
 . SSH を使用して新しく作成した VM に接続します： `gcloud compute ssh dmtoim-convert-executor-vm --zone _<region where VM is deployed>_`
 . NSS クレデンシャルを使用して https://mysupport.netapp.com/site/tools/tool-eula/gcp-cvo-dm-to-im-convert-tool/download["NetApp サポート サイト"^]から変換ツールをダウンロードします： `wget <download link from NetApp Support site>`
-. ダウンロードした TAR ファイルを解凍します： `unzip <downloaded file name>`
+. ダウンロードしたファイルを展開します： `unzip <downloaded file name>`
 
 
 [role="tabbed-block"]

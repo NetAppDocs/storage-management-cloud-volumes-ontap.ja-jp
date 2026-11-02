@@ -225,7 +225,7 @@ sidebar:
         url: "/reference-limits-azure.html"
       - title: Azure の HA ペアについて
         url: "/concept-ha-azure.html"
-      - title: Cloud Volumes ONTAP HAのAzureメンテナンス中の停止を防ぐ
+      - title: Cloud Volumes ONTAP HAペアのAzureメンテナンス中の中断を防止する
         url: "/task-azure-prevent-freeze.html"
       - title: Azure Key Vault でキーを管理する
         url: "/task-azure-key-vault.html"
