@@ -8063,7 +8063,6 @@
   <block id="94a40954574ac4e2168d485e9c50ff38" category="list-text">ネットワーク：HTTPおよびHTTPSを許可するファイアウォール</block>
   <block id="c62520e2944607e9aad9bfba7b6e5e2f" category="paragraph">以下の手順に従って、UbuntuとSUSE Linux Enterprise Serverの両方で変換ツールを実行してください。</block>
   <block id="f61c832a1c1de58efaf2089d73c900ee" category="list-text"><block ref="3a2e7e59491b74e35b36d9d724fd0584" prefix=" " category="inline-code"></block>ユーザーとして変換ツールを実行します。Consoleエージェントが使用するのと同じサービスアカウントを使用し、そのサービスアカウントにすべての<block ref="5d3ef0c339df1f2a110bf7d6a45b4e45" category="inline-link-rx"></block>があることを確認してください。</block>
-  <block id="b68a32984b7cd35e03e5bd9932d4460d" category="paragraph">このツールは、すべてのCloud Volumes ONTAPシステムとSVMの詳細のリストを表示します。処理が完了すると、変換されたすべてのシステムのステータスを確認できます。変換された各システムは、Google Cloud ConsoleのInfrastructure Managerに_&lt;system-name-imdeploy&gt;_形式で表示され、コンソールがInfrastructure Manager APIを使用してそのCloud Volumes ONTAPシステムを管理するようになったことを示します。</block>
   <block id="e85bc9517de2e1cb87bcba3339ba6da5" category="admonition">変換後、Google Cloud ConsoleのDeployment Managerのデプロイメントオブジェクトを削除しないでください。このデプロイメントオブジェクトには、変換後のシステムをロールバックする際に必要となる可能性のある情報が含まれています。</block>
   <block id="afc45f038d978afa5480e65fdfbd77c6" category="list-text">ロールバックが完了するまでお待ちください。</block>
   <block id="94347c199a7a4ebd4fba7154ec8933bf" category="summary">Quick createを使用して、AWSにCloud Volumes ONTAPをシングルノードシステムまたはHAペアとして展開します。</block>
@@ -8168,4 +8167,10 @@
   <block id="9d2f770dee2976b7c8a9e728002e9237" category="paragraph">AzureのCloud Volumes ONTAPでどのライセンスオプションを使用するかを決定したら、新しいシステムを作成する際にそのオプションを選択できるように、いくつかの設定手順を完了してください。</block>
   <block id="56ff1982d9d9e73576ee15361a2b97e2" category="paragraph">Google CloudでCloud Volumes ONTAPとどのライセンスオプションを使用するかを決定したら、新しいシステムを作成する際にそのオプションを選択できるように、いくつかの設定手順を完了してください。</block>
   <block id="066f3a9431c48361a10c813b2b187f91" category="section-title">2026年11月2日</block>
+  <block id="08853958e0db62fd50058fd45b355d7a" category="inline-link">Console エージェント 4.12.0</block>
+  <block id="b2aa5fc60892f4965eac1f9ee3c256a9" category="paragraph"><block ref="b2aa5fc60892f4965eac1f9ee3c256a9" category="inline-link-rx"></block></block>
+  <block id="5ada900716280c702c5f6b2a13cccf71" category="list-text">変換を開始する前に、Cloud Volumes ONTAPシステムのルートディスクとブートディスクのスナップショットを取得することをお勧めします。</block>
+  <block id="ef65f3f94d877de929be359626901d12" category="list-text">プロジェクトでIAMサービスアカウント認証情報APIを有効にします：</block>
+  <block id="76f8caea778b35171e350499ebd5a417" category="list-text">作成したサービスアカウントがConsoleエージェントサービスアカウントの権限を借用できるようにします。そのためには、作成したサービスアカウントに<block ref="923187d4bd3b6bfa56e7df07d12df709" prefix=" " category="inline-code"></block>ロールを付与します。</block>
+  <block id="435a8b22867c508e39228ff294ad3369" category="paragraph">このツールは、すべてのCloud Volumes ONTAPシステムとSVMの詳細のリストを表示します。処理が完了すると、変換されたすべてのシステムのステータスを確認できます。変換された各システムは、Google Cloud ConsoleのInfrastructure Managerの下に_&lt;system-name-imdeploy&gt;_形式で表示されます。この形式は、NetApp ConsoleがInfrastructure Manager APIを使用してそのCloud Volumes ONTAPシステムを管理するようになったことを示しています。</block>
 </blocks>

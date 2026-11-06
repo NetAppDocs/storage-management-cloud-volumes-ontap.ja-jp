@@ -20,3 +20,5 @@ ONTAPは、Cloud Volumes ONTAPバージョン9.14.1、9.15.1、9.16.1、9.17.1�
 詳細については、 https://security.netapp.com/advisory/ntap-20261021-0021["NTAPセキュリティアドバイザリ 20261021-0021"^]を参照してください。
 
 Cloud Volumes ONTAPシステムでは、NetApp Consoleでこれらのホットフィックスへのアップグレードを求められる場合があります。ただし、これらのホットフィックスは、Consoleエージェントのバージョンが4.12.0以降の場合にのみサポートされます。Consoleエージェントのバージョンが4.12.0より前の場合は、プロンプトを無視してください。
+
+https://docs.netapp.com/us-en/console-setup-admin/whats-new.html#console-agent-4-12-0["Console エージェント 4.12.0"^]

@@ -38,6 +38,7 @@ Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、デ
 * Google Cloud ConsoleからCloud Volumes ONTAPリソースやそのプロパティが手動で編集されていないことを確認します。
 * Google Cloud API（Google Cloud Quotas APIを含む）が有効になっていることを確認してください。 https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]を参照してください。
 * NetApp Consoleエージェントのサービスアカウントに、必要なすべての権限があることを確認します。 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#service-account-permissions["コンソール エージェントの Google Cloud 権限"^]を参照してください。
+* 変換を開始する前に、Cloud Volumes ONTAPシステムのルートディスクとブートディスクのスナップショットを取得することをお勧めします。
 +
 .プライベートモードでの展開の場合、以下の追加要件を満たしていることを確認してください。
 [%collapsible]
@@ -173,6 +174,22 @@ includedPermissions:
     --file=YAML_FILE_PATH`詳細については、 https://cloud.google.com/iam/docs/creating-custom-roles["カスタムロールの作成と管理"^]を参照してください。
 .. VM の作成に使用するサービス アカウントにカスタム ロールを関連付けます。
 ..  `roles/iam.serviceAccountUser`ロールをこのサービス アカウントに追加します。 https://docs.cloud.google.com/iam/docs/service-account-overview["サービス アカウントの概要"^]を参照してください。
+.. プロジェクトでIAMサービスアカウント認証情報APIを有効にします：
++
+[source, cli]
+----
+gcloud services enable iamcredentials.googleapis.com --project=PROJECT_ID
+----
+.. 作成したサービスアカウントがConsoleエージェントサービスアカウントの権限を借用できるようにします。そのためには、作成したサービスアカウントに `Service Account Token Creator`ロールを付与します。
++
+[source, cli]
+----
+gcloud iam service-accounts add-iam-policy-binding \
+CONSOLE_AGENT_SA@PROJECT_ID.iam.gserviceaccount.com \ --
+member="serviceAccount:CONVERT_VM_SA@PROJECT_ID.iam.gserviceaccount.com" \  --
+role="roles/iam.serviceAccountTokenCreator" \  --
+project=PROJECT_ID
+----
 
 
 . [[create-vm]]次の構成でVMを作成します。このVM上でツールを実行します。
@@ -307,7 +324,7 @@ dmconvert \
 
 
 .終了後の操作
-このツールは、すべてのCloud Volumes ONTAPシステムとSVMの詳細のリストを表示します。処理が完了すると、変換されたすべてのシステムのステータスを確認できます。変換された各システムは、Google Cloud ConsoleのInfrastructure Managerに_<system-name-imdeploy>_形式で表示され、コンソールがInfrastructure Manager APIを使用してそのCloud Volumes ONTAPシステムを管理するようになったことを示します。
+このツールは、すべてのCloud Volumes ONTAPシステムとSVMの詳細のリストを表示します。処理が完了すると、変換されたすべてのシステムのステータスを確認できます。変換された各システムは、Google Cloud ConsoleのInfrastructure Managerの下に_<system-name-imdeploy>_形式で表示されます。この形式は、NetApp ConsoleがInfrastructure Manager APIを使用してそのCloud Volumes ONTAPシステムを管理するようになったことを示しています。
 
 
 CAUTION: 変換後、Google Cloud ConsoleのDeployment Managerのデプロイメントオブジェクトを削除しないでください。このデプロイメントオブジェクトには、変換後のシステムをロールバックする際に必要となる可能性のある情報が含まれています。
