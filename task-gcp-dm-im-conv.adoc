@@ -17,18 +17,19 @@ summary: Google Cloud 内の既存の Cloud Volumes ONTAP システムを 9.16.1
 2026年2月9日より、Google Cloudでの新しいCloud Volumes ONTAPデプロイメントには、Google Cloud Infrastructure Managerを使用できます。Googleは、Google Cloud Deployment Managerを廃止し、代わりにInfrastructure Managerを導入します。既存のCloud Volumes ONTAPデプロイメントをDeployment ManagerからInfrastructure Managerに変換するには、変換ツールを手動で実行してください。この1回限りのプロセスにより、システムが自動的にInfrastructure Managerに切り替わります。
 
 .タスク概要
-変換ツールはNetApp Support Siteで入手でき、以下の成果物を作成します：
+変換ツールはNetApp Support Siteで入手でき、以下のアーティファクトを作成します：
 
 * Terraformアーティファクトは、 `conversion_output/deployment_name`に保存されます。
-* 変換の概要。 `conversion_output/batch_summary_<deployment_name>_<timestamp>.json.`に保存されます
+* 変換の概要は、 `conversion_output/batch_summary_<deployment_name>_<timestamp>.json`に保存されます。
 * デバッグログは、 `<gcp project number>-<region>-blueprint-config/<cvo name>`ディレクトリに保存されます。トラブルシューティングにはこれらのログが必要です。 `<gcp project number>-<region>-blueprint-config`バケットには Terraform ログが保存されます。
+* Cloud Volumes ONTAPプロジェクトは、Cloud Volumes ONTAPリソースを作成するGoogle Cloudプロジェクトです。ConsoleエージェントとCloud Volumes ONTAPシステムは、同じGoogle Cloudプロジェクトに配置することも、異なるGoogle Cloudプロジェクトに配置することもできます（クロスプロジェクト構成）。クロスプロジェクト構成では、Consoleエージェントのサービスアカウントに必要な権限があれば、プロジェクトAなどの1つのプロジェクトにConsoleエージェントをデプロイし、プロジェクトBなどの別のプロジェクトにCloud Volumes ONTAPシステムをデプロイできます。
 
 
 [CAUTION]
 ====
 Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、データとレコードを Google Cloud Storage バケットに保存します。これらのバケットには追加費用が発生する可能性がありますが、バケットやそのコンテンツを編集または削除しないでください：
 
-* `gs://netapp-cvo-infrastructure-manager-<project id>`：新しいCloud Volumes ONTAPデプロイメントに使用されるONTAPバージョンとSVM Terraformテンプレート用。この中の `dm-to-im-convert`バケットには、Cloud Volumes ONTAP Terraformファイルが含まれています。
+* `gs://netapp-cvo-infrastructure-manager-<project id>`：新規Cloud Volumes ONTAP環境の導入に使用されるONTAPバージョンおよびSVM Terraformテンプレート用。このバケット内の `dm-to-im-convert`バケットには、Cloud Volumes ONTAP Terraformファイルが含まれています。
 * `<gcp project number>-<region>-blueprint-config`：Google Cloud Terraform アーティファクトを保存します。
 
 
@@ -38,14 +39,15 @@ Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、デ
 * Google Cloud ConsoleからCloud Volumes ONTAPリソースやそのプロパティが手動で編集されていないことを確認します。
 * Google Cloud API（Google Cloud Quotas APIを含む）が有効になっていることを確認してください。 https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]を参照してください。
 * NetApp Consoleエージェントのサービスアカウントに、必要なすべての権限があることを確認します。 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-gcp.html#service-account-permissions["コンソール エージェントの Google Cloud 権限"^]を参照してください。
+* ConsoleエージェントとCloud Volumes ONTAPが異なるプロジェクトにある場合は、ConsoleエージェントのサービスアカウントがCloud Volumes ONTAPプロジェクトで必要なすべての権限を持っていることを確認してください。Consoleエージェントのサービスアカウントに他のプロジェクトへのアクセス権限を付与する方法については、 https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-console-gcloud.html#console-permissions-google["エージェントで使用するGoogle Cloudサービスアカウントを作成します"^]を参照してください。
 * 変換を開始する前に、Cloud Volumes ONTAPシステムのルートディスクとブートディスクのスナップショットを取得することをお勧めします。
 +
-.プライベートモードでの展開の場合、以下の追加要件を満たしていることを確認してください。
+.プライベートモードまたはプロテクトモードの展開の場合、以下の追加要件を満たしていることを確認してください：
 [%collapsible]
 ====
 ** 最新バージョンのConsoleエージェントがインストールされていることを確認してください。NetApp Support Siteから製品インストーラをダウンロードし、エージェントがInfrastructure Manager APIを使用できるように、ホストにエージェントを手動でインストールします。
 ** ツールをプライベートモードで実行している場合は、他のAPIに加えてCloud Build APIも有効にしていることを確認してください。 https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-google-gcloud.html#step-5-enable-google-cloud-apis["Google Cloud API を有効にする"^]を参照してください。
-** プライベートモード展開の場合は、ネットワーク構成が完了し、ワーカープールが作成されていることを確認してください。link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成"]を参照してください。
+** プライベートモードまたは保護された環境でのデプロイメントの場合、ネットワーク構成が完了し、ワーカープールが作成されていることを確認してください。link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成"] を参照してください。
 
 
 ====
@@ -127,7 +129,7 @@ Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、デ
 .手順
 . ロールを作成し、サービス アカウントに関連付けます：
 +
-.. 次の権限を持つ YAML ファイルを作成します：
+.. 以下の権限を持つYAMLファイルを作成してください。
 +
 [source, cli]
 ----
@@ -163,13 +165,38 @@ includedPermissions:
 - storage.objects.list
 ----
 +
-.プライベートモード展開のための追加権限を含める
+.プライベートモードまたは保護されたデプロイメントに追加の権限を含める
 [%collapsible]
 ====
-ツールをプライベートモードで実行している場合は、YAMLファイルに `cloudbuild.workerpools.get`権限も追加してください。
+ツールをプライベートモードまたは保護された環境で実行している場合は、YAMLファイルに `cloudbuild.workerpools.get`権限も追加してください。
 
 ====
-.. YAML ファイルで定義された権限を使用して、Google Cloud にカスタムロールを作成します。
++
+.プロジェクト間展開のための追加権限を含める（1つのプロジェクトにConsoleエージェント、別のプロジェクトにCloud Volumes ONTAP）
+[%collapsible]
+====
+クロスプロジェクト展開では、Consoleエージェントのプロジェクト用に前のYAMLファイルを作成します。Cloud Volumes ONTAPリソースが存在するプロジェクト用に、次の権限を持つ2番目のYAMLファイルを作成する必要があります：
+
+[source, cli]
+----
+title: NetApp Dm TO IM Convert Solution for Cross Project
+description: Permissions for the service account associated with the VM where the tool will run for the project where CVO resources resides.
+stage: GA
+includedPermissions:
+- compute.addresses.get
+- compute.disks.get
+- compute.forwardingRules.get
+- compute.healthChecks.get
+- compute.instanceGroups.get
+- compute.instances.get
+- compute.regionBackendServices.get
+- deploymentmanager.deployments.get
+- deploymentmanager.deployments.list
+- deploymentmanager.manifests.get
+- resourcemanager.projects.get
+----
+====
+.. Consoleエージェントのプロジェクトで、YAMLファイルに定義された権限を持つカスタムロールをGoogle Cloudで作成します。クロスプロジェクト設定では、Cloud Volumes ONTAPリソースが存在するプロジェクトでもこのロールを作成します。
 `gcloud iam roles create dmtoim_convert_tool_role --project=PROJECT_ID \
     --file=YAML_FILE_PATH`詳細については、 https://cloud.google.com/iam/docs/creating-custom-roles["カスタムロールの作成と管理"^]を参照してください。
 .. VM の作成に使用するサービス アカウントにカスタム ロールを関連付けます。
@@ -219,7 +246,7 @@ project=PROJECT_ID
 
 
 . SSH を使用して新しく作成した VM に接続します： `gcloud compute ssh dmtoim-convert-executor-vm --zone _<region where VM is deployed>_`
-. NSS クレデンシャルを使用して https://mysupport.netapp.com/site/tools/tool-eula/gcp-cvo-dm-to-im-convert-tool/download["NetApp サポート サイト"^]から変換ツールをダウンロードします： `wget <download link from NetApp Support site>`
+. NSS クレデンシャルを使用して https://mysupport.netapp.com/site/tools/tool-eula/gcp-cvo-dm-to-im-convert-tool/download["NetAppサポート サイト"^]から変換ツールをダウンロードします： `wget <download link from NetApp Support site>`
 . ダウンロードしたファイルを展開します： `unzip <downloaded file name>`
 
 
@@ -302,20 +329,35 @@ cd <folder where you extracted the tool>
 [source, cli]
 ----
 dmconvert \
---project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
+--cvo-project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
 --cvo-name=<Cloud Volumes ONTAP system name> \
 --service-account=<the service account attached to the Console agent>
 ----
 +
-.プライベートモードでツールを実行する
+.ツールをクロスプロジェクト展開で実行する（1つのプロジェクトにConsoleエージェント、別のプロジェクトにCloud Volumes ONTAP）
 [%collapsible]
 ====
- `--worker-pool`パラメータを指定して、プライベートモードのデプロイメントでツールを実行します。ワーカープールの設定については、link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成"]を参照してください。
+Cloud Volumes ONTAPシステムが、Consoleエージェントが配置されているプロジェクトとは別のプロジェクトにある場合は、 `--console-agent-project-id`パラメータを指定します。
 
 [source, cli]
 ----
 dmconvert \
---project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
+--cvo-project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
+--console-agent-project-id=<the Google Cloud project ID for the Console agent> \
+--cvo-name=<Cloud Volumes ONTAP system name> \
+--service-account=<the service account attached to the Console agent> \
+----
+====
++
+.プライベートモードまたは保護モードの環境でツールを実行します
+[%collapsible]
+====
+プライベートモードまたは保護モードの環境でツールを実行するには、 `--worker-pool`パラメータを指定します。ワーカープールの構成については、link:reference-networking-gcp.html#infrastructure-manager-configuration-in-private-mode-or-protected-environments["プライベートモードまたは保護された環境でのインフラストラクチャマネージャの構成"]を参照してください。
+
+[source, cli]
+----
+dmconvert \
+--cvo-project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
 --cvo-name=<Cloud Volumes ONTAP system name> \
 --service-account=<the service account attached to the Console agent> \
 --worker-pool=<worker pool name>
@@ -344,7 +386,20 @@ CAUTION: 変換後、Google Cloud ConsoleのDeployment Managerのデプロイメ
 [source, cli]
 ----
 dmconvert \
---project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
+--cvo-project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
+--cvo-name=<Cloud Volumes ONTAP system name> \
+--service-account=<the service account attached to the Console agent> \
+--rollback
+----
++
+クロスプロジェクト展開の場合は、 `--console-agent-project-id`パラメータを指定します：
+
++
+[source, cli]
+----
+dmconvert \
+--cvo-project-id=<the Google Cloud project ID for the Cloud Volumes ONTAP deployment> \
+--console-agent-project-id=<the Google Cloud project ID for the Console agent> \
 --cvo-name=<Cloud Volumes ONTAP system name> \
 --service-account=<the service account attached to the Console agent> \
 --rollback
