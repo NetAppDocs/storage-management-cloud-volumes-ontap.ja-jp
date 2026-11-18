@@ -4,7 +4,7 @@ permalink: task-onboard-cvo-aws-marketplace.html
 keywords: aws marketplace, cloud volumes ontap, onboarding, subscribe, deploy agent, setup guide, organization, subscription association 
 summary: AWS Marketplace で Cloud Volumes ONTAP をサブスクライブし、組織の作成、サブスクリプションの関連付け、エージェントのデプロイ、および最初のシステムの作成を含むセットアップを NetApp Console で完了します。 
 ---
-= AWS MarketplaceからCloud Volumes ONTAPスタンドアロン製品をサブスクライブしてデプロイする
+= AWS Marketplaceのスタンドアロンリストを使用してCloud Volumes ONTAPを展開する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -17,10 +17,10 @@ summary: AWS Marketplace で Cloud Volumes ONTAP をサブスクライブし、�
 AWS MarketplaceでスタンドアロンのCloud Volumes ONTAPオファリングをサブスクライブし、Consoleエージェントをデプロイして、最初のシステムを作成します。
 
 .開始する前に
-始める前に、以下のものを用意してください：
+必ず以下のものを用意してください：
 
 * NetApp Consoleアカウント、またはアカウント作成に必要な情報。
-* コンソールエージェントネットワークが要件を満たしていることを確認しました。link:https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-aws-marketplace.html#step-1-set-up-networking["Consoleエージェントのネットワーク要件について"^]
+* 要件を満たすConsoleエージェントネットワーク。link:https://docs.netapp.com/us-en/console-setup-admin/task-install-agent-aws-marketplace.html#step-1-set-up-networking["Consoleエージェントのネットワーク要件について"^]
 * AWS Marketplaceへの登録権限と提供条件への同意権限を持つAWSアカウントおよびID。
 +
 *Create role for me* を選択した場合、CloudFormation Quick Create スタックを送信する AWS ID には以下の権限が必要です。スタックのサブスクライブと送信に同じ ID を使用する場合は、開始前にこれらの権限を付与してください。スタックの送信に別の ID を使用する場合は、代わりにその ID に権限を付与してください。これらの権限は、CloudFormation がデプロイメントロールを作成できるようにするためのものであり、実行中のエージェントが使用する権限ではありません。
@@ -72,10 +72,24 @@ AWS MarketplaceでスタンドアロンのCloud Volumes ONTAPオファリング�
 . NetApp Cloud Volumes ONTAPのスタンドアロンオファリングを見つけます。AWS Marketplaceでは、Cloud Volumes ONTAP向けに2つのオファリングを提供しています：
 +
 ** Cloud Volumes ONTAP年間サブスクリプションの単体提供
-** NetAppデータサービスおよびCloud Volumes ONTAPサブスクリプション向けのNetApp Intelligent Service統合オファリング。
+** NetAppデータサービスおよびCloud Volumes ONTAPサブスクリプション向けのNetAppインテリジェントサービス統合オファリング
 
 
-. _スタンドアロン_版を選択してください。これらの手順では、スタンドアロン版をサブスクライブする方法を説明します。
+. _スタンドアロン_版を選択してください。出品内容と料金条件をご確認ください。
+. 購読登録をして、決済手続きを完了してください。
+. サブスクリプションの登録後、*Set up product* を選択すると、NetApp Console にリダイレクトされ、デプロイを完了できます。
+
+
+
+
+[[subscribe-to-the-netapp-intelligent-service-offering-for-data-services]]
+== データサービス向けのNetApp Intelligent Serviceオファリングをサブスクライブします
+
+NetApp Backup and Recoveryなどの他のデータサービスを使用する場合は、スタンドアロンのオファリングに加えて、NetApp Intelligent Serviceオファリングをサブスクライブする必要があります。
+
+.手順
+. 必要な権限を持つAWSアカウントを使用して、AWS Marketplaceにアクセスしてください。
+. NetApp インテリジェントサービスオファリングを見つけて選択します。
 . 出品内容と料金条件をご確認ください。
 . 購読登録をして、決済手続きを完了してください。
 . サブスクリプションの登録後、*Set up product* を選択すると、NetApp Console にリダイレクトされ、デプロイを完了できます。
@@ -166,7 +180,7 @@ Marketplaceのサブスクリプションが完了したら、NetApp Consoleで�
 コンソールで CloudFormation Quick Create を使用してロールを作成するには、スタックを送信する AWS ID に管理者権限、または<<aws-iam-role-permissions,上記のJSONの例>>に記載されている最低限の権限が必要です。
 
 ... *自分用のロールを作成する*を選択します。
-... AWSアカウントIDを追加し、必要に応じて外部IDも追加してください。コンソールはデフォルトのロール名を設定します。
+... AWSアカウントIDを追加し、必要に応じて外部IDも追加してください。Consoleはデフォルトのロール名を設定します。
 ... *CloudFormation クイック作成を開く*を選択します。
 ... AWS CloudFormationのクイック作成ページで、利用規約に同意し、*スタックの作成*を選択します。
 +
@@ -182,7 +196,7 @@ image:screenshot-stack-creation.png["幅=35% AWS CloudFormation スタック作�
 
 ... *Assume role*を選択します。
 +
-コンソールは引き受けたロールの名前を作成しますが、必要に応じて変更できます。
+Consoleは引き受けるロールの名前を作成しますが、必要に応じて変更できます。
 
 ... 既存のロールのARNを入力してください。
 ... *資格情報の検証*を選択します。
@@ -204,7 +218,7 @@ image:screenshot-stack-creation.png["幅=35% AWS CloudFormation スタック作�
 
 . エージェントインスタンス名や、実行中のエージェント用にコンソールがIAMロールを作成するか既存のロールを使用するかなど、エージェントのデプロイの詳細を設定します。
 +
-コンソールがコンソールエージェントを作成する際、エージェント用のIAMロールとプロファイルを作成するか、お客様が指定したロールを使用します。このロールには、エージェントがAWSリソースを管理できるようにする権限が含まれています。今後のリリースで新しい権限が追加された場合は、ロールが必ず更新されるようにしてください。link:https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["コンソールエージェントのIAMポリシーの詳細については、こちらをご覧ください。"^]。
+ConsoleがConsoleエージェントを作成する際、エージェント用のIAMロールとプロファイルを作成するか、ユーザーが指定したロールを使用します。このロールには、エージェントがAWSリソースを管理できるようにする権限が含まれています。エージェントが必要とする新しい権限があれば、ロールを常に最新の状態に保ってください。link:https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html["コンソールエージェントのIAMポリシーの詳細については、こちらをご覧ください。"^]。
 
 . 必要に応じて、VPC、サブネット、キーペア、パブリックIPの動作、プロキシ設定を選択してネットワークを構成します。
 . エージェントVMへのトラブルシューティングアクセス用に、インバウンドのHTTP（80）、HTTPS（443）、およびSSH（22）を許可するようにセキュリティグループのルールを設定します。
@@ -232,7 +246,7 @@ Console agentのネットワークおよび権限に関する要件の詳細は�
 
 コンソールがエージェントをデプロイしたら、 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-quick-deploy-aws.html["AWS でクイック作成を使用して Cloud Volumes ONTAP を導入する"^]の手順に従って最初のシステムを作成します。
 
-Cloud Volumes ONTAPシステムの作成準備が整っていない場合は、いつでもシステムページに戻って、後でシステムを作成できます。
+Cloud Volumes ONTAPシステムを作成する準備がまだ整っていない場合は、いつでもシステムページに戻って作成できます。
 
 
 

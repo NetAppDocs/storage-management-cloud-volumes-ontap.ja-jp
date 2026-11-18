@@ -20,6 +20,64 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+[[17-november-2026]]
+== 2026年11月17日
+
+
+
+[[new-cloud-volumes-ontap-contributor-role]]
+=== 新しいCloud Volumes ONTAPコントリビュータロール
+
+NetAppは、オペレータロールよりも権限が多く、管理者ロールよりも権限が少ない*Cloud Volumes ONTAP contributor*ロールを追加しました。オペレータロールを持つユーザは、SnapMirrorレプリケーションタスクを含む、いくつかの日常的なワークフローを実行できます。管理者ロールはこれらのワークフローをカバーしますが、管理者ユーザによるCloud Volumes ONTAPシステムの削除も許可します。多くの組織は、運用ユーザにこれを望んでいません。現在、Consoleはマルチ管理検証（MAV）をサポートしていないため、このロールは重要です。MAVがないと、管理者ユーザは2回目の承認なしにシステムの削除などの機密性の高い操作を実行できてしまいます。contributorロールを使用すると、ユーザはシステムの作成、レプリケーションの管理、ストレージの管理など、最も重要な操作を実行できますが、システムの削除は防止されます。
+
+貢献者ロールには、すべてのオペレーター権限に加えて、以下の追加機能が含まれます：
+
+* Cloud Volumes ONTAPシステムの作成
+* インスタンスタイプの変更やONTAPバージョンのアップグレードなど、システム設定を更新します
+* レプリケーションの管理（中断、再同期、逆再同期、レプリケーションスケジュールと転送レートの編集を含む）
+* ストレージの管理（アグリゲートの追加や容量の拡張など）
+
+
+投稿者権限を持つユーザーは、以下のタスクを実行できません：
+
+* システム、ボリューム、アグリゲート、またはレプリケーション関係の削除
+* システムのオン/オフを切り替える
+* パスワードを設定
+* ONTAP System Manager へのアクセス
+
+
+他の Cloud Volumes ONTAP ロールをユーザに割り当てるのと同じ方法で、*管理 > ID* からコントリビュータロールを割り当てます。
+
+.関連リンク
+* https://docs.netapp.com/us-en/console-setup-admin/reference-iam-cvo-roles.html["Cloud Volumes ONTAP の NetApp Console におけるアクセスロール"^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-cvo-rbac-setup.html["Cloud Volumes ONTAP のロールベースアクセスを NetApp Console で設定する"^]
+* https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html#data-service-roles["NetApp Console アクセスロール"^]
+
+
+
+
+[[microsoft-entra-id-hybrid-user-authentication-for-smb-public-preview]]
+=== SMB向けMicrosoft Entra IDハイブリッドユーザ認証（パブリックプレビュー）
+
+Cloud Volumes ONTAP 9.19.1以降では、SMB共有にアクセスするための https://www.microsoft.com/en-in/security/business/identity-access/microsoft-entra-id["Microsoft Entra ID"^]を使用したハイブリッドユーザ認証をサポートしています。
+
+以前は、Cloud Volumes ONTAPはドメインユーザのSMB認証のみをサポートしており、オンプレミスのActive Directory（AD）のセットアップが必要でした。ハイブリッドユーザ認証により、既存のオンプレミスADインフラストラクチャを引き続き使用しながら、Microsoft Entra IDを介してSMB認証をクラウドに拡張できます。
+
+ハイブリッドユーザ認証では、ユーザはオンプレミスADで作成され、 https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/whatis-azure-ad-connect["Microsoft Entra Connect"^]を使用してMicrosoft Entra IDに同期されます。ONTAPは、オンプレミスADとMicrosoft Entra IDの両方と通信することで、SMB共有にアクセスするユーザを認証します。
+
+この機能は一般公開プレビュー版として利用可能です。設定はONTAP CLIでのみサポートされます。NetApp Console統合機能はまだ利用できません。
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-entra-id-smb-auth.html["SMB 向け Microsoft Entra ID 認証の設定"^]
+
+
+
+[[16-november-2026]]
+== 2026年11月16日
+
+未解決のディレクティブ <stdin> - include::_whatsnew/2026-11-16.adoc[]
+
+
+
 [[02-november-2026]]
 == 2026年11月2日
 
