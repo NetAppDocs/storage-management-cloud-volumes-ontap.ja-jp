@@ -11,4 +11,4 @@ NetAppは現在、NetApp Standalone Listing（NSL）を通じて、AWS Marketpla
 
 Cloud Volumes ONTAPの年間契約とPAYGOリストはどちらも、NetApp Intelligence Services（NIS）の年間契約およびPAYGOリストとは別になっており、Cloud Volumes ONTAPの容量とデータサービスに対して個別の請求が可能です。
 
-https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html["請求設定の詳細についてはこちらをご覧ください"^]
+https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html["請求設定の詳細についてはこちらをご覧ください"^] https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-onboard-cvo-aws-marketplace.html["AWS Marketplaceのスタンドアロンリストを使用してCloud Volumes ONTAPを展開する"^]

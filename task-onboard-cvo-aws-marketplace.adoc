@@ -71,25 +71,25 @@ AWS MarketplaceでスタンドアロンのCloud Volumes ONTAPオファリング�
 . 必要な権限を持つAWSアカウントを使用して、AWS Marketplaceにアクセスしてください。
 . NetApp Cloud Volumes ONTAPのスタンドアロンオファリングを見つけます。AWS Marketplaceでは、Cloud Volumes ONTAP向けに2つのオファリングを提供しています：
 +
-** Cloud Volumes ONTAP年間サブスクリプションの単体提供
-** NetAppデータサービスおよびCloud Volumes ONTAPサブスクリプション向けのNetAppインテリジェントサービス統合オファリング
+** 年間サブスクリプションまたは従量課金制（PAYGO）で利用できる、Cloud Volumes ONTAPのスタンドアロン製品。
+** NetAppインテリジェントサービス（NIS）のオファリング（NetAppデータサービスおよびCloud Volumes ONTAP向け）は、年間サブスクリプションまたはPAYGOとしてもご利用いただけます。
 
 
-. _スタンドアロン_版を選択してください。出品内容と料金条件をご確認ください。
+. _スタンドアロン_製品の場合は、年間サブスクリプションまたは従量課金制オプションのいずれかを選択してください。リストの詳細と料金条件を確認してください。
 . 購読登録をして、決済手続きを完了してください。
 . サブスクリプションの登録後、*Set up product* を選択すると、NetApp Console にリダイレクトされ、デプロイを完了できます。
 
 
 
 
-[[subscribe-to-the-netapp-intelligent-service-offering-for-data-services]]
-== データサービス向けのNetApp Intelligent Serviceオファリングをサブスクライブします
+[[subscribe-to-netapp-intelligent-service-for-data-services]]
+== データサービス向けNetApp Intelligent Serviceをサブスクライブする
 
-NetApp Backup and Recoveryなどの他のデータサービスを使用する場合は、スタンドアロンのオファリングに加えて、NetApp Intelligent Serviceオファリングをサブスクライブする必要があります。
+NetApp Backup and Recoveryなどの他のデータサービスを使用する場合は、スタンドアロン版に加えてNIS版にも加入する必要があります。
 
 .手順
 . 必要な権限を持つAWSアカウントを使用して、AWS Marketplaceにアクセスしてください。
-. NetApp インテリジェントサービスオファリングを見つけて選択します。
+. NetApp Intelligent Service（NIS）オファリングの年間またはPAYGOオプションを探して選択します。
 . 出品内容と料金条件をご確認ください。
 . 購読登録をして、決済手続きを完了してください。
 . サブスクリプションの登録後、*Set up product* を選択すると、NetApp Console にリダイレクトされ、デプロイを完了できます。
