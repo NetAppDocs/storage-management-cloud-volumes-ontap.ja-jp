@@ -1,0 +1,17 @@
+= Azureにおけるデンマーク東部リージョンおよびインド南部中央リージョンのサポート
+:allow-uri-read: 
+
+
+
+
+[[support-for-denmark-east-and-india-south-central-regions-in-azure]]
+=== Azureにおけるデンマーク東部リージョンおよびインド南部中央リージョンのサポート
+
+Azureのデンマーク東部（denmarkeast）およびインド南中部（indiasouthcentral）リージョンで、Cloud Volumes ONTAP 9.12.1 GA以降をデプロイできるようになりました。以下のデプロイタイプがサポートされています：
+
+* シングルノード
+* ローカル冗長ストレージ（LRS）を使用した単一アベイラビリティゾーンにおけるHA
+* ゾーン冗長ストレージ（ZRS）を使用した複数のアベイラビリティゾーンでのHA - India South Centralのみ
+
+
+サポートされているすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。

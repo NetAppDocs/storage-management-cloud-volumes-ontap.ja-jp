@@ -8317,8 +8317,6 @@
   <block id="4bec940f8e5547f4d7ea2a53ec902c6a" category="paragraph">ConsoleがConsoleエージェントを作成する際、エージェント用のIAMロールとプロファイルを作成するか、ユーザーが指定したロールを使用します。このロールには、エージェントがAWSリソースを管理できるようにする権限が含まれています。エージェントが必要とする新しい権限があれば、ロールを常に最新の状態に保ってください。<block ref="7f447941d99d36030500c16d428fc2ff" category="inline-link-macro-rx"></block>。</block>
   <block id="4eedc010909cbd7fa3cbf5efdb1be4b6" category="paragraph">Cloud Volumes ONTAPシステムを作成する準備がまだ整っていない場合は、いつでもシステムページに戻って作成できます。</block>
   <block id="3cc38715797be469f39edd81c803bf02" category="section-title">2026年11月17日</block>
-  <block id="444d7501b3cc1feab5560e903adad61c" category="section-title">2026年11月16日</block>
-  <block id="f2a895f791fcea8f719f85e864d53ea6" category="paragraph">未解決のディレクティブ &lt;stdin&gt; - include::_whatsnew/2026-11-16.adoc[]</block>
   <block id="4e1d849ec7cd4b242a9a758a2e86fe1c" category="sidebar">AWS Marketplaceのスタンドアロンリストを使用してCloud Volumes ONTAPを展開する</block>
   <block id="d2091e7366ce9b63a9a82bdd7bb6c641" category="sidebar">Azureメンテナンス中にHAペアの中断を防止する</block>
   <block id="464804aa8527c7a5675dd4c8d2b5f2b5" category="paragraph"><block ref="70563190697b86d4b7fef9663334a2c7" category="inline-link-rx"></block> <block ref="2d3a44ea7e8ca99b971ec5f419723d79" category="inline-link-rx"></block></block>
@@ -8330,4 +8328,8 @@
   <block id="db78a7e96024e9eef010b9cf7fb53251" category="paragraph">NetApp Backup and Recoveryなどの他のデータサービスを使用する場合は、スタンドアロン版に加えてNIS版にも加入する必要があります。</block>
   <block id="19345556c6e896fcd174b552b92e5c53" category="list-text">NetApp Intelligent Service（NIS）オファリングの年間またはPAYGOオプションを探して選択します。</block>
   <block id="bc2dc85706f0ec1cefd21d3f849eb1e9" category="section-title">2026年11月18日</block>
+  <block id="5a910ff91567ebb4e0ae85635837c5a8" category="doc">Azureにおけるデンマーク東部リージョンおよびインド南部中央リージョンのサポート</block>
+  <block id="b9433802e6e744b5cc84b87da127cf0e" category="paragraph">Azureのデンマーク東部（denmarkeast）およびインド南中部（indiasouthcentral）リージョンで、Cloud Volumes ONTAP 9.12.1 GA以降をデプロイできるようになりました。以下のデプロイタイプがサポートされています：</block>
+  <block id="893f7f9c4326ccc9db9efcafead22429" category="list-text">ゾーン冗長ストレージ（ZRS）を使用した複数のアベイラビリティゾーンでのHA - India South Centralのみ</block>
+  <block id="1d13d5e4cee76a1ac900dd9c56640ddb" category="section-title">2026年11月24日</block>
 </blocks>

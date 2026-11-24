@@ -20,6 +20,25 @@ NetApp ConsoleのCloud Volumes ONTAP管理の新機能について説明しま�
 
 
 
+[[24-november-2026]]
+== 2026年11月24日
+
+
+
+[[support-for-denmark-east-and-india-south-central-regions-in-azure]]
+=== Azureにおけるデンマーク東部リージョンおよびインド南部中央リージョンのサポート
+
+Azureのデンマーク東部（denmarkeast）およびインド南中部（indiasouthcentral）リージョンで、Cloud Volumes ONTAP 9.12.1 GA以降をデプロイできるようになりました。以下のデプロイタイプがサポートされています：
+
+* シングルノード
+* ローカル冗長ストレージ（LRS）を使用した単一アベイラビリティゾーンにおけるHA
+* ゾーン冗長ストレージ（ZRS）を使用した複数のアベイラビリティゾーンでのHA - India South Centralのみ
+
+
+サポートされているすべてのリージョンのリストについては、 https://www.netapp.com/cloud-volumes-ontap/supported-regions/["Azure のグローバル地域マップ"^]を参照してください。
+
+
+
 [[18-november-2026]]
 == 2026年11月18日
 
@@ -84,13 +103,6 @@ Cloud Volumes ONTAP 9.19.1以降では、SMB共有にアクセスするための
 この機能は一般公開プレビュー版として利用可能です。設定はONTAP CLIでのみサポートされます。NetApp Console統合機能はまだ利用できません。
 
 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-azure-entra-id-smb-auth.html["SMB 向け Microsoft Entra ID 認証の設定"^]
-
-
-
-[[16-november-2026]]
-== 2026年11月16日
-
-未解決のディレクティブ <stdin> - include::_whatsnew/2026-11-16.adoc[]
 
 
 
