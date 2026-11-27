@@ -4721,15 +4721,12 @@
   <block id="a1123cd59d7bd876c080c33906ae65ce" category="list-text">*サービス*: 問題が関連付けられているサービスを選択します。たとえば、* NetApp Console* は、コンソール内のワークフローまたは機能に関するテクニカル サポートの問題に固有の場合です。</block>
   <block id="987df7518e2afb50a860647c832afd13" category="list-text">*システム*: ストレージに該当する場合は、* Cloud Volumes ONTAP* または *On-Prem* を選択し、関連する作業環境を選択します。</block>
   <block id="8f8e8a86e5f52b6186a37bdf266c4320" category="paragraph">システムのリストは、コンソール組織と、上部のバナーで選択したコンソール エージェントの範囲内にあります。</block>
-  <block id="77c89527ec8a9f89b24c5579d19b3b4b" category="paragraph"><block ref="77c89527ec8a9f89b24c5579d19b3b4b" category="inline-image-macro-rx" type="image"></block></block>
   <block id="178fdaf97b1d1577437f11ee9d5e5229" category="paragraph">このエラーは、NSS アカウントとそれに関連付けられているレコード会社が、NetApp Consoleアカウントのシリアル番号のレコード会社と同じではないことを意味している可能性があります (つまり、960xxxx) または作業環境のシリアル番号。次のいずれかのオプションを使用してサポートを求めることができます。</block>
   <block id="e1100b46295d42ed50ba7a4630710164" category="section-title">サポートケースを管理する</block>
   <block id="316508a3483178100806a9d44b49aba2" category="paragraph">アクティブなサポート ケースと解決済みのサポート ケースをコンソールから直接表示および管理できます。NSS アカウントおよび会社に関連付けられたケースを管理できます。</block>
   <block id="9163e8bca6fd93c080d35ab49e3efdfa" category="list-text">NetApp Consoleで、[ヘルプ] &gt; [サポート] を選択します。</block>
   <block id="2019fd19051c3ef493dbbb9ca65bab87" category="list-text">*ケース管理*を選択し、プロンプトが表示されたら、NSS アカウントをコンソールに追加します。</block>
   <block id="75e54e3a6fdbf43ed890669e079d7594" category="paragraph">*ケース管理* ページには、コンソール ユーザー アカウントに関連付けられている NSS アカウントに関連するオープン ケースが表示されます。これは、*NSS 管理* ページの上部に表示される NSS アカウントと同じです。</block>
-  <block id="8ac6be88c1aa79062825a147fb263b0e" category="list-text">表に表示される列を変更するには、<block ref="500a336e7ba1c54bcffba4e27bda4eb6" category="inline-image-macro-rx" type="image"></block>次に、表示する列を選択します。</block>
-  <block id="049b7b9fab1242f5e715952973c9474d" category="list-text">既存のケースを管理するには、<block ref="7381d9baeaf62eb099ce84f1a21ed5ca" category="inline-image-macro-rx" type="image"></block>利用可能なオプションのいずれかを選択します。</block>
   <block id="a58a19877ed0bf7f9b6d06fdd8387763" category="paragraph">Cloud Volumes ONTAPで使用するサブスクリプションを有効にし、サブスクリプションのサービス レベルのコミット済み容量の変更を要求することで、 NetApp ConsoleでKeystoneサブスクリプションを管理します。サービス レベルの追加容量を要求すると、Cloud Volumes ONTAPシステムにさらに多くのストレージが提供されます。</block>
   <block id="df5e66b5e7999995b53a0f100212d79f" category="paragraph">コンソールでKeystoneサブスクリプションを使用および管理する前に、 NetAppに連絡して、コンソール アカウントにKeystoneサブスクリプションを承認してもらう必要があります。</block>
   <block id="a53c428d90f592127da49a8d5a558130" category="paragraph">NetApp の担当者が、お客様のアカウントにサブスクリプションへのアクセスを許可して、お客様のリクエストを処理します。</block>
@@ -4968,10 +4965,6 @@
   <block id="e7a270462c8420134738505bc0866ce8" category="list-text">*マーケットプレイス サブスクリプションのみ*: このモデルでは、使用量はまず年間マーケットプレイス サブスクリプションに対して課金されます。追加の使用量については、マーケットプレイスのオンデマンド時間料金 (PAYGO) で課金されます。未使用のライセンス容量は課金対象から除外されます。</block>
   <block id="f94c83bcf4a8ed377dfb56f9bda7f82c" category="inline-link">ライセンスとサブスクリプションの課金設定について</block>
   <block id="38f53d053ce0f3ed0f13a8cdb220d30c" category="paragraph">請求設定の詳細については、以下を参照してください。<block ref="9a51e16e4e2251fd842a860cb6941933" category="inline-link-rx"></block>。</block>
-  <block id="38fc1b337c0ea26463916fc2913205c1" category="paragraph"><block ref="38fc1b337c0ea26463916fc2913205c1" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="7019a39846e9a2c7f7a80eaba91e4a41" category="paragraph"><block ref="7019a39846e9a2c7f7a80eaba91e4a41" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1d593c3f7480ada9580d93cd753c3f93" category="paragraph">これは、メールにマッピングされるシステム生成の ID です。*NSS管理*ページでは、<block ref="5444f6f0c3983523c8933a1864b2b390" category="inline-image-macro-rx" type="image"></block>メニュー。</block>
-  <block id="872eaae7deb6035c20f9bfe6deefd03d" category="list-text">ログイン認証トークンを更新する必要がある場合は、<block ref="5444f6f0c3983523c8933a1864b2b390" category="inline-image-macro-rx" type="image"></block>メニュー。</block>
   <block id="667dffcf5676fe0bd645082d2a512fef" category="section-title">2026年1月12日</block>
   <block id="dfcd07d4790b963532ec4f8f70f184cd" category="doc">Google Cloud Infrastructure Manager のサポート</block>
   <block id="ed5b5006125f27aac08e98fe5c365d46" category="inline-link">Google Cloud Infrastructure Manager</block>
@@ -8423,4 +8416,11 @@
   <block id="74f9aca10e2756e0a6e4f98283b16ab2" category="doc">AzureのCloud Volumes ONTAPのPremium SSDディスクのパフォーマンスティアを変更する</block>
   <block id="561024775ce4912cba9fe28384d03237" category="doc">OpenSSLを使用してCloud Volumes ONTAPのGoogle Cloudイメージを検証する</block>
   <block id="45158acc9812c40a91f41bbdad469d0f" category="sidebar">AWSでNISサブスクリプションをスタンドアロンサブスクリプションに変換する</block>
+  <block id="6a01d74a3f012349cadafc7f0c97c86d" category="paragraph"><block ref="6a01d74a3f012349cadafc7f0c97c86d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e461a14ef18284f75a2b6063d614da64" category="list-text">テーブルに表示される列を変更するには、<block ref="561341289de713dd5ea2cd49d1743cab" category="inline-image-macro-rx" type="image"></block>を選択してから、表示する列を選択します。</block>
+  <block id="cb70a108f4a6413201209cb4b6024938" category="list-text"><block ref="babe7781192bcd33c63a8532a0937e8b" category="inline-image-macro-rx" type="image"></block>を選択し、利用可能なオプションのいずれかを選択して、既存のケースを管理します：</block>
+  <block id="9c0825883c050c64e9b59af470120939" category="paragraph"><block ref="9c0825883c050c64e9b59af470120939" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="357be4e47fe6e7132dca092006062510" category="paragraph"><block ref="357be4e47fe6e7132dca092006062510" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="848755f433bd66788db4d5c6e554252d" category="paragraph">これはシステムによって生成されたIDで、お客様のメールアドレスにマッピングされます。*NSS管理*ページの<block ref="6a3f89871d33c6cbc194f4f6a8275a65" category="inline-image-macro-rx" type="image"></block>メニューからメールアドレスを表示できます。</block>
+  <block id="5c680c883d2069f8039766ada41f7c1f" category="list-text">ログイン資格情報トークンを更新する必要がある場合は、<block ref="6a3f89871d33c6cbc194f4f6a8275a65" category="inline-image-macro-rx" type="image"></block> メニューに*資格情報の更新*オプションもあります。</block>
 </blocks>

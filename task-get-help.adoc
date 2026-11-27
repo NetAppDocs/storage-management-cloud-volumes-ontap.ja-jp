@@ -7,7 +7,7 @@ summary: 'NetApp はさまざまな方法でサポートを提供します。ナ
 = Cloud Volumes ONTAPに関するヘルプ
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: https://docs.netapp.com/us-en/console-family/media/
 
 
 [role="lead"]
@@ -87,7 +87,7 @@ NetApp Consoleコミュニティに参加して、進行中のディスカッシ
 
 
 +
-image:https://raw.githubusercontent.com/NetAppDocs/console-family/main/media/screenshot-create-case.png["NetAppサポートでケースを作成できる「ケースの作成」フォームのスクリーンショット。"]
+image:screenshot-create-case.png["NetAppサポートでケースを作成できる「ケースの作成」フォームのスクリーンショット。"]
 
 
 
@@ -141,10 +141,10 @@ image:https://raw.githubusercontent.com/NetAppDocs/console-family/main/media/scr
 ** *組織のケース*の下で*表示*を選択すると、会社に関連付けられているすべてのケースが表示されます。
 ** 正確な日付範囲を選択するか、別の期間を選択して日付範囲を変更します。
 ** 列の内容をフィルタリングします。
-** 表に表示される列を変更するには、image:https://raw.githubusercontent.com/NetAppDocs/console-family/main/media/icon-table-columns.png["表に表示されるプラスアイコン"]次に、表示する列を選択します。
+** テーブルに表示される列を変更するには、image:icon-table-columns.png["表に表示されるプラスアイコン"]を選択してから、表示する列を選択します。
 
 
-. 既存のケースを管理するには、image:https://raw.githubusercontent.com/NetAppDocs/console-family/main/media/icon-table-action.png["表の最後の列に表示される3つの点のアイコン"]利用可能なオプションのいずれかを選択します。
+. image:icon-table-action.png["表の最後の列に表示される3つの点のアイコン"]を選択し、利用可能なオプションのいずれかを選択して、既存のケースを管理します：
 +
 ** *ケースを表示*: 特定のケースに関する詳細をすべて表示します。
 ** *ケースノートを更新*: 問題に関する追加の詳細を入力するか、*ファイルのアップロード*を選択して最大 5 つのファイルを添付します。
