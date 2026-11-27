@@ -4,7 +4,7 @@ permalink: task-azure-prevent-freeze.html
 keywords: Azure, maintenance event, HA, takeover, giveback, freeze, disruption 
 summary: Cloud Volumes ONTAP HAペアの自動テイクオーバーとギブバックを抑制して、Azureメンテナンス中の中断を防ぎます。 
 ---
-= Cloud Volumes ONTAP HAペアのAzureメンテナンス中の中断を防止する
+= Cloud Volumes ONTAP HAペアのAzureメンテナンスによる中断を防止する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

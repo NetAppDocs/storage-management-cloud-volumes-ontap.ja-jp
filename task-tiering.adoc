@@ -4,7 +4,7 @@ permalink: task-tiering.html
 keywords: tier, tiering, cold data, hot data, storage tiering, data tiering, fabricpool, fabric pool, s3 endpoint, endpoint, connection, performance tier, capacity tier, object store, blob tiering, container, inactive, tiering requirements, remove S3 bucket, delete S3 CVO bucket, tenant, multi-tenant tiering 
 summary: ホット データ用の SSD または HDD パフォーマンス層と非アクティブ データ用のオブジェクト ストレージ容量層を組み合わせることで、 Cloud Volumes ONTAPのストレージ コストを削減できます。データ階層化はFabricPoolテクノロジーによって実現されます。 
 ---
-= 非アクティブなCloud Volumes ONTAPデータを低コストのオブジェクトストレージに階層化します
+= 非アクティブなCloud Volumes ONTAPデータを低コストのオブジェクトストレージに階層化する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

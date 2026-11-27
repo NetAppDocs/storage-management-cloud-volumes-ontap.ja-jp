@@ -4,7 +4,7 @@ permalink: reference-vpc-service-controls-gcp.html
 keywords: vpc, service controls, vpc-sc, google, psc, private service connect 
 summary: VPC Service Controls を使用して Google 環境をロックダウンすることを選択する場合は、 NetApp ConsoleとCloud Volumes ONTAP がGoogle API とどのようにやり取りするか、またCloud Volumes ONTAP をデプロイするためにサービス パラメータをどのように設定するかを理解する必要があります。 
 ---
-= VPC Service Controls を設定して、Google Cloud にCloud Volumes ONTAP をデプロイする
+= Google Cloud で Cloud Volumes ONTAP の VPC サービス コントロールを設定する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

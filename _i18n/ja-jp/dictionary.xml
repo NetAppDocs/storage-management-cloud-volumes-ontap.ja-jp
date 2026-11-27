@@ -236,7 +236,6 @@
   <block id="7d831c8a95d6f1d0ec777a6a3624c915" category="paragraph">宛先のCloud Volumes ONTAPシステムが Elastic Volumes をサポートしている場合、宛先ボリュームは Elastic Volumes が有効になっているアグリゲートに配置されます (gp3 または io1 ディスクを選択した場合)。</block>
   <block id="40f78d193b858589ad7df4dd4ce61ad6" category="inline-link">データレプリケーションの設定方法を学ぶ</block>
   <block id="335f4b4c3f32d7fd5ea619fa6dbe4204" category="summary">Cloud Volumes ONTAPイメージダイジェスト ファイル ツールを使用してエクスポートされた VHD ファイルの署名を検証する方法を理解します。</block>
-  <block id="367721c6da74417e71470676fd55bfec" category="doc">Cloud Volumes ONTAPの Azure Marketplace イメージ署名検証</block>
   <block id="58b845122330da91119b6688c036350d" category="paragraph">Azure イメージ検証プロセスでは、先頭の 1 MB と末尾の 512 バイトを削除し、ハッシュ関数を適用して、VHD ファイルからダイジェスト ファイルを生成します。署名手順に合わせて、ハッシュには _sha256_ が使用されます。</block>
   <block id="f98e4b86cca760be2447f72ea72c4f88" category="section-title">ファイル署名検証ワークフローの概要</block>
   <block id="9454f651ecd65349c0f152b92965f048" category="paragraph">以下は、ファイル署名検証ワークフロー プロセスの概要です。</block>
@@ -351,7 +350,6 @@
   <block id="394af58b8754c06314d43b854dc5006f" category="inline-link">このFAQ</block>
   <block id="9c89822027b6c9736a75d3187c897d4d" category="admonition">2021 年 12 月 3 日より、 NetApp はNSS アカウントの資格情報を登録する新しい方法に切り替えました。<block ref="e276cbae6a7bedd32258cb1ce27fb2ac" category="inline-link-rx"></block> 。  NSS アカウントが古い資格情報セットを使用している場合は、アカウントを新しい資格情報に更新する必要があります。</block>
   <block id="dfd4955ec9706a8b05865bd0aa3ab14f" category="summary">コールド データを低コストのオブジェクト ストレージに自動的に階層化できるようにすることで、ストレージ コストを削減します。</block>
-  <block id="84fbe7f88bb3a63bec3ffcbda024a860" category="doc">AWS、Azure、Google Cloud でのCloud Volumes ONTAPによるデータ階層化について学習します</block>
   <block id="c1b0fccfdff9ac3307a1dde73fefce36" category="paragraph">非アクティブなデータを低コストのオブジェクト ストレージに自動的に階層化することで、ストレージ コストを削減します。アクティブなデータは高性能の SSD または HDD に残り、非アクティブなデータは低コストのオブジェクト ストレージに階層化されます。これにより、プライマリ ストレージのスペースを再利用し、セカンダリ ストレージを縮小することができます。</block>
   <block id="4a399275f88e7ce2505e96b9b7f521b9" category="inline-image-macro">これは、ホット データが EBS ストレージに送られ、非アクティブなデータが S3 ストレージに送られることを示す概念図です。</block>
   <block id="3d3b4afad1ee8976c0e2861a36e95c05" category="paragraph"><block ref="3d3b4afad1ee8976c0e2861a36e95c05" category="inline-image-macro-rx" type="image"></block></block>
@@ -460,7 +458,6 @@
   <block id="6cf1e7fdb6b5707c27a7b71fe6c8c463" category="paragraph">NetApp Consoleからボリュームを作成するときにストレージ効率設定の選択をスキップするか、ボリュームを作成してから<block ref="41233aab48d70287f1bbc60d78ce6eab" category="inline-link-rx"></block>。</block>
   <block id="444f10b28a63ab25d9664d0647602d07" category="list-text">再起動後のキャッシュの再ウォームアップは、 Cloud Volumes ONTAPではサポートされていません。</block>
   <block id="01277cd6d5e8d9a803f07b849cedae4b" category="summary">Google Cloud イメージファイルの署名ファイルを検証します。</block>
-  <block id="25706862d682c182f521566815ee29c5" category="doc">Cloud Volumes ONTAPで Google Cloud イメージを検証する方法を学びます</block>
   <block id="248cdc66c441a6612309f6e2ce80a63c" category="inline-link">NSS</block>
   <block id="2a57c4c48ac4fed7319e97ba358228fe" category="paragraph">Google Cloud イメージ検証は、強化されたNetAppセキュリティ要件に準拠しています。イメージを生成するスクリプトに変更が加えられ、このタスク専用に生成された秘密鍵を使用して、途中でイメージに署名するようになりました。  Google Cloud イメージの整合性は、Google Cloud の署名済みダイジェストと公開証明書を使用して検証できます。これらの証明書は、以下からダウンロードできます。<block ref="4af4717946461f54169780875a3b5a98" category="inline-link-rx"></block>特定のリリース用。</block>
   <block id="5745e537e1e3a11e00e50f67820a46a1" category="admonition">Google Cloud イメージ検証は、Cloud Volumes ONTAPソフトウェア バージョン 9.13.0 以降でサポートされています。</block>
@@ -1195,7 +1192,6 @@
   <block id="9c6c0a63729c2c1bc8388b9ccd4e4155" category="inline-link-macro">SVM 災害復旧の詳細</block>
   <block id="5dc0415d3b98038c9ac4667c27633958" category="paragraph"><block ref="9ef9838740c8c73e2e54c1615ffa6adb" category="inline-link-macro-rx"></block> 。</block>
   <block id="04e85b8818646c50c9da467d9aca4c77" category="summary">NetApp Consoleは、IP アドレス、ネットマスク、ルートなどのCloud Volumes ONTAPのネットワーク コンポーネントのセットアップを処理します。アウトバウンドのインターネット アクセスが利用可能であること、十分なプライベート IP アドレスが利用可能であること、適切な接続が確立されていることなどを確認する必要があります。</block>
-  <block id="bdb9f0bd802608490113cecb46963491" category="doc">Cloud Volumes ONTAP用の AWS ネットワークを設定する</block>
   <block id="a1a264e616e24563d4b8f8b5795ea403" category="section-title">一般要件</block>
   <block id="48a88a6a697e4dc4a6da4cec716d1400" category="paragraph">AWS で次の要件を満たしていることを確認してください。</block>
   <block id="5908bdfb58aef23bebf7df36d49b9dfb" category="section-title">Cloud Volumes ONTAPノードのアウトバウンド インターネット アクセス</block>
@@ -1736,7 +1732,6 @@
   <block id="0de55206c94834c678768dfaf359fb98" category="list-text">9.5 P6</block>
   <block id="556696d309aaf81ce29c6a76f8f8a503" category="list-text">HAペア</block>
   <block id="1b636e5dd7d104ae9efd572a823a9227" category="summary">VPC Service Controls を使用して Google 環境をロックダウンすることを選択する場合は、 NetApp ConsoleとCloud Volumes ONTAP がGoogle API とどのようにやり取りするか、またCloud Volumes ONTAP をデプロイするためにサービス パラメータをどのように設定するかを理解する必要があります。</block>
-  <block id="03b6a8927e57dee9e13ce3e743433f8c" category="doc">VPC Service Controls を設定して、Google Cloud にCloud Volumes ONTAP をデプロイする</block>
   <block id="a7b34a1b61cc62dbb7e5736e41d0dbca" category="paragraph">VPC Service Controls を使用して Google Cloud 環境をロックダウンする場合は、 NetApp ConsoleとCloud Volumes ONTAP がGoogle Cloud API とどのようにやり取りするか、また Console とCloud Volumes ONTAP をデプロイするためにサービス境界をどのように構成するかを理解する必要があります。</block>
   <block id="51864fc98a7ac79ddec9d933162b734b" category="inline-link">Google Cloud VPC Service Controls の詳細</block>
   <block id="1ea7fcd26fa8ab32a75247310351f611" category="paragraph">VPC Service Controls を使用すると、信頼できる境界外にある Google マネージド サービスへのアクセスを制御し、信頼できない場所からのデータアクセスをブロックし、不正なデータ転送のリスクを軽減できます。<block ref="a3874a083385bdd3c92e9cffcd9eea61" category="inline-link-rx"></block> 。</block>
@@ -1758,7 +1753,6 @@
   <block id="31650362bb5570c134790bda1b06b52f" category="section-title">出口ルール</block>
   <block id="e2ce7d2096788db9d57f4e33f9d09c47" category="admonition">上記のプロジェクト番号は、 NetAppがコンソール エージェントおよびCloud Volumes ONTAP のイメージを保存するために使用するプロジェクト _netapp-cloudmanager_ です。</block>
   <block id="e77931c1eab4b02e332e8adcfabae636" category="summary">Cloud Volumes ONTAPシステムで、一度だけ書き込み、何度も読み取る (WORM) ファイルの改ざん防止スナップショット コピーを作成し、特定の保持期間にわたってスナップショットを変更されていない形式で保持することができます。</block>
-  <block id="d22f5ca5f04b85906e5c03f0a8f0354d" category="doc">Cloud Volumes ONTAPで WORM ファイルの改ざん防止スナップショット コピーを作成します</block>
   <block id="6e6590dbc5a26f05df18072791d9b8ef" category="paragraph">Cloud Volumes ONTAPシステムで、一度だけ書き込み、何度も読み取る (WORM) ファイルの改ざん防止スナップショット コピーを作成し、特定の保持期間にわたってスナップショットを変更されていない形式で保持することができます。この機能はSnapLockテクノロジーを活用しており、データ保護とコンプライアンスをさらに強化します。</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="paragraph-title">開始する前に</block>
   <block id="7301ea4031b8cc11bedbfe33aa4223f7" category="inline-link">ONTAPドキュメント: SnapLockの設定</block>
@@ -1770,7 +1764,6 @@
   <block id="2e936d789afa6c8e13ad633d0aa9fc21" category="list-text">これらのスナップショットを編集する必要がある場合は、保持期間を変更できます。詳細については、<block ref="ae33c2fccf15e81f09562d7040255f90" category="inline-link-rx"></block> 。</block>
   <block id="1e130656f520fa6c2ea0d619d4efcc6b" category="admonition">スナップショット コピーは特定の保持期間保護されていますが、 Cloud Volumes ONTAPの WORM ストレージは「信頼できるストレージ管理者」モデルで動作するため、クラスター管理者はソース ボリュームを削除できます。さらに、信頼できるクラウド管理者は、クラウド ストレージ リソースを操作して WORM データを削除できます。</block>
   <block id="5ac123f6eee32c0fe88eeab92338a1a4" category="summary">FlexCacheボリュームは、元のボリュームまたはソース ボリュームからの NFS 読み取りデータをキャッシュするストレージ ボリュームです。キャッシュされたデータへの後続の読み取りにより、そのデータへのアクセスが高速化されます。</block>
-  <block id="816ad715f74514ea0e194c106b673bf0" category="doc">Cloud Volumes ONTAPシステム上のFlexCacheボリュームを使用してデータ アクセスを高速化します</block>
   <block id="4255b526fdaa2217071759cd5d05e981" category="paragraph">FlexCacheボリュームは、元のボリューム (またはソース ボリューム) からの SMB および NFS 読み取りデータをキャッシュするストレージ ボリュームです。キャッシュされたデータへの後続の読み取りにより、そのデータへのアクセスが高速化されます。</block>
   <block id="90c624683582774042156c98858d14dc" category="paragraph">FlexCacheボリュームを使用すると、データへのアクセスを高速化したり、頻繁にアクセスされるボリュームのトラフィックをオフロードしたりできます。FlexCacheボリュームを使用すると、元のボリュームにアクセスせずに直接データを使用できるため、特にクライアントが同じデータに繰り返しアクセスする場合に読み取りパフォーマンスが向上します。  FlexCacheボリュームは、読み取り集中型のシステム ワークロードに適しています。</block>
   <block id="06156010b52bde259c58b15866491a02" category="paragraph">ONTAP CLI またはONTAP System Manager を使用してFlexCacheボリュームを作成および管理することもできます。</block>
@@ -2079,7 +2072,6 @@
   <block id="cde648cfec6a9f1a0f5bbf7f5083336a" category="inline-image-macro">パスワード設定アクションを含む、システムから利用できるメニューを示すスクリーンショット。</block>
   <block id="d1c167c796401c671e613bfcd1fbf5bb" category="paragraph"><block ref="d1c167c796401c671e613bfcd1fbf5bb" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4760896a3351a42c072a61eb664108e5" category="summary">複数の AWS アベイラビリティーゾーンにデプロイされている HA ペアのフローティング IP アドレスへのルートを含む AWS ルートテーブルを変更できます。新しい NFS または CIFS クライアントが AWS 内の HA ペアにアクセスする必要がある場合は、これを実行できます。</block>
-  <block id="82bd762491ef3ae271a0ea595966e322" category="doc">複数の AWS AZ にあるCloud Volumes ONTAP HA ペアのルートテーブルを変更する</block>
   <block id="89cac051c93d21ebf3a23db9a240bbd1" category="paragraph">複数の AWS アベイラビリティゾーン (AZ) にデプロイされている HA ペアのフローティング IP アドレスへのルートを含む AWS ルートテーブルを変更できます。新しい NFS または CIFS クライアントが AWS 内の HA ペアにアクセスする必要がある場合は、これを実行できます。</block>
   <block id="f683ba2cef6e0a0394df839a0cab354d" category="paragraph">NetApp Consoleは、ルート テーブルを変更するための AWS リクエストを送信します。</block>
   <block id="c8448275713faf6fe02a71468ed251d8" category="summary">イベント管理システムは、 ONTAPシステムで発生するイベントに関する情報を収集して表示します。イベント通知を受信するには、特定のイベント重大度に対してイベントの宛先とイベント ルートを設定できます。</block>
@@ -2088,8 +2080,6 @@
   <block id="abf596ebbf2c64b882e111278a49b1e5" category="inline-link">ONTAPドキュメント: EMS構成の概要</block>
   <block id="f0bf9f15eadaf8491da2934af661a352" category="paragraph">CLI を使用して EMS を設定できます。手順については、<block ref="f10f254becd5d3115751852411e7271e" category="inline-link-rx"></block> 。</block>
   <block id="4803d974c37e8a3895fbff420f579823" category="summary">Cloud Volumes ONTAP は、関連付けられたストレージ アカウントへの接続に Azure Private Link を使用します。必要に応じて、Azure Private Links を無効にして、代わりにサービス エンドポイントを使用できます。</block>
-  <block id="ce61224c44993a5d74a14a814d63a141" category="doc">AWS の単一 AZ でCloud Volumes ONTAP HA ペアの配置グループ作成を構成する</block>
-  <block id="40e4e6d3852024f0e6a0da75b4eb51d7" category="paragraph">配置グループの作成に失敗すると、AWS 単一アベイラビリティゾーン (AZ) でのCloud Volumes ONTAP高可用性 (HA) デプロイメントが失敗し、ロールバックされる可能性があります。 Cloud Volumes ONTAPノードとメディエーターインスタンスが利用できない場合は、配置グループの作成も失敗し、デプロイメントはロールバックされます。これを回避するには、配置グループの作成が失敗した場合でもデプロイメントが完了するように構成を変更します。</block>
   <block id="d184531e79cb1894504e475c084ea277" category="paragraph">ロールバック プロセスをバイパスすると、 Cloud Volumes ONTAP のデプロイメント プロセスが正常に完了し、配置グループの作成が完了していないことが通知されます。</block>
   <block id="4428c2751564925c131f0738abf616d4" category="list-text">SSH を使用してNetApp Consoleエージェント ホストに接続し、ログインします。</block>
   <block id="686735252f557ef703d19ff54b0dfe6f" category="list-text">移動先<block ref="678ffe0122c1675f1a5ee93c014ea09c" prefix=" " category="inline-code"></block>。</block>
@@ -2644,7 +2634,6 @@
   <block id="de8cf25f68f35d1a6c91688973a7593e" category="list-text">*ストレージと WORM への安全な通信*: Azure ストレージ アカウントへの HTTPS 接続を有効にするかどうかを選択し、必要に応じて、一度書き込み、複数回読み取り (WORM) ストレージをアクティブ化します。</block>
   <block id="0ec7765f187d305178d2d75bad995495" category="paragraph">HTTPS 接続は、Cloud Volumes ONTAP 9.7 HA ペアから Azure ページ BLOB ストレージ アカウントへ行われます。このオプションを有効にすると書き込みパフォーマンスに影響する可能性があることに注意してください。システムを作成した後は設定を変更できません。</block>
   <block id="15cbb1f16ecbbcee7df3dcd252b9d2ef" category="paragraph">データ階層化が有効になっている場合、WORM を有効にすることはできません。</block>
-  <block id="815c7816169ce0181021470fc851ad75" category="doc">Cloud Volumes ONTAPシステムに Azure Private Link またはサービス エンドポイントを使用する</block>
   <block id="2b1c9102679901ba714fbfa4b28c648e" category="paragraph">デフォルトでは、 NetApp Consoleは、 Cloud Volumes ONTAPとそれに関連付けられたストレージ アカウント間の接続に Azure プライベート リンクを有効にします。  Azure Private Link は、Azure 内のエンドポイント間の接続を保護し、パフォーマンス上の利点をもたらします。</block>
   <block id="c9a73222b35c741b31b116efb4cefa73" category="paragraph">必要に応じて、Azure Private Link の代わりにサービス エンドポイントを使用するようにCloud Volumes ONTAPを構成できます。</block>
   <block id="9cf2167303974f50e4d2fe6433413949" category="paragraph">どちらの構成でも、コンソールは常にCloud Volumes ONTAPとストレージ アカウント間の接続のネットワーク アクセスを制限します。ネットワーク アクセスは、Cloud Volumes ONTAPがデプロイされている VNet と、コンソール エージェントがデプロイされている VNet に制限されます。</block>
@@ -2694,12 +2683,10 @@
   <block id="fccc9b1aa20f1188588a2827e62fa40a" category="list-text">次のディレクトリに移動します: /opt/application/netapp/cloudmanager/docker_occm/data</block>
   <block id="fa7b604cc90feece6d71e8400213710f" category="list-text">次のパラメータと値を追加して app.conf を編集します。</block>
   <block id="d8fe61fe121132ae71b6616d52f15f56" category="summary">Cloud Volumes ONTAP は、外部キー マネージャーを使用したNetApp Volume Encryption (NVE) とNetApp Aggregate Encryption (NAE) の両方をサポートします。外部キー マネージャーを設定すると、NVE と NAE はデフォルトで有効になります。</block>
-  <block id="3f8a964f1b4371b109b271e17740eb42" category="doc">NetApp暗号化ソリューションを使用してCloud Volumes ONTAP上のボリュームを暗号化する</block>
   <block id="9472acffdb6a585b24d4317169bbc868" category="inline-link-macro">これらの暗号化ソリューションについて詳しく見る</block>
   <block id="401a8aaa330fe64d45395192c047e1ed" category="paragraph">Cloud Volumes ONTAP は、 NetApp Volume Encryption (NVE) とNetApp Aggregate Encryption (NAE) をサポートしています。 NVE と NAE は、ボリュームの FIPS 140-2 準拠の保存データ暗号化を可能にするソフトウェア ベースのソリューションです。<block ref="d36456219fc3d98cd4133816e30fd33f" category="inline-link-macro-rx"></block> 。</block>
   <block id="154811f59111df605f6aebc9999a1135" category="paragraph">NVE と NAE はどちらも外部キー マネージャーでサポートされます。</block>
   <block id="80e0ce0662b2846621d1355a00843d7d" category="summary">Linux 上のCloud Volumes ONTAPイメージ ダイジェスト ファイル ツールを使用して、エクスポートされた VHD ファイルの署名を検証します。</block>
-  <block id="7e2f4ea87cd4ef2400c67d3a6b35c0e4" category="doc">Linux 上のCloud Volumes ONTAPの Azure Marketplace イメージ署名を確認する</block>
   <block id="11e81e6e3ef9958c0f8028f9c79e5dbe" category="paragraph">Linux 上でエクスポートされた VHD ファイル署名の検証には、信頼チェーンの検証、ファイルの編集、署名の検証が含まれます。</block>
   <block id="6339f94a77b583074840fe198737cc13" category="list-text">Azureイメージファイルを以下からダウンロードします。<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>ダイジェスト (.sig) ファイル、公開鍵証明書 (.pem) ファイル、チェーン証明書 (.pem) ファイルを抽出します。</block>
   <block id="1c70ba48a8faaae47a72ab185f6f3572" category="list-text">信頼チェーンを検証します。</block>
@@ -2708,7 +2695,6 @@
   <block id="b40380aca2b7f94b6fd1739f23b3c19b" category="paragraph">コマンド プロンプトには、検証に基づいて成功または失敗を示すメッセージが表示されます。</block>
   <block id="7c00abf63371811634839eb405ec4038" category="list-text">ワークスペースをクリーンアップします。</block>
   <block id="a821b3210026c1d21c89671c2d45b1a4" category="summary">macOS のCloud Volumes ONTAPイメージダイジェストファイルツールを使用して、エクスポートされた VHD ファイルの署名を検証します。</block>
-  <block id="a7cfd7b86c7190536d50b4749e7aadf1" category="doc">macOS 上のCloud Volumes ONTAPの Azure Marketplace イメージ署名を確認する</block>
   <block id="15b1d6274a4b31b0d3be9a3bcbe74b84" category="list-text">VHD ファイルの先頭の 1 MB (1,048,576 バイト) と末尾の 512 バイトを削除します。使用する場合<block ref="7aea2552dfe7eb84b9443b6fc9ba6e01" prefix=" " category="inline-code"></block>、<block ref="2040875c59e5bf4043fe4cfb86322cb2" prefix=" " category="inline-code"></block>オプションは、ファイルの K 番目のバイトからバイトを生成します。したがって、1048577は<block ref="f7803ce2a90e2cf20bc01f7ab2c60c5c" prefix=" " category="inline-code"></block>。  macOS では、tail コマンドが完了するまでに約 10 分かかる場合があることに注意してください。</block>
   <block id="965eb67c5c4b0c477e47cea94faa6e75" category="list-text">OpenSSL を使用して証明書から公開キーを抽出し、署名ファイルと公開キーを使用してストリップされたファイル (sign.tmp) を検証します。コマンド プロンプトには、検証に基づいて成功または失敗を示すメッセージが表示されます。</block>
   <block id="1ee6f28ca24808cbfb56feaccf1c3e53" category="summary">Google Cloud コマンドラインを使用して、エクスポートされたイメージを disk.raw 形式に変換します。</block>
@@ -3278,7 +3264,6 @@
   <block id="1dc9045fa2256d31acd9a9e96f728946" category="paragraph">「高」を選択した場合は、「理解しました」という文言を読み、ボックスにチェックを入れて確認する必要があります。</block>
   <block id="8ffbbcac612c8285be31d80ec1c1454d" category="admonition">*高*書き込み速度オプションは、バージョン 9.13.0 以降の Google Cloud のCloud Volumes ONTAP HA ペアでサポートされます。</block>
   <block id="619dc876da25600cdf36ffbec25d908e" category="summary">Cloud Volumes ONTAP はAzure リソース グループの移動をサポートしますが、ワークフローは Azure コンソールでのみ実行されます。</block>
-  <block id="47b81d0548595de2006c8db7b6c6d963" category="doc">AzureコンソールでCloud Volumes ONTAPのAzureリソースグループを移動する</block>
   <block id="c4b4f491c7eac4a25ca0d25227c44e27" category="paragraph">Cloud Volumes ONTAPシステムを、同じ Azure サブスクリプション内の Azure 内の 1 つのリソース グループから別のリソース グループに移動できます。異なる Azure サブスクリプション間でのリソース グループの移動はサポートされていません。</block>
   <block id="fa9b2b347a5943867b375a9cefa50099" category="inline-link-macro">Cloud Volumes ONTAPシステムの削除</block>
   <block id="2432571dc15a8d67f6eec5f65d85e73f" category="list-text">Azure コンソールでリソース グループの移動を実行します。</block>
@@ -3455,7 +3440,6 @@
   <block id="0c24475ef585478c403b399a4afc227c" category="cell">ノード2のデータ用のフローティングIPアドレス</block>
   <block id="7d7ca8f39ddaf09ca365d0d1f9421649" category="cell">フローティングIPアドレスのルートテーブル</block>
   <block id="040992520398fff1b71c0e0bab8dab8a" category="summary">ランサムウェア攻撃は、企業の時間、リソース、評判を犠牲にする可能性があります。コンソールを使用すると、可視性、検出、修復のための効果的なツールを提供する、ランサムウェアに対するNetAppソリューションを実装できます。</block>
-  <block id="a594296c21b04d237d645fb5ddbfd992" category="doc">Cloud Volumes ONTAPでNetAppランサムウェア保護ソリューションを有効にする</block>
   <block id="7a6634ed7905d41d5f94593d96c40240" category="paragraph">ランサムウェア攻撃は、企業の時間、リソース、評判に損害を与える可能性があります。 NetApp Consoleを使用すると、一般的なランサムウェア ファイル拡張子からの保護と自律ランサムウェア保護 (ARP) という 2 つのランサムウェア対策NetAppソリューションを実装できます。これらのソリューションは、可視性、検出、修復のための効果的なツールを提供します。</block>
   <block id="78cc5cdbd5abab66548d6b3a595b1c6c" category="section-title">一般的なランサムウェアのファイル拡張子からの保護</block>
   <block id="cb868822d50ad53b1196727ed1c8c04c" category="paragraph">コンソールで利用可能なランサムウェア保護設定を使用すると、 ONTAP FPolicy 機能を利用して、一般的なランサムウェアのファイル拡張子タイプから保護することができます。</block>
@@ -3736,7 +3720,6 @@
   <block id="35d23de0f37782d307786bb80fa04ca3" category="paragraph">この契約は、Google Cloud Marketplace でプライベート オファーとして入手できます。</block>
   <block id="3589df8ffdf1087d97717cb81ad91c82" category="paragraph">NetApp がプライベート オファーを共有した後、システム作成中に Google Cloud Marketplace からサブスクライブするときに年間プランを選択できます。</block>
   <block id="818de76c16440469d9944b1d2c07ba57" category="summary">Google Cloud Storage では、データがディスクに書き込まれる前に常に暗号化されますが、コンソール API を使用して、顧客管理の暗号化キーを使用するCloud Volumes ONTAPシステムを作成できます。これらは、Cloud Key Management Service を使用して GCP で生成および管理するキーです。</block>
-  <block id="d9483fef78159e6b7c5c069f6308ec9e" category="doc">Cloud Volumes ONTAPで顧客管理の暗号化キーを使用する</block>
   <block id="c76b7315caaa70d158328adc6f2de71a" category="paragraph">Google Cloud Storage では、データがディスクに書き込まれる前に常に暗号化されますが、API を使用して、_顧客管理の暗号化キー_ を使用するCloud Volumes ONTAPシステムを作成できます。これらは、Cloud Key Management Service を使用して GCP で生成および管理するキーです。</block>
   <block id="a8f2d7f368adf46fb8b80685bfc25d43" category="list-text">キーが保存されているプロジェクトにおいて、コンソール エージェント サービス アカウントにプロジェクト レベルでの適切な権限があることを確認します。</block>
   <block id="d8691a039deef120e0fc9c805510b54a" category="inline-link">デフォルトのサービスアカウント権限</block>
@@ -3851,7 +3834,6 @@
   <block id="b14d512a3c64fb5df16f6721b0603c63" category="paragraph">このオプションを使用すると、再度ログインするよう求められます。これらのアカウントのトークンは 90 日後に期限切れになることに注意してください。これを知らせる通知が投稿されます。</block>
   <block id="29e5950813e59366056c85a091ad2206" category="summary">NTP サーバーを指定すると、ネットワーク内のシステム間の時間が同期され、時間差による問題を防ぐことができます。</block>
   <block id="b6f2459d07813a329f10d1f5ef7babc2" category="summary">ホット データ用の SSD または HDD パフォーマンス層と非アクティブ データ用のオブジェクト ストレージ容量層を組み合わせることで、 Cloud Volumes ONTAPのストレージ コストを削減できます。データ階層化はFabricPoolテクノロジーによって実現されます。</block>
-  <block id="dc856ecc0acf613e6f450c313f378cfd" category="doc">非アクティブなCloud Volumes ONTAPデータを低コストのオブジェクトストレージに階層化します</block>
   <block id="caf4154dd66e202bf9f092a3b5b9f070" category="paragraph">ホット データ用の SSD または HDD パフォーマンス層と非アクティブ データ用のオブジェクト ストレージ容量層を組み合わせることで、 Cloud Volumes ONTAPのストレージ コストを削減できます。データ階層化はFabricPoolテクノロジーによって実現されます。概要については、以下を参照してください。<block ref="69d3706831f999336fb27703356dae22" category="inline-link-macro-rx"></block> 。</block>
   <block id="10647b0244486006c8ce3cf5b113d377" category="paragraph">データ階層化を設定するには、次の手順を実行する必要があります。</block>
   <block id="d39421b26d8f96d6b63ba8583d57f734" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block>サポートされている構成を選択してください</block>
@@ -4102,7 +4084,6 @@
   <block id="3e454df771adc9ead6632eefa975b41b" category="paragraph"><block ref="06a7153e7f90941a4abd483a38e2283b" prefix="" category="inline-code"></block></block>
   <block id="4d947fe0b5c4693f487f4fd1a4295c99" category="paragraph">次に例を示します。</block>
   <block id="44579e142f1f753a153dbb19dac8125c" category="summary">OpenSSL を使用して、Google Cloud からダウンロードした disk.raw ファイルをダイジェスト ファイルの内容と照合します。</block>
-  <block id="bd915a4eab5328d0dbd80804cc09ee0a" category="doc">OpenSSL を使用してCloud Volumes ONTAPの Google Cloud イメージの disk.raw ファイルを確認する</block>
   <block id="9790936d7b09c3cf187b770347ee60d1" category="paragraph">Google Cloudでダウンロードしたdisk.rawファイルを、以下のダイジェストファイルの内容と比較することができます。<block ref="4af4717946461f54169780875a3b5a98" category="inline-link-rx"></block> OpenSSL を使用します。</block>
   <block id="d8272d492d8b39dd1ed365f53be37911" category="admonition">イメージを検証するための OpenSSL コマンドは、Linux、macOS、および Windows マシンと互換性があります。</block>
   <block id="c275ec11ecf674a6672183664681e98f" category="list-text">OpenSSL を使用して証明書を検証します。</block>
@@ -4925,7 +4906,6 @@
   <block id="7dcf169bce66df3174a7d8b5c540d3f6" category="list-text"><block ref="7dcf169bce66df3174a7d8b5c540d3f6" category="inline-link-macro-rx"></block></block>
   <block id="174dd97dd1f160583ac76fa482fa6a5e" category="section-title">2025年12月10日</block>
   <block id="291909ca7f153a0249c5e8ab37e16843" category="sidebar">Azure で Premium SSD v2 ディスクのパフォーマンスを管理する</block>
-  <block id="0494190504419ddec15209e57cb422e1" category="doc">Azure のCloud Volumes ONTAPで Premium SSD ディスクのパフォーマンス層を変更する</block>
   <block id="953d65863cd6da0e48671f2a30151ae4" category="paragraph">Azure ポータルを使用して、Azure のCloud Volumes ONTAPの Premium SSD マネージド ディスクのパフォーマンス層をアップグレードできます。これは、各 Premium SSD ディスクのディスク層をより高いパフォーマンス層に変更する手動プロセスです。NVRAMディスクのパフォーマンス層を変更すると、IOPS とスループット機能が向上し、パフォーマンスのボトルネックが軽減され、 Cloud Volumes ONTAPシステムの効率が向上します。</block>
   <block id="39264f9aea8b7bf4280c732e8f7fcce0" category="list-text">デフォルトでは、Azure のCloud Volumes ONTAP は、P20 層のNVRAM用に Premium SSD ディスクをデプロイします。P20 層は、ほとんどのワークロードに適したバランスの取れたパフォーマンスを提供します。ただし、ワークロードでより高いパフォーマンスが求められる場合は、 NVRAMディスクを P30 などの上位層にアップグレードできます。</block>
   <block id="5984acab069d2008cdff0ddd10ef35a8" category="admonition">現在、 NVRAMディスクを P20 層から P30 層にアップグレードできるのは、Azure ポータル経由のみです。</block>
@@ -5028,7 +5008,6 @@
   <block id="ee315b90b56cac454504030332e26f7d" category="list-text">*場所と接続*：システムの Google Cloud リージョンとゾーンを選択し、ファイアウォール ポリシーを選択して、データ階層化のための Google Cloud ストレージへのネットワーク接続を確認します。</block>
   <block id="432f238e2167c79f023d25fc94cf7068" category="list-text">データ階層化を無効にした場合、後続のアグリゲートで有効にすることはできますが、システムをオフにして、Google Cloud Console からサービス アカウントを追加する必要があります。</block>
   <block id="ae02630a597278f3ffd84e28ca4d3fbd" category="admonition">展開プロセスが完了したら、Google Cloud ポータル内のシステム生成のCloud Volumes ONTAP構成（システムタグやGoogle Cloud リソースに設定されたラベルなど）を変更しないでください。これらの構成に変更を加えると、予期しない動作やデータ損失が発生する可能性があります。</block>
-  <block id="b9e5aa43ec2007eccaf097117438e531" category="doc">既存の Cloud Volumes ONTAP デプロイメントを Infrastructure Manager に変換</block>
   <block id="fe91a45b95e89e219ea69631edff8521" category="list-text">Terraformアーティファクトは、<block ref="b1042b7d7203a022c297b13679f7d1f8" prefix=" " category="inline-code"></block>に保存されます。</block>
   <block id="787ab3bb526ace3e3d9f5b857facafbf" category="list-text">デバッグログは、<block ref="abecaca0429ea0c44adcba537eb94f89" prefix=" " category="inline-code"></block>ディレクトリに保存されます。トラブルシューティングにはこれらのログが必要です。<block ref="6ec9e5b046607d57923aee80f990225d" prefix=" " category="inline-code"></block>バケットには Terraform ログが保存されます。</block>
   <block id="07f770dff2ab3ed070b0fafe70eae22a" category="paragraph">Infrastructure Manager を使用する Cloud Volumes ONTAP システムは、データとレコードを Google Cloud Storage バケットに保存します。これらのバケットには追加費用が発生する可能性がありますが、バケットやそのコンテンツを編集または削除しないでください：</block>
@@ -5612,7 +5591,6 @@
   <block id="0608b2573e22e73db851c766dab1b407" category="list-text"><block ref="0608b2573e22e73db851c766dab1b407" category="inline-link-macro-rx"></block></block>
   <block id="b96fa5adecc8a586628bbb2ddf7d58d7" category="inline-link-macro">GCP における Cloud Volumes ONTAP HA ペアについて</block>
   <block id="f3b274b271f89c410c3263d54f5388b1" category="list-text"><block ref="f3b274b271f89c410c3263d54f5388b1" category="inline-link-macro-rx"></block></block>
-  <block id="3b39095deba75ca5cfb3ff4ed9720d63" category="doc">Flash Cache と Cloud Volumes ONTAP</block>
   <block id="acda066727c453f591cee07d837ac2f9" category="list-text"><block ref="acda066727c453f591cee07d837ac2f9" category="inline-link-macro-rx"></block></block>
   <block id="f7c758ab953df7ab0596505fd272634a" category="list-text"><block ref="f7c758ab953df7ab0596505fd272634a" category="inline-link-macro-rx"></block></block>
   <block id="0e7fa6a468d03fe4518b3e9c14209fe1" category="list-text"><block ref="0e7fa6a468d03fe4518b3e9c14209fe1" category="inline-link-macro-rx"></block></block>
@@ -6427,7 +6405,6 @@
   <block id="a90ba97b5d13c19715db9ac621cd4100" category="paragraph"><block ref="4071c9cc0ee41ad60e40847a894de0de" category="inline-link-macro-rx"></block>および<block ref="534bf928908b00c855f51b75d262cee7" category="inline-link-macro-rx"></block>の詳細を確認してください。</block>
   <block id="6742b02b7c8a6d1cd7fe62e6e878022c" category="paragraph"><block ref="8419f112ddacc5ee7c9ee16688060e34" category="inline-link-macro-rx"></block>および<block ref="534bf928908b00c855f51b75d262cee7" category="inline-link-macro-rx"></block>の詳細を確認してください。</block>
   <block id="83275cd8bcf6a8230ae238a9d2e389b8" category="summary">AWS に Cloud Volumes ONTAP をデプロイするための前提条件が完了していることを確認してください。</block>
-  <block id="9e0e4788bfd5a10132309d3dca016968" category="doc">AWS での Cloud Volumes ONTAP の導入概要</block>
   <block id="94d456e201e43656fdfcd847325f792d" category="paragraph">Cloud Volumes ONTAP をデプロイするには、まず AWS サブスクリプションと Cloud Volumes ONTAP ライセンスについて理解しておく必要があります。また、AWS アカウント用に NetApp Console エージェントが作成されていることを確認する必要があります。このトピックの情報の多くは、Cloud Volumes ONTAP のデプロイを開始する前に、Console のセットアップの一部として実行する必要があります。</block>
   <block id="f3aee30a3a487c746572616e3f53dc9d" category="paragraph">コンソールエージェントを作成する</block>
   <block id="e7682eccbdb3edf9435592e4d7e8b791" category="paragraph">コンソールエージェントがまだない場合は、Cloud Volumes ONTAP をデプロイする前に作成してください。インターネットアクセスのないサブネットにデプロイする場合は、コンソールエージェントを手動でインストールし、そのエージェント上で実行されている NetApp Console にアクセスしてください。</block>
@@ -6446,7 +6423,6 @@
   <block id="9afbf91fc5dacff8aee5144e68e0c23c" category="paragraph">前提条件をすべて満たしたら、ウィザードの手順に従って AWS に Cloud Volumes ONTAP をデプロイする手順を完了できます。</block>
   <block id="dd80703f7d89793c8c6bcd9eb27c0ffa" category="inline-link-macro">詳細オプションを使用して Cloud Volumes ONTAP を導入する</block>
   <block id="63e3b7b0b8eabb63c1a575019f00025a" category="list-text"><block ref="63e3b7b0b8eabb63c1a575019f00025a" category="inline-link-macro-rx"></block></block>
-  <block id="787cdbaccf6ca660be7dec3786806671" category="doc">Azure における Cloud Volumes ONTAP の導入概要</block>
   <block id="224c5fdd891fa8655debffbdbcb9b90d" category="paragraph">Cloud Volumes ONTAP をデプロイするには、まず Azure サブスクリプションと Cloud Volumes ONTAP ライセンスについて理解しておく必要があります。また、Azure サブスクリプションおよび組織向けに NetApp Console エージェントが作成されていることを確認する必要があります。このトピックの情報の多くは、Cloud Volumes ONTAP のデプロイを開始する前に、Console のセットアップの一部として実行する必要があります。</block>
   <block id="a8db22ad28f81f010b6c687df3b23e8f" category="paragraph">コンソールエージェントがまだない場合は、Cloud Volumes ONTAP をデプロイする前に作成してください。</block>
   <block id="2196f489a721c0d19335024b7f8b5fc8" category="inline-link">Azureでコンソールエージェントを作成する</block>
@@ -6458,7 +6434,6 @@
   <block id="34f79dfeddc8c0c0cf29bb075dba1e0a" category="paragraph">前提条件をすべて満たしたら、ウィザードの手順に従って Azure に Cloud Volumes ONTAP をデプロイする手順を完了できます。</block>
   <block id="6563093287f74a616e9d7ac49b4d6a44" category="paragraph">参照：</block>
   <block id="e67c04a7ad4eeda74ceb878c0553eff4" category="list-text"><block ref="e67c04a7ad4eeda74ceb878c0553eff4" category="inline-link-macro-rx"></block></block>
-  <block id="755ff4f3bf37dc77238bd9ce18d2513f" category="doc">Google Cloud における Cloud Volumes ONTAP の導入概要</block>
   <block id="3c0c2050848fa2bd86d68cd9d6bc0637" category="paragraph">Cloud Volumes ONTAP をデプロイするには、まず Google Cloud サブスクリプションと Cloud Volumes ONTAP ライセンスについて理解しておく必要があります。また、Google Cloud プロジェクトおよび組織向けに NetApp Console エージェントが作成されていることを確認する必要があります。このトピックの情報の多くは、Cloud Volumes ONTAP のデプロイを開始する前に、Console のセットアップの一部として実行する必要があります。</block>
   <block id="2e725ec0223114fab1b208bfbfddfb67" category="inline-link">Google Cloud でコンソールエージェントを作成する</block>
   <block id="a852172b1ba492725e8bc14ac1f7bdcc" category="paragraph">コンソール設定ガイドを参照してください：<block ref="90ca8477c27b88b3929ef47aa80c1ffc" category="inline-link-rx"></block></block>
@@ -6482,7 +6457,6 @@
   <block id="0375af31d39c4bfde1c980cd053ab2b9" category="doc">Cloud Volumes ONTAP ストレージVM</block>
   <block id="54448f9a8312c7b08e3e97308160554c" category="paragraph">ストレージVM（SVM）は、ONTAP内で実行される仮想マシンであり、クライアントにストレージおよびデータサービスを提供します。これは_SVM_または_vserver_として知られている場合があります。Cloud Volumes ONTAPはデフォルトで1つのストレージVMで構成されていますが、一部の構成では追加のストレージVMがサポートされています。</block>
   <block id="3298e455b39f3323fcb1a4a41454ef56" category="doc">Cloud Volumes ONTAP のシステム書き込み速度を変更する</block>
-  <block id="790a6eeef182c9847c5686e3d7af76cd" category="doc">AzureのCloud Volumes ONTAPでSnapMirrorトラフィックを分離する</block>
   <block id="668ee036e2ed867c0005914c6da1d380" category="section-title">2026年7月23日</block>
   <block id="22e2a7fe0db4ccace3b93579a7678955" category="paragraph">Cloud Volumes ONTAP 9.15.1以降では、Azureの単一の可用性ゾーン（AZ）にHAモードで仮想マシン（VM）インスタンスをデプロイできます。以前の非ゾーン展開とは異なり、Cloud Volumes ONTAP 9.15.1では、Microsoft Virtual Machines Scale Setsをフレキシブルオーケストレーションモードで使用し、同じAZ内の個別の障害ドメインを含むすべてのリソースをデプロイすることで、最適な可用性を保証します。この展開モードでは、以下の条件が満たされた場合、デフォルトでPremium SSD v2 Managed Disksが使用されます。</block>
   <block id="68367d4408e943b9268a7a6d4314fb0a" category="inline-link">Azure での Cloud Volumes ONTAP HA ペアの起動</block>
@@ -7940,7 +7914,6 @@
   <block id="b1c99bd089b17e20a9f2a2707a599854" category="list-text">同じエンドポイントに<block ref="3e75383a5992a6d15fb81e872e46e256" prefix=" " category="inline-code"></block>リクエストを送信し、<block ref="1f7f5b0a33cb78cd5f99f2d4a1cd6e29" prefix=" " category="inline-code"></block>をシステムIDに置き換えます：</block>
   <block id="ed1f1798cf59d3b7e2dccb773f996a49" category="paragraph">リクエスト本文で<block ref="a10311459433adf322f2590a4987c423" prefix=" " category="inline-code"></block>を<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>に設定します：</block>
   <block id="840e012212b7ce51ef9cd5802d3ffc25" category="summary">ONTAP IPsecでまだ保護されていないCloud Volumes ONTAPクラスタトラフィックを保護するために、バックエンドクラスタネットワーク暗号化を有効にします。</block>
-  <block id="7999d03bdd5aa474a03ebcf61a2de49d" category="doc">AzureおよびGoogle CloudのCloud Volumes ONTAPでバックエンドクラスタネットワーク暗号化を有効にする</block>
   <block id="d6a96ea38aea023cd1fea09197b94126" category="paragraph">ONTAPは、HA構成のバックエンドネットワーク上のトラフィックを保護するために、カーネルTLS（kTLS）上のクラスタセッション管理（CSM）とソフトウェアIPsecを使用します。Cloud Volumes ONTAP 9.19.1以降では、この保護機能をバックエンドクラスタのトラフィックにも拡張します。</block>
   <block id="e0c9d8803c8bdc8ce51e91511d3f16e9" category="admonition">クラスタネットワーク暗号化を有効にすると、クラスタのパフォーマンスに影響を与える可能性があります。この機能を有効にする前に、注意を払い、環境が追加の負荷に対応できることを確認してください。</block>
   <block id="3a77fed898c3fa02fcbdf21c5d1176c1" category="list-text">Cloud Volumes ONTAP 9.19.1以降を実行している必要があります。</block>
@@ -8332,4 +8305,122 @@
   <block id="b9433802e6e744b5cc84b87da127cf0e" category="paragraph">Azureのデンマーク東部（denmarkeast）およびインド南中部（indiasouthcentral）リージョンで、Cloud Volumes ONTAP 9.12.1 GA以降をデプロイできるようになりました。以下のデプロイタイプがサポートされています：</block>
   <block id="893f7f9c4326ccc9db9efcafead22429" category="list-text">ゾーン冗長ストレージ（ZRS）を使用した複数のアベイラビリティゾーンでのHA - India South Centralのみ</block>
   <block id="1d13d5e4cee76a1ac900dd9c56640ddb" category="section-title">2026年11月24日</block>
+  <block id="dc7bed598fbe3d18606591caa4d1abc4" category="doc">Cloud Volumes ONTAP の Azure Marketplace イメージ署名検証</block>
+  <block id="5cbcc291bf23e6e79bd1867820790148" category="doc">Cloud Volumes ONTAPでのデータ階層化について学ぶ</block>
+  <block id="0b06c320cdf81e231933ec708a4ed4ae" category="doc">Cloud Volumes ONTAPの高可用性構成</block>
+  <block id="9258380ec052348ddb4ce8ecdc049692" category="doc">Cloud Volumes ONTAPのFlash Cacheについて</block>
+  <block id="640e0ed1f11c7349c2005dbd03d7bcae" category="doc">Cloud Volumes ONTAPがGoogle Cloudイメージを検証する方法について</block>
+  <block id="6b9b9e55102bb13f1ca535f28c0d3a98" category="doc">Cloud Volumes ONTAP の法的通知</block>
+  <block id="7da92fb5319676e6d1d3c8fbbff59b3b" category="doc">Cloud Volumes ONTAPのAWSネットワーク要件</block>
+  <block id="1628ff5433400d560c64c3537e302aad" category="doc">Cloud Volumes ONTAPのAzureネットワーク要件</block>
+  <block id="dc819f3c1afb8138eba49fd10790d879" category="doc">Google Cloud で Cloud Volumes ONTAP の VPC サービス コントロールを設定する</block>
+  <block id="4ba21d11dbaa80daf3ae9070e72cfea1" category="doc">Cloud Volumes ONTAPでWORMファイルの改ざん防止スナップショットコピーを作成します</block>
+  <block id="042f7911ad8783a575bdf6d78be4b414" category="doc">Cloud Volumes ONTAPのFlexCacheボリュームでデータアクセスを高速化</block>
+  <block id="db033a29724d6ae6aafbef1b5082b693" category="doc">AIと分析のためにCloud Volumes ONTAPをMicrosoft OneLakeと統合する</block>
+  <block id="8bc694f2c7783cc66dbff45ddc279c3c" category="doc">Cloud Volumes ONTAP HAペアのAzureメンテナンスによる中断を防止する</block>
+  <block id="404c3843cb366ee3d07e5f47a5f751bc" category="doc">Cloud Volumes ONTAP HAペアのAWSルートテーブルを変更する</block>
+  <block id="785d0fce0928c7f48d41e39251b2e664" category="doc">AWSにおける配置グループ作成のためのCloud Volumes ONTAP HAペアの設定</block>
+  <block id="d12cb5567e0d53f1e577fd04dbca36c7" category="paragraph">AWSの単一アベイラビリティゾーン（AZ）におけるCloud Volumes ONTAPの高可用性（HA）デプロイメントは、配置グループの作成に失敗すると、失敗してロールバックされる可能性があります。Cloud Volumes ONTAPノードとメディエーターインスタンスが利用できない場合も、配置グループの作成に失敗し、デプロイメントがロールバックされます。これを回避するには、配置グループの作成が失敗した場合でもデプロイメントが完了するように設定を変更できます。</block>
+  <block id="c202b1167855ffaf23f553b9ecd0c29b" category="summary">お客様のサブスクリプションと課金方法に基づいて、Cloud Volumes ONTAPの請求をNetApp Intelligent ServicesからAWS Marketplaceのスタンドアロンリストに移行します。</block>
+  <block id="ae888af3cff4b70a82228ba30a161841" category="doc">AWSでNISサブスクリプションをスタンドアロンのCloud Volumes ONTAPサブスクリプションに変換する</block>
+  <block id="b7d9caa0688260f82821ec1ed52a4e2c" category="paragraph">AWS Marketplaceで、Cloud Volumes ONTAPの利用をNetApp Intelligent Services（NIS）のリストからCloud Volumes ONTAPのスタンドアロンリスト（NSL）に移行します。</block>
+  <block id="337650df47bda1ffa7be75d1aa8c7513" category="inline-link">複数サブスクリプション モデル</block>
+  <block id="11c0c64c6bca24fc286f11dcf800c4a6" category="paragraph">スタンドアロンのリストは、AWS MarketplaceからのCloud Volumes ONTAPの推奨される調達パスであり、専用のサブスクリプション モデルを提供します。スタンドアロンのリストは、Cloud Volumes ONTAP Essentialsライセンスのみをサポートします。Cloud Volumes ONTAP Professionalライセンス、NetApp Backup and Recovery、またはNetApp Disaster RecoveryやNetApp Ransomware Resilienceなどのその他のNetApp Data Servicesを使用する場合は、引き続きNISサブスクリプションを使用する必要があります。データサービス付きのCloud Volumes ONTAP Essentials PrimaryまたはEssentials Secondaryライセンスを使用する場合は、サポートされている<block ref="92f33c2b9e7ddd185cf6c1aa61016901" category="inline-link-rx"></block>でNSLとNISの両方のリストを使用できます。</block>
+  <block id="19a09844a6ab598aecd5446cb72338e9" category="paragraph">1つのNetApp Consoleアカウントで、同時に複数のマーケットプレイスサブスクリプションを保持できます。Cloud Volumes ONTAPのEssentialsライセンスをお持ちの場合、請求設定で別途設定されていない限り、システムは自動的にNSL経由で消費料金をルーティングします。以下の組み合わせを使用できます：</block>
+  <block id="56ee3495a32081ccb6d2376eab391bfa" category="cell">リスト</block>
+  <block id="b622ba7d90f3025a538b8ec0c8b397c6" category="list-text">Cloud Volumes ONTAP Essentials Primary</block>
+  <block id="bc8c00559c64bbd1ab3e5f234164628a" category="list-text">Cloud Volumes ONTAP Essentials セカンダリ</block>
+  <block id="88c6a525ed2fe399b147abf16c742553" category="paragraph">従量課金制（PAYGO）または年間契約のNSL</block>
+  <block id="3803e8fceeeadbf4b5f800bd0b366c22" category="list-text">Cloud Volumes ONTAP Professionalライセンス</block>
+  <block id="e413eba49b15917b0c9dbf2620f3e66e" category="list-text">ディザスタ リカバリ</block>
+  <block id="c36b12344113082dcf8a9786e36a3536" category="list-text">ランサムウェアへの耐性</block>
+  <block id="e5e5a945280ecec3d7fe5db876557aea" category="paragraph">PAYGOまたは年間契約のNIS</block>
+  <block id="60ad52e38cf5f0b390c3b8f0a1a2fc93" category="paragraph">Cloud Volumes ONTAP Essentials Primary/Essentials Secondaryと、バックアップとリカバリまたはその他のデータサービスの両方</block>
+  <block id="7cf8ac41dedafa8eadbc0c0a550f8f49" category="paragraph">Cloud Volumes ONTAP Essentials Primary/Essentials Secondary 用のNSL、およびバックアップとリカバリまたはデータサービス用のNIS</block>
+  <block id="837f5eeb94f48fb787cd93c316f6abb0" category="paragraph">既存のサービス内容とマーケットプレイスのサブスクリプションを見直し、将来の利用状況とライセンス要件を予測してください。次の点を考慮してください：</block>
+  <block id="e51007f500f5fe9731e5853b27a5a67c" category="list-text">現在のCloud Volumes ONTAPライセンスまたは課金方法（以下のいずれか）：</block>
+  <block id="59bcede5f47f09bb9862e65887896961" category="list-text">Cloud Volumes ONTAPの基本</block>
+  <block id="51f8387c68649a36048b2689eb222c9c" category="list-text">Cloud Volumes ONTAP Professional</block>
+  <block id="85f8aa528b875d49f1c9feeba9be4d50" category="list-text">Backup and Recoveryまたはその他のデータサービスに関する要件</block>
+  <block id="33c9f370b912e528cbd81baf6526aabb" category="list-text">既存の NIS または NSL 契約のステータス</block>
+  <block id="d743ec1cf37f02612964b6966715f923" category="list-text">現在お客様の Console アカウントに関連付けられている AWS Marketplace のリスティング</block>
+  <block id="ab135aa5587c442a331d4a7f12d60050" category="section-title">Essentialsライセンス付きのCloud Volumes ONTAP NISサブスクリプションを変換する</block>
+  <block id="713ce0f9f104441832c79b4dd1e142f4" category="paragraph">Cloud Volumes ONTAP EssentialsライセンスのNIS PAYGOまたは年間サブスクリプションをお持ちで、Backup and Recoveryやその他のデータサービスを使用していない場合は、このシナリオを使用してください。変換後は、Cloud Volumes ONTAP EssentialsライセンスのNSL PAYGOまたは年間サブスクリプションになります。</block>
+  <block id="9228e387a3e6926a5e90ca4344ebac39" category="section-title">PAYGOサブスクリプションを変換する</block>
+  <block id="ffcc76a447262875ad4c474879e621e3" category="paragraph">変換前はCloud Volumes ONTAP NIS PAYGOサブスクリプションを所有しています。</block>
+  <block id="56fa87404c12730ecd7dd2936ab3e9ff" category="list-text">AWS Marketplaceから、Cloud Volumes ONTAP NSL PAYGOサブスクリプションをサブスクライブし、NSLサブスクリプションをお客様のConsoleアカウントに関連付けます。<block ref="6090cd5dc2e277d20ba5083153f46134" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="a16c1152b003840c33e97f8322bae0c2" category="inline-link">Licenses and subscriptions：請求設定を行う</block>
+  <block id="33554fe0643bfcc8f90c714f846b9384" category="list-text">Consoleで、*Administration &gt; Licenses and subscriptions* に移動し、Cloud Volumes ONTAPの課金に正しいサブスクリプションが優先されていることを確認します。<block ref="e783318645ebdf5beb233a5aaeee30e9" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="1fd4d4b15e7b1f2d167f3c1174f42651" category="list-text">料金請求状況と利用資格状況を確認してください。</block>
+  <block id="9a8368590ae1f8280feef72b7dd90701" category="inline-link">Licenses and subscriptions：サブスクリプションを削除する</block>
+  <block id="dc949b466360e0cc18ac9afa42cb42e0" category="list-text">NISサブスクリプションが不要になった場合は、削除してください。<block ref="1ba28f5fe560af95cd73c014baee08da" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="7c69cfaa4ef1e24e94adf4132c96f11d" category="section-title">年間契約またはプライベートオファーを変換する</block>
+  <block id="f087cccadd414afe69c6fab8f37b5e98" category="paragraph">変換前のCloud Volumes ONTAP NIS年間契約をお持ちです。</block>
+  <block id="5bc4a3320dd1cacb87ab7b48fd9a2ddf" category="list-text">NSLリストを通じて、Cloud Volumes ONTAPの代替または修正のプライベートオファーを取得します。NetAppアカウントチームにお問い合わせください。</block>
+  <block id="9268472feb4064981306c0934ad2c0d8" category="inline-link">Licenses and subscriptions：AWS Marketplace プライベートオファーの承認と設定</block>
+  <block id="4e6bd9ea9fd34f9ec557cad3f98a7e4a" category="list-text">新しいオファーを受け入れ、新しいサブスクリプションを有効化して、NSLサブスクリプションをConsoleアカウントに関連付けます。<block ref="691ae850f5409e1682e96e6f661e4dd0" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="0c8039041b5c2dfd91aa1adda64723dc" category="list-text">*管理 &gt; Licenses and subscriptions* に移動し、Cloud Volumes ONTAP の課金に適切なサブスクリプションが優先されていることを確認します。<block ref="e783318645ebdf5beb233a5aaeee30e9" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="af9ac15b96bb4817268e4aa6abc504f0" category="list-text">料金請求および課金に関する設定を確認してください。</block>
+  <block id="17535ec7ba18455b537124cf53347056" category="section-title">Backupを使用するCloud Volumes ONTAP Essentialsサブスクリプションの変換</block>
+  <block id="670f1fd587a96ccc968b05fb03ae3342" category="paragraph">Cloud Volumes ONTAP Essentialsライセンスを含むNIS PAYGOまたは年間サブスクリプションをお持ちで、Backup and Recoveryまたはその他のデータサービスが有効になっている場合は、このシナリオを使用してください。変換後は、Cloud Volumes ONTAPにNSL PAYGOまたは年間サブスクリプションを使用し、Backup and RecoveryまたはデータサービスにNISサブスクリプションを使用します。</block>
+  <block id="d7bc03393776fc45d9ef5c0696c06284" category="list-text">AWS MarketplaceからCloud Volumes ONTAPのNSL PAYGOオファリングをサブスクライブします。<block ref="6090cd5dc2e277d20ba5083153f46134" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="30e3db58071a27da5560278ac9bb5daa" category="list-text">Backup and Recovery向けのNISサブスクリプションを継続するか、まだお持ちでない場合は追加してください。</block>
+  <block id="42e1895061b98a84cf5e43ea012b483c" category="inline-link">Licenses and subscriptions：サブスクリプションをコンソールアカウントに関連付ける</block>
+  <block id="1ddbe4a14fadb4b65a6855331ad60180" category="list-text">両方のサブスクリプションを同じConsoleアカウントに関連付けます。<block ref="4e41dee64d19f498c3e95227f4b50ae6" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="8f9f7d5bb115041e57a8b6da18cfb699" category="inline-link">Licenses and subscriptions：請求設定を確認する</block>
+  <block id="b37c66446eea563f03cfd61d100c784f" category="list-text">料金請求および課金に関する設定を確認してください。<block ref="3a89b5aceac12d800afc506c76ffc30f" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="79c9150c12324ba2601d2e9089f85853" category="inline-link">Licenses and subscriptions：AWSでのCloud Volumes ONTAPおよびデータサービスの柔軟な請求</block>
+  <block id="95858148522f311a1e783a99398670d7" category="list-text">Cloud Volumes ONTAPの料金がNSLサブスクリプション経由で請求され、データサービスの料金がNISサブスクリプション経由で請求されることを確認してください。<block ref="94d6cb0616e5102ff25eb990f4a78558" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="af545e665569ac298868dcc7e8e825a5" category="paragraph">お客様は、変換前にCloud Volumes ONTAP NISの年間契約またはプライベートオファーを契約しています。</block>
+  <block id="8890e427bcdae02f4e9641e650080501" category="list-text">以下のいずれかの方法で、Backup and Recovery用の有効なNISサブスクリプションを取得または維持してください：</block>
+  <block id="b6558bb45cf061d90d63b5c139bec62f" category="list-text">NIS PAYGOサブスクリプションを通じて</block>
+  <block id="ae1af9794687a7f484ce1ae91b52847d" category="list-text">Backup and Recovery またはその他のデータサービスを対象とする、新規または変更されたNISプライベートオファーを通じて</block>
+  <block id="eeea7eba55e242aafba10670bce1ebce" category="inline-link">複数サブスクリプション構成</block>
+  <block id="8a009a3cfb5e8f7e074fb59ead59f09f" category="paragraph">サポートされている<block ref="b7b37e283e1062029828c0c2de5146a5" category="inline-link-rx"></block>があること。</block>
+  <block id="21f50e75a7875d18980f74b6cd1b5ff2" category="section-title">データサービスなしのCloud Volumes ONTAP Professionalサブスクリプションを変換する</block>
+  <block id="042c3431935b885b27110a241b4d7712" category="paragraph">Cloud Volumes ONTAP NISのProfessionalライセンスのサブスクリプションをご利用中で、Backup and Recoveryやその他のデータサービスを現在使用しておらず、今後も使用する予定がない場合は、課金方法をProfessionalからEssentialsに変更する必要があります。望ましい目標状態は、Essentialsライセンスが付属するCloud Volumes ONTAP NSLサブスクリプションです。</block>
+  <block id="59c828f10d9bd537444323ef1ead1318" category="admonition">NISのサブスクリプションの有効期限が切れる前、またはサブスクリプションを解約する前に、プロフェッショナルプランからエッセンシャルプランへの移行を完了する必要があります。</block>
+  <block id="1e14f1d35c74a851586056fd880bd8e1" category="paragraph">課金方法を変更しない場合：</block>
+  <block id="748898ae7b7c083e7aadae3d90b1dcee" category="list-text">お客様のCloud Volumes ONTAPシステムは、既存のNIS Professionalライセンスを通じて引き続き課金されます。</block>
+  <block id="33fca55dcd56fc69aa1100ed480112b0" category="list-text">Cloud Volumes ONTAPの利用に対する課金を継続するための有効なプロフェッショナル課金パスがなくなります。</block>
+  <block id="2c88551e7f625f83004caf95eab0017e" category="list-text">NISのサブスクリプションの有効期限が切れると、変換ワークフローが利用できなくなる可能性があります。</block>
+  <block id="c812ddc39cb2fd7d0f51d03af943738a" category="section-title">PAYGOサブスクリプションのProfessionalパッケージを変換する</block>
+  <block id="9126bb34b515dbc403be1eaecd574a35" category="inline-link">Licenses and subscriptions：課金方法の変更</block>
+  <block id="ab9c9eb7204574687b0816044fcde6b4" category="list-text">課金方法をProfessionalからEssentialsに変更します。<block ref="9b31e27de340ae02845480bda5f99b91" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="c858dc10a6a60cc88f112871c06ac541" category="list-text">NSLサブスクリプションをConsoleアカウントに関連付けます。<block ref="4e41dee64d19f498c3e95227f4b50ae6" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="42b58eb30095379156ff4507b3984fcb" category="list-text">料金請求および課金に関する設定を確認してください。<block ref="94d6cb0616e5102ff25eb990f4a78558" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="399aae2ae39db69243ce6c9bccabce9d" category="list-text">NSL を通じて Cloud Volumes ONTAP Essentials の代替または修正プライベートオファーを取得します。NetApp のアカウントチームにお問い合わせください。</block>
+  <block id="eae3c850039cfe958563ecb94a21720f" category="paragraph">次のような問題が発生した場合の対処方法を確認してください：</block>
+  <block id="067fc58c3f9faa49fca09ada3488a34b" category="section-title">Cloud Volumes ONTAP Professionalパッケージをご利用です</block>
+  <block id="ad9af0602496fe49e45123f718572570" category="paragraph">Cloud Volumes ONTAPサブスクリプションをご利用で、NSLへの変換をご希望の場合、サポートされている変換オプションはProfessionalからEssentialsへの変換のみです。Professionalの機能の使用を停止してEssentialsに移行するには、課金方法をProfessionalからEssentialsに変更する必要があります：</block>
+  <block id="fa858089ab60ec176480b8ea8f032068" category="paragraph"><block ref="9d38308e65dc5763d6dfebbca494cfa4" category="inline-link-rx"></block>。</block>
+  <block id="ba7f4e8449c3ffa653e943695c332382" category="section-title">システムはNSLサブスクリプション後もProfessionalパッケージを使用します</block>
+  <block id="4ef987ed5770ee294dc7e99aa930d44b" category="paragraph">この動作は想定されたものです。NSLはEssentialsライセンスパッケージのみをサポートしています。次のいずれかを実行してください：</block>
+  <block id="1df5a4e29bbaf4256dc2821efe0d64eb" category="list-text">NISサブスクリプションを通じて、引き続きプロフェッショナルパッケージの料金が請求されます。</block>
+  <block id="c958ae98d76d77bf2cd745bef8c701f9" category="section-title">バックアップとリカバリまたはデータサービスを利用していて、NSLに移行したい場合</block>
+  <block id="005e5930d0715ff054b07d19d9b0d0fa" category="inline-link">Licenses and subscriptions：請求設定を管理する</block>
+  <block id="cff98273bffb9daab2b2c38fa23f7f90" category="paragraph">バックアップとリカバリまたはデータサービスには引き続き NIS サブスクリプションを使用し、マルチサブスクリプション モデルの Cloud Volumes ONTAP には NSL サブスクリプションを使用します。<block ref="74fa998026b6cb97671377ed2cabb165" category="inline-link-rx"></block>を参照してください。</block>
+  <block id="58e2f0c581ba69d0803ad140fc2d7289" category="doc">Cloud Volumes ONTAPのノードベースのライセンスを容量ベースに変換する</block>
+  <block id="7f9da09dbae147c336e0451e5e9f44c6" category="doc">Cloud Volumes ONTAP のバックエンドクラスタネットワーク暗号化を有効にする</block>
+  <block id="28dd3c86492dce54400dea0063805398" category="doc">Cloud Volumes ONTAPでAzure Private Linkまたはサービスエンドポイントを使用する</block>
+  <block id="b54275047d1fe06248fd15dc8116aeeb" category="doc">NetApp暗号化を使用してCloud Volumes ONTAPボリュームを暗号化する</block>
+  <block id="c56cdc504add6fe934d608152bd376a9" category="doc">Linux上のCloud Volumes ONTAPのAzureイメージの署名を確認する</block>
+  <block id="c4d86f96e530f6ed6d572c2f813e87db" category="doc">macOS で Cloud Volumes ONTAP の Azure イメージ署名を確認する</block>
+  <block id="e677aac4aaafc90616c8819150b1759f" category="doc">Cloud Volumes ONTAP の導入をインフラストラクチャ マネージャーに変換する</block>
+  <block id="5eaccb01010926a660dd6cc8e22d6f6f" category="doc">Cloud Volumes ONTAPに関するヘルプ</block>
+  <block id="4c015cb055809ee865e6639b7540c8b1" category="doc">AWSでCloud Volumes ONTAPの使用を開始する</block>
+  <block id="794498a601ca64cfd80cd3e4d5830692" category="doc">AzureでCloud Volumes ONTAPの使用を開始する</block>
+  <block id="dc3a3b69be7ee6be922664e8486d08a1" category="doc">Google CloudでのCloud Volumes ONTAPの使用開始</block>
+  <block id="e59a1609bab49b796852cd69501165f4" category="doc">Workload Factoryを使用してAzureのCloud Volumes ONTAP構成を改善する</block>
+  <block id="6d9e96987b88cdcb232b7970bf4c20b7" category="doc">Google CloudでのCloud Volumes ONTAPのストレージVMの管理</block>
+  <block id="2bb93fa90bb8d3d929f5cd1869b38c89" category="doc">Cloud Volumes ONTAPでのストレージVMの管理</block>
+  <block id="65303dd4f66fa8179300ad7d4523991a" category="doc">AzureでのCloud Volumes ONTAPリソースグループの移動</block>
+  <block id="e275a348cfbea01fb5c1c502c1189381" category="doc">Cloud Volumes ONTAPのランサムウェア対策を有効にする</block>
+  <block id="10402976e7f91dbb78068c4c6ee576c6" category="doc">AzureのCloud Volumes ONTAPのSnapMirrorトラフィックを分離する</block>
+  <block id="a0f0a1e643b185693f6e81fc1393790c" category="doc">Cloud Volumes ONTAPで顧客管理の暗号化キーを使用する</block>
+  <block id="9cecfa756697109a50bac4527ce46a67" category="doc">Cloud Volumes ONTAPのサポートに登録する</block>
+  <block id="75932bbaa09f32468aa9d35c3ccc4837" category="doc">非アクティブなCloud Volumes ONTAPデータを低コストのオブジェクトストレージに階層化する</block>
+  <block id="74f9aca10e2756e0a6e4f98283b16ab2" category="doc">AzureのCloud Volumes ONTAPのPremium SSDディスクのパフォーマンスティアを変更する</block>
+  <block id="561024775ce4912cba9fe28384d03237" category="doc">OpenSSLを使用してCloud Volumes ONTAPのGoogle Cloudイメージを検証する</block>
+  <block id="45158acc9812c40a91f41bbdad469d0f" category="sidebar">AWSでNISサブスクリプションをスタンドアロンサブスクリプションに変換する</block>
 </blocks>

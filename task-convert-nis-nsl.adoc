@@ -1,0 +1,224 @@
+---
+sidebar: sidebar 
+permalink: task-convert-nis-nsl.html 
+keywords: NIS, NSL, NetApp Intelligent Services, standalone listing, marketplace subscription, migrate, convert, charging method, Essentials, Professional, backup 
+summary: お客様のサブスクリプションと課金方法に基づいて、Cloud Volumes ONTAPの請求をNetApp Intelligent ServicesからAWS Marketplaceのスタンドアロンリストに移行します。 
+---
+= AWSでNISサブスクリプションをスタンドアロンのCloud Volumes ONTAPサブスクリプションに変換する
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS Marketplaceで、Cloud Volumes ONTAPの利用をNetApp Intelligent Services（NIS）のリストからCloud Volumes ONTAPのスタンドアロンリスト（NSL）に移行します。
+
+スタンドアロンのリストは、AWS MarketplaceからのCloud Volumes ONTAPの推奨される調達パスであり、専用のサブスクリプション モデルを提供します。スタンドアロンのリストは、Cloud Volumes ONTAP Essentialsライセンスのみをサポートします。Cloud Volumes ONTAP Professionalライセンス、NetApp Backup and Recovery、またはNetApp Disaster RecoveryやNetApp Ransomware Resilienceなどのその他のNetApp Data Servicesを使用する場合は、引き続きNISサブスクリプションを使用する必要があります。データサービス付きのCloud Volumes ONTAP Essentials PrimaryまたはEssentials Secondaryライセンスを使用する場合は、サポートされている https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["複数サブスクリプション モデル"^]でNSLとNISの両方のリストを使用できます。
+
+1つのNetApp Consoleアカウントで、同時に複数のマーケットプレイスサブスクリプションを保持できます。Cloud Volumes ONTAPのEssentialsライセンスをお持ちの場合、請求設定で別途設定されていない限り、システムは自動的にNSL経由で消費料金をルーティングします。以下の組み合わせを使用できます：
+
+[cols="2*"]
+|===
+| サービス | リスト 
+
+
+ a| 
+* Cloud Volumes ONTAP Essentials Primary
+* Cloud Volumes ONTAP Essentials セカンダリ
+
+ a| 
+従量課金制（PAYGO）または年間契約のNSL
+
+
+
+ a| 
+* Cloud Volumes ONTAP Professionalライセンス
+* バックアップとリカバリ
+* ディザスタ リカバリ
+* ランサムウェアへの耐性
+
+ a| 
+PAYGOまたは年間契約のNIS
+
+
+
+ a| 
+Cloud Volumes ONTAP Essentials Primary/Essentials Secondaryと、バックアップとリカバリまたはその他のデータサービスの両方
+ a| 
+Cloud Volumes ONTAP Essentials Primary/Essentials Secondary 用のNSL、およびバックアップとリカバリまたはデータサービス用のNIS
+
+|===
+.開始する前に
+既存のサービス内容とマーケットプレイスのサブスクリプションを見直し、将来の利用状況とライセンス要件を予測してください。次の点を考慮してください：
+
+* 現在のCloud Volumes ONTAPライセンスまたは課金方法（以下のいずれか）：
++
+** Cloud Volumes ONTAPの基本
+** Cloud Volumes ONTAP Professional
+
+
+* Backup and Recoveryまたはその他のデータサービスに関する要件
+* 既存の NIS または NSL 契約のステータス
+* 現在お客様の Console アカウントに関連付けられている AWS Marketplace のリスティング
+
+
+
+
+[[convert-cloud-volumes-ontap-nis-subscriptions-with-an-essentials-license]]
+== Essentialsライセンス付きのCloud Volumes ONTAP NISサブスクリプションを変換する
+
+Cloud Volumes ONTAP EssentialsライセンスのNIS PAYGOまたは年間サブスクリプションをお持ちで、Backup and Recoveryやその他のデータサービスを使用していない場合は、このシナリオを使用してください。変換後は、Cloud Volumes ONTAP EssentialsライセンスのNSL PAYGOまたは年間サブスクリプションになります。
+
+
+
+[[convert-a-paygo-subscription]]
+=== PAYGOサブスクリプションを変換する
+
+変換前はCloud Volumes ONTAP NIS PAYGOサブスクリプションを所有しています。
+
+.手順
+. AWS Marketplaceから、Cloud Volumes ONTAP NSL PAYGOサブスクリプションをサブスクライブし、NSLサブスクリプションをお客様のConsoleアカウントに関連付けます。link:task-onboard-cvo-aws-marketplace.html["AWS Marketplaceのスタンドアロンリストを使用してCloud Volumes ONTAPを展開する"]を参照してください。
+. Consoleで、*Administration > Licenses and subscriptions* に移動し、Cloud Volumes ONTAPの課金に正しいサブスクリプションが優先されていることを確認します。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-billing-preferences.html#set-billing-preferences["Licenses and subscriptions：請求設定を行う"^]を参照してください。
+. 料金請求状況と利用資格状況を確認してください。
+. NISサブスクリプションが不要になった場合は、削除してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションを削除する"^]を参照してください。
+
+
+
+
+[[convert-an-annual-contract-or-private-offer]]
+=== 年間契約またはプライベートオファーを変換する
+
+変換前のCloud Volumes ONTAP NIS年間契約をお持ちです。
+
+.手順
+. NSLリストを通じて、Cloud Volumes ONTAPの代替または修正のプライベートオファーを取得します。NetAppアカウントチームにお問い合わせください。
+. 新しいオファーを受け入れ、新しいサブスクリプションを有効化して、NSLサブスクリプションをConsoleアカウントに関連付けます。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-private-aws.html#accept-the-private-offer-in-the-aws-marketplace-portal["Licenses and subscriptions：AWS Marketplace プライベートオファーの承認と設定"^]を参照してください。
+. *管理 > Licenses and subscriptions* に移動し、Cloud Volumes ONTAP の課金に適切なサブスクリプションが優先されていることを確認します。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-billing-preferences.html#set-billing-preferences["Licenses and subscriptions：請求設定を行う"^]を参照してください。
+. 料金請求および課金に関する設定を確認してください。
+. NISサブスクリプションが不要になった場合は、削除してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションを削除する"^]を参照してください。
+
+
+
+
+[[convert-cloud-volumes-ontap-essentials-subscriptions-that-use-backup]]
+== Backupを使用するCloud Volumes ONTAP Essentialsサブスクリプションの変換
+
+Cloud Volumes ONTAP Essentialsライセンスを含むNIS PAYGOまたは年間サブスクリプションをお持ちで、Backup and Recoveryまたはその他のデータサービスが有効になっている場合は、このシナリオを使用してください。変換後は、Cloud Volumes ONTAPにNSL PAYGOまたは年間サブスクリプションを使用し、Backup and RecoveryまたはデータサービスにNISサブスクリプションを使用します。
+
+
+
+[[convert-a-paygo-subscription]]
+=== PAYGOサブスクリプションを変換する
+
+変換前はCloud Volumes ONTAP NIS PAYGOサブスクリプションを所有しています。
+
+.手順
+. AWS MarketplaceからCloud Volumes ONTAPのNSL PAYGOオファリングをサブスクライブします。link:task-onboard-cvo-aws-marketplace.html["AWS Marketplaceのスタンドアロンリストを使用してCloud Volumes ONTAPを展開する"]を参照してください。
+. Backup and Recovery向けのNISサブスクリプションを継続するか、まだお持ちでない場合は追加してください。
+. 両方のサブスクリプションを同じConsoleアカウントに関連付けます。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションをコンソールアカウントに関連付ける"^]を参照してください。
+. 料金請求および課金に関する設定を確認してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-billing-preferences.html#verify-billing-preferences["Licenses and subscriptions：請求設定を確認する"^]を参照してください。
+. Cloud Volumes ONTAPの料金がNSLサブスクリプション経由で請求され、データサービスの料金がNISサブスクリプション経由で請求されることを確認してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["Licenses and subscriptions：AWSでのCloud Volumes ONTAPおよびデータサービスの柔軟な請求"^]を参照してください。
+
+
+
+
+[[convert-an-annual-contract-or-private-offer]]
+=== 年間契約またはプライベートオファーを変換する
+
+お客様は、変換前にCloud Volumes ONTAP NISの年間契約またはプライベートオファーを契約しています。
+
+.手順
+. NSLリストを通じて、Cloud Volumes ONTAPの代替または修正のプライベートオファーを取得します。NetAppアカウントチームにお問い合わせください。
+. 以下のいずれかの方法で、Backup and Recovery用の有効なNISサブスクリプションを取得または維持してください：
++
+** NIS PAYGOサブスクリプションを通じて
+** Backup and Recovery またはその他のデータサービスを対象とする、新規または変更されたNISプライベートオファーを通じて
+
+
+. 新しいオファーを受け入れ、新しいサブスクリプションを有効化して、NSLサブスクリプションをConsoleアカウントに関連付けます。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-private-aws.html#accept-the-private-offer-in-the-aws-marketplace-portal["Licenses and subscriptions：AWS Marketplace プライベートオファーの承認と設定"^]を参照してください。
+. 両方のサブスクリプションを同じConsoleアカウントに関連付けます。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションをコンソールアカウントに関連付ける"^]を参照してください。
+. 料金請求および課金に関する設定を確認してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-billing-preferences.html#verify-billing-preferences["Licenses and subscriptions：請求設定を確認する"^]を参照してください。
+. Cloud Volumes ONTAPの料金がNSLサブスクリプション経由で請求され、データサービスの料金がNISサブスクリプション経由で請求されることを確認してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["Licenses and subscriptions：AWSでのCloud Volumes ONTAPおよびデータサービスの柔軟な請求"^]を参照してください。
+
+
+.結果
+サポートされている https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["複数サブスクリプション構成"^]があること。
+
+
+
+[[convert-cloud-volumes-ontap-professional-subscriptions-without-data-services]]
+== データサービスなしのCloud Volumes ONTAP Professionalサブスクリプションを変換する
+
+Cloud Volumes ONTAP NISのProfessionalライセンスのサブスクリプションをご利用中で、Backup and Recoveryやその他のデータサービスを現在使用しておらず、今後も使用する予定がない場合は、課金方法をProfessionalからEssentialsに変更する必要があります。望ましい目標状態は、Essentialsライセンスが付属するCloud Volumes ONTAP NSLサブスクリプションです。
+
+
+NOTE: NISのサブスクリプションの有効期限が切れる前、またはサブスクリプションを解約する前に、プロフェッショナルプランからエッセンシャルプランへの移行を完了する必要があります。
+
+課金方法を変更しない場合：
+
+* お客様のCloud Volumes ONTAPシステムは、既存のNIS Professionalライセンスを通じて引き続き課金されます。
+* Cloud Volumes ONTAPの利用に対する課金を継続するための有効なプロフェッショナル課金パスがなくなります。
+* NISのサブスクリプションの有効期限が切れると、変換ワークフローが利用できなくなる可能性があります。
+
+
+
+
+[[convert-a-professional-package-with-paygo-subscription]]
+=== PAYGOサブスクリプションのProfessionalパッケージを変換する
+
+.手順
+. 課金方法をProfessionalからEssentialsに変更します。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-capacity-licenses.html#change-charging-methods["Licenses and subscriptions：課金方法の変更"^]を参照してください。
+. AWS MarketplaceからCloud Volumes ONTAPのNSL PAYGOオファリングをサブスクライブします。link:task-onboard-cvo-aws-marketplace.html["AWS Marketplaceのスタンドアロンリストを使用してCloud Volumes ONTAPを展開する"]を参照してください。
+. NSLサブスクリプションをConsoleアカウントに関連付けます。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションをコンソールアカウントに関連付ける"^]を参照してください。
+. 料金請求および課金に関する設定を確認してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["Licenses and subscriptions：AWSでのCloud Volumes ONTAPおよびデータサービスの柔軟な請求"^]を参照してください。
+. NISサブスクリプションが不要になった場合は、削除してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションを削除する"^]を参照してください。
+
+
+
+
+[[convert-an-annual-contract-or-private-offer]]
+=== 年間契約またはプライベートオファーを変換する
+
+.手順
+. NSL を通じて Cloud Volumes ONTAP Essentials の代替または修正プライベートオファーを取得します。NetApp のアカウントチームにお問い合わせください。
+. 新しいオファーを受け入れ、新しいサブスクリプションを有効化して、NSLサブスクリプションをConsoleアカウントに関連付けます。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-private-aws.html#accept-the-private-offer-in-the-aws-marketplace-portal["Licenses and subscriptions：AWS Marketplace プライベートオファーの承認と設定"^]を参照してください。
+. 課金方法をProfessionalからEssentialsに変更します。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-capacity-licenses.html#change-charging-methods["Licenses and subscriptions：課金方法の変更"^]を参照してください。
+. NSLサブスクリプションをConsoleアカウントに関連付けます。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションをコンソールアカウントに関連付ける"^]を参照してください。
+. 料金請求および課金に関する設定を確認してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/concept-billing-preferences.html#flexible-billing-for-cloud-volumes-ontap-and-data-services-in-aws["Licenses and subscriptions：AWSでのCloud Volumes ONTAPおよびデータサービスの柔軟な請求"^]を参照してください。
+. NISサブスクリプションが不要になった場合は、削除してください。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-subscriptions.html["Licenses and subscriptions：サブスクリプションを削除する"^]を参照してください。
+
+
+
+
+[[troubleshooting]]
+== トラブルシューティング
+
+次のような問題が発生した場合の対処方法を確認してください：
+
+
+
+[[you-have-a-cloud-volumes-ontap-professional-package]]
+=== Cloud Volumes ONTAP Professionalパッケージをご利用です
+
+Cloud Volumes ONTAPサブスクリプションをご利用で、NSLへの変換をご希望の場合、サポートされている変換オプションはProfessionalからEssentialsへの変換のみです。Professionalの機能の使用を停止してEssentialsに移行するには、課金方法をProfessionalからEssentialsに変更する必要があります：
+
+https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-capacity-licenses.html#change-charging-methods["Licenses and subscriptions：課金方法の変更"^]。
+
+
+
+[[systems-use-professional-packages-even-after-nsl-subscription]]
+=== システムはNSLサブスクリプション後もProfessionalパッケージを使用します
+
+この動作は想定されたものです。NSLはEssentialsライセンスパッケージのみをサポートしています。次のいずれかを実行してください：
+
+* 課金方法をProfessionalからEssentialsに変更します。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-capacity-licenses.html#change-charging-methods["Licenses and subscriptions：課金方法の変更"^]を参照してください。
+* NISサブスクリプションを通じて、引き続きプロフェッショナルパッケージの料金が請求されます。
+
+
+
+
+[[you-use-backup-and-recovery-or-data-services-and-want-to-move-to-nsl]]
+=== バックアップとリカバリまたはデータサービスを利用していて、NSLに移行したい場合
+
+バックアップとリカバリまたはデータサービスには引き続き NIS サブスクリプションを使用し、マルチサブスクリプション モデルの Cloud Volumes ONTAP には NSL サブスクリプションを使用します。 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-billing-preferences.html["Licenses and subscriptions：請求設定を管理する"^]を参照してください。

@@ -4,7 +4,7 @@ permalink: task-managing-svms-gcp.html
 keywords: storage virtual machine, vserver, svm, storage vm, supported number, number supported, create svm, create storage vm, create vserver 
 summary: ストレージ VM は、 ONTAP内で実行され、クライアントにストレージおよびデータ サービスを提供する仮想マシンです。これは SVM または vserver として知られているかもしれません。  Cloud Volumes ONTAPはデフォルトで 1 つのストレージ VM で構成されていますが、一部の構成では追加のストレージ VM がサポートされます。 
 ---
-= Google Cloud でCloud Volumes ONTAPのデータ提供ストレージ VM を管理する
+= Google CloudでのCloud Volumes ONTAPのストレージVMの管理
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -4,7 +4,7 @@ permalink: task-enable-cluster-encryption.html
 keywords: Backend cluster network encryption, encryption, security, TLS, IPsec, CSM, kTLS, backend encryption 
 summary: ONTAP IPsecでまだ保護されていないCloud Volumes ONTAPクラスタトラフィックを保護するために、バックエンドクラスタネットワーク暗号化を有効にします。 
 ---
-= AzureおよびGoogle CloudのCloud Volumes ONTAPでバックエンドクラスタネットワーク暗号化を有効にする
+= Cloud Volumes ONTAP のバックエンドクラスタネットワーク暗号化を有効にする
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

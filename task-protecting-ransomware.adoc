@@ -4,7 +4,7 @@ permalink: task-protecting-ransomware.html
 keywords: snapshot policy, ransomware, protection, fpolicy, block, extension, attacks, arp, autonomous, monitor, alert, attacks, Cloud Volumes ONTAP 
 summary: ランサムウェア攻撃は、企業の時間、リソース、評判を犠牲にする可能性があります。コンソールを使用すると、可視性、検出、修復のための効果的なツールを提供する、ランサムウェアに対するNetAppソリューションを実装できます。 
 ---
-= Cloud Volumes ONTAPでNetAppランサムウェア保護ソリューションを有効にする
+= Cloud Volumes ONTAPのランサムウェア対策を有効にする
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

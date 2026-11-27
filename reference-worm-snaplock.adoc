@@ -4,7 +4,7 @@ permalink: reference-worm-snaplock.html
 keywords: WORM, SnapLock, Snapshot copies, 
 summary: 'Cloud Volumes ONTAPシステムで、一度だけ書き込み、何度も読み取る (WORM) ファイルの改ざん防止スナップショット コピーを作成し、特定の保持期間にわたってスナップショットを変更されていない形式で保持することができます。' 
 ---
-= Cloud Volumes ONTAPで WORM ファイルの改ざん防止スナップショット コピーを作成します
+= Cloud Volumes ONTAPでWORMファイルの改ざん防止スナップショットコピーを作成します
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

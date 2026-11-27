@@ -4,7 +4,7 @@ permalink: task-upgrade-disk-perf-azure.html
 keywords: azure, premium ssd v2, Premium SSDv2, performance parameters, cloud volumes ontap 
 summary: Azure の Premium SSD v2 ディスクのパフォーマンス パラメーターを構成します。 
 ---
-= Azure のCloud Volumes ONTAPで Premium SSD ディスクのパフォーマンス層を変更する
+= AzureのCloud Volumes ONTAPのPremium SSDディスクのパフォーマンスティアを変更する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -283,6 +283,8 @@ sidebar:
         url: "/task-manage-node-licenses.html"
       - title: ノードベースのライセンスを変換する
         url: "/task-convert-node-capacity.html"
+      - title: AWSでNISサブスクリプションをスタンドアロンサブスクリプションに変換する
+        url: "/task-convert-nis-nsl.html"
     - title: 従量課金制システムを登録する
       url: "/task-registering.html"
     - title: システムの停止と起動

@@ -4,7 +4,7 @@ permalink: task-verify-openssl-gcp.html
 keywords: Google Cloud, image, VHD, signature verification, encryption, sha256, ONTAP, Cloud Volumes ONTAP,OpenSSL, 
 summary: OpenSSL を使用して、Google Cloud からダウンロードした disk.raw ファイルをダイジェスト ファイルの内容と照合します。 
 ---
-= OpenSSL を使用してCloud Volumes ONTAPの Google Cloud イメージの disk.raw ファイルを確認する
+= OpenSSLを使用してCloud Volumes ONTAPのGoogle Cloudイメージを検証する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

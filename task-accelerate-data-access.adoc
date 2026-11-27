@@ -4,7 +4,7 @@ permalink: task-accelerate-data-access.html
 keywords: flexcache, flexcache volumes, create a flexcache volume, provision flexcache, create flexcache volume 
 summary: FlexCacheボリュームは、元のボリュームまたはソース ボリュームからの NFS 読み取りデータをキャッシュするストレージ ボリュームです。キャッシュされたデータへの後続の読み取りにより、そのデータへのアクセスが高速化されます。 
 ---
-= Cloud Volumes ONTAPシステム上のFlexCacheボリュームを使用してデータ アクセスを高速化します
+= Cloud Volumes ONTAPのFlexCacheボリュームでデータアクセスを高速化
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
